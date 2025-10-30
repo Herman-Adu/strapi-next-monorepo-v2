@@ -10,7 +10,10 @@ export function StrapiCompanyLogo({
   if (component.image?.media) {
     return (
       <div className="flex items-center justify-center px-4">
-        <StrapiBasicImage component={component.image} className="h-8 w-auto opacity-50" />
+        <StrapiBasicImage
+          component={component.image}
+          className="h-8 w-auto opacity-50"
+        />
       </div>
     )
   }
