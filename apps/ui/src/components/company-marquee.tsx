@@ -25,19 +25,19 @@ export function CompanyMarquee() {
   ]
 
   return (
-    <div className="relative py-16 bg-gradient-to-r from-purple-100 via-pink-100 to-purple-100 dark:from-transparent dark:via-transparent dark:to-transparent">
-      <h3 className="text-center text-lg font-semibold text-gray-600 dark:text-muted-foreground mb-8">
+    <div className="relative bg-gradient-to-r from-purple-100 via-pink-100 to-purple-100 py-16 dark:from-transparent dark:via-transparent dark:to-transparent">
+      <h3 className="dark:text-muted-foreground mb-8 text-center text-lg font-semibold text-gray-600">
         Trusted by Industry Leaders
       </h3>
       <div className="relative overflow-hidden">
-        <div className="flex animate-marquee hover:pause">
+        <div className="animate-marquee hover:pause flex">
           {/* First set of companies */}
           {companies.map((company, index) => (
             <div
               key={`first-${index}`}
-              className="flex items-center justify-center min-w-[200px] h-20 px-8 mx-4 rounded-xl bg-white dark:bg-card border border-gray-200 dark:border-border shadow-sm shrink-0"
+              className="dark:bg-card dark:border-border mx-4 flex h-20 min-w-[200px] shrink-0 items-center justify-center rounded-xl border border-gray-200 bg-white px-8 shadow-sm"
             >
-              <span className="text-base font-semibold text-gray-700 dark:text-muted-foreground whitespace-nowrap">
+              <span className="dark:text-muted-foreground text-base font-semibold whitespace-nowrap text-gray-700">
                 {company}
               </span>
             </div>
@@ -46,9 +46,9 @@ export function CompanyMarquee() {
           {companies.map((company, index) => (
             <div
               key={`second-${index}`}
-              className="flex items-center justify-center min-w-[200px] h-20 px-8 mx-4 rounded-xl bg-white dark:bg-card border border-gray-200 dark:border-border shadow-sm shrink-0"
+              className="dark:bg-card dark:border-border mx-4 flex h-20 min-w-[200px] shrink-0 items-center justify-center rounded-xl border border-gray-200 bg-white px-8 shadow-sm"
             >
-              <span className="text-base font-semibold text-gray-700 dark:text-muted-foreground whitespace-nowrap">
+              <span className="dark:text-muted-foreground text-base font-semibold whitespace-nowrap text-gray-700">
                 {company}
               </span>
             </div>
