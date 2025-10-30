@@ -10,16 +10,16 @@ export function StrapiListItem({
     if (component.iconType === "check") {
       return (
         <div className="flex-shrink-0">
-          <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
-            <Check className="w-5 h-5 text-primary" />
+          <div className="bg-primary/10 flex h-10 w-10 items-center justify-center rounded-lg">
+            <Check className="text-primary h-5 w-5" />
           </div>
         </div>
       )
     }
     if (component.iconType === "circle") {
       return (
-        <div className="flex-shrink-0 mt-1">
-          <Circle className="w-6 h-6 text-muted-foreground" />
+        <div className="mt-1 flex-shrink-0">
+          <Circle className="text-muted-foreground h-6 w-6" />
         </div>
       )
     }
@@ -30,8 +30,10 @@ export function StrapiListItem({
     <div className="flex gap-4">
       {renderIcon()}
       <div>
-        <h3 className="text-lg font-semibold mb-2">{component.title}</h3>
-        <p className="text-muted-foreground text-balance leading-relaxed">{component.description}</p>
+        <h3 className="mb-2 text-lg font-semibold">{component.title}</h3>
+        <p className="text-muted-foreground leading-relaxed text-balance">
+          {component.description}
+        </p>
       </div>
     </div>
   )

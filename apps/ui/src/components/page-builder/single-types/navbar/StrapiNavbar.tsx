@@ -16,7 +16,7 @@ import { LoggedUserMenu } from "@/components/page-builder/single-types/navbar/Lo
 
 const hardcodedLinks: NonNullable<
   Data.ContentType<"api::navbar.navbar">["links"]
-> = [{ id: "client-page", href: "/client-page", label: "Client Page" }]
+> = []
 
 export async function StrapiNavbar({ locale }: { readonly locale: AppLocale }) {
   const response = await fetchNavbar(locale)

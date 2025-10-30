@@ -27,9 +27,11 @@ export function LessonsSection() {
   return (
     <section className="bg-background relative z-10 py-20 md:py-28">
       <div className="container mx-auto px-4">
-                <div className="mx-auto max-w-3xl text-center mb-16">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-balance">Lessons Baked-in</h2>
-          <p className="text-lg text-muted-foreground text-balance">
+        <div className="mx-auto mb-16 max-w-3xl text-center">
+          <h2 className="mb-4 text-3xl font-bold text-balance md:text-4xl lg:text-5xl">
+            Lessons Baked-in
+          </h2>
+          <p className="text-muted-foreground text-lg text-balance">
             What We Learned the Hard Way (So You Don&apos;t Have To)
           </p>
         </div>
@@ -54,8 +56,8 @@ export function LessonsSection() {
 
         <div className="text-center">
           <p className="text-muted-foreground border-border inline-block rounded-full border px-6 py-2 text-sm">
-            These guardrails are wired into the template so you don&apos;t step on
-            the same rakes.
+            These guardrails are wired into the template so you don&apos;t step
+            on the same rakes.
           </p>
         </div>
       </div>

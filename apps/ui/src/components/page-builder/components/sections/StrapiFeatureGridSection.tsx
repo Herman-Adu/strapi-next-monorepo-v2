@@ -17,14 +17,16 @@ export function StrapiFeatureGridSection({
   }[component.gridColumns || "3"]
 
   return (
-    <section className="relative z-10 py-20 md:py-28 bg-background">
+    <section className="bg-background relative z-10 py-20 md:py-28">
       <Container className="mx-auto px-4">
-        <div className="mx-auto max-w-3xl text-center mb-16">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-balance">
+        <div className="mx-auto mb-16 max-w-3xl text-center">
+          <h2 className="mb-4 text-3xl font-bold text-balance md:text-4xl lg:text-5xl">
             {component.heading}
           </h2>
           {component.description && (
-            <p className="text-lg text-muted-foreground text-balance">{component.description}</p>
+            <p className="text-muted-foreground text-lg text-balance">
+              {component.description}
+            </p>
           )}
         </div>
 
@@ -39,7 +41,9 @@ export function StrapiFeatureGridSection({
 
         {/* List Items Grid */}
         {component.listItems && component.listItems.length > 0 && (
-          <div className={`grid gap-8 ${gridColsClass === "md:grid-cols-3" ? "md:grid-cols-2" : gridColsClass} max-w-4xl mx-auto mb-12`}>
+          <div
+            className={`grid gap-8 ${gridColsClass === "md:grid-cols-3" ? "md:grid-cols-2" : gridColsClass} mx-auto mb-12 max-w-4xl`}
+          >
             {component.listItems.map((item, index) => (
               <StrapiListItem key={item.id || index} component={item} />
             ))}
@@ -49,7 +53,7 @@ export function StrapiFeatureGridSection({
         {/* Footer Note */}
         {component.footerNote && (
           <div className="text-center">
-            <p className="text-sm text-muted-foreground border border-border rounded-full px-6 py-2 inline-block">
+            <p className="text-muted-foreground border-border inline-block rounded-full border px-6 py-2 text-sm">
               {component.footerNote}
             </p>
           </div>

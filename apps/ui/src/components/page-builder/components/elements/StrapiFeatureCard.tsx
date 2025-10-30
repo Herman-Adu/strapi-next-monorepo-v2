@@ -6,10 +6,12 @@ export function StrapiFeatureCard({
   readonly component: Data.Component<"elements.feature-card">
 }) {
   return (
-    <div className="flex flex-col gap-3 p-6 rounded-lg border border-border bg-card hover:shadow-lg transition-shadow">
+    <div className="border-border bg-card flex flex-col gap-3 rounded-lg border p-6 transition-shadow hover:shadow-lg">
       <div className="text-4xl">{component.icon}</div>
       <h3 className="text-xl font-semibold">{component.title}</h3>
-      <p className="text-muted-foreground leading-relaxed">{component.description}</p>
+      <p className="text-muted-foreground leading-relaxed">
+        {component.description}
+      </p>
     </div>
   )
 }

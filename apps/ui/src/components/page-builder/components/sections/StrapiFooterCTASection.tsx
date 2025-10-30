@@ -10,23 +10,25 @@ export function StrapiFooterCTASection({
   readonly component: Data.Component<"sections.footer-cta-section">
 }) {
   return (
-    <footer className="relative z-10 border-t border-border/50 py-16 md:py-24">
+    <footer className="border-border/50 relative z-10 border-t py-16 md:py-24">
       <Container className="mx-auto px-4">
         <div className="mx-auto max-w-4xl">
           {/* CTA Section */}
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-balance">{component.heading}</h2>
-            <p className="text-lg text-muted-foreground mb-8 text-balance leading-relaxed">
+          <div className="mb-12 text-center">
+            <h2 className="mb-4 text-3xl font-bold text-balance md:text-4xl">
+              {component.heading}
+            </h2>
+            <p className="text-muted-foreground mb-8 text-lg leading-relaxed text-balance">
               {component.description}
             </p>
 
             {component.ctaButtons && component.ctaButtons.length > 0 && (
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <div className="flex flex-col justify-center gap-4 sm:flex-row">
                 {component.ctaButtons.map((button, index) => (
                   <StrapiIconButton
                     key={button.id || index}
                     component={button}
-                    className={`text-base px-8 ${index === 1 ? "bg-transparent" : ""}`}
+                    className={`px-8 text-base ${index === 1 ? "bg-transparent" : ""}`}
                   />
                 ))}
               </div>
@@ -34,12 +36,12 @@ export function StrapiFooterCTASection({
           </div>
 
           {/* Footer Bottom */}
-          <div className="border-t border-border/50 pt-8">
-            <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-muted-foreground">
+          <div className="border-border/50 border-t pt-8">
+            <div className="text-muted-foreground flex flex-col items-center justify-between gap-4 text-sm md:flex-row">
               <div className="flex items-center gap-2">
                 {component.logo && (
-                  <div className="flex h-6 w-6 items-center justify-center rounded bg-primary">
-                    <span className="font-mono text-xs font-bold text-primary-foreground">
+                  <div className="bg-primary flex h-6 w-6 items-center justify-center rounded">
+                    <span className="text-primary-foreground font-mono text-xs font-bold">
                       {component.logo}
                     </span>
                   </div>

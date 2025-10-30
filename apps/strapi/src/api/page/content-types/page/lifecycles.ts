@@ -8,4 +8,9 @@ export default {
       await handleHierarchyBeforeCreate(event, "api::page.page")
     }
   },
+  async beforeUpdate(event: LifecycleEventType<"beforeUpdate">) {
+    if (PAGES_HIERARCHY_ENABLED) {
+      await handleHierarchyBeforeCreate(event, "api::page.page")
+    }
+  },
 }

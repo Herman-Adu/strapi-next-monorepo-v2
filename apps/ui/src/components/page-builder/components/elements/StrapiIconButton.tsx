@@ -1,6 +1,13 @@
-import { Data } from "@repo/strapi"
-import { Github, Calendar, Heart, BookOpen, ExternalLink, ArrowRight } from "lucide-react"
 import Link from "next/link"
+import { Data } from "@repo/strapi"
+import {
+  ArrowRight,
+  BookOpen,
+  Calendar,
+  ExternalLink,
+  Github,
+  Heart,
+} from "lucide-react"
 
 import { Button } from "@/components/ui/button"
 
@@ -31,7 +38,10 @@ export function StrapiIconButton({
       className={className}
       asChild
     >
-      <Link href={component.href} target={component.newTab ? "_blank" : undefined}>
+      <Link
+        href={component.href}
+        target={component.newTab ? "_blank" : undefined}
+      >
         {Icon && <Icon className="mr-2 h-5 w-5" />}
         {component.label}
       </Link>

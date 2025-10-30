@@ -66,6 +66,11 @@ const pagePopulateObject: FindOne<"api::page.page">["populate"] = {
           steps: true,
         },
       },
+      "sections.landing-hero": {
+        populate: {
+          ctaButtons: true,
+        },
+      },
       "sections.heading-with-cta-button": { populate: { cta: true } },
       "sections.faq": { populate: { accordions: true } },
       "sections.carousel": {

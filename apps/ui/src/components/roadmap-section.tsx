@@ -22,9 +22,13 @@ export function RoadmapSection() {
   return (
     <section className="bg-background relative z-10 py-20 md:py-28">
       <div className="container mx-auto px-4">
-                <div className="mx-auto max-w-3xl text-center mb-16">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-balance">Roadmap & Community</h2>
-          <p className="text-lg text-muted-foreground text-balance">Where we&apos;re headed and how you can contribute.</p>
+        <div className="mx-auto mb-16 max-w-3xl text-center">
+          <h2 className="mb-4 text-3xl font-bold text-balance md:text-4xl lg:text-5xl">
+            Roadmap & Community
+          </h2>
+          <p className="text-muted-foreground text-lg text-balance">
+            Where we&apos;re headed and how you can contribute.
+          </p>
         </div>
 
         <div className="mx-auto mb-12 max-w-2xl space-y-8">

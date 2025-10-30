@@ -66,7 +66,7 @@ export const hierarchyService = {
       return joinPaths(page.parent.fullPath, page.slug)
     }
 
-    return page.slug
+    return joinPaths(page.slug)
   },
 
   getJobTypes(): Partial<

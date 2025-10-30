@@ -9,24 +9,24 @@ export function StrapiFinalCTASection({
   readonly component: Data.Component<"sections.final-cta-section">
 }) {
   return (
-    <section className="relative z-10 py-24 md:py-32 cta-gradient">
+    <section className="cta-gradient relative z-10 py-24 md:py-32">
       <Container className="mx-auto px-4">
         <div className="mx-auto max-w-3xl text-center">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-balance">
+          <h2 className="mb-6 text-3xl font-bold text-balance md:text-4xl lg:text-5xl">
             {component.heading}
           </h2>
 
-          <p className="text-lg text-muted-foreground mb-10 text-balance max-w-2xl mx-auto">
+          <p className="text-muted-foreground mx-auto mb-10 max-w-2xl text-lg text-balance">
             {component.description}
           </p>
 
           {component.ctaButtons && component.ctaButtons.length > 0 && (
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
               {component.ctaButtons.map((button, index) => (
                 <StrapiIconButton
                   key={button.id || index}
                   component={button}
-                  className={`text-base px-8 h-12 rounded-lg ${index === 1 ? "bg-background/50 backdrop-blur-sm" : ""}`}
+                  className={`h-12 rounded-lg px-8 text-base ${index === 1 ? "bg-background/50 backdrop-blur-sm" : ""}`}
                 />
               ))}
             </div>

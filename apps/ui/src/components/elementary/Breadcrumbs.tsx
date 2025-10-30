@@ -17,7 +17,7 @@ export function Breadcrumbs({ breadcrumbs, className }: Props) {
     <div className={cn("max-w-screen-default mx-auto w-full", className)}>
       <div>
         {breadcrumbs.map((breadcrumb, index) => (
-          <span key={breadcrumb.fullPath}>
+          <span key={`${breadcrumb.fullPath}-${index}`}>
             {index !== 0 && (
               <span className={cn("mx-2 inline-block text-black")}>/</span>
             )}

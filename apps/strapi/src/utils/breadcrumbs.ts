@@ -60,6 +60,9 @@ export const generateBreadcrumbs = async (
     locale: document.locale,
   })
 
+  // Track visited paths to prevent infinite loops and duplicates
+  const visitedPaths = new Set<string>([document.fullPath])
+
   while (true) {
     // Pages have a `parent` field that points to the parent
     const parent = hierarchy?.parent ?? null
@@ -67,6 +70,16 @@ export const generateBreadcrumbs = async (
     if (!parent) {
       break
     }
+
+    // Prevent circular references and duplicates
+    if (visitedPaths.has(parent.fullPath)) {
+      console.warn(
+        `Circular reference or duplicate detected in breadcrumbs for path: ${parent.fullPath}`
+      )
+      break
+    }
+
+    visitedPaths.add(parent.fullPath)
 
     breadcrumbs.unshift({
       title: parent.breadcrumbTitle ?? parent.title,

@@ -10,21 +10,26 @@ export function StrapiWorkflowSection({
   readonly component: Data.Component<"sections.workflow-section">
 }) {
   return (
-    <section className="relative z-10 py-20 md:py-28 bg-muted/30">
+    <section className="bg-muted/30 relative z-10 py-20 md:py-28">
       <Container className="mx-auto px-4">
-        <div className="grid md:grid-cols-2 gap-12 items-center">
+        <div className="grid items-center gap-12 md:grid-cols-2">
           {/* Left Column - Text Content */}
           <div>
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">{component.heading}</h2>
-            <p className="text-muted-foreground mb-8 leading-relaxed">{component.description}</p>
+            <h2 className="mb-4 text-3xl font-bold md:text-4xl">
+              {component.heading}
+            </h2>
+            <p className="text-muted-foreground mb-8 leading-relaxed">
+              {component.description}
+            </p>
 
-            {component.workflowPoints && component.workflowPoints.length > 0 && (
-              <div className="space-y-6">
-                {component.workflowPoints.map((point, index) => (
-                  <StrapiListItem key={point.id || index} component={point} />
-                ))}
-              </div>
-            )}
+            {component.workflowPoints &&
+              component.workflowPoints.length > 0 && (
+                <div className="space-y-6">
+                  {component.workflowPoints.map((point, index) => (
+                    <StrapiListItem key={point.id || index} component={point} />
+                  ))}
+                </div>
+              )}
           </div>
 
           {/* Right Column - Image */}
@@ -36,7 +41,7 @@ export function StrapiWorkflowSection({
                 forcedSizes={{ height: 400 }}
               />
             ) : (
-              <div className="w-full h-96 bg-muted rounded-lg flex items-center justify-center">
+              <div className="bg-muted flex h-96 w-full items-center justify-center rounded-lg">
                 <p className="text-muted-foreground">Screenshot placeholder</p>
               </div>
             )}

@@ -171,6 +171,7 @@
   position: absolute;
   width: 2px;
   height: 2px;
+  background: white;
   border-radius: 50%;
   animation: twinkle 3s infinite;
 }
@@ -283,6 +284,6 @@
     @apply border-gray-300 outline-purple-500/50;
   }
   body {
-    @apply bg-gray-100 text-gray-900;
+    @apply bg-background text-foreground;
   }
 }
