@@ -1,0 +1,35 @@
+{
+  "collectionName": "components_sections_feature_grid_sections",
+  "info": {
+    "displayName": "FeatureGridSection",
+    "description": "Reusable grid section for features, benefits, lessons"
+  },
+  "options": {},
+  "attributes": {
+    "heading": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "text"
+    },
+    "items": {
+      "type": "component",
+      "repeatable": true,
+      "component": "elements.feature-card"
+    },
+    "listItems": {
+      "type": "component",
+      "repeatable": true,
+      "component": "elements.list-item"
+    },
+    "footerNote": {
+      "type": "string"
+    },
+    "gridColumns": {
+      "type": "enumeration",
+      "enum": ["2", "3", "4", "6"],
+      "default": "3"
+    }
+  }
+}

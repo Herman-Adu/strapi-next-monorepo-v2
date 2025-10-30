@@ -1,0 +1,37 @@
+{
+  "collectionName": "components_sections_footer_cta_sections",
+  "info": {
+    "displayName": "FooterCTASection",
+    "description": "Footer CTA section with branding and links"
+  },
+  "options": {},
+  "attributes": {
+    "heading": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "text",
+      "required": true
+    },
+    "ctaButtons": {
+      "type": "component",
+      "repeatable": true,
+      "component": "elements.icon-button",
+      "max": 2
+    },
+    "logo": {
+      "type": "string",
+      "default": "N"
+    },
+    "copyright": {
+      "type": "string",
+      "required": true
+    },
+    "footerLinks": {
+      "type": "component",
+      "repeatable": true,
+      "component": "utilities.link"
+    }
+  }
+}

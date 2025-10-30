@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_elements_stat_cards",
+  "info": {
+    "displayName": "StatCard",
+    "description": "Statistic card with number and description"
+  },
+  "options": {},
+  "attributes": {
+    "number": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

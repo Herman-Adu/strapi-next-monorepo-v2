@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_sections_credibility_sections",
+  "info": {
+    "displayName": "CredibilitySection",
+    "description": "Stats and company logos section"
+  },
+  "options": {},
+  "attributes": {
+    "stats": {
+      "type": "component",
+      "repeatable": true,
+      "component": "elements.stat-card",
+      "max": 3,
+      "required": true
+    },
+    "companyLogos": {
+      "type": "component",
+      "repeatable": true,
+      "component": "elements.company-logo"
+    }
+  }
+}

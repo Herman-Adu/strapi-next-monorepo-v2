@@ -1,5 +1,30 @@
 import type { Schema, Struct } from "@strapi/strapi"
 
+export interface ElementsCompanyLogo extends Struct.ComponentSchema {
+  collectionName: "components_elements_company_logos"
+  info: {
+    description: "Company logo with name or image"
+    displayName: "CompanyLogo"
+  }
+  attributes: {
+    image: Schema.Attribute.Media<"images">
+    name: Schema.Attribute.String & Schema.Attribute.Required
+  }
+}
+
+export interface ElementsFeatureCard extends Struct.ComponentSchema {
+  collectionName: "components_elements_feature_cards"
+  info: {
+    description: "Feature card with icon, title and description"
+    displayName: "FeatureCard"
+  }
+  attributes: {
+    description: Schema.Attribute.Text & Schema.Attribute.Required
+    icon: Schema.Attribute.String & Schema.Attribute.Required
+    title: Schema.Attribute.String & Schema.Attribute.Required
+  }
+}
+
 export interface ElementsFooterItem extends Struct.ComponentSchema {
   collectionName: "components_elements_footer_items"
   info: {
@@ -9,6 +34,58 @@ export interface ElementsFooterItem extends Struct.ComponentSchema {
   attributes: {
     links: Schema.Attribute.Component<"utilities.link", true>
     title: Schema.Attribute.String & Schema.Attribute.Required
+  }
+}
+
+export interface ElementsIconButton extends Struct.ComponentSchema {
+  collectionName: "components_elements_icon_buttons"
+  info: {
+    description: "Button with icon and link"
+    displayName: "IconButton"
+  }
+  attributes: {
+    href: Schema.Attribute.String & Schema.Attribute.Required
+    icon: Schema.Attribute.Enumeration<
+      [
+        "github",
+        "calendar",
+        "heart",
+        "book-open",
+        "external-link",
+        "arrow-right",
+      ]
+    > &
+      Schema.Attribute.Required
+    label: Schema.Attribute.String & Schema.Attribute.Required
+    newTab: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>
+    variant: Schema.Attribute.Enumeration<["default", "outline", "ghost"]> &
+      Schema.Attribute.DefaultTo<"default">
+  }
+}
+
+export interface ElementsListItem extends Struct.ComponentSchema {
+  collectionName: "components_elements_list_items"
+  info: {
+    description: "List item with title, description and optional icon"
+    displayName: "ListItem"
+  }
+  attributes: {
+    description: Schema.Attribute.Text & Schema.Attribute.Required
+    iconType: Schema.Attribute.Enumeration<["check", "circle", "none"]> &
+      Schema.Attribute.DefaultTo<"none">
+    title: Schema.Attribute.String & Schema.Attribute.Required
+  }
+}
+
+export interface ElementsStatCard extends Struct.ComponentSchema {
+  collectionName: "components_elements_stat_cards"
+  info: {
+    description: "Statistic card with number and description"
+    displayName: "StatCard"
+  }
+  attributes: {
+    description: Schema.Attribute.String & Schema.Attribute.Required
+    number: Schema.Attribute.String & Schema.Attribute.Required
   }
 }
 
@@ -60,6 +137,25 @@ export interface SectionsCarousel extends Struct.ComponentSchema {
   }
 }
 
+export interface SectionsCredibilitySection extends Struct.ComponentSchema {
+  collectionName: "components_sections_credibility_sections"
+  info: {
+    description: "Stats and company logos section"
+    displayName: "CredibilitySection"
+  }
+  attributes: {
+    companyLogos: Schema.Attribute.Component<"elements.company-logo", true>
+    stats: Schema.Attribute.Component<"elements.stat-card", true> &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetMinMax<
+        {
+          max: 3
+        },
+        number
+      >
+  }
+}
+
 export interface SectionsFaq extends Struct.ComponentSchema {
   collectionName: "components_sections_faqs"
   info: {
@@ -70,6 +166,64 @@ export interface SectionsFaq extends Struct.ComponentSchema {
     accordions: Schema.Attribute.Component<"utilities.accordions", true>
     subTitle: Schema.Attribute.String
     title: Schema.Attribute.String & Schema.Attribute.Required
+  }
+}
+
+export interface SectionsFeatureGridSection extends Struct.ComponentSchema {
+  collectionName: "components_sections_feature_grid_sections"
+  info: {
+    description: "Reusable grid section for features, benefits, lessons"
+    displayName: "FeatureGridSection"
+  }
+  attributes: {
+    description: Schema.Attribute.Text
+    footerNote: Schema.Attribute.String
+    gridColumns: Schema.Attribute.Enumeration<["2", "3", "4", "6"]> &
+      Schema.Attribute.DefaultTo<"3">
+    heading: Schema.Attribute.String & Schema.Attribute.Required
+    items: Schema.Attribute.Component<"elements.feature-card", true>
+    listItems: Schema.Attribute.Component<"elements.list-item", true>
+  }
+}
+
+export interface SectionsFinalCtaSection extends Struct.ComponentSchema {
+  collectionName: "components_sections_final_cta_sections"
+  info: {
+    description: "Final call-to-action section"
+    displayName: "FinalCTASection"
+  }
+  attributes: {
+    ctaButtons: Schema.Attribute.Component<"elements.icon-button", true> &
+      Schema.Attribute.SetMinMax<
+        {
+          max: 2
+        },
+        number
+      >
+    description: Schema.Attribute.Text & Schema.Attribute.Required
+    heading: Schema.Attribute.String & Schema.Attribute.Required
+  }
+}
+
+export interface SectionsFooterCtaSection extends Struct.ComponentSchema {
+  collectionName: "components_sections_footer_cta_sections"
+  info: {
+    description: "Footer CTA section with branding and links"
+    displayName: "FooterCTASection"
+  }
+  attributes: {
+    copyright: Schema.Attribute.String & Schema.Attribute.Required
+    ctaButtons: Schema.Attribute.Component<"elements.icon-button", true> &
+      Schema.Attribute.SetMinMax<
+        {
+          max: 2
+        },
+        number
+      >
+    description: Schema.Attribute.Text & Schema.Attribute.Required
+    footerLinks: Schema.Attribute.Component<"utilities.link", true>
+    heading: Schema.Attribute.String & Schema.Attribute.Required
+    logo: Schema.Attribute.String & Schema.Attribute.DefaultTo<"N">
   }
 }
 
@@ -137,6 +291,87 @@ export interface SectionsImageWithCtaButton extends Struct.ComponentSchema {
     link: Schema.Attribute.Component<"utilities.link", false>
     subText: Schema.Attribute.String
     title: Schema.Attribute.String & Schema.Attribute.Required
+  }
+}
+
+export interface SectionsLandingHero extends Struct.ComponentSchema {
+  collectionName: "components_sections_landing_heroes"
+  info: {
+    description: "Landing page hero section with badge, heading, description and CTAs"
+    displayName: "LandingHero"
+  }
+  attributes: {
+    badge: Schema.Attribute.String & Schema.Attribute.Required
+    ctaButtons: Schema.Attribute.Component<"elements.icon-button", true> &
+      Schema.Attribute.SetMinMax<
+        {
+          max: 2
+        },
+        number
+      >
+    description: Schema.Attribute.Text & Schema.Attribute.Required
+    footerText: Schema.Attribute.String
+    heading: Schema.Attribute.String & Schema.Attribute.Required
+  }
+}
+
+export interface SectionsNewsletterCtaSection extends Struct.ComponentSchema {
+  collectionName: "components_sections_newsletter_cta_sections"
+  info: {
+    description: "Newsletter subscription CTA section"
+    displayName: "NewsletterCTASection"
+  }
+  attributes: {
+    benefits: Schema.Attribute.Component<"elements.list-item", true> &
+      Schema.Attribute.SetMinMax<
+        {
+          max: 2
+        },
+        number
+      >
+    ctaButtons: Schema.Attribute.Component<"elements.icon-button", true> &
+      Schema.Attribute.SetMinMax<
+        {
+          max: 2
+        },
+        number
+      >
+    description: Schema.Attribute.Text & Schema.Attribute.Required
+    heading: Schema.Attribute.String & Schema.Attribute.Required
+  }
+}
+
+export interface SectionsRoadmapSection extends Struct.ComponentSchema {
+  collectionName: "components_sections_roadmap_sections"
+  info: {
+    description: "Roadmap and community section"
+    displayName: "RoadmapSection"
+  }
+  attributes: {
+    description: Schema.Attribute.Text
+    footerNotes: Schema.Attribute.Component<"utilities.text", true> &
+      Schema.Attribute.SetMinMax<
+        {
+          max: 2
+        },
+        number
+      >
+    heading: Schema.Attribute.String & Schema.Attribute.Required
+    roadmapItems: Schema.Attribute.Component<"elements.list-item", true>
+  }
+}
+
+export interface SectionsWorkflowSection extends Struct.ComponentSchema {
+  collectionName: "components_sections_workflow_sections"
+  info: {
+    description: "Two-column workflow section with text and image"
+    displayName: "WorkflowSection"
+  }
+  attributes: {
+    description: Schema.Attribute.Text & Schema.Attribute.Required
+    heading: Schema.Attribute.String & Schema.Attribute.Required
+    image: Schema.Attribute.Component<"utilities.basic-image", false>
+    workflowPoints: Schema.Attribute.Component<"elements.list-item", true>
   }
 }
 
@@ -341,16 +576,29 @@ export interface UtilitiesText extends Struct.ComponentSchema {
 declare module "@strapi/strapi" {
   export module Public {
     export interface ComponentSchemas {
+      "elements.company-logo": ElementsCompanyLogo
+      "elements.feature-card": ElementsFeatureCard
       "elements.footer-item": ElementsFooterItem
+      "elements.icon-button": ElementsIconButton
+      "elements.list-item": ElementsListItem
+      "elements.stat-card": ElementsStatCard
       "forms.contact-form": FormsContactForm
       "forms.newsletter-form": FormsNewsletterForm
       "sections.animated-logo-row": SectionsAnimatedLogoRow
       "sections.carousel": SectionsCarousel
+      "sections.credibility-section": SectionsCredibilitySection
       "sections.faq": SectionsFaq
+      "sections.feature-grid-section": SectionsFeatureGridSection
+      "sections.final-cta-section": SectionsFinalCtaSection
+      "sections.footer-cta-section": SectionsFooterCtaSection
       "sections.heading-with-cta-button": SectionsHeadingWithCtaButton
       "sections.hero": SectionsHero
       "sections.horizontal-images": SectionsHorizontalImages
       "sections.image-with-cta-button": SectionsImageWithCtaButton
+      "sections.landing-hero": SectionsLandingHero
+      "sections.newsletter-cta-section": SectionsNewsletterCtaSection
+      "sections.roadmap-section": SectionsRoadmapSection
+      "sections.workflow-section": SectionsWorkflowSection
       "seo-utilities.meta-social": SeoUtilitiesMetaSocial
       "seo-utilities.seo": SeoUtilitiesSeo
       "seo-utilities.seo-og": SeoUtilitiesSeoOg

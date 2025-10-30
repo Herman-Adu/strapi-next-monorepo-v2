@@ -1,0 +1,30 @@
+{
+  "collectionName": "components_sections_newsletter_cta_sections",
+  "info": {
+    "displayName": "NewsletterCTASection",
+    "description": "Newsletter subscription CTA section"
+  },
+  "options": {},
+  "attributes": {
+    "heading": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "text",
+      "required": true
+    },
+    "ctaButtons": {
+      "type": "component",
+      "repeatable": true,
+      "component": "elements.icon-button",
+      "max": 2
+    },
+    "benefits": {
+      "type": "component",
+      "repeatable": true,
+      "component": "elements.list-item",
+      "max": 2
+    }
+  }
+}

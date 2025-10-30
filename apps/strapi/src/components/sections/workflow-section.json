@@ -1,0 +1,28 @@
+{
+  "collectionName": "components_sections_workflow_sections",
+  "info": {
+    "displayName": "WorkflowSection",
+    "description": "Two-column workflow section with text and image"
+  },
+  "options": {},
+  "attributes": {
+    "heading": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "text",
+      "required": true
+    },
+    "workflowPoints": {
+      "type": "component",
+      "repeatable": true,
+      "component": "elements.list-item"
+    },
+    "image": {
+      "type": "component",
+      "repeatable": false,
+      "component": "utilities.basic-image"
+    }
+  }
+}

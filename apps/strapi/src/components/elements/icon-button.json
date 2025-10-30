@@ -1,0 +1,43 @@
+{
+  "collectionName": "components_elements_icon_buttons",
+  "info": {
+    "displayName": "IconButton",
+    "description": "Button with icon and link"
+  },
+  "options": {},
+  "attributes": {
+    "label": {
+      "type": "string",
+      "required": true
+    },
+    "href": {
+      "type": "string",
+      "required": true
+    },
+    "icon": {
+      "type": "enumeration",
+      "enum": [
+        "github",
+        "calendar",
+        "heart",
+        "book-open",
+        "external-link",
+        "arrow-right"
+      ],
+      "required": true
+    },
+    "variant": {
+      "type": "enumeration",
+      "enum": [
+        "default",
+        "outline",
+        "ghost"
+      ],
+      "default": "default"
+    },
+    "newTab": {
+      "type": "boolean",
+      "default": false
+    }
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_elements_company_logos",
+  "info": {
+    "displayName": "CompanyLogo",
+    "description": "Company logo with name or image"
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    }
+  }
+}

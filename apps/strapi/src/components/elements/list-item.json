@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_elements_list_items",
+  "info": {
+    "displayName": "ListItem",
+    "description": "List item with title, description and optional icon"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "text",
+      "required": true
+    },
+    "iconType": {
+      "type": "enumeration",
+      "enum": ["check", "circle", "none"],
+      "default": "none"
+    }
+  }
+}

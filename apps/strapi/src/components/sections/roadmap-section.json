@@ -1,0 +1,28 @@
+{
+  "collectionName": "components_sections_roadmap_sections",
+  "info": {
+    "displayName": "RoadmapSection",
+    "description": "Roadmap and community section"
+  },
+  "options": {},
+  "attributes": {
+    "heading": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "text"
+    },
+    "roadmapItems": {
+      "type": "component",
+      "repeatable": true,
+      "component": "elements.list-item"
+    },
+    "footerNotes": {
+      "type": "component",
+      "repeatable": true,
+      "component": "utilities.text",
+      "max": 2
+    }
+  }
+}

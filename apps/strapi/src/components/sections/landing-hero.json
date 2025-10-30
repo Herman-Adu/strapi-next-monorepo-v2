@@ -1,0 +1,31 @@
+{
+  "collectionName": "components_sections_landing_heroes",
+  "info": {
+    "displayName": "LandingHero",
+    "description": "Landing page hero section with badge, heading, description and CTAs"
+  },
+  "options": {},
+  "attributes": {
+    "badge": {
+      "type": "string",
+      "required": true
+    },
+    "heading": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "text",
+      "required": true
+    },
+    "ctaButtons": {
+      "type": "component",
+      "repeatable": true,
+      "component": "elements.icon-button",
+      "max": 2
+    },
+    "footerText": {
+      "type": "string"
+    }
+  }
+}
