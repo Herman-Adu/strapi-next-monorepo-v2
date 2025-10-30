@@ -24,12 +24,7 @@ export function ClientProviders({
   return (
     <SessionProvider>
       <TokenProvider>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          forcedTheme="light"
-        >
+        <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
           <QueryClientProvider client={queryClient}>
             {children}
           </QueryClientProvider>
