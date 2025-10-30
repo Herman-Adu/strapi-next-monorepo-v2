@@ -1,7 +1,6 @@
 import Link from "next/link"
 import { Github } from "lucide-react"
 
-import { ThemeToggle } from "@/components/elementary/ThemeToggle"
 import { Button } from "@/components/ui/button"
 
 export function Header() {
@@ -41,7 +40,6 @@ export function Header() {
           </nav>
 
           <div className="flex items-center gap-2">
-            <ThemeToggle />
             <Button variant="outline" size="sm" asChild>
               <Link
                 href="https://github.com/notum-cz/strapi-next-monorepo-starter"

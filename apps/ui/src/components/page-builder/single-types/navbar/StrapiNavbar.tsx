@@ -9,6 +9,7 @@ import { fetchNavbar } from "@/lib/strapi-api/content/server"
 import { cn } from "@/lib/styles"
 import AppLink from "@/components/elementary/AppLink"
 import LocaleSwitcher from "@/components/elementary/LocaleSwitcher"
+import { ThemeToggle } from "@/components/elementary/ThemeToggle"
 import StrapiImageWithLink from "@/components/page-builder/components/utilities/StrapiImageWithLink"
 import StrapiLink from "@/components/page-builder/components/utilities/StrapiLink"
 import { LoggedUserMenu } from "@/components/page-builder/single-types/navbar/LoggedUserMenu"
@@ -68,6 +69,7 @@ export async function StrapiNavbar({ locale }: { readonly locale: AppLocale }) {
         </div>
 
         <div className="hidden flex-1 items-center justify-end space-x-4 lg:flex">
+          <ThemeToggle />
           {session?.user ? (
             <nav className="flex items-center space-x-1">
               <LoggedUserMenu user={session.user} />
