@@ -2,7 +2,17 @@
 
 const fs = require("fs")
 const path = require("path")
-const { globSync } = require("glob")
+
+// Import glob - handle both old and new versions
+let globSync
+try {
+  // Try new glob v10+ import
+  const glob = require("glob")
+  globSync = glob.globSync || glob.sync
+} catch (e) {
+  // Fallback to older import style
+  globSync = require("glob").sync
+}
 
 console.log("Setting up application environment files...")
 
