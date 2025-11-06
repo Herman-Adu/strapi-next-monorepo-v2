@@ -1,0 +1,27 @@
+{
+  "collectionName": "components_sections_partner_showcase_sections",
+  "info": {
+    "displayName": "Partner Showcase Section",
+    "description": "Showcase partners, clients or collaborators"
+  },
+  "options": {},
+  "attributes": {
+    "heading": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "text"
+    },
+    "partners": {
+      "type": "component",
+      "repeatable": true,
+      "component": "elements.partner-card"
+    },
+    "gridColumns": {
+      "type": "enumeration",
+      "enum": ["2", "3", "4", "6"],
+      "default": "3"
+    }
+  }
+}

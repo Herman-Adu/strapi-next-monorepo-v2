@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_sections_metrics_sections",
+  "info": {
+    "displayName": "MetricsSection",
+    "description": "Metrics/statistics section with stat cards"
+  },
+  "options": {},
+  "attributes": {
+    "heading": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "text"
+    },
+    "metrics": {
+      "type": "component",
+      "repeatable": true,
+      "component": "elements.stat-card"
+    }
+  }
+}

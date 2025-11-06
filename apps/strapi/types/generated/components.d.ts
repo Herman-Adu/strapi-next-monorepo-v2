@@ -63,6 +63,21 @@ export interface ElementsIconButton extends Struct.ComponentSchema {
   }
 }
 
+export interface ElementsIntegrationCard extends Struct.ComponentSchema {
+  collectionName: "components_elements_integration_cards"
+  info: {
+    description: "Integration card with icon, title, description and link"
+    displayName: "IntegrationCard"
+  }
+  attributes: {
+    category: Schema.Attribute.String
+    description: Schema.Attribute.Text & Schema.Attribute.Required
+    icon: Schema.Attribute.String & Schema.Attribute.Required
+    link: Schema.Attribute.String
+    title: Schema.Attribute.String & Schema.Attribute.Required
+  }
+}
+
 export interface ElementsListItem extends Struct.ComponentSchema {
   collectionName: "components_elements_list_items"
   info: {
@@ -74,6 +89,20 @@ export interface ElementsListItem extends Struct.ComponentSchema {
     iconType: Schema.Attribute.Enumeration<["check", "circle", "none"]> &
       Schema.Attribute.DefaultTo<"none">
     title: Schema.Attribute.String & Schema.Attribute.Required
+  }
+}
+
+export interface ElementsPartnerCard extends Struct.ComponentSchema {
+  collectionName: "components_elements_partner_cards"
+  info: {
+    description: "Partner showcase card with logo, name, description and link"
+    displayName: "PartnerCard"
+  }
+  attributes: {
+    description: Schema.Attribute.Text
+    link: Schema.Attribute.String
+    logo: Schema.Attribute.Media<"images">
+    name: Schema.Attribute.String & Schema.Attribute.Required
   }
 }
 
@@ -122,6 +151,21 @@ export interface SectionsAnimatedLogoRow extends Struct.ComponentSchema {
   attributes: {
     logos: Schema.Attribute.Component<"utilities.basic-image", true>
     text: Schema.Attribute.String & Schema.Attribute.Required
+  }
+}
+
+export interface SectionsBenefitsSection extends Struct.ComponentSchema {
+  collectionName: "components_sections_benefits_sections"
+  info: {
+    description: "Benefits section with heading and feature cards"
+    displayName: "BenefitsSection"
+  }
+  attributes: {
+    benefits: Schema.Attribute.Component<"elements.feature-card", true>
+    description: Schema.Attribute.Text
+    gridColumns: Schema.Attribute.Enumeration<["2", "3", "4"]> &
+      Schema.Attribute.DefaultTo<"3">
+    heading: Schema.Attribute.String & Schema.Attribute.Required
   }
 }
 
@@ -294,6 +338,21 @@ export interface SectionsImageWithCtaButton extends Struct.ComponentSchema {
   }
 }
 
+export interface SectionsIntegrationGridSection extends Struct.ComponentSchema {
+  collectionName: "components_sections_integration_grid_sections"
+  info: {
+    description: "Grid of integrations or tools with categories"
+    displayName: "Integration Grid Section"
+  }
+  attributes: {
+    description: Schema.Attribute.Text
+    gridColumns: Schema.Attribute.Enumeration<["2", "3", "4", "6"]> &
+      Schema.Attribute.DefaultTo<"3">
+    heading: Schema.Attribute.String & Schema.Attribute.Required
+    integrations: Schema.Attribute.Component<"elements.integration-card", true>
+  }
+}
+
 export interface SectionsLandingHero extends Struct.ComponentSchema {
   collectionName: "components_sections_landing_heroes"
   info: {
@@ -312,6 +371,19 @@ export interface SectionsLandingHero extends Struct.ComponentSchema {
     description: Schema.Attribute.Text & Schema.Attribute.Required
     footerText: Schema.Attribute.String
     heading: Schema.Attribute.String & Schema.Attribute.Required
+  }
+}
+
+export interface SectionsMetricsSection extends Struct.ComponentSchema {
+  collectionName: "components_sections_metrics_sections"
+  info: {
+    description: "Metrics/statistics section with stat cards"
+    displayName: "MetricsSection"
+  }
+  attributes: {
+    description: Schema.Attribute.Text
+    heading: Schema.Attribute.String & Schema.Attribute.Required
+    metrics: Schema.Attribute.Component<"elements.stat-card", true>
   }
 }
 
@@ -341,6 +413,21 @@ export interface SectionsNewsletterCtaSection extends Struct.ComponentSchema {
   }
 }
 
+export interface SectionsPartnerShowcaseSection extends Struct.ComponentSchema {
+  collectionName: "components_sections_partner_showcase_sections"
+  info: {
+    description: "Showcase partners, clients or collaborators"
+    displayName: "Partner Showcase Section"
+  }
+  attributes: {
+    description: Schema.Attribute.Text
+    gridColumns: Schema.Attribute.Enumeration<["2", "3", "4", "6"]> &
+      Schema.Attribute.DefaultTo<"3">
+    heading: Schema.Attribute.String & Schema.Attribute.Required
+    partners: Schema.Attribute.Component<"elements.partner-card", true>
+  }
+}
+
 export interface SectionsRoadmapSection extends Struct.ComponentSchema {
   collectionName: "components_sections_roadmap_sections"
   info: {
@@ -358,6 +445,21 @@ export interface SectionsRoadmapSection extends Struct.ComponentSchema {
       >
     heading: Schema.Attribute.String & Schema.Attribute.Required
     roadmapItems: Schema.Attribute.Component<"elements.list-item", true>
+  }
+}
+
+export interface SectionsTechStackSection extends Struct.ComponentSchema {
+  collectionName: "components_sections_tech_stack_sections"
+  info: {
+    description: "Technology stack showcase section"
+    displayName: "TechStackSection"
+  }
+  attributes: {
+    description: Schema.Attribute.Text
+    displayStyle: Schema.Attribute.Enumeration<["grid", "marquee"]> &
+      Schema.Attribute.DefaultTo<"grid">
+    heading: Schema.Attribute.String & Schema.Attribute.Required
+    technologies: Schema.Attribute.Component<"elements.company-logo", true>
   }
 }
 
@@ -646,11 +748,14 @@ declare module "@strapi/strapi" {
       "elements.feature-card": ElementsFeatureCard
       "elements.footer-item": ElementsFooterItem
       "elements.icon-button": ElementsIconButton
+      "elements.integration-card": ElementsIntegrationCard
       "elements.list-item": ElementsListItem
+      "elements.partner-card": ElementsPartnerCard
       "elements.stat-card": ElementsStatCard
       "forms.contact-form": FormsContactForm
       "forms.newsletter-form": FormsNewsletterForm
       "sections.animated-logo-row": SectionsAnimatedLogoRow
+      "sections.benefits-section": SectionsBenefitsSection
       "sections.carousel": SectionsCarousel
       "sections.credibility-section": SectionsCredibilitySection
       "sections.faq": SectionsFaq
@@ -661,9 +766,13 @@ declare module "@strapi/strapi" {
       "sections.hero": SectionsHero
       "sections.horizontal-images": SectionsHorizontalImages
       "sections.image-with-cta-button": SectionsImageWithCtaButton
+      "sections.integration-grid-section": SectionsIntegrationGridSection
       "sections.landing-hero": SectionsLandingHero
+      "sections.metrics-section": SectionsMetricsSection
       "sections.newsletter-cta-section": SectionsNewsletterCtaSection
+      "sections.partner-showcase-section": SectionsPartnerShowcaseSection
       "sections.roadmap-section": SectionsRoadmapSection
+      "sections.tech-stack-section": SectionsTechStackSection
       "sections.workflow-section": SectionsWorkflowSection
       "seo-utilities.meta-social": SeoUtilitiesMetaSocial
       "seo-utilities.seo": SeoUtilitiesSeo

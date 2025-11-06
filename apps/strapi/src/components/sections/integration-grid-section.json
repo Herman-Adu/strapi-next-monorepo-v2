@@ -1,0 +1,27 @@
+{
+  "collectionName": "components_sections_integration_grid_sections",
+  "info": {
+    "displayName": "Integration Grid Section",
+    "description": "Grid of integrations or tools with categories"
+  },
+  "options": {},
+  "attributes": {
+    "heading": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "text"
+    },
+    "integrations": {
+      "type": "component",
+      "repeatable": true,
+      "component": "elements.integration-card"
+    },
+    "gridColumns": {
+      "type": "enumeration",
+      "enum": ["2", "3", "4", "6"],
+      "default": "3"
+    }
+  }
+}

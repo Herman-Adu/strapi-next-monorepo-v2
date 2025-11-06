@@ -1,0 +1,28 @@
+{
+  "collectionName": "components_elements_integration_cards",
+  "info": {
+    "displayName": "IntegrationCard",
+    "description": "Integration card with icon, title, description and link"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "icon": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "text",
+      "required": true
+    },
+    "link": {
+      "type": "string"
+    },
+    "category": {
+      "type": "string"
+    }
+  }
+}

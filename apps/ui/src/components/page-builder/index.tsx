@@ -3,6 +3,7 @@ import { UID } from "@repo/strapi"
 import StrapiContactForm from "@/components/page-builder/components/forms/StrapiContactForm"
 import StrapiNewsletterForm from "@/components/page-builder/components/forms/StrapiNewsletterForm"
 import StrapiAnimatedLogoRow from "@/components/page-builder/components/sections/StrapiAnimatedLogoRow"
+import StrapiBenefitsSection from "@/components/page-builder/components/sections/StrapiBenefitsSection"
 import StrapiCarousel from "@/components/page-builder/components/sections/StrapiCarousel"
 import StrapiCredibilitySection from "@/components/page-builder/components/sections/StrapiCredibilitySection"
 import StrapiFaq from "@/components/page-builder/components/sections/StrapiFaq"
@@ -13,9 +14,13 @@ import StrapiHeadingWithCTAButton from "@/components/page-builder/components/sec
 import StrapiHero from "@/components/page-builder/components/sections/StrapiHero"
 import StrapiHorizontalImages from "@/components/page-builder/components/sections/StrapiHorizontalImages"
 import StrapiImageWithCTAButton from "@/components/page-builder/components/sections/StrapiImageWithCTAButton"
+import StrapiIntegrationGridSection from "@/components/page-builder/components/sections/StrapiIntegrationGridSection"
 import StrapiLandingHero from "@/components/page-builder/components/sections/StrapiLandingHero"
+import StrapiMetricsSection from "@/components/page-builder/components/sections/StrapiMetricsSection"
 import StrapiNewsletterCTASection from "@/components/page-builder/components/sections/StrapiNewsletterCTASection"
+import StrapiPartnerShowcaseSection from "@/components/page-builder/components/sections/StrapiPartnerShowcaseSection"
 import StrapiRoadmapSection from "@/components/page-builder/components/sections/StrapiRoadmapSection"
+import StrapiTechStackSection from "@/components/page-builder/components/sections/StrapiTechStackSection"
 import StrapiWorkflowSection from "@/components/page-builder/components/sections/StrapiWorkflowSection"
 import StrapiCkEditorContent from "@/components/page-builder/components/utilities/StrapiCkEditorContent"
 
@@ -36,15 +41,20 @@ export const PageContentComponents: {
 
   // Sections
   "sections.animated-logo-row": StrapiAnimatedLogoRow,
+  "sections.benefits-section": StrapiBenefitsSection,
   "sections.faq": StrapiFaq,
   "sections.carousel": StrapiCarousel,
   "sections.heading-with-cta-button": StrapiHeadingWithCTAButton,
   "sections.hero": StrapiHero,
   "sections.horizontal-images": StrapiHorizontalImages,
   "sections.image-with-cta-button": StrapiImageWithCTAButton,
+  "sections.integration-grid-section": StrapiIntegrationGridSection,
   "sections.landing-hero": StrapiLandingHero,
   "sections.credibility-section": StrapiCredibilitySection,
   "sections.feature-grid-section": StrapiFeatureGridSection,
+  "sections.metrics-section": StrapiMetricsSection,
+  "sections.partner-showcase-section": StrapiPartnerShowcaseSection,
+  "sections.tech-stack-section": StrapiTechStackSection,
   "sections.workflow-section": StrapiWorkflowSection,
   "sections.newsletter-cta-section": StrapiNewsletterCTASection,
   "sections.roadmap-section": StrapiRoadmapSection,
