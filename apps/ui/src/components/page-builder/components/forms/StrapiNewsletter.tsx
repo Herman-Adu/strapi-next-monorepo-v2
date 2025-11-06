@@ -4,7 +4,7 @@ import { NewsletterForm } from "@/components/elementary/forms/NewsletterForm"
 import StrapiLink from "@/components/page-builder/components/utilities/StrapiLink"
 
 interface Props {
-  readonly component: Data.Component<"forms.newsletter"> | undefined | null
+  readonly component: Data.Component<"forms.newsletter-form"> | undefined | null
 }
 
 export function StrapiNewsletter({ component }: Props) {
