@@ -47,6 +47,20 @@
           "sortable": false
         }
       },
+      "socialLinks": {
+        "edit": {
+          "label": "socialLinks",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "socialLinks",
+          "searchable": false,
+          "sortable": false
+        }
+      },
       "createdAt": {
         "edit": {
           "label": "createdAt",
@@ -104,13 +118,22 @@
           "searchable": true,
           "sortable": true
         }
+      },
+      "documentId": {
+        "edit": {},
+        "list": {
+          "label": "documentId",
+          "searchable": true,
+          "sortable": true
+        }
       }
     },
     "layouts": {
       "list": [
         "id",
         "links",
-        "logoImage"
+        "logoImage",
+        "documentId"
       ],
       "edit": [
         [
@@ -122,6 +145,12 @@
         [
           {
             "name": "logoImage",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "socialLinks",
             "size": 12
           }
         ]

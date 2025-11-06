@@ -447,6 +447,12 @@ export interface ApiFooterFooter extends Struct.SingleTypeSchema {
     }
   }
   attributes: {
+    companyTitle: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true
+        }
+      }>
     copyRight: Schema.Attribute.String &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
@@ -456,7 +462,7 @@ export interface ApiFooterFooter extends Struct.SingleTypeSchema {
     createdAt: Schema.Attribute.DateTime
     createdBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
       Schema.Attribute.Private
-    links: Schema.Attribute.Component<"utilities.link", true> &
+    description: Schema.Attribute.Text &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true
@@ -470,8 +476,20 @@ export interface ApiFooterFooter extends Struct.SingleTypeSchema {
           localized: true
         }
       }>
+    newsletter: Schema.Attribute.Component<"forms.newsletter-form", false> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true
+        }
+      }>
     publishedAt: Schema.Attribute.DateTime
     sections: Schema.Attribute.Component<"elements.footer-item", true> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true
+        }
+      }>
+    socialLinks: Schema.Attribute.Component<"utilities.social-link", true> &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true
@@ -555,6 +573,12 @@ export interface ApiNavbarNavbar extends Struct.SingleTypeSchema {
         }
       }>
     publishedAt: Schema.Attribute.DateTime
+    socialLinks: Schema.Attribute.Component<"utilities.social-link", true> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false
+        }
+      }>
     updatedAt: Schema.Attribute.DateTime
     updatedBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
       Schema.Attribute.Private
@@ -626,13 +650,7 @@ export interface ApiPagePage extends Struct.CollectionTypeSchema {
     localizations: Schema.Attribute.Relation<"oneToMany", "api::page.page">
     parent: Schema.Attribute.Relation<"manyToOne", "api::page.page">
     publishedAt: Schema.Attribute.DateTime
-    redirects: Schema.Attribute.Relation<"oneToMany", "api::redirect.redirect">
-    seo: Schema.Attribute.Component<"seo-utilities.seo", false> &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true
-        }
-      }>
+    seo: Schema.Attribute.Component<"seo-utilities.seo", false>
     slug: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.SetPluginOptions<{

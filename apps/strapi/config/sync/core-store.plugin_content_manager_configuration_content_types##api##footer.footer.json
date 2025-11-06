@@ -33,20 +33,6 @@
           "sortable": false
         }
       },
-      "links": {
-        "edit": {
-          "label": "links",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "links",
-          "searchable": false,
-          "sortable": false
-        }
-      },
       "copyRight": {
         "edit": {
           "label": "copyRight",
@@ -71,6 +57,62 @@
         },
         "list": {
           "label": "logoImage",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "description": {
+        "edit": {
+          "label": "description",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "description",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "companyTitle": {
+        "edit": {
+          "label": "companyTitle",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "companyTitle",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "socialLinks": {
+        "edit": {
+          "label": "socialLinks",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "socialLinks",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "newsletter": {
+        "edit": {
+          "label": "newsletter",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "newsletter",
           "searchable": false,
           "sortable": false
         }
@@ -132,23 +174,27 @@
           "searchable": true,
           "sortable": true
         }
+      },
+      "documentId": {
+        "edit": {},
+        "list": {
+          "label": "documentId",
+          "searchable": true,
+          "sortable": true
+        }
       }
     },
     "layouts": {
       "list": [
         "id",
-        "logoImage"
+        "logoImage",
+        "documentId",
+        "description"
       ],
       "edit": [
         [
           {
             "name": "sections",
-            "size": 12
-          }
-        ],
-        [
-          {
-            "name": "links",
             "size": 12
           }
         ],
@@ -161,6 +207,28 @@
         [
           {
             "name": "logoImage",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "description",
+            "size": 6
+          },
+          {
+            "name": "companyTitle",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "socialLinks",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "newsletter",
             "size": 12
           }
         ]

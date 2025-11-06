@@ -10,27 +10,30 @@ import { FALLBACK_IMAGE_PATH } from "@/lib/constants"
 
 import { ImageWithBlur } from "./ImageWithBlur"
 
-const invalidSrc = "/invalid-src.jpg"
-
 export const ImageWithFallback = ({
   fallbackSrc,
   src: originalSrc,
   blurOff,
   ...imgProps
 }: ImageExtendedProps & { blurOff?: boolean }) => {
-  const [src, setSrc] = useState(originalSrc ?? fallbackSrc ?? invalidSrc)
+  const [src, setSrc] = useState(
+    originalSrc ?? fallbackSrc ?? FALLBACK_IMAGE_PATH
+  )
 
   useEffect(() => {
-    setSrc(originalSrc ?? fallbackSrc ?? invalidSrc)
+    setSrc(originalSrc ?? fallbackSrc ?? FALLBACK_IMAGE_PATH)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [originalSrc])
 
   const handleLoadError = (e: SyntheticEvent<HTMLImageElement, Event>) => {
-    console.error(`Error loading image from ${src}:`, e)
+    // Only log errors for valid image sources, not fallback attempts
+    if (src !== FALLBACK_IMAGE_PATH) {
+      console.warn(`Failed to load image from ${src}, using fallback`)
+    }
 
-    if (fallbackSrc) {
+    if (fallbackSrc && src !== fallbackSrc) {
       setSrc(fallbackSrc)
-    } else {
+    } else if (src !== FALLBACK_IMAGE_PATH) {
       setSrc(FALLBACK_IMAGE_PATH)
     }
 

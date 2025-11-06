@@ -1,12 +1,11 @@
-import { Fragment } from "react"
-
 import { AppLocale } from "@/types/general"
 
 import { fetchFooter } from "@/lib/strapi-api/content/server"
 import { cn } from "@/lib/styles"
-import { Container } from "@/components/elementary/Container"
+import StrapiNewsletter from "@/components/page-builder/components/forms/StrapiNewsletter"
 import StrapiImageWithLink from "@/components/page-builder/components/utilities/StrapiImageWithLink"
 import StrapiLink from "@/components/page-builder/components/utilities/StrapiLink"
+import StrapiSocialLinks from "@/components/page-builder/components/utilities/StrapiSocialLinks"
 
 export async function StrapiFooter({ locale }: { readonly locale: AppLocale }) {
   const response = await fetchFooter(locale)
@@ -17,67 +16,110 @@ export async function StrapiFooter({ locale }: { readonly locale: AppLocale }) {
   }
 
   return (
-    <div className="w-full border-t bg-white/10 shadow-sm backdrop-blur transition-colors duration-300">
-      <Container className="pt-8 pb-4">
-        <div className="grid grid-cols-1 gap-6 pb-4 sm:grid-cols-[30%_1fr]">
-          <div className="flex flex-col space-y-4">
-            <StrapiImageWithLink
-              component={component.logoImage}
-              imageProps={{ hideWhenMissing: true }}
+    <footer className="bg-background border-border/40 mt-auto border-t">
+      {/* Main Footer Content */}
+      <div className="container mx-auto px-4 py-16 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 gap-12 lg:grid-cols-4">
+          {/* Logo/Company Section */}
+          <div className="lg:col-span-1">
+            {/* Company Title or Logo */}
+            {component.companyTitle ? (
+              <h2 className="text-foreground mb-6 text-lg font-bold tracking-wide">
+                {component.companyTitle}
+              </h2>
+            ) : component.logoImage ? (
+              <div className="mb-6">
+                <StrapiImageWithLink
+                  component={component.logoImage}
+                  linkProps={{
+                    className:
+                      "inline-block hover:opacity-80 transition-opacity",
+                  }}
+                  imageProps={{
+                    hideWhenMissing: true,
+                    className: "h-12 w-auto object-contain",
+                  }}
+                />
+              </div>
+            ) : null}
+
+            {/* Description */}
+            {component.description && (
+              <p className="text-muted-foreground mb-6 text-sm leading-relaxed">
+                {component.description}
+              </p>
+            )}
+
+            {/* Social Links */}
+            <StrapiSocialLinks
+              socialLinks={component.socialLinks ?? undefined}
+              className="mb-6"
             />
           </div>
 
-          <div className={cn("grid gap-8")}>
-            {component.sections?.map((section) => (
-              <div className="flex flex-col" key={section.id}>
-                <h3 className="pb-2 text-lg font-bold">{section.title}</h3>
+          {/* Footer Sections */}
+          <div className="lg:col-span-2">
+            <div className="grid grid-cols-2 gap-8 lg:grid-cols-3">
+              {component.sections?.map((section) => (
+                <div key={section.id} className="flex flex-col">
+                  <h3 className="text-foreground mb-4 text-base font-semibold tracking-wide">
+                    {section.title}
+                  </h3>
+                  <div className="flex flex-col space-y-3">
+                    {section.links?.map((link, i) => (
+                      <StrapiLink
+                        key={String(link.id) + i}
+                        component={link}
+                        className={cn(
+                          "text-muted-foreground hover:text-foreground",
+                          "text-sm transition-colors duration-200",
+                          "no-underline hover:no-underline",
+                          "w-fit"
+                        )}
+                      />
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
 
-                {section.links?.map((link, i) => (
-                  <StrapiLink
-                    key={String(link.id) + i}
-                    component={link}
-                    className="text-primary w-fit text-sm hover:underline"
-                  />
-                ))}
-              </div>
-            ))}
+          {/* Newsletter Section */}
+          <div className="lg:col-span-1">
+            <StrapiNewsletter component={component.newsletter} />
           </div>
         </div>
+      </div>
 
-        <div className="flex items-center justify-between">
-          <div>
-            {component.copyRight && (
-              <p className="">
-                {component.copyRight.replace(
-                  "{YEAR}",
-                  new Date().getFullYear().toString()
-                )}
+      {/* Bottom Bar */}
+      <div className="border-border/40 border-t">
+        <div className="container mx-auto px-4 py-6 sm:px-6 lg:px-8">
+          <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+            {/* Copyright */}
+            <div className="flex items-center">
+              {component.copyRight && (
+                <p className="text-muted-foreground text-sm">
+                  {component.copyRight.replace(
+                    "{YEAR}",
+                    new Date().getFullYear().toString()
+                  )}
+                </p>
+              )}
+            </div>
+
+            {/* Professional Attribution */}
+            <div className="flex items-center">
+              <p className="text-muted-foreground text-sm">
+                Designed and built by{" "}
+                <span className="text-foreground hover:text-primary font-medium transition-colors duration-200">
+                  Fullstack Fusion
+                </span>
               </p>
-            )}
-          </div>
-
-          <div className="flex flex-col items-end sm:flex-row sm:items-center sm:space-x-4">
-            {component.links?.map((link, i) => (
-              <Fragment key={String(link.id) + i}>
-                <StrapiLink
-                  component={link}
-                  className="text-primary relative w-fit text-sm hover:underline"
-                />
-
-                {i < component.links!.length - 1 && (
-                  <span
-                    key={link.id + "_dot"}
-                    className="mx-2 hidden pt-0.5 sm:inline-block"
-                  >
-                    •
-                  </span>
-                )}
-              </Fragment>
-            ))}
+            </div>
           </div>
         </div>
-      </Container>
-    </div>
+      </div>
+    </footer>
   )
 }
 

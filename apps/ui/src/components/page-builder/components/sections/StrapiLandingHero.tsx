@@ -1,7 +1,6 @@
 import { Data } from "@repo/strapi"
 
 import { Container } from "@/components/elementary/Container"
-import { Starfield } from "@/components/elementary/Starfield"
 import { StrapiIconButton } from "@/components/page-builder/components/elements/StrapiIconButton"
 import { Badge } from "@/components/ui/badge"
 
@@ -11,8 +10,7 @@ export function StrapiLandingHero({
   readonly component: Data.Component<"sections.landing-hero">
 }) {
   return (
-    <section className="relative z-10 overflow-hidden py-20 md:py-32">
-      <Starfield />
+    <section className="relative z-10 py-20 md:py-32">
       <Container className="mx-auto px-4">
         <div className="mx-auto max-w-4xl text-center">
           <Badge variant="secondary" className="mb-6 px-4 py-2">

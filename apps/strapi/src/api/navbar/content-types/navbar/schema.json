@@ -18,23 +18,33 @@
   "attributes": {
     "links": {
       "type": "component",
-      "repeatable": true,
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
       },
-      "component": "utilities.link"
+      "component": "utilities.link",
+      "repeatable": true
     },
     "logoImage": {
       "type": "component",
-      "repeatable": false,
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
       },
-      "component": "utilities.image-with-link"
+      "component": "utilities.image-with-link",
+      "repeatable": false
+    },
+    "socialLinks": {
+      "type": "component",
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "component": "utilities.social-link",
+      "repeatable": true
     }
   }
 }

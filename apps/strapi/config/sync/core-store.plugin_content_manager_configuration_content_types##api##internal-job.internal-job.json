@@ -146,9 +146,24 @@
           "searchable": true,
           "sortable": true
         }
+      },
+      "documentId": {
+        "edit": {},
+        "list": {
+          "label": "documentId",
+          "searchable": true,
+          "sortable": true
+        }
       }
     },
     "layouts": {
+      "list": [
+        "id",
+        "jobType",
+        "state",
+        "relatedDocumentId",
+        "createdAt"
+      ],
       "edit": [
         [
           {
@@ -176,13 +191,6 @@
             "size": 6
           }
         ]
-      ],
-      "list": [
-        "id",
-        "jobType",
-        "state",
-        "relatedDocumentId",
-        "createdAt"
       ]
     },
     "uid": "api::internal-job.internal-job"

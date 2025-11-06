@@ -25,8 +25,7 @@
     "page": {
       "type": "relation",
       "relation": "manyToOne",
-      "target": "api::page.page",
-      "inversedBy": "redirects"
+      "target": "api::page.page"
     }
   }
 }

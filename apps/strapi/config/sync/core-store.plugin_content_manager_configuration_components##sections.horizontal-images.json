@@ -102,13 +102,22 @@
           "searchable": true,
           "sortable": true
         }
+      },
+      "documentId": {
+        "edit": {},
+        "list": {
+          "label": "documentId",
+          "searchable": true,
+          "sortable": true
+        }
       }
     },
     "layouts": {
       "list": [
         "id",
         "title",
-        "images"
+        "images",
+        "documentId"
       ],
       "edit": [
         [

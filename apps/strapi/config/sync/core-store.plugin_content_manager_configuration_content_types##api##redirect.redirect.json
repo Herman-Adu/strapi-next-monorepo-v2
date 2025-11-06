@@ -133,9 +133,24 @@
           "searchable": true,
           "sortable": true
         }
+      },
+      "documentId": {
+        "edit": {},
+        "list": {
+          "label": "documentId",
+          "searchable": true,
+          "sortable": true
+        }
       }
     },
     "layouts": {
+      "list": [
+        "id",
+        "source",
+        "destination",
+        "permanent",
+        "createdAt"
+      ],
       "edit": [
         [
           {
@@ -157,13 +172,6 @@
             "size": 6
           }
         ]
-      ],
-      "list": [
-        "id",
-        "source",
-        "destination",
-        "permanent",
-        "createdAt"
       ]
     },
     "uid": "api::redirect.redirect"

@@ -106,7 +106,13 @@ export async function fetchNavbar(locale: AppLocale) {
       locale,
       populate: {
         links: true,
-        logoImage: { populate: { image: true, link: true } },
+        socialLinks: true,
+        logoImage: {
+          populate: {
+            image: { populate: { media: true } },
+            link: true,
+          },
+        },
       },
     })
   } catch (e: any) {
@@ -128,8 +134,18 @@ export async function fetchFooter(locale: AppLocale) {
       locale,
       populate: {
         sections: { populate: { links: true } },
-        logoImage: { populate: { image: true, link: true } },
-        links: true,
+        logoImage: {
+          populate: {
+            image: { populate: { media: true } },
+            link: true,
+          },
+        },
+        socialLinks: true,
+        newsletter: {
+          populate: {
+            gdpr: true,
+          },
+        },
       },
     })
   } catch (e: any) {

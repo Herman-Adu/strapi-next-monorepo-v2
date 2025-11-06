@@ -81,33 +81,21 @@
         }
       }
     },
+    "parent": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::page.page"
+    },
     "children": {
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::page.page",
       "mappedBy": "parent"
     },
-    "parent": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::page.page",
-      "inversedBy": "children"
-    },
     "seo": {
       "type": "component",
       "repeatable": false,
-      "component": "seo-utilities.seo",
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      }
-    },
-    "redirects": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::redirect.redirect",
-      "mappedBy": "page"
+      "component": "seo-utilities.seo"
     }
   }
 }

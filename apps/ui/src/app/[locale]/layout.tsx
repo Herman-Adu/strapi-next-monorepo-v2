@@ -10,6 +10,7 @@ import { fontRoboto } from "@/lib/fonts"
 import { routing } from "@/lib/navigation"
 import { cn } from "@/lib/styles"
 import { ErrorBoundary } from "@/components/elementary/ErrorBoundary"
+import { Starfield } from "@/components/elementary/Starfield"
 import StrapiPreviewListener from "@/components/elementary/StrapiPreviewListener"
 import { TailwindIndicator } from "@/components/elementary/TailwindIndicator"
 import StrapiFooter from "@/components/page-builder/single-types/footer/StrapiFooter"
@@ -55,6 +56,7 @@ export default async function RootLayout({
       >
         <StrapiPreviewListener />
         <TrackingScripts />
+        <Starfield />
         <ServerProviders locale={locale}>
           <ClientProviders>
             <div className="relative flex min-h-screen flex-col">
@@ -62,7 +64,7 @@ export default async function RootLayout({
                 <StrapiNavbar locale={locale} />
               </ErrorBoundary>
 
-              <div className="flex-1">
+              <div className="relative z-10 flex-1">
                 <div>{children}</div>
               </div>
 

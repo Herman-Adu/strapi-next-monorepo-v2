@@ -1,0 +1,329 @@
+# Development Workflow Documentation
+
+## Table of Contents
+
+1. [Systematic Development Process](#systematic-development-process)
+2. [Troubleshooting Methodology](#troubleshooting-methodology)
+3. [Component Integration Patterns](#component-integration-patterns)
+4. [Common Issues and Solutions](#common-issues-and-solutions)
+5. [Best Practices](#best-practices)
+6. [Environment Management](#environment-management)
+
+---
+
+## Systematic Development Process
+
+### 1. Backend-First Approach
+
+**Always start with Strapi backend before frontend integration**
+
+```bash
+# 1. Start Strapi development server
+cd apps/strapi
+npm run develop
+
+# 2. Verify in Strapi Admin (http://localhost:1337/admin)
+# - Check content types exist
+# - Verify component references
+# - Ensure data is populated
+# - Test API endpoints manually
+```
+
+### 2. API Integration Validation
+
+**Verify API responses before frontend implementation**
+
+```bash
+# Test API endpoints directly
+curl "http://localhost:1337/api/navbar?populate[logoImage][populate]=*&populate[links]=*"
+curl "http://localhost:1337/api/footer?populate=deep"
+```
+
+### 3. Frontend Integration
+
+**Only after backend is confirmed working**
+
+```bash
+# 3. Start Next.js development server
+cd apps/ui
+npm run dev
+
+# 4. Test integration at http://localhost:3000
+```
+
+---
+
+## Troubleshooting Methodology
+
+### Phase 1: Backend Verification
+
+1. **Check Strapi Admin Panel**
+
+   - Verify content types exist and are populated
+   - Check component references in schema files
+   - Ensure all referenced components exist
+
+2. **Validate API Responses**
+
+   - Test endpoints with browser/Postman
+   - Check population parameters
+   - Verify nested data structure
+
+3. **Review Schema Integrity**
+   - Check `apps/strapi/src/api/*/content-types/*/schema.json`
+   - Ensure all component references exist
+   - Remove references to non-existent components
+
+### Phase 2: Frontend Integration
+
+1. **API Client Verification**
+
+   - Check `apps/ui/src/lib/strapi-api/content/server.ts`
+   - Verify population parameters match backend structure
+   - Test API functions in isolation
+
+2. **Component Rendering**
+
+   - Check component props and data flow
+   - Verify conditional rendering logic
+   - Test with both populated and empty data
+
+3. **Network Analysis**
+   - Use browser DevTools Network tab
+   - Check for failed requests
+   - Verify request/response structure
+
+### Phase 3: Styling and UX
+
+1. **Layout Verification**
+
+   - Test responsive design across breakpoints
+   - Check container and spacing consistency
+   - Verify theme compatibility
+
+2. **Interactive Elements**
+   - Test hover states and animations
+   - Check accessibility features
+   - Verify keyboard navigation
+
+---
+
+## Component Integration Patterns
+
+### Strapi Component Structure
+
+```typescript
+// Standard pattern for Strapi components
+export function StrapiComponent({
+  component,
+}: {
+  readonly component: Data.Component<"namespace.component-name">
+}) {
+  // Always check for component existence
+  if (!component) return null
+
+  // Extract data safely
+  const { title, description, links } = component
+
+  return (
+    <div>
+      {/* Render component */}
+    </div>
+  )
+}
+```
+
+### API Population Pattern
+
+```typescript
+// In server-side API functions
+const response = await strapiApi.get(`/api/content-type`, {
+  searchParams: {
+    "populate[field][populate]": "*",
+    "populate[nestedField][populate][media]": "*",
+    "populate[links]": "*",
+  },
+})
+```
+
+### Image Handling Pattern
+
+```typescript
+// For image components with proper population
+<StrapiImageWithLink
+  component={navbar.logoImage}
+  linkProps={{
+    className: "hover:opacity-80 transition-opacity",
+  }}
+  imageProps={{
+    hideWhenMissing: true,
+    className: "h-8 w-auto object-contain",
+  }}
+/>
+```
+
+---
+
+## Common Issues and Solutions
+
+### 1. Internal Server Error 500
+
+**Symptom**: Page collection or content type returns 500 error
+**Cause**: Missing component references in schema
+**Solution**:
+
+```bash
+# Check schema file
+apps/strapi/src/api/page/content-types/page/schema.json
+
+# Remove non-existent component references
+# Restart Strapi server
+```
+
+### 2. Images Not Displaying
+
+**Symptom**: Images appear as broken links or don't load
+**Cause**: Missing media population in API calls
+**Solution**:
+
+```typescript
+// Add proper media population
+'populate[logoImage][populate][image][populate][media]': '*'
+```
+
+### 3. Double Underline Animation
+
+**Symptom**: Navigation links show multiple underlines on hover
+**Cause**: Default AppLink underline conflicting with custom animation
+**Solution**:
+
+```typescript
+// Override default underline styles
+className={cn(
+  "no-underline hover:no-underline", // Override defaults
+  "after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5",
+  "after:bg-primary after:scale-x-0 after:transition-transform",
+  "hover:after:scale-x-100"
+)}
+```
+
+### 4. TIME_WAIT Connection Issues
+
+**Symptom**: Port already in use errors, connection buildup
+**Solution**:
+
+```bash
+# Apply registry fix for Windows
+reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters" /v TcpTimedWaitDelay /t REG_DWORD /d 30 /f
+```
+
+---
+
+## Best Practices
+
+### File Organization
+
+```
+apps/
+├── strapi/                     # Backend
+│   ├── src/api/               # Content types
+│   └── config/sync/           # Config sync files
+└── ui/                        # Frontend
+    ├── src/components/
+    │   └── page-builder/
+    │       ├── components/    # Reusable components
+    │       └── single-types/  # Single type components
+    └── src/lib/strapi-api/    # API integration
+```
+
+### Component Naming Convention
+
+- **Strapi Components**: `StrapiComponentName.tsx`
+- **Single Types**: `StrapiNavbar.tsx`, `StrapiFooter.tsx`
+- **Sections**: `StrapiHero.tsx`, `StrapiFeatureSection.tsx`
+- **Utilities**: `StrapiLink.tsx`, `StrapiImage.tsx`
+
+### CSS and Styling
+
+- Use **container-based layouts** for professional appearance
+- Apply **consistent spacing** with Tailwind utilities
+- Implement **theme-aware styling** with CSS variables
+- Override **default styles explicitly** when needed
+
+### API Integration
+
+- **Always populate nested fields** required for rendering
+- **Test API responses** before frontend integration
+- **Handle missing data gracefully** with conditional rendering
+- **Use TypeScript interfaces** for type safety
+
+---
+
+## Environment Management
+
+### Development Servers
+
+```bash
+# Terminal 1: Strapi Backend
+cd apps/strapi && npm run develop
+
+# Terminal 2: Next.js Frontend
+cd apps/ui && npm run dev
+
+# Terminal 3: Development tasks
+# For testing, building, or debugging
+```
+
+### Port Management
+
+- **Strapi**: http://localhost:1337
+- **Next.js**: http://localhost:3000
+- **Strapi Admin**: http://localhost:1337/admin
+
+### Database Management
+
+- Use **PostgreSQL** for production consistency
+- Run **migrations** when schema changes occur
+- Keep **config sync** enabled for team collaboration
+
+---
+
+## Quick Reference Commands
+
+```bash
+# Start development environment
+npm run dev                    # From root (runs both servers)
+
+# Individual server management
+cd apps/strapi && npm run develop
+cd apps/ui && npm run dev
+
+# Database operations
+cd apps/strapi && npm run strapi generate:api
+
+# Build for production
+npm run build                  # From root
+
+# Testing
+npm run test                   # Run test suite
+npm run lint                   # Check code quality
+```
+
+---
+
+## Debugging Checklist
+
+When encountering issues, follow this systematic approach:
+
+- [ ] **Backend**: Strapi admin panel shows content
+- [ ] **API**: Direct API calls return expected data
+- [ ] **Population**: All required fields are populated
+- [ ] **Components**: All referenced components exist
+- [ ] **Frontend**: API integration functions work
+- [ ] **Network**: No failed requests in DevTools
+- [ ] **Styling**: CSS conflicts resolved
+- [ ] **Responsive**: Works across all breakpoints
+
+---
+
+_This documentation should be updated as new patterns and solutions are discovered during development._

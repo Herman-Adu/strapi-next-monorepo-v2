@@ -1,0 +1,145 @@
+{
+  "key": "plugin_content_manager_configuration_components::sections.landing-hero",
+  "value": {
+    "settings": {
+      "bulkable": true,
+      "filterable": true,
+      "searchable": true,
+      "pageSize": 10,
+      "mainField": "badge",
+      "defaultSortBy": "badge",
+      "defaultSortOrder": "ASC"
+    },
+    "metadatas": {
+      "id": {
+        "edit": {},
+        "list": {
+          "label": "id",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "badge": {
+        "edit": {
+          "label": "badge",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "badge",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "heading": {
+        "edit": {
+          "label": "heading",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "heading",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "description": {
+        "edit": {
+          "label": "description",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "description",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "ctaButtons": {
+        "edit": {
+          "label": "ctaButtons",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "ctaButtons",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "footerText": {
+        "edit": {
+          "label": "footerText",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "footerText",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "documentId": {
+        "edit": {},
+        "list": {
+          "label": "documentId",
+          "searchable": true,
+          "sortable": true
+        }
+      }
+    },
+    "layouts": {
+      "list": [
+        "id",
+        "badge",
+        "heading",
+        "description"
+      ],
+      "edit": [
+        [
+          {
+            "name": "badge",
+            "size": 6
+          },
+          {
+            "name": "heading",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "description",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "ctaButtons",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "footerText",
+            "size": 6
+          }
+        ]
+      ]
+    },
+    "uid": "sections.landing-hero",
+    "isComponent": true
+  },
+  "type": "object",
+  "environment": null,
+  "tag": null
+}

@@ -10,7 +10,7 @@ export function StrapiFooterCTASection({
   readonly component: Data.Component<"sections.footer-cta-section">
 }) {
   return (
-    <footer className="border-border/50 relative z-10 border-t py-16 md:py-24">
+    <footer className="border-border/50 relative z-10 border-t bg-transparent py-16 md:py-24">
       <Container className="mx-auto px-4">
         <div className="mx-auto max-w-4xl">
           {/* CTA Section */}

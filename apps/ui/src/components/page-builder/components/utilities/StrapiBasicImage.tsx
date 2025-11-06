@@ -33,7 +33,13 @@ export function StrapiBasicImage({
 
   const url = selectedFormat?.url ?? media?.url
 
+  // Don't render if there's no URL and hideWhenMissing is true
   if (url == null && hideWhenMissing) {
+    return null
+  }
+
+  // Don't render if there's no URL and no fallbackSrc
+  if (url == null && !component?.fallbackSrc) {
     return null
   }
 

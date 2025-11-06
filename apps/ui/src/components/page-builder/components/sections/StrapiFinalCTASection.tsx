@@ -9,7 +9,7 @@ export function StrapiFinalCTASection({
   readonly component: Data.Component<"sections.final-cta-section">
 }) {
   return (
-    <section className="cta-gradient relative z-10 py-24 md:py-32">
+    <section className="relative z-10 bg-gradient-to-b from-transparent to-transparent py-24 md:py-32 dark:bg-transparent">
       <Container className="mx-auto px-4">
         <div className="mx-auto max-w-3xl text-center">
           <h2 className="mb-6 text-3xl font-bold text-balance md:text-4xl lg:text-5xl">

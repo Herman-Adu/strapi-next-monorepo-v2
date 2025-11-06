@@ -71,6 +71,52 @@ const pagePopulateObject: FindOne<"api::page.page">["populate"] = {
           ctaButtons: true,
         },
       },
+      "sections.credibility-section": {
+        populate: {
+          stats: true,
+          companyLogos: { populate: { image: true } },
+        },
+      },
+      "sections.feature-grid-section": {
+        populate: {
+          items: true,
+          listItems: true,
+        },
+      },
+      // ...existing code...
+      // ...existing code...
+      // ...existing code...
+      // ...existing code...
+      // ...existing code...
+      "sections.workflow-section": {
+        populate: {
+          workflowPoints: true,
+          image: { populate: { media: true } },
+        },
+      },
+      "sections.newsletter-cta-section": {
+        populate: {
+          ctaButtons: true,
+          benefits: true,
+        },
+      },
+      "sections.roadmap-section": {
+        populate: {
+          roadmapItems: true,
+          footerNotes: true,
+        },
+      },
+      "sections.final-cta-section": {
+        populate: {
+          ctaButtons: true,
+        },
+      },
+      "sections.footer-cta-section": {
+        populate: {
+          ctaButtons: true,
+          footerLinks: true,
+        },
+      },
       "sections.heading-with-cta-button": { populate: { cta: true } },
       "sections.faq": { populate: { accordions: true } },
       "sections.carousel": {

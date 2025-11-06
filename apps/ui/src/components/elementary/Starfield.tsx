@@ -35,7 +35,7 @@ export function Starfield() {
   return (
     <div
       ref={canvasRef}
-      className="pointer-events-none absolute inset-0 hidden dark:block"
+      className="pointer-events-none fixed inset-0 z-0 hidden dark:block"
       aria-hidden="true"
     />
   )

@@ -1,0 +1,29 @@
+{
+  "collectionName": "components_utilities_social_links",
+  "info": {
+    "displayName": "social-link",
+    "icon": "oneToOne"
+  },
+  "options": {},
+  "attributes": {
+    "platform": {
+      "type": "enumeration",
+      "enum": [
+        "Twitter",
+        "GitHub",
+        "LinkedIn",
+        "Facebook",
+        "Instagram"
+      ]
+    },
+    "url": {
+      "type": "string",
+      "required": true
+    },
+    "label": {
+      "type": "string",
+      "required": true
+    }
+  },
+  "config": {}
+}

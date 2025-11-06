@@ -7,10 +7,12 @@ export function StrapiStatCard({
 }) {
   return (
     <div className="text-center">
-      <div className="mb-2 text-4xl font-bold md:text-5xl">
+      <div className="mb-3 text-5xl font-bold tracking-tight md:text-6xl">
         {component.number}
       </div>
-      <div className="text-muted-foreground">{component.description}</div>
+      <div className="text-muted-foreground text-sm leading-relaxed md:text-base">
+        {component.description}
+      </div>
     </div>
   )
 }
