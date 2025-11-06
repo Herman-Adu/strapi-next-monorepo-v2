@@ -65,17 +65,20 @@ yarn build:ui      # Build Next.js only
 ```
 
 **Why this matters:**
+
 - Dev mode may hide TypeScript errors that fail in production
 - SSG/SSR builds validate all API integrations
 - Catches component type mismatches before deployment
 - Verifies all imports resolve correctly
 
 **Expected build warnings (safe to ignore):**
+
 - "Error fetching navbar/footer" - Normal when Strapi isn't running
 - "Browserslist data is 7 months old" - Cosmetic, update with `npx update-browserslist-db@latest`
 - Sentry config deprecation - Will be addressed in future update
 
 **Build must pass before:**
+
 - Creating commits
 - Merging to main branch
 - Deploying to staging/production
@@ -323,7 +326,7 @@ cd apps/ui && npm run dev
 # Start development environment
 yarn dev                       # From root (orchestrated startup)
 
-# Individual server management  
+# Individual server management
 yarn dev:strapi                # Start Strapi only
 yarn dev:ui                    # Start Next.js only
 yarn dev:all                   # Start both in parallel (legacy)
