@@ -51,6 +51,35 @@ npm run dev
 # 4. Test integration at http://localhost:3000
 ```
 
+### 4. Build Verification
+
+**🚨 CRITICAL: Always test production build before committing**
+
+```bash
+# From monorepo root - builds both Strapi and Next.js
+yarn build
+
+# Or build individual apps
+yarn build:strapi  # Build Strapi only
+yarn build:ui      # Build Next.js only
+```
+
+**Why this matters:**
+- Dev mode may hide TypeScript errors that fail in production
+- SSG/SSR builds validate all API integrations
+- Catches component type mismatches before deployment
+- Verifies all imports resolve correctly
+
+**Expected build warnings (safe to ignore):**
+- "Error fetching navbar/footer" - Normal when Strapi isn't running
+- "Browserslist data is 7 months old" - Cosmetic, update with `npx update-browserslist-db@latest`
+- Sentry config deprecation - Will be addressed in future update
+
+**Build must pass before:**
+- Creating commits
+- Merging to main branch
+- Deploying to staging/production
+
 ---
 
 ## Troubleshooting Methodology
@@ -292,21 +321,28 @@ cd apps/ui && npm run dev
 
 ```bash
 # Start development environment
-npm run dev                    # From root (runs both servers)
+yarn dev                       # From root (orchestrated startup)
 
-# Individual server management
-cd apps/strapi && npm run develop
-cd apps/ui && npm run dev
+# Individual server management  
+yarn dev:strapi                # Start Strapi only
+yarn dev:ui                    # Start Next.js only
+yarn dev:all                   # Start both in parallel (legacy)
+
+# Build for production (ALWAYS run before committing!)
+yarn build                     # Build both apps
+yarn build:strapi              # Build Strapi only
+yarn build:ui                  # Build Next.js only
 
 # Database operations
-cd apps/strapi && npm run strapi generate:api
+cd apps/strapi && yarn strapi generate:api
 
-# Build for production
-npm run build                  # From root
+# Code quality
+yarn lint                      # Check code quality
+yarn format                    # Format code with Prettier
+yarn format:check              # Check formatting without changes
 
 # Testing
-npm run test                   # Run test suite
-npm run lint                   # Check code quality
+yarn test                      # Run test suite
 ```
 
 ---
@@ -319,6 +355,13 @@ When encountering issues, follow this systematic approach:
 - [ ] **API**: Direct API calls return expected data
 - [ ] **Population**: All required fields are populated
 - [ ] **Components**: All referenced components exist
+- [ ] **Frontend**: API integration functions work
+- [ ] **Network**: No failed requests in DevTools
+- [ ] **Styling**: CSS conflicts resolved
+- [ ] **Responsive**: Works across all breakpoints
+- [ ] **🚨 BUILD**: Production build passes with `yarn build`
+- [ ] **Types**: All TypeScript types match Strapi schemas
+- [ ] **Linting**: No ESLint errors or warnings
 - [ ] **Frontend**: API integration functions work
 - [ ] **Network**: No failed requests in DevTools
 - [ ] **Styling**: CSS conflicts resolved
