@@ -28,5 +28,16 @@
   "typescript.tsdk": "node_modules/typescript/lib",
   "cSpell.words": ["plaiceholder", "Strapi", "unoptimized"],
   "typescript.preferences.importModuleSpecifier": "non-relative",
-  "javascript.preferences.importModuleSpecifier": "non-relative"
+  "javascript.preferences.importModuleSpecifier": "non-relative",
+  "json.schemaDownload.enable": true,
+  "json.schemas": [
+    {
+      "fileMatch": [
+        "package.json",
+        "apps/*/package.json",
+        "packages/*/package.json"
+      ],
+      "url": "https://json.schemastore.org/package.json"
+    }
+  ]
 }
