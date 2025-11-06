@@ -48,6 +48,7 @@ jobs:
         run: |
           cp apps/strapi/.env.example apps/strapi/.env
           cp apps/ui/.env.local.example apps/ui/.env.local
+          echo "STRAPI_REST_READONLY_API_KEY=${{ env.STRAPI_REST_READONLY_API_KEY }}" >> apps/ui/.env.local
 
       - name: yarn format:check
         run: yarn format:check
@@ -86,6 +87,7 @@ jobs:
         run: |
           cp apps/strapi/.env.example apps/strapi/.env
           cp apps/ui/.env.local.example apps/ui/.env.local
+          echo "STRAPI_REST_READONLY_API_KEY=${{ env.STRAPI_REST_READONLY_API_KEY }}" >> apps/ui/.env.local
 
       - name: Build UI
         run: yarn build:ui
