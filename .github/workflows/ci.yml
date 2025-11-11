@@ -22,13 +22,13 @@ jobs:
     timeout-minutes: 15
     runs-on: ubuntu-latest 
     steps:
+      - name: Set git config for line endings
+        run: git config --global core.autocrlf false
+
       - name: Check out code
         uses: actions/checkout@v4
         with:
           fetch-depth: 2
-
-      - name: Set git config for line endings
-        run: git config --global core.autocrlf false
 
       - name: Cache turbo build setup
         uses: actions/cache@v4
@@ -64,13 +64,13 @@ jobs:
     timeout-minutes: 15
     runs-on: ubuntu-latest
     steps:
+      - name: Set git config for line endings
+        run: git config --global core.autocrlf false
+
       - name: Check out code
         uses: actions/checkout@v4
         with:
           fetch-depth: 2
-
-      - name: Set git config for line endings
-        run: git config --global core.autocrlf false
 
       - name: Cache turbo build setup
         uses: actions/cache@v4
