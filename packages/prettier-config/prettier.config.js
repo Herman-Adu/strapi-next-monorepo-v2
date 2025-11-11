@@ -10,6 +10,14 @@ module.exports = {
     "prettier-plugin-packagejson",
     "@ianvs/prettier-plugin-sort-imports",
   ],
+  overrides: [
+    {
+      files: "*.md",
+      options: {
+        plugins: ["prettier-plugin-packagejson"],
+      },
+    },
+  ],
   importOrder: [
     "<BUILTIN_MODULES>",
     "",
@@ -35,4 +43,5 @@ module.exports = {
     ".css$",
   ],
   importOrderParserPlugins: ["typescript", "jsx", "decorators-legacy"],
+  importOrderTypeScriptVersion: "5.0.0",
 }
