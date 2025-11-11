@@ -1,0 +1,34 @@
+{
+  "collectionName": "components_elements_marquee_reviews",
+  "info": {
+    "displayName": "MarqueeReview",
+    "description": "Review/comment item for marquee displays"
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "username": {
+      "type": "string",
+      "required": false
+    },
+    "avatar": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": ["images"]
+    },
+    "body": {
+      "type": "text",
+      "required": true
+    },
+    "rating": {
+      "type": "integer",
+      "min": 1,
+      "max": 5,
+      "required": false
+    }
+  }
+}

@@ -1,4 +1,7 @@
+import Image from "next/image"
 import { Data } from "@repo/strapi"
+
+import { formatStrapiMediaUrl } from "@/lib/strapi-helpers"
 
 export function StrapiIntegrationCard({
   component,
@@ -9,8 +12,8 @@ export function StrapiIntegrationCard({
   const linkProps = component.link
     ? {
         href: component.link,
-        target: "_blank",
-        rel: "noopener noreferrer",
+        target: component.newTab ? "_blank" : "_self",
+        rel: component.newTab ? "noopener noreferrer" : undefined,
       }
     : {}
 
@@ -20,7 +23,16 @@ export function StrapiIntegrationCard({
       className="border-border bg-card group hover:border-primary/50 relative flex flex-col gap-3 rounded-lg border p-6 transition-all hover:shadow-lg"
     >
       <div className="flex items-start justify-between">
-        <div className="text-4xl">{component.icon}</div>
+        {component.icon && (
+          <div className="relative h-12 w-12 flex-shrink-0">
+            <Image
+              src={formatStrapiMediaUrl(component.icon.url)}
+              alt={component.icon.alternativeText || component.title}
+              fill
+              className="object-contain"
+            />
+          </div>
+        )}
         {component.category && (
           <span className="bg-primary/10 text-primary rounded-full px-2 py-1 text-xs">
             {component.category}
@@ -33,7 +45,7 @@ export function StrapiIntegrationCard({
       </p>
       {component.link && (
         <div className="text-primary mt-2 flex items-center gap-1 text-sm font-medium">
-          Learn more
+          {component.linkText || "Learn more"}
           <svg
             className="h-4 w-4 transition-transform group-hover:translate-x-1"
             fill="none"

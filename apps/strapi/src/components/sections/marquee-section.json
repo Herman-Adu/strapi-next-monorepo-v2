@@ -1,0 +1,110 @@
+{
+  "collectionName": "components_sections_marquee_sections",
+  "info": {
+    "displayName": "MarqueeSection",
+    "description": "Flexible marquee section for logos, testimonials, reviews with multi-row support"
+  },
+  "options": {},
+  "attributes": {
+    "heading": {
+      "type": "string",
+      "required": false
+    },
+    "description": {
+      "type": "text",
+      "required": false
+    },
+    "displayType": {
+      "type": "enumeration",
+      "enum": ["logos", "testimonials", "reviews"],
+      "default": "logos",
+      "required": true
+    },
+    "testimonialVariant": {
+      "type": "enumeration",
+      "enum": ["classic", "pro"],
+      "default": "classic",
+      "description": "⚠️ Classic: Clean design with quote watermark. Pro: Emerald accents with enhanced styling"
+    },
+    "orientation": {
+      "type": "enumeration",
+      "enum": ["horizontal", "vertical"],
+      "default": "horizontal",
+      "description": "⚠️ Vertical orientation recommended for Testimonials/Reviews only. Logos work best horizontally."
+    },
+    "reverse": {
+      "type": "boolean",
+      "default": false
+    },
+    "pauseOnHover": {
+      "type": "boolean",
+      "default": true
+    },
+    "showFade": {
+      "type": "boolean",
+      "default": true
+    },
+    "duration": {
+      "type": "integer",
+      "default": 40,
+      "min": 5,
+      "max": 120
+    },
+    "gap": {
+      "type": "string",
+      "default": "1rem"
+    },
+    "rows": {
+      "type": "integer",
+      "default": 1,
+      "min": 1,
+      "max": 3,
+      "required": true,
+      "description": "⚠️ Maximum 3 rows. Responsive: 3 rows desktop, 2 rows tablet, 1 row mobile"
+    },
+    "alternateDirection": {
+      "type": "boolean",
+      "default": false,
+      "description": "Alternate direction for each row (for multi-row marquees)"
+    },
+    "varySpeed": {
+      "type": "boolean",
+      "default": false,
+      "description": "Vary speed for each row (for multi-row marquees)"
+    },
+    "badgeText": {
+      "type": "string",
+      "required": false
+    },
+    "badgeIcon": {
+      "type": "string",
+      "required": false
+    },
+    "backgroundStyle": {
+      "type": "enumeration",
+      "enum": ["solid", "transparent", "muted", "bordered"],
+      "default": "solid",
+      "description": "solid: bg-background (default), transparent: no background with gradient, muted: bg-muted/30 (subtle), bordered: elegant container with primary-colored border and gradient"
+    },
+    "logos": {
+      "type": "component",
+      "repeatable": true,
+      "component": "elements.marquee-logo"
+    },
+    "testimonials": {
+      "type": "component",
+      "repeatable": true,
+      "component": "elements.marquee-testimonial"
+    },
+    "testimonialsPro": {
+      "type": "component",
+      "repeatable": true,
+      "component": "elements.marquee-testimonial-pro"
+    },
+    "reviews": {
+      "type": "component",
+      "repeatable": true,
+      "component": "elements.marquee-review"
+    }
+  }
+}

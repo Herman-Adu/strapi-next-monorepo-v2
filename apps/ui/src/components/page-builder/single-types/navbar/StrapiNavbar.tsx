@@ -37,7 +37,7 @@ export async function StrapiNavbar({ locale }: { readonly locale: AppLocale }) {
   const session = await getAuth()
 
   return (
-    <header className="bg-background/80 supports-[backdrop-filter]:bg-background/60 border-border/100 sticky top-0 z-50 w-full border-b shadow-[0_4px_8px_-2px_rgba(59,130,246,0.15)] backdrop-blur-md transition-colors duration-300 dark:shadow-[0_4px_8px_-2px_rgba(96,165,250,0.15)]">
+    <header className="bg-background/80 supports-[backdrop-filter]:bg-background/60 border-border/100 shadow-primary/10 dark:shadow-primary/15 sticky top-0 z-50 w-full border-b shadow-[0_4px_8px_-2px] backdrop-blur-md transition-colors duration-300">
       <div
         className="container mx-auto flex h-[80px] items-center px-4 sm:px-6 lg:px-8"
         suppressHydrationWarning
@@ -86,7 +86,7 @@ export async function StrapiNavbar({ locale }: { readonly locale: AppLocale }) {
                   "relative px-2 py-2 text-sm font-medium whitespace-nowrap transition-colors duration-200 lg:px-3",
                   "text-foreground/80 hover:text-foreground",
                   "no-underline hover:no-underline", // Override default link underline
-                  "after:absolute after:right-0 after:bottom-0 after:left-0 after:h-0.5",
+                  "after:absolute after:right-2 after:bottom-0 after:left-2 after:h-0.5 lg:after:right-3 lg:after:left-3",
                   "after:bg-primary after:scale-x-0 after:transition-transform after:duration-200",
                   "hover:after:scale-x-100"
                 )}
@@ -98,6 +98,7 @@ export async function StrapiNavbar({ locale }: { readonly locale: AppLocale }) {
           <div className="-mx-1 flex flex-shrink-0 items-center md:hidden">
             <StrapiSocialLinks
               socialLinks={navbar.socialLinks ?? undefined}
+              variant="navbar"
               className="flex items-center gap-4"
             />
           </div>

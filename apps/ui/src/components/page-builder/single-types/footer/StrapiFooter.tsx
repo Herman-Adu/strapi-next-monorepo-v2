@@ -16,7 +16,7 @@ export async function StrapiFooter({ locale }: { readonly locale: AppLocale }) {
   }
 
   return (
-    <footer className="bg-background border-border/40 mt-auto border-t">
+    <footer className="bg-background border-border/40 shadow-primary/10 dark:shadow-primary/15 mt-auto border-t shadow-[0_-4px_8px_-2px]">
       {/* Main Footer Content */}
       <div className="container mx-auto px-4 py-16 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-4">
@@ -53,6 +53,7 @@ export async function StrapiFooter({ locale }: { readonly locale: AppLocale }) {
             {/* Social Links */}
             <StrapiSocialLinks
               socialLinks={component.socialLinks ?? undefined}
+              variant="footer"
               className="mb-6"
             />
           </div>
@@ -71,10 +72,12 @@ export async function StrapiFooter({ locale }: { readonly locale: AppLocale }) {
                         key={String(link.id) + i}
                         component={link}
                         className={cn(
+                          "relative w-fit px-0 py-1 text-sm font-medium transition-colors duration-200",
                           "text-muted-foreground hover:text-foreground",
-                          "text-sm transition-colors duration-200",
                           "no-underline hover:no-underline",
-                          "w-fit"
+                          "after:absolute after:right-0 after:bottom-0 after:left-0 after:h-0.5",
+                          "after:bg-primary after:scale-x-0 after:transition-transform after:duration-200",
+                          "hover:after:scale-x-100"
                         )}
                       />
                     ))}

@@ -20,7 +20,18 @@
       "type": "text"
     },
     "link": {
-      "type": "string"
+      "type": "string",
+      "required": false
+    },
+    "linkText": {
+      "type": "string",
+      "required": false,
+      "default": "Learn More"
+    },
+    "newTab": {
+      "type": "boolean",
+      "default": true,
+      "required": false
     }
   }
 }

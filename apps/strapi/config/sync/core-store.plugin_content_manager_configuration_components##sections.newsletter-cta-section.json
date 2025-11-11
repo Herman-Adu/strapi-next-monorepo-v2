@@ -47,6 +47,62 @@
           "sortable": true
         }
       },
+      "inputPlaceholder": {
+        "edit": {
+          "label": "inputPlaceholder",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "inputPlaceholder",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "buttonText": {
+        "edit": {
+          "label": "buttonText",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "buttonText",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "gdprLabel": {
+        "edit": {
+          "label": "gdprLabel",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "gdprLabel",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "gdprLink": {
+        "edit": {
+          "label": "gdprLink",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "gdprLink",
+          "searchable": false,
+          "sortable": false
+        }
+      },
       "ctaButtons": {
         "edit": {
           "label": "ctaButtons",
@@ -111,6 +167,28 @@
         [
           {
             "name": "benefits",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "inputPlaceholder",
+            "size": 6
+          },
+          {
+            "name": "buttonText",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "gdprLabel",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "gdprLink",
             "size": 12
           }
         ]

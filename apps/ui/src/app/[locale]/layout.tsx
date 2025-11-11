@@ -18,6 +18,7 @@ import StrapiNavbar from "@/components/page-builder/single-types/navbar/StrapiNa
 import { ClientProviders } from "@/components/providers/ClientProviders"
 import { ServerProviders } from "@/components/providers/ServerProviders"
 import TrackingScripts from "@/components/providers/TrackingScripts"
+import { ThemeInitializer } from "@/components/theme-initializer"
 import { Toaster } from "@/components/ui/toaster"
 
 export function generateStaticParams() {
@@ -47,7 +48,9 @@ export default async function RootLayout({
 
   return (
     <html lang={locale} suppressHydrationWarning>
-      <head />
+      <head>
+        <ThemeInitializer />
+      </head>
       <body
         className={cn(
           "bg-background text-foreground min-h-screen font-sans antialiased",

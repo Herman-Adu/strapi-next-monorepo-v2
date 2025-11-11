@@ -22,6 +22,14 @@
       "type": "enumeration",
       "enum": ["grid", "marquee"],
       "default": "grid"
+    },
+    "badgeText": {
+      "type": "string",
+      "required": false
+    },
+    "badgeIcon": {
+      "type": "string",
+      "required": false
     }
   }
 }

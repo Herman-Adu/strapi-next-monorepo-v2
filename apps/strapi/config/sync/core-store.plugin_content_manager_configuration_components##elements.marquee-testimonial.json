@@ -1,0 +1,161 @@
+{
+  "key": "plugin_content_manager_configuration_components::elements.marquee-testimonial",
+  "value": {
+    "settings": {
+      "bulkable": true,
+      "filterable": true,
+      "searchable": true,
+      "pageSize": 10,
+      "mainField": "author",
+      "defaultSortBy": "author",
+      "defaultSortOrder": "ASC"
+    },
+    "metadatas": {
+      "id": {
+        "edit": {},
+        "list": {
+          "label": "id",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "author": {
+        "edit": {
+          "label": "author",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "author",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "role": {
+        "edit": {
+          "label": "role",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "role",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "company": {
+        "edit": {
+          "label": "company",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "company",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "avatar": {
+        "edit": {
+          "label": "avatar",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "avatar",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "quote": {
+        "edit": {
+          "label": "quote",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "quote",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "rating": {
+        "edit": {
+          "label": "rating",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "rating",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "documentId": {
+        "edit": {},
+        "list": {
+          "label": "documentId",
+          "searchable": true,
+          "sortable": true
+        }
+      }
+    },
+    "layouts": {
+      "list": [
+        "id",
+        "author",
+        "role",
+        "company"
+      ],
+      "edit": [
+        [
+          {
+            "name": "author",
+            "size": 6
+          },
+          {
+            "name": "role",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "company",
+            "size": 6
+          },
+          {
+            "name": "avatar",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "quote",
+            "size": 6
+          },
+          {
+            "name": "rating",
+            "size": 4
+          }
+        ]
+      ]
+    },
+    "uid": "elements.marquee-testimonial",
+    "isComponent": true
+  },
+  "type": "object",
+  "environment": null,
+  "tag": null
+}

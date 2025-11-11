@@ -46,6 +46,7 @@ export const registerPopulatePageMiddleware = ({ strapi }) => {
   })
 }
 
+// Temporary type assertion: marquee-section types will be generated after Strapi registers the new component schema
 const pagePopulateObject: FindOne<"api::page.page">["populate"] = {
   content: {
     on: {
@@ -98,6 +99,7 @@ const pagePopulateObject: FindOne<"api::page.page">["populate"] = {
         populate: {
           ctaButtons: true,
           benefits: true,
+          gdprLink: true,
         },
       },
       "sections.roadmap-section": {
@@ -129,10 +131,33 @@ const pagePopulateObject: FindOne<"api::page.page">["populate"] = {
       "sections.animated-logo-row": {
         populate: { logos: { populate: { media: true } } },
       },
+      "sections.benefits-section": {
+        populate: { benefits: true },
+      },
+      "sections.metrics-section": {
+        populate: { metrics: true },
+      },
+      "sections.tech-stack-section": {
+        populate: { technologies: { populate: { image: true } } },
+      },
+      "sections.marquee-section": {
+        populate: {
+          logos: { populate: { image: true } },
+          testimonials: { populate: { avatar: true } },
+          testimonialsPro: { populate: { avatar: true } },
+          reviews: { populate: { avatar: true } },
+        },
+      },
+      "sections.partner-showcase-section": {
+        populate: { partners: { populate: { logo: true } } },
+      },
+      "sections.integration-grid-section": {
+        populate: { integrations: true },
+      },
       "forms.newsletter-form": { populate: { gdpr: true } },
       "forms.contact-form": { populate: { gdpr: true } },
       "utilities.ck-editor-content": true,
-    },
+    } as any, // Temporary: Allow marquee-section until types are generated
   },
   seo: {
     populate: {

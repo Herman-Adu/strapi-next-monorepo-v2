@@ -1,0 +1,38 @@
+{
+  "collectionName": "components_elements_marquee_logos",
+  "info": {
+    "displayName": "MarqueeLogo",
+    "description": "Logo item for marquee displays"
+  },
+  "options": {},
+  "attributes": {
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": ["images"]
+    },
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "link": {
+      "type": "string",
+      "required": false
+    },
+    "newTab": {
+      "type": "boolean",
+      "default": true,
+      "description": "Open link in new tab (for external links)"
+    },
+    "showBackground": {
+      "type": "boolean",
+      "default": false,
+      "description": "Show background behind logo"
+    },
+    "altText": {
+      "type": "string",
+      "required": false
+    }
+  }
+}

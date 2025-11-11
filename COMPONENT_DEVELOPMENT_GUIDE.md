@@ -1,6 +1,9 @@
 # 📚 Complete Guide: Adding Components to Strapi & Frontend
 
-> **For Junior Developers**: This is your step-by-step guide to adding new sections, elements, forms, and pages to the application. Follow these steps exactly, and you'll successfully extend the CMS.
+> **⚠️ IMPORTANT:** This guide provides detailed component examples and architecture overview.  
+> **For step-by-step workflow**, see **[COMPONENT_WORKFLOW.md](./COMPONENT_WORKFLOW.md)** - the definitive process guide.
+
+> **For Junior Developers**: This is your reference guide for understanding component architecture, schemas, and examples. For creating new components, **always follow [COMPONENT_WORKFLOW.md](./COMPONENT_WORKFLOW.md) first**.
 
 ---
 
@@ -15,6 +18,24 @@
 7. [Frontend Component Mapping](#frontend-component-mapping)
 8. [Testing Your Components](#testing-your-components)
 9. [Troubleshooting](#troubleshooting)
+
+---
+
+## 📖 How to Use This Guide
+
+**If you want to create a new component:**
+
+1. ✅ **START HERE:** [COMPONENT_WORKFLOW.md](./COMPONENT_WORKFLOW.md)
+2. Follow the 4-phase process (Backend → Types → Frontend → Testing)
+3. Refer back to this guide for detailed examples and architecture
+
+**If you're looking for:**
+
+- Component architecture → This guide
+- Schema examples → This guide
+- **Step-by-step process → [COMPONENT_WORKFLOW.md](./COMPONENT_WORKFLOW.md)** ⭐
+- TypeScript patterns → This guide
+- Troubleshooting → Both guides
 
 ---
 
@@ -311,7 +332,131 @@ export const PageContentComponents: {
 }
 ```
 
-#### Step 7: Test in Strapi Admin
+#### Step 7: Add Component to Page Dynamic Zone
+
+**⚠️ CRITICAL STEP - Don't Skip This!**
+
+If you want your component to be available in the Page builder, you must add it to the Page content type's dynamic zone.
+
+**File**: `apps/strapi/src/api/page/content-types/page/schema.json`
+
+```json
+{
+  "attributes": {
+    "content": {
+      "type": "dynamiczone",
+      "components": [
+        "sections.image-with-cta-button",
+        "sections.hero",
+        // ... existing components ...
+
+        // ✅ ADD YOUR NEW COMPONENT HERE
+        "sections.testimonials-section",
+
+        "forms.newsletter-form",
+        "forms.contact-form"
+      ],
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    }
+  }
+}
+```
+
+**Key Points:**
+
+- ✅ Add the component UID to the `components` array
+- ✅ Use the full UID format: `"category.component-name"`
+- ✅ Watch the comma placement (valid JSON)
+- ✅ Strapi will auto-reload when you save this file
+- ✅ Refresh your browser to see the component in the picker
+
+**Without this step**, your component will exist in Content-Type Builder but won't appear in the component picker when editing pages!
+
+#### Step 8: Add Component to API Populate Middleware
+
+**⚠️ CRITICAL STEP - Required for Data to Load!**
+
+For components with **nested/repeatable fields** (like arrays of sub-components), you MUST configure the API populate middleware so the data is fetched from Strapi.
+
+**File**: `apps/strapi/src/documentMiddlewares/page.ts`
+
+Find the `pagePopulateObject` constant and add your component's populate configuration inside the `content: { on: { ... } }` block:
+
+```typescript
+const pagePopulateObject: FindOne<"api::page.page">["populate"] = {
+  content: {
+    on: {
+      // ... existing components ...
+
+      "sections.animated-logo-row": {
+        populate: { logos: { populate: { media: true } } },
+      },
+
+      // ✅ ADD YOUR NEW COMPONENT HERE
+      "sections.testimonials-section": {
+        populate: {
+          testimonials: true, // Populate the testimonials array
+        },
+      },
+
+      "forms.newsletter-form": { populate: { gdpr: true } },
+      // ... more components ...
+    },
+  },
+  seo: {
+    /* ... */
+  },
+}
+```
+
+**Populate Rules:**
+
+- **Simple fields** (string, text, number, boolean): No populate needed
+- **Component fields** (single): `populate: true` or specific fields
+- **Repeatable components** (arrays): `populate: true` or specific fields
+- **Media fields**: `populate: { media: true }`
+- **Nested components with media**: `populate: { fieldName: { populate: { media: true } } }`
+
+**Examples:**
+
+```typescript
+// Simple repeatable component
+"sections.benefits-section": {
+  populate: { benefits: true },
+},
+
+// Repeatable component with media
+"sections.tech-stack-section": {
+  populate: {
+    technologies: { populate: { media: true } },
+  },
+},
+
+// Repeatable component with nested fields
+"sections.partner-showcase-section": {
+  populate: {
+    partners: {
+      populate: {
+        logo: { populate: { media: true } },
+        link: true,
+      },
+    },
+  },
+},
+```
+
+**Why This Step is Critical:**
+
+- ❌ Without this: Component appears in Strapi admin but shows **empty on frontend**
+- ❌ API returns `null` or empty arrays for nested data
+- ✅ With this: All nested data loads correctly
+- ✅ Strapi will auto-reload when you save this file
+
+#### Step 9: Test in Strapi Admin
 
 1. Open Strapi admin: `http://localhost:1337/admin`
 2. Go to **Content-Type Builder**
@@ -764,16 +909,58 @@ yarn lint
 
 ## 🐛 Troubleshooting
 
-### Issue: Component Not Showing in Strapi
+### Issue: Component Shows in Strapi but Data Doesn't Appear on Frontend
 
-**Symptoms**: New component doesn't appear in component picker
+**Symptoms**: Component saves in Strapi admin, but shows empty or missing data on the website
 
 **Solutions**:
 
-1. Check JSON syntax in schema file
-2. Restart Strapi dev server
-3. Check Strapi console for errors
-4. Verify `collectionName` is unique
+1. ⚠️ **Most Common Issue**: Component not added to API populate middleware
+
+   - Open `apps/strapi/src/documentMiddlewares/page.ts`
+   - Find the `pagePopulateObject` constant
+   - Add your component's populate configuration inside `content: { on: { ... } }`
+   - Example for components with repeatable fields:
+     ```typescript
+     "sections.your-section": {
+       populate: { yourFieldName: true },
+     },
+     ```
+   - For components with media:
+     ```typescript
+     "sections.your-section": {
+       populate: {
+         yourFieldName: { populate: { media: true } }
+       },
+     },
+     ```
+   - Save the file and Strapi will auto-reload
+   - Hard refresh your browser (Ctrl+Shift+R)
+
+2. Check browser console for errors (F12 → Console tab)
+3. Verify component is registered in `page-builder/index.tsx`
+4. Check API response in Network tab to see if data is present
+5. Ensure page is published (not just saved as draft)
+
+### Issue: Component Not Showing in Strapi
+
+**Symptoms**: New component doesn't appear in component picker when editing pages
+
+**Solutions**:
+
+1. ⚠️ **Most Common Issue**: Component not added to Page dynamic zone
+
+   - Open `apps/strapi/src/api/page/content-types/page/schema.json`
+   - Find the `content` attribute
+   - Add your component UID to the `components` array
+   - Example: `"sections.your-section"`
+   - Save the file and Strapi will auto-reload
+   - Refresh your browser
+
+2. Check JSON syntax in schema file
+3. Restart Strapi dev server
+4. Check Strapi console for errors
+5. Verify `collectionName` is unique
 
 ### Issue: TypeScript Errors in Frontend
 
@@ -835,6 +1022,10 @@ yarn generate:types
 - [ ] Create `apps/ui/src/components/page-builder/components/sections/StrapiYourSection.tsx`
 - [ ] Create element components if needed
 - [ ] Register in `apps/ui/src/components/page-builder/index.tsx`
+- [ ] **⚠️ Add to Page dynamic zone in `apps/strapi/src/api/page/content-types/page/schema.json`**
+- [ ] **⚠️ Add to API populate middleware in `apps/strapi/src/documentMiddlewares/page.ts`**
+- [ ] Restart Strapi (or wait for auto-reload)
+- [ ] Refresh browser
 - [ ] Test in Strapi admin
 - [ ] Test on frontend
 - [ ] Check responsive design
@@ -849,13 +1040,19 @@ yarn generate:types
    ↓
 3. Frontend Component (.tsx)
    ↓
-4. Register in Mapping
+4. Register in Mapping (page-builder/index.tsx)
    ↓
-5. Test in Strapi Admin
+5. Add to Page Dynamic Zone (page/schema.json) ⚠️ CRITICAL!
    ↓
-6. Test on Frontend
+6. Add to API Populate Middleware (documentMiddlewares/page.ts) ⚠️ CRITICAL!
    ↓
-7. Commit to Git ✅
+7. Restart Strapi (auto-reloads on file change)
+   ↓
+8. Test in Strapi Admin
+   ↓
+9. Test on Frontend
+   ↓
+10. Commit to Git ✅
 ```
 
 ---

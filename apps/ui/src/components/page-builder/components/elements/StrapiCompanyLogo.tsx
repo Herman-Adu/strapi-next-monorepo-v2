@@ -1,18 +1,23 @@
+import Image from "next/image"
 import { Data } from "@repo/strapi"
 
-import { StrapiBasicImage } from "@/components/page-builder/components/utilities/StrapiBasicImage"
+import { formatStrapiMediaUrl } from "@/lib/strapi-helpers"
 
 export function StrapiCompanyLogo({
   component,
 }: {
   readonly component: Data.Component<"elements.company-logo">
 }) {
-  if (component.image?.media) {
+  if (component.image) {
+    const src = formatStrapiMediaUrl(component.image.url)
     return (
       <div className="flex items-center justify-center">
-        <StrapiBasicImage
-          component={component.image}
-          className="h-8 w-auto opacity-60 grayscale transition-all hover:opacity-100 hover:grayscale-0 md:h-10"
+        <Image
+          src={src}
+          alt={component.image.alternativeText || component.name}
+          width={component.image.width || 160}
+          height={component.image.height || 80}
+          className="h-8 w-auto opacity-60 grayscale transition-all group-hover:opacity-100 group-hover:grayscale-0 hover:opacity-100 hover:grayscale-0 md:h-12 lg:h-14"
         />
       </div>
     )

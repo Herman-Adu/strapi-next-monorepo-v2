@@ -16,6 +16,7 @@ import StrapiHorizontalImages from "@/components/page-builder/components/section
 import StrapiImageWithCTAButton from "@/components/page-builder/components/sections/StrapiImageWithCTAButton"
 import StrapiIntegrationGridSection from "@/components/page-builder/components/sections/StrapiIntegrationGridSection"
 import StrapiLandingHero from "@/components/page-builder/components/sections/StrapiLandingHero"
+import StrapiMarqueeSection from "@/components/page-builder/components/sections/StrapiMarqueeSection"
 import StrapiMetricsSection from "@/components/page-builder/components/sections/StrapiMetricsSection"
 import StrapiNewsletterCTASection from "@/components/page-builder/components/sections/StrapiNewsletterCTASection"
 import StrapiPartnerShowcaseSection from "@/components/page-builder/components/sections/StrapiPartnerShowcaseSection"
@@ -50,6 +51,7 @@ export const PageContentComponents: {
   "sections.image-with-cta-button": StrapiImageWithCTAButton,
   "sections.integration-grid-section": StrapiIntegrationGridSection,
   "sections.landing-hero": StrapiLandingHero,
+  "sections.marquee-section": StrapiMarqueeSection,
   "sections.credibility-section": StrapiCredibilitySection,
   "sections.feature-grid-section": StrapiFeatureGridSection,
   "sections.metrics-section": StrapiMetricsSection,

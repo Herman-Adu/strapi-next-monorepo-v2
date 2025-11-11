@@ -2,7 +2,7 @@
   "collectionName": "components_elements_integration_cards",
   "info": {
     "displayName": "IntegrationCard",
-    "description": "Integration card with icon, title, description and link"
+    "description": "Integration card with icon, title, description, category and link"
   },
   "options": {},
   "attributes": {
@@ -11,18 +11,41 @@
       "required": true
     },
     "icon": {
-      "type": "string",
-      "required": true
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": ["images"]
     },
     "description": {
       "type": "text",
       "required": true
     },
+    "category": {
+      "type": "enumeration",
+      "enum": [
+        "Payments",
+        "Analytics",
+        "Communications",
+        "Content",
+        "Infrastructure",
+        "DevOps",
+        "Security",
+        "Marketing",
+        "Productivity",
+        "Other"
+      ],
+      "required": true
+    },
     "link": {
       "type": "string"
     },
-    "category": {
-      "type": "string"
+    "linkText": {
+      "type": "string",
+      "default": "Learn More"
+    },
+    "newTab": {
+      "type": "boolean",
+      "default": false
     }
   }
 }

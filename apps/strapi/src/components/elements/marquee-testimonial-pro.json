@@ -1,0 +1,38 @@
+{
+  "collectionName": "components_elements_marquee_testimonials_pro",
+  "info": {
+    "displayName": "MarqueeTestimonialPro",
+    "description": "Pro Block testimonial with emerald accents and enhanced styling"
+  },
+  "options": {},
+  "attributes": {
+    "author": {
+      "type": "string",
+      "required": true
+    },
+    "role": {
+      "type": "string",
+      "required": false
+    },
+    "company": {
+      "type": "string",
+      "required": false
+    },
+    "avatar": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": ["images"]
+    },
+    "quote": {
+      "type": "text",
+      "required": true
+    },
+    "rating": {
+      "type": "integer",
+      "min": 1,
+      "max": 5,
+      "required": false
+    }
+  }
+}

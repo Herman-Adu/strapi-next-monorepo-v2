@@ -1,0 +1,161 @@
+{
+  "key": "plugin_content_manager_configuration_components::elements.marquee-logo",
+  "value": {
+    "settings": {
+      "bulkable": true,
+      "filterable": true,
+      "searchable": true,
+      "pageSize": 10,
+      "mainField": "name",
+      "defaultSortBy": "name",
+      "defaultSortOrder": "ASC"
+    },
+    "metadatas": {
+      "id": {
+        "edit": {},
+        "list": {
+          "label": "id",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "image": {
+        "edit": {
+          "label": "image",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "image",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "name": {
+        "edit": {
+          "label": "name",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "name",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "link": {
+        "edit": {
+          "label": "link",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "link",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "newTab": {
+        "edit": {
+          "label": "newTab",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "newTab",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "showBackground": {
+        "edit": {
+          "label": "showBackground",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "showBackground",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "altText": {
+        "edit": {
+          "label": "altText",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "altText",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "documentId": {
+        "edit": {},
+        "list": {
+          "label": "documentId",
+          "searchable": true,
+          "sortable": true
+        }
+      }
+    },
+    "layouts": {
+      "list": [
+        "id",
+        "image",
+        "name",
+        "link"
+      ],
+      "edit": [
+        [
+          {
+            "name": "image",
+            "size": 6
+          },
+          {
+            "name": "name",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "link",
+            "size": 6
+          },
+          {
+            "name": "altText",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "newTab",
+            "size": 4
+          },
+          {
+            "name": "showBackground",
+            "size": 4
+          }
+        ]
+      ]
+    },
+    "uid": "elements.marquee-logo",
+    "isComponent": true
+  },
+  "type": "object",
+  "environment": null,
+  "tag": null
+}

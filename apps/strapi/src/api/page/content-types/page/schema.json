@@ -71,6 +71,12 @@
         "sections.roadmap-section",
         "sections.final-cta-section",
         "sections.footer-cta-section",
+        "sections.benefits-section",
+        "sections.metrics-section",
+        "sections.tech-stack-section",
+        "sections.partner-showcase-section",
+        "sections.integration-grid-section",
+        "sections.marquee-section",
         "forms.newsletter-form",
         "forms.contact-form",
         "utilities.ck-editor-content"

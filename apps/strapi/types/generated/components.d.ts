@@ -66,14 +66,30 @@ export interface ElementsIconButton extends Struct.ComponentSchema {
 export interface ElementsIntegrationCard extends Struct.ComponentSchema {
   collectionName: "components_elements_integration_cards"
   info: {
-    description: "Integration card with icon, title, description and link"
+    description: "Integration card with icon, title, description, category and link"
     displayName: "IntegrationCard"
   }
   attributes: {
-    category: Schema.Attribute.String
+    category: Schema.Attribute.Enumeration<
+      [
+        "Payments",
+        "Analytics",
+        "Communications",
+        "Content",
+        "Infrastructure",
+        "DevOps",
+        "Security",
+        "Marketing",
+        "Productivity",
+        "Other",
+      ]
+    > &
+      Schema.Attribute.Required
     description: Schema.Attribute.Text & Schema.Attribute.Required
-    icon: Schema.Attribute.String & Schema.Attribute.Required
+    icon: Schema.Attribute.Media<"images"> & Schema.Attribute.Required
     link: Schema.Attribute.String
+    linkText: Schema.Attribute.String & Schema.Attribute.DefaultTo<"Learn More">
+    newTab: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>
     title: Schema.Attribute.String & Schema.Attribute.Required
   }
 }
@@ -92,6 +108,90 @@ export interface ElementsListItem extends Struct.ComponentSchema {
   }
 }
 
+export interface ElementsMarqueeLogo extends Struct.ComponentSchema {
+  collectionName: "components_elements_marquee_logos"
+  info: {
+    description: "Logo item for marquee displays"
+    displayName: "MarqueeLogo"
+  }
+  attributes: {
+    altText: Schema.Attribute.String
+    image: Schema.Attribute.Media<"images"> & Schema.Attribute.Required
+    link: Schema.Attribute.String
+    name: Schema.Attribute.String & Schema.Attribute.Required
+    newTab: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>
+    showBackground: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>
+  }
+}
+
+export interface ElementsMarqueeReview extends Struct.ComponentSchema {
+  collectionName: "components_elements_marquee_reviews"
+  info: {
+    description: "Review/comment item for marquee displays"
+    displayName: "MarqueeReview"
+  }
+  attributes: {
+    avatar: Schema.Attribute.Media<"images">
+    body: Schema.Attribute.Text & Schema.Attribute.Required
+    name: Schema.Attribute.String & Schema.Attribute.Required
+    rating: Schema.Attribute.Integer &
+      Schema.Attribute.SetMinMax<
+        {
+          max: 5
+          min: 1
+        },
+        number
+      >
+    username: Schema.Attribute.String
+  }
+}
+
+export interface ElementsMarqueeTestimonial extends Struct.ComponentSchema {
+  collectionName: "components_elements_marquee_testimonials"
+  info: {
+    description: "Testimonial item for marquee displays"
+    displayName: "MarqueeTestimonial"
+  }
+  attributes: {
+    author: Schema.Attribute.String & Schema.Attribute.Required
+    avatar: Schema.Attribute.Media<"images">
+    company: Schema.Attribute.String
+    quote: Schema.Attribute.Text & Schema.Attribute.Required
+    rating: Schema.Attribute.Integer &
+      Schema.Attribute.SetMinMax<
+        {
+          max: 5
+          min: 1
+        },
+        number
+      >
+    role: Schema.Attribute.String
+  }
+}
+
+export interface ElementsMarqueeTestimonialPro extends Struct.ComponentSchema {
+  collectionName: "components_elements_marquee_testimonials_pro"
+  info: {
+    description: "Pro Block testimonial with emerald accents and enhanced styling"
+    displayName: "MarqueeTestimonialPro"
+  }
+  attributes: {
+    author: Schema.Attribute.String & Schema.Attribute.Required
+    avatar: Schema.Attribute.Media<"images">
+    company: Schema.Attribute.String
+    quote: Schema.Attribute.Text & Schema.Attribute.Required
+    rating: Schema.Attribute.Integer &
+      Schema.Attribute.SetMinMax<
+        {
+          max: 5
+          min: 1
+        },
+        number
+      >
+    role: Schema.Attribute.String
+  }
+}
+
 export interface ElementsPartnerCard extends Struct.ComponentSchema {
   collectionName: "components_elements_partner_cards"
   info: {
@@ -101,8 +201,10 @@ export interface ElementsPartnerCard extends Struct.ComponentSchema {
   attributes: {
     description: Schema.Attribute.Text
     link: Schema.Attribute.String
+    linkText: Schema.Attribute.String & Schema.Attribute.DefaultTo<"Learn More">
     logo: Schema.Attribute.Media<"images">
     name: Schema.Attribute.String & Schema.Attribute.Required
+    newTab: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>
   }
 }
 
@@ -374,6 +476,69 @@ export interface SectionsLandingHero extends Struct.ComponentSchema {
   }
 }
 
+export interface SectionsMarqueeSection extends Struct.ComponentSchema {
+  collectionName: "components_sections_marquee_sections"
+  info: {
+    description: "Flexible marquee section for logos, testimonials, reviews with multi-row support"
+    displayName: "MarqueeSection"
+  }
+  attributes: {
+    alternateDirection: Schema.Attribute.Boolean &
+      Schema.Attribute.DefaultTo<false>
+    backgroundStyle: Schema.Attribute.Enumeration<
+      ["solid", "transparent", "muted", "bordered"]
+    > &
+      Schema.Attribute.DefaultTo<"solid">
+    badgeIcon: Schema.Attribute.String
+    badgeText: Schema.Attribute.String
+    description: Schema.Attribute.Text
+    displayType: Schema.Attribute.Enumeration<
+      ["logos", "testimonials", "reviews"]
+    > &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<"logos">
+    duration: Schema.Attribute.Integer &
+      Schema.Attribute.SetMinMax<
+        {
+          max: 120
+          min: 5
+        },
+        number
+      > &
+      Schema.Attribute.DefaultTo<40>
+    gap: Schema.Attribute.String & Schema.Attribute.DefaultTo<"1rem">
+    heading: Schema.Attribute.String
+    logos: Schema.Attribute.Component<"elements.marquee-logo", true>
+    orientation: Schema.Attribute.Enumeration<["horizontal", "vertical"]> &
+      Schema.Attribute.DefaultTo<"horizontal">
+    pauseOnHover: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>
+    reverse: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>
+    reviews: Schema.Attribute.Component<"elements.marquee-review", true>
+    rows: Schema.Attribute.Integer &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetMinMax<
+        {
+          max: 3
+          min: 1
+        },
+        number
+      > &
+      Schema.Attribute.DefaultTo<1>
+    showFade: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>
+    testimonials: Schema.Attribute.Component<
+      "elements.marquee-testimonial",
+      true
+    >
+    testimonialsPro: Schema.Attribute.Component<
+      "elements.marquee-testimonial-pro",
+      true
+    >
+    testimonialVariant: Schema.Attribute.Enumeration<["classic", "pro"]> &
+      Schema.Attribute.DefaultTo<"classic">
+    varySpeed: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>
+  }
+}
+
 export interface SectionsMetricsSection extends Struct.ComponentSchema {
   collectionName: "components_sections_metrics_sections"
   info: {
@@ -381,8 +546,38 @@ export interface SectionsMetricsSection extends Struct.ComponentSchema {
     displayName: "MetricsSection"
   }
   attributes: {
+    backgroundStyle: Schema.Attribute.Enumeration<
+      ["transparent", "muted", "theme-subtle", "theme-muted"]
+    > &
+      Schema.Attribute.DefaultTo<"muted">
+    badge: Schema.Attribute.String
+    badgeAnimation: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>
+    badgeAnimationSpeed: Schema.Attribute.Enumeration<
+      ["extra-slow", "slow", "medium", "fast"]
+    > &
+      Schema.Attribute.DefaultTo<"slow">
+    badgeBorderRadius: Schema.Attribute.Enumeration<
+      ["sm", "md", "lg", "full"]
+    > &
+      Schema.Attribute.DefaultTo<"md">
+    badgeIcon: Schema.Attribute.String
+    badgeOrbGlow: Schema.Attribute.Enumeration<
+      ["subtle", "normal", "intense"]
+    > &
+      Schema.Attribute.DefaultTo<"normal">
+    badgeOrbSize: Schema.Attribute.Enumeration<["small", "medium", "large"]> &
+      Schema.Attribute.DefaultTo<"large">
+    badgeSize: Schema.Attribute.Enumeration<["small", "medium", "large"]> &
+      Schema.Attribute.DefaultTo<"medium">
+    containerStyle: Schema.Attribute.Enumeration<["default", "bordered"]> &
+      Schema.Attribute.DefaultTo<"default">
     description: Schema.Attribute.Text
     heading: Schema.Attribute.String & Schema.Attribute.Required
+    headingAccent: Schema.Attribute.String
+    headingStyle: Schema.Attribute.Enumeration<
+      ["default", "gradient", "two-tone"]
+    > &
+      Schema.Attribute.DefaultTo<"default">
     metrics: Schema.Attribute.Component<"elements.stat-card", true>
   }
 }
@@ -390,7 +585,7 @@ export interface SectionsMetricsSection extends Struct.ComponentSchema {
 export interface SectionsNewsletterCtaSection extends Struct.ComponentSchema {
   collectionName: "components_sections_newsletter_cta_sections"
   info: {
-    description: "Newsletter subscription CTA section"
+    description: "Newsletter subscription CTA section with GDPR compliance"
     displayName: "NewsletterCTASection"
   }
   attributes: {
@@ -401,6 +596,8 @@ export interface SectionsNewsletterCtaSection extends Struct.ComponentSchema {
         },
         number
       >
+    buttonText: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<"Subscribe">
     ctaButtons: Schema.Attribute.Component<"elements.icon-button", true> &
       Schema.Attribute.SetMinMax<
         {
@@ -409,7 +606,14 @@ export interface SectionsNewsletterCtaSection extends Struct.ComponentSchema {
         number
       >
     description: Schema.Attribute.Text & Schema.Attribute.Required
+    gdprLabel: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<"I agree to the terms and conditions">
+    gdprLink: Schema.Attribute.Component<"utilities.link", false> &
+      Schema.Attribute.Required
     heading: Schema.Attribute.String & Schema.Attribute.Required
+    inputPlaceholder: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<"Enter your email">
   }
 }
 
@@ -455,6 +659,8 @@ export interface SectionsTechStackSection extends Struct.ComponentSchema {
     displayName: "TechStackSection"
   }
   attributes: {
+    badgeIcon: Schema.Attribute.String
+    badgeText: Schema.Attribute.String
     description: Schema.Attribute.Text
     displayStyle: Schema.Attribute.Enumeration<["grid", "marquee"]> &
       Schema.Attribute.DefaultTo<"grid">
@@ -750,6 +956,10 @@ declare module "@strapi/strapi" {
       "elements.icon-button": ElementsIconButton
       "elements.integration-card": ElementsIntegrationCard
       "elements.list-item": ElementsListItem
+      "elements.marquee-logo": ElementsMarqueeLogo
+      "elements.marquee-review": ElementsMarqueeReview
+      "elements.marquee-testimonial": ElementsMarqueeTestimonial
+      "elements.marquee-testimonial-pro": ElementsMarqueeTestimonialPro
       "elements.partner-card": ElementsPartnerCard
       "elements.stat-card": ElementsStatCard
       "forms.contact-form": FormsContactForm
@@ -768,6 +978,7 @@ declare module "@strapi/strapi" {
       "sections.image-with-cta-button": SectionsImageWithCtaButton
       "sections.integration-grid-section": SectionsIntegrationGridSection
       "sections.landing-hero": SectionsLandingHero
+      "sections.marquee-section": SectionsMarqueeSection
       "sections.metrics-section": SectionsMetricsSection
       "sections.newsletter-cta-section": SectionsNewsletterCtaSection
       "sections.partner-showcase-section": SectionsPartnerShowcaseSection

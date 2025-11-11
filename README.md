@@ -107,20 +107,39 @@ This is a ready-to-go starter template for Strapi projects. It combines the powe
 - **Heroku ready**: Ready to deploy to Heroku in a few steps
 - ... and much more is waiting for you to discover!
 
-## 📦 What's inside?
+## 📚 Documentation
 
-### Apps
+### Getting Started
 
-- `apps/ui` - UI web app based on [Next.js v15](https://nextjs.org/docs/) and [shadcn/ui](https://ui.shadcn.com/) ([Tailwind](https://tailwindcss.com/)) - [README.md](./apps/ui/README.md)
-- `apps/strapi` - [Strapi v5](https://strapi.io/) API with prepared page-builder components - [README.md](./apps/strapi/README.md)
+- **[Quick Start Guide](./QUICK_START.md)** - Get up and running in 5 minutes
+- **[Development Guide](./DEVELOPMENT_GUIDE.md)** - Full development workflow and Git best practices
 
-### Packages
+### Component Development (Start Here! 👇)
 
-- `packages/eslint-config`: [ESLint](https://eslint.org/) configurations for client side applications
-- `packages/prettier-config`: [Prettier](https://prettier.io/) configuration with import sort plugin and tailwind plugin included
-- `packages/typescript-config`: tsconfig JSONs used throughout the monorepo (not compatible with Strapi app now)
-- `packages/design-system`: shared styles, primarily for sharing CkEditor color configurations
-- `packages/shared-data`: package that stores common values across frontend and backend
+- **⭐ [Component Workflow](./COMPONENT_WORKFLOW.md)** - **STEP-BY-STEP** process for creating components (follow this!)
+- **📖 [Component Development Guide](./COMPONENT_DEVELOPMENT_GUIDE.md)** - Architecture, examples, and reference
+- **⚡ [Quick Reference Card](./QUICK_REFERENCE.md)** - Print-friendly checklist for component creation
+- **🎯 [Workflow Improvements](./WORKFLOW_IMPROVEMENTS.md)** - Issues resolved and process improvements
+- **🧪 [Test Data Guide](./TEST_DATA_NEW_COMPONENTS.md)** - Sample data for testing components
+
+### Workflow Overview
+
+**New to component development?** Follow this order:
+
+1. Read [Component Workflow](./COMPONENT_WORKFLOW.md) - Complete step-by-step guide
+2. Print [Quick Reference](./QUICK_REFERENCE.md) - Keep handy while coding
+3. Refer to [Component Development Guide](./COMPONENT_DEVELOPMENT_GUIDE.md) - For detailed examples
+
+**Creating a component:**
+
+```
+Phase 1: Backend (Strapi schemas)     → 15 min
+Phase 2: Type Generation              → 2 min
+Phase 3: Frontend (React components)  → 30 min
+Phase 4: Testing & Validation         → 10 min
+```
+
+See [COMPONENT_WORKFLOW.md](./COMPONENT_WORKFLOW.md) for complete process.
 
 ## 💡 Transform this template to a project
 
@@ -147,7 +166,15 @@ yarn dev:ui
 yarn dev:strapi
 ```
 
-## 🔌 VSCode Extensions
+## � Documentation
+
+- **[Component Development Guide](COMPONENT_DEVELOPMENT_GUIDE.md)** - Complete step-by-step guide for adding new sections, elements, and forms to the CMS
+- **[Project Status & Roadmap](PROJECT_STATUS.md)** - Component inventory and development roadmap
+- **[Test Data Guide](TEST_DATA_NEW_COMPONENTS.md)** - Sample data for testing new components
+- **[Quick Start Guide](QUICK_START.md)** - Get up and running quickly
+- **[Development Guide](DEVELOPMENT_GUIDE.md)** - Detailed development workflow
+
+## �🔌 VSCode Extensions
 
 Install extensions listed in the [.vscode/extensions.json](.vscode/extensions.json) file and have a better development experience.
 
