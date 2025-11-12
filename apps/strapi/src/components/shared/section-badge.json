@@ -1,0 +1,61 @@
+{
+  "collectionName": "components_shared_section_badges",
+  "info": {
+    "displayName": "Section Badge",
+    "description": "Reusable badge component for section headers",
+    "icon": "tag"
+  },
+  "options": {},
+  "attributes": {
+    "text": {
+      "type": "string",
+      "required": false,
+      "description": "Badge text displayed above heading (e.g., 'Powered by Industry Leaders', 'Our Mission')"
+    },
+    "icon": {
+      "type": "string",
+      "required": false,
+      "description": "Icon for badge. Use emoji (🚀) or Lucide icon name (Rocket, Star, Zap, TrendingUp, Award, CheckCircle, Sparkles, etc.)"
+    },
+    "variant": {
+      "type": "enumeration",
+      "enum": ["default", "secondary", "outline", "ghost"],
+      "default": "default",
+      "required": false,
+      "description": "Badge style variant: default (primary color), secondary (muted), outline (border only), ghost (subtle)"
+    },
+    "size": {
+      "type": "enumeration",
+      "enum": ["small", "medium", "large"],
+      "default": "medium",
+      "required": false,
+      "description": "Badge size: small (compact for nav/articles), medium (default balanced size), large (prominent for hero sections)"
+    },
+    "animation": {
+      "type": "boolean",
+      "default": false,
+      "required": false,
+      "description": "Enable orbiting light animation around badge border"
+    },
+    "animationSpeed": {
+      "type": "enumeration",
+      "enum": ["extra-slow", "slow", "medium", "fast"],
+      "default": "slow",
+      "required": false,
+      "description": "Animation speed when enabled: extra-slow (10s), slow (5s), medium (3s), fast (1.5s)"
+    },
+    "orbSize": {
+      "type": "enumeration",
+      "enum": ["small", "medium", "large"],
+      "default": "medium",
+      "required": false,
+      "description": "Size of orbiting light dot when animation is enabled"
+    },
+    "pulse": {
+      "type": "boolean",
+      "default": false,
+      "required": false,
+      "description": "Add gentle pulse animation to badge"
+    }
+  }
+}

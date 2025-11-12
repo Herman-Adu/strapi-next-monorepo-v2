@@ -1,0 +1,60 @@
+{
+  "collectionName": "components_shared_section_headers",
+  "info": {
+    "displayName": "Section Header",
+    "description": "Reusable header component with heading, description, and styling options",
+    "icon": "heading"
+  },
+  "options": {},
+  "attributes": {
+    "heading": {
+      "type": "string",
+      "required": true,
+      "description": "Main heading text. When using two-tone style, this is the second part (non-accented)"
+    },
+    "headingAccent": {
+      "type": "string",
+      "required": false,
+      "description": "Accented part of heading for two-tone style. This text appears first in theme color. Leave empty for default/gradient styles."
+    },
+    "description": {
+      "type": "text",
+      "required": false,
+      "description": "Optional description text below heading"
+    },
+    "headingSize": {
+      "type": "enumeration",
+      "enum": ["small", "medium", "large", "xl"],
+      "default": "large",
+      "required": false,
+      "description": "Heading size: small (text-2xl/3xl), medium (text-3xl/4xl), large (text-4xl/5xl), xl (text-5xl/6xl)"
+    },
+    "headingStyle": {
+      "type": "enumeration",
+      "enum": ["default", "gradient", "two-tone"],
+      "default": "default",
+      "required": false,
+      "description": "Heading text style: default (solid), gradient (subtle theme gradient), two-tone (first word accented)"
+    },
+    "alignment": {
+      "type": "enumeration",
+      "enum": ["left", "center", "right"],
+      "default": "center",
+      "required": false,
+      "description": "Text alignment for heading and description"
+    },
+    "showDivider": {
+      "type": "boolean",
+      "default": false,
+      "required": false,
+      "description": "Add decorative divider line below heading"
+    },
+    "spacing": {
+      "type": "enumeration",
+      "enum": ["compact", "default", "spacious"],
+      "default": "default",
+      "required": false,
+      "description": "Spacing between heading and description: compact (space-y-2), default (space-y-4), spacious (space-y-6)"
+    }
+  }
+}

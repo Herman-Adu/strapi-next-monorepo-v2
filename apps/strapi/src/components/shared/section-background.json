@@ -1,0 +1,57 @@
+{
+  "collectionName": "components_shared_section_backgrounds",
+  "info": {
+    "displayName": "Section Background",
+    "description": "Reusable background and container styling for sections",
+    "icon": "paintBrush"
+  },
+  "options": {},
+  "attributes": {
+    "backgroundStyle": {
+      "type": "enumeration",
+      "enum": [
+        "solid",
+        "transparent",
+        "muted",
+        "bordered",
+        "theme-subtle",
+        "theme-muted"
+      ],
+      "default": "solid",
+      "required": false,
+      "description": "Section background style: solid (default bg-background), transparent (no background with gradient), muted (subtle grey bg-muted/30), bordered (primary-colored border with gradient), theme-subtle (light theme gradient - great continuity with borders), theme-muted (stronger theme color)"
+    },
+    "pattern": {
+      "type": "string",
+      "required": false,
+      "description": "Optional background pattern overlay (dots, grid, lines, etc.)"
+    },
+    "gradient": {
+      "type": "boolean",
+      "default": false,
+      "required": false,
+      "description": "Enable gradient effects for the background"
+    },
+    "containerStyle": {
+      "type": "enumeration",
+      "enum": ["default", "bordered"],
+      "default": "default",
+      "required": false,
+      "description": "Content container style: default (no border), bordered (theme-colored border with gradient background - makes content stand out)"
+    },
+    "containerWidth": {
+      "type": "enumeration",
+      "enum": ["default", "narrow", "wide", "full"],
+      "default": "default",
+      "required": false,
+      "description": "Container width: default (max-w-7xl), narrow (max-w-4xl), wide (max-w-screen-2xl), full (w-full)"
+    },
+    "padding": {
+      "type": "enumeration",
+      "enum": ["default", "compact", "spacious", "none"],
+      "default": "default",
+      "required": false,
+      "description": "Section padding: default (py-16 md:py-24), compact (py-8 md:py-12), spacious (py-24 md:py-32), none (no padding)"
+    }
+  }
+}

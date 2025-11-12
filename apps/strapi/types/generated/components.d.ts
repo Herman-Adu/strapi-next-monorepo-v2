@@ -816,6 +816,94 @@ export interface SharedOpenGraph extends Struct.ComponentSchema {
   }
 }
 
+export interface SharedSectionBackground extends Struct.ComponentSchema {
+  collectionName: "components_shared_section_backgrounds"
+  info: {
+    description: "Reusable background and container styling for sections"
+    displayName: "Section Background"
+    icon: "paintBrush"
+  }
+  attributes: {
+    backgroundStyle: Schema.Attribute.Enumeration<
+      [
+        "solid",
+        "transparent",
+        "muted",
+        "bordered",
+        "theme-subtle",
+        "theme-muted",
+      ]
+    > &
+      Schema.Attribute.DefaultTo<"solid">
+    containerStyle: Schema.Attribute.Enumeration<["default", "bordered"]> &
+      Schema.Attribute.DefaultTo<"default">
+    containerWidth: Schema.Attribute.Enumeration<
+      ["default", "narrow", "wide", "full"]
+    > &
+      Schema.Attribute.DefaultTo<"default">
+    gradient: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>
+    padding: Schema.Attribute.Enumeration<
+      ["default", "compact", "spacious", "none"]
+    > &
+      Schema.Attribute.DefaultTo<"default">
+    pattern: Schema.Attribute.String
+  }
+}
+
+export interface SharedSectionBadge extends Struct.ComponentSchema {
+  collectionName: "components_shared_section_badges"
+  info: {
+    description: "Reusable badge component for section headers"
+    displayName: "Section Badge"
+    icon: "tag"
+  }
+  attributes: {
+    animation: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>
+    animationSpeed: Schema.Attribute.Enumeration<
+      ["extra-slow", "slow", "medium", "fast"]
+    > &
+      Schema.Attribute.DefaultTo<"slow">
+    icon: Schema.Attribute.String
+    orbSize: Schema.Attribute.Enumeration<["small", "medium", "large"]> &
+      Schema.Attribute.DefaultTo<"medium">
+    pulse: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>
+    size: Schema.Attribute.Enumeration<["small", "medium", "large"]> &
+      Schema.Attribute.DefaultTo<"medium">
+    text: Schema.Attribute.String
+    variant: Schema.Attribute.Enumeration<
+      ["default", "secondary", "outline", "ghost"]
+    > &
+      Schema.Attribute.DefaultTo<"default">
+  }
+}
+
+export interface SharedSectionHeader extends Struct.ComponentSchema {
+  collectionName: "components_shared_section_headers"
+  info: {
+    description: "Reusable header component with heading, description, and styling options"
+    displayName: "Section Header"
+    icon: "heading"
+  }
+  attributes: {
+    alignment: Schema.Attribute.Enumeration<["left", "center", "right"]> &
+      Schema.Attribute.DefaultTo<"center">
+    description: Schema.Attribute.Text
+    heading: Schema.Attribute.String & Schema.Attribute.Required
+    headingAccent: Schema.Attribute.String
+    headingSize: Schema.Attribute.Enumeration<
+      ["small", "medium", "large", "xl"]
+    > &
+      Schema.Attribute.DefaultTo<"large">
+    headingStyle: Schema.Attribute.Enumeration<
+      ["default", "gradient", "two-tone"]
+    > &
+      Schema.Attribute.DefaultTo<"default">
+    showDivider: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>
+    spacing: Schema.Attribute.Enumeration<["compact", "default", "spacious"]> &
+      Schema.Attribute.DefaultTo<"default">
+  }
+}
+
 export interface SharedSeo extends Struct.ComponentSchema {
   collectionName: "components_shared_seos"
   info: {
@@ -991,6 +1079,9 @@ declare module "@strapi/strapi" {
       "seo-utilities.seo-twitter": SeoUtilitiesSeoTwitter
       "seo-utilities.social-icons": SeoUtilitiesSocialIcons
       "shared.open-graph": SharedOpenGraph
+      "shared.section-background": SharedSectionBackground
+      "shared.section-badge": SharedSectionBadge
+      "shared.section-header": SharedSectionHeader
       "shared.seo": SharedSeo
       "utilities.accordions": UtilitiesAccordions
       "utilities.basic-image": UtilitiesBasicImage
