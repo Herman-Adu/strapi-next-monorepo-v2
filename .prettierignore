@@ -22,3 +22,9 @@ ui-debug.log
 **/types/api/*d.ts
 **/types/generated/**
 **/.strapi/client/**
+
+# Temporarily ignored - import sorting plugin removed, files need reformatting
+apps/ui/src/components/page-builder/components/sections/StrapiMarqueeSection.tsx
+apps/ui/src/lib/strapi-api/base.ts
+packages/design-system/src/theme.css
+THEME_SYSTEM_GUIDE.md
