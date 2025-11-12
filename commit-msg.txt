@@ -1,0 +1,59 @@
+feat(newsletter): complete newsletter CTA with shared components and gradient system
+
+NEWSLETTER CTA SECTION:
+- add newsletter-cta-section with badge, background, header components
+- integrate SectionBadge, SectionHeader, SectionWrapper shared components
+- add optional CTA buttons and benefits with list-item components
+- update page.ts middleware to populate badge, background, header relations
+- regenerate TypeScript types for new component structure
+
+SECTION BACKGROUND:
+- add 'theme-pastel' background option (light: #e8f5e9, dark: #0d2818)
+- create theme-pastel-bg CSS class for flat pastel backgrounds
+- add theme-pastel to SectionWrapper.tsx getBackgroundClass function
+- optimize container padding with getContainerPaddingClass helper
+- fix containerStyle padding to use p-8/p-12/p-16 instead of fixed values
+
+GRADIENT SYSTEM:
+- add gradientDirection field to section-header (diagonal/horizontal/vertical/radial)
+- create 4 gradient CSS classes with dark mode variants in globals.css
+- dark mode: bright emerald (#22c55e) to dark pastel (#0d2818)
+- light mode: placeholder gradients (to be refined in atomic refactor)
+- update SectionHeader.tsx to use gradient direction parameter
+- fix two-tone heading to combine headingAccent + heading text
+
+SHARED COMPONENTS:
+- refactor SectionHeader.tsx to match MetricsSection pattern exactly
+- remove center alignment, set text-left as default for consistency
+- copy heading/description rendering logic from MetricsSection
+- simplify styling with flat text-primary colors
+
+DOCUMENTATION:
+- create DATABASE_BACKUP_RESTORE.md with comprehensive backup/restore guide
+- add CRITICAL section warning to stop Strapi before operations
+- document SQLite lock issues and proper workflow
+- create COMPONENT_ARCHITECTURE_REFACTOR.md for atomic design plan
+- add GRADIENT_SYSTEM.md, GRADIENT_TEXT_PATTERN.md, TAILWIND_V4_GRADIENT_GUIDE.md
+- create gradient-utils.ts utility for reusable gradient classes
+- add backup-strapi.ps1 PowerShell script (has known issues, manual backup recommended)
+
+DATABASE SYNC:
+- import 5 config changes via Strapi Config Sync
+- newsletter-cta-section, section-badge, section-background synced
+- section-header with gradientDirection synced
+- metrics-section config synced
+- all TypeScript types regenerated successfully
+
+BUILD VERIFICATION:
+- strapi build: no errors
+- UI build: no errors (Czech locale warnings expected)
+- TypeScript compilation: all types valid
+- lifecycle code validated: adminUser.ts, user.ts are correct Strapi v5 patterns
+
+TECHNICAL NOTES:
+- Strapi v5 proper use of shared components (badge, background, header)
+- newsletter section now fully composable and reusable
+- gradient system foundation laid for atomic component refactor
+- custom gradient colors deferred to atomic refactor with color pickers
+- background working, gradients showing default theme colors
+- ready for next phase: atomic component architecture implementation

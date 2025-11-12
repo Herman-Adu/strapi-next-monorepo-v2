@@ -34,7 +34,14 @@
       "enum": ["default", "gradient", "two-tone"],
       "default": "default",
       "required": false,
-      "description": "Heading text style: default (solid), gradient (subtle theme gradient), two-tone (first word accented)"
+      "description": "Heading text style: default (solid), gradient (theme gradient), two-tone (first word accented)"
+    },
+    "gradientDirection": {
+      "type": "enumeration",
+      "enum": ["diagonal", "horizontal", "vertical", "radial"],
+      "default": "diagonal",
+      "required": false,
+      "description": "Gradient direction (only used when headingStyle is gradient): diagonal (bottom-right), horizontal (left-right), vertical (top-bottom), radial (center outward)"
     },
     "alignment": {
       "type": "enumeration",

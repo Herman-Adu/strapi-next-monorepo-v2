@@ -15,11 +15,12 @@
         "muted",
         "bordered",
         "theme-subtle",
-        "theme-muted"
+        "theme-muted",
+        "theme-pastel"
       ],
       "default": "solid",
       "required": false,
-      "description": "Section background style: solid (default bg-background), transparent (no background with gradient), muted (subtle grey bg-muted/30), bordered (primary-colored border with gradient), theme-subtle (light theme gradient - great continuity with borders), theme-muted (stronger theme color)"
+      "description": "Section background style: solid (default bg-background), transparent (no background with gradient), muted (subtle grey bg-muted/30), bordered (primary-colored border with gradient), theme-subtle (light theme gradient - great continuity with borders), theme-muted (stronger theme color), theme-pastel (flat pastel color for gradient contrast)"
     },
     "pattern": {
       "type": "string",

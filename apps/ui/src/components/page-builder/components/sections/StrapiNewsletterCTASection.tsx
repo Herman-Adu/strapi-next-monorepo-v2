@@ -4,9 +4,12 @@ import { useState } from "react"
 import { Data } from "@repo/strapi"
 import { ArrowRight } from "lucide-react"
 
-import { Container } from "@/components/elementary/Container"
 import { StrapiIconButton } from "@/components/page-builder/components/elements/StrapiIconButton"
-import { SectionBadge, SectionWrapper } from "@/components/page-builder/shared"
+import {
+  SectionBadge,
+  SectionHeader,
+  SectionWrapper,
+} from "@/components/page-builder/shared"
 import { Button } from "@/components/ui/button"
 import { Checkbox } from "@/components/ui/checkbox"
 import { Input } from "@/components/ui/input"
@@ -37,24 +40,48 @@ export function StrapiNewsletterCTASection({
     setAgreedToTerms(false)
   }
 
+  // Use background from Strapi, or provide default bordered style
+  const backgroundConfig:
+    | Data.Component<"shared.section-background">
+    | undefined = component.background ?? {
+    id: 0,
+    backgroundStyle: "transparent" as const,
+    containerStyle: "bordered" as const,
+    containerWidth: "default" as const,
+    padding: "spacious" as const,
+    gradient: false,
+  }
+
   return (
-    <SectionWrapper background={component.background ?? undefined}>
-      <div className="cta-gradient absolute inset-0" />
-      <Container className="@container relative mx-auto px-4 sm:px-6">
-        <div className="border-primary/20 from-primary/5 shadow-primary/10 mx-auto flex min-h-[400px] max-w-7xl items-center rounded-2xl border-2 bg-gradient-to-br to-transparent p-8 shadow-lg @2xl:p-12 @4xl:p-16">
+    <SectionWrapper background={backgroundConfig}>
+      <div className="w-full space-y-12">
+        <SectionBadge badge={component.badge ?? undefined} />
+
+        <div className="mx-auto w-full max-w-6xl">
           <div className="grid w-full items-start gap-12 @2xl:gap-16 @3xl:grid-cols-[1.2fr_1fr] @4xl:gap-20">
-            {/* Left column */}
+            {/* Left column - Form */}
             <div>
-              <SectionBadge badge={component.badge ?? undefined} />
-              <h2 className="mb-4 text-3xl font-bold md:text-4xl">
-                {component.heading}
-              </h2>
-              <p className="text-foreground/80 mb-6 leading-relaxed @2xl:mb-8">
-                {component.description}
-              </p>
+              {/* Use SectionHeader if configured, otherwise fallback to legacy fields */}
+              {component.header ? (
+                <SectionHeader
+                  header={component.header}
+                  className="mb-0 text-left"
+                />
+              ) : (
+                <div className="space-y-6">
+                  <h2 className="text-primary dark:text-foreground text-3xl font-bold md:text-4xl">
+                    {component.heading}
+                  </h2>
+                  {component.description && (
+                    <p className="text-foreground/80 leading-relaxed">
+                      {component.description}
+                    </p>
+                  )}
+                </div>
+              )}
 
               {/* Newsletter Form */}
-              <form onSubmit={handleSubmit} className="space-y-4">
+              <form onSubmit={handleSubmit} className="mt-6 space-y-4">
                 <div className="flex flex-col gap-3 @lg:flex-row">
                   <Input
                     type="email"
@@ -140,7 +167,7 @@ export function StrapiNewsletterCTASection({
                   >
                     <div className="bg-primary/5 group-hover:bg-primary/10 absolute top-0 right-0 h-24 w-24 blur-2xl transition-all duration-300" />
                     <div className="relative">
-                      <h3 className="text-foreground mb-2 font-semibold">
+                      <h3 className="text-primary dark:text-foreground mb-2 font-semibold">
                         {benefit.title}
                       </h3>
                       <p className="text-muted-foreground text-sm leading-relaxed">
@@ -153,7 +180,7 @@ export function StrapiNewsletterCTASection({
             )}
           </div>
         </div>
-      </Container>
+      </div>
     </SectionWrapper>
   )
 }

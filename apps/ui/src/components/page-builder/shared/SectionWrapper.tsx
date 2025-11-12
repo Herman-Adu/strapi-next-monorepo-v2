@@ -21,6 +21,7 @@ function getBackgroundClass(
     | "bordered"
     | "theme-subtle"
     | "theme-muted"
+    | "theme-pastel"
 ): string {
   switch (style) {
     case "solid":
@@ -31,6 +32,8 @@ function getBackgroundClass(
       return "bg-gradient-to-br from-primary/[0.03] to-primary/[0.05] dark:bg-transparent"
     case "theme-muted":
       return "bg-primary/10 dark:bg-primary/5"
+    case "theme-pastel":
+      return "theme-pastel-bg"
     case "bordered":
       return "border-2 border-primary/20 bg-gradient-to-br from-primary/5 to-transparent shadow-lg shadow-primary/10"
     case "transparent":
@@ -78,12 +81,36 @@ function getPaddingClass(
 }
 
 /**
+ * Map padding enum to container inner padding classes
+ */
+function getContainerPaddingClass(
+  padding?: "default" | "compact" | "spacious" | "none"
+): string {
+  switch (padding) {
+    case "compact":
+      return "p-6 @2xl:p-8 @4xl:p-10"
+    case "spacious":
+      return "p-12 @2xl:p-16 @4xl:p-24"
+    case "none":
+      return "p-0"
+    case "default":
+    default:
+      return "p-8 @2xl:p-12 @4xl:p-16"
+  }
+}
+
+/**
  * Map container style enum to wrapper styling
  */
-function getContainerClass(style?: "default" | "bordered"): string {
+function getContainerClass(
+  style?: "default" | "bordered",
+  padding?: "default" | "compact" | "spacious" | "none"
+): string {
+  const paddingClass = getContainerPaddingClass(padding)
+
   switch (style) {
     case "bordered":
-      return "mx-auto rounded-2xl border-2 border-primary/20 bg-gradient-to-br from-primary/5 to-transparent p-12 shadow-lg shadow-primary/10 @2xl:p-16 @4xl:p-24"
+      return `mx-auto flex min-h-[400px] items-center rounded-2xl border-2 border-primary/20 bg-gradient-to-br from-primary/5 to-transparent shadow-lg shadow-primary/10 ${paddingClass}`
     case "default":
     default:
       return "mx-auto"
@@ -109,7 +136,7 @@ export function SectionWrapper({
   // Build CSS classes
   const backgroundClass = getBackgroundClass(backgroundStyle)
   const paddingClass = getPaddingClass(padding)
-  const containerClass = getContainerClass(containerStyle)
+  const containerClass = getContainerClass(containerStyle, padding)
   const widthClass = getContainerWidthClass(containerWidth)
 
   // Section wrapper classes

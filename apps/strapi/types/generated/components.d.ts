@@ -613,6 +613,7 @@ export interface SectionsNewsletterCtaSection extends Struct.ComponentSchema {
       Schema.Attribute.DefaultTo<"I agree to the terms and conditions">
     gdprLink: Schema.Attribute.Component<"utilities.link", false> &
       Schema.Attribute.Required
+    header: Schema.Attribute.Component<"shared.section-header", false>
     heading: Schema.Attribute.String & Schema.Attribute.Required
     inputPlaceholder: Schema.Attribute.String &
       Schema.Attribute.DefaultTo<"Enter your email">
@@ -834,6 +835,7 @@ export interface SharedSectionBackground extends Struct.ComponentSchema {
         "bordered",
         "theme-subtle",
         "theme-muted",
+        "theme-pastel",
       ]
     > &
       Schema.Attribute.DefaultTo<"solid">
@@ -890,6 +892,10 @@ export interface SharedSectionHeader extends Struct.ComponentSchema {
     alignment: Schema.Attribute.Enumeration<["left", "center", "right"]> &
       Schema.Attribute.DefaultTo<"center">
     description: Schema.Attribute.Text
+    gradientDirection: Schema.Attribute.Enumeration<
+      ["diagonal", "horizontal", "vertical", "radial"]
+    > &
+      Schema.Attribute.DefaultTo<"diagonal">
     heading: Schema.Attribute.String & Schema.Attribute.Required
     headingAccent: Schema.Attribute.String
     headingSize: Schema.Attribute.Enumeration<

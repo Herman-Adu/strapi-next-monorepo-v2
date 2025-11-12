@@ -28,35 +28,35 @@ function getHeadingSizeClass(
 }
 
 /**
- * Map heading style enum to CSS classes
+ * Map heading style enum to CSS classes with gradient direction support
  */
 function getHeadingStyleClass(
-  style?: "default" | "gradient" | "two-tone"
+  style?: "default" | "gradient" | "two-tone",
+  gradientDirection?: "diagonal" | "horizontal" | "vertical" | "radial"
 ): string {
-  switch (style) {
-    case "gradient":
-      return "bg-gradient-to-br from-primary to-primary/60 bg-clip-text text-transparent"
-    case "two-tone":
-      return "" // Handled in renderHeading
-    case "default":
-    default:
-      return "text-muted-foreground dark:text-foreground"
+  if (style === "gradient") {
+    // Use CSS classes from globals.css for theme-specific gradients
+    // Dark mode: Bright emerald (#22c55e) → Subtle (10% opacity)
+    // Light mode: Will be refined separately
+    switch (gradientDirection) {
+      case "horizontal":
+        return "gradient-heading-horizontal"
+      case "vertical":
+        return "gradient-heading-vertical"
+      case "radial":
+        return "gradient-heading-radial"
+      case "diagonal":
+      default:
+        return "gradient-heading-diagonal"
+    }
   }
-}
 
-/**
- * Map alignment enum to CSS classes
- */
-function getAlignmentClass(alignment?: "left" | "center" | "right"): string {
-  switch (alignment) {
-    case "left":
-      return "text-left"
-    case "right":
-      return "text-right"
-    case "center":
-    default:
-      return "text-center"
+  if (style === "two-tone") {
+    return "" // Handled in renderHeading
   }
+
+  // Default style - flat color
+  return "text-primary dark:text-foreground"
 }
 
 /**
@@ -75,7 +75,7 @@ function getSpacingClass(spacing?: "compact" | "default" | "spacious"): string {
 }
 
 /**
- * Render heading with optional two-tone styling
+ * Render heading with optional two-tone styling - COPIED FROM METRICSSECTION
  */
 function renderHeading(
   heading: string,
@@ -92,12 +92,17 @@ function renderHeading(
       </>
     )
   }
+
+  // For flat/gradient styles, combine headingAccent and heading if both exist
+  if (headingAccent) {
+    return `${headingAccent} ${heading}`
+  }
+
   return heading
 }
 
 /**
- * Reusable header component combining heading, description, and styling options.
- * Supports gradient text, two-tone styles, alignment, and optional dividers.
+ * Reusable header component - STRUCTURE COPIED FROM METRICSSECTION
  */
 export function SectionHeader({ header, className }: SectionHeaderProps) {
   if (!header?.heading) return null
@@ -108,38 +113,32 @@ export function SectionHeader({ header, className }: SectionHeaderProps) {
     description,
     headingSize = "large",
     headingStyle = "default",
-    alignment = "center",
+    gradientDirection = "diagonal",
     showDivider = false,
     spacing = "default",
   } = header
 
   const headingSizeClass = getHeadingSizeClass(headingSize ?? undefined)
-  const headingStyleClass = getHeadingStyleClass(headingStyle ?? undefined)
-  const alignmentClass = getAlignmentClass(alignment ?? undefined)
+  const headingStyleClass = getHeadingStyleClass(
+    headingStyle ?? undefined,
+    gradientDirection ?? undefined
+  )
   const spacingClass = getSpacingClass(spacing ?? undefined)
 
-  const wrapperClasses = cn(
-    "mb-12 md:mb-16",
-    spacingClass,
-    alignmentClass,
-    className
-  )
+  const wrapperClasses = cn(spacingClass, "text-left", className)
 
+  // EXACT SAME PATTERN AS METRICSSECTION LINE 94-96
   const headingClasses = cn(
     "font-bold tracking-tight",
     headingSizeClass,
     headingStyleClass
   )
 
-  const descriptionClasses = cn(
-    "mx-auto max-w-2xl text-lg text-muted-foreground",
-    alignment === "center" ? "mx-auto" : "",
-    alignment === "left" ? "mr-auto" : "",
-    alignment === "right" ? "ml-auto" : ""
-  )
+  const descriptionClasses = "text-lg text-muted-foreground"
 
   return (
     <div className={wrapperClasses}>
+      {/* EXACT SAME PATTERN AS METRICSSECTION h2 */}
       <h2 className={headingClasses}>
         {renderHeading(
           heading,
@@ -149,13 +148,7 @@ export function SectionHeader({ header, className }: SectionHeaderProps) {
       </h2>
 
       {showDivider && (
-        <div
-          className={cn(
-            "from-primary/60 to-primary mx-auto h-1 w-24 rounded-full bg-gradient-to-r",
-            alignment === "left" && "mx-0",
-            alignment === "right" && "mr-0 ml-auto"
-          )}
-        />
+        <div className="from-primary/60 to-primary mb-8 h-1 w-24 rounded-full bg-gradient-to-r" />
       )}
 
       {description && <p className={descriptionClasses}>{description}</p>}

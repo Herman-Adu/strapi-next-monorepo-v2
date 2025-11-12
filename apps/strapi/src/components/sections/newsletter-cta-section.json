@@ -16,6 +16,11 @@
       "repeatable": false,
       "component": "shared.section-background"
     },
+    "header": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.section-header"
+    },
     "heading": {
       "type": "string",
       "required": true

@@ -24,6 +24,7 @@
     "build:ui": "turbo run build --filter=@repo/ui",
     "clear:port": "powershell -ExecutionPolicy Bypass -File ./scripts/utils/clear-strapi-connections.ps1",
     "commit": "git-cz",
+    "commit:quick": "powershell -ExecutionPolicy Bypass -File ./scripts/commit.ps1",
     "dev": "node ./scripts/dev-orchestrated.js",
     "dev:all": "turbo dev",
     "dev:strapi": "turbo run dev --filter=@repo/strapi",
