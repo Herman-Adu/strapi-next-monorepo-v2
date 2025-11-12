@@ -1,3 +1,4 @@
+/* Theme color definitions for Tailwind CSS */
 @theme static {
   --font-sans: Roboto;
   --color-red-50: oklch(0.971 0.013 17.38);

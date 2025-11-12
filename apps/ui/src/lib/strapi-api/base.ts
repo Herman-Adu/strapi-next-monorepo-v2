@@ -196,7 +196,7 @@ export default abstract class BaseStrapiClient {
     const response: APIResponseCollection<Result<TContentTypeUID, TParams>> =
       await this.fetchAPI(path, mergedParams, requestInit, options)
 
-    // return last published entry
+    // Return last published entry.
     return {
       data: response.data.pop() ?? null,
       meta: {},

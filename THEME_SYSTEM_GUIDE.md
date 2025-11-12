@@ -522,4 +522,4 @@ yarn dev
 
 - Check existing themes in `globals.css` for examples
 - Use browser DevTools to inspect CSS variables
-- Test with the theme test page before deploying
+- Test with the theme test page before deploying.

@@ -14,7 +14,7 @@ export function StrapiMarqueeSection({
 }: {
   readonly component: Data.Component<"sections.marquee-section">
 }) {
-  // Determine which items to render based on displayType and variant
+  // Determine which items to render based on displayType and variant.
   const items =
     component.displayType === "logos"
       ? component.logos
