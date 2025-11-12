@@ -6,6 +6,16 @@
   },
   "options": {},
   "attributes": {
+    "badge": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.section-badge"
+    },
+    "background": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.section-background"
+    },
     "heading": {
       "type": "string",
       "required": true

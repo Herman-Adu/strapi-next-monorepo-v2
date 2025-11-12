@@ -589,6 +589,8 @@ export interface SectionsNewsletterCtaSection extends Struct.ComponentSchema {
     displayName: "NewsletterCTASection"
   }
   attributes: {
+    background: Schema.Attribute.Component<"shared.section-background", false>
+    badge: Schema.Attribute.Component<"shared.section-badge", false>
     benefits: Schema.Attribute.Component<"elements.list-item", true> &
       Schema.Attribute.SetMinMax<
         {

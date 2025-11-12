@@ -6,6 +6,7 @@ import { ArrowRight } from "lucide-react"
 
 import { Container } from "@/components/elementary/Container"
 import { StrapiIconButton } from "@/components/page-builder/components/elements/StrapiIconButton"
+import { SectionBadge, SectionWrapper } from "@/components/page-builder/shared"
 import { Button } from "@/components/ui/button"
 import { Checkbox } from "@/components/ui/checkbox"
 import { Input } from "@/components/ui/input"
@@ -37,13 +38,14 @@ export function StrapiNewsletterCTASection({
   }
 
   return (
-    <section className="relative z-10 py-16 md:py-20">
+    <SectionWrapper background={component.background ?? undefined}>
       <div className="cta-gradient absolute inset-0" />
       <Container className="@container relative mx-auto px-4 sm:px-6">
         <div className="border-primary/20 from-primary/5 shadow-primary/10 mx-auto flex min-h-[400px] max-w-7xl items-center rounded-2xl border-2 bg-gradient-to-br to-transparent p-8 shadow-lg @2xl:p-12 @4xl:p-16">
           <div className="grid w-full items-start gap-12 @2xl:gap-16 @3xl:grid-cols-[1.2fr_1fr] @4xl:gap-20">
             {/* Left column */}
             <div>
+              <SectionBadge badge={component.badge ?? undefined} />
               <h2 className="mb-4 text-3xl font-bold md:text-4xl">
                 {component.heading}
               </h2>
@@ -152,7 +154,7 @@ export function StrapiNewsletterCTASection({
           </div>
         </div>
       </Container>
-    </section>
+    </SectionWrapper>
   )
 }
 
