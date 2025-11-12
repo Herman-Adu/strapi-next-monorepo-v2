@@ -238,7 +238,7 @@ export default abstract class BaseStrapiClient {
 
     // return last published entry
     return {
-      // @ts-expect-error localizations TODO @dominik-juriga
+      // @ts-ignore localizations TODO @dominik-juriga
       data: response.data.pop() ?? null,
       meta: response.meta,
     }

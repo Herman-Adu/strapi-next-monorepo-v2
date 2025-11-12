@@ -183,6 +183,7 @@ export function StrapiOrbitingBadge({
   const badgeRef = useRef<HTMLDivElement>(null)
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 })
   const [borderRadius, setBorderRadius] = useState(0)
+  const [isReady, setIsReady] = useState(false)
 
   useEffect(() => {
     if (!badgeRef.current) return
@@ -197,6 +198,10 @@ export function StrapiOrbitingBadge({
           rect.height
         )
         setBorderRadius(radiusPixels)
+        // Mark as ready only when we have valid dimensions
+        if (rect.width > 0 && rect.height > 0) {
+          setIsReady(true)
+        }
       }
     }
 
@@ -217,7 +222,17 @@ export function StrapiOrbitingBadge({
     const h = dimensions.height
     const r = borderRadius
 
-    if (w === 0 || h === 0) return []
+    // Validate dimensions and radius
+    if (
+      w === 0 ||
+      h === 0 ||
+      r < 0 ||
+      !isFinite(w) ||
+      !isFinite(h) ||
+      !isFinite(r)
+    ) {
+      return []
+    }
 
     const segments = 100
     const points: { x: number; y: number }[] = []
@@ -225,73 +240,86 @@ export function StrapiOrbitingBadge({
     // Top edge (left to right)
     for (let i = 0; i <= segments / 4; i++) {
       const t = i / (segments / 4)
-      if (t <= r / w) {
+      if (r > 0 && w > 0 && t <= r / w) {
         // Top-left corner
         const angle = Math.PI + (Math.PI / 2) * (t / (r / w))
-        points.push({
-          x: r + r * Math.cos(angle),
-          y: r + r * Math.sin(angle),
-        })
+        const x = r + r * Math.cos(angle)
+        const y = r + r * Math.sin(angle)
+        if (isFinite(x) && isFinite(y)) {
+          points.push({ x, y })
+        }
       } else {
-        points.push({ x: r + (w - 2 * r) * ((t - r / w) / (1 - r / w)), y: 0 })
+        const x = r + (w - 2 * r) * ((t - r / w) / (1 - r / w))
+        const y = 0
+        if (isFinite(x) && isFinite(y)) {
+          points.push({ x, y })
+        }
       }
     }
 
     // Right edge (top to bottom)
     for (let i = 0; i <= segments / 4; i++) {
       const t = i / (segments / 4)
-      if (t <= r / h) {
+      if (r > 0 && h > 0 && t <= r / h) {
         // Top-right corner
         const angle = -Math.PI / 2 + (Math.PI / 2) * (t / (r / h))
-        points.push({
-          x: w - r + r * Math.cos(angle),
-          y: r + r * Math.sin(angle),
-        })
+        const x = w - r + r * Math.cos(angle)
+        const y = r + r * Math.sin(angle)
+        if (isFinite(x) && isFinite(y)) {
+          points.push({ x, y })
+        }
       } else {
-        points.push({ x: w, y: r + (h - 2 * r) * ((t - r / h) / (1 - r / h)) })
+        const x = w
+        const y = r + (h - 2 * r) * ((t - r / h) / (1 - r / h))
+        if (isFinite(x) && isFinite(y)) {
+          points.push({ x, y })
+        }
       }
     }
 
     // Bottom edge (right to left)
     for (let i = 0; i <= segments / 4; i++) {
       const t = i / (segments / 4)
-      if (t <= r / w) {
+      if (r > 0 && w > 0 && t <= r / w) {
         // Bottom-right corner
         const angle = (Math.PI / 2) * (t / (r / w))
-        points.push({
-          x: w - r + r * Math.cos(angle),
-          y: h - r + r * Math.sin(angle),
-        })
+        const x = w - r + r * Math.cos(angle)
+        const y = h - r + r * Math.sin(angle)
+        if (isFinite(x) && isFinite(y)) {
+          points.push({ x, y })
+        }
       } else {
-        points.push({
-          x: w - r - (w - 2 * r) * ((t - r / w) / (1 - r / w)),
-          y: h,
-        })
+        const x = w - r - (w - 2 * r) * ((t - r / w) / (1 - r / w))
+        const y = h
+        if (isFinite(x) && isFinite(y)) {
+          points.push({ x, y })
+        }
       }
     }
 
     // Left edge (bottom to top)
     for (let i = 0; i <= segments / 4; i++) {
       const t = i / (segments / 4)
-      if (t <= r / h) {
+      if (r > 0 && h > 0 && t <= r / h) {
         // Bottom-left corner
         const angle = Math.PI / 2 + (Math.PI / 2) * (t / (r / h))
-        points.push({
-          x: r + r * Math.cos(angle),
-          y: h - r + r * Math.sin(angle),
-        })
+        const x = r + r * Math.cos(angle)
+        const y = h - r + r * Math.sin(angle)
+        if (isFinite(x) && isFinite(y)) {
+          points.push({ x, y })
+        }
       } else {
-        points.push({
-          x: 0,
-          y: h - r - (h - 2 * r) * ((t - r / h) / (1 - r / h)),
-        })
+        const x = 0
+        const y = h - r - (h - 2 * r) * ((t - r / h) / (1 - r / h))
+        if (isFinite(x) && isFinite(y)) {
+          points.push({ x, y })
+        }
       }
     }
 
     return points
   }
 
-  const pathPoints = getPathPoints()
   const badgeClass = getBadgeClass(badgeSize)
   const borderRadiusClass = getBorderRadiusClass(badgeBorderRadius)
   const duration = getAnimationDuration(badgeAnimationSpeed)
@@ -302,6 +330,44 @@ export function StrapiOrbitingBadge({
   const orbColorLight = "hsl(142 76% 36%)" // Match the badge border green (#16a34a)
   const orbColorDark = "hsl(var(--muted-foreground) / 0.9)" // Bright white/grey for dark theme
   const orbId = `orb-${badge?.replace(/\s/g, "-") || "badge"}`
+
+  // Only calculate path points if we're ready to animate
+  const pathPoints =
+    badgeAnimation && isReady && dimensions.width > 0 && dimensions.height > 0
+      ? getPathPoints()
+      : []
+
+  // Ensure all path points have valid coordinates before creating animation arrays
+  const validPathPoints = pathPoints.filter(
+    (p) => p.x !== undefined && p.y !== undefined && !isNaN(p.x) && !isNaN(p.y)
+  )
+
+  // Only render animation if we have valid starting position and animation path
+  const canAnimate =
+    validPathPoints.length > 0 &&
+    validPathPoints[0] !== undefined &&
+    typeof validPathPoints[0].x === "number" &&
+    typeof validPathPoints[0].y === "number" &&
+    !isNaN(validPathPoints[0].x) &&
+    !isNaN(validPathPoints[0].y)
+
+  // Only create animation data if we can actually animate
+  let startX = 0
+  let startY = 0
+  let animateX: number[] = []
+  let animateY: number[] = []
+
+  if (canAnimate) {
+    startX = validPathPoints[0]!.x
+    startY = validPathPoints[0]!.y
+    // Filter arrays one more time to ensure no undefined values
+    animateX = validPathPoints
+      .map((p) => p.x)
+      .filter((val): val is number => typeof val === "number" && isFinite(val))
+    animateY = validPathPoints
+      .map((p) => p.y)
+      .filter((val): val is number => typeof val === "number" && isFinite(val))
+  }
 
   if (!badge) return null
 
@@ -316,7 +382,7 @@ export function StrapiOrbitingBadge({
           <span>{badge}</span>
         </div>
 
-        {badgeAnimation && dimensions.width > 0 && (
+        {canAnimate && animateX.length > 0 && (
           <svg
             className="pointer-events-none absolute inset-0 overflow-visible motion-reduce:hidden"
             width={dimensions.width}
@@ -376,9 +442,10 @@ export function StrapiOrbitingBadge({
                 fill={orbColorLight}
                 opacity={glowIntensity.opacity.outer}
                 filter={`url(#${orbId}-glow)`}
+                initial={{ cx: startX, cy: startY }}
                 animate={{
-                  cx: pathPoints.map((p) => p.x),
-                  cy: pathPoints.map((p) => p.y),
+                  cx: animateX,
+                  cy: animateY,
                 }}
                 transition={{
                   duration: duration,
@@ -393,9 +460,10 @@ export function StrapiOrbitingBadge({
                 fill={orbColorLight}
                 opacity={glowIntensity.opacity.middle}
                 filter={`url(#${orbId}-glow)`}
+                initial={{ cx: startX, cy: startY }}
                 animate={{
-                  cx: pathPoints.map((p) => p.x),
-                  cy: pathPoints.map((p) => p.y),
+                  cx: animateX,
+                  cy: animateY,
                 }}
                 transition={{
                   duration: duration,
@@ -410,9 +478,10 @@ export function StrapiOrbitingBadge({
                 fill={orbColorLight}
                 opacity="1"
                 filter={`url(#${orbId}-glow)`}
+                initial={{ cx: startX, cy: startY }}
                 animate={{
-                  cx: pathPoints.map((p) => p.x),
-                  cy: pathPoints.map((p) => p.y),
+                  cx: animateX,
+                  cy: animateY,
                 }}
                 transition={{
                   duration: duration,
@@ -430,9 +499,10 @@ export function StrapiOrbitingBadge({
                 fill="#ffffff"
                 opacity={glowIntensity.opacity.outer * 1.5}
                 filter={`url(#${orbId}-glow)`}
+                initial={{ cx: startX, cy: startY }}
                 animate={{
-                  cx: pathPoints.map((p) => p.x),
-                  cy: pathPoints.map((p) => p.y),
+                  cx: animateX,
+                  cy: animateY,
                 }}
                 transition={{
                   duration: duration,
@@ -447,9 +517,10 @@ export function StrapiOrbitingBadge({
                 fill="#ffffff"
                 opacity={glowIntensity.opacity.middle * 1.8}
                 filter={`url(#${orbId}-glow)`}
+                initial={{ cx: startX, cy: startY }}
                 animate={{
-                  cx: pathPoints.map((p) => p.x),
-                  cy: pathPoints.map((p) => p.y),
+                  cx: animateX,
+                  cy: animateY,
                 }}
                 transition={{
                   duration: duration,
@@ -464,9 +535,10 @@ export function StrapiOrbitingBadge({
                 fill={`url(#${orbId}-gradient-dark)`}
                 opacity="1"
                 filter={`url(#${orbId}-glow)`}
+                initial={{ cx: startX, cy: startY }}
                 animate={{
-                  cx: pathPoints.map((p) => p.x),
-                  cy: pathPoints.map((p) => p.y),
+                  cx: animateX,
+                  cy: animateY,
                 }}
                 transition={{
                   duration: duration,

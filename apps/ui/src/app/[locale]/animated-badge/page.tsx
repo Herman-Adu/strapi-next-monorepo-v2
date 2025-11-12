@@ -10,7 +10,7 @@ export default function AnimatedBadge() {
         <p className="text-muted-foreground">
           Watch the orb of light travel smoothly along the border
         </p>
-        nimated
+        animated
       </div>
 
       <div className="flex flex-wrap items-center justify-center gap-8">
