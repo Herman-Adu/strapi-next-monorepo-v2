@@ -46,24 +46,24 @@ export default function ThemeTestPage() {
         </CardHeader>
         <CardContent className="grid grid-cols-2 gap-4 md:grid-cols-4">
           <div>
-            <div className="bg-primary h-24 rounded-lg shadow-md"></div>
+            <div className="bg-primary h-24 rounded-lg shadow-md" />
             <p className="text-foreground mt-2 text-sm font-medium">Primary</p>
             <p className="text-muted-foreground text-xs">#FF8C00</p>
           </div>
           <div>
-            <div className="bg-secondary h-24 rounded-lg shadow-md"></div>
+            <div className="bg-secondary h-24 rounded-lg shadow-md" />
             <p className="text-foreground mt-2 text-sm font-medium">
               Secondary
             </p>
             <p className="text-muted-foreground text-xs">#F5F5F5</p>
           </div>
           <div>
-            <div className="bg-accent h-24 rounded-lg shadow-md"></div>
+            <div className="bg-accent h-24 rounded-lg shadow-md" />
             <p className="text-foreground mt-2 text-sm font-medium">Accent</p>
             <p className="text-muted-foreground text-xs">#FFF4E6</p>
           </div>
           <div>
-            <div className="bg-muted h-24 rounded-lg shadow-md"></div>
+            <div className="bg-muted h-24 rounded-lg shadow-md" />
             <p className="text-foreground mt-2 text-sm font-medium">Muted</p>
             <p className="text-muted-foreground text-xs">#F5F5F5</p>
           </div>

@@ -29,7 +29,6 @@ export function MobileNavigationClient({
   links,
   locale,
   session,
-  signInText = "Sign in",
 }: Props) {
   const [isOpen, setIsOpen] = useState(false)
   const [isAnimating, setIsAnimating] = useState(false)

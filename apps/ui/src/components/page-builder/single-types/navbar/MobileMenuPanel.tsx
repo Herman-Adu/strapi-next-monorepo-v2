@@ -44,7 +44,6 @@ export function MobileMenuPanel({
   links,
   locale,
   session,
-  signInText = "Sign in",
   isOpen,
   onClose,
 }: Props) {

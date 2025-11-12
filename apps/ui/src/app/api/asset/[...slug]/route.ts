@@ -19,11 +19,7 @@ export async function GET(
     const { slug } = await params
     const path = Array.isArray(slug) ? slug.join("/") : slug
 
-    console.log(`[Asset Proxy] Requesting: ${path}`)
-    console.log(`[Asset Proxy] Strapi URL: ${env.STRAPI_URL}`)
-
     const url = `${env.STRAPI_URL}/${path}`
-    console.log(`[Asset Proxy] Full URL: ${url}`)
 
     const response = await fetch(url, {
       method: request.method,
@@ -32,12 +28,7 @@ export async function GET(
       },
     })
 
-    console.log(`[Asset Proxy] Response status: ${response.status}`)
-
     if (!response.ok) {
-      console.error(
-        `[Asset Proxy] Failed to fetch asset: ${response.status} ${response.statusText}`
-      )
       return NextResponse.json(
         { error: `Failed to fetch asset: ${response.statusText}` },
         { status: response.status }
