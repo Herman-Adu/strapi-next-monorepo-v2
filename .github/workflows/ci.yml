@@ -22,9 +22,6 @@ jobs:
     timeout-minutes: 15
     runs-on: ubuntu-latest 
     steps:
-      - name: Set git config for line endings
-        run: git config --global core.autocrlf false
-
       - name: Check out code
         uses: actions/checkout@v4
         with:
@@ -64,9 +61,6 @@ jobs:
     timeout-minutes: 15
     runs-on: ubuntu-latest
     steps:
-      - name: Set git config for line endings
-        run: git config --global core.autocrlf false
-
       - name: Check out code
         uses: actions/checkout@v4
         with:
