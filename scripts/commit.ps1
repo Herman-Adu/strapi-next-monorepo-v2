@@ -135,7 +135,6 @@ function Get-CommitScope {
 
     $targetEmoji = [char]::ConvertFromUtf32(0x1F3AF)  # 🎯
     Write-ColorOutput "`n$targetEmoji Enter scope (optional, e.g., newsletter, strapi, ui):" "Cyan"
-    Write-ColorOutput "`n🎯 Enter scope (optional, e.g., newsletter, strapi, ui):" "Cyan"
     $inputScope = Read-Host "Scope"
     
     return $inputScope.Trim()
@@ -153,8 +152,10 @@ function Get-CommitMessage {
     
     if ($inputMessage.Length -gt 72) {
         Write-ColorOutput "$warningEmoji  Warning: Message is longer than 72 characters" "Yellow"
-    }   Write-ColorOutput "⚠️  Warning: Message is longer than 72 characters" "Yellow"
     }
+    
+    return $inputMessage.Trim()
+}
     
 function Get-CommitBody {
     if ($Body) {
@@ -163,9 +164,6 @@ function Get-CommitBody {
 
     $docEmoji = [char]::ConvertFromUtf32(0x1F4C4)  # 📄
     Write-ColorOutput "`n$docEmoji Enter detailed description (optional, press Enter to skip):" "Cyan"
-    }
-
-    Write-ColorOutput "`n📄 Enter detailed description (optional, press Enter to skip):" "Cyan"
     Write-ColorOutput "   (Press Enter twice when done)" "DarkGray"
     
     $lines = @()
@@ -180,6 +178,9 @@ function Get-CommitBody {
         return ($lines -join "`n")
     }
     
+    return ""
+}
+
 function Get-BreakingChange {
     if ($Breaking) {
         return $Breaking
@@ -187,9 +188,6 @@ function Get-BreakingChange {
 
     $warningEmoji = [char]::ConvertFromUtf32(0x26A0) + [char]::ConvertFromUtf32(0xFE0F)  # ⚠️
     Write-ColorOutput "`n$warningEmoji  Is this a breaking change? (y/N):" "Cyan"
-    }
-
-    Write-ColorOutput "`n⚠️  Is this a breaking change? (y/N):" "Cyan"
     $isBreaking = Read-Host
     
     if ($isBreaking -eq 'y' -or $isBreaking -eq 'Y') {
@@ -215,7 +213,7 @@ function Build-CommitMessage {
     if ($CommitScope) {
         $header = "$emoji $CommitType($CommitScope): $CommitMessage"
     } else {
-        $header = "$emoji $CommitType: $CommitMessage"
+        $header = "$emoji ${CommitType}: $CommitMessage"
     }
     
     # Build the full commit message
@@ -242,11 +240,13 @@ function Show-CommitPreview {
     Write-ColorOutput $CommitMessage "White"
     Write-ColorOutput "═══════════════════════════════════════════════════════════" "Green"
     Write-ColorOutput "`n" "White"
+}
+
 # Main execution
 try {
     $rocketEmoji = [char]::ConvertFromUtf32(0x1F680)  # 🚀
     Write-ColorOutput "`n$rocketEmoji Git Commit Helper" "Green"
-try {
+    
     # Check if we're in a git repository
     $isGitRepo = git rev-parse --git-dir 2>$null
     if (-not $isGitRepo) {
@@ -260,8 +260,8 @@ try {
     if (-not $stagedChanges) {
         $warningEmoji = [char]::ConvertFromUtf32(0x26A0) + [char]::ConvertFromUtf32(0xFE0F)  # ⚠️
         Write-ColorOutput "`n$warningEmoji  No staged changes found." "Yellow"
-    $stagedChanges = git diff --cached --name-only
-    if (-not $stagedChanges) {
+        $stageAll = Read-Host "Stage all changes? (y/N)"
+        
         if ($stageAll -eq 'y' -or $stageAll -eq 'Y') {
             git add -A
             $checkEmoji = [char]::ConvertFromUtf32(0x2705)  # ✅
@@ -269,10 +269,6 @@ try {
         } else {
             $crossEmoji = [char]::ConvertFromUtf32(0x274C)  # ❌
             Write-ColorOutput "$crossEmoji Commit cancelled - no changes staged" "Red"
-            exit 1
-        }
-    }   } else {
-            Write-ColorOutput "❌ Commit cancelled - no changes staged" "Red"
             exit 1
         }
     }
