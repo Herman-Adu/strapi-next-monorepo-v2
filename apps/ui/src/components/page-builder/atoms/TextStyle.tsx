@@ -196,7 +196,9 @@ export function TextStyle({
 
     // Fall back to theme gradient (CSS classes)
     const gradientClass = getThemeGradientClass(direction)
-    return <Component className={cn(className, gradientClass)}>{children}</Component>
+    return (
+      <Component className={cn(className, gradientClass)}>{children}</Component>
+    )
   }
 
   // two-tone style should be handled by parent component
