@@ -2,6 +2,7 @@
 
 import { Data } from "@repo/strapi"
 import { cn } from "@/lib/styles"
+import { TextStyle } from "@/components/page-builder/atoms/TextStyle"
 
 interface SectionHeaderProps {
   header?: Data.Component<"shared.section-header">
@@ -28,38 +29,6 @@ function getHeadingSizeClass(
 }
 
 /**
- * Map heading style enum to CSS classes with gradient direction support
- */
-function getHeadingStyleClass(
-  style?: "default" | "gradient" | "two-tone",
-  gradientDirection?: "diagonal" | "horizontal" | "vertical" | "radial"
-): string {
-  if (style === "gradient") {
-    // Use CSS classes from globals.css for theme-specific gradients
-    // Dark mode: Bright emerald (#22c55e) → Subtle (10% opacity)
-    // Light mode: Will be refined separately
-    switch (gradientDirection) {
-      case "horizontal":
-        return "gradient-heading-horizontal"
-      case "vertical":
-        return "gradient-heading-vertical"
-      case "radial":
-        return "gradient-heading-radial"
-      case "diagonal":
-      default:
-        return "gradient-heading-diagonal"
-    }
-  }
-
-  if (style === "two-tone") {
-    return "" // Handled in renderHeading
-  }
-
-  // Default style - flat color
-  return "text-primary dark:text-foreground"
-}
-
-/**
  * Map spacing enum to CSS classes
  */
 function getSpacingClass(spacing?: "compact" | "default" | "spacious"): string {
@@ -75,35 +44,8 @@ function getSpacingClass(spacing?: "compact" | "default" | "spacious"): string {
 }
 
 /**
- * Render heading with optional two-tone styling - COPIED FROM METRICSSECTION
- */
-function renderHeading(
-  heading: string,
-  headingAccent?: string,
-  style?: "default" | "gradient" | "two-tone"
-) {
-  if (style === "two-tone" && headingAccent) {
-    return (
-      <>
-        <span className="text-primary">{headingAccent}</span>{" "}
-        <span className="text-muted-foreground dark:text-foreground">
-          {heading}
-        </span>
-      </>
-    )
-  }
-
-  // For flat/gradient styles, combine headingAccent and heading if both exist
-  if (headingAccent) {
-    return `${headingAccent} ${heading}`
-  }
-
-  return heading
-}
-
-/**
  * Reusable header component - STRUCTURE COPIED FROM METRICSSECTION
- * Now uses atomic textStyle component for gradient configuration
+ * Now uses atomic TextStyle component for gradient/two-tone rendering
  */
 export function SectionHeader({ header, className }: SectionHeaderProps) {
   if (!header?.heading) return null
@@ -118,34 +60,50 @@ export function SectionHeader({ header, className }: SectionHeaderProps) {
     spacing = "default",
   } = header
 
-  // Extract textStyle config or use defaults
+  // Extract textStyle config
   const headingStyle = textStyle?.textStyle ?? "default"
-  const gradientDirection = textStyle?.gradientDirection ?? "diagonal"
 
   const headingSizeClass = getHeadingSizeClass(headingSize ?? undefined)
-  const headingStyleClass = getHeadingStyleClass(
-    headingStyle,
-    gradientDirection
-  )
   const spacingClass = getSpacingClass(spacing ?? undefined)
 
   const wrapperClasses = cn(spacingClass, "text-left", className)
 
-  // EXACT SAME PATTERN AS METRICSSECTION LINE 94-96
-  const headingClasses = cn(
-    "font-bold tracking-tight",
-    headingSizeClass,
-    headingStyleClass
-  )
+  // Base heading classes (size + weight + tracking)
+  const headingClasses = cn("font-bold tracking-tight", headingSizeClass)
 
   const descriptionClasses = "text-lg text-muted-foreground"
 
+  // Handle two-tone style (special rendering with accent + heading split)
+  if (headingStyle === "two-tone" && headingAccent) {
+    return (
+      <div className={wrapperClasses}>
+        <h2 className={headingClasses}>
+          <span className="text-primary">{headingAccent}</span>{" "}
+          <span className="text-muted-foreground dark:text-foreground">
+            {heading}
+          </span>
+        </h2>
+
+        {showDivider && (
+          <div className="from-primary/60 to-primary mb-8 h-1 w-24 rounded-full bg-gradient-to-r" />
+        )}
+
+        {description && <p className={descriptionClasses}>{description}</p>}
+      </div>
+    )
+  }
+
+  // For gradient/default styles, use TextStyle atom
+  // Combine headingAccent and heading if both exist
+  const fullHeading = headingAccent
+    ? `${headingAccent} ${heading}`
+    : heading
+
   return (
     <div className={wrapperClasses}>
-      {/* EXACT SAME PATTERN AS METRICSSECTION h2 */}
-      <h2 className={headingClasses}>
-        {renderHeading(heading, headingAccent ?? undefined, headingStyle)}
-      </h2>
+      <TextStyle textStyle={textStyle ?? undefined} as="h2" className={headingClasses}>
+        {fullHeading}
+      </TextStyle>
 
       {showDivider && (
         <div className="from-primary/60 to-primary mb-8 h-1 w-24 rounded-full bg-gradient-to-r" />
