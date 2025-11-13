@@ -1,0 +1,45 @@
+{
+  "collectionName": "components_atoms_orb_animations",
+  "info": {
+    "displayName": "Orb Animation",
+    "description": "Reusable orbiting light effect for badges, cards, buttons, containers, etc.",
+    "icon": "circle"
+  },
+  "options": {},
+  "attributes": {
+    "enabled": {
+      "type": "boolean",
+      "default": false,
+      "required": false,
+      "description": "Enable orbiting light animation around element border"
+    },
+    "speed": {
+      "type": "enumeration",
+      "enum": ["extra-slow", "slow", "medium", "fast"],
+      "default": "slow",
+      "required": false,
+      "description": "Animation speed: extra-slow (10s), slow (5s), medium (3s), fast (1.5s)"
+    },
+    "size": {
+      "type": "enumeration",
+      "enum": ["small", "medium", "large"],
+      "default": "medium",
+      "required": false,
+      "description": "Size of orbiting light dot: small (subtle), medium (balanced), large (prominent)"
+    },
+    "color": {
+      "type": "string",
+      "regex": "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$",
+      "required": false,
+      "description": "Hex color for orb glow (e.g., #22c55e). Leave empty to use theme primary color."
+    },
+    "blur": {
+      "type": "integer",
+      "default": 40,
+      "min": 0,
+      "max": 100,
+      "required": false,
+      "description": "Blur intensity in pixels (0-100). Higher = softer glow."
+    }
+  }
+}

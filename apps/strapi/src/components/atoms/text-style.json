@@ -1,0 +1,32 @@
+{
+  "collectionName": "components_atoms_text_styles",
+  "info": {
+    "displayName": "Text Style Options",
+    "description": "Styling options for any text element (headings, subheadings, labels, etc.)",
+    "icon": "paintBrush"
+  },
+  "options": {},
+  "attributes": {
+    "textStyle": {
+      "type": "enumeration",
+      "enum": ["default", "gradient", "two-tone"],
+      "default": "default",
+      "required": false,
+      "description": "Text appearance: default (solid theme color), gradient (color transition), two-tone (accent word + main text in different colors)"
+    },
+    "gradientDirection": {
+      "type": "enumeration",
+      "enum": ["diagonal", "horizontal", "vertical", "radial"],
+      "default": "diagonal",
+      "required": false,
+      "description": "Gradient direction (only used when textStyle is gradient): diagonal (bottom-right), horizontal (left-right), vertical (top-bottom), radial (center outward)"
+    },
+    "customGradient": {
+      "type": "component",
+      "repeatable": false,
+      "component": "atoms.gradient-colors",
+      "required": false,
+      "description": "Optional custom gradient colors (overrides default theme gradients). Leave empty to use theme colors."
+    }
+  }
+}

@@ -1,5 +1,70 @@
 import type { Schema, Struct } from "@strapi/strapi"
 
+export interface AtomsGradientColors extends Struct.ComponentSchema {
+  collectionName: "components_atoms_gradient_colors"
+  info: {
+    description: "Define custom gradient colors for light and dark modes with start, middle, end color stops"
+    displayName: "Custom Gradient Colors"
+    icon: "palette"
+  }
+  attributes: {
+    darkModeEnd: Schema.Attribute.String
+    darkModeMiddle: Schema.Attribute.String
+    darkModeStart: Schema.Attribute.String
+    lightModeEnd: Schema.Attribute.String
+    lightModeMiddle: Schema.Attribute.String
+    lightModeStart: Schema.Attribute.String
+  }
+}
+
+export interface AtomsOrbAnimation extends Struct.ComponentSchema {
+  collectionName: "components_atoms_orb_animations"
+  info: {
+    description: "Reusable orbiting light effect for badges, cards, buttons, containers, etc."
+    displayName: "Orb Animation"
+    icon: "circle"
+  }
+  attributes: {
+    blur: Schema.Attribute.Integer &
+      Schema.Attribute.SetMinMax<
+        {
+          max: 100
+          min: 0
+        },
+        number
+      > &
+      Schema.Attribute.DefaultTo<40>
+    color: Schema.Attribute.String
+    enabled: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>
+    size: Schema.Attribute.Enumeration<["small", "medium", "large"]> &
+      Schema.Attribute.DefaultTo<"medium">
+    speed: Schema.Attribute.Enumeration<
+      ["extra-slow", "slow", "medium", "fast"]
+    > &
+      Schema.Attribute.DefaultTo<"slow">
+  }
+}
+
+export interface AtomsTextStyle extends Struct.ComponentSchema {
+  collectionName: "components_atoms_text_styles"
+  info: {
+    description: "Styling options for any text element (headings, subheadings, labels, etc.)"
+    displayName: "Text Style Options"
+    icon: "paintBrush"
+  }
+  attributes: {
+    customGradient: Schema.Attribute.Component<"atoms.gradient-colors", false>
+    gradientDirection: Schema.Attribute.Enumeration<
+      ["diagonal", "horizontal", "vertical", "radial"]
+    > &
+      Schema.Attribute.DefaultTo<"diagonal">
+    textStyle: Schema.Attribute.Enumeration<
+      ["default", "gradient", "two-tone"]
+    > &
+      Schema.Attribute.DefaultTo<"default">
+  }
+}
+
 export interface ElementsCompanyLogo extends Struct.ComponentSchema {
   collectionName: "components_elements_company_logos"
   info: {
@@ -862,14 +927,8 @@ export interface SharedSectionBadge extends Struct.ComponentSchema {
     icon: "tag"
   }
   attributes: {
-    animation: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>
-    animationSpeed: Schema.Attribute.Enumeration<
-      ["extra-slow", "slow", "medium", "fast"]
-    > &
-      Schema.Attribute.DefaultTo<"slow">
     icon: Schema.Attribute.String
-    orbSize: Schema.Attribute.Enumeration<["small", "medium", "large"]> &
-      Schema.Attribute.DefaultTo<"medium">
+    orbAnimation: Schema.Attribute.Component<"atoms.orb-animation", false>
     pulse: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>
     size: Schema.Attribute.Enumeration<["small", "medium", "large"]> &
       Schema.Attribute.DefaultTo<"medium">
@@ -892,23 +951,16 @@ export interface SharedSectionHeader extends Struct.ComponentSchema {
     alignment: Schema.Attribute.Enumeration<["left", "center", "right"]> &
       Schema.Attribute.DefaultTo<"center">
     description: Schema.Attribute.Text
-    gradientDirection: Schema.Attribute.Enumeration<
-      ["diagonal", "horizontal", "vertical", "radial"]
-    > &
-      Schema.Attribute.DefaultTo<"diagonal">
     heading: Schema.Attribute.String & Schema.Attribute.Required
     headingAccent: Schema.Attribute.String
     headingSize: Schema.Attribute.Enumeration<
       ["small", "medium", "large", "xl"]
     > &
       Schema.Attribute.DefaultTo<"large">
-    headingStyle: Schema.Attribute.Enumeration<
-      ["default", "gradient", "two-tone"]
-    > &
-      Schema.Attribute.DefaultTo<"default">
     showDivider: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>
     spacing: Schema.Attribute.Enumeration<["compact", "default", "spacious"]> &
       Schema.Attribute.DefaultTo<"default">
+    textStyle: Schema.Attribute.Component<"atoms.text-style", false>
   }
 }
 
@@ -1046,6 +1098,9 @@ export interface UtilitiesText extends Struct.ComponentSchema {
 declare module "@strapi/strapi" {
   export module Public {
     export interface ComponentSchemas {
+      "atoms.gradient-colors": AtomsGradientColors
+      "atoms.orb-animation": AtomsOrbAnimation
+      "atoms.text-style": AtomsTextStyle
       "elements.company-logo": ElementsCompanyLogo
       "elements.feature-card": ElementsFeatureCard
       "elements.footer-item": ElementsFooterItem

@@ -1,0 +1,47 @@
+{
+  "collectionName": "components_atoms_gradient_colors",
+  "info": {
+    "displayName": "Custom Gradient Colors",
+    "description": "Define custom gradient colors for light and dark modes with start, middle, end color stops",
+    "icon": "palette"
+  },
+  "options": {},
+  "attributes": {
+    "lightModeStart": {
+      "type": "string",
+      "regex": "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$",
+      "required": false,
+      "description": "Hex color for gradient start in light mode (e.g., #16a34a). Leave empty to use theme primary color."
+    },
+    "lightModeMiddle": {
+      "type": "string",
+      "regex": "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$",
+      "required": false,
+      "description": "Hex color for gradient middle stop in light mode (e.g., #84cc16). Leave empty for automatic blend (70% opacity of start color)."
+    },
+    "lightModeEnd": {
+      "type": "string",
+      "regex": "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$",
+      "required": false,
+      "description": "Hex color for gradient end in light mode (e.g., #e8f5e9). Leave empty for 20% opacity of start color."
+    },
+    "darkModeStart": {
+      "type": "string",
+      "regex": "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$",
+      "required": false,
+      "description": "Hex color for gradient start in dark mode (e.g., #22c55e). Leave empty to use light mode colors or theme."
+    },
+    "darkModeMiddle": {
+      "type": "string",
+      "regex": "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$",
+      "required": false,
+      "description": "Hex color for gradient middle stop in dark mode. Leave empty for automatic blend (70% opacity of start color)."
+    },
+    "darkModeEnd": {
+      "type": "string",
+      "regex": "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$",
+      "required": false,
+      "description": "Hex color for gradient end in dark mode. Leave empty for 20% opacity of start color."
+    }
+  }
+}

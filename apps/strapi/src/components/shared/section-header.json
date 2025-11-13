@@ -29,19 +29,12 @@
       "required": false,
       "description": "Heading size: small (text-2xl/3xl), medium (text-3xl/4xl), large (text-4xl/5xl), xl (text-5xl/6xl)"
     },
-    "headingStyle": {
-      "type": "enumeration",
-      "enum": ["default", "gradient", "two-tone"],
-      "default": "default",
+    "textStyle": {
+      "type": "component",
+      "repeatable": false,
+      "component": "atoms.text-style",
       "required": false,
-      "description": "Heading text style: default (solid), gradient (theme gradient), two-tone (first word accented)"
-    },
-    "gradientDirection": {
-      "type": "enumeration",
-      "enum": ["diagonal", "horizontal", "vertical", "radial"],
-      "default": "diagonal",
-      "required": false,
-      "description": "Gradient direction (only used when headingStyle is gradient): diagonal (bottom-right), horizontal (left-right), vertical (top-bottom), radial (center outward)"
+      "description": "Optional text styling (gradient/two-tone). Leave empty for default solid color."
     },
     "alignment": {
       "type": "enumeration",

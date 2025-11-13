@@ -31,25 +31,12 @@
       "required": false,
       "description": "Badge size: small (compact for nav/articles), medium (default balanced size), large (prominent for hero sections)"
     },
-    "animation": {
-      "type": "boolean",
-      "default": false,
+    "orbAnimation": {
+      "type": "component",
+      "repeatable": false,
+      "component": "atoms.orb-animation",
       "required": false,
-      "description": "Enable orbiting light animation around badge border"
-    },
-    "animationSpeed": {
-      "type": "enumeration",
-      "enum": ["extra-slow", "slow", "medium", "fast"],
-      "default": "slow",
-      "required": false,
-      "description": "Animation speed when enabled: extra-slow (10s), slow (5s), medium (3s), fast (1.5s)"
-    },
-    "orbSize": {
-      "type": "enumeration",
-      "enum": ["small", "medium", "large"],
-      "default": "medium",
-      "required": false,
-      "description": "Size of orbiting light dot when animation is enabled"
+      "description": "Optional orbiting light animation around badge border"
     },
     "pulse": {
       "type": "boolean",
