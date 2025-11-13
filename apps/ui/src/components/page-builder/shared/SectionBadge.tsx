@@ -10,6 +10,8 @@ interface SectionBadgeProps {
 /**
  * Reusable badge component for section headers.
  * Renders a badge with optional icon and animation based on Strapi shared component data.
+ *
+ * Maps atomic orbAnimation component to StrapiOrbitingBadge props.
  */
 export function SectionBadge({ badge }: SectionBadgeProps) {
   if (!badge?.text) return null
@@ -19,9 +21,9 @@ export function SectionBadge({ badge }: SectionBadgeProps) {
       badge={badge.text}
       badgeIcon={badge.icon ?? undefined}
       badgeSize={badge.size ?? undefined}
-      badgeAnimation={badge.animation ?? undefined}
-      badgeAnimationSpeed={badge.animationSpeed ?? undefined}
-      badgeOrbSize={badge.orbSize ?? undefined}
+      badgeAnimation={badge.orbAnimation?.enabled ?? undefined}
+      badgeAnimationSpeed={badge.orbAnimation?.speed ?? undefined}
+      badgeOrbSize={badge.orbAnimation?.size ?? undefined}
       badgeBorderRadius="md"
       badgeOrbGlow="normal"
     />

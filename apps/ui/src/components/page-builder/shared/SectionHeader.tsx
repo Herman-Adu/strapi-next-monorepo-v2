@@ -103,6 +103,7 @@ function renderHeading(
 
 /**
  * Reusable header component - STRUCTURE COPIED FROM METRICSSECTION
+ * Now uses atomic textStyle component for gradient configuration
  */
 export function SectionHeader({ header, className }: SectionHeaderProps) {
   if (!header?.heading) return null
@@ -112,16 +113,19 @@ export function SectionHeader({ header, className }: SectionHeaderProps) {
     headingAccent,
     description,
     headingSize = "large",
-    headingStyle = "default",
-    gradientDirection = "diagonal",
+    textStyle,
     showDivider = false,
     spacing = "default",
   } = header
 
+  // Extract textStyle config or use defaults
+  const headingStyle = textStyle?.textStyle ?? "default"
+  const gradientDirection = textStyle?.gradientDirection ?? "diagonal"
+
   const headingSizeClass = getHeadingSizeClass(headingSize ?? undefined)
   const headingStyleClass = getHeadingStyleClass(
-    headingStyle ?? undefined,
-    gradientDirection ?? undefined
+    headingStyle,
+    gradientDirection
   )
   const spacingClass = getSpacingClass(spacing ?? undefined)
 
@@ -140,11 +144,7 @@ export function SectionHeader({ header, className }: SectionHeaderProps) {
     <div className={wrapperClasses}>
       {/* EXACT SAME PATTERN AS METRICSSECTION h2 */}
       <h2 className={headingClasses}>
-        {renderHeading(
-          heading,
-          headingAccent ?? undefined,
-          headingStyle ?? undefined
-        )}
+        {renderHeading(heading, headingAccent ?? undefined, headingStyle)}
       </h2>
 
       {showDivider && (
