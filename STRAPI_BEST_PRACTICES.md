@@ -362,6 +362,81 @@ When you discover a pattern or make a decision:
 
 ---
 
+## 7. Git Commit Workflow
+
+### Using Commitizen (Recommended)
+
+**✅ USE:** Commitizen for all commits in this project
+
+```powershell
+# Stage your changes
+git add .
+
+# Interactive commit (prompts for type, scope, message, body)
+yarn commit
+
+# Or use git-cz directly
+npx git-cz
+```
+
+**Benefits:**
+
+- ✅ Conventional commit format enforced
+- ✅ Interactive prompts guide you through message structure
+- ✅ Works perfectly with Yarn on Windows 11
+- ✅ No encoding issues with special characters
+- ✅ Commitlint validation ensures quality
+- ✅ Detailed commit messages with body support
+
+**Commit Types:**
+
+- `feat`: New feature
+- `fix`: Bug fix
+- `docs`: Documentation changes
+- `style`: Code style changes (formatting, no logic change)
+- `refactor`: Code restructuring (no feature/fix)
+- `perf`: Performance improvements
+- `test`: Adding or updating tests
+- `build`: Build system or dependencies
+- `ci`: CI/CD configuration
+- `chore`: Maintenance tasks
+
+**Example Workflow:**
+
+```powershell
+# Make your changes
+# ...code changes...
+
+# Stage files
+git add apps/ui/src/components/SectionHeader.tsx
+git add apps/strapi/src/api/section-header/content-types/section-header/schema.json
+
+# Commit with commitizen
+yarn commit
+
+# Follow prompts:
+# 1. Select type: feat
+# 2. Enter scope: section-header
+# 3. Short message: add gradient direction support
+# 4. Long description: Implement horizontal and vertical gradient directions for section headers...
+# 5. Breaking changes: n
+# 6. Issues: (optional)
+```
+
+**❌ AVOID:** Manual git commit with complex formatting
+
+- PowerShell emoji encoding issues
+- Inconsistent message formats
+- Missing commit body details
+
+**Configuration:**
+
+- Commitizen: `cz-conventional-changelog` adapter configured in `package.json`
+- Commitlint: `@commitlint/config-conventional` validates messages
+- Husky: Pre-commit hook runs lint-staged, commit-msg hook validates format
+
+---
+
 ## Future Sections (To Be Added)
 
 - [ ] Authentication & Authorization Patterns

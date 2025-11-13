@@ -42,6 +42,11 @@
     "start:ui": "turbo run start --filter=@repo/ui"
   },
   "prettier": "@repo/prettier-config",
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
+  },
   "devDependencies": {
     "@commitlint/cli": "19.3.0",
     "@commitlint/config-conventional": "19.2.2",
