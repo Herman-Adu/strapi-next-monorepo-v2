@@ -166,6 +166,7 @@ interface StrapiOrbitingBadgeProps {
   badgeAnimation?: boolean
   badgeAnimationSpeed?: "extra-slow" | "slow" | "medium" | "fast"
   badgeOrbSize?: "small" | "medium" | "large"
+  badgeOrbColor?: string // Optional hex color (e.g., "#22c55e") - uses theme colors if not provided
   badgeBorderRadius?: "sm" | "md" | "lg" | "full"
   badgeOrbGlow?: "subtle" | "normal" | "intense"
 }
@@ -177,6 +178,7 @@ export function StrapiOrbitingBadge({
   badgeAnimation = false,
   badgeAnimationSpeed = "slow",
   badgeOrbSize = "large",
+  badgeOrbColor, // Optional custom color
   badgeBorderRadius = "md",
   badgeOrbGlow = "normal",
 }: StrapiOrbitingBadgeProps) {
@@ -326,9 +328,11 @@ export function StrapiOrbitingBadge({
   const orbSize = getOrbSize(badgeOrbSize)
   const glowIntensity = getGlowIntensity(badgeOrbGlow)
 
-  // Theme-aware colors for orb
-  const orbColorLight = "hsl(142 76% 36%)" // Match the badge border green (#16a34a)
-  const orbColorDark = "hsl(var(--muted-foreground) / 0.9)" // Bright white/grey for dark theme
+  // Orb colors: Use custom color if provided, otherwise use theme defaults
+  // Default light mode: green (#16a34a) - matches badge border
+  // Default dark mode: bright white/grey
+  const orbColorLight = badgeOrbColor || "hsl(142 76% 36%)" // #16a34a
+  const orbColorDark = badgeOrbColor || "hsl(var(--muted-foreground) / 0.9)" // Bright white/grey
   const orbId = `orb-${badge?.replace(/\s/g, "-") || "badge"}`
 
   // Only calculate path points if we're ready to animate

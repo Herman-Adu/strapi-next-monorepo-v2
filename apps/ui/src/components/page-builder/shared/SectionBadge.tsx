@@ -24,6 +24,7 @@ export function SectionBadge({ badge }: SectionBadgeProps) {
       badgeAnimation={badge.orbAnimation?.enabled ?? undefined}
       badgeAnimationSpeed={badge.orbAnimation?.speed ?? undefined}
       badgeOrbSize={badge.orbAnimation?.size ?? undefined}
+      badgeOrbColor={badge.orbAnimation?.color ?? undefined}
       badgeBorderRadius="md"
       badgeOrbGlow="normal"
     />
