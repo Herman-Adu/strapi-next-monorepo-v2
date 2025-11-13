@@ -1063,9 +1063,50 @@ Repeat for multiple testimonials.
 
 ---
 
-### Step 4.7: Commit to Git
+### Step 4.7: Build Verification (MANDATORY!)
 
-**If everything works:**
+**🚨 CRITICAL: Test production build before committing**
+
+```powershell
+# From monorepo root
+yarn build        # Build everything
+# OR
+yarn build:ui     # Frontend-only changes
+
+# ⚠️ WAIT FOR GREEN TICK - DO NOT PROCEED WITHOUT IT
+# ✅ "Done in X.XXs" = Success
+# ❌ Any errors = STOP, FIX, RE-RUN
+```
+
+**Why this is non-negotiable:**
+
+- Dev mode hides TypeScript errors that fail in production
+- SSG/SSR builds validate all integrations
+- Catches type mismatches before deployment
+- Every commit in main must build successfully
+
+**🟢 GREEN TICK WORKFLOW:**
+
+1. Make changes
+2. **Run `yarn build`**
+3. **Wait for completion**
+4. **Verify ✅ green tick / "Done in X.XXs"**
+5. **ONLY THEN** proceed to commit
+6. Never move to next task without green tick
+
+**If build fails:**
+
+- ❌ DO NOT commit
+- ❌ DO NOT move to next feature
+- ✅ Fix errors immediately
+- ✅ Re-run `yarn build`
+- ✅ Only proceed when green tick appears
+
+---
+
+### Step 4.8: Commit to Git
+
+**Only after build passes:**
 
 ```powershell
 # Check what changed
@@ -1081,9 +1122,11 @@ git add .
 yarn commit
 # Or: git commit -m "feat: add testimonials section component"
 
-# Push to GitHub
+# Push to GitHub IMMEDIATELY
 git push origin main
 ```
+
+**Remember:** Small commits = small rollbacks. Push after every commit to keep GitHub up to date!
 
 ---
 
@@ -1096,8 +1139,12 @@ git push origin main
 - [ ] No browser console errors
 - [ ] Responsive design works (mobile, tablet, desktop)
 - [ ] Edge cases handled (missing data, long text, etc.)
-- [ ] Code committed to Git
+- [ ] **🚨 BUILD PASSES** - `yarn build` completes with green tick ✅
+- [ ] Code committed to Git (only after build passes)
+- [ ] Pushed to GitHub immediately after commit
 - [ ] Config sync files committed
+
+**Remember: Never move on until the build is safe. Green tick baby! 🟢**
 
 ---
 

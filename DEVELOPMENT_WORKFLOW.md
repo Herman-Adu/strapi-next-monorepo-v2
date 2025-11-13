@@ -77,11 +77,44 @@ yarn build:ui      # Build Next.js only
 - "Browserslist data is 7 months old" - Cosmetic, update with `npx update-browserslist-db@latest`
 - Sentry config deprecation - Will be addressed in future update
 
+**⚠️ MANDATORY WORKFLOW RULE:**
+
+**🟢 GREEN TICK BEFORE PROCEEDING 🟢**
+
+Never move to the next step until the build completes successfully with no errors. This is non-negotiable:
+
+1. Make code changes
+2. **Run `yarn build` (or `yarn build:ui` for frontend-only changes)**
+3. **Wait for build completion**
+4. **✅ Verify green tick / "Done in X.XXs" / successful exit**
+5. **ONLY THEN** proceed to commit
+6. Commit changes
+7. Push to GitHub immediately
+8. Repeat for next feature/fix
+
+**Why this workflow is critical:**
+
+- **Small, safe commits**: Each commit is verified to work
+- **Minimal rollback risk**: Only need to revert 1 commit if something fails
+- **Clean history**: Every commit in main is guaranteed to build
+- **Fast debugging**: Know exactly which change broke the build
+- **Team safety**: Never push broken code to shared branches
+
+**If build fails:**
+
+- ❌ DO NOT commit
+- ❌ DO NOT move to next feature
+- ❌ DO NOT push to GitHub
+- ✅ Fix the errors immediately
+- ✅ Re-run `yarn build`
+- ✅ Only proceed when you see the green tick
+
 **Build must pass before:**
 
 - Creating commits
 - Merging to main branch
 - Deploying to staging/production
+- Moving to next task or feature
 
 ---
 
@@ -362,13 +395,13 @@ When encountering issues, follow this systematic approach:
 - [ ] **Network**: No failed requests in DevTools
 - [ ] **Styling**: CSS conflicts resolved
 - [ ] **Responsive**: Works across all breakpoints
-- [ ] **🚨 BUILD**: Production build passes with `yarn build`
+- [ ] **🚨 BUILD**: Production build passes with `yarn build` - **GREEN TICK REQUIRED**
 - [ ] **Types**: All TypeScript types match Strapi schemas
 - [ ] **Linting**: No ESLint errors or warnings
-- [ ] **Frontend**: API integration functions work
-- [ ] **Network**: No failed requests in DevTools
-- [ ] **Styling**: CSS conflicts resolved
-- [ ] **Responsive**: Works across all breakpoints
+- [ ] **Commit**: Only after all above checks pass
+- [ ] **Push**: Immediately after successful commit
+
+**Remember: Never move on until you know the build is safe. Green tick baby! 🟢✅**
 
 ---
 

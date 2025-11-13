@@ -96,6 +96,26 @@ export default StrapiYourComponent
 
 ## 🧪 Phase 4 Checklist: Test Everything
 
+### Build Verification (MANDATORY - DO THIS FIRST!)
+
+```powershell
+# From monorepo root
+yarn build        # Build everything
+# OR
+yarn build:ui     # Frontend-only changes
+
+# ⚠️ WAIT FOR GREEN TICK - DO NOT PROCEED WITHOUT IT
+# ✅ "Done in X.XXs" means success
+# ❌ Any errors = STOP, FIX, RE-RUN
+```
+
+**🚨 CRITICAL WORKFLOW RULE:**
+
+- Never commit until build passes ✅
+- Never move to next task until build passes ✅
+- Small commits = small rollbacks if needed
+- This is non-negotiable - Green tick baby! 🟢
+
 ### In Strapi Admin:
 
 - [ ] Component appears in picker
@@ -116,7 +136,7 @@ git status
 yarn format
 git add .
 yarn commit  # OR: git commit -m "feat: add your component"
-git push origin main
+git push origin main  # ⚠️ ALWAYS push after commit (keep GitHub up to date!)
 ```
 
 ---
@@ -221,8 +241,12 @@ const pagePopulateObject: FindOne<"api::page.page">["populate"] = {
 
 1. ✅ **Backend first, frontend second** - Always complete Phase 1 & 2 before Phase 3
 2. ✅ **Types before components** - Generate types before writing React code
-3. ✅ **Test systematically** - Follow Phase 4 checklist, don't skip steps
-4. ✅ **Commit with config sync** - Always export and commit sync files
+3. ✅ **Build before commit** - 🚨 GREEN TICK REQUIRED - Never move on until build passes
+4. ✅ **Commit then push** - Keep GitHub up to date, push immediately after every commit
+5. ✅ **Test systematically** - Follow Phase 4 checklist, don't skip steps
+6. ✅ **Commit with config sync** - Always export and commit sync files
+
+**Remember: Small commits = small rollbacks. Every commit should build successfully!**
 
 ---
 
