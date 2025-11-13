@@ -91,7 +91,10 @@ export function SectionBadge({ badge }: SectionBadgeProps) {
   const badgeClass = getBadgeClass(badge.size ?? undefined)
 
   return (
-    <OrbAnimation orbAnimation={badge.orbAnimation ?? undefined} className="mb-6 flex items-center justify-center">
+    <OrbAnimation
+      orbAnimation={badge.orbAnimation ?? undefined}
+      className="mb-6 flex items-center justify-center"
+    >
       <div
         className={`border-primary/30 bg-primary/5 text-primary dark:border-primary/40 dark:bg-primary/10 relative inline-flex items-center rounded-md border font-medium ${badgeClass}`}
       >

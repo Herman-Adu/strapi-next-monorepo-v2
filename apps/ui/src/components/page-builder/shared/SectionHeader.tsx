@@ -95,13 +95,15 @@ export function SectionHeader({ header, className }: SectionHeaderProps) {
 
   // For gradient/default styles, use TextStyle atom
   // Combine headingAccent and heading if both exist
-  const fullHeading = headingAccent
-    ? `${headingAccent} ${heading}`
-    : heading
+  const fullHeading = headingAccent ? `${headingAccent} ${heading}` : heading
 
   return (
     <div className={wrapperClasses}>
-      <TextStyle textStyle={textStyle ?? undefined} as="h2" className={headingClasses}>
+      <TextStyle
+        textStyle={textStyle ?? undefined}
+        as="h2"
+        className={headingClasses}
+      >
         {fullHeading}
       </TextStyle>
 

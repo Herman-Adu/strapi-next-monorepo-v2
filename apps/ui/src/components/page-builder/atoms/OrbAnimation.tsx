@@ -177,7 +177,8 @@ function calculatePathPoints(
         points.push({ x, y })
       }
     } else {
-      const x = width - r - (width - 2 * r) * ((t - r / width) / (1 - r / width))
+      const x =
+        width - r - (width - 2 * r) * ((t - r / width) / (1 - r / width))
       const y = height
       if (isFinite(x) && isFinite(y)) {
         points.push({ x, y })
@@ -198,7 +199,8 @@ function calculatePathPoints(
       }
     } else {
       const x = 0
-      const y = height - r - (height - 2 * r) * ((t - r / height) / (1 - r / height))
+      const y =
+        height - r - (height - 2 * r) * ((t - r / height) / (1 - r / height))
       if (isFinite(x) && isFinite(y)) {
         points.push({ x, y })
       }
