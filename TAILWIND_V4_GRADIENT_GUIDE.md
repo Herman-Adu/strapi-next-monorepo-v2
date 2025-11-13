@@ -420,3 +420,118 @@ This pattern is:
 - ✅ Precise (control exact opacity at each stop)
 - ✅ Reusable (works for any Tailwind-mapped color)
 - ✅ Future-proof (standard CSS, not framework-specific hacks)
+
+---
+
+## 🚧 Current Implementation Status
+
+### ✅ Completed Features
+
+1. **Four Gradient Directions** - All working with theme variables
+
+   - Horizontal (`bg-gradient-to-r`)
+   - Vertical (`bg-gradient-to-b`)
+   - Diagonal (`bg-gradient-to-br`)
+   - Radial (`bg-[radial-gradient(...)]`)
+
+2. **Theme Integration** - Fully theme-aware
+
+   - Uses `var(--color-primary)` mapped from Tailwind v4
+   - Adapts automatically in light/dark mode
+   - No hardcoded color values
+
+3. **Opacity Control** - Precise gradient stops
+
+   - 100% → 70% → 20% pattern implemented
+   - Using modern `color-mix()` function
+   - Customizable via utility function
+
+4. **Component Integration** - Shared components
+   - `SectionHeader.tsx` with gradient direction support
+   - `gradient-utils.ts` helper functions
+   - Strapi schema fields for direction selection
+
+### ⏸️ Deferred to Atomic Refactor Phase
+
+The following features are **intentionally deferred** to avoid premature optimization and maintain focus on current milestone:
+
+#### 1. **Custom Gradient Color Pickers**
+
+**Current:** Fixed to `--color-primary` (green theme)
+**Future:** Atomic color picker components allowing:
+
+- Custom start/end colors
+- Multi-stop gradients (3+ colors)
+- Predefined gradient presets
+- Per-section color overrides
+
+**Why Deferred:**
+
+- Requires atomic component architecture (planned next phase)
+- Needs ColorPicker atomic component
+- Complex UI/UX considerations for content editors
+- Current solution covers 80% of use cases
+
+**Reference:** See `COMPONENT_ARCHITECTURE_REFACTOR.md` for atomic refactor plan
+
+#### 2. **Advanced Gradient Controls**
+
+**Current:** Basic direction + fixed opacity stops
+**Future:**
+
+- Custom opacity percentages per stop
+- Gradient angle control (0-360°)
+- Gradient position controls (for radial)
+- Animation/transition options
+
+**Why Deferred:**
+
+- Adds complexity to Strapi schema
+- Requires more sophisticated UI components
+- Testing and validation needed
+- May introduce performance considerations
+
+#### 3. **Gradient Presets Library**
+
+**Current:** Single green gradient pattern
+**Future:**
+
+- Named preset gradients (e.g., "sunset", "ocean", "fire")
+- Brand-specific gradient library
+- Visual preset picker in Strapi admin
+- Save custom gradients as presets
+
+**Why Deferred:**
+
+- Needs design system definition
+- Requires preset management infrastructure
+- Content governance considerations
+- Best addressed with complete component library
+
+### 🎯 Next Steps
+
+When resuming gradient customization work:
+
+1. **Review Atomic Component Architecture** (`COMPONENT_ARCHITECTURE_REFACTOR.md`)
+2. **Design ColorPicker Component** - Atomic component with Strapi integration
+3. **Extend Gradient Schema** - Add color fields to section-header
+4. **Update Utility Functions** - Support custom colors in `gradient-utils.ts`
+5. **Test Theme Compatibility** - Ensure custom colors work in light/dark modes
+6. **Document New Patterns** - Update this guide with multi-color examples
+
+### 📌 Important Notes
+
+- Current implementation is **production-ready** for primary color gradients
+- All gradient directions work reliably with theme system
+- Deferred features are enhancements, not blockers
+- Architecture decisions ensure clean migration path when ready
+
+---
+
+## 🔗 Related Documentation
+
+- **GRADIENT_SYSTEM.md** - Overall gradient architecture
+- **GRADIENT_TEXT_PATTERN.md** - CSS gradient text patterns
+- **COMPONENT_ARCHITECTURE_REFACTOR.md** - Atomic refactor plan
+- **STRAPI_BEST_PRACTICES.md** - Workflow and processes
+- **SHARED_COMPONENT_GUIDE.md** - Shared component patterns

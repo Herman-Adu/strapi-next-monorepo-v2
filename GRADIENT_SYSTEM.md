@@ -54,24 +54,58 @@ Located: `apps/strapi/src/components/shared/section-header.json`
 
 ## Current Implementation
 
-### Test Colors (Development)
+### Production Implementation (CURRENT)
 
 ```typescript
-// Visible test gradient - Orange to Blue
+// Theme-aware gradient using Tailwind v4 mapped variables
+from-[var(--color-primary)]
+via-[color-mix(in_srgb,var(--color-primary)_70%,transparent)]
+to-[color-mix(in_srgb,var(--color-primary)_20%,transparent)]
+
+// Light mode: #16a34a (green) → 70% → 20% (very light)
+// Dark mode: #22c55e (brighter green) → 70% → 20% (very light)
+```
+
+**Key Features:**
+
+- ✅ Uses `var(--color-primary)` (Tailwind v4 mapped variable)
+- ✅ `color-mix()` for precise opacity control
+- ✅ Fully theme-aware (auto-adapts to dark mode)
+- ✅ 80% opacity difference creates visible gradient
+
+### Test Colors (Development - DEPRECATED)
+
+```typescript
+// Visible test gradient - Orange to Blue (NO LONGER USED)
 from-[#FF8C00] to-[#1E90FF]
 ```
 
-### Theme Colors (Production)
-
-```typescript
-// Theme-aware - Pale green gradient
-from-primary to-primary/60
-
-// Light mode: #16a34a → #16a34a with 60% opacity
-// Dark mode: #22c55e → #22c55e with 60% opacity
-```
+**Note:** These test colors were used during development to verify gradient functionality. Production uses theme variables exclusively.
 
 ## Color Intensity Analysis
+
+### Why `color-mix()` Approach Works Better
+
+**Previous Attempt (Failed):**
+
+```typescript
+from-primary to-primary/60  // Text became transparent
+```
+
+**Current Solution (Works):**
+
+```typescript
+from-[var(--color-primary)]                                      // 100%
+via-[color-mix(in_srgb,var(--color-primary)_70%,transparent)]   // 70%
+to-[color-mix(in_srgb,var(--color-primary)_20%,transparent)]    // 20%
+```
+
+**Why It Works:**
+
+1. **Tailwind v4 Variable Mapping**: Uses `--color-primary` (not `--primary`)
+2. **Explicit Opacity Control**: `color-mix()` gives precise percentages
+3. **Large Opacity Range**: 100% → 20% creates visible gradient (80% difference)
+4. **No Transparency Issues**: Arbitrary values handle opacity correctly
 
 ### Why Bold Colors Work Better
 
@@ -79,34 +113,46 @@ from-primary to-primary/60
 2. **Saturation**: Bold, saturated colors show gradients clearly
 3. **Visibility**: Strong against dark/light backgrounds
 
-### Why Pastel Colors Are Subtle
+### Why Pastel/Monochrome Gradients Are Subtle
 
-1. **Low Contrast**: Green (#16a34a) to 60% green = minimal shift
-2. **Similar Hues**: Same color family reduces gradient visibility
-3. **Opacity**: 60% transparency makes it even more subtle
+1. **Low Contrast**: Green 100% to green 60% = minimal shift
+2. **Same Hue**: Same color family reduces visibility
+3. **Solution**: Use 100% → 20% instead (current implementation)
 
 ## Recommendations
 
-### For Maximum Visibility
+### For Maximum Visibility (CURRENT PRODUCTION)
 
 ```typescript
+// All directions use this pattern with var(--color-primary)
 case "horizontal":
-  // Multi-stop gradient with varying opacity
-  return "bg-gradient-to-r from-primary/90 via-primary to-primary/70 bg-clip-text text-transparent"
+  return "bg-gradient-to-r from-[var(--color-primary)] via-[color-mix(in_srgb,var(--color-primary)_70%,transparent)] to-[color-mix(in_srgb,var(--color-primary)_20%,transparent)] bg-clip-text text-transparent"
+
+case "vertical":
+  return "bg-gradient-to-b from-[var(--color-primary)] via-[color-mix(in_srgb,var(--color-primary)_70%,transparent)] to-[color-mix(in_srgb,var(--color-primary)_20%,transparent)] bg-clip-text text-transparent"
+
+case "diagonal":
+  return "bg-gradient-to-br from-[var(--color-primary)] via-[color-mix(in_srgb,var(--color-primary)_70%,transparent)] to-[color-mix(in_srgb,var(--color-primary)_20%,transparent)] bg-clip-text text-transparent"
+
+case "radial":
+  return "bg-[radial-gradient(ellipse_at_center,var(--color-primary)_0%,color-mix(in_srgb,var(--color-primary)_70%,transparent)_50%,color-mix(in_srgb,var(--color-primary)_20%,transparent)_100%)] bg-clip-text text-transparent"
 ```
 
-### For Dramatic Effect (like MetricsSection description)
+### For Dramatic Effect (Reference - MetricsSection)
 
 ```typescript
-// Multiple color stops with glow
-"bg-gradient-to-r from-muted-foreground/80 via-primary/70 to-muted-foreground/80 bg-clip-text text-transparent filter drop-shadow-[0_2px_12px_hsl(var(--primary)/0.4)]"
+// Multi-stop with contrasting colors (different use case)
+"bg-gradient-to-r from-muted-foreground/80 via-primary/70 to-muted-foreground/80 bg-clip-text text-transparent"
 ```
 
-### For Subtle Branding
+### For Subtle Branding (DEPRECATED - Didn't Work)
 
 ```typescript
-// Current theme implementation
+// ❌ DON'T USE - Text becomes transparent
 "bg-gradient-to-br from-primary to-primary/60 bg-clip-text text-transparent"
+
+// ✅ USE THIS INSTEAD
+"bg-gradient-to-br from-[var(--color-primary)] to-[color-mix(in_srgb,var(--color-primary)_20%,transparent)] bg-clip-text text-transparent"
 ```
 
 ## Usage Pattern
@@ -158,35 +204,77 @@ This creates a "spotlight" effect where the center is highlighted green, fading 
 
 ## Converting to Theme Colors
 
-### Current Test Implementation
+### Production Implementation (CURRENT)
 
 ```typescript
-from-[#FF8C00] to-[#1E90FF]  // Orange to Blue
+// ✅ WORKING PATTERN - All 4 directions
+from-[var(--color-primary)]                                      // Start: 100%
+via-[color-mix(in_srgb,var(--color-primary)_70%,transparent)]   // Middle: 70%
+to-[color-mix(in_srgb,var(--color-primary)_20%,transparent)]    // End: 20%
 ```
 
-### Theme Color Conversion
+**Why This Works:**
+
+- Uses Tailwind v4's `--color-primary` mapped variable
+- `color-mix()` provides precise opacity control
+- 80% opacity range (100% → 20%) creates visible gradient
+- Fully theme-aware (adapts to light/dark mode)
+
+### Failed Attempts (DO NOT USE)
 
 ```typescript
-// Option 1: Simple gradient (current MetricsSection pattern)
+// ❌ FAILED: Text became transparent
 from-primary to-primary/60
 
-// Option 2: Multi-stop for more drama
-from-primary/80 via-primary to-primary/60
+// ❌ FAILED: Not theme-aware
+from-[#16a34a] to-[#16a34a]
 
-// Option 3: Center spotlight (like description)
-from-primary/60 via-primary to-primary/60
+// ❌ FAILED: Wrong variable path
+from-[hsl(var(--primary))] to-[hsl(var(--primary)/60)]
 
-// Option 4: With contrasting color
-from-primary via-secondary to-primary
+// ❌ FAILED: Opacity modifier doesn't work in arbitrary values
+from-[var(--color-primary)] to-[var(--color-primary)/60]
+```
+
+**See `TAILWIND_V4_GRADIENT_GUIDE.md` for detailed troubleshooting**
+
+### Alternative Patterns (For Future Use)
+
+```typescript
+// Option 1: More subtle (smaller opacity range)
+from-[var(--color-primary)]
+via-[color-mix(in_srgb,var(--color-primary)_80%,transparent)]
+to-[color-mix(in_srgb,var(--color-primary)_40%,transparent)]
+
+// Option 2: More dramatic (larger opacity range)
+from-[var(--color-primary)]
+via-[color-mix(in_srgb,var(--color-primary)_60%,transparent)]
+to-[color-mix(in_srgb,var(--color-primary)_10%,transparent)]
+
+// Option 3: With contrasting color (requires multi-color support - future)
+from-[var(--color-primary)]
+via-[var(--color-secondary)]
+to-[var(--color-primary)]
 ```
 
 ## Next Steps
 
-1. **Test in Strapi**: Try all 4 gradient directions with current orange-blue test
-2. **Evaluate Visibility**: See which directions work best for different text lengths
-3. **Switch to Theme**: Once satisfied, convert to theme colors
-4. **Fine-tune Opacity**: Adjust from/to opacity values for desired subtlety
-5. **Add Glow**: Consider adding drop-shadow for enhanced visibility
+### ✅ Completed
+
+1. ✅ **Tested in Strapi**: All 4 gradient directions working
+2. ✅ **Evaluated Visibility**: Horizontal works best for long text, diagonal for short
+3. ✅ **Switched to Theme**: Using `var(--color-primary)` with `color-mix()`
+4. ✅ **Fine-tuned Opacity**: 100% → 70% → 20% provides optimal visibility
+5. ✅ **Integration**: Newsletter CTA using shared SectionHeader component
+
+### ⏸️ Deferred to Atomic Refactor
+
+- Custom gradient color pickers (multi-color gradients)
+- Advanced opacity controls (custom percentages)
+- Gradient presets library
+- Animation/transition options
+
+**See `COMPONENT_ARCHITECTURE_REFACTOR.md` and `TAILWIND_V4_GRADIENT_GUIDE.md` for deferred features**
 
 ## Example Configurations
 
@@ -233,3 +321,20 @@ text-fill-color: transparent;
 ```
 
 Supported in all modern browsers (Chrome, Firefox, Safari, Edge).
+
+`color-mix()` function requires modern browsers:
+
+- Chrome 111+
+- Firefox 113+
+- Safari 16.2+
+- Edge 111+
+
+---
+
+## 🔗 Related Documentation
+
+- **TAILWIND_V4_GRADIENT_GUIDE.md** - Complete troubleshooting and technical deep-dive
+- **GRADIENT_TEXT_PATTERN.md** - CSS gradient text implementation patterns
+- **COMPONENT_ARCHITECTURE_REFACTOR.md** - Future atomic refactor plans
+- **SHARED_COMPONENT_GUIDE.md** - SectionHeader shared component usage
+- **STRAPI_BEST_PRACTICES.md** - Workflow and development processes
