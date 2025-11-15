@@ -43,8 +43,10 @@ function getAnimationDuration(
 /**
  * Map orb size enum to pixel size
  */
-function getOrbSize(size?: "small" | "medium" | "large"): number {
+function getOrbSize(size?: "xs" | "small" | "medium" | "large"): number {
   switch (size) {
+    case "xs":
+      return 2 // Extra small: half of small (4px / 2 = 2px)
     case "small":
       return 4
     case "large":
@@ -264,19 +266,16 @@ export function OrbAnimation({
   const [borderRadius, setBorderRadius] = useState(0)
   const [isReady, setIsReady] = useState(false)
 
-  // If animation is disabled, return children unchanged
+  // Check if animation is enabled
   const enabled = orbAnimation?.enabled ?? false
-  if (!enabled) {
-    return <>{children}</>
-  }
-
   const speed = orbAnimation?.speed ?? "slow"
   const size = orbAnimation?.size ?? "medium"
   const customColor = orbAnimation?.color ?? undefined
   const blur = orbAnimation?.blur ?? 50
 
-  // eslint-disable-next-line react-hooks/rules-of-hooks
   useEffect(() => {
+    // If animation is disabled, don't setup observers
+    if (!enabled) return
     if (!wrapperRef.current) return
 
     const childElement = wrapperRef.current.firstElementChild as HTMLElement
@@ -306,7 +305,7 @@ export function OrbAnimation({
       resizeObserver.disconnect()
       window.removeEventListener("resize", updateDimensions)
     }
-  }, [])
+  }, [enabled])
 
   const duration = getAnimationDuration(speed)
   const orbSize = getOrbSize(size)
@@ -329,6 +328,7 @@ export function OrbAnimation({
 
   // Check if we can animate
   const canAnimate =
+    enabled &&
     validPathPoints.length > 0 &&
     validPathPoints[0] !== undefined &&
     typeof validPathPoints[0].x === "number" &&

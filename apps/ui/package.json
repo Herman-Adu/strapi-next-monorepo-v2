@@ -82,6 +82,7 @@
     "@repo/strapi": "*",
     "@repo/typescript-config": "*",
     "@tailwindcss/postcss": "^4.0.9",
+    "@tailwindcss/typography": "^0.5.19",
     "@types/lodash": "^4",
     "@types/node": "^22",
     "@types/qs": "^6",

@@ -22,10 +22,10 @@
     },
     "size": {
       "type": "enumeration",
-      "enum": ["small", "medium", "large"],
+      "enum": ["xs", "small", "medium", "large"],
       "default": "medium",
       "required": false,
-      "description": "Size of orbiting light dot: small (subtle), medium (balanced), large (prominent)"
+      "description": "Size of orbiting light dot: xs (tiny, 2px), small (subtle, 4px), medium (balanced, 6px), large (prominent, 8px)"
     },
     "color": {
       "type": "string",

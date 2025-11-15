@@ -36,7 +36,7 @@ export interface AtomsOrbAnimation extends Struct.ComponentSchema {
       Schema.Attribute.DefaultTo<40>
     color: Schema.Attribute.String
     enabled: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>
-    size: Schema.Attribute.Enumeration<["small", "medium", "large"]> &
+    size: Schema.Attribute.Enumeration<["xs", "small", "medium", "large"]> &
       Schema.Attribute.DefaultTo<"medium">
     speed: Schema.Attribute.Enumeration<
       ["extra-slow", "slow", "medium", "fast"]
@@ -680,8 +680,11 @@ export interface SectionsNewsletterCtaSection extends Struct.ComponentSchema {
       Schema.Attribute.Required
     header: Schema.Attribute.Component<"shared.section-header", false>
     heading: Schema.Attribute.String & Schema.Attribute.Required
+    headingAccent: Schema.Attribute.String
+    headingTextStyle: Schema.Attribute.Component<"atoms.text-style", false>
     inputPlaceholder: Schema.Attribute.String &
       Schema.Attribute.DefaultTo<"Enter your email">
+    showDivider: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>
   }
 }
 
@@ -927,9 +930,12 @@ export interface SharedSectionBadge extends Struct.ComponentSchema {
     icon: "tag"
   }
   attributes: {
+    alignment: Schema.Attribute.Enumeration<["left", "center", "right"]> &
+      Schema.Attribute.DefaultTo<"center">
     icon: Schema.Attribute.String
     orbAnimation: Schema.Attribute.Component<"atoms.orb-animation", false>
     pulse: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>
+    showBadge: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>
     size: Schema.Attribute.Enumeration<["small", "medium", "large"]> &
       Schema.Attribute.DefaultTo<"medium">
     text: Schema.Attribute.String
@@ -951,6 +957,7 @@ export interface SharedSectionHeader extends Struct.ComponentSchema {
     alignment: Schema.Attribute.Enumeration<["left", "center", "right"]> &
       Schema.Attribute.DefaultTo<"center">
     description: Schema.Attribute.Text
+    descriptionTextStyle: Schema.Attribute.Component<"atoms.text-style", false>
     heading: Schema.Attribute.String & Schema.Attribute.Required
     headingAccent: Schema.Attribute.String
     headingSize: Schema.Attribute.Enumeration<
@@ -958,6 +965,7 @@ export interface SharedSectionHeader extends Struct.ComponentSchema {
     > &
       Schema.Attribute.DefaultTo<"large">
     showDivider: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>
+    showHeader: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>
     spacing: Schema.Attribute.Enumeration<["compact", "default", "spacious"]> &
       Schema.Attribute.DefaultTo<"default">
     textStyle: Schema.Attribute.Component<"atoms.text-style", false>

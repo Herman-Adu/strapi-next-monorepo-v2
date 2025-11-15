@@ -10,6 +10,7 @@ import {
   SectionHeader,
   SectionWrapper,
 } from "@/components/page-builder/shared"
+import { TextStyle } from "@/components/page-builder/atoms/TextStyle"
 import { Button } from "@/components/ui/button"
 import { Checkbox } from "@/components/ui/checkbox"
 import { Input } from "@/components/ui/input"
@@ -52,33 +53,83 @@ export function StrapiNewsletterCTASection({
     gradient: false,
   }
 
+  // Map background padding to section gaps
+  // Background padding controls section-level vertical spacing (Badge → Header → Content)
+  const backgroundPadding = backgroundConfig?.padding ?? "default"
+
+  const sectionGap = (
+    {
+      none: "gap-4",
+      compact: "gap-8", // Section separation gap (matches background padding)
+      default: "gap-12", // Section separation gap (matches background padding)
+      spacious: "gap-16", // Section separation gap (matches background padding)
+    } as const
+  )[backgroundPadding]
+
   return (
     <SectionWrapper background={backgroundConfig}>
-      <div className="w-full space-y-12">
+      {/* Uniform spacing architecture:
+          - Badge→Header gap = Header→Content gap (both use sectionGap)
+          - Header's internal spacing (heading→description) controlled by its own space-y */}
+      <div className={`flex w-full flex-col ${sectionGap}`}>
+        {/* Badge - returns null when hidden */}
         <SectionBadge badge={component.badge ?? undefined} />
 
-        <div className="mx-auto w-full max-w-6xl">
-          <div className="grid w-full items-start gap-12 @2xl:gap-16 @3xl:grid-cols-[1.2fr_1fr] @4xl:gap-20">
+        {/* Header - spacing property controls ONLY internal spacing (heading→description) */}
+        {component.header && (
+          <SectionHeader header={component.header} className="mb-0" />
+        )}
+
+        {/* Main content section */}
+        <div className="w-full">
+          <div className="grid w-full items-start gap-8 @2xl:gap-12 @3xl:grid-cols-[1.2fr_1fr] @4xl:gap-16">
             {/* Left column - Form */}
             <div>
-              {/* Use SectionHeader if configured, otherwise fallback to legacy fields */}
-              {component.header ? (
-                <SectionHeader
-                  header={component.header}
-                  className="mb-0 text-left"
-                />
-              ) : (
-                <div className="space-y-6">
-                  <h2 className="text-primary dark:text-foreground text-3xl font-bold md:text-4xl">
-                    {component.heading}
-                  </h2>
-                  {component.description && (
-                    <p className="text-foreground/80 leading-relaxed">
-                      {component.description}
-                    </p>
-                  )}
-                </div>
-              )}
+              {/* Newsletter form heading and description */}
+              <div className="space-y-6">
+                {component.heading && (
+                  <div className="relative">
+                    {component.headingTextStyle?.textStyle === "two-tone" &&
+                    component.headingAccent ? (
+                      // Two-tone style - split into accent + heading
+                      <h2 className="text-3xl font-bold md:text-4xl">
+                        <span className="text-primary">
+                          {component.headingAccent}
+                        </span>{" "}
+                        <span className="text-muted-foreground dark:text-foreground">
+                          {component.heading}
+                        </span>
+                      </h2>
+                    ) : component.headingTextStyle ? (
+                      // Gradient or custom style
+                      <TextStyle
+                        textStyle={component.headingTextStyle}
+                        as="h2"
+                        className="text-3xl font-bold md:text-4xl"
+                      >
+                        {component.headingAccent
+                          ? `${component.headingAccent} ${component.heading}`
+                          : component.heading}
+                      </TextStyle>
+                    ) : (
+                      // Default solid color
+                      <h2 className="text-primary dark:text-foreground text-3xl font-bold md:text-4xl">
+                        {component.heading}
+                      </h2>
+                    )}
+
+                    {component.showDivider && (
+                      <div className="from-primary/60 to-primary absolute -bottom-3 left-0 h-1 w-24 rounded-full bg-gradient-to-r" />
+                    )}
+                  </div>
+                )}
+
+                {component.description && (
+                  <p className="text-foreground/80 leading-relaxed">
+                    {component.description}
+                  </p>
+                )}
+              </div>
 
               {/* Newsletter Form */}
               <form onSubmit={handleSubmit} className="mt-6 space-y-4">
@@ -112,33 +163,38 @@ export function StrapiNewsletterCTASection({
 
                 {/* GDPR Checkbox */}
                 {component.gdprLink && (
-                  <div className="border-border bg-card flex items-start gap-2.5 rounded-md border p-3.5 shadow-sm">
-                    <Checkbox
-                      id="gdpr-consent"
-                      checked={agreedToTerms}
-                      onCheckedChange={(checked) =>
-                        setAgreedToTerms(checked === true)
-                      }
-                      className="border-input bg-background data-[state=checked]:border-primary data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground mt-0.5 border-2"
-                    />
-                    <Label
-                      htmlFor="gdpr-consent"
-                      className="text-card-foreground cursor-pointer text-sm leading-relaxed"
-                    >
-                      {component.gdprLabel || "I agree to the"}{" "}
-                      <a
-                        href={component.gdprLink.href || "#"}
-                        target={component.gdprLink.newTab ? "_blank" : "_self"}
-                        rel={
-                          component.gdprLink.newTab
-                            ? "noopener noreferrer"
-                            : undefined
+                  <div className="group border-primary/10 from-primary/5 via-background to-background hover:border-primary/20 hover:shadow-primary/5 relative overflow-hidden rounded-xl border bg-gradient-to-br p-3.5 shadow-sm transition-all duration-300 hover:shadow-md">
+                    <div className="bg-primary/5 group-hover:bg-primary/10 absolute top-0 right-0 h-24 w-24 blur-2xl transition-all duration-300" />
+                    <div className="relative flex items-start gap-2.5">
+                      <Checkbox
+                        id="gdpr-consent"
+                        checked={agreedToTerms}
+                        onCheckedChange={(checked) =>
+                          setAgreedToTerms(checked === true)
                         }
-                        className="text-primary decoration-primary/30 hover:decoration-primary font-medium underline underline-offset-4 transition-colors"
+                        className="border-input bg-background data-[state=checked]:border-primary data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground mt-0.5 border-2"
+                      />
+                      <Label
+                        htmlFor="gdpr-consent"
+                        className="text-card-foreground cursor-pointer text-sm leading-relaxed"
                       >
-                        {component.gdprLink.label}
-                      </a>
-                    </Label>
+                        {component.gdprLabel || "I agree to the"}{" "}
+                        <a
+                          href={component.gdprLink.href || "#"}
+                          target={
+                            component.gdprLink.newTab ? "_blank" : "_self"
+                          }
+                          rel={
+                            component.gdprLink.newTab
+                              ? "noopener noreferrer"
+                              : undefined
+                          }
+                          className="text-primary decoration-primary/30 hover:decoration-primary font-medium underline underline-offset-4 transition-colors"
+                        >
+                          {component.gdprLink.label}
+                        </a>
+                      </Label>
+                    </div>
                   </div>
                 )}
               </form>
@@ -159,7 +215,7 @@ export function StrapiNewsletterCTASection({
 
             {/* Right column - Benefits */}
             {component.benefits && component.benefits.length > 0 && (
-              <div className="grid w-full auto-rows-fr grid-cols-1 gap-6 lg:grid-cols-2 @2xl:gap-8">
+              <div className="grid w-full auto-rows-fr grid-cols-1 gap-6 @2xl:gap-8">
                 {component.benefits.map((benefit, index) => (
                   <div
                     key={benefit.id || index}

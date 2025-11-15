@@ -1,0 +1,161 @@
+{
+  "key": "plugin_content_manager_configuration_components::atoms.gradient-colors",
+  "value": {
+    "settings": {
+      "bulkable": true,
+      "filterable": true,
+      "searchable": true,
+      "pageSize": 10,
+      "mainField": "lightModeStart",
+      "defaultSortBy": "lightModeStart",
+      "defaultSortOrder": "ASC"
+    },
+    "metadatas": {
+      "id": {
+        "edit": {},
+        "list": {
+          "label": "id",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "lightModeStart": {
+        "edit": {
+          "label": "lightModeStart",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "lightModeStart",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "lightModeMiddle": {
+        "edit": {
+          "label": "lightModeMiddle",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "lightModeMiddle",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "lightModeEnd": {
+        "edit": {
+          "label": "lightModeEnd",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "lightModeEnd",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "darkModeStart": {
+        "edit": {
+          "label": "darkModeStart",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "darkModeStart",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "darkModeMiddle": {
+        "edit": {
+          "label": "darkModeMiddle",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "darkModeMiddle",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "darkModeEnd": {
+        "edit": {
+          "label": "darkModeEnd",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "darkModeEnd",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "documentId": {
+        "edit": {},
+        "list": {
+          "label": "documentId",
+          "searchable": true,
+          "sortable": true
+        }
+      }
+    },
+    "layouts": {
+      "list": [
+        "id",
+        "lightModeStart",
+        "lightModeMiddle",
+        "lightModeEnd"
+      ],
+      "edit": [
+        [
+          {
+            "name": "lightModeStart",
+            "size": 6
+          },
+          {
+            "name": "lightModeMiddle",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "lightModeEnd",
+            "size": 6
+          },
+          {
+            "name": "darkModeStart",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "darkModeMiddle",
+            "size": 6
+          },
+          {
+            "name": "darkModeEnd",
+            "size": 6
+          }
+        ]
+      ]
+    },
+    "uid": "atoms.gradient-colors",
+    "isComponent": true
+  },
+  "type": "object",
+  "environment": null,
+  "tag": null
+}

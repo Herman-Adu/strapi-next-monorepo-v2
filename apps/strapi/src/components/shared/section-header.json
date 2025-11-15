@@ -34,7 +34,14 @@
       "repeatable": false,
       "component": "atoms.text-style",
       "required": false,
-      "description": "Optional text styling (gradient/two-tone). Leave empty for default solid color."
+      "description": "Optional text styling (gradient/two-tone) for heading. Leave empty for default solid color."
+    },
+    "descriptionTextStyle": {
+      "type": "component",
+      "repeatable": false,
+      "component": "atoms.text-style",
+      "required": false,
+      "description": "Optional text styling (gradient/two-tone) for description. Leave empty for default solid color."
     },
     "alignment": {
       "type": "enumeration",
@@ -55,6 +62,12 @@
       "default": "default",
       "required": false,
       "description": "Spacing between heading and description: compact (space-y-2), default (space-y-4), spacious (space-y-6)"
+    },
+    "showHeader": {
+      "type": "boolean",
+      "default": true,
+      "required": false,
+      "description": "Toggle to show/hide the entire header section (heading + description)"
     }
   }
 }

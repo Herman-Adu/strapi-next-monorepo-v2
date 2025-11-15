@@ -80,6 +80,21 @@ function getBadgeClass(size?: "small" | "medium" | "large"): string {
 }
 
 /**
+ * Map alignment enum to flexbox justify classes
+ */
+function getAlignmentClass(alignment?: "left" | "center" | "right"): string {
+  switch (alignment) {
+    case "left":
+      return "justify-start"
+    case "right":
+      return "justify-end"
+    case "center":
+    default:
+      return "justify-center"
+  }
+}
+
+/**
  * Reusable badge component for section headers.
  * Renders a badge with optional icon and orbiting animation.
  *
@@ -88,12 +103,17 @@ function getBadgeClass(size?: "small" | "medium" | "large"): string {
 export function SectionBadge({ badge }: SectionBadgeProps) {
   if (!badge?.text) return null
 
+  // Respect showBadge toggle (defaults to true)
+  const showBadge = badge.showBadge ?? true
+  if (!showBadge) return null
+
   const badgeClass = getBadgeClass(badge.size ?? undefined)
+  const alignmentClass = getAlignmentClass(badge.alignment ?? undefined)
 
   return (
     <OrbAnimation
       orbAnimation={badge.orbAnimation ?? undefined}
-      className="mb-6 flex items-center justify-center"
+      className={`flex items-center ${alignmentClass}`}
     >
       <div
         className={`border-primary/30 bg-primary/5 text-primary dark:border-primary/40 dark:bg-primary/10 relative inline-flex items-center rounded-md border font-medium ${badgeClass}`}

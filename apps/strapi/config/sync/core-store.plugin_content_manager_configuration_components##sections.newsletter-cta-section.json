@@ -19,10 +19,52 @@
           "sortable": false
         }
       },
+      "badge": {
+        "edit": {
+          "label": "Badge",
+          "description": "Optional badge above section header (e.g., 'Newsletter', 'Stay Updated')",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "badge",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "background": {
+        "edit": {
+          "label": "Background Style",
+          "description": "Section background and container styling",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "background",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "header": {
+        "edit": {
+          "label": "Section Header",
+          "description": "Main section header with heading and description (use this OR custom heading below, not both)",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "header",
+          "searchable": false,
+          "sortable": false
+        }
+      },
       "heading": {
         "edit": {
-          "label": "heading",
-          "description": "",
+          "label": "Newsletter Form Heading",
+          "description": "Custom heading for newsletter form (leave empty if using Section Header above). For two-tone: this is the second part (non-accented)",
           "placeholder": "",
           "visible": true,
           "editable": true
@@ -33,10 +75,52 @@
           "sortable": true
         }
       },
+      "headingAccent": {
+        "edit": {
+          "label": "Heading Accent Text",
+          "description": "First part of heading for two-tone style (appears in theme color). Only used when Text Style is set to 'two-tone'",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "headingAccent",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "headingTextStyle": {
+        "edit": {
+          "label": "Heading Text Style",
+          "description": "Apply gradient or two-tone styling to newsletter form heading. Leave empty for default solid color",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "headingTextStyle",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "showDivider": {
+        "edit": {
+          "label": "showDivider",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "showDivider",
+          "searchable": true,
+          "sortable": true
+        }
+      },
       "description": {
         "edit": {
-          "label": "description",
-          "description": "",
+          "label": "Newsletter Form Description",
+          "description": "Description text below newsletter form heading",
           "placeholder": "",
           "visible": true,
           "editable": true
@@ -49,8 +133,8 @@
       },
       "inputPlaceholder": {
         "edit": {
-          "label": "inputPlaceholder",
-          "description": "",
+          "label": "Email Input Placeholder",
+          "description": "Placeholder text for email input field",
           "placeholder": "",
           "visible": true,
           "editable": true
@@ -63,8 +147,8 @@
       },
       "buttonText": {
         "edit": {
-          "label": "buttonText",
-          "description": "",
+          "label": "Submit Button Text",
+          "description": "Text for newsletter submit button",
           "placeholder": "",
           "visible": true,
           "editable": true
@@ -77,8 +161,8 @@
       },
       "gdprLabel": {
         "edit": {
-          "label": "gdprLabel",
-          "description": "",
+          "label": "GDPR Checkbox Label",
+          "description": "Text for GDPR consent checkbox",
           "placeholder": "",
           "visible": true,
           "editable": true
@@ -91,8 +175,8 @@
       },
       "gdprLink": {
         "edit": {
-          "label": "gdprLink",
-          "description": "",
+          "label": "GDPR Link",
+          "description": "Link to privacy policy or terms (embedded in GDPR label)",
           "placeholder": "",
           "visible": true,
           "editable": true
@@ -105,8 +189,8 @@
       },
       "ctaButtons": {
         "edit": {
-          "label": "ctaButtons",
-          "description": "",
+          "label": "CTA Buttons",
+          "description": "Optional action buttons below newsletter form (max 2 buttons)",
           "placeholder": "",
           "visible": true,
           "editable": true
@@ -119,8 +203,8 @@
       },
       "benefits": {
         "edit": {
-          "label": "benefits",
-          "description": "",
+          "label": "Benefits List",
+          "description": "List of benefits/features (max 2 items). Shows below description",
           "placeholder": "",
           "visible": true,
           "editable": true
@@ -150,17 +234,29 @@
       "edit": [
         [
           {
+            "name": "header",
+            "size": 12
+          }
+        ],
+        [
+          {
             "name": "heading",
             "size": 6
           },
           {
-            "name": "description",
+            "name": "headingAccent",
             "size": 6
           }
         ],
         [
           {
-            "name": "ctaButtons",
+            "name": "headingTextStyle",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "description",
             "size": 12
           }
         ],
@@ -183,13 +279,37 @@
         [
           {
             "name": "gdprLabel",
-            "size": 6
+            "size": 12
           }
         ],
         [
           {
             "name": "gdprLink",
             "size": 12
+          }
+        ],
+        [
+          {
+            "name": "ctaButtons",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "badge",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "background",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "showDivider",
+            "size": 4
           }
         ]
       ]

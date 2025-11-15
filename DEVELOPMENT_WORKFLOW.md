@@ -53,16 +53,37 @@ npm run dev
 
 ### 4. Build Verification
 
-**🚨 CRITICAL: Always test production build before committing**
+**🚨 CRITICAL: Always run commands from MONOREPO ROOT and stop dev server before building**
+
+**⚠️ MANDATORY PRE-BUILD CHECKLIST:**
+
+1. **Navigate to root directory** (NOT apps/ui or apps/strapi)
+2. **Stop all running dev servers** (Ctrl+C in all terminals)
+3. **Clean build artifacts** (automatic with updated scripts)
+4. **Run build command** (see below)
 
 ```bash
-# From monorepo root - builds both Strapi and Next.js
-yarn build
+# ✅ CORRECT: Always run from monorepo root
+cd c:\Users\herma\source\repository\strapi-next-monorepo-v2
 
-# Or build individual apps
-yarn build:strapi  # Build Strapi only
-yarn build:ui      # Build Next.js only
+# ✅ Build commands (auto-clean before build)
+yarn build         # Cleans ALL, then builds both Strapi and UI
+yarn build:strapi  # Cleans Strapi dist, then builds Strapi only
+yarn build:ui      # Cleans UI .next, then builds UI only
+
+# ✅ Manual clean commands (if needed)
+yarn clean         # Clean all build artifacts (.next, dist, .turbo)
+yarn clean:strapi  # Clean apps/strapi/dist only
+yarn clean:ui      # Clean apps/ui/.next only
+yarn clean:turbo   # Clean .turbo cache only
 ```
+
+**Why clean builds matter:**
+
+- **Prevents cache issues**: Old config/types can cause mysterious errors
+- **Stops port locking**: Hanging processes from old builds won't block new ones
+- **Fresh TypeScript types**: Ensures generated types match current schemas
+- **No stale modules**: Eliminates old build artifacts that cause conflicts
 
 **Why this matters:**
 

@@ -1,0 +1,105 @@
+{
+  "key": "plugin_content_manager_configuration_components::atoms.text-style",
+  "value": {
+    "settings": {
+      "bulkable": true,
+      "filterable": true,
+      "searchable": true,
+      "pageSize": 10,
+      "mainField": "documentId",
+      "defaultSortBy": "documentId",
+      "defaultSortOrder": "ASC"
+    },
+    "metadatas": {
+      "id": {
+        "edit": {},
+        "list": {
+          "label": "id",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "textStyle": {
+        "edit": {
+          "label": "textStyle",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "textStyle",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "gradientDirection": {
+        "edit": {
+          "label": "gradientDirection",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "gradientDirection",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "customGradient": {
+        "edit": {
+          "label": "customGradient",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "customGradient",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "documentId": {
+        "edit": {},
+        "list": {
+          "label": "documentId",
+          "searchable": true,
+          "sortable": true
+        }
+      }
+    },
+    "layouts": {
+      "list": [
+        "id",
+        "textStyle",
+        "gradientDirection",
+        "customGradient"
+      ],
+      "edit": [
+        [
+          {
+            "name": "textStyle",
+            "size": 6
+          },
+          {
+            "name": "gradientDirection",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "customGradient",
+            "size": 12
+          }
+        ]
+      ]
+    },
+    "uid": "atoms.text-style",
+    "isComponent": true
+  },
+  "type": "object",
+  "environment": null,
+  "tag": null
+}

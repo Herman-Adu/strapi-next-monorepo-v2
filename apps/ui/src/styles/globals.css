@@ -4,6 +4,7 @@
 @import "tw-animate-css";
 
 @plugin "tailwindcss-animate";
+@plugin "@tailwindcss/typography";
 
 @custom-variant dark (&:is(.dark, .dark *));
 
@@ -485,6 +486,11 @@
 
 .two-tone-heading .accent {
   color: hsl(var(--primary));
+}
+
+/* Custom gradient with dark mode support using CSS variables */
+.dark .custom-gradient-dark-mode {
+  background-image: var(--gradient-dark) !important;
 }
 
 /* Starfield animation for dark mode only */

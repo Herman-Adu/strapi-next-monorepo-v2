@@ -98,6 +98,36 @@ export default StrapiYourComponent
 
 ### Build Verification (MANDATORY - DO THIS FIRST!)
 
+**⚠️ CRITICAL: Always run from MONOREPO ROOT with dev server stopped!**
+
+```powershell
+# 1. Navigate to root (NOT apps/ui or apps/strapi)
+cd c:\Users\herma\source\repository\strapi-next-monorepo-v2
+
+# 2. Stop all dev servers (Ctrl+C in all terminals)
+
+# 3. Build (auto-cleans before building)
+yarn build         # Clean ALL + build everything
+yarn build:strapi  # Clean Strapi dist + build Strapi only
+yarn build:ui      # Clean UI .next + build UI only
+
+# 4. Manual clean (if needed)
+yarn clean         # Clean all (.next, dist, .turbo)
+yarn clean:strapi  # Clean apps/strapi/dist only
+yarn clean:ui      # Clean apps/ui/.next only
+yarn clean:turbo   # Clean .turbo cache only
+```
+
+**Why this matters:**
+
+- ✅ Prevents cache/config issues
+- ✅ Stops port locking from old builds
+- ✅ Fresh TypeScript types
+- ✅ No stale modules
+- ✅ Must pass before commit!
+
+### Build Verification (MANDATORY - DO THIS FIRST!)
+
 ```powershell
 # From monorepo root
 yarn build        # Build everything
@@ -216,6 +246,59 @@ const pagePopulateObject: FindOne<"api::page.page">["populate"] = {
 
 ---
 
+## 🎨 Styling Quick Reference
+
+### Core Rules (NO EXCEPTIONS!)
+
+❌ **NEVER:**
+
+```tsx
+<div className="max-w-6xl">         // Hard-coded width
+<div className="w-[360px]">         // Fixed pixels
+<div className="gap-[20px]">        // Arbitrary values
+```
+
+✅ **ALWAYS:**
+
+```tsx
+<div className="w-full">            // Fluid width
+<div className="gap-5">             // Spacing tokens
+<div className="@container">        // Container queries
+```
+
+### Container Queries (Component-Level)
+
+```tsx
+// Use @ prefix for container-relative responsive design
+"gap-8 @2xl:gap-12 @4xl:gap-16" // Gaps
+"p-8 @2xl:p-12 @4xl:p-16" // Padding
+"grid-cols-1 @3xl:grid-cols-2" // Grid
+"grid-cols-1 @3xl:grid-cols-[1.2fr_1fr]" // Asymmetric
+```
+
+### Standard Breakpoints (Page-Level)
+
+```tsx
+// Use standard breakpoints for viewport-level layout
+"py-8 md:py-12" // Section padding
+"text-3xl md:text-4xl lg:text-5xl" // Typography
+"grid-cols-1 md:grid-cols-2 lg:grid-cols-3" // Page grids
+```
+
+### Width Tokens
+
+```tsx
+// Use semantic widths from SectionWrapper
+containerWidth: "default" // max-w-7xl (1280px)
+containerWidth: "narrow" // max-w-4xl (896px)
+containerWidth: "wide" // max-w-screen-2xl (1536px)
+containerWidth: "full" // w-full (100%)
+```
+
+**📖 Full Guide:** [STYLING_GUIDE.md](./STYLING_GUIDE.md)
+
+---
+
 ## 🐛 Quick Troubleshooting
 
 | Problem                           | Solution                                        |
@@ -226,6 +309,8 @@ const pagePopulateObject: FindOne<"api::page.page">["populate"] = {
 | Strapi won't start                | → Check JSON syntax, validate with jsonlint.com |
 | Frontend not updating             | → Hard refresh browser (Ctrl+Shift+R)           |
 | Component renders but looks wrong | → Check Tailwind classes, test responsive       |
+| Content not centered vertically   | → Use `flex flex-col justify-center`, no max-w  |
+| Build fails after schema change   | → Run from ROOT, stop server, use clean scripts |
 
 ---
 

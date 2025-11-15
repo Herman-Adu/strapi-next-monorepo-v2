@@ -1,0 +1,201 @@
+{
+  "key": "plugin_content_manager_configuration_components::shared.section-badge",
+  "value": {
+    "settings": {
+      "bulkable": true,
+      "filterable": true,
+      "searchable": true,
+      "pageSize": 10,
+      "mainField": "text",
+      "defaultSortBy": "text",
+      "defaultSortOrder": "ASC"
+    },
+    "metadatas": {
+      "id": {
+        "edit": {},
+        "list": {
+          "label": "id",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "text": {
+        "edit": {
+          "label": "text",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "text",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "icon": {
+        "edit": {
+          "label": "icon",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "icon",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "variant": {
+        "edit": {
+          "label": "variant",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "variant",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "size": {
+        "edit": {
+          "label": "size",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "size",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "alignment": {
+        "edit": {
+          "label": "alignment",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "alignment",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "orbAnimation": {
+        "edit": {
+          "label": "orbAnimation",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "orbAnimation",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "pulse": {
+        "edit": {
+          "label": "pulse",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "pulse",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "showBadge": {
+        "edit": {
+          "label": "showBadge",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "showBadge",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "documentId": {
+        "edit": {},
+        "list": {
+          "label": "documentId",
+          "searchable": true,
+          "sortable": true
+        }
+      }
+    },
+    "layouts": {
+      "list": [
+        "id",
+        "text",
+        "icon",
+        "variant"
+      ],
+      "edit": [
+        [
+          {
+            "name": "text",
+            "size": 6
+          },
+          {
+            "name": "icon",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "variant",
+            "size": 6
+          },
+          {
+            "name": "size",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "alignment",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "orbAnimation",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "pulse",
+            "size": 4
+          },
+          {
+            "name": "showBadge",
+            "size": 4
+          }
+        ]
+      ]
+    },
+    "uid": "shared.section-badge",
+    "isComponent": true
+  },
+  "type": "object",
+  "environment": null,
+  "tag": null
+}

@@ -19,6 +19,118 @@
           "sortable": false
         }
       },
+      "badge": {
+        "edit": {
+          "label": "badge",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "badge",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "badgeIcon": {
+        "edit": {
+          "label": "badgeIcon",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "badgeIcon",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "badgeSize": {
+        "edit": {
+          "label": "badgeSize",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "badgeSize",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "badgeAnimation": {
+        "edit": {
+          "label": "badgeAnimation",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "badgeAnimation",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "badgeAnimationSpeed": {
+        "edit": {
+          "label": "badgeAnimationSpeed",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "badgeAnimationSpeed",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "badgeOrbSize": {
+        "edit": {
+          "label": "badgeOrbSize",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "badgeOrbSize",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "badgeBorderRadius": {
+        "edit": {
+          "label": "badgeBorderRadius",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "badgeBorderRadius",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "badgeOrbGlow": {
+        "edit": {
+          "label": "badgeOrbGlow",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "badgeOrbGlow",
+          "searchable": true,
+          "sortable": true
+        }
+      },
       "heading": {
         "edit": {
           "label": "heading",
@@ -29,6 +141,20 @@
         },
         "list": {
           "label": "heading",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "headingAccent": {
+        "edit": {
+          "label": "headingAccent",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "headingAccent",
           "searchable": true,
           "sortable": true
         }
@@ -59,6 +185,48 @@
           "label": "metrics",
           "searchable": false,
           "sortable": false
+        }
+      },
+      "backgroundStyle": {
+        "edit": {
+          "label": "backgroundStyle",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "backgroundStyle",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "headingStyle": {
+        "edit": {
+          "label": "headingStyle",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "headingStyle",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "containerStyle": {
+        "edit": {
+          "label": "containerStyle",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "containerStyle",
+          "searchable": true,
+          "sortable": true
         }
       },
       "documentId": {
@@ -92,6 +260,66 @@
           {
             "name": "metrics",
             "size": 12
+          }
+        ],
+        [
+          {
+            "name": "badge",
+            "size": 6
+          },
+          {
+            "name": "badgeIcon",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "badgeSize",
+            "size": 6
+          },
+          {
+            "name": "badgeAnimation",
+            "size": 4
+          }
+        ],
+        [
+          {
+            "name": "badgeAnimationSpeed",
+            "size": 6
+          },
+          {
+            "name": "badgeOrbSize",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "badgeBorderRadius",
+            "size": 6
+          },
+          {
+            "name": "badgeOrbGlow",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "headingAccent",
+            "size": 6
+          },
+          {
+            "name": "backgroundStyle",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "headingStyle",
+            "size": 6
+          },
+          {
+            "name": "containerStyle",
+            "size": 6
           }
         ]
       ]

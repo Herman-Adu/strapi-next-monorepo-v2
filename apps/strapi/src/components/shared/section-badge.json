@@ -31,6 +31,13 @@
       "required": false,
       "description": "Badge size: small (compact for nav/articles), medium (default balanced size), large (prominent for hero sections)"
     },
+    "alignment": {
+      "type": "enumeration",
+      "enum": ["left", "center", "right"],
+      "default": "center",
+      "required": false,
+      "description": "Badge horizontal alignment in container: left, center, right"
+    },
     "orbAnimation": {
       "type": "component",
       "repeatable": false,
@@ -43,6 +50,12 @@
       "default": false,
       "required": false,
       "description": "Add gentle pulse animation to badge"
+    },
+    "showBadge": {
+      "type": "boolean",
+      "default": true,
+      "required": false,
+      "description": "Toggle to show/hide the badge"
     }
   }
 }

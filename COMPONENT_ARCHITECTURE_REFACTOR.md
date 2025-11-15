@@ -502,6 +502,288 @@ SectionHeaderFull = Badge + StyledHeading (heading) + StyledHeading (subheading)
 
 ---
 
+## 🎨 Section Styling Pattern (CRITICAL)
+
+> **Use this pattern for EVERY new section component**
+
+### Pattern Overview
+
+All sections follow the same container + responsive margin pattern established in Newsletter CTA and Marquee sections.
+
+### The SectionWrapper Pattern
+
+**Import:**
+
+```tsx
+import { SectionWrapper } from "@/components/page-builder/shared/SectionWrapper"
+```
+
+**Usage:**
+
+```tsx
+export function StrapiYourSection({ component }) {
+  const backgroundConfig: Data.Component<"shared.section-background"> = {
+    backgroundStyle: component.background?.backgroundStyle ?? "solid",
+    containerStyle: component.background?.containerStyle ?? "default",
+    containerWidth: component.background?.containerWidth ?? "default",
+    padding: component.background?.padding ?? "default",
+    gradient: component.background?.gradient ?? false,
+  }
+
+  return (
+    <SectionWrapper background={backgroundConfig}>
+      {/* Your section content here */}
+    </SectionWrapper>
+  )
+}
+```
+
+### Container Classes Structure
+
+SectionWrapper handles all container logic - **DO NOT add your own container/padding classes**.
+
+**Automatic Behavior:**
+
+1. **Outer wrapper:**
+
+   ```tsx
+   className = "@container mx-auto px-4 sm:px-6 lg:px-8"
+   ```
+
+   - `@container` = Enable container queries
+   - `mx-auto` = Center the container
+   - `px-4 sm:px-6 lg:px-8` = Responsive padding from screen edges
+
+2. **For bordered containers (inner wrapper):**
+
+   ```tsx
+   className = "mx-auto max-w-7xl rounded-2xl border-2..."
+   ```
+
+   - `mx-auto` = Center the bordered box
+   - `max-w-*` = Width from containerWidth setting
+   - Border + shadow + background from containerStyle
+
+3. **For default containers:**
+   - Content renders directly in outer wrapper
+   - Width applied to outer wrapper
+
+### Width Settings
+
+Users can choose container width in Strapi:
+
+| Setting   | Class              | Size   |
+| --------- | ------------------ | ------ |
+| `default` | `max-w-7xl`        | 1280px |
+| `narrow`  | `max-w-4xl`        | 896px  |
+| `wide`    | `max-w-screen-2xl` | 1536px |
+| `full`    | `w-full`           | 100%   |
+
+**NEVER hardcode widths** - always respect the width setting!
+
+### Responsive Margin Pattern
+
+The `px-4 sm:px-6 lg:px-8` pattern ensures containers never hit screen edges:
+
+- **Mobile (<640px):** 16px padding (px-4)
+- **Tablet (640px+):** 24px padding (sm:px-6)
+- **Desktop (1024px+):** 32px padding (lg:px-8)
+
+This pattern is **production-validated** from:
+
+- ✅ Navbar
+- ✅ Footer
+- ✅ Marquee
+- ✅ Newsletter CTA
+
+### DO NOT Do This
+
+❌ **Wrong:**
+
+```tsx
+<div className="container mx-auto px-4">
+  {" "}
+  {/* Don't add your own container */}
+  <SectionWrapper>...</SectionWrapper>
+</div>
+```
+
+❌ **Wrong:**
+
+```tsx
+<SectionWrapper>
+  <div className="max-w-6xl">
+    {" "}
+    {/* Don't hardcode widths */}
+    ...
+  </div>
+</SectionWrapper>
+```
+
+❌ **Wrong:**
+
+```tsx
+<SectionWrapper>
+  <div className="px-8">
+    {" "}
+    {/* Don't override padding */}
+    ...
+  </div>
+</SectionWrapper>
+```
+
+### DO This
+
+✅ **Correct:**
+
+```tsx
+<SectionWrapper background={backgroundConfig}>
+  <div className="w-full">
+    {" "}
+    {/* Use w-full for fluid width */}
+    {/* Your content */}
+  </div>
+</SectionWrapper>
+```
+
+✅ **Correct:**
+
+```tsx
+<SectionWrapper background={backgroundConfig}>
+  <div className="grid gap-8 @3xl:grid-cols-2">
+    {" "}
+    {/* Use container queries */}
+    {/* Your columns */}
+  </div>
+</SectionWrapper>
+```
+
+### Container Queries (CRITICAL)
+
+Inside SectionWrapper, use **container queries** (@) not viewport breakpoints:
+
+```tsx
+// ✅ GOOD: Responds to parent container size
+<div className="gap-4 @2xl:gap-6 @3xl:grid-cols-2 @4xl:gap-8">
+
+// ❌ BAD: Responds to viewport, not container
+<div className="gap-4 md:gap-6 lg:grid-cols-2 xl:gap-8">
+```
+
+**Container Query Breakpoints:**
+
+| Token  | Min Width | When to Use                       |
+| ------ | --------- | --------------------------------- |
+| `@2xl` | 672px     | Most common responsive step       |
+| `@3xl` | 768px     | Grid column splits                |
+| `@4xl` | 896px     | Large spacing/padding adjustments |
+
+See `STYLING_GUIDE.md` for complete container query reference.
+
+### Bordered Container Best Practices
+
+When `containerStyle === "bordered"`:
+
+1. ✅ **DO:** Use `@container` queries for internal responsiveness
+2. ✅ **DO:** Let SectionWrapper handle all margins/padding
+3. ✅ **DO:** Use `min-h-[400px]` to prevent collapsed containers
+4. ❌ **DON'T:** Add `mx-auto` (already handled)
+5. ❌ **DON'T:** Add `max-w-*` (width setting controls it)
+6. ❌ **DON'T:** Add horizontal padding/margins (creates edge collision)
+
+### Complete Example
+
+```tsx
+import { SectionWrapper } from "@/components/page-builder/shared/SectionWrapper"
+import { SectionBadge } from "@/components/page-builder/shared/SectionBadge"
+import { SectionHeader } from "@/components/page-builder/shared/SectionHeader"
+
+export function StrapiExampleSection({ component }) {
+  const backgroundConfig: Data.Component<"shared.section-background"> = {
+    backgroundStyle: component.background?.backgroundStyle ?? "solid",
+    containerStyle: component.background?.containerStyle ?? "default",
+    containerWidth: component.background?.containerWidth ?? "default",
+    padding: component.background?.padding ?? "default",
+    gradient: component.background?.gradient ?? false,
+  }
+
+  return (
+    <SectionWrapper background={backgroundConfig}>
+      {/* Uniform spacing: gap-12 for default header spacing */}
+      <div className="flex w-full flex-col gap-12">
+        {/* Badge - returns null when hidden */}
+        <SectionBadge badge={component.badge ?? undefined} />
+
+        {/* Header - controls ONLY internal spacing */}
+        {component.header && <SectionHeader header={component.header} />}
+
+        {/* Main content */}
+        <div className="w-full">
+          {/* Use container queries for responsive layouts */}
+          <div className="grid gap-8 @2xl:gap-12 @3xl:grid-cols-2 @4xl:gap-16">
+            {/* Left column */}
+            <div>Your content</div>
+
+            {/* Right column */}
+            <div>Your content</div>
+          </div>
+        </div>
+      </div>
+    </SectionWrapper>
+  )
+}
+```
+
+### Spacing Architecture
+
+Follow the **uniform spacing pattern**:
+
+```tsx
+// Parent container uses SINGLE gap value (not multiple space-y values)
+const sectionGap = {
+  compact: "gap-8",   // Badge→Header AND Header→Content
+  default: "gap-12",  // Badge→Header AND Header→Content
+  spacious: "gap-16", // Badge→Header AND Header→Content
+}[headerSpacing]
+
+<div className={`flex flex-col ${sectionGap}`}>
+  <SectionBadge />      {/* No margin */}
+  <SectionHeader />     {/* No margin */}
+  <div>Main content</div> {/* No margin */}
+</div>
+```
+
+**Result:** Badge→Header gap **equals** Header→Content gap (visual uniformity)
+
+See `SPACING_ARCHITECTURE_GUIDE.md` for complete patterns.
+
+### Checklist for New Sections
+
+Before creating a new section component:
+
+- [ ] ✅ Using `<SectionWrapper>` instead of custom container?
+- [ ] ✅ backgroundConfig maps all background settings?
+- [ ] ✅ No hardcoded `max-w-*` widths?
+- [ ] ✅ No custom `mx-auto px-*` on inner content?
+- [ ] ✅ Using container queries (`@2xl`, `@3xl`, `@4xl`)?
+- [ ] ✅ Using uniform spacing (single gap value)?
+- [ ] ✅ Components return null when hidden (not empty divs)?
+- [ ] ✅ No hardcoded margins on badge/header?
+- [ ] ✅ Testing all width settings (default/narrow/wide/full)?
+- [ ] ✅ Testing all container styles (default/bordered)?
+
+### Reference Implementations
+
+Study these sections for the correct pattern:
+
+1. **Newsletter CTA** - Complete atomic refactor, bordered container
+2. **Marquee** - Bordered container pattern (original solution)
+3. **Metrics** - Simpler bordered example
+
+All three use the EXACT same SectionWrapper pattern.
+
+---
+
 ## 🚧 Implementation Checklist
 
 ### Immediate (Newsletter CTA Fix)

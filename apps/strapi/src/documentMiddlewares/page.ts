@@ -97,9 +97,15 @@ const pagePopulateObject: FindOne<"api::page.page">["populate"] = {
       },
       "sections.newsletter-cta-section": {
         populate: {
-          badge: true,
+          badge: { populate: { orbAnimation: true } },
           background: true,
-          header: true,
+          header: {
+            populate: {
+              textStyle: { populate: { customGradient: true } },
+              descriptionTextStyle: { populate: { customGradient: true } },
+            },
+          },
+          headingTextStyle: { populate: { customGradient: true } },
           ctaButtons: true,
           benefits: true,
           gdprLink: true,

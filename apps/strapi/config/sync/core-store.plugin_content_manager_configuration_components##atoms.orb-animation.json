@@ -1,0 +1,143 @@
+{
+  "key": "plugin_content_manager_configuration_components::atoms.orb-animation",
+  "value": {
+    "settings": {
+      "bulkable": true,
+      "filterable": true,
+      "searchable": true,
+      "pageSize": 10,
+      "mainField": "color",
+      "defaultSortBy": "color",
+      "defaultSortOrder": "ASC"
+    },
+    "metadatas": {
+      "id": {
+        "edit": {},
+        "list": {
+          "label": "id",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "enabled": {
+        "edit": {
+          "label": "enabled",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "enabled",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "speed": {
+        "edit": {
+          "label": "speed",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "speed",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "size": {
+        "edit": {
+          "label": "size",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "size",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "color": {
+        "edit": {
+          "label": "color",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "color",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "blur": {
+        "edit": {
+          "label": "blur",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "blur",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "documentId": {
+        "edit": {},
+        "list": {
+          "label": "documentId",
+          "searchable": true,
+          "sortable": true
+        }
+      }
+    },
+    "layouts": {
+      "list": [
+        "id",
+        "enabled",
+        "speed",
+        "size"
+      ],
+      "edit": [
+        [
+          {
+            "name": "enabled",
+            "size": 4
+          },
+          {
+            "name": "speed",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "size",
+            "size": 6
+          },
+          {
+            "name": "color",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "blur",
+            "size": 4
+          }
+        ]
+      ]
+    },
+    "uid": "atoms.orb-animation",
+    "isComponent": true
+  },
+  "type": "object",
+  "environment": null,
+  "tag": null
+}

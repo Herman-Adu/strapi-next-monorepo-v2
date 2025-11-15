@@ -29,7 +29,7 @@ function getHeadingSizeClass(
 }
 
 /**
- * Map spacing enum to CSS classes
+ * Map spacing enum to CSS classes for internal spacing
  */
 function getSpacingClass(spacing?: "compact" | "default" | "spacious"): string {
   switch (spacing) {
@@ -40,6 +40,21 @@ function getSpacingClass(spacing?: "compact" | "default" | "spacious"): string {
     case "default":
     default:
       return "space-y-4"
+  }
+}
+
+/**
+ * Map alignment enum to CSS classes
+ */
+function getAlignmentClass(alignment?: "left" | "center" | "right"): string {
+  switch (alignment) {
+    case "left":
+      return "text-left"
+    case "right":
+      return "text-right"
+    case "center":
+    default:
+      return "text-center"
   }
 }
 
@@ -56,22 +71,37 @@ export function SectionHeader({ header, className }: SectionHeaderProps) {
     description,
     headingSize = "large",
     textStyle,
+    descriptionTextStyle,
+    alignment = "center",
     showDivider = false,
     spacing = "default",
+    showHeader = true,
   } = header
+
+  // If showHeader is false, don't render anything
+  if (!showHeader) return null
 
   // Extract textStyle config
   const headingStyle = textStyle?.textStyle ?? "default"
 
   const headingSizeClass = getHeadingSizeClass(headingSize ?? undefined)
   const spacingClass = getSpacingClass(spacing ?? undefined)
+  const alignmentClass = getAlignmentClass(alignment ?? undefined)
 
-  const wrapperClasses = cn(spacingClass, "text-left", className)
+  const wrapperClasses = cn(spacingClass, alignmentClass, className)
 
   // Base heading classes (size + weight + tracking)
   const headingClasses = cn("font-bold tracking-tight", headingSizeClass)
 
   const descriptionClasses = "text-lg text-muted-foreground"
+
+  // Divider alignment classes
+  const dividerAlignmentClass =
+    alignment === "right"
+      ? "ml-auto"
+      : alignment === "left"
+        ? "mr-auto"
+        : "mx-auto" // center
 
   // Handle two-tone style (special rendering with accent + heading split)
   if (headingStyle === "two-tone" && headingAccent) {
@@ -83,18 +113,31 @@ export function SectionHeader({ header, className }: SectionHeaderProps) {
             {heading}
           </span>
         </h2>
-
-        {showDivider && (
-          <div className="from-primary/60 to-primary mb-8 h-1 w-24 rounded-full bg-gradient-to-r" />
-        )}
-
-        {description && <p className={descriptionClasses}>{description}</p>}
+        {/* {showDivider && (
+        <div
+          className={cn(
+            "from-primary/60 to-primary h-1 w-24 rounded-full bg-gradient-to-r",
+            dividerAlignmentClass
+          )}
+        />
+      )} */}{" "}
+        {description &&
+          (descriptionTextStyle ? (
+            <TextStyle
+              textStyle={descriptionTextStyle}
+              as="p"
+              className={descriptionClasses}
+            >
+              {description}
+            </TextStyle>
+          ) : (
+            <p className={descriptionClasses}>{description}</p>
+          ))}
       </div>
     )
   }
 
-  // For gradient/default styles, use TextStyle atom
-  // Combine headingAccent and heading if both exist
+  // Build full heading (combine accent + heading for gradient/default)
   const fullHeading = headingAccent ? `${headingAccent} ${heading}` : heading
 
   return (
@@ -107,11 +150,27 @@ export function SectionHeader({ header, className }: SectionHeaderProps) {
         {fullHeading}
       </TextStyle>
 
-      {showDivider && (
-        <div className="from-primary/60 to-primary mb-8 h-1 w-24 rounded-full bg-gradient-to-r" />
-      )}
+      {/* {showDivider && (
+        <div
+          className={cn(
+            "from-primary/60 to-primary h-1 w-24 rounded-full bg-gradient-to-r",
+            dividerAlignmentClass
+          )}
+        />
+      )} */}
 
-      {description && <p className={descriptionClasses}>{description}</p>}
+      {description &&
+        (descriptionTextStyle ? (
+          <TextStyle
+            textStyle={descriptionTextStyle}
+            as="p"
+            className={descriptionClasses}
+          >
+            {description}
+          </TextStyle>
+        ) : (
+          <p className={descriptionClasses}>{description}</p>
+        ))}
     </div>
   )
 }

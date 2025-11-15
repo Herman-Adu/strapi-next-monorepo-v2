@@ -101,6 +101,7 @@ function getContainerPaddingClass(
 
 /**
  * Map container style enum to wrapper styling
+ * NOTE: Does NOT include mx-auto - that's handled in containerClasses
  */
 function getContainerClass(
   style?: "default" | "bordered",
@@ -110,10 +111,10 @@ function getContainerClass(
 
   switch (style) {
     case "bordered":
-      return `mx-auto flex min-h-[400px] items-center rounded-2xl border-2 border-primary/20 bg-gradient-to-br from-primary/5 to-transparent shadow-lg shadow-primary/10 ${paddingClass}`
+      return `flex min-h-[400px] items-center rounded-2xl border-2 border-primary/20 bg-gradient-to-br from-primary/5 to-transparent shadow-lg shadow-primary/10 ${paddingClass}`
     case "default":
     default:
-      return "mx-auto"
+      return ""
   }
 }
 
@@ -148,10 +149,18 @@ export function SectionWrapper({
   )
 
   // Container wrapper classes
+  // Pattern from Marquee (working solution):
+  // - Outer wrapper: mx-auto px-4 sm:px-6 lg:px-8 (centering + responsive padding)
+  // - Inner container (bordered): mx-auto max-w-* (centers within outer + width limit)
   const containerClasses = cn(
-    "@container px-4 sm:px-6",
-    widthClass,
-    containerClass
+    "@container mx-auto px-4 sm:px-6 lg:px-8",
+    containerStyle === "default" ? widthClass : "" // Width only for default
+  )
+
+  const innerContainerClasses = cn(
+    containerStyle === "bordered" ? "mx-auto" : "", // Center bordered container
+    containerStyle === "bordered" ? widthClass : "", // Width for bordered
+    containerClass // Border styling
   )
 
   return (
@@ -161,7 +170,13 @@ export function SectionWrapper({
         <div className="bg-grid-primary/5 pointer-events-none absolute inset-0" />
       )}
 
-      <div className={containerClasses}>{children}</div>
+      <div className={containerClasses}>
+        {containerStyle === "bordered" ? (
+          <div className={innerContainerClasses}>{children}</div>
+        ) : (
+          children
+        )}
+      </div>
     </section>
   )
 }

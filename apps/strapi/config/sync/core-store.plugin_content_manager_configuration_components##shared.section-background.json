@@ -1,0 +1,161 @@
+{
+  "key": "plugin_content_manager_configuration_components::shared.section-background",
+  "value": {
+    "settings": {
+      "bulkable": true,
+      "filterable": true,
+      "searchable": true,
+      "pageSize": 10,
+      "mainField": "pattern",
+      "defaultSortBy": "pattern",
+      "defaultSortOrder": "ASC"
+    },
+    "metadatas": {
+      "id": {
+        "edit": {},
+        "list": {
+          "label": "id",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "backgroundStyle": {
+        "edit": {
+          "label": "backgroundStyle",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "backgroundStyle",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "pattern": {
+        "edit": {
+          "label": "pattern",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "pattern",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "gradient": {
+        "edit": {
+          "label": "gradient",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "gradient",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "containerStyle": {
+        "edit": {
+          "label": "containerStyle",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "containerStyle",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "containerWidth": {
+        "edit": {
+          "label": "containerWidth",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "containerWidth",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "padding": {
+        "edit": {
+          "label": "padding",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "padding",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "documentId": {
+        "edit": {},
+        "list": {
+          "label": "documentId",
+          "searchable": true,
+          "sortable": true
+        }
+      }
+    },
+    "layouts": {
+      "list": [
+        "id",
+        "backgroundStyle",
+        "pattern",
+        "gradient"
+      ],
+      "edit": [
+        [
+          {
+            "name": "backgroundStyle",
+            "size": 6
+          },
+          {
+            "name": "pattern",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "gradient",
+            "size": 4
+          },
+          {
+            "name": "containerStyle",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "containerWidth",
+            "size": 6
+          },
+          {
+            "name": "padding",
+            "size": 6
+          }
+        ]
+      ]
+    },
+    "uid": "shared.section-background",
+    "isComponent": true
+  },
+  "type": "object",
+  "environment": null,
+  "tag": null
+}

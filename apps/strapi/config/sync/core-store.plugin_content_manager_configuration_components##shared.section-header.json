@@ -1,0 +1,239 @@
+{
+  "key": "plugin_content_manager_configuration_components::shared.section-header",
+  "value": {
+    "settings": {
+      "bulkable": true,
+      "filterable": true,
+      "searchable": true,
+      "pageSize": 10,
+      "mainField": "heading",
+      "defaultSortBy": "heading",
+      "defaultSortOrder": "ASC"
+    },
+    "metadatas": {
+      "id": {
+        "edit": {},
+        "list": {
+          "label": "id",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "heading": {
+        "edit": {
+          "label": "heading",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "heading",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "headingAccent": {
+        "edit": {
+          "label": "headingAccent",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "headingAccent",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "description": {
+        "edit": {
+          "label": "description",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "description",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "headingSize": {
+        "edit": {
+          "label": "headingSize",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "headingSize",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "textStyle": {
+        "edit": {
+          "label": "textStyle",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "textStyle",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "descriptionTextStyle": {
+        "edit": {
+          "label": "descriptionTextStyle",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "descriptionTextStyle",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "alignment": {
+        "edit": {
+          "label": "alignment",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "alignment",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "showDivider": {
+        "edit": {
+          "label": "showDivider",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "showDivider",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "spacing": {
+        "edit": {
+          "label": "spacing",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "spacing",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "showHeader": {
+        "edit": {
+          "label": "showHeader",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "showHeader",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "documentId": {
+        "edit": {},
+        "list": {
+          "label": "documentId",
+          "searchable": true,
+          "sortable": true
+        }
+      }
+    },
+    "layouts": {
+      "list": [
+        "id",
+        "heading",
+        "headingAccent",
+        "description"
+      ],
+      "edit": [
+        [
+          {
+            "name": "heading",
+            "size": 6
+          },
+          {
+            "name": "headingAccent",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "description",
+            "size": 6
+          },
+          {
+            "name": "headingSize",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "textStyle",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "descriptionTextStyle",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "alignment",
+            "size": 6
+          },
+          {
+            "name": "showDivider",
+            "size": 4
+          }
+        ],
+        [
+          {
+            "name": "spacing",
+            "size": 6
+          },
+          {
+            "name": "showHeader",
+            "size": 4
+          }
+        ]
+      ]
+    },
+    "uid": "shared.section-header",
+    "isComponent": true
+  },
+  "type": "object",
+  "environment": null,
+  "tag": null
+}

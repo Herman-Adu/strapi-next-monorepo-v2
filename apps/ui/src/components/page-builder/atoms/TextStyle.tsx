@@ -48,26 +48,28 @@ function getGradientDirection(
 
 /**
  * Build custom gradient inline styles from hex colors
+ * Supports both light and dark mode using CSS custom properties
  */
 function buildCustomGradientStyle(
   customGradient?: Data.Component<"atoms.gradient-colors">,
   gradientDirection?: "diagonal" | "horizontal" | "vertical" | "radial"
-): React.CSSProperties | undefined {
+): { style: React.CSSProperties; className?: string } | undefined {
   if (!customGradient) return undefined
 
   const {
     lightModeStart,
     lightModeMiddle,
     lightModeEnd,
-    // darkModeStart, darkModeMiddle, darkModeEnd - TODO: Add dark mode support
+    darkModeStart,
+    darkModeMiddle,
+    darkModeEnd,
   } = customGradient
 
-  // Need at least start and end colors for either mode
+  // Need at least start and end colors for light mode
   const hasLightMode = lightModeStart && lightModeEnd
-  // Dark mode support would go here - keeping variable for future enhancement
-  const hasDarkMode = false // TODO: Implement dark mode custom gradients
+  const hasDarkMode = darkModeStart && darkModeEnd
 
-  if (!hasLightMode && !hasDarkMode) return undefined
+  if (!hasLightMode) return undefined
 
   // Build color stops array
   const buildColorStops = (
@@ -84,8 +86,43 @@ function buildCustomGradientStyle(
   const direction = getGradientDirection(gradientDirection)
   const isRadial = gradientDirection === "radial"
 
-  // For now, use light mode colors (dark mode would require CSS variables or client-side theme detection)
-  // TODO: Enhance with proper dark mode support using CSS custom properties
+  // If we have both light and dark mode colors, use CSS custom properties
+  if (hasLightMode && hasDarkMode) {
+    const lightColorStops = buildColorStops(
+      lightModeStart!,
+      lightModeMiddle,
+      lightModeEnd!
+    )
+    const darkColorStops = buildColorStops(
+      darkModeStart!,
+      darkModeMiddle,
+      darkModeEnd!
+    )
+
+    const gradientType = isRadial ? "radial-gradient" : "linear-gradient"
+    const lightGradient = isRadial
+      ? `${gradientType}(${direction}, ${lightColorStops})`
+      : `${gradientType}(${direction}, ${lightColorStops})`
+    const darkGradient = isRadial
+      ? `${gradientType}(${direction}, ${darkColorStops})`
+      : `${gradientType}(${direction}, ${darkColorStops})`
+
+    return {
+      style: {
+        ["--gradient-light" as string]: lightGradient,
+        ["--gradient-dark" as string]: darkGradient,
+        backgroundImage: "var(--gradient-light)",
+        backgroundClip: "text",
+        WebkitBackgroundClip: "text",
+        WebkitTextFillColor: "transparent",
+        backgroundSize: "100%",
+      } as React.CSSProperties,
+      // Use a marker class that we can style with CSS
+      className: "custom-gradient-dark-mode",
+    }
+  }
+
+  // Light mode only - use inline styles
   if (hasLightMode) {
     const colorStops = buildColorStops(
       lightModeStart!,
@@ -99,11 +136,13 @@ function buildCustomGradientStyle(
       : `${gradientType}(${direction}, ${colorStops})`
 
     return {
-      backgroundImage: gradientValue,
-      backgroundClip: "text",
-      WebkitBackgroundClip: "text",
-      WebkitTextFillColor: "transparent",
-      backgroundSize: "100%",
+      style: {
+        backgroundImage: gradientValue,
+        backgroundClip: "text",
+        WebkitBackgroundClip: "text",
+        WebkitTextFillColor: "transparent",
+        backgroundSize: "100%",
+      },
     }
   }
 
@@ -136,7 +175,7 @@ function getThemeGradientClass(
  *
  * Handles text styling with three modes:
  * 1. **default** - Solid color using theme variables
- * 2. **gradient** - Theme-based gradient (CSS classes) OR custom hex gradient (inline styles)
+ * 2. **gradient** - Theme-based gradient (CSS classes) OR custom hex gradient (inline styles with dark mode support)
  * 3. **two-tone** - Must be handled by parent component (splits text into two parts)
  *
  * @example
@@ -146,14 +185,16 @@ function getThemeGradientClass(
  * </TextStyle>
  *
  * @example
- * // Custom gradient with hex colors
+ * // Custom gradient with hex colors (light + dark mode)
  * <TextStyle
  *   textStyle={{
  *     textStyle: "gradient",
  *     gradientDirection: "diagonal",
  *     customGradient: {
  *       lightModeStart: "#22c55e",
- *       lightModeEnd: "#10b981"
+ *       lightModeEnd: "#10b981",
+ *       darkModeStart: "#ffa630",
+ *       darkModeEnd: "#ff6347"
  *     }
  *   }}
  *   as="h2"
@@ -175,20 +216,22 @@ export function TextStyle({
 }: TextStyleProps) {
   const style = textStyle?.textStyle ?? "default"
   const direction = textStyle?.gradientDirection ?? "diagonal"
-  const customGradient = textStyle?.customGradient
 
   // Handle gradient style
   if (style === "gradient") {
     // Custom gradient takes precedence over theme gradient
-    const customStyle = buildCustomGradientStyle(
-      customGradient ?? undefined,
+    const customGradient = buildCustomGradientStyle(
+      textStyle?.customGradient ?? undefined,
       direction
     )
 
-    if (customStyle) {
-      // Use inline styles for custom hex gradients
+    if (customGradient) {
+      // Use inline styles for custom hex gradients (with dark mode support)
       return (
-        <Component className={className} style={customStyle}>
+        <Component
+          className={cn(className, customGradient.className)}
+          style={customGradient.style}
+        >
           {children}
         </Component>
       )
