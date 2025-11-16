@@ -25,8 +25,8 @@ This is a ready-to-go starter template for Strapi projects. It combines the powe
 ### Prerequisites
 
 - Docker
-- node 22
-- yarn 1.22
+- Node.js 22
+- Yarn 1.22
 - [nvm](https://github.com/nvm-sh/nvm) (optional, recommended)
 
 ### Run dev (in 4 steps)
