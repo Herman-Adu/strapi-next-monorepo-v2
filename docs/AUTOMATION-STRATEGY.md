@@ -1,0 +1,750 @@
+# 🤖 Automation Strategy & Roadmap
+
+> **Status:** Strategic Planning Document  
+> **Last Updated:** November 16, 2025  
+> **Purpose:** Comprehensive automation plan leveraging refactored documentation  
+> **Focus:** Maximize efficiency, reduce manual work, enable scalability
+
+---
+
+## 🎯 Automation Philosophy
+
+**Core Principle:** _Automate repetitive tasks that are well-documented and follow predictable patterns._
+
+### Why Automate?
+
+1. **Reduce Human Error** - Scripts don't forget steps
+2. **Increase Velocity** - Developers focus on features, not boilerplate
+3. **Ensure Consistency** - Same output every time
+4. **Enable Scaling** - Team can grow without proportional slowdown
+5. **Improve Developer Experience** - Less tedious work = happier team
+
+---
+
+## 📊 Automation Opportunity Matrix
+
+### Priority Framework
+
+| Priority        | Criteria                                          | Examples                                 |
+| --------------- | ------------------------------------------------- | ---------------------------------------- |
+| **🔴 CRITICAL** | High frequency + High manual effort + Error-prone | Type generation, Cache invalidation      |
+| **🟠 HIGH**     | Medium frequency + High impact on quality         | Component scaffolding, Visual regression |
+| **🟡 MEDIUM**   | Low frequency + High complexity                   | Database migrations, Backup automation   |
+| **🟢 LOW**      | Low frequency + Low complexity + Nice-to-have     | Documentation updates, Token sync        |
+
+---
+
+## 🚀 Automation Roadmap
+
+### Phase 1: Foundation (Week 1-2) - CRITICAL
+
+#### 1. TypeScript Type Generation from Strapi ✅ CRITICAL
+
+**Problem:** Manual type definitions drift from Strapi schema  
+**Solution:** Auto-generate types when schema changes
+
+**Implementation:**
+
+```typescript
+// apps/ui/lib/strapi/generate-types.ts
+import fs from "fs"
+import { generateStrapiTypes } from "@strapi/sdk"
+
+export async function generateTypes() {
+  const types = await generateStrapiTypes({
+    strapiUrl: process.env.STRAPI_API_URL!,
+    apiToken: process.env.STRAPI_API_TOKEN!,
+  })
+
+  fs.writeFileSync("packages/shared-data/strapi-types.ts", types)
+
+  console.log("✅ Types generated successfully")
+}
+```
+
+**Trigger Options:**
+
+1. **Manual:** `yarn generate:types`
+2. **Webhook:** Strapi schema update → POST /api/webhooks/schema-update
+3. **CI:** Pre-commit hook or GitHub Actions on schema file changes
+
+**Effort:** 1-2 days  
+**ROI:** 🔥🔥🔥 Massive (prevents type mismatches, saves hours of debugging)
+
+**Documentation Reference:**
+
+- [Strapi Integration → Type Generation](./strapi-integration/README.md#-03-type-generationmd)
+
+---
+
+#### 2. Cache Invalidation via Webhooks ✅ CRITICAL
+
+**Problem:** Content changes in Strapi don't reflect in Next.js until manual rebuild  
+**Solution:** Webhook triggers on-demand revalidation
+
+**Implementation:**
+
+```typescript
+// apps/ui/app/api/webhooks/strapi/route.ts
+export async function POST(request: Request) {
+  const { model, entry, event } = await request.json()
+
+  // Validate webhook signature
+  const signature = request.headers.get("x-strapi-signature")
+  if (!validateWebhook(signature)) {
+    return Response.json({ error: "Invalid signature" }, { status: 401 })
+  }
+
+  // Revalidate based on content type
+  if (model === "blog" && event === "entry.publish") {
+    await revalidatePath("/blog")
+    await revalidatePath(`/blog/${entry.slug}`)
+  }
+
+  if (model === "page") {
+    await revalidatePath(`/${entry.slug}`)
+  }
+
+  if (model === "global-setting") {
+    await revalidatePath("/", "layout") // Revalidate entire site
+  }
+
+  return Response.json({
+    revalidated: true,
+    paths: ["/blog", `/blog/${entry.slug}`],
+    timestamp: Date.now(),
+  })
+}
+```
+
+**Strapi Webhook Configuration:**
+
+```
+URL: https://your-domain.vercel.app/api/webhooks/strapi
+Events: entry.publish, entry.update, entry.delete
+Headers:
+  - x-strapi-signature: your-secret-key
+```
+
+**Effort:** 1 day  
+**ROI:** 🔥🔥🔥 Critical (enables real-time content updates)
+
+**Documentation Reference:**
+
+- [Strapi Integration → Webhooks](./strapi-integration/README.md#-04-webhooksmd)
+- [Performance Optimization → Caching](./performance-optimization/README.md#-01-cachingmd)
+
+---
+
+### Phase 2: Developer Experience (Week 3-4) - HIGH
+
+#### 3. Component Scaffolding CLI ✅ HIGH
+
+**Problem:** Creating new atomic components requires repetitive boilerplate  
+**Solution:** CLI tool generates component structure from template
+
+**Implementation:**
+
+```bash
+# Usage
+yarn generate:component --type molecule --name BlogCard
+
+# Or interactive
+yarn generate:component
+? Component type: (Use arrow keys)
+  ❯ Atom
+    Molecule
+    Organism
+    Template
+    Page
+? Component name: BlogCard
+? Include Storybook? Yes
+? Include tests? Yes
+
+✅ Created apps/ui/src/components/molecules/BlogCard/
+  - BlogCard.tsx
+  - BlogCard.module.css
+  - BlogCard.stories.tsx
+  - BlogCard.test.tsx
+  - index.ts
+```
+
+**Template Example:**
+
+```typescript
+// scripts/templates/molecule.tsx
+import React from 'react';
+import styles from './{{ComponentName}}.module.css';
+
+interface {{ComponentName}}Props {
+  // Add props here
+}
+
+export function {{ComponentName}}({}: {{ComponentName}}Props) {
+  return (
+    <div className={styles.root}>
+      {/* Component content */}
+    </div>
+  );
+}
+```
+
+**Script:**
+
+```javascript
+// scripts/generate-component.js
+const fs = require("fs")
+const path = require("path")
+const inquirer = require("inquirer")
+
+async function generateComponent() {
+  const answers = await inquirer.prompt([
+    {
+      type: "list",
+      name: "type",
+      message: "Component type:",
+      choices: ["atom", "molecule", "organism", "template", "page"],
+    },
+    {
+      type: "input",
+      name: "name",
+      message: "Component name:",
+      validate: (input) => /^[A-Z][a-zA-Z0-9]+$/.test(input),
+    },
+    {
+      type: "confirm",
+      name: "storybook",
+      message: "Include Storybook?",
+      default: true,
+    },
+    {
+      type: "confirm",
+      name: "tests",
+      message: "Include tests?",
+      default: true,
+    },
+  ])
+
+  const { type, name, storybook, tests } = answers
+  const componentDir = path.join(
+    process.cwd(),
+    `apps/ui/src/components/${type}s/${name}`
+  )
+
+  // Create directory
+  fs.mkdirSync(componentDir, { recursive: true })
+
+  // Generate files from templates
+  const templates = ["component.tsx", "styles.module.css", "index.ts"]
+  if (storybook) templates.push("component.stories.tsx")
+  if (tests) templates.push("component.test.tsx")
+
+  templates.forEach((template) => {
+    const content = fs
+      .readFileSync(path.join(__dirname, `templates/${template}`), "utf-8")
+      .replace(/{{ComponentName}}/g, name)
+
+    const filename = template.replace("component", name)
+    fs.writeFileSync(path.join(componentDir, filename), content)
+  })
+
+  console.log(`✅ Created ${componentDir}`)
+}
+
+generateComponent()
+```
+
+**Effort:** 2-3 days  
+**ROI:** 🔥🔥 High (saves 15-30 minutes per component × frequent usage)
+
+**Documentation Reference:**
+
+- [Atomic Architecture → Component Blueprints](./atomic-architecture/README.md)
+- [CSS Architecture → Naming Conventions](./css-architecture/README.md#-05-naming-conventionsmd)
+
+---
+
+#### 4. Automated Testing in CI ✅ HIGH
+
+**Problem:** Tests run manually or forgotten before merge  
+**Solution:** Automated test suite in GitHub Actions
+
+**Implementation:**
+
+```yaml
+# .github/workflows/test.yml
+name: Test Suite
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+jobs:
+  unit-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: "yarn"
+
+      - run: yarn install --frozen-lockfile
+      - run: yarn test:coverage
+
+      - name: Upload coverage
+        uses: codecov/codecov-action@v3
+        with:
+          files: ./coverage/coverage-final.json
+
+  e2e-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: "yarn"
+
+      - run: yarn install --frozen-lockfile
+      - run: yarn build
+
+      - name: Install Playwright
+        run: npx playwright install --with-deps
+
+      - name: Run E2E tests
+        run: yarn test:e2e
+
+      - uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: playwright-report
+          path: playwright-report/
+```
+
+**Effort:** 1 day  
+**ROI:** 🔥🔥🔥 Critical (prevents bugs from reaching production)
+
+**Documentation Reference:**
+
+- [Workflows & Automation → Testing Strategy](./workflows-automation/README.md#-03-testing-strategymd)
+
+---
+
+### Phase 3: Quality Assurance (Week 5-6) - MEDIUM
+
+#### 5. Visual Regression Testing ✅ MEDIUM
+
+**Problem:** UI changes slip through code review  
+**Solution:** Automated screenshot comparison
+
+**Implementation:**
+
+```yaml
+# .github/workflows/visual-regression.yml
+name: Visual Regression
+
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  chromatic:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: "yarn"
+
+      - run: yarn install --frozen-lockfile
+
+      - name: Publish to Chromatic
+        uses: chromaui/action@v1
+        with:
+          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+          buildScriptName: "build-storybook"
+          exitOnceUploaded: true
+```
+
+**Tool Options:**
+
+- **Chromatic** (recommended for Storybook)
+- **Percy** (broader browser support)
+- **Playwright Visual Comparisons** (self-hosted)
+
+**Effort:** 2-3 days (includes Storybook setup)  
+**ROI:** 🔥🔥 Medium-High (catches regressions, improves design consistency)
+
+**Documentation Reference:**
+
+- [Workflows & Automation → Testing Strategy](./workflows-automation/README.md#-03-testing-strategymd)
+
+---
+
+#### 6. Performance Budget Enforcement ✅ MEDIUM
+
+**Problem:** Performance regressions go unnoticed  
+**Solution:** Lighthouse CI fails builds that exceed budgets
+
+**Implementation:**
+
+```javascript
+// lighthouserc.js
+module.exports = {
+  ci: {
+    collect: {
+      url: ["http://localhost:3000", "http://localhost:3000/blog"],
+      numberOfRuns: 3,
+    },
+    assert: {
+      preset: "lighthouse:recommended",
+      assertions: {
+        "largest-contentful-paint": ["error", { maxNumericValue: 2500 }],
+        "first-input-delay": ["error", { maxNumericValue: 100 }],
+        "cumulative-layout-shift": ["error", { maxNumericValue: 0.1 }],
+        "total-blocking-time": ["warn", { maxNumericValue: 300 }],
+      },
+    },
+    upload: {
+      target: "temporary-public-storage",
+    },
+  },
+}
+```
+
+```yaml
+# .github/workflows/lighthouse.yml
+name: Lighthouse CI
+
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  lighthouse:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: "yarn"
+
+      - run: yarn install --frozen-lockfile
+      - run: yarn build
+
+      - name: Run Lighthouse CI
+        run: |
+          npm install -g @lhci/cli
+          lhci autorun
+        env:
+          LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
+```
+
+**Effort:** 1 day  
+**ROI:** 🔥🔥 Medium (prevents performance regressions)
+
+**Documentation Reference:**
+
+- [Performance Optimization → Monitoring](./performance-optimization/README.md#-05-monitoringmd)
+
+---
+
+### Phase 4: Content & Infrastructure (Week 7-8) - LOW/MEDIUM
+
+#### 7. Database Backup Automation ✅ MEDIUM
+
+**Problem:** Manual backups are forgotten or inconsistent  
+**Solution:** Scheduled automated backups
+
+**Implementation:**
+
+```bash
+# scripts/backup-database.sh
+#!/bin/bash
+
+DATE=$(date +%Y-%m-%d-%H%M%S)
+BACKUP_DIR="./backups"
+DB_NAME="strapi"
+
+mkdir -p $BACKUP_DIR
+
+pg_dump $DATABASE_URL > "$BACKUP_DIR/strapi-$DATE.sql"
+
+# Upload to S3
+aws s3 cp "$BACKUP_DIR/strapi-$DATE.sql" \
+  "s3://your-bucket/backups/strapi-$DATE.sql"
+
+# Keep only last 30 days locally
+find $BACKUP_DIR -name "*.sql" -mtime +30 -delete
+
+echo "✅ Backup completed: strapi-$DATE.sql"
+```
+
+**Schedule (GitHub Actions or Cron):**
+
+```yaml
+# .github/workflows/backup.yml
+name: Database Backup
+
+on:
+  schedule:
+    - cron: "0 2 * * *" # Daily at 2 AM UTC
+  workflow_dispatch:
+
+jobs:
+  backup:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Backup database
+        run: ./scripts/backup-database.sh
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+```
+
+**Effort:** 1 day  
+**ROI:** 🔥🔥 High (disaster recovery insurance)
+
+**Documentation Reference:**
+
+- [Existing: DATABASE_BACKUP_RESTORE.md](./DATABASE_BACKUP_RESTORE.md)
+
+---
+
+#### 8. Design Token Sync from Figma ✅ LOW
+
+**Problem:** Design tokens manually copied from Figma  
+**Solution:** Auto-sync tokens using Figma API + Tokens Studio
+
+**Implementation:**
+
+```javascript
+// scripts/sync-design-tokens.js
+const { Figma } = require("figma-api")
+const fs = require("fs")
+
+const figma = new Figma({
+  personalAccessToken: process.env.FIGMA_TOKEN,
+})
+
+async function syncTokens() {
+  const file = await figma.getFile("YOUR_FILE_KEY")
+
+  // Extract design tokens (colors, spacing, typography)
+  const tokens = parseTokensFromFigma(file)
+
+  // Convert to CSS variables
+  const css = `
+:root {
+${Object.entries(tokens.colors)
+  .map(([name, value]) => `  --color-${name}: ${value};`)
+  .join("\n")}
+
+${Object.entries(tokens.spacing)
+  .map(([name, value]) => `  --space-${name}: ${value};`)
+  .join("\n")}
+}
+  `.trim()
+
+  fs.writeFileSync("packages/design-system/src/tokens.css", css)
+
+  console.log("✅ Design tokens synced from Figma")
+}
+
+syncTokens()
+```
+
+**Trigger:** Manual or weekly cron
+
+**Effort:** 2-3 days  
+**ROI:** 🔥 Low-Medium (nice-to-have, saves manual sync time)
+
+**Documentation Reference:**
+
+- [CSS Architecture → Design Tokens](./css-architecture/README.md#-01-design-tokensmd)
+
+---
+
+## 📋 Task Integration for TODO Management
+
+### Recommended Task Structure
+
+```markdown
+## Automation Implementation Tasks
+
+### Phase 1: Foundation (CRITICAL)
+
+- [ ] #1 Set up TypeScript type generation
+
+  - [ ] Install @strapi/sdk
+  - [ ] Create generate-types.ts script
+  - [ ] Add yarn script: `generate:types`
+  - [ ] Test with current schema
+  - [ ] Document usage
+  - Estimate: 1-2 days
+  - Priority: 🔴 CRITICAL
+
+- [ ] #2 Implement cache invalidation webhooks
+  - [ ] Create /api/webhooks/strapi route
+  - [ ] Add webhook signature validation
+  - [ ] Configure webhooks in Strapi admin
+  - [ ] Test with content publish/update/delete
+  - [ ] Monitor revalidation logs
+  - Estimate: 1 day
+  - Priority: 🔴 CRITICAL
+
+### Phase 2: Developer Experience (HIGH)
+
+- [ ] #3 Build component scaffolding CLI
+
+  - [ ] Create templates for each atomic level
+  - [ ] Write generate-component.js script
+  - [ ] Add inquirer for interactive prompts
+  - [ ] Test component generation
+  - [ ] Document CLI usage
+  - Estimate: 2-3 days
+  - Priority: 🟠 HIGH
+
+- [ ] #4 Set up automated testing in CI
+  - [ ] Create test.yml workflow
+  - [ ] Configure unit tests (Vitest)
+  - [ ] Configure E2E tests (Playwright)
+  - [ ] Add coverage reporting (Codecov)
+  - [ ] Test on sample PR
+  - Estimate: 1 day
+  - Priority: 🟠 HIGH
+
+### Phase 3: Quality Assurance (MEDIUM)
+
+- [ ] #5 Enable visual regression testing
+
+  - [ ] Set up Storybook
+  - [ ] Configure Chromatic
+  - [ ] Create visual-regression.yml workflow
+  - [ ] Test with sample components
+  - Estimate: 2-3 days
+  - Priority: 🟡 MEDIUM
+
+- [ ] #6 Enforce performance budgets
+  - [ ] Install Lighthouse CI
+  - [ ] Create lighthouserc.js config
+  - [ ] Add lighthouse.yml workflow
+  - [ ] Set performance thresholds
+  - Estimate: 1 day
+  - Priority: 🟡 MEDIUM
+
+### Phase 4: Infrastructure (LOW/MEDIUM)
+
+- [ ] #7 Automate database backups
+
+  - [ ] Create backup-database.sh script
+  - [ ] Configure S3 bucket
+  - [ ] Add backup.yml workflow (daily 2 AM)
+  - [ ] Test restore process
+  - Estimate: 1 day
+  - Priority: 🟡 MEDIUM
+
+- [ ] #8 Sync design tokens from Figma
+  - [ ] Set up Figma API access
+  - [ ] Create sync-design-tokens.js
+  - [ ] Parse tokens from Figma file
+  - [ ] Convert to CSS variables
+  - Estimate: 2-3 days
+  - Priority: 🟢 LOW
+```
+
+---
+
+## 🎯 Implementation Timeline
+
+### 2-Week Sprint (Recommended)
+
+**Week 1: Foundation + DevEx**
+
+- Day 1-2: Type generation (#1)
+- Day 3: Cache invalidation (#2)
+- Day 4-5: Component scaffolding (#3)
+
+**Week 2: Quality + Testing**
+
+- Day 1: Automated testing (#4)
+- Day 2-3: Visual regression (#5)
+- Day 4: Performance budgets (#6)
+- Day 5: Database backups (#7)
+
+**Future Sprints:**
+
+- Design token sync (#8) - when design system matures
+
+---
+
+## 💰 ROI Summary
+
+| Automation            | Time Saved (per week) | Setup Effort | ROI Score |
+| --------------------- | --------------------- | ------------ | --------- |
+| Type Generation       | 2-4 hours             | 1-2 days     | 🔥🔥🔥    |
+| Cache Invalidation    | 1-2 hours             | 1 day        | 🔥🔥🔥    |
+| Component Scaffolding | 3-5 hours             | 2-3 days     | 🔥🔥      |
+| Automated Testing     | 4-6 hours             | 1 day        | 🔥🔥🔥    |
+| Visual Regression     | 2-3 hours             | 2-3 days     | 🔥🔥      |
+| Performance Budgets   | 1-2 hours             | 1 day        | 🔥🔥      |
+| Database Backups      | 30 min                | 1 day        | 🔥🔥      |
+| Design Token Sync     | 1 hour                | 2-3 days     | 🔥        |
+
+**Total Time Saved:** 14-23 hours/week after full implementation  
+**Total Setup Effort:** 11-17 days  
+**Break-even:** ~2-3 weeks
+
+---
+
+## 🔗 Documentation Cross-References
+
+All automations are documented in detail across our new documentation:
+
+- **Type Generation:** [Strapi Integration → 03-TYPE-GENERATION.md](./strapi-integration/README.md)
+- **Webhooks:** [Strapi Integration → 04-WEBHOOKS.md](./strapi-integration/README.md)
+- **Component Patterns:** [Atomic Architecture](./atomic-architecture/README.md)
+- **Testing:** [Workflows → 03-TESTING-STRATEGY.md](./workflows-automation/README.md)
+- **CI/CD:** [Workflows → 02-CI-CD-PIPELINE.md](./workflows-automation/README.md)
+- **Performance:** [Performance → 05-MONITORING.md](./performance-optimization/README.md)
+- **Backups:** [DATABASE_BACKUP_RESTORE.md](./DATABASE_BACKUP_RESTORE.md)
+
+---
+
+## ✅ Next Actions
+
+### Immediate (This Week)
+
+1. ✅ Review this automation strategy
+2. ✅ Prioritize automations based on team needs
+3. ✅ Create GitHub issues for top 3 priorities
+4. ✅ Assign to sprint/iteration
+
+### Short-term (Next 2 Weeks)
+
+5. ✅ Implement Phase 1 automations (Type gen + Cache invalidation)
+6. ✅ Test automations in staging environment
+7. ✅ Document automation usage for team
+
+### Long-term (Next Month)
+
+8. ✅ Complete Phase 2-3 automations
+9. ✅ Measure time savings and ROI
+10. ✅ Iterate based on team feedback
+
+---
+
+**🤖 Automation is not about replacing developers. It's about freeing them to do what they do best: solve complex problems and build great features.**
+
+Let's turn this documentation into automated workflows that accelerate your development velocity!

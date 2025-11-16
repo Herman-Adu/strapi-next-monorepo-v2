@@ -79,6 +79,7 @@ This is a ready-to-go starter template for Strapi projects. It combines the powe
 
    - See [What's inside?](#-whats-inside) for more details about apps and packages.
    - You also probably want to customize naming in the project. See [Transform this template to a project](#-transform-this-template-to-a-project).
+   - **NEW:** Set up automations! See [Automation Setup Guide](./AUTOMATION-SETUP.md) for cache invalidation and type generation (15 min setup).
 
 ## ✨ Features
 
