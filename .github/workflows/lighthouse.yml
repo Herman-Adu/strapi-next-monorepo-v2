@@ -38,8 +38,8 @@ jobs:
 
       - name: Run Lighthouse CI
         run: lhci autorun
-        env:
-          LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
+        # Using temporary-public-storage (no token required)
+        # Reports are uploaded to Google's free temporary storage
 
       - name: Upload Lighthouse results
         uses: actions/upload-artifact@v4
