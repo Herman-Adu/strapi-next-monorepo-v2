@@ -101,7 +101,7 @@ export function StrapiMetricsSection({
             )}
           </h2>
           {component.description && (
-            <p className="from-muted-foreground/80 via-muted-foreground/60 via-primary/70 via-muted-foreground/60 to-muted-foreground/80 dark:from-foreground/90 dark:via-primary dark:to-foreground/90 mb-12 bg-gradient-to-r bg-clip-text text-xl font-semibold text-balance text-transparent drop-shadow-[0_2px_12px_hsl(var(--primary)/0.4)] filter md:text-2xl dark:drop-shadow-[0_0_20px_hsl(var(--primary)/0.3)]">
+            <p className="from-muted-foreground/80 via-primary/70 to-muted-foreground/80 dark:from-foreground/90 dark:via-primary dark:to-foreground/90 mb-12 bg-gradient-to-r bg-clip-text text-xl font-semibold text-balance text-transparent drop-shadow-[0_2px_12px_hsl(var(--primary)/0.4)] filter md:text-2xl dark:drop-shadow-[0_0_20px_hsl(var(--primary)/0.3)]">
               {component.description}
             </p>
           )}

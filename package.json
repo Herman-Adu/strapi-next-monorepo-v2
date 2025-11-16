@@ -19,6 +19,7 @@
     "apps/*"
   ],
   "scripts": {
+    "backup:db": "powershell -ExecutionPolicy Bypass -File ./scripts/backup-database.ps1",
     "build": "yarn clean && turbo build --cache-dir=.turbo",
     "build:strapi": "yarn clean:strapi && turbo run build --filter=@repo/strapi",
     "build:ui": "yarn clean:ui && turbo run build --filter=@repo/ui",
@@ -42,6 +43,7 @@
     "preinstall": "npx only-allow yarn",
     "postinstall": "yarn setup:apps",
     "kill:port": "powershell -ExecutionPolicy Bypass -File ./scripts/utils/kill-port.ps1",
+    "lighthouse": "lhci autorun",
     "lint": "turbo lint",
     "prepare": "husky",
     "setup:apps": "node ./scripts/setup-env.js",
@@ -65,6 +67,7 @@
     "@commitlint/cli": "19.3.0",
     "@commitlint/config-conventional": "19.2.2",
     "@ianvs/prettier-plugin-sort-imports": "^4.3.1",
+    "@lhci/cli": "^0.13.0",
     "@repo/eslint-config": "*",
     "@repo/prettier-config": "*",
     "@repo/typescript-config": "*",
