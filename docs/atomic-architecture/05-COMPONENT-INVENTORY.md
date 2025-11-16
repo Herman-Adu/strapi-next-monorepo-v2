@@ -657,20 +657,20 @@ Frontend:
 
 | Issue                        | Type              | Affected Components           | Effort    | Impact           | Status      |
 | ---------------------------- | ----------------- | ----------------------------- | --------- | ---------------- | ----------- |
-| Create StrapiContactForm     | Missing Component | forms.contact-form            | 4-6 hours | 🔥🔥🔥 Blocking  | Not Started |
-| Delete SEO duplicates        | Duplication       | shared/seo, shared/open-graph | 1 hour    | 🔥🔥 High        | Not Started |
+| Create StrapiContactForm     | Missing Component | forms.contact-form            | 4-6 hours | 🔥🔥🔥 Blocking  | ✅ RESOLVED |
+| Delete SEO duplicates        | Duplication       | shared/seo, shared/open-graph | 1 hour    | 🔥🔥 High        | ✅ RESOLVED |
 | Move heading-with-cta-button | Misclassification | sections/ → elements/         | 2-3 hours | 🔥🔥 High        | Not Started |
 | Move image-with-cta-button   | Misclassification | sections/ → elements/         | 2-3 hours | 🔥🔥 High        | Not Started |
 | Refactor section headers     | Structural        | feature-grid, newsletter-cta  | 6-8 hours | 🔥🔥🔥 Very High | Not Started |
 
-**Total Effort**: 15-23 hours  
-**Total Impact**: Unblocks contact pages, improves consistency, fixes architecture
+**Total Effort**: 15-23 hours → **12-20 hours remaining** (1 hour deleted SEO, 4-6 hours StrapiContactForm complete)  
+**Total Impact**: Unblocks contact pages ✅, improves consistency, fixes architecture
 
 **Recommended Order**:
 
-1. Delete SEO duplicates (quick win, 1 hour)
-2. Move misclassified components (4-6 hours, improves structure)
-3. Create StrapiContactForm (4-6 hours, unblocks feature)
+1. ✅ Delete SEO duplicates (quick win, 1 hour) - **COMPLETE**
+2. ✅ Create StrapiContactForm (4-6 hours, unblocks feature) - **COMPLETE**
+3. Move misclassified components (4-6 hours, improves structure) - **NEXT**
 4. Refactor section headers (6-8 hours, big consistency win)
 
 ---
@@ -679,17 +679,17 @@ Frontend:
 
 | Issue                       | Type               | Affected Components            | Effort    | Impact    | Status      |
 | --------------------------- | ------------------ | ------------------------------ | --------- | --------- | ----------- |
-| Compare hero variants       | Duplication        | hero.json vs landing-hero.json | 2-3 hours | 🔥 Medium | Not Started |
+| Compare hero variants       | Duplication        | hero.json vs landing-hero.json | 2-3 hours | 🔥 Medium | ✅ RESOLVED |
 | Move social-icons           | Misclassification  | seo-utilities/ → elements/     | 2 hours   | 🔥 Medium | Not Started |
 | Resolve StrapiOrbitingBadge | Orphaned Component | Add Strapi schema OR delete    | 3-4 hours | 🔥 Medium | Not Started |
 | Extract newsletter form     | Structural         | Separate form from section     | 4-6 hours | 🔥 Medium | Not Started |
 
-**Total Effort**: 11-15 hours  
+**Total Effort**: 11-15 hours → **9-12 hours remaining** (2-3 hours hero analysis complete)  
 **Total Impact**: Cleaner architecture, better reusability
 
 **Recommended Order**:
 
-1. Compare hero variants (quick analysis, 2-3 hours)
+1. ✅ Compare hero variants (quick analysis, 2-3 hours) - **COMPLETE**
 2. Move social-icons (simple move, 2 hours)
 3. Resolve StrapiOrbitingBadge (decide + implement, 3-4 hours)
 4. Extract newsletter form (complex refactor, 4-6 hours)
@@ -713,14 +713,15 @@ Frontend:
 
 ### Total Refactoring Scope
 
-| Priority  | Issues        | Effort          | Impact          |
-| --------- | ------------- | --------------- | --------------- |
-| High      | 5 issues      | 15-23 hours     | 🔥🔥🔥 Critical |
-| Medium    | 4 issues      | 11-15 hours     | 🔥🔥 Important  |
-| Low       | 3 issues      | 4-7 hours       | 🔥 Nice-to-have |
-| **TOTAL** | **12 issues** | **30-45 hours** | **~1-2 weeks**  |
+| Priority  | Issues        | Effort          | Remaining Effort | Impact          |
+| --------- | ------------- | --------------- | ---------------- | --------------- |
+| High      | 5 issues      | 15-23 hours     | 12-20 hours      | 🔥🔥🔥 Critical |
+| Medium    | 4 issues      | 11-15 hours     | 9-12 hours       | 🔥🔥 Important  |
+| Low       | 3 issues      | 4-7 hours       | 4-7 hours        | 🔥 Nice-to-have |
+| **TOTAL** | **12 issues** | **30-45 hours** | **25-39 hours**  | **~1-2 weeks**  |
 
-**Recommendation**: Focus on HIGH priority first (1 week), then ship features. Medium priority can happen alongside feature work.
+**Progress**: 4/12 issues resolved (33%) - SEO duplicates, StrapiContactForm, hero analysis complete  
+**Recommendation**: Focus on component reclassification next (4-6 hours), then ship features. Section header refactoring can happen alongside feature work.
 
 ---
 
