@@ -11,7 +11,7 @@ describe("BlogCard", () => {
 
   it("applies custom className", () => {
     const { container } = render(
-      <BlogCard className="custom-class">Content</BlogCard>,
+      <BlogCard className="custom-class">Content</BlogCard>
     )
     const element = container.querySelector(".custom-class")
     expect(element).toBeInTheDocument()
