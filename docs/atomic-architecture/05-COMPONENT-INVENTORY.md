@@ -517,25 +517,37 @@ apps/ui/src/components/page-builder/
 
 ### 4.1 Duplications
 
-| Issue                | Location 1                        | Location 2                            | Recommended Resolution            | Priority  | Notes                      |
-| -------------------- | --------------------------------- | ------------------------------------- | --------------------------------- | --------- | -------------------------- |
-| SEO component        | shared/seo.json                   | seo-utilities/seo.json                | Keep seo-utilities, delete shared | 🔴 HIGH   | Exact duplication          |
-| Open Graph component | shared/open-graph.json            | seo-utilities/seo-og.json             | Keep seo-utilities, delete shared | 🔴 HIGH   | Exact duplication          |
-| Hero sections        | sections/hero.json                | sections/landing-hero.json            | Compare and consolidate           | 🟡 MEDIUM | Need to check differences  |
-| Marquee testimonials | elements/marquee-testimonial.json | elements/marquee-testimonial-pro.json | Evaluate if "Pro" adds value      | 🟢 LOW    | May be intentional variant |
+| Issue                | Location 1                        | Location 2                            | Recommended Resolution              | Priority    | Notes                                       |
+| -------------------- | --------------------------------- | ------------------------------------- | ----------------------------------- | ----------- | ------------------------------------------- |
+| SEO component        | ~~shared/seo.json~~               | seo-utilities/seo.json                | ✅ RESOLVED: Deleted shared version | ✅ COMPLETE | Completed Nov 16, 2025                      |
+| Open Graph component | ~~shared/open-graph.json~~        | seo-utilities/seo-og.json             | ✅ RESOLVED: Deleted shared version | ✅ COMPLETE | Completed Nov 16, 2025                      |
+| Hero sections        | sections/hero.json                | sections/landing-hero.json            | ✅ NOT DUPLICATES: Keep both        | ✅ RESOLVED | Different schemas, layouts, and use cases   |
+| Marquee testimonials | elements/marquee-testimonial.json | elements/marquee-testimonial-pro.json | Evaluate if "Pro" adds value        | 🟢 LOW      | May be intentional variant - needs analysis |
 
 **Analysis**:
 
-- [x] All duplications identified (4 found)
+- [x] All duplications identified (4 total, 2 resolved, 1 false positive)
 - [x] Root cause understood
 - [x] Resolution planned
 - [x] Priorities assigned
+- [x] ✅ **2 duplications RESOLVED** (Nov 16, 2025)
 
-**Action Plan**:
+**Completed Actions**:
 
-1. **SEO duplications (HIGH)**: Delete from shared/, use seo-utilities/ as single source
-2. **Hero comparison (MEDIUM)**: Read both schemas, determine if landing-hero can use hero with variants
-3. **Testimonial variants (LOW)**: Document difference between standard and "Pro" versions
+1. ✅ **SEO duplications (RESOLVED)**: Deleted from shared/, using seo-utilities/ as single source
+2. ✅ **Hero analysis (RESOLVED)**:
+   - `hero.json` = General content hero (two-column, steps, image)
+   - `landing-hero.json` = Marketing landing hero (centered, badge, CTAs)
+   - **Decision**: Keep both - intentional variation, not duplication
+3. ⏳ **Testimonial variants (TODO)**: Document difference between standard and "Pro" versions
+
+**Hero Analysis Details**:
+
+- **hero**: Two-column layout with title, subtitle, checklist steps, image, links, background color
+- **landing-hero**: Centered layout with badge, heading, description, CTA buttons, footer text
+- **Use cases**: Content/feature pages vs marketing/landing pages
+- **Both actively used** in page content type
+- **Recommendation**: Consider renaming `hero` → `content-hero` for clarity (optional)
 
 ---
 
