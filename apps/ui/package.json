@@ -4,10 +4,13 @@
   "private": true,
   "scripts": {
     "build": "next build",
+    "build-storybook": "storybook build",
+    "chromatic": "chromatic",
     "dev": "wait-on http://localhost:1337/_health && next dev",
     "lint": "next lint",
     "preview": "next build && next start",
     "start": "next start",
+    "storybook": "storybook dev -p 6006",
     "typecheck": "tsc --noEmit"
   },
   "browserslist": [
@@ -76,11 +79,15 @@
     "zod": "^3.25.76"
   },
   "devDependencies": {
+    "@chromatic-com/storybook": "^4.1.2",
     "@next/eslint-plugin-next": "15.3.5",
     "@repo/eslint-config": "*",
     "@repo/prettier-config": "*",
     "@repo/strapi": "*",
     "@repo/typescript-config": "*",
+    "@storybook/addon-docs": "^10.0.7",
+    "@storybook/addon-onboarding": "^10.0.7",
+    "@storybook/nextjs": "^10.0.7",
     "@tailwindcss/postcss": "^4.0.9",
     "@tailwindcss/typography": "^0.5.19",
     "@types/lodash": "^4",
@@ -89,8 +96,10 @@
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "eslint-plugin-jsx-a11y": "^6.10.2",
+    "eslint-plugin-storybook": "^10.0.7",
     "postcss": "^8.4.47",
     "prettier-plugin-tailwindcss": "^0.6.11",
+    "storybook": "^10.0.7",
     "tailwindcss": "^4.0.9",
     "typescript": "^5",
     "wait-on": "^9.0.1"

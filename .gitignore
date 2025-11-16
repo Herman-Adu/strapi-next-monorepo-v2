@@ -42,3 +42,6 @@ yarn-error.log*
 .cache
 
 .strapi-updater.json
+
+*storybook.log
+storybook-static

@@ -1,7 +1,11 @@
 /** @type {import("eslint").Linter.Config} */
 module.exports = {
   root: true,
-  extends: ["@repo/eslint-config/next.js", "plugin:jsx-a11y/recommended"],
+  extends: [
+    "@repo/eslint-config/next.js",
+    "plugin:jsx-a11y/recommended",
+    "plugin:storybook/recommended"
+  ],
   parser: "@typescript-eslint/parser",
   plugins: ["jsx-a11y"],
   settings: {
