@@ -157,13 +157,7 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "jobType",
-        "state",
-        "relatedDocumentId",
-        "createdAt"
-      ],
+      "list": ["id", "jobType", "state", "relatedDocumentId", "createdAt"],
       "edit": [
         [
           {

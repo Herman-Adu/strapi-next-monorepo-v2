@@ -99,12 +99,7 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "ogTitle",
-        "ogDescription",
-        "ogImage"
-      ],
+      "list": ["id", "ogTitle", "ogDescription", "ogImage"],
       "edit": [
         [
           {

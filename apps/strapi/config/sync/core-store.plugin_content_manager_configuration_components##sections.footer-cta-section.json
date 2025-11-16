@@ -113,12 +113,7 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "heading",
-        "description",
-        "ctaButtons"
-      ],
+      "list": ["id", "heading", "description", "ctaButtons"],
       "edit": [
         [
           {

@@ -185,12 +185,7 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "logoImage",
-        "documentId",
-        "description"
-      ],
+      "list": ["id", "logoImage", "documentId", "description"],
       "edit": [
         [
           {

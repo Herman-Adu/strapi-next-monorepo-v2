@@ -28,11 +28,7 @@
     },
     "variant": {
       "type": "enumeration",
-      "enum": [
-        "default",
-        "outline",
-        "ghost"
-      ],
+      "enum": ["default", "outline", "ghost"],
       "default": "default"
     },
     "newTab": {

@@ -57,12 +57,7 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "title",
-        "links",
-        "documentId"
-      ],
+      "list": ["id", "title", "links", "documentId"],
       "edit": [
         [
           {

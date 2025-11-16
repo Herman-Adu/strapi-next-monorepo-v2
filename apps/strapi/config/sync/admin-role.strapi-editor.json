@@ -155,11 +155,7 @@
       "actionParameters": {},
       "subject": "api::page.page",
       "properties": {
-        "fields": [
-          "title",
-          "slug",
-          "content"
-        ]
+        "fields": ["title", "slug", "content"]
       },
       "conditions": [],
       "locale": null
@@ -170,11 +166,7 @@
       "actionParameters": {},
       "subject": "api::page.page",
       "properties": {
-        "fields": [
-          "title",
-          "slug",
-          "content"
-        ]
+        "fields": ["title", "slug", "content"]
       },
       "conditions": [],
       "locale": null
@@ -185,11 +177,7 @@
       "actionParameters": {},
       "subject": "api::page.page",
       "properties": {
-        "fields": [
-          "title",
-          "slug",
-          "content"
-        ]
+        "fields": ["title", "slug", "content"]
       },
       "conditions": [],
       "locale": null

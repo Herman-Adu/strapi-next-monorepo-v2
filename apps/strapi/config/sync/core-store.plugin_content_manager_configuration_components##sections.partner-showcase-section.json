@@ -85,12 +85,7 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "heading",
-        "description",
-        "partners"
-      ],
+      "list": ["id", "heading", "description", "partners"],
       "edit": [
         [
           {

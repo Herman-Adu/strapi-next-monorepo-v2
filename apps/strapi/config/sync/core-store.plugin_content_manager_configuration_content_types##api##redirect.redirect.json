@@ -144,13 +144,7 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "source",
-        "destination",
-        "permanent",
-        "createdAt"
-      ],
+      "list": ["id", "source", "destination", "permanent", "createdAt"],
       "edit": [
         [
           {

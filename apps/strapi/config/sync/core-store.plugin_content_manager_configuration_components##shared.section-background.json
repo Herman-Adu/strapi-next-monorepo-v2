@@ -113,12 +113,7 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "backgroundStyle",
-        "pattern",
-        "gradient"
-      ],
+      "list": ["id", "backgroundStyle", "pattern", "gradient"],
       "edit": [
         [
           {

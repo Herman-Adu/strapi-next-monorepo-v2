@@ -27,9 +27,7 @@
           "logoImage.link.newTab"
         ]
       },
-      "conditions": [
-        "admin::is-creator"
-      ],
+      "conditions": ["admin::is-creator"],
       "locale": null
     },
     {
@@ -54,9 +52,7 @@
           "logoImage.link.newTab"
         ]
       },
-      "conditions": [
-        "admin::is-creator"
-      ],
+      "conditions": ["admin::is-creator"],
       "locale": null
     },
     {
@@ -81,9 +77,7 @@
           "logoImage.link.newTab"
         ]
       },
-      "conditions": [
-        "admin::is-creator"
-      ],
+      "conditions": ["admin::is-creator"],
       "locale": null
     },
     {
@@ -106,9 +100,7 @@
           "logoImage.link.label"
         ]
       },
-      "conditions": [
-        "admin::is-creator"
-      ],
+      "conditions": ["admin::is-creator"],
       "locale": null
     },
     {
@@ -131,9 +123,7 @@
           "logoImage.link.label"
         ]
       },
-      "conditions": [
-        "admin::is-creator"
-      ],
+      "conditions": ["admin::is-creator"],
       "locale": null
     },
     {
@@ -156,9 +146,7 @@
           "logoImage.link.label"
         ]
       },
-      "conditions": [
-        "admin::is-creator"
-      ],
+      "conditions": ["admin::is-creator"],
       "locale": null
     },
     {
@@ -167,15 +155,9 @@
       "actionParameters": {},
       "subject": "api::page.page",
       "properties": {
-        "fields": [
-          "title",
-          "slug",
-          "content"
-        ]
+        "fields": ["title", "slug", "content"]
       },
-      "conditions": [
-        "admin::is-creator"
-      ],
+      "conditions": ["admin::is-creator"],
       "locale": null
     },
     {
@@ -184,15 +166,9 @@
       "actionParameters": {},
       "subject": "api::page.page",
       "properties": {
-        "fields": [
-          "title",
-          "slug",
-          "content"
-        ]
+        "fields": ["title", "slug", "content"]
       },
-      "conditions": [
-        "admin::is-creator"
-      ],
+      "conditions": ["admin::is-creator"],
       "locale": null
     },
     {
@@ -201,15 +177,9 @@
       "actionParameters": {},
       "subject": "api::page.page",
       "properties": {
-        "fields": [
-          "title",
-          "slug",
-          "content"
-        ]
+        "fields": ["title", "slug", "content"]
       },
-      "conditions": [
-        "admin::is-creator"
-      ],
+      "conditions": ["admin::is-creator"],
       "locale": null
     },
     {
@@ -245,9 +215,7 @@
       "actionParameters": {},
       "subject": null,
       "properties": {},
-      "conditions": [
-        "admin::is-creator"
-      ],
+      "conditions": ["admin::is-creator"],
       "locale": null
     },
     {
@@ -265,9 +233,7 @@
       "actionParameters": {},
       "subject": null,
       "properties": {},
-      "conditions": [
-        "admin::is-creator"
-      ],
+      "conditions": ["admin::is-creator"],
       "locale": null
     }
   ]

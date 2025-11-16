@@ -145,12 +145,7 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "name",
-        "stages",
-        "createdAt"
-      ],
+      "list": ["id", "name", "stages", "createdAt"],
       "edit": [
         [
           {

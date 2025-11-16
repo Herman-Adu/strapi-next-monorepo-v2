@@ -8,13 +8,7 @@
   "attributes": {
     "platform": {
       "type": "enumeration",
-      "enum": [
-        "Twitter",
-        "GitHub",
-        "LinkedIn",
-        "Facebook",
-        "Instagram"
-      ]
+      "enum": ["Twitter", "GitHub", "LinkedIn", "Facebook", "Instagram"]
     },
     "url": {
       "type": "string",

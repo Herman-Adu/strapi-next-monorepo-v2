@@ -57,11 +57,7 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "stats",
-        "companyLogos"
-      ],
+      "list": ["id", "stats", "companyLogos"],
       "edit": [
         [
           {

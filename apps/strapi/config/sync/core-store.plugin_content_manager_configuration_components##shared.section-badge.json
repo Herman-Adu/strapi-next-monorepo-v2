@@ -141,12 +141,7 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "text",
-        "icon",
-        "variant"
-      ],
+      "list": ["id", "text", "icon", "variant"],
       "edit": [
         [
           {

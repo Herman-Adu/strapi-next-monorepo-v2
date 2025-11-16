@@ -309,12 +309,7 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "heading",
-        "description",
-        "displayType"
-      ],
+      "list": ["id", "heading", "description", "displayType"],
       "edit": [
         [
           {

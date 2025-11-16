@@ -99,12 +99,7 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "badge",
-        "heading",
-        "description"
-      ],
+      "list": ["id", "badge", "heading", "description"],
       "edit": [
         [
           {

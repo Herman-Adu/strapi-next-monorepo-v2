@@ -99,12 +99,7 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "enabled",
-        "speed",
-        "size"
-      ],
+      "list": ["id", "enabled", "speed", "size"],
       "edit": [
         [
           {

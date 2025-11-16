@@ -4,7 +4,7 @@ module.exports = {
   extends: [
     "@repo/eslint-config/next.js",
     "plugin:jsx-a11y/recommended",
-    "plugin:storybook/recommended"
+    "plugin:storybook/recommended",
   ],
   parser: "@typescript-eslint/parser",
   plugins: ["jsx-a11y"],

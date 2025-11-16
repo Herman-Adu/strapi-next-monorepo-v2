@@ -1,1 +1,1575 @@
-﻿{"data":[{"id":192,"documentId":"p7d0agmr5oen6948c5g3c4lv","title":"Index","breadcrumbTitle":"Home","slug":"/","fullPath":"/","createdAt":"2025-05-08T13:45:34.276Z","updatedAt":"2025-11-10T01:27:36.938Z","publishedAt":"2025-11-10T01:27:37.348Z","locale":"en","content":[{"__component":"sections.hero","id":35,"title":"Strapi + NextJS","subTitle":"Monorepo Starter","bgColor":null,"links":[{"id":440,"label":"Github","href":"https://github.com/notum-cz/strapi-next-monorepo-starter","newTab":true},{"id":441,"label":"Notum","href":"https://notum.cz/en/","newTab":true}],"image":{"id":866,"alt":"starter-template","width":null,"height":null,"fallbackSrc":null},"steps":[]},{"__component":"utilities.ck-editor-content","id":35,"content":"<h3 style=\"text-align:center;\">🚀 Kickstart your project development&nbsp;</h3><p style=\"text-align:center;\"><span style=\"color:var(--color-muted-foreground);\">Build Faster with the Ultimate Monorepo Starter for Strapi &amp; Next.js</span></p>"},{"__component":"sections.animated-logo-row","id":109,"text":"Technologies","logos":[{"id":862,"alt":"strapi","width":null,"height":null,"fallbackSrc":null},{"id":863,"alt":"nextjs","width":null,"height":null,"fallbackSrc":null},{"id":864,"alt":"tailwindcss","width":null,"height":null,"fallbackSrc":null},{"id":865,"alt":"shadcn/ui","width":null,"height":null,"fallbackSrc":null}]},{"__component":"sections.integration-grid-section","id":64,"heading":"Seamless Integrations","description":"Connect with your favorite tools and services. Integrate once, deploy everywhere.","gridColumns":"3","integrations":[{"id":379,"title":"Stripe Payments","description":"Accept payments with the world's most powerful and flexible payment platform.","link":"/integrations/stripe","category":"Payments","linkText":"Learn More","newTab":false},{"id":380,"title":"Google Analytics","description":"Track user behavior and gain insights with comprehensive analytics.","link":"/integrations/analytics","category":"Analytics","linkText":"Set Up","newTab":false},{"id":381,"title":"Twilio Communications","description":"Send SMS, make calls, and engage customers with programmable communications.","link":"/integrations/twilio","category":"Communications","linkText":"Connect","newTab":false},{"id":382,"title":"Contentful CMS","description":"Manage content across multiple platforms with a headless CMS.","link":"/integrations/contentful","category":"Content","linkText":"Explore","newTab":false},{"id":383,"title":"AWS Cloud","description":"Scale your infrastructure with enterprise-grade cloud services.","link":"/integrations/aws","category":"Infrastructure","linkText":"Deploy","newTab":false},{"id":384,"title":"Docker Containers","description":"Containerize applications for consistent development and deployment.","link":"/integrations/docker","category":"DevOps","linkText":"Get Started","newTab":false}]},{"__component":"sections.marquee-section","id":120,"heading":"Customer Testimonial Pro - One Row","description":"Don't just take our word for it - hear from our satisfied clients","displayType":"testimonials","orientation":"horizontal","reverse":false,"pauseOnHover":true,"showFade":true,"duration":40,"gap":"1rem","rows":1,"alternateDirection":false,"varySpeed":false,"badgeText":"Testimonials","badgeIcon":"⭐","backgroundStyle":"solid","testimonialVariant":"pro","logos":[],"testimonials":[],"testimonialsPro":[{"id":293,"author":"Sarah Johnson","role":"CEO","company":"TechVentures Inc","quote":"This platform transformed how we build and deploy applications. The performance is outstanding and the developer experience is second to none.","rating":5},{"id":294,"author":"Michael Chen","role":"Lead Developer","company":"Digital Solutions","quote":"Best development platform we've used. The TypeScript support and component library saved us months of development time.","rating":4},{"id":295,"author":"Emily Rodriguez","role":"Product Manage","company":"Startup Ventures","quote":"Incredibly easy to use yet powerful enough for enterprise needs. Our team was productive from day one.","rating":5},{"id":296,"author":"David Kim","role":"CTO","company":"Global Systems","quote":"The multi-row marquee feature is perfect for showcasing our client testimonials. Looks professional and works flawlessly.","rating":4}],"reviews":[]},{"__component":"sections.marquee-section","id":121,"heading":"Customer Testimonial Pro - Two Rows","description":"Don't just take our word for it - hear from our satisfied clients","displayType":"testimonials","orientation":"horizontal","reverse":false,"pauseOnHover":true,"showFade":true,"duration":40,"gap":"1.5rem","rows":2,"alternateDirection":true,"varySpeed":true,"badgeText":"Testimonials","badgeIcon":"⭐","backgroundStyle":"solid","testimonialVariant":"pro","logos":[],"testimonials":[],"testimonialsPro":[{"id":297,"author":"Sarah Johnson","role":"CEO","company":"TechVentures Inc","quote":"This platform transformed how we build and deploy applications. The performance is outstanding and the developer experience is second to none.","rating":5},{"id":298,"author":"Michael Chen","role":"Lead Developer","company":"Digital Solutions","quote":"Best development platform we've used. The TypeScript support and component library saved us months of development time.","rating":5},{"id":299,"author":"Emily Rodriguez","role":"Product Manager","company":"Startup Ventures","quote":"ncredibly easy to use yet powerful enough for enterprise needs. Our team was productive from day one.","rating":5},{"id":300,"author":"David Kim","role":"CTO","company":"Global Systems","quote":"The multi-row marquee feature is perfect for showcasing our client testimonials. Looks professional and works flawlessly.","rating":5},{"id":301,"author":"Rachel Foster","role":"Engineering Director","company":"Momentum Technologies","quote":"We migrated from our old stack and couldn't be happier. The deployment pipeline alone has saved us countless hours. Highly recommended!","rating":5},{"id":302,"author":"Jessica Martinez","role":"Senior Architect","company":"Cloud Dynamics","quote":"Outstanding documentation and support. The vertical marquee orientation was exactly what we needed for our dashboard.","rating":5},{"id":303,"author":"Lisa Anderson","role":"VP of Engineering","company":"Innovation Labs","quote":"The responsive design is flawless across all devices. Our mobile users are impressed with the smooth animations and performance.","rating":5},{"id":304,"author":"Maria Thompson","role":"Head of Product","company":"NextGen Apps","quote":"The attention to detail in every component is impressive. From the smooth animations to the accessibility features, everything just works.","rating":5}],"reviews":[]},{"__component":"sections.marquee-section","id":122,"heading":"Customer Testimonial Pro - Three Rows","description":"Don't just take our word for it - hear from our satisfied clients","displayType":"testimonials","orientation":"horizontal","reverse":false,"pauseOnHover":true,"showFade":true,"duration":40,"gap":"1.5rem","rows":3,"alternateDirection":true,"varySpeed":true,"badgeText":"Testimonials","badgeIcon":"⭐","backgroundStyle":"solid","testimonialVariant":"pro","logos":[],"testimonials":[],"testimonialsPro":[{"id":305,"author":"Sarah Johnson","role":"CEO","company":"TechVentures Inc","quote":"This platform transformed how we build and deploy applications. The performance is outstanding and the developer experience is second to none.","rating":5},{"id":306,"author":"Michael Chen","role":"Lead Developer","company":"Digital Solutions","quote":"Best development platform we've used. The TypeScript support and component library saved us months of development time.","rating":5},{"id":307,"author":"Emily Rodriguez","role":"Product Manager","company":"Startup Ventures","quote":"Incredibly easy to use yet powerful enough for enterprise needs. Our team was productive from day one.","rating":5},{"id":308,"author":"David Kim","role":"CTO","company":"Global Systems","quote":"The multi-row marquee feature is perfect for showcasing our client testimonials. Looks professional and works flawlessly.","rating":5},{"id":309,"author":"Rachel Foster","role":"Engineering Director","company":"Momentum Technologies","quote":"We migrated from our old stack and couldn't be happier. The deployment pipeline alone has saved us countless hours. Highly recommended!","rating":5},{"id":310,"author":"Jessica Martinez","role":"Senior Architect","company":"Cloud Dynamics","quote":"Outstanding documentation and support. The vertical marquee orientation was exactly what we needed for our dashboard.","rating":2},{"id":311,"author":"Lisa Anderson","role":"VP of Engineering","company":"Innovation Labs","quote":"The responsive design is flawless across all devices. Our mobile users are impressed with the smooth animations and performance.","rating":5},{"id":312,"author":"Maria Thompson","role":"Head of Product","company":"NextGen Apps","quote":"The attention to detail in every component is impressive. From the smooth animations to the accessibility features, everything just works.","rating":5},{"id":313,"author":"Andrew Wright","role":"Tech Lead","company":"Digital Innovations","quote":"Excellent platform for rapid development. The component library is comprehensive and the developer experience is top-notch.","rating":5},{"id":314,"author":"David Park","role":"Solutions Architect","company":"Enterprise Systems Co","quote":"Scalable, reliable, and developer-friendly. This is exactly what modern teams need to ship products faster.","rating":5},{"id":315,"author":"Sophia Jones","role":"DevOps Manager","company":"Tech Horizon","quote":"he CI/CD integration is seamless. We've reduced our deployment time by 70% since switching to this platform.","rating":5},{"id":316,"author":"Gupta Patel","role":"Founder & CEO","company":"StartupBoost","quote":"As a startup, we needed something powerful yet easy to use. This platform delivered on both fronts. Couldn't be happier!","rating":5}],"reviews":[]}]},{"id":251,"documentId":"nqblddskpsfnumo0iif5yv90","title":"Landing","breadcrumbTitle":"Landing","slug":"landing","fullPath":"/landing","createdAt":"2025-10-30T21:26:03.621Z","updatedAt":"2025-11-12T12:57:50.491Z","publishedAt":"2025-11-12T12:57:51.331Z","locale":"en","content":[{"__component":"sections.landing-hero","id":202,"badge":"⚡ Production-Ready Starter","heading":"Strapi v5 + Next.js 15 Monorepo Starter","description":"Real code, real traction. Clone it, run docker compose up, ship faster.","footerText":"Built and battle-tested by Notum, Official Strapi Partner","ctaButtons":[{"id":1178,"label":"Get the code on GitHub","href":"https://github.com/Herman-Adu/strapi-next-monorepo-v2","icon":"github","variant":"default","newTab":true},{"id":1179,"label":"Book a 15-min call for StrapiConf 2025","href":"#","icon":"calendar","variant":"outline","newTab":false}]},{"__component":"sections.credibility-section","id":150,"stats":[{"id":913,"number":"500+","description":"Active Projects"},{"id":914,"number":"10k+","description":"Happy Developers"},{"id":915,"number":"99%","description":"Uptime SLA"}],"companyLogos":[{"id":1353,"name":"GitHub"},{"id":1354,"name":"Microsoft"},{"id":1355,"name":"Google"},{"id":1356,"name":"Amazon"},{"id":1357,"name":"Meta"},{"id":1358,"name":"Apple"}]},{"__component":"sections.feature-grid-section","id":149,"heading":"Everything You Need to Ship Fast","description":"All the tools and features you need to build modern web applications","footerNote":"Full documentation — new dev onboards in &lt; 30 minutes","gridColumns":"3","items":[{"id":1369,"icon":"    📊","title":"Strapi, Typed Controllers & Services","description":"Fully typed backend with controllers and services for type safety and better developer experience."},{"id":1370,"icon":"⚡","title":"Next.js 16 App Router","description":"Latest Next.js with SSR/ISR configured for optimal performance and SEO."},{"id":1371,"icon":"💎","title":"Postgres, Prisma, & TypeScript","description":"Sane defaults, no yak-shaving. Start building features immediately."},{"id":1372,"icon":"🔐","title":"NextAuth + RBAC System","description":"JWT, social providers, role-based guards for secure authentication and authorization."},{"id":1373,"icon":"🌍","title":"i18n & SEO Presets","description":"Locale routing, sitemap, meta tags, Open Graph for international reach."},{"id":1374,"icon":"🐳","title":"\"Docker & CI Pipeline","description":"Identical local/prod builds, one-command deploy for consistent environments."}],"listItems":[]},{"__component":"sections.workflow-section","id":141,"heading":"A streamlined workflow","description":"Our proven workflow helps teams ship faster and more reliably. From local development to production deployment, every step is optimized.","workflowPoints":[{"id":1295,"title":"Save 4–6 weeks of boilerplate","description":"Skip the yak-shaving and focus on building your unique features.","iconType":"check"},{"id":1296,"title":"Unify CMS strategy","description":"Marketing and engineering work in the same tool for better collaboration.","iconType":"check"},{"id":1297,"title":"Scale safely","description":"Handles 2x traffic spikes without code surgery or emergency fixes.","iconType":"check"},{"id":1298,"title":"No vendor lock","description":"Clean architecture, open standards, MIT licence for complete freedom.","iconType":"check"}],"image":{"id":1361,"alt":"Strapi dashboard","width":null,"height":null,"fallbackSrc":null}},{"__component":"sections.roadmap-section","id":132,"heading":"Roadmap & Community","description":"See what we're building next and join our growing community","roadmapItems":[{"id":1299,"title":"Strapi v5 integration - Shipped Q4 2024","description":"Comprehensive guide for upgrading to the stable release of Strapi v5.","iconType":"circle"},{"id":1300,"title":"Next.js 15 upgrade - Shipped Q1 2025","description":"Advanced preview functionality for content editors to see changes before publishing.","iconType":"circle"},{"id":1301,"title":"Next.js 16 newbuild- Shipped Q4 2025","description":"Advanced preview functionality for content editors to see changes before publishing.","iconType":"circle"}],"footerNotes":[{"id":132,"text":"⭐ Stars drive priority. Smash :star: on GitHub if this saves you time. "}]},{"__component":"sections.newsletter-cta-section","id":172,"heading":"Subscribe to our newsletter","description":"Get the latest updates, tips, and best practices delivered to your inbox Nostrud amet eu ullamco nisi aute in ad minim nostrud.","inputPlaceholder":null,"buttonText":null,"gdprLabel":"Stay in the Loop","badge":{"id":7,"text":"Join Our Newsletter","icon":"Rocket","variant":"default","size":"medium","animation":true,"animationSpeed":"slow","orbSize":"small","pulse":false},"background":{"id":7,"backgroundStyle":"theme-muted","pattern":null,"gradient":false,"containerStyle":"bordered","containerWidth":"default","padding":"spacious"},"gdprLink":{"id":720,"label":"terms and conditions","href":"/privacy-policy","newTab":null},"ctaButtons":[],"benefits":[{"id":1302,"title":"Weekly articles","description":"Get curated development tips, best practices, and platform updates delivered every week.","iconType":"check"},{"id":1303,"title":"No spam","description":"\"We respect your inbox. Unsubscribe anytime with a single click.","iconType":"check"}]},{"__component":"sections.animated-logo-row","id":164,"text":"Technologies","logos":[{"id":1353,"alt":"adu dev logo","width":60,"height":60,"fallbackSrc":null},{"id":1354,"alt":"google logo","width":null,"height":null,"fallbackSrc":null},{"id":1355,"alt":"github logo","width":null,"height":null,"fallbackSrc":null},{"id":1356,"alt":"Microsoft logo","width":null,"height":null,"fallbackSrc":null},{"id":1357,"alt":"meta logo","width":null,"height":null,"fallbackSrc":null},{"id":1358,"alt":"apple logo","width":null,"height":null,"fallbackSrc":null},{"id":1359,"alt":"amazon logo","width":null,"height":null,"fallbackSrc":null},{"id":1360,"alt":"strapi logo","width":null,"height":null,"fallbackSrc":null}]},{"__component":"sections.final-cta-section","id":127,"heading":"Ready to Build Something Amazing?","description":"Join thousands of developers who are shipping faster with our production-ready starter","ctaButtons":[{"id":1180,"label":"Get Started Now","href":"/auth/register","icon":"github","variant":"default","newTab":false},{"id":1181,"label":"View Documentation","href":"/docs","icon":"book-open","variant":"outline","newTab":false}]},{"__component":"sections.footer-cta-section","id":126,"heading":"Let's Build Together","description":"Open source, production-ready, and built by developers for developers","logo":"N","copyright":"\"© 2025 Notum Technologies. Built with Strapi v5 & Next.js 15","ctaButtons":[{"id":1182,"label":"Star on GitHub","href":"https://github.com/Herman-Adu/strapi-next-monorepo-v2","icon":"github","variant":"default","newTab":false},{"id":1183,"label":"Join Discord","href":"https://discord.gg/strapi","icon":"external-link","variant":"outline","newTab":true}],"footerLinks":[{"id":716,"label":"Documentation","href":"/","newTab":null},{"id":717,"label":"GitHub","href":"https://github.com/Herman-Adu/strapi-next-monorepo-v2","newTab":true},{"id":718,"label":"Privacy Policy","href":"/","newTab":null},{"id":719,"label":"Terms of Service","href":"/","newTab":null}]},{"__component":"sections.benefits-section","id":120,"heading":"Why Choose Our Platform","description":"Discover the powerful features that make our solution the best choice for modern development teams.","gridColumns":"3","benefits":[{"id":1375,"icon":"⚡","title":"Lightning Fast Performance","description":"Experience blazing fast load times with optimized code and edge caching worldwide."},{"id":1376,"icon":"💻","title":"Developer Friendly","description":"Built with modern frameworks and TypeScript for the best developer experience."},{"id":1377,"icon":"🎨","title":"Fully Customizable","description":"Tailor every aspect to match your brand with our flexible component system."}]},{"__component":"sections.metrics-section","id":117,"heading":"Worldwide","description":"Join thousands of teams building amazing products with our platform.","backgroundStyle":"theme-subtle","headingStyle":"two-tone","headingAccent":"Developers","containerStyle":"bordered","badge":"Trusted by","badgeIcon":"✨","badgeSize":"large","badgeAnimation":true,"badgeAnimationSpeed":"extra-slow","badgeOrbSize":"small","badgeBorderRadius":"sm","badgeOrbGlow":"subtle","metrics":[{"id":916,"number":"50,000+","description":"Active Users"},{"id":917,"number":"99.9%","description":"Uptime"},{"id":918,"number":"2M+","description":"API Requests"},{"id":919,"number":"150+","description":"Countries"}]},{"__component":"sections.tech-stack-section","id":76,"heading":"Built with Modern Technologies","description":"Powered by industry-leading tools and frameworks for maximum performance and reliability.","displayStyle":"marquee","badgeText":"Powered by Industry Leaders","badgeIcon":" 🚀","technologies":[{"id":1347,"name":"Next.js"},{"id":1348,"name":"React"},{"id":1349,"name":"TypeScript"},{"id":1350,"name":"Strapi"},{"id":1351,"name":"PostgreSQL"},{"id":1352,"name":"Tailwind CSS"}]},{"__component":"sections.marquee-section","id":189,"heading":"Trusted by Industry Leaders","description":"Join thousands of companies using our platform","displayType":"logos","orientation":"horizontal","reverse":false,"pauseOnHover":true,"showFade":true,"duration":40,"gap":"2rem","rows":1,"alternateDirection":false,"varySpeed":false,"badgeText":"🏆 Partners","badgeIcon":null,"backgroundStyle":"muted","testimonialVariant":null,"logos":[{"id":505,"name":"Google","link":"https://google.com","altText":"Google logo","newTab":true,"showBackground":null},{"id":506,"name":"Microsoft","link":"https://microsoft.com","altText":"Microsoft logo","newTab":true,"showBackground":null},{"id":507,"name":"GitHub","link":"https://github.com","altText":"GitHub logo","newTab":true,"showBackground":null},{"id":508,"name":"Meta","link":"https://meta.com","altText":"Meta logo","newTab":true,"showBackground":null},{"id":509,"name":"Apple","link":"\"https://apple.com\"","altText":"Apple logo","newTab":true,"showBackground":null},{"id":510,"name":"Amazon","link":"https://amazon.com","altText":"Amazon logo","newTab":true,"showBackground":null},{"id":511,"name":"Stripe","link":"https://stripe.com","altText":"Stripe square logo","newTab":true,"showBackground":null},{"id":512,"name":"Docker","link":"https://www.docker.com/","altText":"docker square logo","newTab":true,"showBackground":null}],"testimonials":[],"testimonialsPro":[],"reviews":[]},{"__component":"sections.partner-showcase-section","id":99,"heading":"Trusted by Industry Leaders","description":"Proud to work with amazing companies and organizations worldwide.","gridColumns":"4","partners":[{"id":393,"name":"Google","description":"Powering enterprise solutions with cutting-edge technology.","link":"https://google.com","linkText":"Visit Google","newTab":true},{"id":394,"name":"Microsoft","description":"Collaborating on cloud infrastructure and developer tools.","link":"https://microsoft.com","linkText":"Learn More","newTab":true},{"id":395,"name":"GitHub","description":"Integrated development workflows and version control.","link":"https://github.com","linkText":"View on GitHub","newTab":true},{"id":396,"name":"Meta","description":"Building next-generation social and AR experiences.","link":"https://facebook.com\"","linkText":"Learn more","newTab":true}]}]},{"id":13,"documentId":"ok1o858xfxd4do4jau9lx7ze","title":"Page 1","breadcrumbTitle":"Page 1","slug":"page1","fullPath":"/page1","createdAt":"2025-05-08T15:02:39.381Z","updatedAt":"2025-05-08T15:31:02.477Z","publishedAt":"2025-05-08T15:31:06.546Z","locale":"en","content":[{"__component":"sections.heading-with-cta-button","id":4,"title":"Modern Stack, Zero Setup","subText":"Everything you need, preconfigured!","cta":{"id":37,"label":"Get Started","href":"https://github.com/notum-cz/strapi-next-monorepo-starter","newTab":true}},{"__component":"sections.carousel","id":4,"radius":"lg","images":[{"id":10},{"id":11},{"id":12}]},{"__component":"sections.faq","id":4,"title":"FAQ","subTitle":null,"accordions":[{"id":13,"question":"What is this starter project for?","answer":"This starter provides a fully configured monorepo setup combining Strapi v5 (as the headless CMS) with Next.js 14 (for the frontend), including TypeScript, Tailwind CSS, Shadcn/ui, and Turborepo. It's ideal for building scalable, fullstack applications quickly without wasting time on boilerplate setup."},{"id":14,"question":"Can I deploy the backend and frontend separately?","answer":"Yes. While the monorepo makes local development easy, the Strapi backend and Next.js frontend can be deployed independently on services like Vercel, Strapi Cloud, Heroku or DigitalOcean. Environment variables and Docker support make deployments flexible and environment-specific."},{"id":15,"question":"Does it support TypeScript end-to-end?","answer":"Absolutely. Both the backend (Strapi) and frontend (Next.js) are fully written in TypeScript. Shared types are included so your API contracts remain consistent across the entire stack."},{"id":16,"question":"How do I customize or extend the CMS?","answer":"Strapi v5 plugins and extensions are supported out of the box. You can add custom content types, controllers, routes, and policies using the provided TypeScript scaffolding. It's fully adaptable to your business logic and data model needs."}]}]},{"id":15,"documentId":"zj18v623qcixxhyypoti1fm2","title":"Page 2","breadcrumbTitle":"Page 2","slug":"page2","fullPath":"/page2","createdAt":"2025-05-08T15:34:24.045Z","updatedAt":"2025-05-08T15:34:24.045Z","publishedAt":"2025-05-08T15:34:25.020Z","locale":"en","content":[{"__component":"forms.contact-form","id":4,"title":"Contact Us","description":"Have questions, feedback, or want to contribute? We’d love to hear from you. Whether you’re building with the starter, planning to use it in production, or have suggestions for improvement—reach out!","gdpr":null}]},{"id":219,"documentId":"ckt0xu0nqhowid0z9hc6uqjn","title":"Features","breadcrumbTitle":"Features","slug":"features","fullPath":"/features","createdAt":"2025-11-07T19:34:11.574Z","updatedAt":"2025-11-11T17:48:44.391Z","publishedAt":"2025-11-11T17:48:45.107Z","locale":"en","content":[{"__component":"sections.landing-hero","id":170,"badge":"Enterprise-Grade Features","heading":"for Modern Development Teams","description":"A comprehensive platform providing everything you need to build, deploy, and scale production-ready applications with confidence.","footerText":"Trusted by Development Teams Worldwide","ctaButtons":[{"id":990,"label":"View Documentation","href":"/docs","icon":"book-open","variant":"outline","newTab":false},{"id":991,"label":"Schedule Demo","href":"/contact","icon":"calendar","variant":"default","newTab":false}]},{"__component":"sections.benefits-section","id":88,"heading":"Why Developers Love Our Platform","description":"Built by developers, for developers. Experience the features that make building modern apps a breeze","gridColumns":"3","benefits":[{"id":1084,"icon":"⚡","title":"Lightning Performance","description":"Sub-second page loads with optimized code splitting and edge caching worldwide."},{"id":1085,"icon":"💻","title":"TypeScript Native","description":"Full TypeScript support with auto-generated types for the ultimate DX."},{"id":1086,"icon":"🎨","title":"Flexible & Customizable","description":"Tailwind CSS with shadcn/ui components. Make it yours with minimal effort."},{"id":1087,"icon":"📱","title":"Mobile First","description":"Responsive by default. Looks stunning on every device and screen size."},{"id":1088,"icon":"🔒","title":"Enterprise Ready","description":"Built-in security, authentication, and role-based access control."},{"id":1089,"icon":"🔄","title":"Real-time Updates","description":"Live preview, hot reload, and instant content updates from Strapi."}]},{"__component":"sections.metrics-section","id":85,"heading":"Powering Production Applications","description":"Join thousands of teams shipping faster with our modern stack.","backgroundStyle":"muted","headingStyle":null,"headingAccent":null,"containerStyle":null,"badge":null,"badgeIcon":null,"badgeSize":null,"badgeAnimation":null,"badgeAnimationSpeed":null,"badgeOrbSize":null,"badgeBorderRadius":null,"badgeOrbGlow":null,"metrics":[{"id":692,"number":"10,000+","description":"Developers"},{"id":693,"number":"500K+","description":"API Calls/Day"},{"id":694,"number":"99.99%","description":"Uptime SLA"},{"id":695,"number":"< 100ms","description":"Avg Response"}]},{"__component":"sections.integration-grid-section","id":68,"heading":"Seamless Integrations","description":"Connect your favorite tools and services. Built-in integrations for payments, analytics, communications, and more.","gridColumns":"3","integrations":[{"id":403,"title":"Stripe Payments","description":"Accept payments with the world's most powerful and flexible payment platform.","link":"/integrations/stripe","category":"Payments","linkText":"Connect Stripe","newTab":false},{"id":404,"title":"Google Analytics","description":"Track user behavior and gain insights with comprehensive analytics.","link":"/integrations/analytics","category":"Analytics","linkText":"Setup Analytics","newTab":false},{"id":405,"title":"Twilio Communications","description":"end SMS, make calls, and engage customers with programmable communications.","link":"/integrations/twilio","category":"Communications","linkText":"Add Messaging","newTab":false},{"id":406,"title":"Contentful CMS","description":"Manage content across multiple platforms with a headless CMS.","link":"/integrations/contentful","category":"Content","linkText":"Explore CMS","newTab":false},{"id":407,"title":"AWS Cloud","description":"Scale your infrastructure with enterprise-grade cloud services.","link":"/integrations/aws","category":"Infrastructure","linkText":"Deploy to AWS","newTab":false},{"id":408,"title":"Docker Containers","description":"Containerize applications for consistent development and deployment.","link":"/integrations/docker","category":"DevOps","linkText":"Containerize App","newTab":false}]},{"__component":"sections.partner-showcase-section","id":67,"heading":"Trusted by Industry Leaders","description":"Partnering with world-class organizations to deliver exceptional digital experiences.","gridColumns":"4","partners":[{"id":265,"name":"Google","description":"Cloud infrastructure and AI-powered solutions.","link":"https://google.com","linkText":"Visit Google","newTab":true},{"id":266,"name":"Microsoft","description":"Enterprise-grade cloud services and developer tools.","link":"https://microsoft.com","linkText":"Learn More","newTab":true},{"id":267,"name":"GitHub","description":"Version control and collaborative development.","link":"https://github.com","linkText":"View GitHub","newTab":true},{"id":268,"name":"Meta","description":"Next-generation social platforms and AR/VR technology.","link":"https://meta.com","linkText":"Explore Meta","newTab":true}]},{"__component":"sections.newsletter-cta-section","id":140,"heading":"Stay in the Loop","description":"Get the latest features, updates, and best practices delivered straight to your inbox. Join our community of developers.","inputPlaceholder":"Enter your email","buttonText":"Subscribe","gdprLabel":"I agree to the terms and conditions","badge":null,"background":null,"gdprLink":{"id":560,"label":"terms and conditions","href":"/privacy-policy","newTab":null},"ctaButtons":[],"benefits":[{"id":1014,"title":"Weekly articles","description":"Get curated development tips, best practices, and platform updates delivered every week.","iconType":"none"},{"id":1015,"title":"No Spam, Ever","description":"We respect your inbox. Unsubscribe anytime with a single click.","iconType":"none"}]},{"__component":"sections.marquee-section","id":155,"heading":"Customer Testimonial - One Row","description":"Don't just take our word for it - hear from our satisfied clients","displayType":"testimonials","orientation":"horizontal","reverse":false,"pauseOnHover":true,"showFade":true,"duration":40,"gap":"1rem","rows":1,"alternateDirection":false,"varySpeed":false,"badgeText":"Customer Stories","badgeIcon":"💬 ","backgroundStyle":"bordered","testimonialVariant":null,"logos":[],"testimonials":[{"id":533,"author":"Sarah Johnson","role":"CEO","company":"TechVentures Inc","quote":"This platform transformed how we build and deploy applications. The performance is outstanding and the developer experience is second to none.","rating":5},{"id":534,"author":"Michael Chen","role":"Lead Developer","company":"Digital Solutions","quote":"Best development platform we've used. The TypeScript support and component library saved us months of development time.","rating":5},{"id":535,"author":"Rachel Foster","role":"Engineering Director","company":"Momentum Technologies","quote":"We migrated from our old stack and couldn't be happier. The deployment pipeline alone has saved us countless hours. Highly recommended!","rating":5},{"id":536,"author":"David Kim","role":"CTO","company":"Global Systems","quote":"Outstanding documentation and support. The vertical marquee orientation was exactly what we needed for our dashboard.","rating":5}],"testimonialsPro":[],"reviews":[]},{"__component":"sections.marquee-section","id":156,"heading":"Customer Testimonial - Two Rows","description":"Don't just take our word for it - hear from our satisfied clients","displayType":"testimonials","orientation":"vertical","reverse":false,"pauseOnHover":true,"showFade":true,"duration":50,"gap":"1.5rem","rows":2,"alternateDirection":true,"varySpeed":true,"badgeText":"Customer Stories","badgeIcon":"💬 ","backgroundStyle":"solid","testimonialVariant":null,"logos":[],"testimonials":[{"id":537,"author":"Sarah Johnson","role":"CEO","company":"TechVentures Inc","quote":"his platform transformed how we build and deploy applications. The performance is outstanding and the developer experience is second to none.","rating":5},{"id":538,"author":"Michael Chen","role":"Lead Developer","company":"Digital Solutions","quote":"Best development platform we've used. The TypeScript support and component library saved us months of development time.","rating":5},{"id":539,"author":"Emily Rodriguez","role":"Product Manager","company":"Startup Ventures","quote":"Incredibly easy to use yet powerful enough for enterprise needs. Our team was productive from day one.","rating":2},{"id":540,"author":"David Kim","role":"CTO","company":"Global Systems","quote":"The multi-row marquee feature is perfect for showcasing our client testimonials. Looks professional and works flawlessly.","rating":5},{"id":541,"author":"Rachel Foster","role":"Engineering Director","company":"Momentum Technologies","quote":"We migrated from our old stack and couldn't be happier. The deployment pipeline alone has saved us countless hours. Highly recommended","rating":5},{"id":542,"author":"Jessica Martinez","role":"Senior Architect","company":"Cloud Dynamics","quote":"Outstanding documentation and support. The vertical marquee orientation was exactly what we needed for our dashboard.","rating":5},{"id":543,"author":"Lisa Anderson","role":"VP of Engineering","company":"Enterprise Solutions Co","quote":"Enterprise-grade features without the enterprise complexity. Our developers actually enjoy working with this stack. A rare win-win.","rating":5},{"id":544,"author":"Maria Thompson","role":"Head of Product","company":"NextGen Apps","quote":"The attention to detail in every component is impressive. From the smooth animations to the accessibility features, everything just works.","rating":5}],"testimonialsPro":[],"reviews":[]},{"__component":"sections.marquee-section","id":157,"heading":"Customer Testimonial - Three Rows","description":"Don't just take our word for it - hear from our satisfied clients","displayType":"testimonials","orientation":"vertical","reverse":false,"pauseOnHover":true,"showFade":true,"duration":50,"gap":"1.5rem","rows":3,"alternateDirection":true,"varySpeed":true,"badgeText":"Testimonials","badgeIcon":"💬","backgroundStyle":"transparent","testimonialVariant":null,"logos":[],"testimonials":[{"id":545,"author":"Sarah Johnson","role":"CEO","company":"TechVentures Inc","quote":"This platform transformed how we build and deploy applications. The performance is outstanding and the developer experience is second to none.","rating":5},{"id":546,"author":"Michael Chen","role":"Lead Developer","company":"Digital Solutions","quote":"Best development platform we've used. The TypeScript support and component library saved us months of development time.","rating":5},{"id":547,"author":"Emily Rodriguez","role":"Product Manager","company":"Startup Ventures","quote":"Incredibly easy to use yet powerful enough for enterprise needs. Our team was productive from day one.","rating":5},{"id":548,"author":"David Kim","role":"CTO","company":"Global Systems","quote":"The multi-row marquee feature is perfect for showcasing our client testimonials. Looks professional and works flawlessly.","rating":5},{"id":549,"author":"Rachel Foster","role":"Engineering Director","company":"Momentum Technologies","quote":"We migrated from our old stack and couldn't be happier. The deployment pipeline alone has saved us countless hours. Highly recommended!","rating":5},{"id":550,"author":"Jessica Martinez","role":"Senior Architect","company":"Cloud Dynamics","quote":"The responsive design is flawless across all devices. Our mobile users are impressed with the smooth animations and performance.","rating":5},{"id":551,"author":"Lisa Anderson","role":"VP of Engineering","company":"Innovation Labs","quote":"The responsive design is flawless across all devices. Our mobile users are impressed with the smooth animations and performance.","rating":5},{"id":552,"author":"Maria Thompson","role":"\"Head of Product","company":"NextGen Apps","quote":"The attention to detail in every component is impressive. From the smooth animations to the accessibility features, everything just works.","rating":5},{"id":553,"author":"Andrew Wright","role":"Tech Lead","company":"Digital Innovations","quote":"Excellent platform for rapid development. The component library is comprehensive and the developer experience is top-notch.","rating":5},{"id":554,"author":"David Park","role":"Solutions Architect","company":"Enterprise Systems Co","quote":"Scalable, reliable, and developer-friendly. This is exactly what modern teams need to ship products faster.","rating":5},{"id":555,"author":"Sophia Jones","role":"DevOps Manager","company":"Tech Horizon","quote":"The CI/CD integration is seamless. We've reduced our deployment time by 70% since switching to this platform.","rating":5},{"id":556,"author":"Gupta Patel","role":"Founder & CEO","company":"StartupBoost","quote":"As a startup, we needed something powerful yet easy to use. This platform delivered on both fronts. Couldn't be happier!","rating":5}],"testimonialsPro":[],"reviews":[]}]}],"meta":{"pagination":{"page":1,"pageSize":25,"pageCount":1,"total":5}}}
+﻿{
+  "data": [
+    {
+      "id": 192,
+      "documentId": "p7d0agmr5oen6948c5g3c4lv",
+      "title": "Index",
+      "breadcrumbTitle": "Home",
+      "slug": "/",
+      "fullPath": "/",
+      "createdAt": "2025-05-08T13:45:34.276Z",
+      "updatedAt": "2025-11-10T01:27:36.938Z",
+      "publishedAt": "2025-11-10T01:27:37.348Z",
+      "locale": "en",
+      "content": [
+        {
+          "__component": "sections.hero",
+          "id": 35,
+          "title": "Strapi + NextJS",
+          "subTitle": "Monorepo Starter",
+          "bgColor": null,
+          "links": [
+            {
+              "id": 440,
+              "label": "Github",
+              "href": "https://github.com/notum-cz/strapi-next-monorepo-starter",
+              "newTab": true
+            },
+            {
+              "id": 441,
+              "label": "Notum",
+              "href": "https://notum.cz/en/",
+              "newTab": true
+            }
+          ],
+          "image": {
+            "id": 866,
+            "alt": "starter-template",
+            "width": null,
+            "height": null,
+            "fallbackSrc": null
+          },
+          "steps": []
+        },
+        {
+          "__component": "utilities.ck-editor-content",
+          "id": 35,
+          "content": "<h3 style=\"text-align:center;\">🚀 Kickstart your project development&nbsp;</h3><p style=\"text-align:center;\"><span style=\"color:var(--color-muted-foreground);\">Build Faster with the Ultimate Monorepo Starter for Strapi &amp; Next.js</span></p>"
+        },
+        {
+          "__component": "sections.animated-logo-row",
+          "id": 109,
+          "text": "Technologies",
+          "logos": [
+            {
+              "id": 862,
+              "alt": "strapi",
+              "width": null,
+              "height": null,
+              "fallbackSrc": null
+            },
+            {
+              "id": 863,
+              "alt": "nextjs",
+              "width": null,
+              "height": null,
+              "fallbackSrc": null
+            },
+            {
+              "id": 864,
+              "alt": "tailwindcss",
+              "width": null,
+              "height": null,
+              "fallbackSrc": null
+            },
+            {
+              "id": 865,
+              "alt": "shadcn/ui",
+              "width": null,
+              "height": null,
+              "fallbackSrc": null
+            }
+          ]
+        },
+        {
+          "__component": "sections.integration-grid-section",
+          "id": 64,
+          "heading": "Seamless Integrations",
+          "description": "Connect with your favorite tools and services. Integrate once, deploy everywhere.",
+          "gridColumns": "3",
+          "integrations": [
+            {
+              "id": 379,
+              "title": "Stripe Payments",
+              "description": "Accept payments with the world's most powerful and flexible payment platform.",
+              "link": "/integrations/stripe",
+              "category": "Payments",
+              "linkText": "Learn More",
+              "newTab": false
+            },
+            {
+              "id": 380,
+              "title": "Google Analytics",
+              "description": "Track user behavior and gain insights with comprehensive analytics.",
+              "link": "/integrations/analytics",
+              "category": "Analytics",
+              "linkText": "Set Up",
+              "newTab": false
+            },
+            {
+              "id": 381,
+              "title": "Twilio Communications",
+              "description": "Send SMS, make calls, and engage customers with programmable communications.",
+              "link": "/integrations/twilio",
+              "category": "Communications",
+              "linkText": "Connect",
+              "newTab": false
+            },
+            {
+              "id": 382,
+              "title": "Contentful CMS",
+              "description": "Manage content across multiple platforms with a headless CMS.",
+              "link": "/integrations/contentful",
+              "category": "Content",
+              "linkText": "Explore",
+              "newTab": false
+            },
+            {
+              "id": 383,
+              "title": "AWS Cloud",
+              "description": "Scale your infrastructure with enterprise-grade cloud services.",
+              "link": "/integrations/aws",
+              "category": "Infrastructure",
+              "linkText": "Deploy",
+              "newTab": false
+            },
+            {
+              "id": 384,
+              "title": "Docker Containers",
+              "description": "Containerize applications for consistent development and deployment.",
+              "link": "/integrations/docker",
+              "category": "DevOps",
+              "linkText": "Get Started",
+              "newTab": false
+            }
+          ]
+        },
+        {
+          "__component": "sections.marquee-section",
+          "id": 120,
+          "heading": "Customer Testimonial Pro - One Row",
+          "description": "Don't just take our word for it - hear from our satisfied clients",
+          "displayType": "testimonials",
+          "orientation": "horizontal",
+          "reverse": false,
+          "pauseOnHover": true,
+          "showFade": true,
+          "duration": 40,
+          "gap": "1rem",
+          "rows": 1,
+          "alternateDirection": false,
+          "varySpeed": false,
+          "badgeText": "Testimonials",
+          "badgeIcon": "⭐",
+          "backgroundStyle": "solid",
+          "testimonialVariant": "pro",
+          "logos": [],
+          "testimonials": [],
+          "testimonialsPro": [
+            {
+              "id": 293,
+              "author": "Sarah Johnson",
+              "role": "CEO",
+              "company": "TechVentures Inc",
+              "quote": "This platform transformed how we build and deploy applications. The performance is outstanding and the developer experience is second to none.",
+              "rating": 5
+            },
+            {
+              "id": 294,
+              "author": "Michael Chen",
+              "role": "Lead Developer",
+              "company": "Digital Solutions",
+              "quote": "Best development platform we've used. The TypeScript support and component library saved us months of development time.",
+              "rating": 4
+            },
+            {
+              "id": 295,
+              "author": "Emily Rodriguez",
+              "role": "Product Manage",
+              "company": "Startup Ventures",
+              "quote": "Incredibly easy to use yet powerful enough for enterprise needs. Our team was productive from day one.",
+              "rating": 5
+            },
+            {
+              "id": 296,
+              "author": "David Kim",
+              "role": "CTO",
+              "company": "Global Systems",
+              "quote": "The multi-row marquee feature is perfect for showcasing our client testimonials. Looks professional and works flawlessly.",
+              "rating": 4
+            }
+          ],
+          "reviews": []
+        },
+        {
+          "__component": "sections.marquee-section",
+          "id": 121,
+          "heading": "Customer Testimonial Pro - Two Rows",
+          "description": "Don't just take our word for it - hear from our satisfied clients",
+          "displayType": "testimonials",
+          "orientation": "horizontal",
+          "reverse": false,
+          "pauseOnHover": true,
+          "showFade": true,
+          "duration": 40,
+          "gap": "1.5rem",
+          "rows": 2,
+          "alternateDirection": true,
+          "varySpeed": true,
+          "badgeText": "Testimonials",
+          "badgeIcon": "⭐",
+          "backgroundStyle": "solid",
+          "testimonialVariant": "pro",
+          "logos": [],
+          "testimonials": [],
+          "testimonialsPro": [
+            {
+              "id": 297,
+              "author": "Sarah Johnson",
+              "role": "CEO",
+              "company": "TechVentures Inc",
+              "quote": "This platform transformed how we build and deploy applications. The performance is outstanding and the developer experience is second to none.",
+              "rating": 5
+            },
+            {
+              "id": 298,
+              "author": "Michael Chen",
+              "role": "Lead Developer",
+              "company": "Digital Solutions",
+              "quote": "Best development platform we've used. The TypeScript support and component library saved us months of development time.",
+              "rating": 5
+            },
+            {
+              "id": 299,
+              "author": "Emily Rodriguez",
+              "role": "Product Manager",
+              "company": "Startup Ventures",
+              "quote": "ncredibly easy to use yet powerful enough for enterprise needs. Our team was productive from day one.",
+              "rating": 5
+            },
+            {
+              "id": 300,
+              "author": "David Kim",
+              "role": "CTO",
+              "company": "Global Systems",
+              "quote": "The multi-row marquee feature is perfect for showcasing our client testimonials. Looks professional and works flawlessly.",
+              "rating": 5
+            },
+            {
+              "id": 301,
+              "author": "Rachel Foster",
+              "role": "Engineering Director",
+              "company": "Momentum Technologies",
+              "quote": "We migrated from our old stack and couldn't be happier. The deployment pipeline alone has saved us countless hours. Highly recommended!",
+              "rating": 5
+            },
+            {
+              "id": 302,
+              "author": "Jessica Martinez",
+              "role": "Senior Architect",
+              "company": "Cloud Dynamics",
+              "quote": "Outstanding documentation and support. The vertical marquee orientation was exactly what we needed for our dashboard.",
+              "rating": 5
+            },
+            {
+              "id": 303,
+              "author": "Lisa Anderson",
+              "role": "VP of Engineering",
+              "company": "Innovation Labs",
+              "quote": "The responsive design is flawless across all devices. Our mobile users are impressed with the smooth animations and performance.",
+              "rating": 5
+            },
+            {
+              "id": 304,
+              "author": "Maria Thompson",
+              "role": "Head of Product",
+              "company": "NextGen Apps",
+              "quote": "The attention to detail in every component is impressive. From the smooth animations to the accessibility features, everything just works.",
+              "rating": 5
+            }
+          ],
+          "reviews": []
+        },
+        {
+          "__component": "sections.marquee-section",
+          "id": 122,
+          "heading": "Customer Testimonial Pro - Three Rows",
+          "description": "Don't just take our word for it - hear from our satisfied clients",
+          "displayType": "testimonials",
+          "orientation": "horizontal",
+          "reverse": false,
+          "pauseOnHover": true,
+          "showFade": true,
+          "duration": 40,
+          "gap": "1.5rem",
+          "rows": 3,
+          "alternateDirection": true,
+          "varySpeed": true,
+          "badgeText": "Testimonials",
+          "badgeIcon": "⭐",
+          "backgroundStyle": "solid",
+          "testimonialVariant": "pro",
+          "logos": [],
+          "testimonials": [],
+          "testimonialsPro": [
+            {
+              "id": 305,
+              "author": "Sarah Johnson",
+              "role": "CEO",
+              "company": "TechVentures Inc",
+              "quote": "This platform transformed how we build and deploy applications. The performance is outstanding and the developer experience is second to none.",
+              "rating": 5
+            },
+            {
+              "id": 306,
+              "author": "Michael Chen",
+              "role": "Lead Developer",
+              "company": "Digital Solutions",
+              "quote": "Best development platform we've used. The TypeScript support and component library saved us months of development time.",
+              "rating": 5
+            },
+            {
+              "id": 307,
+              "author": "Emily Rodriguez",
+              "role": "Product Manager",
+              "company": "Startup Ventures",
+              "quote": "Incredibly easy to use yet powerful enough for enterprise needs. Our team was productive from day one.",
+              "rating": 5
+            },
+            {
+              "id": 308,
+              "author": "David Kim",
+              "role": "CTO",
+              "company": "Global Systems",
+              "quote": "The multi-row marquee feature is perfect for showcasing our client testimonials. Looks professional and works flawlessly.",
+              "rating": 5
+            },
+            {
+              "id": 309,
+              "author": "Rachel Foster",
+              "role": "Engineering Director",
+              "company": "Momentum Technologies",
+              "quote": "We migrated from our old stack and couldn't be happier. The deployment pipeline alone has saved us countless hours. Highly recommended!",
+              "rating": 5
+            },
+            {
+              "id": 310,
+              "author": "Jessica Martinez",
+              "role": "Senior Architect",
+              "company": "Cloud Dynamics",
+              "quote": "Outstanding documentation and support. The vertical marquee orientation was exactly what we needed for our dashboard.",
+              "rating": 2
+            },
+            {
+              "id": 311,
+              "author": "Lisa Anderson",
+              "role": "VP of Engineering",
+              "company": "Innovation Labs",
+              "quote": "The responsive design is flawless across all devices. Our mobile users are impressed with the smooth animations and performance.",
+              "rating": 5
+            },
+            {
+              "id": 312,
+              "author": "Maria Thompson",
+              "role": "Head of Product",
+              "company": "NextGen Apps",
+              "quote": "The attention to detail in every component is impressive. From the smooth animations to the accessibility features, everything just works.",
+              "rating": 5
+            },
+            {
+              "id": 313,
+              "author": "Andrew Wright",
+              "role": "Tech Lead",
+              "company": "Digital Innovations",
+              "quote": "Excellent platform for rapid development. The component library is comprehensive and the developer experience is top-notch.",
+              "rating": 5
+            },
+            {
+              "id": 314,
+              "author": "David Park",
+              "role": "Solutions Architect",
+              "company": "Enterprise Systems Co",
+              "quote": "Scalable, reliable, and developer-friendly. This is exactly what modern teams need to ship products faster.",
+              "rating": 5
+            },
+            {
+              "id": 315,
+              "author": "Sophia Jones",
+              "role": "DevOps Manager",
+              "company": "Tech Horizon",
+              "quote": "he CI/CD integration is seamless. We've reduced our deployment time by 70% since switching to this platform.",
+              "rating": 5
+            },
+            {
+              "id": 316,
+              "author": "Gupta Patel",
+              "role": "Founder & CEO",
+              "company": "StartupBoost",
+              "quote": "As a startup, we needed something powerful yet easy to use. This platform delivered on both fronts. Couldn't be happier!",
+              "rating": 5
+            }
+          ],
+          "reviews": []
+        }
+      ]
+    },
+    {
+      "id": 251,
+      "documentId": "nqblddskpsfnumo0iif5yv90",
+      "title": "Landing",
+      "breadcrumbTitle": "Landing",
+      "slug": "landing",
+      "fullPath": "/landing",
+      "createdAt": "2025-10-30T21:26:03.621Z",
+      "updatedAt": "2025-11-12T12:57:50.491Z",
+      "publishedAt": "2025-11-12T12:57:51.331Z",
+      "locale": "en",
+      "content": [
+        {
+          "__component": "sections.landing-hero",
+          "id": 202,
+          "badge": "⚡ Production-Ready Starter",
+          "heading": "Strapi v5 + Next.js 15 Monorepo Starter",
+          "description": "Real code, real traction. Clone it, run docker compose up, ship faster.",
+          "footerText": "Built and battle-tested by Notum, Official Strapi Partner",
+          "ctaButtons": [
+            {
+              "id": 1178,
+              "label": "Get the code on GitHub",
+              "href": "https://github.com/Herman-Adu/strapi-next-monorepo-v2",
+              "icon": "github",
+              "variant": "default",
+              "newTab": true
+            },
+            {
+              "id": 1179,
+              "label": "Book a 15-min call for StrapiConf 2025",
+              "href": "#",
+              "icon": "calendar",
+              "variant": "outline",
+              "newTab": false
+            }
+          ]
+        },
+        {
+          "__component": "sections.credibility-section",
+          "id": 150,
+          "stats": [
+            { "id": 913, "number": "500+", "description": "Active Projects" },
+            { "id": 914, "number": "10k+", "description": "Happy Developers" },
+            { "id": 915, "number": "99%", "description": "Uptime SLA" }
+          ],
+          "companyLogos": [
+            { "id": 1353, "name": "GitHub" },
+            { "id": 1354, "name": "Microsoft" },
+            { "id": 1355, "name": "Google" },
+            { "id": 1356, "name": "Amazon" },
+            { "id": 1357, "name": "Meta" },
+            { "id": 1358, "name": "Apple" }
+          ]
+        },
+        {
+          "__component": "sections.feature-grid-section",
+          "id": 149,
+          "heading": "Everything You Need to Ship Fast",
+          "description": "All the tools and features you need to build modern web applications",
+          "footerNote": "Full documentation — new dev onboards in &lt; 30 minutes",
+          "gridColumns": "3",
+          "items": [
+            {
+              "id": 1369,
+              "icon": "    📊",
+              "title": "Strapi, Typed Controllers & Services",
+              "description": "Fully typed backend with controllers and services for type safety and better developer experience."
+            },
+            {
+              "id": 1370,
+              "icon": "⚡",
+              "title": "Next.js 16 App Router",
+              "description": "Latest Next.js with SSR/ISR configured for optimal performance and SEO."
+            },
+            {
+              "id": 1371,
+              "icon": "💎",
+              "title": "Postgres, Prisma, & TypeScript",
+              "description": "Sane defaults, no yak-shaving. Start building features immediately."
+            },
+            {
+              "id": 1372,
+              "icon": "🔐",
+              "title": "NextAuth + RBAC System",
+              "description": "JWT, social providers, role-based guards for secure authentication and authorization."
+            },
+            {
+              "id": 1373,
+              "icon": "🌍",
+              "title": "i18n & SEO Presets",
+              "description": "Locale routing, sitemap, meta tags, Open Graph for international reach."
+            },
+            {
+              "id": 1374,
+              "icon": "🐳",
+              "title": "\"Docker & CI Pipeline",
+              "description": "Identical local/prod builds, one-command deploy for consistent environments."
+            }
+          ],
+          "listItems": []
+        },
+        {
+          "__component": "sections.workflow-section",
+          "id": 141,
+          "heading": "A streamlined workflow",
+          "description": "Our proven workflow helps teams ship faster and more reliably. From local development to production deployment, every step is optimized.",
+          "workflowPoints": [
+            {
+              "id": 1295,
+              "title": "Save 4–6 weeks of boilerplate",
+              "description": "Skip the yak-shaving and focus on building your unique features.",
+              "iconType": "check"
+            },
+            {
+              "id": 1296,
+              "title": "Unify CMS strategy",
+              "description": "Marketing and engineering work in the same tool for better collaboration.",
+              "iconType": "check"
+            },
+            {
+              "id": 1297,
+              "title": "Scale safely",
+              "description": "Handles 2x traffic spikes without code surgery or emergency fixes.",
+              "iconType": "check"
+            },
+            {
+              "id": 1298,
+              "title": "No vendor lock",
+              "description": "Clean architecture, open standards, MIT licence for complete freedom.",
+              "iconType": "check"
+            }
+          ],
+          "image": {
+            "id": 1361,
+            "alt": "Strapi dashboard",
+            "width": null,
+            "height": null,
+            "fallbackSrc": null
+          }
+        },
+        {
+          "__component": "sections.roadmap-section",
+          "id": 132,
+          "heading": "Roadmap & Community",
+          "description": "See what we're building next and join our growing community",
+          "roadmapItems": [
+            {
+              "id": 1299,
+              "title": "Strapi v5 integration - Shipped Q4 2024",
+              "description": "Comprehensive guide for upgrading to the stable release of Strapi v5.",
+              "iconType": "circle"
+            },
+            {
+              "id": 1300,
+              "title": "Next.js 15 upgrade - Shipped Q1 2025",
+              "description": "Advanced preview functionality for content editors to see changes before publishing.",
+              "iconType": "circle"
+            },
+            {
+              "id": 1301,
+              "title": "Next.js 16 newbuild- Shipped Q4 2025",
+              "description": "Advanced preview functionality for content editors to see changes before publishing.",
+              "iconType": "circle"
+            }
+          ],
+          "footerNotes": [
+            {
+              "id": 132,
+              "text": "⭐ Stars drive priority. Smash :star: on GitHub if this saves you time. "
+            }
+          ]
+        },
+        {
+          "__component": "sections.newsletter-cta-section",
+          "id": 172,
+          "heading": "Subscribe to our newsletter",
+          "description": "Get the latest updates, tips, and best practices delivered to your inbox Nostrud amet eu ullamco nisi aute in ad minim nostrud.",
+          "inputPlaceholder": null,
+          "buttonText": null,
+          "gdprLabel": "Stay in the Loop",
+          "badge": {
+            "id": 7,
+            "text": "Join Our Newsletter",
+            "icon": "Rocket",
+            "variant": "default",
+            "size": "medium",
+            "animation": true,
+            "animationSpeed": "slow",
+            "orbSize": "small",
+            "pulse": false
+          },
+          "background": {
+            "id": 7,
+            "backgroundStyle": "theme-muted",
+            "pattern": null,
+            "gradient": false,
+            "containerStyle": "bordered",
+            "containerWidth": "default",
+            "padding": "spacious"
+          },
+          "gdprLink": {
+            "id": 720,
+            "label": "terms and conditions",
+            "href": "/privacy-policy",
+            "newTab": null
+          },
+          "ctaButtons": [],
+          "benefits": [
+            {
+              "id": 1302,
+              "title": "Weekly articles",
+              "description": "Get curated development tips, best practices, and platform updates delivered every week.",
+              "iconType": "check"
+            },
+            {
+              "id": 1303,
+              "title": "No spam",
+              "description": "\"We respect your inbox. Unsubscribe anytime with a single click.",
+              "iconType": "check"
+            }
+          ]
+        },
+        {
+          "__component": "sections.animated-logo-row",
+          "id": 164,
+          "text": "Technologies",
+          "logos": [
+            {
+              "id": 1353,
+              "alt": "adu dev logo",
+              "width": 60,
+              "height": 60,
+              "fallbackSrc": null
+            },
+            {
+              "id": 1354,
+              "alt": "google logo",
+              "width": null,
+              "height": null,
+              "fallbackSrc": null
+            },
+            {
+              "id": 1355,
+              "alt": "github logo",
+              "width": null,
+              "height": null,
+              "fallbackSrc": null
+            },
+            {
+              "id": 1356,
+              "alt": "Microsoft logo",
+              "width": null,
+              "height": null,
+              "fallbackSrc": null
+            },
+            {
+              "id": 1357,
+              "alt": "meta logo",
+              "width": null,
+              "height": null,
+              "fallbackSrc": null
+            },
+            {
+              "id": 1358,
+              "alt": "apple logo",
+              "width": null,
+              "height": null,
+              "fallbackSrc": null
+            },
+            {
+              "id": 1359,
+              "alt": "amazon logo",
+              "width": null,
+              "height": null,
+              "fallbackSrc": null
+            },
+            {
+              "id": 1360,
+              "alt": "strapi logo",
+              "width": null,
+              "height": null,
+              "fallbackSrc": null
+            }
+          ]
+        },
+        {
+          "__component": "sections.final-cta-section",
+          "id": 127,
+          "heading": "Ready to Build Something Amazing?",
+          "description": "Join thousands of developers who are shipping faster with our production-ready starter",
+          "ctaButtons": [
+            {
+              "id": 1180,
+              "label": "Get Started Now",
+              "href": "/auth/register",
+              "icon": "github",
+              "variant": "default",
+              "newTab": false
+            },
+            {
+              "id": 1181,
+              "label": "View Documentation",
+              "href": "/docs",
+              "icon": "book-open",
+              "variant": "outline",
+              "newTab": false
+            }
+          ]
+        },
+        {
+          "__component": "sections.footer-cta-section",
+          "id": 126,
+          "heading": "Let's Build Together",
+          "description": "Open source, production-ready, and built by developers for developers",
+          "logo": "N",
+          "copyright": "\"© 2025 Notum Technologies. Built with Strapi v5 & Next.js 15",
+          "ctaButtons": [
+            {
+              "id": 1182,
+              "label": "Star on GitHub",
+              "href": "https://github.com/Herman-Adu/strapi-next-monorepo-v2",
+              "icon": "github",
+              "variant": "default",
+              "newTab": false
+            },
+            {
+              "id": 1183,
+              "label": "Join Discord",
+              "href": "https://discord.gg/strapi",
+              "icon": "external-link",
+              "variant": "outline",
+              "newTab": true
+            }
+          ],
+          "footerLinks": [
+            {
+              "id": 716,
+              "label": "Documentation",
+              "href": "/",
+              "newTab": null
+            },
+            {
+              "id": 717,
+              "label": "GitHub",
+              "href": "https://github.com/Herman-Adu/strapi-next-monorepo-v2",
+              "newTab": true
+            },
+            {
+              "id": 718,
+              "label": "Privacy Policy",
+              "href": "/",
+              "newTab": null
+            },
+            {
+              "id": 719,
+              "label": "Terms of Service",
+              "href": "/",
+              "newTab": null
+            }
+          ]
+        },
+        {
+          "__component": "sections.benefits-section",
+          "id": 120,
+          "heading": "Why Choose Our Platform",
+          "description": "Discover the powerful features that make our solution the best choice for modern development teams.",
+          "gridColumns": "3",
+          "benefits": [
+            {
+              "id": 1375,
+              "icon": "⚡",
+              "title": "Lightning Fast Performance",
+              "description": "Experience blazing fast load times with optimized code and edge caching worldwide."
+            },
+            {
+              "id": 1376,
+              "icon": "💻",
+              "title": "Developer Friendly",
+              "description": "Built with modern frameworks and TypeScript for the best developer experience."
+            },
+            {
+              "id": 1377,
+              "icon": "🎨",
+              "title": "Fully Customizable",
+              "description": "Tailor every aspect to match your brand with our flexible component system."
+            }
+          ]
+        },
+        {
+          "__component": "sections.metrics-section",
+          "id": 117,
+          "heading": "Worldwide",
+          "description": "Join thousands of teams building amazing products with our platform.",
+          "backgroundStyle": "theme-subtle",
+          "headingStyle": "two-tone",
+          "headingAccent": "Developers",
+          "containerStyle": "bordered",
+          "badge": "Trusted by",
+          "badgeIcon": "✨",
+          "badgeSize": "large",
+          "badgeAnimation": true,
+          "badgeAnimationSpeed": "extra-slow",
+          "badgeOrbSize": "small",
+          "badgeBorderRadius": "sm",
+          "badgeOrbGlow": "subtle",
+          "metrics": [
+            { "id": 916, "number": "50,000+", "description": "Active Users" },
+            { "id": 917, "number": "99.9%", "description": "Uptime" },
+            { "id": 918, "number": "2M+", "description": "API Requests" },
+            { "id": 919, "number": "150+", "description": "Countries" }
+          ]
+        },
+        {
+          "__component": "sections.tech-stack-section",
+          "id": 76,
+          "heading": "Built with Modern Technologies",
+          "description": "Powered by industry-leading tools and frameworks for maximum performance and reliability.",
+          "displayStyle": "marquee",
+          "badgeText": "Powered by Industry Leaders",
+          "badgeIcon": " 🚀",
+          "technologies": [
+            { "id": 1347, "name": "Next.js" },
+            { "id": 1348, "name": "React" },
+            { "id": 1349, "name": "TypeScript" },
+            { "id": 1350, "name": "Strapi" },
+            { "id": 1351, "name": "PostgreSQL" },
+            { "id": 1352, "name": "Tailwind CSS" }
+          ]
+        },
+        {
+          "__component": "sections.marquee-section",
+          "id": 189,
+          "heading": "Trusted by Industry Leaders",
+          "description": "Join thousands of companies using our platform",
+          "displayType": "logos",
+          "orientation": "horizontal",
+          "reverse": false,
+          "pauseOnHover": true,
+          "showFade": true,
+          "duration": 40,
+          "gap": "2rem",
+          "rows": 1,
+          "alternateDirection": false,
+          "varySpeed": false,
+          "badgeText": "🏆 Partners",
+          "badgeIcon": null,
+          "backgroundStyle": "muted",
+          "testimonialVariant": null,
+          "logos": [
+            {
+              "id": 505,
+              "name": "Google",
+              "link": "https://google.com",
+              "altText": "Google logo",
+              "newTab": true,
+              "showBackground": null
+            },
+            {
+              "id": 506,
+              "name": "Microsoft",
+              "link": "https://microsoft.com",
+              "altText": "Microsoft logo",
+              "newTab": true,
+              "showBackground": null
+            },
+            {
+              "id": 507,
+              "name": "GitHub",
+              "link": "https://github.com",
+              "altText": "GitHub logo",
+              "newTab": true,
+              "showBackground": null
+            },
+            {
+              "id": 508,
+              "name": "Meta",
+              "link": "https://meta.com",
+              "altText": "Meta logo",
+              "newTab": true,
+              "showBackground": null
+            },
+            {
+              "id": 509,
+              "name": "Apple",
+              "link": "\"https://apple.com\"",
+              "altText": "Apple logo",
+              "newTab": true,
+              "showBackground": null
+            },
+            {
+              "id": 510,
+              "name": "Amazon",
+              "link": "https://amazon.com",
+              "altText": "Amazon logo",
+              "newTab": true,
+              "showBackground": null
+            },
+            {
+              "id": 511,
+              "name": "Stripe",
+              "link": "https://stripe.com",
+              "altText": "Stripe square logo",
+              "newTab": true,
+              "showBackground": null
+            },
+            {
+              "id": 512,
+              "name": "Docker",
+              "link": "https://www.docker.com/",
+              "altText": "docker square logo",
+              "newTab": true,
+              "showBackground": null
+            }
+          ],
+          "testimonials": [],
+          "testimonialsPro": [],
+          "reviews": []
+        },
+        {
+          "__component": "sections.partner-showcase-section",
+          "id": 99,
+          "heading": "Trusted by Industry Leaders",
+          "description": "Proud to work with amazing companies and organizations worldwide.",
+          "gridColumns": "4",
+          "partners": [
+            {
+              "id": 393,
+              "name": "Google",
+              "description": "Powering enterprise solutions with cutting-edge technology.",
+              "link": "https://google.com",
+              "linkText": "Visit Google",
+              "newTab": true
+            },
+            {
+              "id": 394,
+              "name": "Microsoft",
+              "description": "Collaborating on cloud infrastructure and developer tools.",
+              "link": "https://microsoft.com",
+              "linkText": "Learn More",
+              "newTab": true
+            },
+            {
+              "id": 395,
+              "name": "GitHub",
+              "description": "Integrated development workflows and version control.",
+              "link": "https://github.com",
+              "linkText": "View on GitHub",
+              "newTab": true
+            },
+            {
+              "id": 396,
+              "name": "Meta",
+              "description": "Building next-generation social and AR experiences.",
+              "link": "https://facebook.com\"",
+              "linkText": "Learn more",
+              "newTab": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "documentId": "ok1o858xfxd4do4jau9lx7ze",
+      "title": "Page 1",
+      "breadcrumbTitle": "Page 1",
+      "slug": "page1",
+      "fullPath": "/page1",
+      "createdAt": "2025-05-08T15:02:39.381Z",
+      "updatedAt": "2025-05-08T15:31:02.477Z",
+      "publishedAt": "2025-05-08T15:31:06.546Z",
+      "locale": "en",
+      "content": [
+        {
+          "__component": "sections.heading-with-cta-button",
+          "id": 4,
+          "title": "Modern Stack, Zero Setup",
+          "subText": "Everything you need, preconfigured!",
+          "cta": {
+            "id": 37,
+            "label": "Get Started",
+            "href": "https://github.com/notum-cz/strapi-next-monorepo-starter",
+            "newTab": true
+          }
+        },
+        {
+          "__component": "sections.carousel",
+          "id": 4,
+          "radius": "lg",
+          "images": [{ "id": 10 }, { "id": 11 }, { "id": 12 }]
+        },
+        {
+          "__component": "sections.faq",
+          "id": 4,
+          "title": "FAQ",
+          "subTitle": null,
+          "accordions": [
+            {
+              "id": 13,
+              "question": "What is this starter project for?",
+              "answer": "This starter provides a fully configured monorepo setup combining Strapi v5 (as the headless CMS) with Next.js 14 (for the frontend), including TypeScript, Tailwind CSS, Shadcn/ui, and Turborepo. It's ideal for building scalable, fullstack applications quickly without wasting time on boilerplate setup."
+            },
+            {
+              "id": 14,
+              "question": "Can I deploy the backend and frontend separately?",
+              "answer": "Yes. While the monorepo makes local development easy, the Strapi backend and Next.js frontend can be deployed independently on services like Vercel, Strapi Cloud, Heroku or DigitalOcean. Environment variables and Docker support make deployments flexible and environment-specific."
+            },
+            {
+              "id": 15,
+              "question": "Does it support TypeScript end-to-end?",
+              "answer": "Absolutely. Both the backend (Strapi) and frontend (Next.js) are fully written in TypeScript. Shared types are included so your API contracts remain consistent across the entire stack."
+            },
+            {
+              "id": 16,
+              "question": "How do I customize or extend the CMS?",
+              "answer": "Strapi v5 plugins and extensions are supported out of the box. You can add custom content types, controllers, routes, and policies using the provided TypeScript scaffolding. It's fully adaptable to your business logic and data model needs."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 15,
+      "documentId": "zj18v623qcixxhyypoti1fm2",
+      "title": "Page 2",
+      "breadcrumbTitle": "Page 2",
+      "slug": "page2",
+      "fullPath": "/page2",
+      "createdAt": "2025-05-08T15:34:24.045Z",
+      "updatedAt": "2025-05-08T15:34:24.045Z",
+      "publishedAt": "2025-05-08T15:34:25.020Z",
+      "locale": "en",
+      "content": [
+        {
+          "__component": "forms.contact-form",
+          "id": 4,
+          "title": "Contact Us",
+          "description": "Have questions, feedback, or want to contribute? We’d love to hear from you. Whether you’re building with the starter, planning to use it in production, or have suggestions for improvement—reach out!",
+          "gdpr": null
+        }
+      ]
+    },
+    {
+      "id": 219,
+      "documentId": "ckt0xu0nqhowid0z9hc6uqjn",
+      "title": "Features",
+      "breadcrumbTitle": "Features",
+      "slug": "features",
+      "fullPath": "/features",
+      "createdAt": "2025-11-07T19:34:11.574Z",
+      "updatedAt": "2025-11-11T17:48:44.391Z",
+      "publishedAt": "2025-11-11T17:48:45.107Z",
+      "locale": "en",
+      "content": [
+        {
+          "__component": "sections.landing-hero",
+          "id": 170,
+          "badge": "Enterprise-Grade Features",
+          "heading": "for Modern Development Teams",
+          "description": "A comprehensive platform providing everything you need to build, deploy, and scale production-ready applications with confidence.",
+          "footerText": "Trusted by Development Teams Worldwide",
+          "ctaButtons": [
+            {
+              "id": 990,
+              "label": "View Documentation",
+              "href": "/docs",
+              "icon": "book-open",
+              "variant": "outline",
+              "newTab": false
+            },
+            {
+              "id": 991,
+              "label": "Schedule Demo",
+              "href": "/contact",
+              "icon": "calendar",
+              "variant": "default",
+              "newTab": false
+            }
+          ]
+        },
+        {
+          "__component": "sections.benefits-section",
+          "id": 88,
+          "heading": "Why Developers Love Our Platform",
+          "description": "Built by developers, for developers. Experience the features that make building modern apps a breeze",
+          "gridColumns": "3",
+          "benefits": [
+            {
+              "id": 1084,
+              "icon": "⚡",
+              "title": "Lightning Performance",
+              "description": "Sub-second page loads with optimized code splitting and edge caching worldwide."
+            },
+            {
+              "id": 1085,
+              "icon": "💻",
+              "title": "TypeScript Native",
+              "description": "Full TypeScript support with auto-generated types for the ultimate DX."
+            },
+            {
+              "id": 1086,
+              "icon": "🎨",
+              "title": "Flexible & Customizable",
+              "description": "Tailwind CSS with shadcn/ui components. Make it yours with minimal effort."
+            },
+            {
+              "id": 1087,
+              "icon": "📱",
+              "title": "Mobile First",
+              "description": "Responsive by default. Looks stunning on every device and screen size."
+            },
+            {
+              "id": 1088,
+              "icon": "🔒",
+              "title": "Enterprise Ready",
+              "description": "Built-in security, authentication, and role-based access control."
+            },
+            {
+              "id": 1089,
+              "icon": "🔄",
+              "title": "Real-time Updates",
+              "description": "Live preview, hot reload, and instant content updates from Strapi."
+            }
+          ]
+        },
+        {
+          "__component": "sections.metrics-section",
+          "id": 85,
+          "heading": "Powering Production Applications",
+          "description": "Join thousands of teams shipping faster with our modern stack.",
+          "backgroundStyle": "muted",
+          "headingStyle": null,
+          "headingAccent": null,
+          "containerStyle": null,
+          "badge": null,
+          "badgeIcon": null,
+          "badgeSize": null,
+          "badgeAnimation": null,
+          "badgeAnimationSpeed": null,
+          "badgeOrbSize": null,
+          "badgeBorderRadius": null,
+          "badgeOrbGlow": null,
+          "metrics": [
+            { "id": 692, "number": "10,000+", "description": "Developers" },
+            { "id": 693, "number": "500K+", "description": "API Calls/Day" },
+            { "id": 694, "number": "99.99%", "description": "Uptime SLA" },
+            { "id": 695, "number": "< 100ms", "description": "Avg Response" }
+          ]
+        },
+        {
+          "__component": "sections.integration-grid-section",
+          "id": 68,
+          "heading": "Seamless Integrations",
+          "description": "Connect your favorite tools and services. Built-in integrations for payments, analytics, communications, and more.",
+          "gridColumns": "3",
+          "integrations": [
+            {
+              "id": 403,
+              "title": "Stripe Payments",
+              "description": "Accept payments with the world's most powerful and flexible payment platform.",
+              "link": "/integrations/stripe",
+              "category": "Payments",
+              "linkText": "Connect Stripe",
+              "newTab": false
+            },
+            {
+              "id": 404,
+              "title": "Google Analytics",
+              "description": "Track user behavior and gain insights with comprehensive analytics.",
+              "link": "/integrations/analytics",
+              "category": "Analytics",
+              "linkText": "Setup Analytics",
+              "newTab": false
+            },
+            {
+              "id": 405,
+              "title": "Twilio Communications",
+              "description": "end SMS, make calls, and engage customers with programmable communications.",
+              "link": "/integrations/twilio",
+              "category": "Communications",
+              "linkText": "Add Messaging",
+              "newTab": false
+            },
+            {
+              "id": 406,
+              "title": "Contentful CMS",
+              "description": "Manage content across multiple platforms with a headless CMS.",
+              "link": "/integrations/contentful",
+              "category": "Content",
+              "linkText": "Explore CMS",
+              "newTab": false
+            },
+            {
+              "id": 407,
+              "title": "AWS Cloud",
+              "description": "Scale your infrastructure with enterprise-grade cloud services.",
+              "link": "/integrations/aws",
+              "category": "Infrastructure",
+              "linkText": "Deploy to AWS",
+              "newTab": false
+            },
+            {
+              "id": 408,
+              "title": "Docker Containers",
+              "description": "Containerize applications for consistent development and deployment.",
+              "link": "/integrations/docker",
+              "category": "DevOps",
+              "linkText": "Containerize App",
+              "newTab": false
+            }
+          ]
+        },
+        {
+          "__component": "sections.partner-showcase-section",
+          "id": 67,
+          "heading": "Trusted by Industry Leaders",
+          "description": "Partnering with world-class organizations to deliver exceptional digital experiences.",
+          "gridColumns": "4",
+          "partners": [
+            {
+              "id": 265,
+              "name": "Google",
+              "description": "Cloud infrastructure and AI-powered solutions.",
+              "link": "https://google.com",
+              "linkText": "Visit Google",
+              "newTab": true
+            },
+            {
+              "id": 266,
+              "name": "Microsoft",
+              "description": "Enterprise-grade cloud services and developer tools.",
+              "link": "https://microsoft.com",
+              "linkText": "Learn More",
+              "newTab": true
+            },
+            {
+              "id": 267,
+              "name": "GitHub",
+              "description": "Version control and collaborative development.",
+              "link": "https://github.com",
+              "linkText": "View GitHub",
+              "newTab": true
+            },
+            {
+              "id": 268,
+              "name": "Meta",
+              "description": "Next-generation social platforms and AR/VR technology.",
+              "link": "https://meta.com",
+              "linkText": "Explore Meta",
+              "newTab": true
+            }
+          ]
+        },
+        {
+          "__component": "sections.newsletter-cta-section",
+          "id": 140,
+          "heading": "Stay in the Loop",
+          "description": "Get the latest features, updates, and best practices delivered straight to your inbox. Join our community of developers.",
+          "inputPlaceholder": "Enter your email",
+          "buttonText": "Subscribe",
+          "gdprLabel": "I agree to the terms and conditions",
+          "badge": null,
+          "background": null,
+          "gdprLink": {
+            "id": 560,
+            "label": "terms and conditions",
+            "href": "/privacy-policy",
+            "newTab": null
+          },
+          "ctaButtons": [],
+          "benefits": [
+            {
+              "id": 1014,
+              "title": "Weekly articles",
+              "description": "Get curated development tips, best practices, and platform updates delivered every week.",
+              "iconType": "none"
+            },
+            {
+              "id": 1015,
+              "title": "No Spam, Ever",
+              "description": "We respect your inbox. Unsubscribe anytime with a single click.",
+              "iconType": "none"
+            }
+          ]
+        },
+        {
+          "__component": "sections.marquee-section",
+          "id": 155,
+          "heading": "Customer Testimonial - One Row",
+          "description": "Don't just take our word for it - hear from our satisfied clients",
+          "displayType": "testimonials",
+          "orientation": "horizontal",
+          "reverse": false,
+          "pauseOnHover": true,
+          "showFade": true,
+          "duration": 40,
+          "gap": "1rem",
+          "rows": 1,
+          "alternateDirection": false,
+          "varySpeed": false,
+          "badgeText": "Customer Stories",
+          "badgeIcon": "💬 ",
+          "backgroundStyle": "bordered",
+          "testimonialVariant": null,
+          "logos": [],
+          "testimonials": [
+            {
+              "id": 533,
+              "author": "Sarah Johnson",
+              "role": "CEO",
+              "company": "TechVentures Inc",
+              "quote": "This platform transformed how we build and deploy applications. The performance is outstanding and the developer experience is second to none.",
+              "rating": 5
+            },
+            {
+              "id": 534,
+              "author": "Michael Chen",
+              "role": "Lead Developer",
+              "company": "Digital Solutions",
+              "quote": "Best development platform we've used. The TypeScript support and component library saved us months of development time.",
+              "rating": 5
+            },
+            {
+              "id": 535,
+              "author": "Rachel Foster",
+              "role": "Engineering Director",
+              "company": "Momentum Technologies",
+              "quote": "We migrated from our old stack and couldn't be happier. The deployment pipeline alone has saved us countless hours. Highly recommended!",
+              "rating": 5
+            },
+            {
+              "id": 536,
+              "author": "David Kim",
+              "role": "CTO",
+              "company": "Global Systems",
+              "quote": "Outstanding documentation and support. The vertical marquee orientation was exactly what we needed for our dashboard.",
+              "rating": 5
+            }
+          ],
+          "testimonialsPro": [],
+          "reviews": []
+        },
+        {
+          "__component": "sections.marquee-section",
+          "id": 156,
+          "heading": "Customer Testimonial - Two Rows",
+          "description": "Don't just take our word for it - hear from our satisfied clients",
+          "displayType": "testimonials",
+          "orientation": "vertical",
+          "reverse": false,
+          "pauseOnHover": true,
+          "showFade": true,
+          "duration": 50,
+          "gap": "1.5rem",
+          "rows": 2,
+          "alternateDirection": true,
+          "varySpeed": true,
+          "badgeText": "Customer Stories",
+          "badgeIcon": "💬 ",
+          "backgroundStyle": "solid",
+          "testimonialVariant": null,
+          "logos": [],
+          "testimonials": [
+            {
+              "id": 537,
+              "author": "Sarah Johnson",
+              "role": "CEO",
+              "company": "TechVentures Inc",
+              "quote": "his platform transformed how we build and deploy applications. The performance is outstanding and the developer experience is second to none.",
+              "rating": 5
+            },
+            {
+              "id": 538,
+              "author": "Michael Chen",
+              "role": "Lead Developer",
+              "company": "Digital Solutions",
+              "quote": "Best development platform we've used. The TypeScript support and component library saved us months of development time.",
+              "rating": 5
+            },
+            {
+              "id": 539,
+              "author": "Emily Rodriguez",
+              "role": "Product Manager",
+              "company": "Startup Ventures",
+              "quote": "Incredibly easy to use yet powerful enough for enterprise needs. Our team was productive from day one.",
+              "rating": 2
+            },
+            {
+              "id": 540,
+              "author": "David Kim",
+              "role": "CTO",
+              "company": "Global Systems",
+              "quote": "The multi-row marquee feature is perfect for showcasing our client testimonials. Looks professional and works flawlessly.",
+              "rating": 5
+            },
+            {
+              "id": 541,
+              "author": "Rachel Foster",
+              "role": "Engineering Director",
+              "company": "Momentum Technologies",
+              "quote": "We migrated from our old stack and couldn't be happier. The deployment pipeline alone has saved us countless hours. Highly recommended",
+              "rating": 5
+            },
+            {
+              "id": 542,
+              "author": "Jessica Martinez",
+              "role": "Senior Architect",
+              "company": "Cloud Dynamics",
+              "quote": "Outstanding documentation and support. The vertical marquee orientation was exactly what we needed for our dashboard.",
+              "rating": 5
+            },
+            {
+              "id": 543,
+              "author": "Lisa Anderson",
+              "role": "VP of Engineering",
+              "company": "Enterprise Solutions Co",
+              "quote": "Enterprise-grade features without the enterprise complexity. Our developers actually enjoy working with this stack. A rare win-win.",
+              "rating": 5
+            },
+            {
+              "id": 544,
+              "author": "Maria Thompson",
+              "role": "Head of Product",
+              "company": "NextGen Apps",
+              "quote": "The attention to detail in every component is impressive. From the smooth animations to the accessibility features, everything just works.",
+              "rating": 5
+            }
+          ],
+          "testimonialsPro": [],
+          "reviews": []
+        },
+        {
+          "__component": "sections.marquee-section",
+          "id": 157,
+          "heading": "Customer Testimonial - Three Rows",
+          "description": "Don't just take our word for it - hear from our satisfied clients",
+          "displayType": "testimonials",
+          "orientation": "vertical",
+          "reverse": false,
+          "pauseOnHover": true,
+          "showFade": true,
+          "duration": 50,
+          "gap": "1.5rem",
+          "rows": 3,
+          "alternateDirection": true,
+          "varySpeed": true,
+          "badgeText": "Testimonials",
+          "badgeIcon": "💬",
+          "backgroundStyle": "transparent",
+          "testimonialVariant": null,
+          "logos": [],
+          "testimonials": [
+            {
+              "id": 545,
+              "author": "Sarah Johnson",
+              "role": "CEO",
+              "company": "TechVentures Inc",
+              "quote": "This platform transformed how we build and deploy applications. The performance is outstanding and the developer experience is second to none.",
+              "rating": 5
+            },
+            {
+              "id": 546,
+              "author": "Michael Chen",
+              "role": "Lead Developer",
+              "company": "Digital Solutions",
+              "quote": "Best development platform we've used. The TypeScript support and component library saved us months of development time.",
+              "rating": 5
+            },
+            {
+              "id": 547,
+              "author": "Emily Rodriguez",
+              "role": "Product Manager",
+              "company": "Startup Ventures",
+              "quote": "Incredibly easy to use yet powerful enough for enterprise needs. Our team was productive from day one.",
+              "rating": 5
+            },
+            {
+              "id": 548,
+              "author": "David Kim",
+              "role": "CTO",
+              "company": "Global Systems",
+              "quote": "The multi-row marquee feature is perfect for showcasing our client testimonials. Looks professional and works flawlessly.",
+              "rating": 5
+            },
+            {
+              "id": 549,
+              "author": "Rachel Foster",
+              "role": "Engineering Director",
+              "company": "Momentum Technologies",
+              "quote": "We migrated from our old stack and couldn't be happier. The deployment pipeline alone has saved us countless hours. Highly recommended!",
+              "rating": 5
+            },
+            {
+              "id": 550,
+              "author": "Jessica Martinez",
+              "role": "Senior Architect",
+              "company": "Cloud Dynamics",
+              "quote": "The responsive design is flawless across all devices. Our mobile users are impressed with the smooth animations and performance.",
+              "rating": 5
+            },
+            {
+              "id": 551,
+              "author": "Lisa Anderson",
+              "role": "VP of Engineering",
+              "company": "Innovation Labs",
+              "quote": "The responsive design is flawless across all devices. Our mobile users are impressed with the smooth animations and performance.",
+              "rating": 5
+            },
+            {
+              "id": 552,
+              "author": "Maria Thompson",
+              "role": "\"Head of Product",
+              "company": "NextGen Apps",
+              "quote": "The attention to detail in every component is impressive. From the smooth animations to the accessibility features, everything just works.",
+              "rating": 5
+            },
+            {
+              "id": 553,
+              "author": "Andrew Wright",
+              "role": "Tech Lead",
+              "company": "Digital Innovations",
+              "quote": "Excellent platform for rapid development. The component library is comprehensive and the developer experience is top-notch.",
+              "rating": 5
+            },
+            {
+              "id": 554,
+              "author": "David Park",
+              "role": "Solutions Architect",
+              "company": "Enterprise Systems Co",
+              "quote": "Scalable, reliable, and developer-friendly. This is exactly what modern teams need to ship products faster.",
+              "rating": 5
+            },
+            {
+              "id": 555,
+              "author": "Sophia Jones",
+              "role": "DevOps Manager",
+              "company": "Tech Horizon",
+              "quote": "The CI/CD integration is seamless. We've reduced our deployment time by 70% since switching to this platform.",
+              "rating": 5
+            },
+            {
+              "id": 556,
+              "author": "Gupta Patel",
+              "role": "Founder & CEO",
+              "company": "StartupBoost",
+              "quote": "As a startup, we needed something powerful yet easy to use. This platform delivered on both fronts. Couldn't be happier!",
+              "rating": 5
+            }
+          ],
+          "testimonialsPro": [],
+          "reviews": []
+        }
+      ]
+    }
+  ],
+  "meta": {
+    "pagination": { "page": 1, "pageSize": 25, "pageCount": 1, "total": 5 }
+  }
+}

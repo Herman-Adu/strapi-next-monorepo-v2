@@ -169,12 +169,7 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "heading",
-        "headingAccent",
-        "description"
-      ],
+      "list": ["id", "heading", "headingAccent", "description"],
       "edit": [
         [
           {

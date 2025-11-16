@@ -36,10 +36,7 @@
           "newsletter.gdpr.href",
           "newsletter.gdpr.newTab"
         ],
-        "locales": [
-          "cs",
-          "en"
-        ]
+        "locales": ["cs", "en"]
       },
       "conditions": [],
       "locale": null
@@ -50,10 +47,7 @@
       "actionParameters": {},
       "subject": "api::footer.footer",
       "properties": {
-        "locales": [
-          "cs",
-          "en"
-        ]
+        "locales": ["cs", "en"]
       },
       "conditions": [],
       "locale": null
@@ -64,10 +58,7 @@
       "actionParameters": {},
       "subject": "api::footer.footer",
       "properties": {
-        "locales": [
-          "cs",
-          "en"
-        ]
+        "locales": ["cs", "en"]
       },
       "conditions": [],
       "locale": null
@@ -103,10 +94,7 @@
           "newsletter.gdpr.href",
           "newsletter.gdpr.newTab"
         ],
-        "locales": [
-          "cs",
-          "en"
-        ]
+        "locales": ["cs", "en"]
       },
       "conditions": [],
       "locale": null
@@ -142,10 +130,7 @@
           "newsletter.gdpr.href",
           "newsletter.gdpr.newTab"
         ],
-        "locales": [
-          "cs",
-          "en"
-        ]
+        "locales": ["cs", "en"]
       },
       "conditions": [],
       "locale": null
@@ -156,13 +141,7 @@
       "actionParameters": {},
       "subject": "api::internal-job.internal-job",
       "properties": {
-        "fields": [
-          "jobType",
-          "relatedDocumentId",
-          "payload",
-          "state",
-          "error"
-        ]
+        "fields": ["jobType", "relatedDocumentId", "payload", "state", "error"]
       },
       "conditions": [],
       "locale": null
@@ -191,13 +170,7 @@
       "actionParameters": {},
       "subject": "api::internal-job.internal-job",
       "properties": {
-        "fields": [
-          "jobType",
-          "relatedDocumentId",
-          "payload",
-          "state",
-          "error"
-        ]
+        "fields": ["jobType", "relatedDocumentId", "payload", "state", "error"]
       },
       "conditions": [],
       "locale": null
@@ -208,13 +181,7 @@
       "actionParameters": {},
       "subject": "api::internal-job.internal-job",
       "properties": {
-        "fields": [
-          "jobType",
-          "relatedDocumentId",
-          "payload",
-          "state",
-          "error"
-        ]
+        "fields": ["jobType", "relatedDocumentId", "payload", "state", "error"]
       },
       "conditions": [],
       "locale": null
@@ -241,10 +208,7 @@
           "socialLinks.url",
           "socialLinks.label"
         ],
-        "locales": [
-          "cs",
-          "en"
-        ]
+        "locales": ["cs", "en"]
       },
       "conditions": [],
       "locale": null
@@ -255,10 +219,7 @@
       "actionParameters": {},
       "subject": "api::navbar.navbar",
       "properties": {
-        "locales": [
-          "cs",
-          "en"
-        ]
+        "locales": ["cs", "en"]
       },
       "conditions": [],
       "locale": null
@@ -269,10 +230,7 @@
       "actionParameters": {},
       "subject": "api::navbar.navbar",
       "properties": {
-        "locales": [
-          "cs",
-          "en"
-        ]
+        "locales": ["cs", "en"]
       },
       "conditions": [],
       "locale": null
@@ -299,10 +257,7 @@
           "socialLinks.url",
           "socialLinks.label"
         ],
-        "locales": [
-          "cs",
-          "en"
-        ]
+        "locales": ["cs", "en"]
       },
       "conditions": [],
       "locale": null
@@ -329,10 +284,7 @@
           "socialLinks.url",
           "socialLinks.label"
         ],
-        "locales": [
-          "cs",
-          "en"
-        ]
+        "locales": ["cs", "en"]
       },
       "conditions": [],
       "locale": null
@@ -374,10 +326,7 @@
           "seo.metaRobots",
           "seo.structuredData"
         ],
-        "locales": [
-          "cs",
-          "en"
-        ]
+        "locales": ["cs", "en"]
       },
       "conditions": [],
       "locale": null
@@ -388,10 +337,7 @@
       "actionParameters": {},
       "subject": "api::page.page",
       "properties": {
-        "locales": [
-          "cs",
-          "en"
-        ]
+        "locales": ["cs", "en"]
       },
       "conditions": [],
       "locale": null
@@ -402,10 +348,7 @@
       "actionParameters": {},
       "subject": "api::page.page",
       "properties": {
-        "locales": [
-          "cs",
-          "en"
-        ]
+        "locales": ["cs", "en"]
       },
       "conditions": [],
       "locale": null
@@ -447,10 +390,7 @@
           "seo.metaRobots",
           "seo.structuredData"
         ],
-        "locales": [
-          "cs",
-          "en"
-        ]
+        "locales": ["cs", "en"]
       },
       "conditions": [],
       "locale": null
@@ -492,10 +432,7 @@
           "seo.metaRobots",
           "seo.structuredData"
         ],
-        "locales": [
-          "cs",
-          "en"
-        ]
+        "locales": ["cs", "en"]
       },
       "conditions": [],
       "locale": null
@@ -506,12 +443,7 @@
       "actionParameters": {},
       "subject": "api::redirect.redirect",
       "properties": {
-        "fields": [
-          "source",
-          "destination",
-          "permanent",
-          "page"
-        ]
+        "fields": ["source", "destination", "permanent", "page"]
       },
       "conditions": [],
       "locale": null
@@ -540,12 +472,7 @@
       "actionParameters": {},
       "subject": "api::redirect.redirect",
       "properties": {
-        "fields": [
-          "source",
-          "destination",
-          "permanent",
-          "page"
-        ]
+        "fields": ["source", "destination", "permanent", "page"]
       },
       "conditions": [],
       "locale": null
@@ -556,12 +483,7 @@
       "actionParameters": {},
       "subject": "api::redirect.redirect",
       "properties": {
-        "fields": [
-          "source",
-          "destination",
-          "permanent",
-          "page"
-        ]
+        "fields": ["source", "destination", "permanent", "page"]
       },
       "conditions": [],
       "locale": null
@@ -572,11 +494,7 @@
       "actionParameters": {},
       "subject": "api::subscriber.subscriber",
       "properties": {
-        "fields": [
-          "name",
-          "email",
-          "message"
-        ]
+        "fields": ["name", "email", "message"]
       },
       "conditions": [],
       "locale": null
@@ -605,11 +523,7 @@
       "actionParameters": {},
       "subject": "api::subscriber.subscriber",
       "properties": {
-        "fields": [
-          "name",
-          "email",
-          "message"
-        ]
+        "fields": ["name", "email", "message"]
       },
       "conditions": [],
       "locale": null
@@ -620,11 +534,7 @@
       "actionParameters": {},
       "subject": "api::subscriber.subscriber",
       "properties": {
-        "fields": [
-          "name",
-          "email",
-          "message"
-        ]
+        "fields": ["name", "email", "message"]
       },
       "conditions": [],
       "locale": null

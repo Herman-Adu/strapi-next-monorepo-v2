@@ -71,12 +71,7 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "platform",
-        "url",
-        "label"
-      ],
+      "list": ["id", "platform", "url", "label"],
       "edit": [
         [
           {

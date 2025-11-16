@@ -158,12 +158,7 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "type",
-        "contentType",
-        "release"
-      ],
+      "list": ["id", "type", "contentType", "release"],
       "edit": [
         [
           {

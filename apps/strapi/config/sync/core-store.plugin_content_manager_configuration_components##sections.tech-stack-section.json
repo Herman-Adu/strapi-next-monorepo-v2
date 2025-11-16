@@ -113,12 +113,7 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "heading",
-        "description",
-        "technologies"
-      ],
+      "list": ["id", "heading", "description", "technologies"],
       "edit": [
         [
           {

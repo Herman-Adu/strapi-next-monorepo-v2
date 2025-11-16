@@ -85,12 +85,7 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "heading",
-        "description",
-        "benefits"
-      ],
+      "list": ["id", "heading", "description", "benefits"],
       "edit": [
         [
           {

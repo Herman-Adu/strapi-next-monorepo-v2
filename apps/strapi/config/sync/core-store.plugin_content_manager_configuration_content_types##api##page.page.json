@@ -201,12 +201,7 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "title",
-        "slug",
-        "fullPath"
-      ],
+      "list": ["id", "title", "slug", "fullPath"],
       "edit": [
         [
           {

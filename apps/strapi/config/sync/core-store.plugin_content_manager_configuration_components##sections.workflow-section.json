@@ -85,12 +85,7 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "heading",
-        "description",
-        "workflowPoints"
-      ],
+      "list": ["id", "heading", "description", "workflowPoints"],
       "edit": [
         [
           {
