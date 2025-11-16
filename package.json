@@ -46,7 +46,11 @@
     "prepare": "husky",
     "setup:apps": "node ./scripts/setup-env.js",
     "start:strapi": "turbo run start --filter=@repo/strapi",
-    "start:ui": "turbo run start --filter=@repo/ui"
+    "start:ui": "turbo run start --filter=@repo/ui",
+    "storybook": "turbo run storybook --filter=@repo/ui",
+    "test": "turbo run test --filter=@repo/ui",
+    "test:e2e": "turbo run test:e2e --filter=@repo/ui",
+    "test:ui": "turbo run test:ui --filter=@repo/ui"
   },
   "config": {
     "commitizen": {
