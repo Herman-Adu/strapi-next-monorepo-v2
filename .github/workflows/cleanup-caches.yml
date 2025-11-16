@@ -16,7 +16,8 @@ jobs:
         uses: actions/github-script@v7
         with:
           script: |
-            const maxAgeInDays = 7; // Keep caches younger than 7 days
+            const maxAgeInDays = 3; // Keep caches younger than 3 days
+            const maxTotalSizeGB = 9; // Start cleanup if total cache size exceeds 9 GB
             const now = new Date();
             
             console.log(`Starting cache cleanup - keeping caches younger than ${maxAgeInDays} days`);
@@ -28,16 +29,33 @@ jobs:
               per_page: 100
             });
             
+            // Calculate total cache size
+            const totalSizeGB = caches.data.actions_caches.reduce((sum, cache) => 
+              sum + cache.size_in_bytes, 0) / (1024 * 1024 * 1024);
+            
+            console.log(`Current total cache size: ${totalSizeGB.toFixed(2)} GB`);
+            
             let deletedCount = 0;
             let deletedSize = 0;
             
-            for (const cache of caches.data.actions_caches) {
+            // Sort caches by age (oldest first)
+            const sortedCaches = caches.data.actions_caches.sort((a, b) => 
+              new Date(a.created_at) - new Date(b.created_at));
+            
+            for (const cache of sortedCaches) {
               const createdAt = new Date(cache.created_at);
               const ageInDays = (now - createdAt) / (1000 * 60 * 60 * 24);
+              const currentTotalGB = (totalSizeGB * (1024 * 1024 * 1024) - deletedSize) / (1024 * 1024 * 1024);
               
-              if (ageInDays > maxAgeInDays) {
+              // Delete if older than maxAgeInDays OR if total size exceeds threshold
+              const shouldDelete = ageInDays > maxAgeInDays || currentTotalGB > maxTotalSizeGB;
+              
+              if (shouldDelete) {
                 const sizeInMB = (cache.size_in_bytes / 1024 / 1024).toFixed(2);
-                console.log(`Deleting cache: ${cache.key} (${sizeInMB} MB, ${ageInDays.toFixed(1)} days old)`);
+                const reason = ageInDays > maxAgeInDays ? 
+                  `${ageInDays.toFixed(1)} days old` : 
+                  `reducing total size from ${currentTotalGB.toFixed(2)} GB`;
+                console.log(`Deleting cache: ${cache.key} (${sizeInMB} MB, ${reason})`);
                 
                 try {
                   await github.rest.actions.deleteActionsCacheById({
@@ -49,6 +67,11 @@ jobs:
                   deletedSize += cache.size_in_bytes;
                 } catch (error) {
                   console.error(`Failed to delete cache ${cache.key}: ${error.message}`);
+                }
+                
+                // Stop if we're below threshold
+                if (currentTotalGB <= maxTotalSizeGB && ageInDays <= maxAgeInDays) {
+                  break;
                 }
               }
             }
