@@ -638,43 +638,20 @@ export interface SectionsMarqueeSection extends Struct.ComponentSchema {
 export interface SectionsMetricsSection extends Struct.ComponentSchema {
   collectionName: "components_sections_metrics_sections"
   info: {
-    description: "Metrics/statistics section with stat cards"
+    description: "Metrics/statistics section with stat cards - Standardized atomic architecture"
     displayName: "MetricsSection"
   }
   attributes: {
-    backgroundStyle: Schema.Attribute.Enumeration<
-      ["transparent", "muted", "theme-subtle", "theme-muted"]
-    > &
-      Schema.Attribute.DefaultTo<"muted">
-    badge: Schema.Attribute.String
-    badgeAnimation: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>
-    badgeAnimationSpeed: Schema.Attribute.Enumeration<
-      ["extra-slow", "slow", "medium", "fast"]
-    > &
-      Schema.Attribute.DefaultTo<"slow">
-    badgeBorderRadius: Schema.Attribute.Enumeration<
-      ["sm", "md", "lg", "full"]
-    > &
-      Schema.Attribute.DefaultTo<"md">
-    badgeIcon: Schema.Attribute.String
-    badgeOrbGlow: Schema.Attribute.Enumeration<
-      ["subtle", "normal", "intense"]
-    > &
-      Schema.Attribute.DefaultTo<"normal">
-    badgeOrbSize: Schema.Attribute.Enumeration<["small", "medium", "large"]> &
-      Schema.Attribute.DefaultTo<"large">
-    badgeSize: Schema.Attribute.Enumeration<["small", "medium", "large"]> &
-      Schema.Attribute.DefaultTo<"medium">
-    containerStyle: Schema.Attribute.Enumeration<["default", "bordered"]> &
-      Schema.Attribute.DefaultTo<"default">
-    description: Schema.Attribute.Text
-    heading: Schema.Attribute.String & Schema.Attribute.Required
-    headingAccent: Schema.Attribute.String
-    headingStyle: Schema.Attribute.Enumeration<
-      ["default", "gradient", "two-tone"]
-    > &
-      Schema.Attribute.DefaultTo<"default">
-    metrics: Schema.Attribute.Component<"elements.stat-card", true>
+    background: Schema.Attribute.Component<"shared.section-background", false>
+    badge: Schema.Attribute.Component<"shared.section-badge", false>
+    header: Schema.Attribute.Component<"shared.section-header", false>
+    metrics: Schema.Attribute.Component<"elements.stat-card", true> &
+      Schema.Attribute.SetMinMax<
+        {
+          min: 1
+        },
+        number
+      >
   }
 }
 

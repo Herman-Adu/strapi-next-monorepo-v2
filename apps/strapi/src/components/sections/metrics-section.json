@@ -2,99 +2,30 @@
   "collectionName": "components_sections_metrics_sections",
   "info": {
     "displayName": "MetricsSection",
-    "description": "Metrics/statistics section with stat cards"
+    "description": "Metrics/statistics section with stat cards - Standardized atomic architecture"
   },
   "options": {},
   "attributes": {
+    "background": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.section-background"
+    },
     "badge": {
-      "type": "string",
-      "required": false,
-      "description": "Optional badge text displayed above heading (e.g., 'Powered by Industry Leaders')"
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.section-badge"
     },
-    "badgeIcon": {
-      "type": "string",
-      "required": false,
-      "description": "Icon for badge. Use emoji (🚀) or Lucide icon name (Rocket, Star, Zap, TrendingUp, Award, CheckCircle, etc.)"
-    },
-    "badgeSize": {
-      "type": "enumeration",
-      "enum": ["small", "medium", "large"],
-      "default": "medium",
-      "required": false,
-      "description": "Badge size: small (compact for nav/articles), medium (default balanced size), large (prominent for hero sections)"
-    },
-    "badgeAnimation": {
-      "type": "boolean",
-      "default": false,
-      "required": false,
-      "description": "Enable orbiting light animation around badge border"
-    },
-    "badgeAnimationSpeed": {
-      "type": "enumeration",
-      "enum": ["extra-slow", "slow", "medium", "fast"],
-      "default": "slow",
-      "required": false,
-      "description": "Animation speed: extra-slow (10s), slow (5s), medium (3s), fast (1.5s)"
-    },
-    "badgeOrbSize": {
-      "type": "enumeration",
-      "enum": ["small", "medium", "large"],
-      "default": "large",
-      "required": false,
-      "description": "Size of the orbiting light: small (subtle), medium (balanced), large (prominent glow)"
-    },
-    "badgeBorderRadius": {
-      "type": "enumeration",
-      "enum": ["sm", "md", "lg", "full"],
-      "default": "md",
-      "required": false,
-      "description": "Badge border radius: sm (subtle rounded corners), md (medium rounded), lg (more rounded), full (pill-shaped)"
-    },
-    "badgeOrbGlow": {
-      "type": "enumeration",
-      "enum": ["subtle", "normal", "intense"],
-      "default": "normal",
-      "required": false,
-      "description": "Orb glow intensity: subtle (soft diffused glow), normal (balanced), intense (sharp bright glow)"
-    },
-    "heading": {
-      "type": "string",
-      "required": true,
-      "description": "Main heading text. When using two-tone style, this is the second part (non-accented)"
-    },
-    "headingAccent": {
-      "type": "string",
-      "required": false,
-      "description": "Accented part of heading for two-tone style. This text appears first in theme color. Leave empty for default/gradient styles."
-    },
-    "description": {
-      "type": "text"
+    "header": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.section-header"
     },
     "metrics": {
       "type": "component",
       "repeatable": true,
-      "component": "elements.stat-card"
-    },
-    "backgroundStyle": {
-      "type": "enumeration",
-      "enum": ["transparent", "muted", "theme-subtle", "theme-muted"],
-      "default": "muted",
-      "required": false,
-      "description": "Section background style: transparent (none), muted (subtle grey), theme-subtle (light theme gradient - great continuity with component borders), theme-muted (stronger theme color)"
-    },
-    "headingStyle": {
-      "type": "enumeration",
-      "enum": ["default", "gradient", "two-tone"],
-      "default": "default",
-      "required": false,
-      "description": "Heading text style: default (solid), gradient (subtle theme gradient), two-tone (first word accented)"
-    },
-    "containerStyle": {
-      "type": "enumeration",
-      "enum": ["default", "bordered"],
-      "default": "default",
-      "required": false,
-      "description": "Heading/description container style: default (no border), bordered (theme-colored border with gradient background - makes content stand out)"
+      "component": "elements.stat-card",
+      "min": 1
     }
   }
 }
