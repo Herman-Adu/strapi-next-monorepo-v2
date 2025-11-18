@@ -229,6 +229,18 @@
       "edit": [
         [
           {
+            "name": "background",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "badge",
+            "size": 12
+          }
+        ],
+        [
+          {
             "name": "header",
             "size": 12
           }
@@ -286,18 +298,6 @@
         [
           {
             "name": "ctaButtons",
-            "size": 12
-          }
-        ],
-        [
-          {
-            "name": "badge",
-            "size": 12
-          }
-        ],
-        [
-          {
-            "name": "background",
             "size": 12
           }
         ],

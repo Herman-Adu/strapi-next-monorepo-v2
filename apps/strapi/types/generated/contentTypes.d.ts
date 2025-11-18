@@ -430,6 +430,37 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
   }
 }
 
+export interface ApiContactMessageContactMessage
+  extends Struct.CollectionTypeSchema {
+  collectionName: "contact_messages"
+  info: {
+    displayName: "Contact Message"
+    pluralName: "contact-messages"
+    singularName: "contact-message"
+  }
+  options: {
+    draftAndPublish: false
+  }
+  attributes: {
+    createdAt: Schema.Attribute.DateTime
+    createdBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
+      Schema.Attribute.Private
+    email: Schema.Attribute.Email & Schema.Attribute.Required
+    locale: Schema.Attribute.String & Schema.Attribute.Private
+    localizations: Schema.Attribute.Relation<
+      "oneToMany",
+      "api::contact-message.contact-message"
+    > &
+      Schema.Attribute.Private
+    message: Schema.Attribute.Text & Schema.Attribute.Required
+    name: Schema.Attribute.String & Schema.Attribute.Required
+    publishedAt: Schema.Attribute.DateTime
+    updatedAt: Schema.Attribute.DateTime
+    updatedBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
+      Schema.Attribute.Private
+  }
+}
+
 export interface ApiFooterFooter extends Struct.SingleTypeSchema {
   collectionName: "footers"
   info: {
@@ -632,6 +663,7 @@ export interface ApiPagePage extends Struct.CollectionTypeSchema {
         "sections.partner-showcase-section",
         "sections.integration-grid-section",
         "sections.marquee-section",
+        "sections.testimonials-section",
         "forms.newsletter-form",
         "forms.contact-form",
         "utilities.ck-editor-content",
@@ -722,7 +754,9 @@ export interface ApiSubscriberSubscriber extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime
     createdBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
       Schema.Attribute.Private
-    email: Schema.Attribute.Email
+    email: Schema.Attribute.Email &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique
     locale: Schema.Attribute.String & Schema.Attribute.Private
     localizations: Schema.Attribute.Relation<
       "oneToMany",
@@ -1248,6 +1282,7 @@ declare module "@strapi/strapi" {
       "admin::transfer-token": AdminTransferToken
       "admin::transfer-token-permission": AdminTransferTokenPermission
       "admin::user": AdminUser
+      "api::contact-message.contact-message": ApiContactMessageContactMessage
       "api::footer.footer": ApiFooterFooter
       "api::internal-job.internal-job": ApiInternalJobInternalJob
       "api::navbar.navbar": ApiNavbarNavbar

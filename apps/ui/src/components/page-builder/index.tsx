@@ -22,6 +22,7 @@ import StrapiNewsletterCTASection from "@/components/page-builder/components/sec
 import StrapiPartnerShowcaseSection from "@/components/page-builder/components/sections/StrapiPartnerShowcaseSection"
 import StrapiRoadmapSection from "@/components/page-builder/components/sections/StrapiRoadmapSection"
 import StrapiTechStackSection from "@/components/page-builder/components/sections/StrapiTechStackSection"
+import StrapiTestimonialsSection from "@/components/page-builder/components/sections/StrapiTestimonialsSection"
 import StrapiWorkflowSection from "@/components/page-builder/components/sections/StrapiWorkflowSection"
 import StrapiCkEditorContent from "@/components/page-builder/components/utilities/StrapiCkEditorContent"
 
@@ -62,6 +63,7 @@ export const PageContentComponents: {
   "sections.roadmap-section": StrapiRoadmapSection,
   "sections.final-cta-section": StrapiFinalCTASection,
   "sections.footer-cta-section": StrapiFooterCTASection,
+  "sections.testimonials-section": StrapiTestimonialsSection,
 
   // Forms
   "forms.contact-form": StrapiContactForm,

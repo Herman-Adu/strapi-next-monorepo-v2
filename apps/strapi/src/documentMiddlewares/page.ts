@@ -163,6 +163,23 @@ const pagePopulateObject: FindOne<"api::page.page">["populate"] = {
       "sections.integration-grid-section": {
         populate: { integrations: true },
       },
+      "sections.testimonials-section": {
+        populate: {
+          badge: { populate: { orbAnimation: true } },
+          header: {
+            populate: {
+              textStyle: { populate: { customGradient: true } },
+              descriptionTextStyle: { populate: { customGradient: true } },
+            },
+          },
+          background: true,
+          testimonials: {
+            populate: {
+              authorImage: { populate: { media: true } },
+            },
+          },
+        },
+      },
       "forms.newsletter-form": { populate: { gdpr: true } },
       "forms.contact-form": { populate: { gdpr: true } },
       "utilities.ck-editor-content": true,

@@ -1,6 +1,6 @@
 import { Data } from "@repo/strapi"
 
-import { removeThisWhenYouNeedMe } from "@/lib/general-helpers"
+import { cn } from "@/lib/styles"
 import { Container } from "@/components/elementary/Container"
 import {
   Accordion,
@@ -14,17 +14,21 @@ export function StrapiFaq({
 }: {
   readonly component: Data.Component<"sections.faq">
 }) {
-  removeThisWhenYouNeedMe("StrapiFaq")
-
   return (
-    <section>
+    <section className="bg-background">
       <Container className="py-8">
         <div className="flex flex-col items-center">
-          <h2 className="mb-2 text-center text-3xl font-extrabold tracking-tight text-gray-900 lg:text-4xl">
+          <h2
+            className={cn(
+              "mb-4 text-center font-semibold text-balance",
+              "text-3xl sm:text-4xl md:text-5xl",
+              "text-primary dark:text-foreground"
+            )}
+          >
             {component.title}
           </h2>
 
-          <p className="mb-6 text-center tracking-tight text-gray-900">
+          <p className="text-muted-foreground mb-8 text-center text-base sm:text-lg">
             {component.subTitle}
           </p>
 

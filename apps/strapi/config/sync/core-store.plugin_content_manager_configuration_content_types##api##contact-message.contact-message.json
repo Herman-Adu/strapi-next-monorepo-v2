@@ -1,13 +1,13 @@
 {
-  "key": "plugin_content_manager_configuration_components::atoms.gradient-colors",
+  "key": "plugin_content_manager_configuration_content_types::api::contact-message.contact-message",
   "value": {
     "settings": {
       "bulkable": true,
       "filterable": true,
       "searchable": true,
       "pageSize": 10,
-      "mainField": "lightModeStart",
-      "defaultSortBy": "lightModeStart",
+      "mainField": "name",
+      "defaultSortBy": "name",
       "defaultSortOrder": "ASC"
     },
     "metadatas": {
@@ -15,90 +15,106 @@
         "edit": {},
         "list": {
           "label": "id",
-          "searchable": false,
-          "sortable": false
-        }
-      },
-      "lightModeStart": {
-        "edit": {
-          "label": "lightModeStart",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "lightModeStart",
           "searchable": true,
           "sortable": true
         }
       },
-      "lightModeMiddle": {
+      "name": {
         "edit": {
-          "label": "lightModeMiddle",
+          "label": "name",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "lightModeMiddle",
+          "label": "name",
           "searchable": true,
           "sortable": true
         }
       },
-      "lightModeEnd": {
+      "email": {
         "edit": {
-          "label": "lightModeEnd",
+          "label": "email",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "lightModeEnd",
+          "label": "email",
           "searchable": true,
           "sortable": true
         }
       },
-      "darkModeStart": {
+      "message": {
         "edit": {
-          "label": "darkModeStart",
+          "label": "message",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "darkModeStart",
+          "label": "message",
           "searchable": true,
           "sortable": true
         }
       },
-      "darkModeMiddle": {
+      "createdAt": {
         "edit": {
-          "label": "darkModeMiddle",
+          "label": "createdAt",
           "description": "",
           "placeholder": "",
-          "visible": true,
+          "visible": false,
           "editable": true
         },
         "list": {
-          "label": "darkModeMiddle",
+          "label": "createdAt",
           "searchable": true,
           "sortable": true
         }
       },
-      "darkModeEnd": {
+      "updatedAt": {
         "edit": {
-          "label": "darkModeEnd",
+          "label": "updatedAt",
           "description": "",
           "placeholder": "",
-          "visible": true,
+          "visible": false,
           "editable": true
         },
         "list": {
-          "label": "darkModeEnd",
+          "label": "updatedAt",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "createdBy": {
+        "edit": {
+          "label": "createdBy",
+          "description": "",
+          "placeholder": "",
+          "visible": false,
+          "editable": true,
+          "mainField": "firstname"
+        },
+        "list": {
+          "label": "createdBy",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "updatedBy": {
+        "edit": {
+          "label": "updatedBy",
+          "description": "",
+          "placeholder": "",
+          "visible": false,
+          "editable": true,
+          "mainField": "firstname"
+        },
+        "list": {
+          "label": "updatedBy",
           "searchable": true,
           "sortable": true
         }
@@ -113,42 +129,32 @@
       }
     },
     "layouts": {
-      "list": ["id", "lightModeStart", "lightModeMiddle", "lightModeEnd"],
+      "list": [
+        "id",
+        "name",
+        "email",
+        "message"
+      ],
       "edit": [
         [
           {
-            "name": "lightModeStart",
+            "name": "name",
             "size": 6
           },
           {
-            "name": "darkModeStart",
+            "name": "email",
             "size": 6
           }
         ],
         [
           {
-            "name": "lightModeMiddle",
-            "size": 6
-          },
-          {
-            "name": "darkModeMiddle",
-            "size": 6
-          }
-        ],
-        [
-          {
-            "name": "lightModeEnd",
-            "size": 6
-          },
-          {
-            "name": "darkModeEnd",
+            "name": "message",
             "size": 6
           }
         ]
       ]
     },
-    "uid": "atoms.gradient-colors",
-    "isComponent": true
+    "uid": "api::contact-message.contact-message"
   },
   "type": "object",
   "environment": null,

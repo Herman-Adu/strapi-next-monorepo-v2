@@ -25,11 +25,22 @@ export function StrapiNewsletter({ component }: Props) {
       )}
 
       <div className="mb-4">
-        <NewsletterForm />
+        <NewsletterForm
+          gdpr={
+            component.gdpr
+              ? {
+                  href: component.gdpr.href || undefined,
+                  label: component.gdpr.label || undefined,
+                  newTab: component.gdpr.newTab || false,
+                }
+              : undefined
+          }
+        />
       </div>
 
       {component.gdpr && (
         <div className="text-muted-foreground text-xs">
+          Note: By subscribing, you agree to our{" "}
           <StrapiLink
             component={component.gdpr}
             className="hover:text-foreground underline underline-offset-2 transition-colors duration-200"

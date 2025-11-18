@@ -46,7 +46,7 @@ export function AppForm<T extends FieldValues = FieldValues>({
         id={id}
         noValidate
       >
-        <fieldset disabled={disabled} className="space-y-4">
+        <fieldset disabled={disabled} className="space-y-5">
           {children}
         </fieldset>
       </form>

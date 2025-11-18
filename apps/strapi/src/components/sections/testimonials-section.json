@@ -1,0 +1,50 @@
+{
+  "collectionName": "components_sections_testimonials_sections",
+  "info": {
+    "displayName": "TestimonialsSection",
+    "description": "Testimonials showcase with marquee or grid layout"
+  },
+  "options": {},
+  "attributes": {
+    "background": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.section-background"
+    },
+    "badge": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.section-badge"
+    },
+    "header": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.section-header"
+    },
+    "testimonials": {
+      "type": "component",
+      "repeatable": true,
+      "component": "elements.testimonial-card",
+      "min": 1
+    },
+    "layout": {
+      "type": "enumeration",
+      "enum": ["marquee", "grid"],
+      "default": "grid",
+      "required": true
+    },
+    "columns": {
+      "type": "enumeration",
+      "enum": ["2", "3", "4"],
+      "default": "3"
+    },
+    "showRatings": {
+      "type": "boolean",
+      "default": true
+    },
+    "showImages": {
+      "type": "boolean",
+      "default": true
+    }
+  }
+}

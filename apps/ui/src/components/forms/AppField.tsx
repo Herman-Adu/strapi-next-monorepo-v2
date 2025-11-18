@@ -68,7 +68,7 @@ export function AppField({
                   "w-full",
                   {
                     "border-red-600": fieldState.invalid,
-                    "rounded-md border": !endAdornment,
+                    "rounded-sm border": !endAdornment,
                     "rounded-l-md border-y border-l": !!endAdornment,
                   },
                   fieldClassName

@@ -29,19 +29,10 @@ function getHeadingSizeClass(
 }
 
 /**
- * Map spacing enum to CSS classes for internal spacing
+ * SectionHeader does NOT control spacing between heading and description
+ * That spacing is controlled by the parent section's sectionGap (gap-8/12/16)
+ * which is derived from background.padding setting
  */
-function getSpacingClass(spacing?: "compact" | "default" | "spacious"): string {
-  switch (spacing) {
-    case "compact":
-      return "space-y-2"
-    case "spacious":
-      return "space-y-6"
-    case "default":
-    default:
-      return "space-y-4"
-  }
-}
 
 /**
  * Map alignment enum to CSS classes
@@ -55,6 +46,86 @@ function getAlignmentClass(alignment?: "left" | "center" | "right"): string {
     case "center":
     default:
       return "text-center"
+  }
+}
+
+/**
+ * Generate smart divider styles that match header textStyle
+ * Returns both className and inline style for proper gradient rendering
+ *
+ * Use Cases:
+ * 1. Default (solid): theme color gradient (uses Tailwind classes)
+ * 2. Gradient: matches custom gradient colors (uses inline styles)
+ * 3. Two-tone: REVERSED gradient (uses Tailwind classes)
+ */
+function getDividerStyles(
+  textStyle?: Data.Component<"atoms.text-style"> | null
+): { className: string; style?: React.CSSProperties } {
+  // Default case: no textStyle or textStyle is "default"
+  if (!textStyle || textStyle.textStyle === "default") {
+    return {
+      className: "bg-gradient-to-r from-primary/60 to-primary",
+    }
+  }
+
+  // Two-tone: Reversed gradient (white/muted → green)
+  if (textStyle.textStyle === "two-tone") {
+    return {
+      className:
+        "bg-gradient-to-r from-muted-foreground/60 dark:from-foreground/60 to-primary",
+    }
+  }
+
+  // Gradient: Match custom gradient colors using inline styles
+  if (textStyle.textStyle === "gradient" && textStyle.customGradient) {
+    const { customGradient } = textStyle
+    const direction = textStyle.gradientDirection ?? "diagonal"
+
+    // Use custom colors if provided, otherwise fall back to theme
+    const lightStart = customGradient.lightModeStart || "#16a34a"
+    const lightMiddle = customGradient.lightModeMiddle
+    const lightEnd = customGradient.lightModeEnd || "#84cc16"
+
+    // Build the exact same gradient as the heading uses
+    const getGradientDirection = (dir: string) => {
+      switch (dir) {
+        case "horizontal":
+          return "to right"
+        case "vertical":
+          return "to bottom"
+        case "radial":
+          return "circle"
+        case "diagonal":
+        default:
+          return "135deg"
+      }
+    }
+
+    const gradDirection = getGradientDirection(direction)
+
+    // Build color stops - REVERSED order to match visual appearance
+    // (start color appears on right/bottom, end color on left/top with 135deg)
+    const colorStops = lightMiddle
+      ? `${lightEnd}, ${lightMiddle}, ${lightStart}`
+      : `${lightEnd}, ${lightStart}`
+
+    const isRadial = direction === "radial"
+    const gradientType = isRadial ? "radial-gradient" : "linear-gradient"
+    const gradientValue = isRadial
+      ? `${gradientType}(${gradDirection}, ${colorStops})`
+      : `${gradientType}(${gradDirection}, ${colorStops})`
+
+    return {
+      className: "", // No Tailwind gradient classes needed
+      style: {
+        backgroundImage: gradientValue,
+      },
+    }
+  }
+
+  // Fallback to theme gradient
+  return {
+    className: "bg-gradient-to-r from-primary/60 to-primary",
   }
 }
 
@@ -74,7 +145,6 @@ export function SectionHeader({ header, className }: SectionHeaderProps) {
     descriptionTextStyle,
     alignment = "center",
     showDivider = false,
-    spacing = "default",
     showHeader = true,
   } = header
 
@@ -85,10 +155,7 @@ export function SectionHeader({ header, className }: SectionHeaderProps) {
   const headingStyle = textStyle?.textStyle ?? "default"
 
   const headingSizeClass = getHeadingSizeClass(headingSize ?? undefined)
-  const spacingClass = getSpacingClass(spacing ?? undefined)
   const alignmentClass = getAlignmentClass(alignment ?? undefined)
-
-  const wrapperClasses = cn(spacingClass, alignmentClass, className)
 
   // Base heading classes (size + weight + tracking)
   const headingClasses = cn("font-bold tracking-tight", headingSizeClass)
@@ -103,37 +170,49 @@ export function SectionHeader({ header, className }: SectionHeaderProps) {
         ? "mr-auto"
         : "mx-auto" // center
 
+  // Smart divider styling (matches header textStyle)
+  const dividerStyles = getDividerStyles(textStyle)
+
   // Handle two-tone style (special rendering with accent + heading split)
   if (headingStyle === "two-tone" && headingAccent) {
     return (
-      <div className={wrapperClasses}>
-        <h2 className={headingClasses}>
-          <span className="text-primary">{headingAccent}</span>{" "}
-          <span className="text-muted-foreground dark:text-foreground">
-            {heading}
-          </span>
-        </h2>
-        {/* {showDivider && (
-        <div
-          className={cn(
-            "from-primary/60 to-primary h-1 w-24 rounded-full bg-gradient-to-r",
-            dividerAlignmentClass
+      <>
+        {/* Heading + Divider group (tight spacing with mt-2) */}
+        <div className={cn(alignmentClass, className)}>
+          <h2 className={headingClasses}>
+            <span className="text-primary">{headingAccent}</span>{" "}
+            <span className="text-muted-foreground dark:text-foreground">
+              {heading}
+            </span>
+          </h2>
+          {showDivider && (
+            <div
+              className={cn(
+                "mt-2 h-1 w-24 rounded-full",
+                dividerStyles.className,
+                dividerAlignmentClass
+              )}
+              style={dividerStyles.style}
+            />
           )}
-        />
-      )} */}{" "}
+        </div>
+
+        {/* Description - gap controlled by parent section's sectionGap */}
         {description &&
           (descriptionTextStyle ? (
             <TextStyle
               textStyle={descriptionTextStyle}
               as="p"
-              className={descriptionClasses}
+              className={cn(descriptionClasses, alignmentClass)}
             >
               {description}
             </TextStyle>
           ) : (
-            <p className={descriptionClasses}>{description}</p>
+            <p className={cn(descriptionClasses, alignmentClass)}>
+              {description}
+            </p>
           ))}
-      </div>
+      </>
     )
   }
 
@@ -141,36 +220,44 @@ export function SectionHeader({ header, className }: SectionHeaderProps) {
   const fullHeading = headingAccent ? `${headingAccent} ${heading}` : heading
 
   return (
-    <div className={wrapperClasses}>
-      <TextStyle
-        textStyle={textStyle ?? undefined}
-        as="h2"
-        className={headingClasses}
-      >
-        {fullHeading}
-      </TextStyle>
+    <>
+      {/* Heading + Divider group (tight spacing with mt-2) */}
+      <div className={cn(alignmentClass, className)}>
+        <TextStyle
+          textStyle={textStyle ?? undefined}
+          as="h2"
+          className={headingClasses}
+        >
+          {fullHeading}
+        </TextStyle>
 
-      {/* {showDivider && (
-        <div
-          className={cn(
-            "from-primary/60 to-primary h-1 w-24 rounded-full bg-gradient-to-r",
-            dividerAlignmentClass
-          )}
-        />
-      )} */}
+        {showDivider && (
+          <div
+            className={cn(
+              "mt-2 h-1 w-24 rounded-full",
+              dividerStyles.className,
+              dividerAlignmentClass
+            )}
+            style={dividerStyles.style}
+          />
+        )}
+      </div>
 
+      {/* Description - gap controlled by parent section's sectionGap */}
       {description &&
         (descriptionTextStyle ? (
           <TextStyle
             textStyle={descriptionTextStyle}
             as="p"
-            className={descriptionClasses}
+            className={cn(descriptionClasses, alignmentClass)}
           >
             {description}
           </TextStyle>
         ) : (
-          <p className={descriptionClasses}>{description}</p>
+          <p className={cn(descriptionClasses, alignmentClass)}>
+            {description}
+          </p>
         ))}
-    </div>
+    </>
   )
 }

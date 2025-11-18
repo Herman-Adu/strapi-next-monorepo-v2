@@ -1,16 +1,18 @@
 "use client"
 
+import { useState } from "react"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useTranslations } from "next-intl"
 import { useForm } from "react-hook-form"
 import * as z from "zod"
 
 import { useContactForm } from "@/hooks/useAppForm"
-import AppLink from "@/components/elementary/AppLink"
 import { AppField } from "@/components/forms/AppField"
 import { AppForm } from "@/components/forms/AppForm"
 import { AppTextArea } from "@/components/forms/AppTextArea"
 import { Button } from "@/components/ui/button"
+import { Checkbox } from "@/components/ui/checkbox"
+import { Label } from "@/components/ui/label"
 import { useToast } from "@/components/ui/use-toast"
 
 export function ContactForm({
@@ -21,6 +23,7 @@ export function ContactForm({
   const t = useTranslations("contactForm")
   const { toast } = useToast()
   const contactFormMutation = useContactForm()
+  const [agreedToTerms, setAgreedToTerms] = useState(false)
 
   const form = useForm<z.infer<FormSchemaType>>({
     resolver: zodResolver(ContactFormSchema),
@@ -33,10 +36,17 @@ export function ContactForm({
     contactFormMutation.mutate(values, {
       onSuccess: () => {
         toast({
-          variant: "default",
+          variant: "success",
           description: t("success"),
         })
         form.reset()
+        setAgreedToTerms(false)
+      },
+      onError: (error) => {
+        toast({
+          variant: "destructive",
+          description: error.message || t("error"),
+        })
       },
     })
   }
@@ -66,31 +76,53 @@ export function ContactForm({
         />
         <AppTextArea
           name="message"
-          type="text"
           required
           label={t("message")}
+          placeholder={t("messagePlaceholder")}
           aria-label="contact-message"
         />
       </AppForm>
-      <div className="flex w-full flex-col gap-4">
+      <div className="mt-5 flex w-full flex-col gap-1">
+        {/* GDPR Checkbox */}
         {gdpr?.href && (
-          <div className="mt-5 flex flex-col items-center sm:flex-row">
-            <p>{t("gdpr")}</p>
-            <AppLink
-              openExternalInNewTab={gdpr.newTab}
-              className="p-0 pl-1 font-medium"
-              href={gdpr?.href}
-            >
-              {gdpr.label || t("gdprLink")}
-            </AppLink>
+          <div className="group border-primary/10 from-primary/5 via-background to-background hover:border-primary/20 hover:shadow-primary/5 relative overflow-hidden rounded-sm border bg-gradient-to-br p-3.5 shadow-sm transition-all duration-300 hover:shadow-md">
+            <div className="bg-primary/5 group-hover:bg-primary/10 absolute top-0 right-0 h-24 w-24 blur-2xl transition-all duration-300" />
+            <div className="relative flex items-start gap-2.5">
+              <Checkbox
+                id="gdpr-consent"
+                checked={agreedToTerms}
+                onCheckedChange={(checked) =>
+                  setAgreedToTerms(checked === true)
+                }
+                className="border-input bg-background data-[state=checked]:border-primary data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground mt-0.5 border-2"
+              />
+              <Label
+                htmlFor="gdpr-consent"
+                className="text-card-foreground cursor-pointer text-sm leading-relaxed"
+              >
+                {"I agree to your"}{" "}
+                <a
+                  href={gdpr.href || "#"}
+                  target={gdpr.newTab ? "_blank" : "_self"}
+                  rel={gdpr.newTab ? "noopener noreferrer" : undefined}
+                  className="text-primary decoration-primary/30 group-hover:decoration-primary font-medium underline underline-offset-4 transition-colors"
+                >
+                  {gdpr.label || "Terms & Conditions"}
+                </a>
+              </Label>
+            </div>
           </div>
         )}
 
         <Button
           type="submit"
-          className="mt-4 w-full"
+          className="mt-4 w-full rounded-sm"
           size="lg"
           form={contactFormName}
+          disabled={
+            contactFormMutation.isPending ||
+            (gdpr?.href ? !agreedToTerms : false)
+          }
         >
           {t("submit")}
         </Button>

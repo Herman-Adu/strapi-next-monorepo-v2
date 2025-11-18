@@ -131,20 +131,6 @@
           "sortable": true
         }
       },
-      "spacing": {
-        "edit": {
-          "label": "spacing",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "spacing",
-          "searchable": true,
-          "sortable": true
-        }
-      },
       "showHeader": {
         "edit": {
           "label": "showHeader",
@@ -169,7 +155,12 @@
       }
     },
     "layouts": {
-      "list": ["id", "heading", "headingAccent", "description"],
+      "list": [
+        "id",
+        "heading",
+        "headingAccent",
+        "description"
+      ],
       "edit": [
         [
           {
@@ -214,10 +205,6 @@
           }
         ],
         [
-          {
-            "name": "spacing",
-            "size": 6
-          },
           {
             "name": "showHeader",
             "size": 4

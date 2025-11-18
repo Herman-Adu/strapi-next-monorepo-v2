@@ -27,6 +27,7 @@ export function AppFormLabel({
   return (
     <FormLabel
       className={cn(
+        "text-sm md:text-base",
         {
           "font-normal": !fieldState?.invalid,
           "font-medium": fieldState?.invalid,

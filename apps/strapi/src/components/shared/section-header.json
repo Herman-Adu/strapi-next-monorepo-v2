@@ -56,13 +56,6 @@
       "required": false,
       "description": "Add decorative divider line below heading"
     },
-    "spacing": {
-      "type": "enumeration",
-      "enum": ["compact", "default", "spacious"],
-      "default": "default",
-      "required": false,
-      "description": "Spacing between heading and description: compact (space-y-2), default (space-y-4), spacious (space-y-6)"
-    },
     "showHeader": {
       "type": "boolean",
       "default": true,

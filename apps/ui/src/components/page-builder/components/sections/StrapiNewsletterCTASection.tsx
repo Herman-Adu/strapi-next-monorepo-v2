@@ -4,6 +4,7 @@ import { useState } from "react"
 import { Data } from "@repo/strapi"
 import { ArrowRight } from "lucide-react"
 
+import { useSubscriberForm } from "@/hooks/useAppForm"
 import { StrapiIconButton } from "@/components/page-builder/components/elements/StrapiIconButton"
 import {
   SectionBadge,
@@ -15,30 +16,62 @@ import { Button } from "@/components/ui/button"
 import { Checkbox } from "@/components/ui/checkbox"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
+import { useToast } from "@/components/ui/use-toast"
 
 export function StrapiNewsletterCTASection({
   component,
 }: {
   readonly component: Data.Component<"sections.newsletter-cta-section">
 }) {
+  const { toast } = useToast()
+  const subscriberMutation = useSubscriberForm()
   const [email, setEmail] = useState("")
   const [agreedToTerms, setAgreedToTerms] = useState(false)
-  const [isSubmitting, setIsSubmitting] = useState(false)
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    if (!agreedToTerms) {
+    if (!agreedToTerms || !email) {
       return
     }
-    setIsSubmitting(true)
-    // TODO: Implement newsletter subscription logic
-    // Send to API endpoint
-    // Example: await fetch('/api/newsletter/subscribe', { method: 'POST', body: JSON.stringify({ email }) })
-    // Simulate API call
-    await new Promise((resolve) => setTimeout(resolve, 1000))
-    setIsSubmitting(false)
-    setEmail("")
-    setAgreedToTerms(false)
+
+    subscriberMutation.mutate(
+      { email },
+      {
+        onSuccess: () => {
+          toast({
+            title: "Success!",
+            description: "Thank you for subscribing to our newsletter.",
+            variant: "success",
+          })
+
+          // Reset form on success
+          setEmail("")
+          setAgreedToTerms(false)
+        },
+        onError: (error: any) => {
+          // Check if it's a duplicate email error
+          const isDuplicateError =
+            error?.response?.data?.error?.message?.includes("unique") ||
+            error?.response?.data?.error?.message?.includes("already exists") ||
+            error?.message?.includes("unique")
+
+          toast({
+            title: isDuplicateError
+              ? "Already Subscribed"
+              : "Subscription Failed",
+            description: isDuplicateError
+              ? "This email is already subscribed to our newsletter."
+              : "Something went wrong. Please try again.",
+            variant: "destructive",
+          })
+
+          // Only log non-duplicate errors (duplicate is expected behavior)
+          if (!isDuplicateError) {
+            console.error("Newsletter subscription error:", error)
+          }
+        },
+      }
+    )
   }
 
   // Use background from Strapi, or provide default bordered style
@@ -69,13 +102,13 @@ export function StrapiNewsletterCTASection({
   return (
     <SectionWrapper background={backgroundConfig}>
       {/* Uniform spacing architecture:
-          - Badge→Header gap = Header→Content gap (both use sectionGap)
-          - Header's internal spacing (heading→description) controlled by its own space-y */}
+          - Badge→Header gap = Header→Content gap (both controlled by sectionGap from background.padding)
+          - SectionHeader just renders content - parent's gap controls all vertical spacing */}
       <div className={`flex w-full flex-col ${sectionGap}`}>
         {/* Badge - returns null when hidden */}
         <SectionBadge badge={component.badge ?? undefined} />
 
-        {/* Header - spacing property controls ONLY internal spacing (heading→description) */}
+        {/* Header - returns fragment with heading+divider and description as separate children */}
         {component.header && (
           <SectionHeader header={component.header} className="mb-0" />
         )}
@@ -147,10 +180,10 @@ export function StrapiNewsletterCTASection({
                   <Button
                     type="submit"
                     size="lg"
-                    disabled={!agreedToTerms || isSubmitting}
+                    disabled={!agreedToTerms || subscriberMutation.isPending}
                     className="rounded-lg shadow-md transition-shadow hover:shadow-lg"
                   >
-                    {isSubmitting ? (
+                    {subscriberMutation.isPending ? (
                       "Subscribing..."
                     ) : (
                       <>

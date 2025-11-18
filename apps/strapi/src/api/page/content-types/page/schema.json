@@ -77,6 +77,7 @@
         "sections.partner-showcase-section",
         "sections.integration-grid-section",
         "sections.marquee-section",
+        "sections.testimonials-section",
         "forms.newsletter-form",
         "forms.contact-form",
         "utilities.ck-editor-content"

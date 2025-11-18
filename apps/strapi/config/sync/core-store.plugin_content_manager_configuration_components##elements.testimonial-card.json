@@ -1,13 +1,13 @@
 {
-  "key": "plugin_content_manager_configuration_components::atoms.gradient-colors",
+  "key": "plugin_content_manager_configuration_components::elements.testimonial-card",
   "value": {
     "settings": {
       "bulkable": true,
       "filterable": true,
       "searchable": true,
       "pageSize": 10,
-      "mainField": "lightModeStart",
-      "defaultSortBy": "lightModeStart",
+      "mainField": "authorName",
+      "defaultSortBy": "authorName",
       "defaultSortOrder": "ASC"
     },
     "metadatas": {
@@ -19,86 +19,100 @@
           "sortable": false
         }
       },
-      "lightModeStart": {
+      "quote": {
         "edit": {
-          "label": "lightModeStart",
+          "label": "quote",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "lightModeStart",
+          "label": "quote",
           "searchable": true,
           "sortable": true
         }
       },
-      "lightModeMiddle": {
+      "authorName": {
         "edit": {
-          "label": "lightModeMiddle",
+          "label": "authorName",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "lightModeMiddle",
+          "label": "authorName",
           "searchable": true,
           "sortable": true
         }
       },
-      "lightModeEnd": {
+      "authorRole": {
         "edit": {
-          "label": "lightModeEnd",
+          "label": "authorRole",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "lightModeEnd",
+          "label": "authorRole",
           "searchable": true,
           "sortable": true
         }
       },
-      "darkModeStart": {
+      "authorCompany": {
         "edit": {
-          "label": "darkModeStart",
+          "label": "authorCompany",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "darkModeStart",
+          "label": "authorCompany",
           "searchable": true,
           "sortable": true
         }
       },
-      "darkModeMiddle": {
+      "authorImage": {
         "edit": {
-          "label": "darkModeMiddle",
+          "label": "authorImage",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "darkModeMiddle",
+          "label": "authorImage",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "rating": {
+        "edit": {
+          "label": "rating",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "rating",
           "searchable": true,
           "sortable": true
         }
       },
-      "darkModeEnd": {
+      "featured": {
         "edit": {
-          "label": "darkModeEnd",
+          "label": "featured",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "darkModeEnd",
+          "label": "featured",
           "searchable": true,
           "sortable": true
         }
@@ -113,41 +127,52 @@
       }
     },
     "layouts": {
-      "list": ["id", "lightModeStart", "lightModeMiddle", "lightModeEnd"],
+      "list": [
+        "id",
+        "quote",
+        "authorName",
+        "authorRole"
+      ],
       "edit": [
         [
           {
-            "name": "lightModeStart",
+            "name": "quote",
             "size": 6
           },
           {
-            "name": "darkModeStart",
+            "name": "authorName",
             "size": 6
           }
         ],
         [
           {
-            "name": "lightModeMiddle",
+            "name": "authorRole",
             "size": 6
           },
           {
-            "name": "darkModeMiddle",
+            "name": "authorCompany",
             "size": 6
           }
         ],
         [
           {
-            "name": "lightModeEnd",
-            "size": 6
+            "name": "authorImage",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "rating",
+            "size": 4
           },
           {
-            "name": "darkModeEnd",
-            "size": 6
+            "name": "featured",
+            "size": 4
           }
         ]
       ]
     },
-    "uid": "atoms.gradient-colors",
+    "uid": "elements.testimonial-card",
     "isComponent": true
   },
   "type": "object",

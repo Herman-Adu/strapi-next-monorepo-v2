@@ -6,6 +6,69 @@
   "locale": null,
   "permissions": [
     {
+      "documentId": "swgisyo8976b2w6p7778aep3",
+      "action": "plugin::content-manager.explorer.create",
+      "actionParameters": {},
+      "subject": "api::contact-message.contact-message",
+      "properties": {
+        "fields": [
+          "name",
+          "email",
+          "message"
+        ]
+      },
+      "conditions": [],
+      "locale": null
+    },
+    {
+      "documentId": "pxp26f3nap3vii31kynrm2rq",
+      "action": "plugin::content-manager.explorer.delete",
+      "actionParameters": {},
+      "subject": "api::contact-message.contact-message",
+      "properties": {},
+      "conditions": [],
+      "locale": null
+    },
+    {
+      "documentId": "tw3efbushbj25hhblbwt7zio",
+      "action": "plugin::content-manager.explorer.publish",
+      "actionParameters": {},
+      "subject": "api::contact-message.contact-message",
+      "properties": {},
+      "conditions": [],
+      "locale": null
+    },
+    {
+      "documentId": "f6s9aden10j8ytahcnvssgo9",
+      "action": "plugin::content-manager.explorer.read",
+      "actionParameters": {},
+      "subject": "api::contact-message.contact-message",
+      "properties": {
+        "fields": [
+          "name",
+          "email",
+          "message"
+        ]
+      },
+      "conditions": [],
+      "locale": null
+    },
+    {
+      "documentId": "lff0lv3a4w0emw7mtneh71wc",
+      "action": "plugin::content-manager.explorer.update",
+      "actionParameters": {},
+      "subject": "api::contact-message.contact-message",
+      "properties": {
+        "fields": [
+          "name",
+          "email",
+          "message"
+        ]
+      },
+      "conditions": [],
+      "locale": null
+    },
+    {
       "documentId": "t33gkotm864t4omftlbo1vms",
       "action": "plugin::content-manager.explorer.create",
       "actionParameters": {},
@@ -36,7 +99,10 @@
           "newsletter.gdpr.href",
           "newsletter.gdpr.newTab"
         ],
-        "locales": ["cs", "en"]
+        "locales": [
+          "cs",
+          "en"
+        ]
       },
       "conditions": [],
       "locale": null
@@ -47,7 +113,10 @@
       "actionParameters": {},
       "subject": "api::footer.footer",
       "properties": {
-        "locales": ["cs", "en"]
+        "locales": [
+          "cs",
+          "en"
+        ]
       },
       "conditions": [],
       "locale": null
@@ -58,7 +127,10 @@
       "actionParameters": {},
       "subject": "api::footer.footer",
       "properties": {
-        "locales": ["cs", "en"]
+        "locales": [
+          "cs",
+          "en"
+        ]
       },
       "conditions": [],
       "locale": null
@@ -94,7 +166,10 @@
           "newsletter.gdpr.href",
           "newsletter.gdpr.newTab"
         ],
-        "locales": ["cs", "en"]
+        "locales": [
+          "cs",
+          "en"
+        ]
       },
       "conditions": [],
       "locale": null
@@ -130,7 +205,10 @@
           "newsletter.gdpr.href",
           "newsletter.gdpr.newTab"
         ],
-        "locales": ["cs", "en"]
+        "locales": [
+          "cs",
+          "en"
+        ]
       },
       "conditions": [],
       "locale": null
@@ -141,7 +219,13 @@
       "actionParameters": {},
       "subject": "api::internal-job.internal-job",
       "properties": {
-        "fields": ["jobType", "relatedDocumentId", "payload", "state", "error"]
+        "fields": [
+          "jobType",
+          "relatedDocumentId",
+          "payload",
+          "state",
+          "error"
+        ]
       },
       "conditions": [],
       "locale": null
@@ -170,7 +254,13 @@
       "actionParameters": {},
       "subject": "api::internal-job.internal-job",
       "properties": {
-        "fields": ["jobType", "relatedDocumentId", "payload", "state", "error"]
+        "fields": [
+          "jobType",
+          "relatedDocumentId",
+          "payload",
+          "state",
+          "error"
+        ]
       },
       "conditions": [],
       "locale": null
@@ -181,7 +271,13 @@
       "actionParameters": {},
       "subject": "api::internal-job.internal-job",
       "properties": {
-        "fields": ["jobType", "relatedDocumentId", "payload", "state", "error"]
+        "fields": [
+          "jobType",
+          "relatedDocumentId",
+          "payload",
+          "state",
+          "error"
+        ]
       },
       "conditions": [],
       "locale": null
@@ -208,7 +304,10 @@
           "socialLinks.url",
           "socialLinks.label"
         ],
-        "locales": ["cs", "en"]
+        "locales": [
+          "cs",
+          "en"
+        ]
       },
       "conditions": [],
       "locale": null
@@ -219,7 +318,10 @@
       "actionParameters": {},
       "subject": "api::navbar.navbar",
       "properties": {
-        "locales": ["cs", "en"]
+        "locales": [
+          "cs",
+          "en"
+        ]
       },
       "conditions": [],
       "locale": null
@@ -230,7 +332,10 @@
       "actionParameters": {},
       "subject": "api::navbar.navbar",
       "properties": {
-        "locales": ["cs", "en"]
+        "locales": [
+          "cs",
+          "en"
+        ]
       },
       "conditions": [],
       "locale": null
@@ -257,7 +362,10 @@
           "socialLinks.url",
           "socialLinks.label"
         ],
-        "locales": ["cs", "en"]
+        "locales": [
+          "cs",
+          "en"
+        ]
       },
       "conditions": [],
       "locale": null
@@ -284,7 +392,10 @@
           "socialLinks.url",
           "socialLinks.label"
         ],
-        "locales": ["cs", "en"]
+        "locales": [
+          "cs",
+          "en"
+        ]
       },
       "conditions": [],
       "locale": null
@@ -326,7 +437,10 @@
           "seo.metaRobots",
           "seo.structuredData"
         ],
-        "locales": ["cs", "en"]
+        "locales": [
+          "cs",
+          "en"
+        ]
       },
       "conditions": [],
       "locale": null
@@ -337,7 +451,10 @@
       "actionParameters": {},
       "subject": "api::page.page",
       "properties": {
-        "locales": ["cs", "en"]
+        "locales": [
+          "cs",
+          "en"
+        ]
       },
       "conditions": [],
       "locale": null
@@ -348,7 +465,10 @@
       "actionParameters": {},
       "subject": "api::page.page",
       "properties": {
-        "locales": ["cs", "en"]
+        "locales": [
+          "cs",
+          "en"
+        ]
       },
       "conditions": [],
       "locale": null
@@ -390,7 +510,10 @@
           "seo.metaRobots",
           "seo.structuredData"
         ],
-        "locales": ["cs", "en"]
+        "locales": [
+          "cs",
+          "en"
+        ]
       },
       "conditions": [],
       "locale": null
@@ -432,7 +555,10 @@
           "seo.metaRobots",
           "seo.structuredData"
         ],
-        "locales": ["cs", "en"]
+        "locales": [
+          "cs",
+          "en"
+        ]
       },
       "conditions": [],
       "locale": null
@@ -443,7 +569,12 @@
       "actionParameters": {},
       "subject": "api::redirect.redirect",
       "properties": {
-        "fields": ["source", "destination", "permanent", "page"]
+        "fields": [
+          "source",
+          "destination",
+          "permanent",
+          "page"
+        ]
       },
       "conditions": [],
       "locale": null
@@ -472,7 +603,12 @@
       "actionParameters": {},
       "subject": "api::redirect.redirect",
       "properties": {
-        "fields": ["source", "destination", "permanent", "page"]
+        "fields": [
+          "source",
+          "destination",
+          "permanent",
+          "page"
+        ]
       },
       "conditions": [],
       "locale": null
@@ -483,7 +619,12 @@
       "actionParameters": {},
       "subject": "api::redirect.redirect",
       "properties": {
-        "fields": ["source", "destination", "permanent", "page"]
+        "fields": [
+          "source",
+          "destination",
+          "permanent",
+          "page"
+        ]
       },
       "conditions": [],
       "locale": null
@@ -494,7 +635,11 @@
       "actionParameters": {},
       "subject": "api::subscriber.subscriber",
       "properties": {
-        "fields": ["name", "email", "message"]
+        "fields": [
+          "name",
+          "email",
+          "message"
+        ]
       },
       "conditions": [],
       "locale": null
@@ -523,7 +668,11 @@
       "actionParameters": {},
       "subject": "api::subscriber.subscriber",
       "properties": {
-        "fields": ["name", "email", "message"]
+        "fields": [
+          "name",
+          "email",
+          "message"
+        ]
       },
       "conditions": [],
       "locale": null
@@ -534,7 +683,11 @@
       "actionParameters": {},
       "subject": "api::subscriber.subscriber",
       "properties": {
-        "fields": ["name", "email", "message"]
+        "fields": [
+          "name",
+          "email",
+          "message"
+        ]
       },
       "conditions": [],
       "locale": null

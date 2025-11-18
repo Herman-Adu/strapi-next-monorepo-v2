@@ -3,17 +3,23 @@ import type { Schema, Struct } from "@strapi/strapi"
 export interface AtomsGradientColors extends Struct.ComponentSchema {
   collectionName: "components_atoms_gradient_colors"
   info: {
-    description: "Define custom gradient colors for light and dark modes with start, middle, end color stops"
+    description: "\uD83D\uDCA1 Theme Defaults - Light: #16a34a \u2192 #84cc16 \u2192 #e8f5e9 | Dark: #22c55e \u2192 #a3e635 \u2192 #f0fdf4. Leave fields EMPTY to use theme colors automatically. Only customize when you need brand-specific or seasonal gradients."
     displayName: "Custom Gradient Colors"
     icon: "palette"
   }
   attributes: {
-    darkModeEnd: Schema.Attribute.String
-    darkModeMiddle: Schema.Attribute.String
-    darkModeStart: Schema.Attribute.String
-    lightModeEnd: Schema.Attribute.String
-    lightModeMiddle: Schema.Attribute.String
-    lightModeStart: Schema.Attribute.String
+    darkModeEnd: Schema.Attribute.String &
+      Schema.Attribute.CustomField<"plugin::color-picker.color">
+    darkModeMiddle: Schema.Attribute.String &
+      Schema.Attribute.CustomField<"plugin::color-picker.color">
+    darkModeStart: Schema.Attribute.String &
+      Schema.Attribute.CustomField<"plugin::color-picker.color">
+    lightModeEnd: Schema.Attribute.String &
+      Schema.Attribute.CustomField<"plugin::color-picker.color">
+    lightModeMiddle: Schema.Attribute.String &
+      Schema.Attribute.CustomField<"plugin::color-picker.color">
+    lightModeStart: Schema.Attribute.String &
+      Schema.Attribute.CustomField<"plugin::color-picker.color">
   }
 }
 
@@ -282,6 +288,31 @@ export interface ElementsStatCard extends Struct.ComponentSchema {
   attributes: {
     description: Schema.Attribute.String & Schema.Attribute.Required
     number: Schema.Attribute.String & Schema.Attribute.Required
+  }
+}
+
+export interface ElementsTestimonialCard extends Struct.ComponentSchema {
+  collectionName: "components_elements_testimonial_cards"
+  info: {
+    description: "Individual testimonial with author info, quote, and rating"
+    displayName: "TestimonialCard"
+  }
+  attributes: {
+    authorCompany: Schema.Attribute.String
+    authorImage: Schema.Attribute.Component<"utilities.basic-image", false>
+    authorName: Schema.Attribute.String & Schema.Attribute.Required
+    authorRole: Schema.Attribute.String
+    featured: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>
+    quote: Schema.Attribute.Text & Schema.Attribute.Required
+    rating: Schema.Attribute.Integer &
+      Schema.Attribute.SetMinMax<
+        {
+          max: 5
+          min: 1
+        },
+        number
+      > &
+      Schema.Attribute.DefaultTo<5>
   }
 }
 
@@ -740,6 +771,36 @@ export interface SectionsTechStackSection extends Struct.ComponentSchema {
   }
 }
 
+export interface SectionsTestimonialsSection extends Struct.ComponentSchema {
+  collectionName: "components_sections_testimonials_sections"
+  info: {
+    description: "Testimonials showcase with marquee or grid layout"
+    displayName: "TestimonialsSection"
+  }
+  attributes: {
+    background: Schema.Attribute.Component<"shared.section-background", false>
+    badge: Schema.Attribute.Component<"shared.section-badge", false>
+    columns: Schema.Attribute.Enumeration<["2", "3", "4"]> &
+      Schema.Attribute.DefaultTo<"3">
+    header: Schema.Attribute.Component<"shared.section-header", false>
+    layout: Schema.Attribute.Enumeration<["marquee", "grid"]> &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<"grid">
+    showImages: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>
+    showRatings: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>
+    testimonials: Schema.Attribute.Component<
+      "elements.testimonial-card",
+      true
+    > &
+      Schema.Attribute.SetMinMax<
+        {
+          min: 1
+        },
+        number
+      >
+  }
+}
+
 export interface SectionsWorkflowSection extends Struct.ComponentSchema {
   collectionName: "components_sections_workflow_sections"
   info: {
@@ -864,29 +925,6 @@ export interface SeoUtilitiesSocialIcons extends Struct.ComponentSchema {
   }
 }
 
-export interface SharedOpenGraph extends Struct.ComponentSchema {
-  collectionName: "components_shared_open_graphs"
-  info: {
-    displayName: "openGraph"
-    icon: "project-diagram"
-  }
-  attributes: {
-    ogDescription: Schema.Attribute.String &
-      Schema.Attribute.Required &
-      Schema.Attribute.SetMinMaxLength<{
-        maxLength: 200
-      }>
-    ogImage: Schema.Attribute.Media<"images">
-    ogTitle: Schema.Attribute.String &
-      Schema.Attribute.Required &
-      Schema.Attribute.SetMinMaxLength<{
-        maxLength: 70
-      }>
-    ogType: Schema.Attribute.String
-    ogUrl: Schema.Attribute.String
-  }
-}
-
 export interface SharedSectionBackground extends Struct.ComponentSchema {
   collectionName: "components_shared_section_backgrounds"
   info: {
@@ -966,37 +1004,7 @@ export interface SharedSectionHeader extends Struct.ComponentSchema {
       Schema.Attribute.DefaultTo<"large">
     showDivider: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>
     showHeader: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>
-    spacing: Schema.Attribute.Enumeration<["compact", "default", "spacious"]> &
-      Schema.Attribute.DefaultTo<"default">
     textStyle: Schema.Attribute.Component<"atoms.text-style", false>
-  }
-}
-
-export interface SharedSeo extends Struct.ComponentSchema {
-  collectionName: "components_shared_seos"
-  info: {
-    displayName: "seo"
-    icon: "search"
-  }
-  attributes: {
-    canonicalURL: Schema.Attribute.String
-    keywords: Schema.Attribute.Text
-    metaDescription: Schema.Attribute.String &
-      Schema.Attribute.Required &
-      Schema.Attribute.SetMinMaxLength<{
-        maxLength: 160
-        minLength: 50
-      }>
-    metaImage: Schema.Attribute.Media<"images">
-    metaRobots: Schema.Attribute.String
-    metaTitle: Schema.Attribute.String &
-      Schema.Attribute.Required &
-      Schema.Attribute.SetMinMaxLength<{
-        maxLength: 60
-      }>
-    metaViewport: Schema.Attribute.String
-    openGraph: Schema.Attribute.Component<"shared.open-graph", false>
-    structuredData: Schema.Attribute.JSON
   }
 }
 
@@ -1121,6 +1129,7 @@ declare module "@strapi/strapi" {
       "elements.marquee-testimonial-pro": ElementsMarqueeTestimonialPro
       "elements.partner-card": ElementsPartnerCard
       "elements.stat-card": ElementsStatCard
+      "elements.testimonial-card": ElementsTestimonialCard
       "forms.contact-form": FormsContactForm
       "forms.newsletter-form": FormsNewsletterForm
       "sections.animated-logo-row": SectionsAnimatedLogoRow
@@ -1143,17 +1152,16 @@ declare module "@strapi/strapi" {
       "sections.partner-showcase-section": SectionsPartnerShowcaseSection
       "sections.roadmap-section": SectionsRoadmapSection
       "sections.tech-stack-section": SectionsTechStackSection
+      "sections.testimonials-section": SectionsTestimonialsSection
       "sections.workflow-section": SectionsWorkflowSection
       "seo-utilities.meta-social": SeoUtilitiesMetaSocial
       "seo-utilities.seo": SeoUtilitiesSeo
       "seo-utilities.seo-og": SeoUtilitiesSeoOg
       "seo-utilities.seo-twitter": SeoUtilitiesSeoTwitter
       "seo-utilities.social-icons": SeoUtilitiesSocialIcons
-      "shared.open-graph": SharedOpenGraph
       "shared.section-background": SharedSectionBackground
       "shared.section-badge": SharedSectionBadge
       "shared.section-header": SharedSectionHeader
-      "shared.seo": SharedSeo
       "utilities.accordions": UtilitiesAccordions
       "utilities.basic-image": UtilitiesBasicImage
       "utilities.ck-editor-content": UtilitiesCkEditorContent

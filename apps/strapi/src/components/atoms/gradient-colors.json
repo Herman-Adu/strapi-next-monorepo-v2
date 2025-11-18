@@ -2,46 +2,46 @@
   "collectionName": "components_atoms_gradient_colors",
   "info": {
     "displayName": "Custom Gradient Colors",
-    "description": "Define custom gradient colors for light and dark modes with start, middle, end color stops",
+    "description": "💡 Theme Defaults - Light: #16a34a → #84cc16 → #e8f5e9 | Dark: #22c55e → #a3e635 → #f0fdf4. Leave fields EMPTY to use theme colors automatically. Only customize when you need brand-specific or seasonal gradients.",
     "icon": "palette"
   },
   "options": {},
   "attributes": {
     "lightModeStart": {
-      "type": "string",
-      "regex": "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$",
+      "type": "customField",
+      "customField": "plugin::color-picker.color",
       "required": false,
-      "description": "Hex color for gradient start in light mode (e.g., #16a34a). Leave empty to use theme primary color."
+      "description": "💡 Default: #16a34a ███ (Theme Primary Green). Leave EMPTY to use theme color. Set custom color only for special campaigns/branding."
     },
     "lightModeMiddle": {
-      "type": "string",
-      "regex": "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$",
+      "type": "customField",
+      "customField": "plugin::color-picker.color",
       "required": false,
-      "description": "Hex color for gradient middle stop in light mode (e.g., #84cc16). Leave empty for automatic blend (70% opacity of start color)."
+      "description": "💡 Default: #84cc16 ███ (Theme Lime). Leave EMPTY for automatic blend (70% opacity of start color). Customize for unique gradient effects."
     },
     "lightModeEnd": {
-      "type": "string",
-      "regex": "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$",
+      "type": "customField",
+      "customField": "plugin::color-picker.color",
       "required": false,
-      "description": "Hex color for gradient end in light mode (e.g., #e8f5e9). Leave empty for 20% opacity of start color."
+      "description": "💡 Default: #e8f5e9 ███ (Light Green Tint). Leave EMPTY for automatic fade (20% opacity of start color). Set for custom gradient finish."
     },
     "darkModeStart": {
-      "type": "string",
-      "regex": "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$",
+      "type": "customField",
+      "customField": "plugin::color-picker.color",
       "required": false,
-      "description": "Hex color for gradient start in dark mode (e.g., #22c55e). Leave empty to use light mode colors or theme."
+      "description": "💡 Default: #22c55e ███ (Theme Primary Light Green). Leave EMPTY to use theme dark mode color. Override for dark mode specific branding."
     },
     "darkModeMiddle": {
-      "type": "string",
-      "regex": "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$",
+      "type": "customField",
+      "customField": "plugin::color-picker.color",
       "required": false,
-      "description": "Hex color for gradient middle stop in dark mode. Leave empty for automatic blend (70% opacity of start color)."
+      "description": "💡 Default: #a3e635 ███ (Theme Lime Light). Leave EMPTY for automatic blend (70% opacity). Customize for dark mode gradient variety."
     },
     "darkModeEnd": {
-      "type": "string",
-      "regex": "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$",
+      "type": "customField",
+      "customField": "plugin::color-picker.color",
       "required": false,
-      "description": "Hex color for gradient end in dark mode. Leave empty for 20% opacity of start color."
+      "description": "💡 Default: #f0fdf4 ███ (Very Light Green). Leave EMPTY for automatic fade (20% opacity). Set for dark mode gradient finish customization."
     }
   }
 }

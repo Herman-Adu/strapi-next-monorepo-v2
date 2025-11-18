@@ -6,15 +6,15 @@
   },
   "options": {},
   "attributes": {
-    "badge": {
-      "type": "component",
-      "repeatable": false,
-      "component": "shared.section-badge"
-    },
     "background": {
       "type": "component",
       "repeatable": false,
       "component": "shared.section-background"
+    },
+    "badge": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.section-badge"
     },
     "header": {
       "type": "component",
