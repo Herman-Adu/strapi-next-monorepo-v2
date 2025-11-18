@@ -74,21 +74,18 @@ export function StrapiNewsletterCTASection({
     )
   }
 
-  // Use background from Strapi, or provide default bordered style
-  const backgroundConfig:
-    | Data.Component<"shared.section-background">
-    | undefined = component.background ?? {
-    id: 0,
-    backgroundStyle: "transparent" as const,
-    containerStyle: "bordered" as const,
-    containerWidth: "default" as const,
-    padding: "spacious" as const,
-    gradient: false,
-  }
+  // SPACING ARCHITECTURE (see SPACING_ARCHITECTURE_GUIDE.md)
+  // Background component controls:
+  // 1. Section-level padding (none|compact|default|spacious)
+  // 2. Container style (full|boxed|bordered|none)
+  // This padding maps to internal section gaps (Badge → Header → Content)
+  // Empty object allows SectionWrapper to use all defaults
+  const backgroundConfig: Data.Component<"shared.section-background"> =
+    component.background || ({} as Data.Component<"shared.section-background">)
 
   // Map background padding to section gaps
   // Background padding controls section-level vertical spacing (Badge → Header → Content)
-  const backgroundPadding = backgroundConfig?.padding ?? "default"
+  const backgroundPadding = backgroundConfig.padding ?? "default"
 
   const sectionGap = (
     {
