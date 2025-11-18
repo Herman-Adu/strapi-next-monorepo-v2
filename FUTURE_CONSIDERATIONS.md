@@ -6,6 +6,56 @@
 
 ---
 
+## 🚀 Pending Feature Implementations
+
+### Marquee Section - Vertical Orientation
+
+**Status**: Dropdown option exists in Strapi but not yet implemented in frontend  
+**Priority**: Medium (enhancement, not blocker)  
+**Estimated Effort**: 2-3 hours
+
+#### Current State
+
+- ✅ Horizontal marquee fully functional
+- ✅ Multiple display types (logos, testimonials, reviews)
+- ✅ Multi-row support
+- ✅ Configurable duration, gap, pause on hover
+- ⏳ Vertical orientation UI exists but not implemented
+
+#### Implementation Needed
+
+```typescript
+// apps/ui/src/components/page-builder/components/sections/StrapiMarqueeSection.tsx
+// Add vertical orientation support:
+// - Rotate container 90deg for vertical scroll
+// - Adjust height calculations
+// - Test with all display types (logos, testimonials, reviews)
+// - Ensure responsive behavior on mobile
+```
+
+#### Use Cases for Vertical Marquee
+
+- Sidebar testimonials
+- Vertical logo strips
+- Compact review displays
+- Mobile-optimized layouts
+
+#### Files to Update
+
+1. `apps/ui/src/components/page-builder/components/sections/StrapiMarqueeSection.tsx` - Add orientation prop handling
+2. `apps/ui/src/components/ui/marquee.tsx` - Support vertical variant
+3. Test with existing content types (logos, testimonials, reviews)
+
+#### Testing Checklist
+
+- [ ] Vertical scroll animation smooth
+- [ ] Pause on hover works in vertical mode
+- [ ] Multi-row vertical layout (if applicable)
+- [ ] Responsive breakpoints adjusted
+- [ ] All three display types work vertically
+
+---
+
 ## 🎯 Executive Summary
 
 This document outlines the strategic vision for transforming our Strapi Next.js monorepo into a scalable component marketplace with SaaS monetization. The goal is to provide clients with **basic components for free** and **premium (Pro) components behind a paywall**, while dramatically improving content manager user experience.

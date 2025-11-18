@@ -879,6 +879,7 @@ Frontend:
 2. [ ] Compare testimonial variants
 3. [ ] Standardize component display names
 4. [ ] Create automated component catalog from inventory
+5. [ ] **Implement marquee vertical orientation** (2-3 hours) - Dropdown exists in Strapi, frontend implementation pending
 
 ---
 
