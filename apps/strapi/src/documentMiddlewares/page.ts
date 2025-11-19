@@ -74,6 +74,14 @@ const pagePopulateObject: FindOne<"api::page.page">["populate"] = {
       },
       "sections.feature-grid-section": {
         populate: {
+          background: true,
+          badge: { populate: { orbAnimation: true } },
+          header: {
+            populate: {
+              textStyle: { populate: { customGradient: true } },
+              descriptionTextStyle: { populate: { customGradient: true } },
+            },
+          },
           items: true,
           listItems: true,
         },

@@ -2,16 +2,24 @@
   "collectionName": "components_sections_feature_grid_sections",
   "info": {
     "displayName": "FeatureGridSection",
-    "description": "Reusable grid section for features, benefits, lessons"
+    "description": "Reusable grid section with atomic architecture (badge, header, background) for features, benefits, and lessons"
   },
   "options": {},
   "attributes": {
-    "heading": {
-      "type": "string",
-      "required": true
+    "background": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.section-background"
     },
-    "description": {
-      "type": "text"
+    "badge": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.section-badge"
+    },
+    "header": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.section-header"
     },
     "items": {
       "type": "component",

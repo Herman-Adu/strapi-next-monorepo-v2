@@ -1,14 +1,21 @@
 import { Data } from "@repo/strapi"
 
-import { Container } from "@/components/elementary/Container"
 import { StrapiFeatureCard } from "@/components/page-builder/components/elements/StrapiFeatureCard"
 import { StrapiListItem } from "@/components/page-builder/components/elements/StrapiListItem"
+import {
+  SectionBadge,
+  SectionHeader,
+  SectionWrapper,
+} from "@/components/page-builder/shared"
 
 export function StrapiFeatureGridSection({
   component,
 }: {
   readonly component: Data.Component<"sections.feature-grid-section">
 }) {
+  const backgroundConfig: Data.Component<"shared.section-background"> =
+    component.background || ({} as Data.Component<"shared.section-background">)
+
   const gridColsClass = {
     "2": "md:grid-cols-2",
     "3": "md:grid-cols-3",
@@ -16,33 +23,44 @@ export function StrapiFeatureGridSection({
     "6": "md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6",
   }[component.gridColumns || "3"]
 
-  return (
-    <section className="bg-background relative z-10 py-20 md:py-28">
-      <Container className="mx-auto px-4">
-        <div className="mx-auto mb-16 max-w-3xl text-center">
-          <h2 className="mb-4 text-3xl font-bold text-balance md:text-4xl lg:text-5xl">
-            {component.heading}
-          </h2>
-          {component.description && (
-            <p className="text-muted-foreground text-lg text-balance">
-              {component.description}
-            </p>
-          )}
-        </div>
+  // SPACING ARCHITECTURE (follows SPACING_ARCHITECTURE_GUIDE.md)
+  // Background padding controls section-level vertical spacing (Badge → Header → Content)
+  const backgroundPadding = backgroundConfig.padding ?? "default"
 
-        {/* Feature Cards Grid */}
+  const sectionGap = (
+    {
+      none: "gap-4",
+      compact: "gap-8",
+      default: "gap-12",
+      spacious: "gap-16",
+    } as const
+  )[backgroundPadding]
+
+  return (
+    <SectionWrapper background={backgroundConfig}>
+      {/* Uniform spacing architecture:
+          - Badge→Header gap = Header→Content gap (both controlled by sectionGap from background.padding)
+          - SectionHeader just renders content - parent's gap controls all vertical spacing */}
+      <div className={`@container container flex flex-col ${sectionGap}`}>
+        {/* Badge - returns null when hidden */}
+        {component.badge && <SectionBadge badge={component.badge} />}
+
+        {/* Header - returns fragment with heading+divider and description as separate children */}
+        {component.header && <SectionHeader header={component.header} />}
+
+        {/* Feature Cards Grid - section-specific content */}
         {component.items && component.items.length > 0 && (
-          <div className={`grid gap-6 ${gridColsClass} mb-12`}>
+          <div className={`grid gap-6 ${gridColsClass}`}>
             {component.items.map((item, index) => (
               <StrapiFeatureCard key={item.id || index} component={item} />
             ))}
           </div>
         )}
 
-        {/* List Items Grid */}
+        {/* List Items Grid - section-specific content */}
         {component.listItems && component.listItems.length > 0 && (
           <div
-            className={`grid gap-8 ${gridColsClass === "md:grid-cols-3" ? "md:grid-cols-2" : gridColsClass} mx-auto mb-12 max-w-4xl`}
+            className={`grid gap-8 ${gridColsClass === "md:grid-cols-3" ? "md:grid-cols-2" : gridColsClass} mx-auto max-w-4xl`}
           >
             {component.listItems.map((item, index) => (
               <StrapiListItem key={item.id || index} component={item} />
@@ -58,8 +76,8 @@ export function StrapiFeatureGridSection({
             </p>
           </div>
         )}
-      </Container>
-    </section>
+      </div>
+    </SectionWrapper>
   )
 }
 

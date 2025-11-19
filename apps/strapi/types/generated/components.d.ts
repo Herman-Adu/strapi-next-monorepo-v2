@@ -379,15 +379,16 @@ export interface SectionsFaq extends Struct.ComponentSchema {
 export interface SectionsFeatureGridSection extends Struct.ComponentSchema {
   collectionName: "components_sections_feature_grid_sections"
   info: {
-    description: "Reusable grid section for features, benefits, lessons"
+    description: "Reusable grid section with atomic architecture (badge, header, background) for features, benefits, and lessons"
     displayName: "FeatureGridSection"
   }
   attributes: {
-    description: Schema.Attribute.Text
+    background: Schema.Attribute.Component<"shared.section-background", false>
+    badge: Schema.Attribute.Component<"shared.section-badge", false>
     footerNote: Schema.Attribute.String
     gridColumns: Schema.Attribute.Enumeration<["2", "3", "4", "6"]> &
       Schema.Attribute.DefaultTo<"3">
-    heading: Schema.Attribute.String & Schema.Attribute.Required
+    header: Schema.Attribute.Component<"shared.section-header", false>
     items: Schema.Attribute.Component<"elements.feature-card", true>
     listItems: Schema.Attribute.Component<"elements.list-item", true>
   }
