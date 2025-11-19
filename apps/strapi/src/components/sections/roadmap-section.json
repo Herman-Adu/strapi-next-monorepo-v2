@@ -2,16 +2,24 @@
   "collectionName": "components_sections_roadmap_sections",
   "info": {
     "displayName": "RoadmapSection",
-    "description": "Roadmap and community section"
+    "description": "Roadmap and community section with atomic architecture (badge, header, background)"
   },
   "options": {},
   "attributes": {
-    "heading": {
-      "type": "string",
-      "required": true
+    "background": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.section-background"
     },
-    "description": {
-      "type": "text"
+    "badge": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.section-badge"
+    },
+    "header": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.section-header"
     },
     "roadmapItems": {
       "type": "component",

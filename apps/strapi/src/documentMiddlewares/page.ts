@@ -115,6 +115,14 @@ const pagePopulateObject: FindOne<"api::page.page">["populate"] = {
       },
       "sections.roadmap-section": {
         populate: {
+          background: true,
+          badge: { populate: { orbAnimation: true } },
+          header: {
+            populate: {
+              textStyle: { populate: { customGradient: true } },
+              descriptionTextStyle: { populate: { customGradient: true } },
+            },
+          },
           roadmapItems: true,
           footerNotes: true,
         },

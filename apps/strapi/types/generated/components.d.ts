@@ -662,11 +662,12 @@ export interface SectionsPartnerShowcaseSection extends Struct.ComponentSchema {
 export interface SectionsRoadmapSection extends Struct.ComponentSchema {
   collectionName: "components_sections_roadmap_sections"
   info: {
-    description: "Roadmap and community section"
+    description: "Roadmap and community section with atomic architecture (badge, header, background)"
     displayName: "RoadmapSection"
   }
   attributes: {
-    description: Schema.Attribute.Text
+    background: Schema.Attribute.Component<"shared.section-background", false>
+    badge: Schema.Attribute.Component<"shared.section-badge", false>
     footerNotes: Schema.Attribute.Component<"utilities.text", true> &
       Schema.Attribute.SetMinMax<
         {
@@ -674,7 +675,7 @@ export interface SectionsRoadmapSection extends Struct.ComponentSchema {
         },
         number
       >
-    heading: Schema.Attribute.String & Schema.Attribute.Required
+    header: Schema.Attribute.Component<"shared.section-header", false>
     roadmapItems: Schema.Attribute.Component<"elements.list-item", true>
   }
 }
