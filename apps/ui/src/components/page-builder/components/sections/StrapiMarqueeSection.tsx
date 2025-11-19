@@ -164,11 +164,11 @@ export function StrapiMarqueeSection({
                   // Calculate row-specific settings
                   const isReversed = component.alternateDirection
                     ? rowIndex % 2 !== 0
-                    : (component.reverse ?? false)
+                    : component.reverse ?? false
 
                   const rowDuration = component.varySpeed
                     ? (component.duration ?? 40) + rowIndex * 10 // Vary speed by 10s per row for clearer difference
-                    : (component.duration ?? 40)
+                    : component.duration ?? 40
 
                   return (
                     <div
