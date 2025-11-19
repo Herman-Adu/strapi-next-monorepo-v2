@@ -6,8 +6,8 @@
       "filterable": true,
       "searchable": true,
       "pageSize": 10,
-      "mainField": "heading",
-      "defaultSortBy": "heading",
+      "mainField": "documentId",
+      "defaultSortBy": "documentId",
       "defaultSortOrder": "ASC"
     },
     "metadatas": {
@@ -19,32 +19,46 @@
           "sortable": false
         }
       },
-      "heading": {
+      "badge": {
         "edit": {
-          "label": "heading",
+          "label": "badge",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "heading",
-          "searchable": true,
-          "sortable": true
+          "label": "badge",
+          "searchable": false,
+          "sortable": false
         }
       },
-      "description": {
+      "header": {
         "edit": {
-          "label": "description",
+          "label": "header",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "description",
-          "searchable": true,
-          "sortable": true
+          "label": "header",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "background": {
+        "edit": {
+          "label": "background",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "background",
+          "searchable": false,
+          "sortable": false
         }
       },
       "benefits": {
@@ -85,16 +99,24 @@
       }
     },
     "layouts": {
-      "list": ["id", "heading", "description", "benefits"],
+      "list": ["id", "benefits", "badge", "header"],
       "edit": [
         [
           {
-            "name": "heading",
-            "size": 6
-          },
+            "name": "background",
+            "size": 12
+          }
+        ],
+        [
           {
-            "name": "description",
-            "size": 6
+            "name": "badge",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "header",
+            "size": 12
           }
         ],
         [

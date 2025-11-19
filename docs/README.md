@@ -127,6 +127,30 @@ Welcome to the complete documentation for the Strapi-Next.js Monorepo v2 project
 - `04-DEPLOYMENT.md` - Production deployment
 - `05-CONTENT-WORKFLOW.md` - CMS workflow
 
+### 7️⃣ [Platform Vision & Business Strategy](./platform-vision/README.md) ⭐ NEW
+
+**Strategic thinking, business impact, and growth opportunities**
+
+- Revolutionary customization capabilities
+- Business ROI and cost savings
+- Multi-domain and multi-brand architecture
+- Educational content and partnership strategies
+- Future roadmap and innovation pipeline
+- Community engagement and thought leadership
+
+**📂 Key Files:**
+
+- `01-PLATFORM-VISION.md` - The big picture (LinkedIn gold mine!)
+- `02-FUTURE-CONSIDERATIONS.md` - Strategic roadmap
+
+**💡 Use This For:**
+
+- LinkedIn posts, case studies, conference talks
+- Partnership applications (Strapi, agencies)
+- Client presentations and ROI demonstrations
+- Educational content planning (tutorials, workshops)
+- Strategic planning and roadmap discussions
+
 ---
 
 ## 🚀 Quick Start Guides

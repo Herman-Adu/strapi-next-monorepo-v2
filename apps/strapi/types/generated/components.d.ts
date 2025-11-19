@@ -40,7 +40,8 @@ export interface AtomsOrbAnimation extends Struct.ComponentSchema {
         number
       > &
       Schema.Attribute.DefaultTo<40>
-    color: Schema.Attribute.String
+    color: Schema.Attribute.String &
+      Schema.Attribute.CustomField<"plugin::color-picker.color">
     enabled: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>
     size: Schema.Attribute.Enumeration<["xs", "small", "medium", "large"]> &
       Schema.Attribute.DefaultTo<"medium">
@@ -355,15 +356,22 @@ export interface SectionsAnimatedLogoRow extends Struct.ComponentSchema {
 export interface SectionsBenefitsSection extends Struct.ComponentSchema {
   collectionName: "components_sections_benefits_sections"
   info: {
-    description: "Benefits section with heading and feature cards"
+    description: "Benefits section with atomic architecture (badge, header, background) and feature cards"
     displayName: "BenefitsSection"
   }
   attributes: {
-    benefits: Schema.Attribute.Component<"elements.feature-card", true>
-    description: Schema.Attribute.Text
+    background: Schema.Attribute.Component<"shared.section-background", false>
+    badge: Schema.Attribute.Component<"shared.section-badge", false>
+    benefits: Schema.Attribute.Component<"elements.feature-card", true> &
+      Schema.Attribute.SetMinMax<
+        {
+          min: 1
+        },
+        number
+      >
     gridColumns: Schema.Attribute.Enumeration<["2", "3", "4"]> &
       Schema.Attribute.DefaultTo<"3">
-    heading: Schema.Attribute.String & Schema.Attribute.Required
+    header: Schema.Attribute.Component<"shared.section-header", false>
   }
 }
 
@@ -539,15 +547,25 @@ export interface SectionsImageWithCtaButton extends Struct.ComponentSchema {
 export interface SectionsIntegrationGridSection extends Struct.ComponentSchema {
   collectionName: "components_sections_integration_grid_sections"
   info: {
-    description: "Grid of integrations or tools with categories"
+    description: "Grid of integrations with atomic architecture (badge, header, background)"
     displayName: "Integration Grid Section"
   }
   attributes: {
-    description: Schema.Attribute.Text
+    background: Schema.Attribute.Component<"shared.section-background", false>
+    badge: Schema.Attribute.Component<"shared.section-badge", false>
     gridColumns: Schema.Attribute.Enumeration<["2", "3", "4", "6"]> &
       Schema.Attribute.DefaultTo<"3">
-    heading: Schema.Attribute.String & Schema.Attribute.Required
-    integrations: Schema.Attribute.Component<"elements.integration-card", true>
+    header: Schema.Attribute.Component<"shared.section-header", false>
+    integrations: Schema.Attribute.Component<
+      "elements.integration-card",
+      true
+    > &
+      Schema.Attribute.SetMinMax<
+        {
+          min: 1
+        },
+        number
+      >
   }
 }
 
@@ -699,15 +717,22 @@ export interface SectionsNewsletterCtaSection extends Struct.ComponentSchema {
 export interface SectionsPartnerShowcaseSection extends Struct.ComponentSchema {
   collectionName: "components_sections_partner_showcase_sections"
   info: {
-    description: "Showcase partners, clients or collaborators"
+    description: "Showcase partners with atomic architecture (badge, header, background)"
     displayName: "Partner Showcase Section"
   }
   attributes: {
-    description: Schema.Attribute.Text
+    background: Schema.Attribute.Component<"shared.section-background", false>
+    badge: Schema.Attribute.Component<"shared.section-badge", false>
     gridColumns: Schema.Attribute.Enumeration<["2", "3", "4", "6"]> &
       Schema.Attribute.DefaultTo<"3">
-    heading: Schema.Attribute.String & Schema.Attribute.Required
-    partners: Schema.Attribute.Component<"elements.partner-card", true>
+    header: Schema.Attribute.Component<"shared.section-header", false>
+    partners: Schema.Attribute.Component<"elements.partner-card", true> &
+      Schema.Attribute.SetMinMax<
+        {
+          min: 1
+        },
+        number
+      >
   }
 }
 
@@ -728,23 +753,6 @@ export interface SectionsRoadmapSection extends Struct.ComponentSchema {
       >
     heading: Schema.Attribute.String & Schema.Attribute.Required
     roadmapItems: Schema.Attribute.Component<"elements.list-item", true>
-  }
-}
-
-export interface SectionsTechStackSection extends Struct.ComponentSchema {
-  collectionName: "components_sections_tech_stack_sections"
-  info: {
-    description: "Technology stack showcase section"
-    displayName: "TechStackSection"
-  }
-  attributes: {
-    badgeIcon: Schema.Attribute.String
-    badgeText: Schema.Attribute.String
-    description: Schema.Attribute.Text
-    displayStyle: Schema.Attribute.Enumeration<["grid", "marquee"]> &
-      Schema.Attribute.DefaultTo<"grid">
-    heading: Schema.Attribute.String & Schema.Attribute.Required
-    technologies: Schema.Attribute.Component<"elements.company-logo", true>
   }
 }
 
@@ -1128,7 +1136,6 @@ declare module "@strapi/strapi" {
       "sections.newsletter-cta-section": SectionsNewsletterCtaSection
       "sections.partner-showcase-section": SectionsPartnerShowcaseSection
       "sections.roadmap-section": SectionsRoadmapSection
-      "sections.tech-stack-section": SectionsTechStackSection
       "sections.testimonials-section": SectionsTestimonialsSection
       "sections.workflow-section": SectionsWorkflowSection
       "seo-utilities.meta-social": SeoUtilitiesMetaSocial

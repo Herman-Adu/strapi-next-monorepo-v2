@@ -6,8 +6,8 @@
       "filterable": true,
       "searchable": true,
       "pageSize": 10,
-      "mainField": "heading",
-      "defaultSortBy": "heading",
+      "mainField": "documentId",
+      "defaultSortBy": "documentId",
       "defaultSortOrder": "ASC"
     },
     "metadatas": {
@@ -15,6 +15,20 @@
         "edit": {},
         "list": {
           "label": "id",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "background": {
+        "edit": {
+          "label": "background",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "background",
           "searchable": false,
           "sortable": false
         }
@@ -29,148 +43,22 @@
         },
         "list": {
           "label": "badge",
-          "searchable": true,
-          "sortable": true
+          "searchable": false,
+          "sortable": false
         }
       },
-      "badgeIcon": {
+      "header": {
         "edit": {
-          "label": "badgeIcon",
+          "label": "header",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "badgeIcon",
-          "searchable": true,
-          "sortable": true
-        }
-      },
-      "badgeSize": {
-        "edit": {
-          "label": "badgeSize",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "badgeSize",
-          "searchable": true,
-          "sortable": true
-        }
-      },
-      "badgeAnimation": {
-        "edit": {
-          "label": "badgeAnimation",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "badgeAnimation",
-          "searchable": true,
-          "sortable": true
-        }
-      },
-      "badgeAnimationSpeed": {
-        "edit": {
-          "label": "badgeAnimationSpeed",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "badgeAnimationSpeed",
-          "searchable": true,
-          "sortable": true
-        }
-      },
-      "badgeOrbSize": {
-        "edit": {
-          "label": "badgeOrbSize",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "badgeOrbSize",
-          "searchable": true,
-          "sortable": true
-        }
-      },
-      "badgeBorderRadius": {
-        "edit": {
-          "label": "badgeBorderRadius",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "badgeBorderRadius",
-          "searchable": true,
-          "sortable": true
-        }
-      },
-      "badgeOrbGlow": {
-        "edit": {
-          "label": "badgeOrbGlow",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "badgeOrbGlow",
-          "searchable": true,
-          "sortable": true
-        }
-      },
-      "heading": {
-        "edit": {
-          "label": "heading",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "heading",
-          "searchable": true,
-          "sortable": true
-        }
-      },
-      "headingAccent": {
-        "edit": {
-          "label": "headingAccent",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "headingAccent",
-          "searchable": true,
-          "sortable": true
-        }
-      },
-      "description": {
-        "edit": {
-          "label": "description",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "description",
-          "searchable": true,
-          "sortable": true
+          "label": "header",
+          "searchable": false,
+          "sortable": false
         }
       },
       "metrics": {
@@ -187,48 +75,6 @@
           "sortable": false
         }
       },
-      "backgroundStyle": {
-        "edit": {
-          "label": "backgroundStyle",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "backgroundStyle",
-          "searchable": true,
-          "sortable": true
-        }
-      },
-      "headingStyle": {
-        "edit": {
-          "label": "headingStyle",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "headingStyle",
-          "searchable": true,
-          "sortable": true
-        }
-      },
-      "containerStyle": {
-        "edit": {
-          "label": "containerStyle",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "containerStyle",
-          "searchable": true,
-          "sortable": true
-        }
-      },
       "documentId": {
         "edit": {},
         "list": {
@@ -239,82 +85,30 @@
       }
     },
     "layouts": {
-      "list": ["id", "heading", "description", "metrics"],
+      "list": ["id", "background", "badge", "header"],
       "edit": [
         [
           {
-            "name": "heading",
-            "size": 6
-          },
-          {
-            "name": "description",
-            "size": 6
-          }
-        ],
-        [
-          {
-            "name": "metrics",
+            "name": "background",
             "size": 12
           }
         ],
         [
           {
             "name": "badge",
-            "size": 6
-          },
-          {
-            "name": "badgeIcon",
-            "size": 6
+            "size": 12
           }
         ],
         [
           {
-            "name": "badgeSize",
-            "size": 6
-          },
-          {
-            "name": "badgeAnimation",
-            "size": 4
+            "name": "header",
+            "size": 12
           }
         ],
         [
           {
-            "name": "badgeAnimationSpeed",
-            "size": 6
-          },
-          {
-            "name": "badgeOrbSize",
-            "size": 6
-          }
-        ],
-        [
-          {
-            "name": "badgeBorderRadius",
-            "size": 6
-          },
-          {
-            "name": "badgeOrbGlow",
-            "size": 6
-          }
-        ],
-        [
-          {
-            "name": "headingAccent",
-            "size": 6
-          },
-          {
-            "name": "backgroundStyle",
-            "size": 6
-          }
-        ],
-        [
-          {
-            "name": "headingStyle",
-            "size": 6
-          },
-          {
-            "name": "containerStyle",
-            "size": 6
+            "name": "metrics",
+            "size": 12
           }
         ]
       ]

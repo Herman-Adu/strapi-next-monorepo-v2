@@ -141,13 +141,30 @@ const pagePopulateObject: FindOne<"api::page.page">["populate"] = {
         populate: { logos: { populate: { media: true } } },
       },
       "sections.benefits-section": {
-        populate: { benefits: true },
+        populate: {
+          badge: { populate: { orbAnimation: true } },
+          header: {
+            populate: {
+              textStyle: { populate: { customGradient: true } },
+              descriptionTextStyle: { populate: { customGradient: true } },
+            },
+          },
+          background: true,
+          benefits: true,
+        },
       },
       "sections.metrics-section": {
-        populate: { metrics: true },
-      },
-      "sections.tech-stack-section": {
-        populate: { technologies: { populate: { image: true } } },
+        populate: {
+          badge: { populate: { orbAnimation: true } },
+          header: {
+            populate: {
+              textStyle: { populate: { customGradient: true } },
+              descriptionTextStyle: { populate: { customGradient: true } },
+            },
+          },
+          background: true,
+          metrics: true,
+        },
       },
       "sections.marquee-section": {
         populate: {
@@ -158,10 +175,30 @@ const pagePopulateObject: FindOne<"api::page.page">["populate"] = {
         },
       },
       "sections.partner-showcase-section": {
-        populate: { partners: { populate: { logo: true } } },
+        populate: {
+          badge: { populate: { orbAnimation: true } },
+          header: {
+            populate: {
+              textStyle: { populate: { customGradient: true } },
+              descriptionTextStyle: { populate: { customGradient: true } },
+            },
+          },
+          background: true,
+          partners: { populate: { logo: true } },
+        },
       },
       "sections.integration-grid-section": {
-        populate: { integrations: true },
+        populate: {
+          badge: { populate: { orbAnimation: true } },
+          header: {
+            populate: {
+              textStyle: { populate: { customGradient: true } },
+              descriptionTextStyle: { populate: { customGradient: true } },
+            },
+          },
+          background: true,
+          integrations: true,
+        },
       },
       "sections.testimonials-section": {
         populate: {

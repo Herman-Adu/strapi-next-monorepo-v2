@@ -2,6 +2,8 @@
 
 **Use this checklist EVERY TIME you add/remove/modify fields in existing Strapi components.**
 
+**📌 Quick Reference:** See [POPULATE_PATTERNS_REFERENCE.md](./POPULATE_PATTERNS_REFERENCE.md) for populate patterns.
+
 ---
 
 ## ⚠️ **CRITICAL STEPS** - DO NOT SKIP!
@@ -149,6 +151,49 @@ yarn generate:types
     }
   }
 },
+```
+
+**Example - Atomic Architecture Components (Badge/Header/Background):**
+
+```typescript
+"sections.metrics-section": {
+  populate: {
+    badge: { populate: { orbAnimation: true } },  // ✅ Shared section badge
+    header: {
+      populate: {
+        textStyle: { populate: { customGradient: true } },
+        descriptionTextStyle: { populate: { customGradient: true } },
+      },
+    },
+    background: true,                             // ✅ Shared section background
+    metrics: true,                                 // ✅ Section-specific content
+  }
+},
+```
+
+**⚠️ CRITICAL for Atomic Architecture:**
+
+When refactoring components to use shared atomic components (badge, header, background), you MUST update the populate configuration, or badge/header/background will return `undefined` even though the data exists in Strapi!
+
+**Before (old simple field populate):**
+
+```typescript
+"sections.metrics-section": {
+  populate: { metrics: true },  // ❌ Missing badge, header, background!
+}
+```
+
+**After (atomic architecture populate):**
+
+```typescript
+"sections.metrics-section": {
+  populate: {
+    badge: { populate: { orbAnimation: true } },     // ✅ Added
+    header: { populate: { ... } },                   // ✅ Added
+    background: true,                                // ✅ Added
+    metrics: true,
+  }
+}
 ```
 
 **Example - Adding New Component Variant (Real Case: Marquee Pro Testimonials):**

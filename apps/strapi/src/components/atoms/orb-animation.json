@@ -29,7 +29,7 @@
     },
     "color": {
       "type": "string",
-      "regex": "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$",
+      "customField": "plugin::color-picker.color",
       "required": false,
       "description": "Hex color for orb glow (e.g., #22c55e). Leave empty to use theme primary color."
     },

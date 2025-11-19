@@ -3,6 +3,8 @@
 > **THE COMPLETE, STEP-BY-STEP PROCESS**  
 > Follow this guide EXACTLY to create new Strapi components without issues.
 
+**📌 Quick Reference:** See [POPULATE_PATTERNS_REFERENCE.md](./POPULATE_PATTERNS_REFERENCE.md) for populate middleware patterns.
+
 ---
 
 ## 📋 Table of Contents
@@ -347,6 +349,21 @@ const pagePopulateObject: FindOne<"api::page.page">["populate"] = {
     },
   },
 },
+
+// Pattern 5: Atomic Architecture (Badge/Header/Background)
+"sections.metrics-section": {
+  populate: {
+    badge: { populate: { orbAnimation: true } },
+    header: {
+      populate: {
+        textStyle: { populate: { customGradient: true } },
+        descriptionTextStyle: { populate: { customGradient: true } },
+      },
+    },
+    background: true,
+    metrics: true,  // Section-specific content
+  },
+},
 ```
 
 **How to Determine What to Populate:**
@@ -355,6 +372,28 @@ const pagePopulateObject: FindOne<"api::page.page">["populate"] = {
 2. Find fields with `"type": "component"` or `"type": "media"`
 3. If `"repeatable": true`, wrap in populate object
 4. If it has media, add `{ populate: { media: true } }`
+5. **For atomic components (badge, header, background):** Follow Pattern 5 above
+
+**⚠️ CRITICAL for Atomic Architecture:**
+
+When using shared atomic components (badge, header, background), you MUST populate them or they return `undefined`:
+
+```typescript
+// ❌ WRONG - Missing atomic components
+"sections.your-section": {
+  populate: { items: true },  // Only populating section content
+},
+
+// ✅ CORRECT - Includes atomic components
+"sections.your-section": {
+  populate: {
+    badge: { populate: { orbAnimation: true } },
+    header: { populate: { textStyle: { populate: { customGradient: true } } } },
+    background: true,
+    items: true,
+  },
+},
+```
 
 **⚠️ Without This Step:**
 

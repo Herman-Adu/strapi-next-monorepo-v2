@@ -5,6 +5,8 @@
 
 > **For Junior Developers**: This is your reference guide for understanding component architecture, schemas, and examples. For creating new components, **always follow [COMPONENT_WORKFLOW.md](./COMPONENT_WORKFLOW.md) first**.
 
+**📌 Populate Patterns:** See [POPULATE_PATTERNS_REFERENCE.md](./POPULATE_PATTERNS_REFERENCE.md) for all populate middleware patterns.
+
 ---
 
 ## 🎯 Table of Contents
@@ -447,11 +449,53 @@ const pagePopulateObject: FindOne<"api::page.page">["populate"] = {
     },
   },
 },
+
+// Atomic Architecture (Badge/Header/Background)
+"sections.metrics-section": {
+  populate: {
+    badge: { populate: { orbAnimation: true } },
+    header: {
+      populate: {
+        textStyle: { populate: { customGradient: true } },
+        descriptionTextStyle: { populate: { customGradient: true } },
+      },
+    },
+    background: true,
+    metrics: true,
+  },
+},
+```
+
+**⚠️ CRITICAL for Atomic Architecture:**
+
+When using shared atomic components (badge, header, background), you **MUST** populate them:
+
+```typescript
+// ❌ WRONG - Only populating section content
+"sections.your-section": {
+  populate: { items: true },
+},
+
+// ✅ CORRECT - Includes atomic components
+"sections.your-section": {
+  populate: {
+    badge: { populate: { orbAnimation: true } },
+    header: {
+      populate: {
+        textStyle: { populate: { customGradient: true } },
+        descriptionTextStyle: { populate: { customGradient: true } },
+      },
+    },
+    background: true,
+    items: true,
+  },
+},
 ```
 
 **Why This Step is Critical:**
 
 - ❌ Without this: Component appears in Strapi admin but shows **empty on frontend**
+- ❌ API returns `null` or `undefined` for badge/header/background
 - ❌ API returns `null` or empty arrays for nested data
 - ✅ With this: All nested data loads correctly
 - ✅ Strapi will auto-reload when you save this file

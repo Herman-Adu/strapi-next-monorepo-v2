@@ -2,21 +2,30 @@
   "collectionName": "components_sections_integration_grid_sections",
   "info": {
     "displayName": "Integration Grid Section",
-    "description": "Grid of integrations or tools with categories"
+    "description": "Grid of integrations with atomic architecture (badge, header, background)"
   },
   "options": {},
   "attributes": {
-    "heading": {
-      "type": "string",
-      "required": true
+    "background": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.section-background"
     },
-    "description": {
-      "type": "text"
+    "badge": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.section-badge"
+    },
+    "header": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.section-header"
     },
     "integrations": {
       "type": "component",
       "repeatable": true,
-      "component": "elements.integration-card"
+      "component": "elements.integration-card",
+      "min": 1
     },
     "gridColumns": {
       "type": "enumeration",

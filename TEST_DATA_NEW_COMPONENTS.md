@@ -4,33 +4,157 @@ Quick copy-paste test data to populate and preview the 5 new components.
 
 ---
 
-## 1️⃣ Benefits Section
+## 🎨 Shared Atomic Components (Universal Settings)
 
-### Component Settings
+All sections following atomic architecture use these three components. Configure once and reference throughout:
 
-- **Heading**: "Why Choose Our Platform"
-- **Description**: "Discover the powerful features that make our solution the best choice for modern development teams."
+### 📐 Background Component (shared.section-background)
+
+Controls section styling, container, and spacing.
+
+**Recommended Settings for Landing Page:**
+
+- **Background Style**: `transparent` or `muted` (clean, professional)
+- **Container Style**: `boxed` (contained) or `full` (full-width)
+- **Container Width**: `default` (1280px max-width)
+- **Padding**: `default` (48px vertical spacing)
+- **Gradient**: `false` (unless you want gradient background)
+
+**Common Variations:**
+
+| Use Case           | Background Style | Container Style | Padding    |
+| ------------------ | ---------------- | --------------- | ---------- |
+| Clean section      | `transparent`    | `boxed`         | `default`  |
+| Subtle emphasis    | `muted`          | `boxed`         | `default`  |
+| Hero-style section | `gradient`       | `full`          | `spacious` |
+| Compact section    | `transparent`    | `boxed`         | `compact`  |
+| Tight spacing      | `muted`          | `bordered`      | `none`     |
+
+### 🏷️ Badge Component (shared.section-badge)
+
+Optional badge above the heading. Leave empty to hide.
+
+**Common Badge Examples:**
+
+- "✨ New Feature"
+- "🚀 Latest Release"
+- "💡 Pro Tip"
+- "🏆 Award Winning"
+- "⚡ Performance"
+- "🔥 Trending"
+
+**Settings:**
+
+- **Text**: Your badge text (e.g., "✨ New Feature")
+- <!-- For you to review. -->
+- <!-- implementation needs review, it can have a string, an emoji 🔥, choose icon not implemented. add TODO for appropriate implementation  -->
+- **Icon Type**: `none` (text already has emoji) or choose icon
+- **Variant**: `default` (blue accent) or `secondary` (muted)
+
+### 📝 Header Component (shared.section-header)
+
+Section heading and description. Core content for every section.
+
+**Best Practices:**
+
+- **Heading**: 3-7 words, action-oriented (e.g., "Why Developers Love Our Platform")
+- **Description**: 1-2 sentences, clear value proposition
+- **Heading Style**:
+  - `default` - Solid color heading
+  - `gradient` - Gradient text effect
+  - `two-tone` - Two-color split (requires headingAccent)
+
+**Examples:**
+
+| Section Type | Heading Example                   | Description Example                                            |
+| ------------ | --------------------------------- | -------------------------------------------------------------- |
+| Benefits     | "Why Choose Our Platform"         | "Powerful features that make development faster and easier."   |
+| Metrics      | "Trusted by Developers Worldwide" | "Join thousands of teams building production applications."    |
+| Tech Stack   | "Built with Modern Technologies"  | "Leveraging industry-leading tools for maximum performance."   |
+| Testimonials | "What Our Customers Say"          | "Don't just take our word for it—hear from satisfied clients." |
+
+---
+
+**💡 Pro Tip**: For the landing page, use consistent settings:
+
+- Background: `transparent`, `boxed`, `default` padding
+- Badge: Optional (use sparingly for emphasis)
+- Header: `default` style for clean, professional look
+
+Now each component below only needs to specify its **unique content** (Benefits, Metrics, etc.)!
+
+---
+
+## 1️⃣ Benefits Section (atomic architecture ✅)
+
+**Atomic Components** (see "Shared Atomic Components" section above):
+
+- **Background**:
+
+  - Background Style: `muted` (subtle emphasis)
+  - Container Style: `bordered`
+  - Container Width: `default`
+  - Padding: `default`
+  - Gradient: `false`
+
+- **Badge** (optional):
+
+  - Text: "Features"
+  - Icon: "⚡"
+  - Variant: `outline`
+  - Size: `medium`
+  - Alignment: `center`
+  - Show Badge: `true`
+  - Orb Animation: Enable
+
+- **Header**:
+  - Heading: "Why Developers Love Our Platform"
+  - Description: "Built by developers, for developers. Experience the features that make building modern apps a breeze."
+  - Heading Size: `large`
+  - Show Header: `true`
+  - Show Divider: `true`
+
+**Benefits Section Settings**:
+
 - **Grid Columns**: 3
 
-### Benefits (Add 3 Feature Cards)
+### Benefits (Add 6 Feature Cards)
 
 #### Benefit 1
 
-- **Heading**: "Lightning Fast Performance"
-- **Description**: "Experience blazing fast load times with optimized code and edge caching worldwide."
-- **Icon**: ⚡ (Choose any icon from media library or upload)
+- **Heading**: "⚡ Lightning Performance"
+- **Description**: "Sub-second page loads with optimized code splitting and edge caching worldwide."
+- **Icon**: Upload or select icon
 
 #### Benefit 2
 
-- **Heading**: "Developer Friendly"
-- **Description**: "Built with modern frameworks and TypeScript for the best developer experience."
-- **Icon**: 💻 (Choose any icon)
+- **Heading**: "💻 TypeScript Native"
+- **Description**: "Full TypeScript support with auto-generated types for the ultimate DX."
+- **Icon**: Upload or select icon
 
 #### Benefit 3
 
-- **Heading**: "Fully Customizable"
-- **Description**: "Tailor every aspect to match your brand with our flexible component system."
-- **Icon**: 🎨 (Choose any icon)
+- **Heading**: "🎨 Flexible & Customizable"
+- **Description**: "Tailwind CSS with shadcn/ui components. Make it yours with minimal effort."
+- **Icon**: Upload or select icon
+
+#### Benefit 4
+
+- **Heading**: "📱 Mobile First"
+- **Description**: "Responsive by default. Looks stunning on every device and screen size."
+- **Icon**: Upload or select icon
+
+#### Benefit 5
+
+- **Heading**: "🔒 Enterprise Ready"
+- **Description**: "Built-in security, authentication, and role-based access control."
+- **Icon**: Upload or select icon
+
+#### Benefit 6
+
+- **Heading**: "🔄 Real-time Updates"
+- **Description**: "Live preview, hot reload, and instant content updates from Strapi."
+- **Icon**: Upload or select icon
 
 ---
 
@@ -65,49 +189,42 @@ Quick copy-paste test data to populate and preview the 5 new components.
 
 ---
 
-## 3️⃣ Tech Stack Section
+## 3️⃣ Tech Stack Section (atomic architecture ✅)
 
-### Component Settings
+**Atomic Components** (see "Shared Atomic Components" section above):
 
-- **Heading**: "Built with Modern Technologies"
-- **Description**: "Powered by industry-leading tools and frameworks for maximum performance and reliability."
+- **Background**:
+
+  - Background Style: `transparent`
+  - Container Style: `boxed`
+  - Container Width: `default`
+  - Padding: `default`
+  - Gradient: `false`
+
+- **Badge** (optional):
+
+  - Text: "Tech Stack"
+  - Icon: "🚀"
+  - Variant: `outline`
+  - Size: `medium`
+  - Alignment: `center`
+  - Show Badge: `true`
+  - Orb Animation: Enable
+
+- **Header**:
+  - Heading: "Built with the Best"
+  - Description: "Leveraging industry-leading technologies for maximum performance, scalability, and developer experience."
+  - Heading Size: `large`
+  - Show Header: `true`
+  - Show Divider: `true`
+
+**Tech Stack Settings**:
+
 - **Display Style**: Grid (or Marquee for animated scrolling)
 
-### Technologies (Add 6-8 Company Logos)
+### Technologies (Add 8-10 Company Logos)
 
-Upload these logos to your media library first, then select them:
-
-#### Logo 1
-
-- **Alt Text**: "Next.js"
-- **Media**: Upload Next.js logo or use existing
-
-#### Logo 2
-
-- **Alt Text**: "React"
-- **Media**: Upload React logo or use existing
-
-#### Logo 3
-
-- **Alt Text**: "TypeScript"
-- **Media**: Upload TypeScript logo
-
-#### Logo 4
-
-- **Alt Text**: "Strapi"
-- **Media**: Upload Strapi logo or use existing
-
-#### Logo 5
-
-- **Alt Text**: "PostgreSQL"
-- **Media**: Upload PostgreSQL logo or use existing
-
-#### Logo 6
-
-- **Alt Text**: "Tailwind CSS"
-- **Media**: Upload Tailwind logo
-
-**💡 Tip**: You already have some of these logos in your media library! Look for:
+**💡 Tip**: You already have these logos in your media library:
 
 - next_js_icon
 - react_icon
@@ -117,15 +234,90 @@ Upload these logos to your media library first, then select them:
 - Vercel
 - aws_logo
 
+#### Logo 1
+
+- **Alt Text**: "Next.js"
+- **Media**: next_js_icon
+
+#### Logo 2
+
+- **Alt Text**: "React"
+- **Media**: react_icon
+
+#### Logo 3
+
+- **Alt Text**: "TypeScript"
+- **Media**: Upload TypeScript logo
+
+#### Logo 4
+
+- **Alt Text**: "Strapi"
+- **Media**: strapi_logo
+
+#### Logo 5
+
+- **Alt Text**: "PostgreSQL"
+- **Media**: Postgre_SQL_logo
+
+#### Logo 6
+
+- **Alt Text**: "Tailwind CSS"
+- **Media**: Upload Tailwind logo
+
+#### Logo 7
+
+- **Alt Text**: "Docker"
+- **Media**: docker_hd_logo
+
+#### Logo 8
+
+- **Alt Text**: "Vercel"
+- **Media**: Vercel
+
+#### Logo 9
+
+- **Alt Text**: "AWS"
+- **Media**: aws_logo
+
+#### Logo 10
+
+- **Alt Text**: "GitHub"
+- **Media**: github_logo
+
 ---
 
-## 4️⃣ Partner Showcase Section
+## 4️⃣ Partner Showcase Section (atomic architecture ✅)
 
-### Component Settings
+**Atomic Components** (see "Shared Atomic Components" section above):
 
-- **Heading**: "Trusted by Industry Leaders"
-- **Description**: "Proud to work with amazing companies and organizations worldwide."
-- **Grid Columns**: 4
+- **Background**:
+
+  - Background Style: `transparent`
+  - Container Style: `full`
+  - Container Width: `default`
+  - Padding: `default`
+  - Gradient: `false`
+
+- **Badge** (optional):
+
+  - Text: "Partners"
+  - Icon: "🤝"
+  - Variant: `outline`
+  - Size: `medium`
+  - Alignment: `center`
+  - Show Badge: `true`
+  - Orb Animation: Enable
+
+- **Header**:
+  - Heading: "Trusted by Industry Leaders"
+  - Description: "Proud to work with amazing companies and organizations worldwide."
+  - Heading Size: `large`
+  - Show Header: `true`
+  - Show Divider: `true`
+
+**Partner Showcase Settings**:
+
+- **Grid Columns**: 4 (options: 2, 3, 4, 6)
 
 ### Partners (Add 4-6 Partner Cards)
 
@@ -170,15 +362,42 @@ Upload these logos to your media library first, then select them:
   - **Text**: "Learn more"
   - **New Tab**: Yes
 
+**💡 Tip**: Use 4-column grid for balanced partner display. Switch to 6-column for more compact logo grid, or 3-column to emphasize partner descriptions.
+
 ---
 
-## 5️⃣ Integration Grid Section
+## 5️⃣ Integration Grid Section (atomic architecture ✅)
 
-### Component Settings
+**Atomic Components** (see "Shared Atomic Components" section above):
 
-- **Heading**: "Seamless Integrations"
-- **Description**: "Connect with your favorite tools and services. Integrate once, deploy everywhere."
-- **Grid Columns**: 3
+- **Background**:
+
+  - Background Style: `muted`
+  - Container Style: `boxed`
+  - Container Width: `default`
+  - Padding: `default`
+  - Gradient: `false`
+
+- **Badge** (optional):
+
+  - Text: "Integrations"
+  - Icon: "🔌"
+  - Variant: `outline`
+  - Size: `medium`
+  - Alignment: `center`
+  - Show Badge: `true`
+  - Orb Animation: Enable
+
+- **Header**:
+  - Heading: "Seamless Integrations"
+  - Description: "Connect with your favorite tools and services. Integrate once, deploy everywhere."
+  - Heading Size: `large`
+  - Show Header: `true`
+  - Show Divider: `true`
+
+**Integration Grid Settings**:
+
+- **Grid Columns**: 3 (options: 2, 3, 4, 6)
 
 ### Integrations (Add 6 Integration Cards)
 
@@ -248,6 +467,8 @@ Upload these logos to your media library first, then select them:
   - **Text**: "Get Started"
   - **New Tab**: No
 
+**💡 Tip**: Use 3-column grid for balanced layout with descriptions. Switch to 4-column for more compact display, or 6-column for dense integrations showcase.
+
 ---
 
 ## 🎯 Complete Test Page Example
@@ -255,6 +476,14 @@ Upload these logos to your media library first, then select them:
 Create a new page called "**Features**" with slug "**features**" and add all components in this order:
 
 1. **Landing Hero Section** (existing)
+
+   **Atomic Components** (see "Shared Atomic Components" section above):
+
+   - **Background**: `gradient`, `full`, `spacious` padding (hero-style)
+   - **Badge**: "✨ Trusted by Development Teams Worldwide"
+   - **Header**: Not used in Landing Hero (has custom heading fields)
+
+   **Hero Content**:
 
    - **Heading**: "Enterprise-Grade Features"
    - **Subheading**: "for Modern Development Teams"
@@ -265,49 +494,91 @@ Create a new page called "**Features**" with slug "**features**" and add all com
    - **CTA Button 2**:
      - Text: "Schedule Demo"
      - Icon: Calendar icon
-   - **Badge Text**: "Trusted by Development Teams Worldwide"
 
 2. **Benefits Section** (new)
 
-   - **Heading**: "Why Developers Love Our Platform"
-   - **Description**: "Built by developers, for developers. Experience the features that make building modern apps a breeze."
-   - **Grid Columns**: 3
-   - **Benefits**:
-     - **Benefit 1**:
-       - Heading: "⚡ Lightning Performance"
-       - Description: "Sub-second page loads with optimized code splitting and edge caching worldwide."
-     - **Benefit 2**:
-       - Heading: "💻 TypeScript Native"
-       - Description: "Full TypeScript support with auto-generated types for the ultimate DX."
-     - **Benefit 3**:
-       - Heading: "🎨 Flexible & Customizable"
-       - Description: "Tailwind CSS with shadcn/ui components. Make it yours with minimal effort."
-     - **Benefit 4**:
-       - Heading: "📱 Mobile First"
-       - Description: "Responsive by default. Looks stunning on every device and screen size."
-     - **Benefit 5**:
-       - Heading: "🔒 Enterprise Ready"
-       - Description: "Built-in security, authentication, and role-based access control."
-     - **Benefit 6**:
-       - Heading: "🔄 Real-time Updates"
-       - Description: "Live preview, hot reload, and instant content updates from Strapi."
+   **Atomic Components** (see "Shared Atomic Components" section above):
+
+   - **Background**: `muted`, `boxed`, `default` padding (subtle emphasis)
+   - **Badge**: "⚡ Features" (optional)
+   - **Header**:
+     - Heading: "Why Developers Love Our Platform"
+     - Description: "Built by developers, for developers. Experience the features that make building modern apps a breeze."
+     - Style: `default`
+
+   **Benefits** (Add 6 Feature Cards, Grid Columns: 3):
+
+   - **Benefit 1**:
+     - Heading: "⚡ Lightning Performance"
+     - Description: "Sub-second page loads with optimized code splitting and edge caching worldwide."
+   - **Benefit 2**:
+     - Heading: "💻 TypeScript Native"
+     - Description: "Full TypeScript support with auto-generated types for the ultimate DX."
+   - **Benefit 3**:
+     - Heading: "🎨 Flexible & Customizable"
+     - Description: "Tailwind CSS with shadcn/ui components. Make it yours with minimal effort."
+   - **Benefit 4**:
+     - Heading: "📱 Mobile First"
+     - Description: "Responsive by default. Looks stunning on every device and screen size."
+   - **Benefit 5**:
+     - Heading: "🔒 Enterprise Ready"
+     - Description: "Built-in security, authentication, and role-based access control."
+   - **Benefit 6**:
+     - Heading: "🔄 Real-time Updates"
+     - Description: "Live preview, hot reload, and instant content updates from Strapi."
 
 3. **Metrics Section** (new)
 
-   - **Heading**: "Powering Production Applications"
-   - **Description**: "Join thousands of teams shipping faster with our modern stack."
-   - **Metrics**:
-     - **Metric 1**: Number: "10,000+", Description: "Developers"
-     - **Metric 2**: Number: "500K+", Description: "API Calls/Day"
-     - **Metric 3**: Number: "99.99%", Description: "Uptime SLA"
-     - **Metric 4**: Number: "< 100ms", Description: "Avg Response"
+   **Atomic Components** (see "Shared Atomic Components" section above):
+
+   - **Background**: `transparent`, `boxed`, `default` padding
+   - **Badge**: "📊 Performance" (optional)
+   - **Header**:
+     - Heading: "Powering Production Applications"
+     - Description: "Join thousands of teams shipping faster with our modern stack."
+     - Style: `default`
+
+   **Metrics** (Add 4 Stat Cards):
+
+   #### Metric 1
+
+   - **Number**: "10,000+"
+   - **Description**: "Active Developers"
+   - **Icon**: 👥 (Users icon or emoji)
+
+   #### Metric 2
+
+   - **Number**: "500K+"
+   - **Description**: "API Calls Daily"
+   - **Icon**: ⚡ (Zap/Lightning icon)
+
+   #### Metric 3
+
+   - **Number**: "99.99%"
+   - **Description**: "Uptime SLA"
+   - **Icon**: ✓ (Check/Shield icon)
+
+   #### Metric 4
+
+   - **Number**: "< 100ms"
+   - **Description**: "Avg Response Time"
+   - **Icon**: 🚀 (Rocket icon)
 
 <!-- we will be deleting this component as we replaced ot with the marquee section, when we are ready we will create a doc on how to cleanly trmove a compoonent from strapi and the UI and the step by step process, so wont add this component -->
 
 4. **Tech Stack Section** (new)
 
-   - **Heading**: "Built with the Best"
-   - **Description**: "Leveraging industry-leading technologies for maximum performance, scalability, and developer experience."
+   **Atomic Components** (see "Shared Atomic Components" section above):
+
+   - **Background**: `transparent`, `boxed`, `default` padding
+   - **Badge**: "🚀 Tech Stack" (optional)
+   - **Header**:
+     - Heading: "Built with the Best"
+     - Description: "Leveraging industry-leading technologies for maximum performance, scalability, and developer experience."
+     - Style: `default`
+
+   **Tech Stack Content**:
+
    - **Display Style**: Grid (for structured layout) or Marquee (for animated showcase)
    - **Technologies** (Select 8-10 logos):
      - Next.js (next_js_icon)
@@ -323,79 +594,143 @@ Create a new page called "**Features**" with slug "**features**" and add all com
 
 5. **Integration Grid Section** (new)
 
-   - **Heading**: "Seamless Integrations"
-   - **Description**: "Connect your favorite tools and services. Built-in integrations for payments, analytics, communications, and more."
-   - **Grid Columns**: 3
-   - **Integrations**:
-     - **Stripe**:
-       - Title: "Stripe Payments"
-       - Description: "Accept payments with the world's most powerful and flexible payment platform."
-       - Category: "Payments"
-       - Link: "/integrations/stripe"
-       - Text: "Connect Stripe"
-     - **Google Analytics**:
-       - Title: "Google Analytics"
-       - Description: "Track user behavior and gain insights with comprehensive analytics."
-       - Category: "Analytics"
-       - Link: "/integrations/analytics"
-       - Text: "Setup Analytics"
-     - **Twilio**:
-       - Title: "Twilio Communications"
-       - Description: "Send SMS, make calls, and engage customers with programmable communications."
-       - Category: "Communications"
-       - Link: "/integrations/twilio"
-       - Text: "Add Messaging"
-     - **Contentful**:
-       - Title: "Contentful CMS"
-       - Description: "Manage content across multiple platforms with a headless CMS."
-       - Category: "Content"
-       - Link: "/integrations/contentful"
-       - Text: "Explore CMS"
-     - **AWS**:
-       - Title: "AWS Cloud"
-       - Description: "Scale your infrastructure with enterprise-grade cloud services."
-       - Category: "Infrastructure"
-       - Link: "/integrations/aws"
-       - Text: "Deploy to AWS"
-     - **Docker**:
-       - Title: "Docker Containers"
-       - Description: "Containerize applications for consistent development and deployment."
-       - Category: "DevOps"
-       - Link: "/integrations/docker"
-       - Text: "Containerize App"
+   **Atomic Components** (see "Shared Atomic Components" section above):
+
+   - **Background**: `transparent`, `boxed`, `default` padding
+   - **Badge**: "🔌 Integrations" (optional)
+   - **Header**:
+     - Heading: "Seamless Integrations"
+     - Description: "Connect your favorite tools and services. Built-in integrations for payments, analytics, communications, and more."
+     - Style: `default`
+
+   **Integration Grid Content** (Grid Columns: 3):
+
+   - **Stripe**:
+     - Title: "Stripe Payments"
+     - Description: "Accept payments with the world's most powerful and flexible payment platform."
+     - Category: "Payments"
+     - Link: "/integrations/stripe"
+     - Text: "Connect Stripe"
+   - **Google Analytics**:
+     - Title: "Google Analytics"
+     - Description: "Track user behavior and gain insights with comprehensive analytics."
+     - Category: "Analytics"
+     - Link: "/integrations/analytics"
+     - Text: "Setup Analytics"
+   - **Twilio**:
+     - Title: "Twilio Communications"
+     - Description: "Send SMS, make calls, and engage customers with programmable communications."
+     - Category: "Communications"
+     - Link: "/integrations/twilio"
+     - Text: "Add Messaging"
+   - **Contentful**:
+     - Title: "Contentful CMS"
+     - Description: "Manage content across multiple platforms with a headless CMS."
+     - Category: "Content"
+     - Link: "/integrations/contentful"
+     - Text: "Explore CMS"
+   - **AWS**:
+     - Title: "AWS Cloud"
+     - Description: "Scale your infrastructure with enterprise-grade cloud services."
+     - Category: "Infrastructure"
+     - Link: "/integrations/aws"
+     - Text: "Deploy to AWS"
+   - **Docker**:
+     - Title: "Docker Containers"
+     - Description: "Containerize applications for consistent development and deployment."
+     - Category: "DevOps"
+     - Link: "/integrations/docker"
+     - Text: "Containerize App"
 
 6. **Partner Showcase Section** (new)
 
-   - **Heading**: "Trusted by Industry Leaders"
-   - **Description**: "Partnering with world-class organizations to deliver exceptional digital experiences."
-   - **Grid Columns**: 4
-   - **Partners**:
-     - **Google**: Description: "Cloud infrastructure and AI-powered solutions.", Link: "https://google.com", Text: "Visit Google", New Tab: Yes
-     - **Microsoft**: Description: "Enterprise-grade cloud services and developer tools.", Link: "https://microsoft.com", Text: "Learn More", New Tab: Yes
-     - **GitHub**: Description: "Version control and collaborative development.", Link: "https://github.com", Text: "View GitHub", New Tab: Yes
-     - **Meta**: Description: "Next-generation social platforms and AR/VR technology.", Link: "https://meta.com", Text: "Explore Meta", New Tab: Yes
+   **Atomic Components** (see "Shared Atomic Components" section above):
 
-7. **Newsletter CTA Section** (existing)
+   - **Background**: `muted`, `boxed`, `default` padding (subtle emphasis)
+   - **Badge**: "🏆 Partners" (optional)
+   - **Header**:
+     - Heading: "Trusted by Industry Leaders"
+     - Description: "Partnering with world-class organizations to deliver exceptional digital experiences."
+     - Style: `default`
 
-   - **Heading**: "Stay in the Loop"
-   - **Description**: "Get the latest features, updates, and best practices delivered straight to your inbox. Join our community of developers."
-   - **Input Placeholder**: "Enter your email" (optional, uses default if not specified)
-   - **Button Text**: "Subscribe" (optional, uses default if not specified)
-   - **GDPR Label**: "I agree to the"
-   - **GDPR Link** (component - utilities.link):
-     - Label: "terms and conditions"
-     - Href: "/privacy-policy"
-     - New Tab: No
-   - **CTA Buttons**: (Leave empty for simple newsletter form)
-   - **Benefits** (Optional - add 2 list items):
+   **Partner Showcase Content** (Grid Columns: 4):
+
+   - **Google**: Description: "Cloud infrastructure and AI-powered solutions.", Link: "https://google.com", Text: "Visit Google", New Tab: Yes
+   - **Microsoft**: Description: "Enterprise-grade cloud services and developer tools.", Link: "https://microsoft.com", Text: "Learn More", New Tab: Yes
+   - **GitHub**: Description: "Version control and collaborative development.", Link: "https://github.com", Text: "View GitHub", New Tab: Yes
+   - **Meta**: Description: "Next-generation social platforms and AR/VR technology.", Link: "https://meta.com", Text: "Explore Meta", New Tab: Yes
+
+7. **Newsletter CTA Section** (atomic architecture ✅)
+
+   **Atomic Components** (see "Shared Atomic Components" section above):
+
+   - **Background**:
+     - Background Style: `muted` (subtle background)
+     - Container Style: `bordered` (boxed with border)
+     - Container Width: `default`
+     - Padding: `default`
+     - Gradient: `false`
+   - **Badge** (optional - leave empty or use):
+     - Text: "Company Newsletter"
+     - Icon: "📬" (or use lucide icon)
+     - Variant: `outline`
+     - Size: `medium`
+     - Alignment: `center`
+     - Show Badge: `true`
+     - Orb Animation: Enable (for orbiting effect)
+   - **Header**:
+     - Heading: "Stay Updated"
+     - Heading Accent: Leave empty
+     - Description: "Get the latest updates, features, and developer resources delivered to your inbox."
+     - Heading Size: `large`
+     - Show Header: `true`
+     - Show Divider: `true`
+     - Text Style (optional):
+       - Text Style: `gradient` or `default`
+       - Gradient From: `#10b981` (green)
+       - Gradient To: `#3b82f6` (blue)
+
+   **Newsletter Form Fields**:
+
+   - **Heading**: "Join Our Developer Community" (optional - additional heading for form section)
+   - **Heading Accent**: Leave empty
+   -
+   - **Heading Text Style** (optional - for form heading):
+   - Leave empty for default OR set gradient/two-tone style
+
+     - **Text Style**
+       - **Two Tone**: ...
+       - **Gradient**: ...
+     - **Custom Gradient**
+       - **light theme**: ...
+       - **dark theme**: ...
+
+   - **Description**: "Be the first to know about new features, best practices, and exclusive content." (optional - additional description)
+   - - **Benefits** (Right column - add 3 benefit items):
      - **Benefit 1**:
-       - Title: "Weekly Insights"
-       - Description: "Get curated development tips, best practices, and platform updates delivered every week."
-       - Icon Type: none
+       - Title: "Weekly Updates"
+       - Description: "Get curated development tips and platform updates every week."
      - **Benefit 2**:
-       - Title: "No Spam, Ever"
-       - Description: "We respect your inbox. Unsubscribe anytime with a single click."
-       - Icon Type: none
+       - Title: "Exclusive Content"
+       - Description: "Access to early features, beta programs, and developer resources."
+     - **Benefit 3**:
+       - Title: "Unsubscribe Anytime"
+       - Description: "We respect your inbox. Cancel your subscription with a single click.
+   - **Input Placeholder**: "Enter your email address"
+   - **Button Text**: "Subscribe Now"
+   - **GDPR Checkbox**:
+     - GDPR Label: "I agree to the"
+     - **GDPR Link** (component - utilities.link):
+       - Label: "Privacy Policy"
+       - Href: "/privacy-policy"
+       - New Tab: `false`
+       - Icon: Leave empty
+       - Variant: `link`
+   - **CTA Buttons** (optional - leave empty for simple newsletter):
+     - Leave empty OR add 1-2 icon buttons for additional CTAs
+   - Leave empty for default OR set gradient/two-tone style
+   -
+   - - **Show Divider**: `false` (form has its own divider from header)
 
 ---
 

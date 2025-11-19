@@ -659,7 +659,6 @@ export interface ApiPagePage extends Struct.CollectionTypeSchema {
         "sections.footer-cta-section",
         "sections.benefits-section",
         "sections.metrics-section",
-        "sections.tech-stack-section",
         "sections.partner-showcase-section",
         "sections.integration-grid-section",
         "sections.marquee-section",
