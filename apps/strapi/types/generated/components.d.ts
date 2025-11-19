@@ -341,18 +341,6 @@ export interface FormsNewsletterForm extends Struct.ComponentSchema {
   }
 }
 
-export interface SectionsAnimatedLogoRow extends Struct.ComponentSchema {
-  collectionName: "components_sections_animated_logo_rows"
-  info: {
-    description: ""
-    displayName: "AnimatedLogoRow"
-  }
-  attributes: {
-    logos: Schema.Attribute.Component<"utilities.basic-image", true>
-    text: Schema.Attribute.String & Schema.Attribute.Required
-  }
-}
-
 export interface SectionsBenefitsSection extends Struct.ComponentSchema {
   collectionName: "components_sections_benefits_sections"
   info: {
@@ -384,25 +372,6 @@ export interface SectionsCarousel extends Struct.ComponentSchema {
   attributes: {
     images: Schema.Attribute.Component<"utilities.image-with-link", true>
     radius: Schema.Attribute.Enumeration<["sm", "md", "lg", "xl", "full"]>
-  }
-}
-
-export interface SectionsCredibilitySection extends Struct.ComponentSchema {
-  collectionName: "components_sections_credibility_sections"
-  info: {
-    description: "Stats and company logos section"
-    displayName: "CredibilitySection"
-  }
-  attributes: {
-    companyLogos: Schema.Attribute.Component<"elements.company-logo", true>
-    stats: Schema.Attribute.Component<"elements.stat-card", true> &
-      Schema.Attribute.Required &
-      Schema.Attribute.SetMinMax<
-        {
-          max: 3
-        },
-        number
-      >
   }
 }
 
@@ -1117,10 +1086,8 @@ declare module "@strapi/strapi" {
       "elements.testimonial-card": ElementsTestimonialCard
       "forms.contact-form": FormsContactForm
       "forms.newsletter-form": FormsNewsletterForm
-      "sections.animated-logo-row": SectionsAnimatedLogoRow
       "sections.benefits-section": SectionsBenefitsSection
       "sections.carousel": SectionsCarousel
-      "sections.credibility-section": SectionsCredibilitySection
       "sections.faq": SectionsFaq
       "sections.feature-grid-section": SectionsFeatureGridSection
       "sections.final-cta-section": SectionsFinalCtaSection

@@ -72,12 +72,6 @@ const pagePopulateObject: FindOne<"api::page.page">["populate"] = {
           ctaButtons: true,
         },
       },
-      "sections.credibility-section": {
-        populate: {
-          stats: true,
-          companyLogos: { populate: { image: true } },
-        },
-      },
       "sections.feature-grid-section": {
         populate: {
           items: true,
@@ -136,9 +130,6 @@ const pagePopulateObject: FindOne<"api::page.page">["populate"] = {
             populate: { image: { populate: { media: true } }, link: true },
           },
         },
-      },
-      "sections.animated-logo-row": {
-        populate: { logos: { populate: { media: true } } },
       },
       "sections.benefits-section": {
         populate: {
