@@ -397,10 +397,12 @@ export interface SectionsFeatureGridSection extends Struct.ComponentSchema {
 export interface SectionsFinalCtaSection extends Struct.ComponentSchema {
   collectionName: "components_sections_final_cta_sections"
   info: {
-    description: "Final call-to-action section"
+    description: "Final call-to-action section with atomic architecture (badge, header, background)"
     displayName: "FinalCTASection"
   }
   attributes: {
+    background: Schema.Attribute.Component<"shared.section-background", false>
+    badge: Schema.Attribute.Component<"shared.section-badge", false>
     ctaButtons: Schema.Attribute.Component<"elements.icon-button", true> &
       Schema.Attribute.SetMinMax<
         {
@@ -408,8 +410,7 @@ export interface SectionsFinalCtaSection extends Struct.ComponentSchema {
         },
         number
       >
-    description: Schema.Attribute.Text & Schema.Attribute.Required
-    heading: Schema.Attribute.String & Schema.Attribute.Required
+    header: Schema.Attribute.Component<"shared.section-header", false>
   }
 }
 

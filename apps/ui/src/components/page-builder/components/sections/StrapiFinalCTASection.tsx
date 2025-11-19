@@ -1,39 +1,51 @@
 import { Data } from "@repo/strapi"
 
-import { Container } from "@/components/elementary/Container"
 import { StrapiIconButton } from "@/components/page-builder/components/elements/StrapiIconButton"
+import {
+  SectionBadge,
+  SectionHeader,
+  SectionWrapper,
+} from "@/components/page-builder/shared"
 
 export function StrapiFinalCTASection({
   component,
 }: {
   readonly component: Data.Component<"sections.final-cta-section">
 }) {
+  const backgroundConfig: Data.Component<"shared.section-background"> =
+    component.background || ({} as Data.Component<"shared.section-background">)
+
+  // SPACING ARCHITECTURE - Background padding controls vertical spacing
+  const backgroundPadding = backgroundConfig.padding ?? "default"
+  const sectionGap = (
+    {
+      none: "gap-4",
+      compact: "gap-8",
+      default: "gap-12",
+      spacious: "gap-16",
+    } as const
+  )[backgroundPadding]
+
   return (
-    <section className="relative z-10 bg-gradient-to-b from-transparent to-transparent py-24 md:py-32 dark:bg-transparent">
-      <Container className="mx-auto px-4">
-        <div className="mx-auto max-w-3xl text-center">
-          <h2 className="mb-6 text-3xl font-bold text-balance md:text-4xl lg:text-5xl">
-            {component.heading}
-          </h2>
+    <SectionWrapper background={backgroundConfig}>
+      <div className={`@container container flex flex-col ${sectionGap}`}>
+        {component.badge && <SectionBadge badge={component.badge} />}
+        {component.header && <SectionHeader header={component.header} />}
 
-          <p className="text-muted-foreground mx-auto mb-10 max-w-2xl text-lg text-balance">
-            {component.description}
-          </p>
-
-          {component.ctaButtons && component.ctaButtons.length > 0 && (
-            <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
-              {component.ctaButtons.map((button, index) => (
-                <StrapiIconButton
-                  key={button.id || index}
-                  component={button}
-                  className={`h-12 rounded-lg px-8 text-base ${index === 1 ? "bg-background/50 backdrop-blur-sm" : ""}`}
-                />
-              ))}
-            </div>
-          )}
-        </div>
-      </Container>
-    </section>
+        {/* CTA Buttons */}
+        {component.ctaButtons && component.ctaButtons.length > 0 && (
+          <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
+            {component.ctaButtons.map((button, index) => (
+              <StrapiIconButton
+                key={button.id || index}
+                component={button}
+                className={`h-12 rounded-lg px-8 text-base ${index === 1 ? "bg-background/50 backdrop-blur-sm" : ""}`}
+              />
+            ))}
+          </div>
+        )}
+      </div>
+    </SectionWrapper>
   )
 }
 

@@ -137,7 +137,15 @@ const pagePopulateObject: FindOne<"api::page.page">["populate"] = {
       },
       "sections.final-cta-section": {
         populate: {
-          ctaButtons: true,
+          background: true,
+          badge: { populate: { orbAnimation: true } },
+          header: {
+            populate: {
+              textStyle: { populate: { customGradient: true } },
+              descriptionTextStyle: { populate: { customGradient: true } },
+            },
+          },
+          ctaButtons: { populate: { icon: true, link: true } },
         },
       },
       "sections.faq": { populate: { accordions: true } },
