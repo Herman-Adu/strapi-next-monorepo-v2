@@ -5,6 +5,7 @@ import { Data } from "@repo/strapi"
 import { ArrowRight } from "lucide-react"
 
 import { useSubscriberForm } from "@/hooks/useAppForm"
+import { GlassmorphismCard } from "@/components/page-builder/molecules/GlassmorphismCard"
 import { StrapiIconButton } from "@/components/page-builder/components/elements/StrapiIconButton"
 import {
   SectionBadge,
@@ -193,9 +194,8 @@ export function StrapiNewsletterCTASection({
 
                 {/* GDPR Checkbox */}
                 {component.gdprLink && (
-                  <div className="group border-primary/10 from-primary/5 via-background to-background hover:border-primary/20 hover:shadow-primary/5 relative overflow-hidden rounded-xl border bg-gradient-to-br p-3.5 shadow-sm transition-all duration-300 hover:shadow-md">
-                    <div className="bg-primary/5 group-hover:bg-primary/10 absolute top-0 right-0 h-24 w-24 blur-2xl transition-all duration-300" />
-                    <div className="relative flex items-start gap-2.5">
+                  <GlassmorphismCard size="sm" variant="rounded-xl">
+                    <div className="flex items-start gap-2.5">
                       <Checkbox
                         id="gdpr-consent"
                         checked={agreedToTerms}
@@ -225,7 +225,7 @@ export function StrapiNewsletterCTASection({
                         </a>
                       </Label>
                     </div>
-                  </div>
+                  </GlassmorphismCard>
                 )}
               </form>
 
@@ -247,12 +247,8 @@ export function StrapiNewsletterCTASection({
             {component.benefits && component.benefits.length > 0 && (
               <div className="grid w-full auto-rows-fr grid-cols-1 gap-6 @2xl:gap-8">
                 {component.benefits.map((benefit, index) => (
-                  <div
-                    key={benefit.id || index}
-                    className="group border-primary/10 from-primary/5 via-background to-background hover:border-primary/20 hover:shadow-primary/5 relative overflow-hidden rounded-xl border bg-gradient-to-br p-6 shadow-sm transition-all duration-300 hover:shadow-md"
-                  >
-                    <div className="bg-primary/5 group-hover:bg-primary/10 absolute top-0 right-0 h-24 w-24 blur-2xl transition-all duration-300" />
-                    <div className="relative">
+                  <GlassmorphismCard key={benefit.id || index} size="md" variant="rounded-xl">
+                    <div>
                       <h3 className="text-primary dark:text-foreground mb-2 font-semibold">
                         {benefit.title}
                       </h3>
@@ -260,7 +256,7 @@ export function StrapiNewsletterCTASection({
                         {benefit.description}
                       </p>
                     </div>
-                  </div>
+                  </GlassmorphismCard>
                 ))}
               </div>
             )}

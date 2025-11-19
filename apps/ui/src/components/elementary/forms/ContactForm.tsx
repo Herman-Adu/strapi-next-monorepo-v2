@@ -7,6 +7,7 @@ import { useForm } from "react-hook-form"
 import * as z from "zod"
 
 import { useContactForm } from "@/hooks/useAppForm"
+import { GlassmorphismCard } from "@/components/page-builder/molecules/GlassmorphismCard"
 import { AppField } from "@/components/forms/AppField"
 import { AppForm } from "@/components/forms/AppForm"
 import { AppTextArea } from "@/components/forms/AppTextArea"
@@ -85,9 +86,8 @@ export function ContactForm({
       <div className="mt-5 flex w-full flex-col gap-1">
         {/* GDPR Checkbox */}
         {gdpr?.href && (
-          <div className="group border-primary/10 from-primary/5 via-background to-background hover:border-primary/20 hover:shadow-primary/5 relative overflow-hidden rounded-sm border bg-gradient-to-br p-3.5 shadow-sm transition-all duration-300 hover:shadow-md">
-            <div className="bg-primary/5 group-hover:bg-primary/10 absolute top-0 right-0 h-24 w-24 blur-2xl transition-all duration-300" />
-            <div className="relative flex items-start gap-2.5">
+          <GlassmorphismCard size="sm" variant="rounded-sm">
+            <div className="flex items-start gap-2.5">
               <Checkbox
                 id="gdpr-consent"
                 checked={agreedToTerms}
@@ -111,7 +111,7 @@ export function ContactForm({
                 </a>
               </Label>
             </div>
-          </div>
+          </GlassmorphismCard>
         )}
 
         <Button
