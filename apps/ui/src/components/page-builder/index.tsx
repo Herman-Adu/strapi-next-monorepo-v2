@@ -7,7 +7,6 @@ import StrapiCarousel from "@/components/page-builder/components/sections/Strapi
 import StrapiFaq from "@/components/page-builder/components/sections/StrapiFaq"
 import StrapiFeatureGridSection from "@/components/page-builder/components/sections/StrapiFeatureGridSection"
 import StrapiFinalCTASection from "@/components/page-builder/components/sections/StrapiFinalCTASection"
-import StrapiHeadingWithCTAButton from "@/components/page-builder/components/sections/StrapiHeadingWithCTAButton"
 import StrapiHero from "@/components/page-builder/components/sections/StrapiHero"
 import StrapiHorizontalImages from "@/components/page-builder/components/sections/StrapiHorizontalImages"
 import StrapiImageWithCTAButton from "@/components/page-builder/components/sections/StrapiImageWithCTAButton"
@@ -41,7 +40,6 @@ export const PageContentComponents: {
   "sections.benefits-section": StrapiBenefitsSection,
   "sections.faq": StrapiFaq,
   "sections.carousel": StrapiCarousel,
-  "sections.heading-with-cta-button": StrapiHeadingWithCTAButton,
   "sections.hero": StrapiHero,
   "sections.horizontal-images": StrapiHorizontalImages,
   "sections.image-with-cta-button": StrapiImageWithCTAButton,

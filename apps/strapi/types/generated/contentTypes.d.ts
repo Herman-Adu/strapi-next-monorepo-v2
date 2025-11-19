@@ -645,7 +645,6 @@ export interface ApiPagePage extends Struct.CollectionTypeSchema {
         "sections.image-with-cta-button",
         "sections.horizontal-images",
         "sections.hero",
-        "sections.heading-with-cta-button",
         "sections.faq",
         "sections.carousel",
         "sections.landing-hero",

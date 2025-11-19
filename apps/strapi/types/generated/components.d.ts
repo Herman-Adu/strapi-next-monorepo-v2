@@ -424,19 +424,6 @@ export interface SectionsFinalCtaSection extends Struct.ComponentSchema {
   }
 }
 
-export interface SectionsHeadingWithCtaButton extends Struct.ComponentSchema {
-  collectionName: "components_sections_heading_with_cta_buttons"
-  info: {
-    description: ""
-    displayName: "HeadingWithCTAButton"
-  }
-  attributes: {
-    cta: Schema.Attribute.Component<"utilities.link", false>
-    subText: Schema.Attribute.String
-    title: Schema.Attribute.String & Schema.Attribute.Required
-  }
-}
-
 export interface SectionsHero extends Struct.ComponentSchema {
   collectionName: "components_sections_heroes"
   info: {
@@ -1069,7 +1056,6 @@ declare module "@strapi/strapi" {
       "sections.faq": SectionsFaq
       "sections.feature-grid-section": SectionsFeatureGridSection
       "sections.final-cta-section": SectionsFinalCtaSection
-      "sections.heading-with-cta-button": SectionsHeadingWithCtaButton
       "sections.hero": SectionsHero
       "sections.horizontal-images": SectionsHorizontalImages
       "sections.image-with-cta-button": SectionsImageWithCtaButton
