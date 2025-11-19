@@ -435,12 +435,15 @@ export interface SectionsHero extends Struct.ComponentSchema {
 export interface SectionsHorizontalImages extends Struct.ComponentSchema {
   collectionName: "components_sections_horizontal_images"
   info: {
-    description: ""
+    description: "Horizontal scrolling images section with atomic architecture (badge, header, background)"
     displayName: "HorizontalImages"
   }
   attributes: {
+    background: Schema.Attribute.Component<"shared.section-background", false>
+    badge: Schema.Attribute.Component<"shared.section-badge", false>
     fixedImageHeight: Schema.Attribute.Integer
     fixedImageWidth: Schema.Attribute.Integer
+    header: Schema.Attribute.Component<"shared.section-header", false>
     imageRadius: Schema.Attribute.Enumeration<["sm", "md", "lg", "xl", "full"]>
     images: Schema.Attribute.Component<"utilities.image-with-link", true>
     spacing: Schema.Attribute.Integer &
@@ -451,7 +454,6 @@ export interface SectionsHorizontalImages extends Struct.ComponentSchema {
         },
         number
       >
-    title: Schema.Attribute.String & Schema.Attribute.Required
   }
 }
 

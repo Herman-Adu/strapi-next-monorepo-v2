@@ -1,8 +1,10 @@
 import { Data } from "@repo/strapi"
 
-import { removeThisWhenYouNeedMe } from "@/lib/general-helpers"
-import { cn } from "@/lib/styles"
-import { Container } from "@/components/elementary/Container"
+import {
+  SectionBadge,
+  SectionHeader,
+  SectionWrapper,
+} from "@/components/page-builder/shared"
 import StrapiImageWithLink from "@/components/page-builder/components/utilities/StrapiImageWithLink"
 
 export function StrapiHorizontalImages({
@@ -10,46 +12,56 @@ export function StrapiHorizontalImages({
 }: {
   readonly component: Data.Component<"sections.horizontal-images">
 }) {
-  removeThisWhenYouNeedMe("StrapiHorizontalImages")
+  const backgroundConfig: Data.Component<"shared.section-background"> =
+    component.background || ({} as Data.Component<"shared.section-background">)
+
+  // SPACING ARCHITECTURE - Background padding controls vertical spacing
+  const backgroundPadding = backgroundConfig.padding ?? "default"
+  const sectionGap = (
+    {
+      none: "gap-4",
+      compact: "gap-8",
+      default: "gap-12",
+      spacious: "gap-16",
+    } as const
+  )[backgroundPadding]
+
+  // Horizontal spacing for images
+  const imageSpacing = `gap-${component.spacing ?? 4}`
+
+  // Image border radius
+  const radiusClass = component.imageRadius
+    ? `rounded-${component.imageRadius}`
+    : ""
 
   return (
-    <section>
-      <Container className="py-8">
-        <div className="flex flex-col items-center">
-          <p className="mb-6 text-center tracking-tight text-gray-900">
-            {component.title}
-          </p>
+    <SectionWrapper background={backgroundConfig}>
+      <div className={`@container container flex flex-col ${sectionGap}`}>
+        {component.badge && <SectionBadge badge={component.badge} />}
+        {component.header && <SectionHeader header={component.header} />}
 
-          <div
-            className={cn(
-              "no-scrollbar flex max-w-full overflow-x-auto",
-              `space-x-${component.spacing ?? 4}`
-            )}
-          >
-            {component.images?.map((x, i) => (
-              <StrapiImageWithLink
-                component={x}
-                key={String(x.id) + i}
-                imageProps={{
-                  className: cn({
-                    [`rounded-${component.imageRadius}`]: Boolean(
-                      component.imageRadius
-                    ),
-                    "object-cover": Boolean(
-                      component.fixedImageHeight ?? component.fixedImageWidth
-                    ),
-                  }),
-                  forcedSizes: {
-                    width: component.fixedImageWidth,
-                    height: component.fixedImageHeight,
-                  },
-                }}
-              />
-            ))}
+        {/* Horizontal scrolling images */}
+        {component.images && component.images.length > 0 && (
+          <div className="no-scrollbar flex max-w-full overflow-x-auto">
+            <div className={`flex ${imageSpacing}`}>
+              {component.images.map((image, index) => (
+                <StrapiImageWithLink
+                  key={image.id || index}
+                  component={image}
+                  imageProps={{
+                    className: `${radiusClass} ${component.fixedImageHeight || component.fixedImageWidth ? "object-cover" : ""}`,
+                    forcedSizes: {
+                      width: component.fixedImageWidth,
+                      height: component.fixedImageHeight,
+                    },
+                  }}
+                />
+              ))}
+            </div>
           </div>
-        </div>
-      </Container>
-    </section>
+        )}
+      </div>
+    </SectionWrapper>
   )
 }
 

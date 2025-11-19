@@ -2,13 +2,24 @@
   "collectionName": "components_sections_horizontal_images",
   "info": {
     "displayName": "HorizontalImages",
-    "description": ""
+    "description": "Horizontal scrolling images section with atomic architecture (badge, header, background)"
   },
   "options": {},
   "attributes": {
-    "title": {
-      "type": "string",
-      "required": true
+    "background": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.section-background"
+    },
+    "badge": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.section-badge"
+    },
+    "header": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.section-header"
     },
     "images": {
       "type": "component",

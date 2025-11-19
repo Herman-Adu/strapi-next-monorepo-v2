@@ -55,6 +55,14 @@ const pagePopulateObject: FindOne<"api::page.page">["populate"] = {
       },
       "sections.horizontal-images": {
         populate: {
+          background: true,
+          badge: { populate: { orbAnimation: true } },
+          header: {
+            populate: {
+              textStyle: { populate: { customGradient: true } },
+              descriptionTextStyle: { populate: { customGradient: true } },
+            },
+          },
           images: {
             populate: { image: { populate: { media: true } }, link: true },
           },
