@@ -713,12 +713,13 @@ export interface SectionsTestimonialsSection extends Struct.ComponentSchema {
 export interface SectionsWorkflowSection extends Struct.ComponentSchema {
   collectionName: "components_sections_workflow_sections"
   info: {
-    description: "Two-column workflow section with text and image"
+    description: "Two-column workflow section with atomic architecture (badge, header, background)"
     displayName: "WorkflowSection"
   }
   attributes: {
-    description: Schema.Attribute.Text & Schema.Attribute.Required
-    heading: Schema.Attribute.String & Schema.Attribute.Required
+    background: Schema.Attribute.Component<"shared.section-background", false>
+    badge: Schema.Attribute.Component<"shared.section-badge", false>
+    header: Schema.Attribute.Component<"shared.section-header", false>
     image: Schema.Attribute.Component<"utilities.basic-image", false>
     workflowPoints: Schema.Attribute.Component<"elements.list-item", true>
   }

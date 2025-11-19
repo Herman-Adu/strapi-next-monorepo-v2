@@ -93,7 +93,15 @@ const pagePopulateObject: FindOne<"api::page.page">["populate"] = {
       // ...existing code...
       "sections.workflow-section": {
         populate: {
-          workflowPoints: true,
+          background: true,
+          badge: { populate: { orbAnimation: true } },
+          header: {
+            populate: {
+              textStyle: { populate: { customGradient: true } },
+              descriptionTextStyle: { populate: { customGradient: true } },
+            },
+          },
+          workflowPoints: { populate: { icon: true } },
           image: { populate: { media: true } },
         },
       },

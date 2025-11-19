@@ -2,17 +2,24 @@
   "collectionName": "components_sections_workflow_sections",
   "info": {
     "displayName": "WorkflowSection",
-    "description": "Two-column workflow section with text and image"
+    "description": "Two-column workflow section with atomic architecture (badge, header, background)"
   },
   "options": {},
   "attributes": {
-    "heading": {
-      "type": "string",
-      "required": true
+    "background": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.section-background"
     },
-    "description": {
-      "type": "text",
-      "required": true
+    "badge": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.section-badge"
+    },
+    "header": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.section-header"
     },
     "workflowPoints": {
       "type": "component",
