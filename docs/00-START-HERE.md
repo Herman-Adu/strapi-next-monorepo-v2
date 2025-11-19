@@ -31,6 +31,12 @@ This is your entry point to all project documentation. Whether you're a develope
 - **Styling System** → [Styling Guide](05-styling/styling-guide.md)
 - **Theme System** → [Theme Guide](02-architecture/theme-system.md)
 
+**Testing & Quality**:
+
+- **Testing Strategy** → [Overview](13-testing/README.md)
+- **Storybook** → [Component Isolation & Visual Testing](13-testing/storybook/integration.md)
+- **Chromatic** → [Visual Regression Testing](13-testing/chromatic/setup.md)
+
 **Reference**:
 
 - **Quick Reference** → [Cheat Sheet](10-reference/quick-reference.md)
@@ -118,6 +124,7 @@ docs/
 ├── 10-reference/                 # Quick reference & cheat sheets
 ├── 11-recovery/                  # Session recovery (for AI)
 ├── 12-planning/                  # Future planning & proposals
+├── 13-testing/                   # Testing strategy, Storybook, Chromatic
 └── 99-archive/                   # Deprecated documentation
 ```
 
@@ -132,11 +139,11 @@ docs/
 3. **Recovery Document** → [Session Recovery](11-recovery/recovery-document.md)
 4. **Troubleshooting** → [Playbook](09-troubleshooting/playbook.md)
 5. **Atomic Architecture** → [Component Inventory](02-architecture/atomic-design/05-COMPONENT-INVENTORY.md)
-6. **Page Creation** → [Workflow](06-workflows/page-creation.md)
-7. **Strapi Best Practices** → [Guide](03-strapi/best-practices.md)
-8. **Test Data** → [Examples](07-content-manager/test-data.md)
-9. **Workflow Index** → [Selection Guide](06-workflows/index.md)
-10. **Quick Reference** → [Cheat Sheet](10-reference/quick-reference.md)
+6. **Testing Strategy** → [Storybook & Chromatic](13-testing/README.md)
+7. **Page Creation** → [Workflow](06-workflows/page-creation.md)
+8. **Strapi Best Practices** → [Guide](03-strapi/best-practices.md)
+9. **Test Data** → [Examples](07-content-manager/test-data.md)
+10. **Workflow Index** → [Selection Guide](06-workflows/index.md)
 
 ---
 
@@ -205,6 +212,9 @@ docs/
 | **Build Process**       | [Build-Commit-Push](06-workflows/build-commit-push.md) ⭐         |
 | **Component Creation**  | [Development Guide](04-components/development-guide.md)           |
 | **Component Deletion**  | [Deletion Workflow](06-workflows/component-deletion.md)           |
+| **Testing Strategy**    | [Storybook & Chromatic](13-testing/README.md)                     |
+| **Storybook**           | [Component Isolation](13-testing/storybook/integration.md)        |
+| **Visual Regression**   | [Chromatic Setup](13-testing/chromatic/setup.md)                  |
 | **Page Creation**       | [Page Workflow](06-workflows/page-creation.md)                    |
 | **Gradients**           | [Gradient System](04-components/patterns/gradient-system.md)      |
 | **Styling**             | [Styling Guide](05-styling/styling-guide.md)                      |
@@ -222,6 +232,8 @@ docs/
 | Build errors                 | [Build-Commit-Push](06-workflows/build-commit-push.md)        |
 | Lost connection (AI)         | [Recovery Document](11-recovery/recovery-document.md)         |
 | Component not rendering      | [Troubleshooting](09-troubleshooting/playbook.md)             |
+| Need to test component       | [Storybook Integration](13-testing/storybook/integration.md)  |
+| Visual regression detected   | [Chromatic Setup](13-testing/chromatic/setup.md)              |
 | Need to delete component     | [Deletion Workflow](06-workflows/component-deletion.md)       |
 | Field order wrong            | [Field Order Changes](06-workflows/field-order-changes.md)    |
 | Gradient not working         | [Gradient System](04-components/patterns/gradient-system.md)  |
