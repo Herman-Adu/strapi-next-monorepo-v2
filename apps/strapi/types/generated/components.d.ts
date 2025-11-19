@@ -363,18 +363,6 @@ export interface SectionsBenefitsSection extends Struct.ComponentSchema {
   }
 }
 
-export interface SectionsCarousel extends Struct.ComponentSchema {
-  collectionName: "components_sections_carousels"
-  info: {
-    description: ""
-    displayName: "Carousel"
-  }
-  attributes: {
-    images: Schema.Attribute.Component<"utilities.image-with-link", true>
-    radius: Schema.Attribute.Enumeration<["sm", "md", "lg", "xl", "full"]>
-  }
-}
-
 export interface SectionsFaq extends Struct.ComponentSchema {
   collectionName: "components_sections_faqs"
   info: {
@@ -1052,7 +1040,6 @@ declare module "@strapi/strapi" {
       "forms.contact-form": FormsContactForm
       "forms.newsletter-form": FormsNewsletterForm
       "sections.benefits-section": SectionsBenefitsSection
-      "sections.carousel": SectionsCarousel
       "sections.faq": SectionsFaq
       "sections.feature-grid-section": SectionsFeatureGridSection
       "sections.final-cta-section": SectionsFinalCtaSection

@@ -646,7 +646,6 @@ export interface ApiPagePage extends Struct.CollectionTypeSchema {
         "sections.horizontal-images",
         "sections.hero",
         "sections.faq",
-        "sections.carousel",
         "sections.landing-hero",
         "sections.feature-grid-section",
         "sections.workflow-section",

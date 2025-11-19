@@ -117,13 +117,6 @@ const pagePopulateObject: FindOne<"api::page.page">["populate"] = {
         },
       },
       "sections.faq": { populate: { accordions: true } },
-      "sections.carousel": {
-        populate: {
-          images: {
-            populate: { image: { populate: { media: true } }, link: true },
-          },
-        },
-      },
       "sections.benefits-section": {
         populate: {
           badge: { populate: { orbAnimation: true } },
