@@ -28,11 +28,7 @@ describe("GDPRCheckbox", () => {
   it("renders with checked state", () => {
     const onCheckedChange = vi.fn()
     render(
-      <GDPRCheckbox
-        checked
-        onCheckedChange={onCheckedChange}
-        link={mockLink}
-      />
+      <GDPRCheckbox checked onCheckedChange={onCheckedChange} link={mockLink} />
     )
 
     const checkbox = screen.getByRole("checkbox")
@@ -66,7 +62,9 @@ describe("GDPRCheckbox", () => {
       />
     )
 
-    expect(screen.getByText("I agree to the", { exact: false })).toBeInTheDocument()
+    expect(
+      screen.getByText("I agree to the", { exact: false })
+    ).toBeInTheDocument()
   })
 
   it("renders custom label prefix", () => {
@@ -80,7 +78,9 @@ describe("GDPRCheckbox", () => {
       />
     )
 
-    expect(screen.getByText("I consent to the", { exact: false })).toBeInTheDocument()
+    expect(
+      screen.getByText("I consent to the", { exact: false })
+    ).toBeInTheDocument()
   })
 
   it("renders link with correct href and label", () => {

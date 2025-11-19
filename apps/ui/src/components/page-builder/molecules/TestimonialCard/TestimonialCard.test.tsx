@@ -82,10 +82,7 @@ describe("TestimonialCard", () => {
   it("renders partial rating correctly", () => {
     const testimonialWith3Stars = { ...mockTestimonial, rating: 3 }
     const { container } = render(
-      <TestimonialCard
-        testimonial={testimonialWith3Stars}
-        showRatings
-      />
+      <TestimonialCard testimonial={testimonialWith3Stars} showRatings />
     )
 
     // Count filled stars (should be 3)
@@ -103,9 +100,7 @@ describe("TestimonialCard", () => {
   })
 
   it("renders author image when showImages is true", () => {
-    render(
-      <TestimonialCard testimonial={mockTestimonial} showImages />
-    )
+    render(<TestimonialCard testimonial={mockTestimonial} showImages />)
 
     const image = screen.getByRole("img")
     expect(image).toBeInTheDocument()
@@ -113,9 +108,7 @@ describe("TestimonialCard", () => {
   })
 
   it("does not render author image when showImages is false", () => {
-    render(
-      <TestimonialCard testimonial={mockTestimonial} showImages={false} />
-    )
+    render(<TestimonialCard testimonial={mockTestimonial} showImages={false} />)
 
     expect(screen.queryByRole("img")).not.toBeInTheDocument()
   })
@@ -135,10 +128,7 @@ describe("TestimonialCard", () => {
 
   it("applies custom className", () => {
     const { container } = render(
-      <TestimonialCard
-        testimonial={mockTestimonial}
-        className="custom-class"
-      />
+      <TestimonialCard testimonial={mockTestimonial} className="custom-class" />
     )
 
     const card = container.firstChild
@@ -156,7 +146,9 @@ describe("TestimonialCard", () => {
   })
 
   it("renders quote icon", () => {
-    const { container } = render(<TestimonialCard testimonial={mockTestimonial} />)
+    const { container } = render(
+      <TestimonialCard testimonial={mockTestimonial} />
+    )
 
     // Quote icon should be present
     const quoteIcon = container.querySelector(".absolute.top-4.right-4")
@@ -166,10 +158,7 @@ describe("TestimonialCard", () => {
   it("handles testimonial without rating gracefully", () => {
     const testimonialWithoutRating = { ...mockTestimonial, rating: undefined }
     const { container } = render(
-      <TestimonialCard
-        testimonial={testimonialWithoutRating}
-        showRatings
-      />
+      <TestimonialCard testimonial={testimonialWithoutRating} showRatings />
     )
 
     // Should not render stars if rating is undefined
@@ -182,9 +171,7 @@ describe("TestimonialCard", () => {
       ...mockTestimonial,
       authorImage: undefined,
     }
-    render(
-      <TestimonialCard testimonial={testimonialWithoutImage} showImages />
-    )
+    render(<TestimonialCard testimonial={testimonialWithoutImage} showImages />)
 
     expect(screen.queryByRole("img")).not.toBeInTheDocument()
   })
