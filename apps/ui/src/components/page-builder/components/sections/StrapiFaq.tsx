@@ -1,7 +1,10 @@
 import { Data } from "@repo/strapi"
 
-import { cn } from "@/lib/styles"
-import { Container } from "@/components/elementary/Container"
+import {
+  SectionBadge,
+  SectionHeader,
+  SectionWrapper,
+} from "@/components/page-builder/shared"
 import {
   Accordion,
   AccordionContent,
@@ -14,39 +17,41 @@ export function StrapiFaq({
 }: {
   readonly component: Data.Component<"sections.faq">
 }) {
+  const backgroundConfig: Data.Component<"shared.section-background"> =
+    component.background || ({} as Data.Component<"shared.section-background">)
+
+  // SPACING ARCHITECTURE - Background padding controls vertical spacing
+  const backgroundPadding = backgroundConfig.padding ?? "default"
+  const sectionGap = (
+    {
+      none: "gap-4",
+      compact: "gap-8",
+      default: "gap-12",
+      spacious: "gap-16",
+    } as const
+  )[backgroundPadding]
+
   return (
-    <section className="bg-background">
-      <Container className="py-8">
-        <div className="flex flex-col items-center">
-          <h2
-            className={cn(
-              "mb-4 text-center font-semibold text-balance",
-              "text-3xl sm:text-4xl md:text-5xl",
-              "text-primary dark:text-foreground"
-            )}
-          >
-            {component.title}
-          </h2>
+    <SectionWrapper background={backgroundConfig}>
+      <div className={`@container container flex flex-col ${sectionGap}`}>
+        {component.badge && <SectionBadge badge={component.badge} />}
+        {component.header && <SectionHeader header={component.header} />}
 
-          <p className="text-muted-foreground mb-8 text-center text-base sm:text-lg">
-            {component.subTitle}
-          </p>
-
-          {component.accordions && (
-            <div className="w-full">
-              <Accordion type="single" collapsible className="w-full">
-                {component.accordions.map((x) => (
-                  <AccordionItem key={x.id} value={x.id.toString()}>
-                    <AccordionTrigger>{x.question}</AccordionTrigger>
-                    <AccordionContent>{x.answer}</AccordionContent>
-                  </AccordionItem>
-                ))}
-              </Accordion>
-            </div>
-          )}
-        </div>
-      </Container>
-    </section>
+        {/* Accordions */}
+        {component.accordions && component.accordions.length > 0 && (
+          <div className="mx-auto w-full max-w-3xl">
+            <Accordion type="single" collapsible className="w-full">
+              {component.accordions.map((item) => (
+                <AccordionItem key={item.id} value={item.id.toString()}>
+                  <AccordionTrigger>{item.question}</AccordionTrigger>
+                  <AccordionContent>{item.answer}</AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
+          </div>
+        )}
+      </div>
+    </SectionWrapper>
   )
 }
 

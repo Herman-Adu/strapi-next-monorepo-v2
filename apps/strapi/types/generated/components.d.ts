@@ -366,13 +366,14 @@ export interface SectionsBenefitsSection extends Struct.ComponentSchema {
 export interface SectionsFaq extends Struct.ComponentSchema {
   collectionName: "components_sections_faqs"
   info: {
-    description: ""
+    description: "FAQ section with atomic architecture (badge, header, background)"
     displayName: "Faq"
   }
   attributes: {
     accordions: Schema.Attribute.Component<"utilities.accordions", true>
-    subTitle: Schema.Attribute.String
-    title: Schema.Attribute.String & Schema.Attribute.Required
+    background: Schema.Attribute.Component<"shared.section-background", false>
+    badge: Schema.Attribute.Component<"shared.section-badge", false>
+    header: Schema.Attribute.Component<"shared.section-header", false>
   }
 }
 
