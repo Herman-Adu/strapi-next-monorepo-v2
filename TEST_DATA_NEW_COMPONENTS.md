@@ -196,7 +196,7 @@ Now each component below only needs to specify its **unique content** (Benefits,
 - **Background**:
 
   - Background Style: `transparent`
-  - Container Style: `boxed`
+  - Container Style: `default, compact, spacious`
   - Container Width: `default`
   - Padding: `default`
   - Gradient: `false`
