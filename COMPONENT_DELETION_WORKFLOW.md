@@ -1339,7 +1339,7 @@ Print and use for each component deletion:
 ```markdown
 ## Component Deletion Checklist
 
-**Component:** **********************\_\_\_**********************
+**Component:** \***\*\*\*\*\***\*\*\***\*\*\*\*\***\_\_\_\***\*\*\*\*\***\*\*\***\*\*\*\*\***
 
 ### Phase 0: Safety (10 min)
 
@@ -1388,7 +1388,7 @@ Print and use for each component deletion:
 
 **Total Time:** **\_** minutes  
 **Status:** ⬜ In Progress | ✅ Complete | ❌ Failed  
-**Notes:** ************************\_************************
+**Notes:** \***\*\*\*\*\***\*\*\*\*\***\*\*\*\*\***\_\***\*\*\*\*\***\*\*\*\*\***\*\*\*\*\***
 ```
 
 ---
