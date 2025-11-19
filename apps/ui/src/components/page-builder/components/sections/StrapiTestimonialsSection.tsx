@@ -1,14 +1,13 @@
 import { Data } from "@repo/strapi"
-import { Quote, Star } from "lucide-react"
 
-import { cn } from "@/lib/styles"
 import {
   SectionBadge,
   SectionHeader,
   SectionWrapper,
 } from "@/components/page-builder/shared"
-import { StrapiBasicImage } from "@/components/page-builder/components/utilities/StrapiBasicImage"
+import { TestimonialCard } from "@/components/page-builder/molecules/TestimonialCard"
 import { Marquee } from "@/components/ui/marquee"
+import { cn } from "@/lib/styles"
 
 export function StrapiTestimonialsSection({
   component,
@@ -84,91 +83,6 @@ export function StrapiTestimonialsSection({
         )}
       </div>
     </SectionWrapper>
-  )
-}
-
-function TestimonialCard({
-  testimonial,
-  showRatings = true,
-  showImages = true,
-  className,
-}: {
-  readonly testimonial: Data.Component<"elements.testimonial-card">
-  readonly showRatings?: boolean
-  readonly showImages?: boolean
-  readonly className?: string
-}) {
-  return (
-    <div
-      className={cn(
-        "bg-card border-border hover:border-primary/20 group relative flex flex-col gap-4 rounded-lg border p-6 shadow-sm transition-all duration-300 hover:shadow-md",
-        testimonial.featured && "pt-12", // Extra top padding when featured badge is present
-        className
-      )}
-    >
-      {/* Quote Icon */}
-      <div className="text-primary/20 group-hover:text-primary/30 absolute top-4 right-4 transition-colors">
-        <Quote className="h-8 w-8" />
-      </div>
-
-      {/* Featured Badge */}
-      {testimonial.featured && (
-        <div className="bg-primary/10 text-primary absolute top-4 left-4 rounded-full px-3 py-1 text-xs font-medium">
-          Featured
-        </div>
-      )}
-
-      {/* Rating */}
-      {showRatings && testimonial.rating && (
-        <div className="flex gap-1">
-          {Array.from({ length: 5 }).map((_, i) => (
-            <Star
-              key={i}
-              className={cn(
-                "h-4 w-4",
-                i < (testimonial.rating ?? 0)
-                  ? "fill-primary text-primary"
-                  : "text-muted-foreground/30"
-              )}
-            />
-          ))}
-        </div>
-      )}
-
-      {/* Quote */}
-      <blockquote className="text-card-foreground relative z-10 text-sm leading-relaxed @lg:text-base">
-        &ldquo;{testimonial.quote}&rdquo;
-      </blockquote>
-
-      {/* Author Info */}
-      <div className="mt-auto flex items-center gap-3">
-        {/* Author Image */}
-        {showImages && testimonial.authorImage && (
-          <div className="relative h-12 w-12 flex-shrink-0 overflow-hidden rounded-full">
-            <StrapiBasicImage
-              component={testimonial.authorImage}
-              fill
-              className="object-cover"
-              sizes="48px"
-            />
-          </div>
-        )}
-
-        {/* Author Details */}
-        <div className="flex flex-col">
-          <div className="text-foreground font-medium">
-            {testimonial.authorName}
-          </div>
-          {(testimonial.authorRole || testimonial.authorCompany) && (
-            <div className="text-muted-foreground text-sm">
-              {testimonial.authorRole}
-              {testimonial.authorRole && testimonial.authorCompany && " at "}
-              {testimonial.authorCompany}
-            </div>
-          )}
-        </div>
-      </div>
-    </div>
   )
 }
 
