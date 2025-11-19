@@ -2,14 +2,11 @@ import { UID } from "@repo/strapi"
 
 import StrapiContactForm from "@/components/page-builder/components/forms/StrapiContactForm"
 import StrapiNewsletterForm from "@/components/page-builder/components/forms/StrapiNewsletterForm"
-import StrapiAnimatedLogoRow from "@/components/page-builder/components/sections/StrapiAnimatedLogoRow"
 import StrapiBenefitsSection from "@/components/page-builder/components/sections/StrapiBenefitsSection"
 import StrapiCarousel from "@/components/page-builder/components/sections/StrapiCarousel"
-import StrapiCredibilitySection from "@/components/page-builder/components/sections/StrapiCredibilitySection"
 import StrapiFaq from "@/components/page-builder/components/sections/StrapiFaq"
 import StrapiFeatureGridSection from "@/components/page-builder/components/sections/StrapiFeatureGridSection"
 import StrapiFinalCTASection from "@/components/page-builder/components/sections/StrapiFinalCTASection"
-import StrapiFooterCTASection from "@/components/page-builder/components/sections/StrapiFooterCTASection"
 import StrapiHeadingWithCTAButton from "@/components/page-builder/components/sections/StrapiHeadingWithCTAButton"
 import StrapiHero from "@/components/page-builder/components/sections/StrapiHero"
 import StrapiHorizontalImages from "@/components/page-builder/components/sections/StrapiHorizontalImages"
@@ -41,7 +38,6 @@ export const PageContentComponents: {
   "utilities.ck-editor-content": StrapiCkEditorContent,
 
   // Sections
-  "sections.animated-logo-row": StrapiAnimatedLogoRow,
   "sections.benefits-section": StrapiBenefitsSection,
   "sections.faq": StrapiFaq,
   "sections.carousel": StrapiCarousel,
@@ -52,7 +48,6 @@ export const PageContentComponents: {
   "sections.integration-grid-section": StrapiIntegrationGridSection,
   "sections.landing-hero": StrapiLandingHero,
   "sections.marquee-section": StrapiMarqueeSection,
-  "sections.credibility-section": StrapiCredibilitySection,
   "sections.feature-grid-section": StrapiFeatureGridSection,
   "sections.metrics-section": StrapiMetricsSection,
   "sections.partner-showcase-section": StrapiPartnerShowcaseSection,
@@ -60,7 +55,6 @@ export const PageContentComponents: {
   "sections.newsletter-cta-section": StrapiNewsletterCTASection,
   "sections.roadmap-section": StrapiRoadmapSection,
   "sections.final-cta-section": StrapiFinalCTASection,
-  "sections.footer-cta-section": StrapiFooterCTASection,
   "sections.testimonials-section": StrapiTestimonialsSection,
 
   // Forms

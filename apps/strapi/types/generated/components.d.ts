@@ -424,28 +424,6 @@ export interface SectionsFinalCtaSection extends Struct.ComponentSchema {
   }
 }
 
-export interface SectionsFooterCtaSection extends Struct.ComponentSchema {
-  collectionName: "components_sections_footer_cta_sections"
-  info: {
-    description: "Footer CTA section with branding and links"
-    displayName: "FooterCTASection"
-  }
-  attributes: {
-    copyright: Schema.Attribute.String & Schema.Attribute.Required
-    ctaButtons: Schema.Attribute.Component<"elements.icon-button", true> &
-      Schema.Attribute.SetMinMax<
-        {
-          max: 2
-        },
-        number
-      >
-    description: Schema.Attribute.Text & Schema.Attribute.Required
-    footerLinks: Schema.Attribute.Component<"utilities.link", true>
-    heading: Schema.Attribute.String & Schema.Attribute.Required
-    logo: Schema.Attribute.String & Schema.Attribute.DefaultTo<"N">
-  }
-}
-
 export interface SectionsHeadingWithCtaButton extends Struct.ComponentSchema {
   collectionName: "components_sections_heading_with_cta_buttons"
   info: {
@@ -1091,7 +1069,6 @@ declare module "@strapi/strapi" {
       "sections.faq": SectionsFaq
       "sections.feature-grid-section": SectionsFeatureGridSection
       "sections.final-cta-section": SectionsFinalCtaSection
-      "sections.footer-cta-section": SectionsFooterCtaSection
       "sections.heading-with-cta-button": SectionsHeadingWithCtaButton
       "sections.hero": SectionsHero
       "sections.horizontal-images": SectionsHorizontalImages
