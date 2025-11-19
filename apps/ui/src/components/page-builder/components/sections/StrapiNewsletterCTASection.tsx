@@ -6,6 +6,7 @@ import { ArrowRight } from "lucide-react"
 
 import { useSubscriberForm } from "@/hooks/useAppForm"
 import { GlassmorphismCard } from "@/components/page-builder/molecules/GlassmorphismCard"
+import { GDPRCheckbox } from "@/components/page-builder/molecules/GDPRCheckbox"
 import { StrapiIconButton } from "@/components/page-builder/components/elements/StrapiIconButton"
 import {
   SectionBadge,
@@ -14,9 +15,7 @@ import {
 } from "@/components/page-builder/shared"
 import { TextStyle } from "@/components/page-builder/atoms/TextStyle"
 import { Button } from "@/components/ui/button"
-import { Checkbox } from "@/components/ui/checkbox"
 import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
 import { useToast } from "@/components/ui/use-toast"
 
 export function StrapiNewsletterCTASection({
@@ -194,38 +193,17 @@ export function StrapiNewsletterCTASection({
 
                 {/* GDPR Checkbox */}
                 {component.gdprLink && (
-                  <GlassmorphismCard size="sm" variant="rounded-xl">
-                    <div className="flex items-start gap-2.5">
-                      <Checkbox
-                        id="gdpr-consent"
-                        checked={agreedToTerms}
-                        onCheckedChange={(checked) =>
-                          setAgreedToTerms(checked === true)
-                        }
-                        className="border-input bg-background data-[state=checked]:border-primary data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground mt-0.5 border-2"
-                      />
-                      <Label
-                        htmlFor="gdpr-consent"
-                        className="text-card-foreground cursor-pointer text-sm leading-relaxed"
-                      >
-                        {component.gdprLabel || "I agree to the"}{" "}
-                        <a
-                          href={component.gdprLink.href || "#"}
-                          target={
-                            component.gdprLink.newTab ? "_blank" : "_self"
-                          }
-                          rel={
-                            component.gdprLink.newTab
-                              ? "noopener noreferrer"
-                              : undefined
-                          }
-                          className="text-primary decoration-primary/30 hover:decoration-primary font-medium underline underline-offset-4 transition-colors"
-                        >
-                          {component.gdprLink.label}
-                        </a>
-                      </Label>
-                    </div>
-                  </GlassmorphismCard>
+                  <GDPRCheckbox
+                    checked={agreedToTerms}
+                    onCheckedChange={setAgreedToTerms}
+                    link={{
+                      href: component.gdprLink.href || "#",
+                      label: component.gdprLink.label || "Privacy Policy",
+                      newTab: component.gdprLink.newTab ?? undefined,
+                    }}
+                    labelPrefix={component.gdprLabel || "I agree to the"}
+                    variant="glassmorphic-xl"
+                  />
                 )}
               </form>
 
@@ -247,7 +225,11 @@ export function StrapiNewsletterCTASection({
             {component.benefits && component.benefits.length > 0 && (
               <div className="grid w-full auto-rows-fr grid-cols-1 gap-6 @2xl:gap-8">
                 {component.benefits.map((benefit, index) => (
-                  <GlassmorphismCard key={benefit.id || index} size="md" variant="rounded-xl">
+                  <GlassmorphismCard
+                    key={benefit.id || index}
+                    size="md"
+                    variant="rounded-xl"
+                  >
                     <div>
                       <h3 className="text-primary dark:text-foreground mb-2 font-semibold">
                         {benefit.title}

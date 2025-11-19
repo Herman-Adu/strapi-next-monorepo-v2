@@ -7,11 +7,10 @@ import { useForm } from "react-hook-form"
 import * as z from "zod"
 
 import { useSubscriberForm } from "@/hooks/useAppForm"
+import { GDPRCheckbox } from "@/components/page-builder/molecules/GDPRCheckbox"
 import { AppField } from "@/components/forms/AppField"
 import { AppForm } from "@/components/forms/AppForm"
 import { Button } from "@/components/ui/button"
-import { Checkbox } from "@/components/ui/checkbox"
-import { Label } from "@/components/ui/label"
 import { useToast } from "@/components/ui/use-toast"
 
 export function NewsletterForm({
@@ -105,28 +104,18 @@ export function NewsletterForm({
 
       {/* GDPR Checkbox */}
       {gdpr?.href && (
-        <div className="text-muted-foreground group flex items-start gap-2 text-xs">
-          <Checkbox
-            id="newsletter-gdpr-consent"
-            checked={agreedToTerms}
-            onCheckedChange={(checked) => setAgreedToTerms(checked === true)}
-            className="border-input bg-background data-[state=checked]:border-primary data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground mt-0.5 border-2"
-          />
-          <Label
-            htmlFor="newsletter-gdpr-consent"
-            className="hover:text-foreground cursor-pointer text-xs leading-relaxed transition-colors"
-          >
-            {gdpr.label}{" "}
-            <a
-              href={gdpr.href}
-              target={gdpr.newTab ? "_blank" : "_self"}
-              rel={gdpr.newTab ? "noopener noreferrer" : undefined}
-              className="text-primary decoration-primary group-hover:text-primary/80 underline transition-colors"
-            >
-              {gdpr.href || "terms and conditions"}
-            </a>
-          </Label>
-        </div>
+        <GDPRCheckbox
+          id="newsletter-gdpr-consent"
+          checked={agreedToTerms}
+          onCheckedChange={setAgreedToTerms}
+          link={{
+            href: gdpr.href,
+            label: gdpr.href || "terms and conditions",
+            newTab: gdpr.newTab,
+          }}
+          labelPrefix={gdpr.label || ""}
+          variant="simple"
+        />
       )}
     </div>
   )

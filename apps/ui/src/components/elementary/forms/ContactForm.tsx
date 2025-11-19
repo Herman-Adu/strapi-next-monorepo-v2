@@ -7,13 +7,11 @@ import { useForm } from "react-hook-form"
 import * as z from "zod"
 
 import { useContactForm } from "@/hooks/useAppForm"
-import { GlassmorphismCard } from "@/components/page-builder/molecules/GlassmorphismCard"
+import { GDPRCheckbox } from "@/components/page-builder/molecules/GDPRCheckbox"
 import { AppField } from "@/components/forms/AppField"
 import { AppForm } from "@/components/forms/AppForm"
 import { AppTextArea } from "@/components/forms/AppTextArea"
 import { Button } from "@/components/ui/button"
-import { Checkbox } from "@/components/ui/checkbox"
-import { Label } from "@/components/ui/label"
 import { useToast } from "@/components/ui/use-toast"
 
 export function ContactForm({
@@ -86,32 +84,17 @@ export function ContactForm({
       <div className="mt-5 flex w-full flex-col gap-1">
         {/* GDPR Checkbox */}
         {gdpr?.href && (
-          <GlassmorphismCard size="sm" variant="rounded-sm">
-            <div className="flex items-start gap-2.5">
-              <Checkbox
-                id="gdpr-consent"
-                checked={agreedToTerms}
-                onCheckedChange={(checked) =>
-                  setAgreedToTerms(checked === true)
-                }
-                className="border-input bg-background data-[state=checked]:border-primary data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground mt-0.5 border-2"
-              />
-              <Label
-                htmlFor="gdpr-consent"
-                className="text-card-foreground cursor-pointer text-sm leading-relaxed"
-              >
-                {"I agree to your"}{" "}
-                <a
-                  href={gdpr.href || "#"}
-                  target={gdpr.newTab ? "_blank" : "_self"}
-                  rel={gdpr.newTab ? "noopener noreferrer" : undefined}
-                  className="text-primary decoration-primary/30 group-hover:decoration-primary font-medium underline underline-offset-4 transition-colors"
-                >
-                  {gdpr.label || "Terms & Conditions"}
-                </a>
-              </Label>
-            </div>
-          </GlassmorphismCard>
+          <GDPRCheckbox
+            checked={agreedToTerms}
+            onCheckedChange={setAgreedToTerms}
+            link={{
+              href: gdpr.href || "#",
+              label: gdpr.label || "Terms & Conditions",
+              newTab: gdpr.newTab,
+            }}
+            labelPrefix="I agree to your"
+            variant="glassmorphic-sm"
+          />
         )}
 
         <Button
