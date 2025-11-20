@@ -43,11 +43,13 @@ export function GlassmorphismCard({
     <div
       className={cn(
         // Base glassmorphic styles
-        "group relative overflow-hidden border shadow-sm transition-all duration-300",
-        // Gradient background
+        "group relative overflow-hidden border-2 shadow-sm transition-all duration-300",
+        // Background color - consistent across themes
+        "bg-white/80 backdrop-blur-sm",
+        // Gradient overlay
         "from-primary/5 via-background to-background bg-gradient-to-br",
-        // Border colors with hover states
-        "border-primary/10 hover:border-primary/20",
+        // Border colors - consistent across themes
+        "hover:border-primary/70 border-slate-300",
         // Shadow with hover states
         "hover:shadow-primary/5 hover:shadow-md",
         // Variant (border radius)
