@@ -165,6 +165,13 @@
 
 **Outcome**: Complete frontend inventory with Strapi mapping
 
+**⚠️ NEW - Testing Awareness**:
+
+- Note which components need testing workflows
+- Identify components that had refactoring issues in past
+- Flag any components with unclear middleware patterns
+- See [Test-Driven Refactoring](../../06-workflows/test-driven-refactoring.md) for discipline
+
 ---
 
 ### Step 5: Gap Analysis (30-45 min)
@@ -302,6 +309,7 @@
 - Could this be simpler?
 - Is this at the right level?
 - What does the content manager experience?
+- **NEW**: Does middleware populate pattern match schema? (See [Middleware Patterns](../../03-strapi/middleware-populate-patterns.md))
 
 ### Document Everything
 
@@ -309,6 +317,8 @@
 - Note interesting discoveries
 - Capture ideas for later
 - Write down questions
+- **NEW**: Flag components needing middleware updates
+- **NEW**: Note any test-driven workflow violations
 
 ---
 
@@ -321,6 +331,10 @@
 ### Challenge: "I already know what's wrong"
 
 **Response**: Verify with data. Assumptions cause problems.
+
+### Challenge: "Should we fix this bug we found?" (NEW)
+
+**Response**: Document it. Don't fix during audit. Fixing breaks the audit flow and you'll miss other issues. Create a "bugs found" list to address systematically later with proper testing.
 
 ### Challenge: "Can't we just start fixing?"
 

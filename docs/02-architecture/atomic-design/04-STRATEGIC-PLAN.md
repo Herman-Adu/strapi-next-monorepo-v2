@@ -636,6 +636,66 @@ export function StrapiNewsletterCTASection({ component }) {
 
 ---
 
+## Component Refactoring Checklist (Per Section)
+
+**Use this checklist when refactoring each section to atomic architecture.**
+
+### Backend Steps (Strapi)
+
+- [ ] Create shared organism components (SectionBadge, SectionHeader, SectionWrapper)
+- [ ] Update section schema (add background, badge, header fields)
+- [ ] **UPDATE MIDDLEWARE POPULATES** (See [Middleware Patterns](../../03-strapi/middleware-populate-patterns.md))
+  - [ ] Check schema for component vs primitive fields
+  - [ ] Update `apps/strapi/src/documentMiddlewares/page.ts`
+  - [ ] Use correct populate pattern (primitives: `true`, nested: `{ populate: {...} }`)
+- [ ] Regenerate TypeScript types: `yarn generate:types`
+- [ ] Export Config Sync in Strapi admin
+- [ ] **TEST: Start Strapi dev server**
+  - [ ] NO ValidationError in logs
+  - [ ] Component appears in Strapi admin
+  - [ ] Browser console clean
+
+### Frontend Steps (Next.js)
+
+- [ ] Refactor React component to use shared organisms
+- [ ] Remove duplicate code (headings, badges, wrappers)
+- [ ] Maintain existing functionality
+- [ ] Update imports and component registration
+- [ ] **TEST: Start UI dev server**
+  - [ ] Section renders correctly
+  - [ ] NO React errors in console
+  - [ ] All variants/states working
+
+### Validation & Testing
+
+- [ ] No TypeScript errors in Strapi
+- [ ] No TypeScript errors in Next.js
+- [ ] **No ValidationErrors in Strapi logs** (CRITICAL!)
+- [ ] **No console errors in browser** (CRITICAL!)
+- [ ] Section renders correctly in frontend
+- [ ] All variants/states tested
+- [ ] Responsive design verified
+- [ ] Storybook stories created (if applicable)
+- [ ] Visual regression tests baseline captured
+
+### Commit (ONLY After All Tests Pass!)
+
+- [ ] **All tests above pass** (NON-NEGOTIABLE!)
+- [ ] Follow conventional commit format
+- [ ] One section per commit (small, atomic)
+- [ ] Push to GitHub immediately after commit
+- [ ] Verify GitHub Actions pass
+
+**See Also:**
+
+- [Test-Driven Refactoring Workflow](../../06-workflows/test-driven-refactoring.md) - Mandatory testing discipline
+- [Component Workflow](../../04-components/workflow.md) - Detailed step-by-step process
+- [Middleware Populate Patterns](../../03-strapi/middleware-populate-patterns.md) - Critical reference
+
+**Time Estimate**: 40-60 minutes per section (with proper testing)
+
+---
+
 ## Final Thoughts
 
 This plan is ambitious but achievable. The key is **discipline**:
@@ -648,6 +708,8 @@ This plan is ambitious but achievable. The key is **discipline**:
 - ✅ Yes to documenting as we go
 
 **Remember our ethos**: Prepare well, or be prepared to fail.
+
+**NEW (Nov 20, 2025)**: Test after EVERY change. Never batch refactorings without testing each one. 5-10 minutes testing saves 2+ hours debugging.
 
 We're preparing well. We will succeed.
 

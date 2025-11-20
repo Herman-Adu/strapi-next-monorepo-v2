@@ -48,8 +48,8 @@ export function GlassmorphismCard({
         "bg-white/80 backdrop-blur-sm",
         // Gradient overlay
         "from-primary/5 via-background to-background bg-gradient-to-br",
-        // Border colors - consistent across themes
-        "hover:border-primary/70 border-slate-300",
+        // Border colors - theme primary green
+        "border-primary/20 hover:border-primary/70",
         // Shadow with hover states
         "hover:shadow-primary/5 hover:shadow-md",
         // Variant (border radius)

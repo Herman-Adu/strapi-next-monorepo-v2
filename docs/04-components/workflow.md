@@ -402,6 +402,8 @@ When using shared atomic components (badge, header, background), you MUST popula
 - ❌ Component shows in API response ❌ (empty/null)
 - ❌ Component renders on frontend ❌ (no data)
 
+**📚 Quick Reference:** See [Middleware Populate Patterns Guide](../../03-strapi/middleware-populate-patterns.md) for detailed patterns and troubleshooting.
+
 ---
 
 ### Step 1.5: Handle TypeScript Errors (Temporary)
@@ -486,6 +488,80 @@ apps/strapi/config/sync/
 
 ---
 
+### Step 1.8: Test Locally (MANDATORY - NON-NEGOTIABLE!)
+
+**🚨 CRITICAL**: Do NOT proceed to Phase 2 until you've tested the schema changes work correctly. This catches bugs at point of introduction instead of discovering them many commits later.
+
+**Why This Matters:**
+
+- ✅ Catches middleware populate errors immediately (2 min fix)
+- ✅ Prevents ValidationError propagating through multiple commits (2+ hours debugging)
+- ✅ Verifies schema changes work before building on top of them
+- ✅ Professional development discipline - test after EVERY change
+
+**Testing Steps (5-10 minutes):**
+
+1. **Start Strapi Dev Server:**
+
+   ```powershell
+   cd apps\strapi
+   yarn dev
+   ```
+
+   Wait for "Strapi started successfully"
+   **Check terminal logs** - should see NO ValidationError
+
+2. **Verify in Strapi Admin** (http://localhost:1337/admin):
+
+   - Navigate to Content Manager
+   - Look for your new component in the picker
+   - Create test entry with the new component
+   - Check browser console - NO errors should appear
+
+3. **Start Frontend Dev Server** (new terminal):
+
+   ```powershell
+   cd apps\ui
+   yarn dev
+   ```
+
+   Wait for "Ready in X.Xs"
+
+4. **Verify in Frontend** (http://localhost:3000):
+
+   - Navigate to a test page
+   - Check browser console - NO React errors
+   - Verify Strapi terminal shows no errors when page loads
+
+**Verification Checklist:**
+
+- [ ] No ValidationError in Strapi terminal logs
+- [ ] No console errors in Strapi admin browser
+- [ ] Component appears in Strapi picker
+- [ ] No console errors in frontend browser
+- [ ] Strapi terminal clean when frontend loads pages
+
+**If ANY test fails:**
+
+- ❌ DO NOT proceed to Phase 2
+- ❌ DO NOT commit changes
+- ✅ Fix the issue immediately
+- ✅ Re-run tests until all pass
+- ✅ Only then proceed to Phase 2
+
+**Time Investment**: 5-10 minutes per component  
+**Time Saved**: Hours of debugging batched changes
+
+**Real Example (Nov 20, 2025):**
+
+- Skipped testing after schema changes ❌
+- Made 9 commits without testing ❌
+- Bug introduced in commit 1, discovered in commit 9 ❌
+- Result: 2+ hours debugging ❌
+- Lesson: TEST AFTER EVERY CHANGE ✅
+
+---
+
 ### ✅ Phase 1 Checklist
 
 Before moving to Phase 2:
@@ -497,6 +573,7 @@ Before moving to Phase 2:
 - [ ] Temporary `as any` type assertion added (if TypeScript errors)
 - [ ] Strapi restarted successfully (no errors)
 - [ ] Config sync exported
+- [ ] **🚨 TESTED LOCALLY - All checks pass** (NEW - MANDATORY!)
 - [ ] All files saved
 
 ---
@@ -1837,7 +1914,39 @@ apps/strapi/config/sync/
   core-store.plugin_content_manager_configuration_components##elements.your-component.json
 ```
 
-**4. Regenerate Types**
+**4. 🔴 UPDATE MIDDLEWARE POPULATES (If Field Type Changed)**
+
+**File:** `apps/strapi/src/documentMiddlewares/page.ts`
+
+**When to update:**
+
+- ✅ Changed from component to primitive (or vice versa)
+- ✅ Added/removed relation fields
+- ✅ Renamed fields
+- ❌ Only changed description/validation (skip this step)
+
+**Quick Check:**
+
+```
+Did field type change (e.g., icon component → iconType enum)?
+├── YES → Update populate middleware
+│   └── See docs/03-strapi/middleware-populate-patterns.md
+└── NO → Skip middleware update
+```
+
+**Example - Icon Component → IconType Enum:**
+
+```typescript
+// BEFORE (component):
+ctaButtons: { populate: { icon: true, link: true } }
+
+// AFTER (primitive enum):
+ctaButtons: true
+```
+
+**Why this matters:** Middleware trying to populate a deleted field causes ValidationError on page load.
+
+**5. Regenerate Types**
 
 ```powershell
 cd apps\strapi
@@ -1994,6 +2103,27 @@ Example: Changing `string` to `integer`
 2. Manually migrate data in Content Manager
 3. Delete old field after migration
 4. Rename new field if needed
+
+---
+
+### Checklist for Modifying Components
+
+When modifying an existing component:
+
+- [ ] 1. Edit schema JSON file
+- [ ] 2. Wait for Strapi auto-reload
+- [ ] 3. Export Config Sync in Strapi admin
+- [ ] 4. **Check if middleware needs update** (field type changed?)
+  - [ ] If YES: Update `apps/strapi/src/documentMiddlewares/page.ts`
+  - [ ] See [Middleware Populate Patterns](../../03-strapi/middleware-populate-patterns.md)
+- [ ] 5. Regenerate types: `yarn generate:types`
+- [ ] 6. Update frontend component (if needed)
+- [ ] 7. **Test locally** (start dev servers, check for errors)
+- [ ] 8. Verify in Content Manager (field appears)
+- [ ] 9. Verify on frontend (functionality works)
+- [ ] 10. Commit changes (only after all tests pass)
+
+**🚨 Common Mistake:** Forgetting step 4 (middleware update) after refactoring icon components to iconType enums. This causes ValidationError on page load. See [Nov 20, 2025 bug fix](../../11-recovery/recovery-document.md) for real-world example.
 
 ---
 
