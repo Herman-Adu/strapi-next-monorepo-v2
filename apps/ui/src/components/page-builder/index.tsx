@@ -8,7 +8,7 @@ import StrapiFeatureGridSection from "@/components/page-builder/components/secti
 import StrapiFinalCTASection from "@/components/page-builder/components/sections/StrapiFinalCTASection"
 import StrapiHero from "@/components/page-builder/components/sections/StrapiHero"
 import StrapiHorizontalImages from "@/components/page-builder/components/sections/StrapiHorizontalImages"
-import StrapiImageWithCTAButton from "@/components/page-builder/components/sections/StrapiImageWithCTAButton"
+import StrapiImageWithCTAButton from "@/components/page-builder/components/elements/StrapiImageWithCTAButton"
 import StrapiIntegrationGridSection from "@/components/page-builder/components/sections/StrapiIntegrationGridSection"
 import StrapiLandingHero from "@/components/page-builder/components/sections/StrapiLandingHero"
 import StrapiMarqueeSection from "@/components/page-builder/components/sections/StrapiMarqueeSection"
