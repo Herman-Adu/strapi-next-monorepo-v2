@@ -6,8 +6,8 @@
       "filterable": true,
       "searchable": true,
       "pageSize": 10,
-      "mainField": "heading",
-      "defaultSortBy": "heading",
+      "mainField": "documentId",
+      "defaultSortBy": "documentId",
       "defaultSortOrder": "ASC"
     },
     "metadatas": {
@@ -19,32 +19,46 @@
           "sortable": false
         }
       },
-      "heading": {
+      "background": {
         "edit": {
-          "label": "heading",
+          "label": "background",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "heading",
-          "searchable": true,
-          "sortable": true
+          "label": "background",
+          "searchable": false,
+          "sortable": false
         }
       },
-      "description": {
+      "badge": {
         "edit": {
-          "label": "description",
+          "label": "badge",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "description",
-          "searchable": true,
-          "sortable": true
+          "label": "badge",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "header": {
+        "edit": {
+          "label": "header",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "header",
+          "searchable": false,
+          "sortable": false
         }
       },
       "roadmapItems": {
@@ -85,18 +99,13 @@
       }
     },
     "layouts": {
-      "list": ["id", "heading", "description", "roadmapItems"],
+      "list": [
+        "id",
+        "roadmapItems",
+        "background",
+        "badge"
+      ],
       "edit": [
-        [
-          {
-            "name": "heading",
-            "size": 6
-          },
-          {
-            "name": "description",
-            "size": 6
-          }
-        ],
         [
           {
             "name": "roadmapItems",
@@ -106,6 +115,24 @@
         [
           {
             "name": "footerNotes",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "background",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "badge",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "header",
             "size": 12
           }
         ]

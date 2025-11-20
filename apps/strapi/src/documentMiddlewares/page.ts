@@ -109,7 +109,7 @@ const pagePopulateObject: FindOne<"api::page.page">["populate"] = {
               descriptionTextStyle: { populate: { customGradient: true } },
             },
           },
-          workflowPoints: { populate: { icon: true } },
+          workflowPoints: true,
           image: { populate: { media: true } },
         },
       },
@@ -153,7 +153,7 @@ const pagePopulateObject: FindOne<"api::page.page">["populate"] = {
               descriptionTextStyle: { populate: { customGradient: true } },
             },
           },
-          ctaButtons: { populate: { icon: true, link: true } },
+          ctaButtons: true,
         },
       },
       "sections.faq": {
