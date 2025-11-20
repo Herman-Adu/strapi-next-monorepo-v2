@@ -148,7 +148,8 @@ const mockFeaturedTestimonial: Data.Component<"elements.testimonial-card"> = {
 const mockTestimonial3Stars: Data.Component<"elements.testimonial-card"> = {
   ...mockTestimonialWithImage,
   id: 4,
-  quote: "Good product overall. There's room for improvement, but it gets the job done.",
+  quote:
+    "Good product overall. There's room for improvement, but it gets the job done.",
   authorName: "David Kim",
   authorRole: "Software Engineer",
   authorCompany: undefined,
