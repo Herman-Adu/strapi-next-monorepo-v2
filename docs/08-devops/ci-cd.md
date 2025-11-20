@@ -209,16 +209,32 @@ yarn commit
 
 **Managed by**: Husky + lint-staged
 
-**Automatically runs**:
+**Automatically runs (in order)**:
 
-1. Prettier on staged files (`*.{js,jsx,ts,tsx,md,css,scss}`)
-2. ESLint with `--fix` flag
-3. Format check to ensure consistency
+1. **Prettier** (`--write`) - Normalizes line endings (CRLF → LF) + formats code
+2. **ESLint** (`--fix`) - Fixes linting issues
+3. **Auto-stage changes** - Formatted files automatically added to commit
+
+**Why this order matters**:
+
+- Prettier **must** run first to normalize line endings (Windows CRLF → Linux LF)
+- Prevents CI failures due to line ending differences between Windows/Linux
+- Ensures all code meets formatting standards before commit
 
 **Configuration**:
 
-- `.lintstagedrc.js` (root and `apps/ui/`)
-- `.husky/pre-commit`
+- `.lintstagedrc.js` (root - runs `yarn format` = `prettier --write`)
+- `apps/ui/.lintstagedrc.js` (UI-specific - runs prettier + ESLint)
+- `.husky/pre-commit` (triggers lint-staged)
+- `.gitattributes` (enforces `eol=lf` for all text files)
+- `.editorconfig` (IDE-level `end_of_line = lf`)
+
+**Multi-layer line ending defense**:
+
+1. **Editor**: `.editorconfig` prevents CRLF creation while typing
+2. **Git**: `.gitattributes` auto-converts CRLF → LF on `git add`
+3. **Pre-commit**: `prettier --write` normalizes any remaining CRLF
+4. **CI**: Final safety net checks formatting (should rarely fail)
 
 ## CI/CD Best Practices
 
