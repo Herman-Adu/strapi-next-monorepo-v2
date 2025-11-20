@@ -353,6 +353,65 @@ apps/ui/src/components/page-builder/
 
 ---
 
+### 2.2.1 Frontend Molecules (Extracted - Phase 2) ✅ **NEW - NOVEMBER 20, 2025**
+
+**Status**: ✅ **PHASE 2 COMPLETE** - 3 molecules extracted with comprehensive Storybook stories
+
+| Component Name    | File                  | Atomic Level | Used In                                 | Storybook Stories              | Chromatic   | Priority    | Notes                                                    |
+| ----------------- | --------------------- | ------------ | --------------------------------------- | ------------------------------ | ----------- | ----------- | -------------------------------------------------------- |
+| GlassmorphismCard | GlassmorphismCard.tsx | ✅ MOLECULE  | Newsletter, ContactForm                 | ✅ 15 stories (commit b1e534c) | ✅ Approved | ✅ Complete | White glassmorphic card with gradient, border, glow      |
+| GDPRCheckbox      | GDPRCheckbox.tsx      | ✅ MOLECULE  | Newsletter, ContactForm, NewsletterForm | ✅ 18 stories (commit afa24d1) | ✅ Approved | ✅ Complete | GDPR consent checkbox with 3 variants                    |
+| TestimonialCard   | TestimonialCard.tsx   | ✅ MOLECULE  | TestimonialsSection                     | ✅ 20 stories (commit f0c7060) | ✅ Approved | ✅ Complete | Customer testimonial with ratings, image, featured badge |
+
+**Storybook Links**:
+
+- Published Storybook: https://6919eed03e6f6daad884aa4c-tpgcdtbpih.chromatic.com/
+- Chromatic Build 15: 56 baselines approved ✅
+
+**Component Details**:
+
+1. **GlassmorphismCard** (72 lines, 130 test lines)
+
+   - **Props**: `size` (sm/md/lg), `glowEffect` (boolean), `variant` (rounded-xl/rounded-sm), `className`
+   - **Refactored From**: Newsletter (2 instances), ContactForm (1 instance)
+   - **Storybook**: 15 stories covering all sizes, glow effects, variants, dark mode, mobile, custom styling
+   - **Commit**: b1e534c (November 20, 2025)
+   - **Test-Driven**: Created stories → tested → committed
+
+2. **GDPRCheckbox** (119 lines, 175 test lines)
+
+   - **Props**: `id`, `checked`, `onCheckedChange`, `link`, `labelPrefix`, `variant`, `className`
+   - **Variants**: glassmorphic-xl, glassmorphic-sm, simple
+   - **Refactored From**: Newsletter, ContactForm, NewsletterForm
+   - **Storybook**: 18 stories covering all variants, customization, real-world examples
+   - **Commit**: afa24d1 (November 20, 2025)
+   - **Test-Driven**: Created stories → tested → committed
+
+3. **TestimonialCard** (88 lines, 195 test lines)
+   - **Props**: `testimonial`, `showRatings`, `showImages`, `className`
+   - **Refactored From**: StrapiTestimonialsSection (removed 82-line inline component)
+   - **Storybook**: 20 stories covering ratings, images, featured states, grid/marquee layouts
+   - **Commit**: f0c7060 (November 20, 2025)
+   - **Test-Driven**: Created stories → tested → committed
+
+**Analysis**:
+
+- ✅ All molecules extracted from larger components (reduced duplication)
+- ✅ Comprehensive test coverage (130-195 lines per component)
+- ✅ 53 total Storybook stories created
+- ✅ Chromatic baselines approved (visual regression testing active)
+- ✅ Systematic process validated (30-40 min per component with workflow)
+- ✅ Critical fix applied (Storybook CSS import in preview.ts)
+
+**Process Achievement**:
+
+- **Time**: 90 minutes total for all 3 molecules (including comprehensive stories)
+- **Quality**: All stories tested and verified before commit
+- **Documentation**: Systematic workflow documented in testing strategy
+- **Impact**: Established baseline for future molecule story creation
+
+---
+
 ### 2.3 Frontend Forms
 
 | Component Name | File | Atomic Level | Renders Strapi        | Issues         | Priority | Notes                                              |
