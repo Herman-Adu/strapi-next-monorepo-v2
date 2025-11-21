@@ -5,7 +5,7 @@ import {
   SectionHeader,
   SectionWrapper,
 } from "@/components/page-builder/shared"
-import { TestimonialCard } from "@/components/page-builder/molecules/TestimonialCard"
+import { StrapiTestimonialCard } from "@/components/page-builder/components/elements/StrapiTestimonialCard"
 import { Marquee } from "@/components/ui/marquee"
 import { cn } from "@/lib/styles"
 
@@ -50,9 +50,9 @@ export function StrapiTestimonialsSection({
           <div>
             <Marquee pauseOnHover className="[--duration:40s]">
               {testimonials.map((testimonial, index) => (
-                <TestimonialCard
+                <StrapiTestimonialCard
                   key={index}
-                  testimonial={testimonial}
+                  component={testimonial}
                   showRatings={component.showRatings ?? true}
                   showImages={component.showImages ?? true}
                   className="w-[400px]"
@@ -72,9 +72,9 @@ export function StrapiTestimonialsSection({
             )}
           >
             {testimonials.map((testimonial, index) => (
-              <TestimonialCard
+              <StrapiTestimonialCard
                 key={index}
-                testimonial={testimonial}
+                component={testimonial}
                 showRatings={component.showRatings ?? true}
                 showImages={component.showImages ?? true}
               />

@@ -1,10 +1,9 @@
 import { AppLocale } from "@/types/general"
 
 import { fetchFooter } from "@/lib/strapi-api/content/server"
-import { cn } from "@/lib/styles"
 import StrapiNewsletter from "@/components/page-builder/components/forms/StrapiNewsletter"
+import StrapiFooterItem from "@/components/page-builder/components/elements/StrapiFooterItem"
 import StrapiImageWithLink from "@/components/page-builder/components/utilities/StrapiImageWithLink"
-import StrapiLink from "@/components/page-builder/components/utilities/StrapiLink"
 import StrapiSocialLinks from "@/components/page-builder/components/utilities/StrapiSocialLinks"
 
 export async function StrapiFooter({ locale }: { readonly locale: AppLocale }) {
@@ -62,27 +61,7 @@ export async function StrapiFooter({ locale }: { readonly locale: AppLocale }) {
           <div className="lg:col-span-2">
             <div className="grid grid-cols-2 gap-8 lg:grid-cols-3">
               {component.sections?.map((section) => (
-                <div key={section.id} className="flex flex-col">
-                  <h3 className="text-foreground mb-4 text-base font-semibold tracking-wide">
-                    {section.title}
-                  </h3>
-                  <div className="flex flex-col space-y-3">
-                    {section.links?.map((link, i) => (
-                      <StrapiLink
-                        key={String(link.id) + i}
-                        component={link}
-                        className={cn(
-                          "relative w-fit px-0 py-1 text-sm font-medium transition-colors duration-200",
-                          "text-muted-foreground hover:text-foreground",
-                          "no-underline hover:no-underline",
-                          "after:absolute after:right-0 after:bottom-0 after:left-0 after:h-0.5",
-                          "after:bg-primary after:scale-x-0 after:transition-transform after:duration-200",
-                          "hover:after:scale-x-100"
-                        )}
-                      />
-                    ))}
-                  </div>
-                </div>
+                <StrapiFooterItem key={section.id} component={section} />
               ))}
             </div>
           </div>
