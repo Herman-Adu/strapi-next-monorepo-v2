@@ -1,4 +1,4 @@
-import { ReviewCard } from "@/components/review-card"
+import { ReviewCard } from "@/components/page-builder/molecules/ReviewCard"
 
 export default function ReviewPage() {
   return (

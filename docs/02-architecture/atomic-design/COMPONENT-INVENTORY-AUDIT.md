@@ -574,7 +574,7 @@ testimonials: {
 
 **Recommendation**: ✅ YES - Rename for consistency with atomic design terminology
 
-**Your Decision**: \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+**Your Decision**: YES rename `elements/` → `molecules/` during refactoring
 
 ---
 
@@ -590,7 +590,7 @@ testimonials: {
 
 **Recommendation**: ✅ YES - Reclassify during refactoring (keep utilities/ for ck-editor-content only)
 
-**Your Decision**: \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+**Your Decision**: YES - Rename for consistency with atomic design terminology
 
 ---
 
@@ -607,7 +607,7 @@ testimonials: {
 
 **Recommendation**: ✅ KEEP SEPARATE - Forms folder as special category (like SEO utilities)
 
-**Your Decision**: \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+**Your Decision**: KEEP SEPARATE - Forms folder as special category (like SEO utilities)
 
 ---
 
@@ -623,7 +623,7 @@ testimonials: {
 
 **Recommendation**: ⏸️ DEFER - Verify frontend usage first during section refactoring (Day 2-9)
 
-**Your Decision**: \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+**Your Decision**: Duplication is intentional (different heading for component, i.e. newsletter cta form section heading)
 
 ---
 
@@ -639,7 +639,7 @@ testimonials: {
 
 **Recommendation**: ✅ HIGH PRIORITY - Refactor in Days 2-4 (after middleware bug fix)
 
-**Your Decision**: \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+**Your Decision**: Leave hero till last, as i have plans for much nicer hero sections, that will need atomic implementation
 
 ---
 
