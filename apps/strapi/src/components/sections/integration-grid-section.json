@@ -24,7 +24,7 @@
     "integrations": {
       "type": "component",
       "repeatable": true,
-      "component": "elements.integration-card",
+      "component": "molecules.integration-card",
       "min": 1
     },
     "gridColumns": {

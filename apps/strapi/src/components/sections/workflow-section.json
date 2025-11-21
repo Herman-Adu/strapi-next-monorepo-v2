@@ -24,7 +24,7 @@
     "workflowPoints": {
       "type": "component",
       "repeatable": true,
-      "component": "elements.list-item"
+      "component": "molecules.list-item"
     },
     "image": {
       "type": "component",

@@ -72,7 +72,31 @@ export interface AtomsTextStyle extends Struct.ComponentSchema {
   }
 }
 
-export interface ElementsCompanyLogo extends Struct.ComponentSchema {
+export interface FormsContactForm extends Struct.ComponentSchema {
+  collectionName: "components_forms_contact_forms"
+  info: {
+    displayName: "ContactForm"
+  }
+  attributes: {
+    description: Schema.Attribute.Text
+    gdpr: Schema.Attribute.Component<"utilities.link", false>
+    title: Schema.Attribute.String
+  }
+}
+
+export interface FormsNewsletterForm extends Struct.ComponentSchema {
+  collectionName: "components_forms_newsletter_forms"
+  info: {
+    displayName: "Newsletter"
+  }
+  attributes: {
+    description: Schema.Attribute.Text
+    gdpr: Schema.Attribute.Component<"utilities.link", false>
+    title: Schema.Attribute.String
+  }
+}
+
+export interface MoleculesCompanyLogo extends Struct.ComponentSchema {
   collectionName: "components_elements_company_logos"
   info: {
     description: "Company logo with name or image"
@@ -84,7 +108,7 @@ export interface ElementsCompanyLogo extends Struct.ComponentSchema {
   }
 }
 
-export interface ElementsFeatureCard extends Struct.ComponentSchema {
+export interface MoleculesFeatureCard extends Struct.ComponentSchema {
   collectionName: "components_elements_feature_cards"
   info: {
     description: "Feature card with icon, title and description"
@@ -97,7 +121,7 @@ export interface ElementsFeatureCard extends Struct.ComponentSchema {
   }
 }
 
-export interface ElementsFooterItem extends Struct.ComponentSchema {
+export interface MoleculesFooterItem extends Struct.ComponentSchema {
   collectionName: "components_elements_footer_items"
   info: {
     description: ""
@@ -109,7 +133,7 @@ export interface ElementsFooterItem extends Struct.ComponentSchema {
   }
 }
 
-export interface ElementsIconButton extends Struct.ComponentSchema {
+export interface MoleculesIconButton extends Struct.ComponentSchema {
   collectionName: "components_elements_icon_buttons"
   info: {
     description: "Button with icon and link"
@@ -135,7 +159,7 @@ export interface ElementsIconButton extends Struct.ComponentSchema {
   }
 }
 
-export interface ElementsIntegrationCard extends Struct.ComponentSchema {
+export interface MoleculesIntegrationCard extends Struct.ComponentSchema {
   collectionName: "components_elements_integration_cards"
   info: {
     description: "Integration card with icon, title, description, category and link"
@@ -166,7 +190,7 @@ export interface ElementsIntegrationCard extends Struct.ComponentSchema {
   }
 }
 
-export interface ElementsListItem extends Struct.ComponentSchema {
+export interface MoleculesListItem extends Struct.ComponentSchema {
   collectionName: "components_elements_list_items"
   info: {
     description: "List item with title, description and optional icon"
@@ -180,7 +204,7 @@ export interface ElementsListItem extends Struct.ComponentSchema {
   }
 }
 
-export interface ElementsMarqueeLogo extends Struct.ComponentSchema {
+export interface MoleculesMarqueeLogo extends Struct.ComponentSchema {
   collectionName: "components_elements_marquee_logos"
   info: {
     description: "Logo item for marquee displays"
@@ -196,7 +220,7 @@ export interface ElementsMarqueeLogo extends Struct.ComponentSchema {
   }
 }
 
-export interface ElementsMarqueeReview extends Struct.ComponentSchema {
+export interface MoleculesMarqueeReview extends Struct.ComponentSchema {
   collectionName: "components_elements_marquee_reviews"
   info: {
     description: "Review/comment item for marquee displays"
@@ -218,7 +242,7 @@ export interface ElementsMarqueeReview extends Struct.ComponentSchema {
   }
 }
 
-export interface ElementsMarqueeTestimonial extends Struct.ComponentSchema {
+export interface MoleculesMarqueeTestimonial extends Struct.ComponentSchema {
   collectionName: "components_elements_marquee_testimonials"
   info: {
     description: "Testimonial item for marquee displays"
@@ -241,7 +265,7 @@ export interface ElementsMarqueeTestimonial extends Struct.ComponentSchema {
   }
 }
 
-export interface ElementsMarqueeTestimonialPro extends Struct.ComponentSchema {
+export interface MoleculesMarqueeTestimonialPro extends Struct.ComponentSchema {
   collectionName: "components_elements_marquee_testimonials_pro"
   info: {
     description: "Pro Block testimonial with emerald accents and enhanced styling"
@@ -264,7 +288,7 @@ export interface ElementsMarqueeTestimonialPro extends Struct.ComponentSchema {
   }
 }
 
-export interface ElementsPartnerCard extends Struct.ComponentSchema {
+export interface MoleculesPartnerCard extends Struct.ComponentSchema {
   collectionName: "components_elements_partner_cards"
   info: {
     description: "Partner showcase card with logo, name, description and link"
@@ -280,7 +304,7 @@ export interface ElementsPartnerCard extends Struct.ComponentSchema {
   }
 }
 
-export interface ElementsStatCard extends Struct.ComponentSchema {
+export interface MoleculesStatCard extends Struct.ComponentSchema {
   collectionName: "components_elements_stat_cards"
   info: {
     description: "Statistic card with number and description"
@@ -292,7 +316,7 @@ export interface ElementsStatCard extends Struct.ComponentSchema {
   }
 }
 
-export interface ElementsTestimonialCard extends Struct.ComponentSchema {
+export interface MoleculesTestimonialCard extends Struct.ComponentSchema {
   collectionName: "components_elements_testimonial_cards"
   info: {
     description: "Individual testimonial with author info, quote, and rating"
@@ -317,30 +341,6 @@ export interface ElementsTestimonialCard extends Struct.ComponentSchema {
   }
 }
 
-export interface FormsContactForm extends Struct.ComponentSchema {
-  collectionName: "components_forms_contact_forms"
-  info: {
-    displayName: "ContactForm"
-  }
-  attributes: {
-    description: Schema.Attribute.Text
-    gdpr: Schema.Attribute.Component<"utilities.link", false>
-    title: Schema.Attribute.String
-  }
-}
-
-export interface FormsNewsletterForm extends Struct.ComponentSchema {
-  collectionName: "components_forms_newsletter_forms"
-  info: {
-    displayName: "Newsletter"
-  }
-  attributes: {
-    description: Schema.Attribute.Text
-    gdpr: Schema.Attribute.Component<"utilities.link", false>
-    title: Schema.Attribute.String
-  }
-}
-
 export interface SectionsBenefitsSection extends Struct.ComponentSchema {
   collectionName: "components_sections_benefits_sections"
   info: {
@@ -350,7 +350,7 @@ export interface SectionsBenefitsSection extends Struct.ComponentSchema {
   attributes: {
     background: Schema.Attribute.Component<"shared.section-background", false>
     badge: Schema.Attribute.Component<"shared.section-badge", false>
-    benefits: Schema.Attribute.Component<"elements.feature-card", true> &
+    benefits: Schema.Attribute.Component<"molecules.feature-card", true> &
       Schema.Attribute.SetMinMax<
         {
           min: 1
@@ -390,8 +390,8 @@ export interface SectionsFeatureGridSection extends Struct.ComponentSchema {
     gridColumns: Schema.Attribute.Enumeration<["2", "3", "4", "6"]> &
       Schema.Attribute.DefaultTo<"3">
     header: Schema.Attribute.Component<"shared.section-header", false>
-    items: Schema.Attribute.Component<"elements.feature-card", true>
-    listItems: Schema.Attribute.Component<"elements.list-item", true>
+    items: Schema.Attribute.Component<"molecules.feature-card", true>
+    listItems: Schema.Attribute.Component<"molecules.list-item", true>
   }
 }
 
@@ -404,7 +404,7 @@ export interface SectionsFinalCtaSection extends Struct.ComponentSchema {
   attributes: {
     background: Schema.Attribute.Component<"shared.section-background", false>
     badge: Schema.Attribute.Component<"shared.section-badge", false>
-    ctaButtons: Schema.Attribute.Component<"elements.icon-button", true> &
+    ctaButtons: Schema.Attribute.Component<"molecules.icon-button", true> &
       Schema.Attribute.SetMinMax<
         {
           max: 2
@@ -484,7 +484,7 @@ export interface SectionsIntegrationGridSection extends Struct.ComponentSchema {
       Schema.Attribute.DefaultTo<"3">
     header: Schema.Attribute.Component<"shared.section-header", false>
     integrations: Schema.Attribute.Component<
-      "elements.integration-card",
+      "molecules.integration-card",
       true
     > &
       Schema.Attribute.SetMinMax<
@@ -504,7 +504,7 @@ export interface SectionsLandingHero extends Struct.ComponentSchema {
   }
   attributes: {
     badge: Schema.Attribute.String & Schema.Attribute.Required
-    ctaButtons: Schema.Attribute.Component<"elements.icon-button", true> &
+    ctaButtons: Schema.Attribute.Component<"molecules.icon-button", true> &
       Schema.Attribute.SetMinMax<
         {
           max: 2
@@ -549,12 +549,12 @@ export interface SectionsMarqueeSection extends Struct.ComponentSchema {
       Schema.Attribute.DefaultTo<40>
     gap: Schema.Attribute.String & Schema.Attribute.DefaultTo<"1rem">
     heading: Schema.Attribute.String
-    logos: Schema.Attribute.Component<"elements.marquee-logo", true>
+    logos: Schema.Attribute.Component<"molecules.marquee-logo", true>
     orientation: Schema.Attribute.Enumeration<["horizontal", "vertical"]> &
       Schema.Attribute.DefaultTo<"horizontal">
     pauseOnHover: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>
     reverse: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>
-    reviews: Schema.Attribute.Component<"elements.marquee-review", true>
+    reviews: Schema.Attribute.Component<"molecules.marquee-review", true>
     rows: Schema.Attribute.Integer &
       Schema.Attribute.Required &
       Schema.Attribute.SetMinMax<
@@ -567,11 +567,11 @@ export interface SectionsMarqueeSection extends Struct.ComponentSchema {
       Schema.Attribute.DefaultTo<1>
     showFade: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>
     testimonials: Schema.Attribute.Component<
-      "elements.marquee-testimonial",
+      "molecules.marquee-testimonial",
       true
     >
     testimonialsPro: Schema.Attribute.Component<
-      "elements.marquee-testimonial-pro",
+      "molecules.marquee-testimonial-pro",
       true
     >
     testimonialVariant: Schema.Attribute.Enumeration<["classic", "pro"]> &
@@ -590,7 +590,7 @@ export interface SectionsMetricsSection extends Struct.ComponentSchema {
     background: Schema.Attribute.Component<"shared.section-background", false>
     badge: Schema.Attribute.Component<"shared.section-badge", false>
     header: Schema.Attribute.Component<"shared.section-header", false>
-    metrics: Schema.Attribute.Component<"elements.stat-card", true> &
+    metrics: Schema.Attribute.Component<"molecules.stat-card", true> &
       Schema.Attribute.SetMinMax<
         {
           min: 1
@@ -609,7 +609,7 @@ export interface SectionsNewsletterCtaSection extends Struct.ComponentSchema {
   attributes: {
     background: Schema.Attribute.Component<"shared.section-background", false>
     badge: Schema.Attribute.Component<"shared.section-badge", false>
-    benefits: Schema.Attribute.Component<"elements.list-item", true> &
+    benefits: Schema.Attribute.Component<"molecules.list-item", true> &
       Schema.Attribute.SetMinMax<
         {
           max: 2
@@ -618,7 +618,7 @@ export interface SectionsNewsletterCtaSection extends Struct.ComponentSchema {
       >
     buttonText: Schema.Attribute.String &
       Schema.Attribute.DefaultTo<"Subscribe">
-    ctaButtons: Schema.Attribute.Component<"elements.icon-button", true> &
+    ctaButtons: Schema.Attribute.Component<"molecules.icon-button", true> &
       Schema.Attribute.SetMinMax<
         {
           max: 2
@@ -653,7 +653,7 @@ export interface SectionsPartnerShowcaseSection extends Struct.ComponentSchema {
     gridColumns: Schema.Attribute.Enumeration<["2", "3", "4", "6"]> &
       Schema.Attribute.DefaultTo<"3">
     header: Schema.Attribute.Component<"shared.section-header", false>
-    partners: Schema.Attribute.Component<"elements.partner-card", true> &
+    partners: Schema.Attribute.Component<"molecules.partner-card", true> &
       Schema.Attribute.SetMinMax<
         {
           min: 1
@@ -680,7 +680,7 @@ export interface SectionsRoadmapSection extends Struct.ComponentSchema {
         number
       >
     header: Schema.Attribute.Component<"shared.section-header", false>
-    roadmapItems: Schema.Attribute.Component<"elements.list-item", true>
+    roadmapItems: Schema.Attribute.Component<"molecules.list-item", true>
   }
 }
 
@@ -702,7 +702,7 @@ export interface SectionsTestimonialsSection extends Struct.ComponentSchema {
     showImages: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>
     showRatings: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>
     testimonials: Schema.Attribute.Component<
-      "elements.testimonial-card",
+      "molecules.testimonial-card",
       true
     > &
       Schema.Attribute.SetMinMax<
@@ -725,7 +725,7 @@ export interface SectionsWorkflowSection extends Struct.ComponentSchema {
     badge: Schema.Attribute.Component<"shared.section-badge", false>
     header: Schema.Attribute.Component<"shared.section-header", false>
     image: Schema.Attribute.Component<"utilities.basic-image", false>
-    workflowPoints: Schema.Attribute.Component<"elements.list-item", true>
+    workflowPoints: Schema.Attribute.Component<"molecules.list-item", true>
   }
 }
 
@@ -1031,21 +1031,21 @@ declare module "@strapi/strapi" {
       "atoms.gradient-colors": AtomsGradientColors
       "atoms.orb-animation": AtomsOrbAnimation
       "atoms.text-style": AtomsTextStyle
-      "elements.company-logo": ElementsCompanyLogo
-      "elements.feature-card": ElementsFeatureCard
-      "elements.footer-item": ElementsFooterItem
-      "elements.icon-button": ElementsIconButton
-      "elements.integration-card": ElementsIntegrationCard
-      "elements.list-item": ElementsListItem
-      "elements.marquee-logo": ElementsMarqueeLogo
-      "elements.marquee-review": ElementsMarqueeReview
-      "elements.marquee-testimonial": ElementsMarqueeTestimonial
-      "elements.marquee-testimonial-pro": ElementsMarqueeTestimonialPro
-      "elements.partner-card": ElementsPartnerCard
-      "elements.stat-card": ElementsStatCard
-      "elements.testimonial-card": ElementsTestimonialCard
       "forms.contact-form": FormsContactForm
       "forms.newsletter-form": FormsNewsletterForm
+      "molecules.company-logo": MoleculesCompanyLogo
+      "molecules.feature-card": MoleculesFeatureCard
+      "molecules.footer-item": MoleculesFooterItem
+      "molecules.icon-button": MoleculesIconButton
+      "molecules.integration-card": MoleculesIntegrationCard
+      "molecules.list-item": MoleculesListItem
+      "molecules.marquee-logo": MoleculesMarqueeLogo
+      "molecules.marquee-review": MoleculesMarqueeReview
+      "molecules.marquee-testimonial": MoleculesMarqueeTestimonial
+      "molecules.marquee-testimonial-pro": MoleculesMarqueeTestimonialPro
+      "molecules.partner-card": MoleculesPartnerCard
+      "molecules.stat-card": MoleculesStatCard
+      "molecules.testimonial-card": MoleculesTestimonialCard
       "sections.benefits-section": SectionsBenefitsSection
       "sections.faq": SectionsFaq
       "sections.feature-grid-section": SectionsFeatureGridSection

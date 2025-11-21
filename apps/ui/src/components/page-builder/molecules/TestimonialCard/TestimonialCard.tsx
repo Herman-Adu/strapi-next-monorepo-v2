@@ -29,7 +29,7 @@ import { StrapiBasicImage } from "@/components/page-builder/components/utilities
 
 export interface TestimonialCardProps {
   /** Testimonial data from Strapi */
-  testimonial: Data.Component<"elements.testimonial-card">
+  testimonial: Data.Component<"molecules.testimonial-card">
   /** Whether to show star ratings */
   showRatings?: boolean
   /** Whether to show author images */

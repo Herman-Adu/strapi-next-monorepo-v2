@@ -6,7 +6,7 @@ import { formatStrapiMediaUrl } from "@/lib/strapi-helpers"
 export function StrapiIntegrationCard({
   component,
 }: {
-  readonly component: Data.Component<"elements.integration-card">
+  readonly component: Data.Component<"molecules.integration-card">
 }) {
   const CardWrapper = component.link ? "a" : "div"
   const linkProps = component.link

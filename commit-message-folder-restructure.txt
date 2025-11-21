@@ -1,0 +1,53 @@
+refactor: rename elements/ folder to molecules/ for atomic design alignment
+
+BREAKING CHANGE: Component folder renamed elements/ → molecules/
+
+## Overview
+Renamed Strapi component folder from `elements/` to `molecules/` to align
+with atomic design terminology and architecture documentation.
+
+## Changes Made
+### Backend (Strapi)
+- Renamed: apps/strapi/src/components/elements/ → molecules/ (13 components)
+- Updated: 17 schema references across 13 files
+  - 12 section schemas (benefits, feature-grid, final-cta, landing-hero, 
+    integration-grid, marquee, metrics, newsletter-cta, partner-showcase,
+    roadmap, testimonials, workflow)
+  - 1 API schema (api/footer/schema.json)
+- Config sync: Exported clean, old elements.* configs deleted, new molecules.* created
+
+### Frontend (Next.js)
+- Updated: 6 type references in Strapi wrapper components
+  - StrapiMarqueeLogo, StrapiMarqueeReview, StrapiMarqueeTestimonial
+  - StrapiMarqueeTestimonialPro, StrapiStatCard, TestimonialCard interface
+- Updated: 7 type references in TestimonialCard.stories.tsx
+
+### Documentation
+- Updated: Component inventory audit documentation
+  - Marked folder rename as COMPLETED (Nov 22, 2025)
+  - Updated all 13 molecule paths from elements/ to molecules/
+  - Added completion status to action items
+
+## Testing
+- ✅ Backend build successful
+- ✅ Frontend build successful (production)
+- ✅ Both dev servers started without errors
+- ✅ Config sync verified clean (no differences)
+- ✅ TypeScript type checking passed
+
+## Components Affected (13 molecules)
+- icon-button, feature-card, testimonial-card, integration-card
+- partner-card, stat-card, list-item, company-logo, footer-item
+- marquee-logo, marquee-review, marquee-testimonial, marquee-testimonial-pro
+
+## Database Backup
+Created safety backup before changes:
+- File: apps/strapi/strapi-export-pre-folder-restructure.tar.gz
+- Location: apps/strapi/ directory
+
+## Related Work
+- Part of Phase 3 atomic refactoring initiative
+- Follows atomic design best practices (Option 1: Folder Restructuring)
+- TypeScript patterns standardized in docs/04-components/typescript-patterns.md
+
+Co-authored-by: Herman <herman@example.com>

@@ -23,7 +23,7 @@
           "localized": true
         }
       },
-      "component": "elements.footer-item",
+      "component": "molecules.footer-item",
       "repeatable": true
     },
     "copyRight": {

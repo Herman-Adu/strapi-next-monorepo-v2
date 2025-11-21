@@ -89,22 +89,22 @@
     "logos": {
       "type": "component",
       "repeatable": true,
-      "component": "elements.marquee-logo"
+      "component": "molecules.marquee-logo"
     },
     "testimonials": {
       "type": "component",
       "repeatable": true,
-      "component": "elements.marquee-testimonial"
+      "component": "molecules.marquee-testimonial"
     },
     "testimonialsPro": {
       "type": "component",
       "repeatable": true,
-      "component": "elements.marquee-testimonial-pro"
+      "component": "molecules.marquee-testimonial-pro"
     },
     "reviews": {
       "type": "component",
       "repeatable": true,
-      "component": "elements.marquee-review"
+      "component": "molecules.marquee-review"
     }
   }
 }

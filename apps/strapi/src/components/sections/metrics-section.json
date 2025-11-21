@@ -24,7 +24,7 @@
     "metrics": {
       "type": "component",
       "repeatable": true,
-      "component": "elements.stat-card",
+      "component": "molecules.stat-card",
       "min": 1
     }
   }

@@ -6,7 +6,7 @@ import { formatStrapiMediaUrl } from "@/lib/strapi-helpers"
 export function StrapiPartnerCard({
   component,
 }: {
-  readonly component: Data.Component<"elements.partner-card">
+  readonly component: Data.Component<"molecules.partner-card">
 }) {
   // ✅ Use new linkText and newTab fields with fallbacks
   const linkText = component.linkText ?? "Learn More"

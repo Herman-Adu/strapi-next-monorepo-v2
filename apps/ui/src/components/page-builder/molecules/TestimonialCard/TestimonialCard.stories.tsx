@@ -48,7 +48,7 @@ const meta: Meta<typeof TestimonialCard> = {
       control: "object",
       description: "Testimonial data from Strapi",
       table: {
-        type: { summary: 'Data.Component<"elements.testimonial-card">' },
+        type: { summary: 'Data.Component<"molecules.testimonial-card">' },
       },
     },
     showRatings: {
@@ -78,7 +78,7 @@ export default meta
 type Story = StoryObj<typeof TestimonialCard>
 
 // Mock testimonial data with image
-const mockTestimonialWithImage: Data.Component<"elements.testimonial-card"> = {
+const mockTestimonialWithImage: Data.Component<"molecules.testimonial-card"> = {
   id: 1,
   quote:
     "This product has completely transformed how we work. The team is more productive, and our clients are happier than ever. Highly recommend!",
@@ -112,20 +112,20 @@ const mockTestimonialWithImage: Data.Component<"elements.testimonial-card"> = {
       locale: null,
     },
   },
-} as Data.Component<"elements.testimonial-card">
+} as Data.Component<"molecules.testimonial-card">
 
 // Mock testimonial without image
-const mockTestimonialNoImage: Data.Component<"elements.testimonial-card"> = {
+const mockTestimonialNoImage: Data.Component<"molecules.testimonial-card"> = {
   ...mockTestimonialWithImage,
   id: 2,
   authorName: "Michael Chen",
   authorRole: "Product Manager",
   authorCompany: "Digital Solutions",
   authorImage: undefined,
-} as Data.Component<"elements.testimonial-card">
+} as Data.Component<"molecules.testimonial-card">
 
 // Featured testimonial
-const mockFeaturedTestimonial: Data.Component<"elements.testimonial-card"> = {
+const mockFeaturedTestimonial: Data.Component<"molecules.testimonial-card"> = {
   ...mockTestimonialWithImage,
   id: 3,
   quote:
@@ -142,10 +142,10 @@ const mockFeaturedTestimonial: Data.Component<"elements.testimonial-card"> = {
       alternativeText: "Emily Rodriguez",
     },
   },
-} as Data.Component<"elements.testimonial-card">
+} as Data.Component<"molecules.testimonial-card">
 
 // 3-star rating testimonial
-const mockTestimonial3Stars: Data.Component<"elements.testimonial-card"> = {
+const mockTestimonial3Stars: Data.Component<"molecules.testimonial-card"> = {
   ...mockTestimonialWithImage,
   id: 4,
   quote:
@@ -162,7 +162,7 @@ const mockTestimonial3Stars: Data.Component<"elements.testimonial-card"> = {
       alternativeText: "David Kim",
     },
   },
-} as Data.Component<"elements.testimonial-card">
+} as Data.Component<"molecules.testimonial-card">
 
 /**
  * Default State

@@ -1,5 +1,5 @@
 {
-  "key": "plugin_content_manager_configuration_components::elements.marquee-review",
+  "key": "plugin_content_manager_configuration_components::molecules.marquee-logo",
   "value": {
     "settings": {
       "bulkable": true,
@@ -19,6 +19,20 @@
           "sortable": false
         }
       },
+      "image": {
+        "edit": {
+          "label": "image",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "image",
+          "searchable": false,
+          "sortable": false
+        }
+      },
       "name": {
         "edit": {
           "label": "name",
@@ -33,58 +47,58 @@
           "sortable": true
         }
       },
-      "username": {
+      "link": {
         "edit": {
-          "label": "username",
+          "label": "link",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "username",
+          "label": "link",
           "searchable": true,
           "sortable": true
         }
       },
-      "avatar": {
+      "newTab": {
         "edit": {
-          "label": "avatar",
+          "label": "newTab",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "avatar",
-          "searchable": false,
-          "sortable": false
-        }
-      },
-      "body": {
-        "edit": {
-          "label": "body",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "body",
+          "label": "newTab",
           "searchable": true,
           "sortable": true
         }
       },
-      "rating": {
+      "showBackground": {
         "edit": {
-          "label": "rating",
+          "label": "showBackground",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "rating",
+          "label": "showBackground",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "altText": {
+        "edit": {
+          "label": "altText",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "altText",
           "searchable": true,
           "sortable": true
         }
@@ -99,37 +113,46 @@
       }
     },
     "layouts": {
-      "list": ["id", "name", "username", "avatar"],
+      "list": [
+        "id",
+        "image",
+        "name",
+        "link"
+      ],
       "edit": [
         [
           {
+            "name": "image",
+            "size": 6
+          },
+          {
             "name": "name",
             "size": 6
-          },
-          {
-            "name": "username",
-            "size": 6
           }
         ],
         [
           {
-            "name": "avatar",
+            "name": "link",
             "size": 6
           },
           {
-            "name": "body",
-            "size": 6
-          }
-        ],
-        [
-          {
-            "name": "rating",
+            "name": "newTab",
             "size": 4
+          }
+        ],
+        [
+          {
+            "name": "showBackground",
+            "size": 4
+          },
+          {
+            "name": "altText",
+            "size": 6
           }
         ]
       ]
     },
-    "uid": "elements.marquee-review",
+    "uid": "molecules.marquee-logo",
     "isComponent": true
   },
   "type": "object",

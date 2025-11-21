@@ -69,13 +69,13 @@
     "ctaButtons": {
       "type": "component",
       "repeatable": true,
-      "component": "elements.icon-button",
+      "component": "molecules.icon-button",
       "max": 2
     },
     "benefits": {
       "type": "component",
       "repeatable": true,
-      "component": "elements.list-item",
+      "component": "molecules.list-item",
       "max": 2
     }
   }

@@ -21,7 +21,7 @@
     "ctaButtons": {
       "type": "component",
       "repeatable": true,
-      "component": "elements.icon-button",
+      "component": "molecules.icon-button",
       "max": 2
     },
     "footerText": {

@@ -24,7 +24,7 @@ export function StrapiIconButton({
   component,
   className,
 }: {
-  readonly component: Data.Component<"elements.icon-button">
+  readonly component: Data.Component<"molecules.icon-button">
   readonly className?: string
 }) {
   if (!component.icon || !component.href) return null

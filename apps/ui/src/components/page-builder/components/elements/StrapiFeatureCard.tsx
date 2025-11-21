@@ -3,7 +3,7 @@ import { Data } from "@repo/strapi"
 export function StrapiFeatureCard({
   component,
 }: {
-  readonly component: Data.Component<"elements.feature-card">
+  readonly component: Data.Component<"molecules.feature-card">
 }) {
   return (
     <div className="border-border bg-card flex flex-col gap-3 rounded-lg border p-6 transition-shadow hover:shadow-lg">

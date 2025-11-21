@@ -24,7 +24,7 @@
     "benefits": {
       "type": "component",
       "repeatable": true,
-      "component": "elements.feature-card",
+      "component": "molecules.feature-card",
       "min": 1
     },
     "gridColumns": {

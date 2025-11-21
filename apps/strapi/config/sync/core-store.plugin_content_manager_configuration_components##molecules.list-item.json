@@ -1,13 +1,13 @@
 {
-  "key": "plugin_content_manager_configuration_components::elements.company-logo",
+  "key": "plugin_content_manager_configuration_components::molecules.list-item",
   "value": {
     "settings": {
       "bulkable": true,
       "filterable": true,
       "searchable": true,
       "pageSize": 10,
-      "mainField": "name",
-      "defaultSortBy": "name",
+      "mainField": "title",
+      "defaultSortBy": "title",
       "defaultSortOrder": "ASC"
     },
     "metadatas": {
@@ -19,32 +19,46 @@
           "sortable": false
         }
       },
-      "name": {
+      "title": {
         "edit": {
-          "label": "name",
+          "label": "title",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "name",
+          "label": "title",
           "searchable": true,
           "sortable": true
         }
       },
-      "image": {
+      "description": {
         "edit": {
-          "label": "image",
+          "label": "description",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "image",
-          "searchable": false,
-          "sortable": false
+          "label": "description",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "iconType": {
+        "edit": {
+          "label": "iconType",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "iconType",
+          "searchable": true,
+          "sortable": true
         }
       },
       "documentId": {
@@ -57,21 +71,32 @@
       }
     },
     "layouts": {
-      "list": ["id", "name", "image"],
+      "list": [
+        "id",
+        "title",
+        "description",
+        "iconType"
+      ],
       "edit": [
         [
           {
-            "name": "name",
+            "name": "title",
             "size": 6
           },
           {
-            "name": "image",
+            "name": "description",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "iconType",
             "size": 6
           }
         ]
       ]
     },
-    "uid": "elements.company-logo",
+    "uid": "molecules.list-item",
     "isComponent": true
   },
   "type": "object",

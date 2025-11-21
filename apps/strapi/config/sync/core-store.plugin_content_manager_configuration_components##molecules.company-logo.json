@@ -1,13 +1,13 @@
 {
-  "key": "plugin_content_manager_configuration_components::elements.stat-card",
+  "key": "plugin_content_manager_configuration_components::molecules.company-logo",
   "value": {
     "settings": {
       "bulkable": true,
       "filterable": true,
       "searchable": true,
       "pageSize": 10,
-      "mainField": "number",
-      "defaultSortBy": "number",
+      "mainField": "name",
+      "defaultSortBy": "name",
       "defaultSortOrder": "ASC"
     },
     "metadatas": {
@@ -19,32 +19,32 @@
           "sortable": false
         }
       },
-      "number": {
+      "name": {
         "edit": {
-          "label": "number",
+          "label": "name",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "number",
+          "label": "name",
           "searchable": true,
           "sortable": true
         }
       },
-      "description": {
+      "image": {
         "edit": {
-          "label": "description",
+          "label": "image",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "description",
-          "searchable": true,
-          "sortable": true
+          "label": "image",
+          "searchable": false,
+          "sortable": false
         }
       },
       "documentId": {
@@ -57,21 +57,25 @@
       }
     },
     "layouts": {
-      "list": ["id", "number", "description"],
+      "list": [
+        "id",
+        "name",
+        "image"
+      ],
       "edit": [
         [
           {
-            "name": "number",
+            "name": "name",
             "size": 6
           },
           {
-            "name": "description",
+            "name": "image",
             "size": 6
           }
         ]
       ]
     },
-    "uid": "elements.stat-card",
+    "uid": "molecules.company-logo",
     "isComponent": true
   },
   "type": "object",

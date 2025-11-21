@@ -6,7 +6,7 @@ import { formatStrapiMediaUrl } from "@/lib/strapi-helpers"
 export function StrapiCompanyLogo({
   component,
 }: {
-  readonly component: Data.Component<"elements.company-logo">
+  readonly component: Data.Component<"molecules.company-logo">
 }) {
   if (component.image) {
     const src = formatStrapiMediaUrl(component.image.url)

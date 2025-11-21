@@ -87,7 +87,7 @@ function formatNumber(num: number, original: string): string {
 export function StrapiStatCard({
   component,
 }: {
-  readonly component: Data.Component<"elements.stat-card">
+  readonly component: Data.Component<"molecules.stat-card">
 }) {
   // Fallback to "0" if number is null/undefined
   const numberValue = component.number ?? "0"

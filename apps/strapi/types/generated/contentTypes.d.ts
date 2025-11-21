@@ -514,7 +514,7 @@ export interface ApiFooterFooter extends Struct.SingleTypeSchema {
         }
       }>
     publishedAt: Schema.Attribute.DateTime
-    sections: Schema.Attribute.Component<"elements.footer-item", true> &
+    sections: Schema.Attribute.Component<"molecules.footer-item", true> &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true

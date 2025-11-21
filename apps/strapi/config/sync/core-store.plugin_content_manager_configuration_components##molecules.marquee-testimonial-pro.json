@@ -1,13 +1,13 @@
 {
-  "key": "plugin_content_manager_configuration_components::elements.partner-card",
+  "key": "plugin_content_manager_configuration_components::molecules.marquee-testimonial-pro",
   "value": {
     "settings": {
       "bulkable": true,
       "filterable": true,
       "searchable": true,
       "pageSize": 10,
-      "mainField": "name",
-      "defaultSortBy": "name",
+      "mainField": "author",
+      "defaultSortBy": "author",
       "defaultSortOrder": "ASC"
     },
     "metadatas": {
@@ -19,86 +19,86 @@
           "sortable": false
         }
       },
-      "name": {
+      "author": {
         "edit": {
-          "label": "name",
+          "label": "author",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "name",
+          "label": "author",
           "searchable": true,
           "sortable": true
         }
       },
-      "logo": {
+      "role": {
         "edit": {
-          "label": "logo",
+          "label": "role",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "logo",
+          "label": "role",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "company": {
+        "edit": {
+          "label": "company",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "company",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "avatar": {
+        "edit": {
+          "label": "avatar",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "avatar",
           "searchable": false,
           "sortable": false
         }
       },
-      "description": {
+      "quote": {
         "edit": {
-          "label": "description",
+          "label": "quote",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "description",
+          "label": "quote",
           "searchable": true,
           "sortable": true
         }
       },
-      "link": {
+      "rating": {
         "edit": {
-          "label": "link",
+          "label": "rating",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "link",
-          "searchable": true,
-          "sortable": true
-        }
-      },
-      "linkText": {
-        "edit": {
-          "label": "linkText",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "linkText",
-          "searchable": true,
-          "sortable": true
-        }
-      },
-      "newTab": {
-        "edit": {
-          "label": "newTab",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "newTab",
+          "label": "rating",
           "searchable": true,
           "sortable": true
         }
@@ -113,41 +113,46 @@
       }
     },
     "layouts": {
-      "list": ["id", "name", "logo", "description"],
+      "list": [
+        "id",
+        "author",
+        "role",
+        "company"
+      ],
       "edit": [
         [
           {
-            "name": "name",
+            "name": "author",
             "size": 6
           },
           {
-            "name": "logo",
+            "name": "role",
             "size": 6
           }
         ],
         [
           {
-            "name": "description",
+            "name": "company",
             "size": 6
           },
           {
-            "name": "link",
+            "name": "avatar",
             "size": 6
           }
         ],
         [
           {
-            "name": "linkText",
+            "name": "quote",
             "size": 6
           },
           {
-            "name": "newTab",
+            "name": "rating",
             "size": 4
           }
         ]
       ]
     },
-    "uid": "elements.partner-card",
+    "uid": "molecules.marquee-testimonial-pro",
     "isComponent": true
   },
   "type": "object",

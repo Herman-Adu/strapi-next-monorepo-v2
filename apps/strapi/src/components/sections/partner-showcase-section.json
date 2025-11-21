@@ -24,7 +24,7 @@
     "partners": {
       "type": "component",
       "repeatable": true,
-      "component": "elements.partner-card",
+      "component": "molecules.partner-card",
       "min": 1
     },
     "gridColumns": {

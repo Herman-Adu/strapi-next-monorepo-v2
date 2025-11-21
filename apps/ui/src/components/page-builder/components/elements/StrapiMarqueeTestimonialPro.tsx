@@ -9,7 +9,7 @@ export function StrapiMarqueeTestimonialPro({
   component,
   isVertical = false,
 }: {
-  readonly component: Data.Component<"elements.marquee-testimonial-pro">
+  readonly component: Data.Component<"molecules.marquee-testimonial-pro">
   readonly isVertical?: boolean
 }) {
   return (

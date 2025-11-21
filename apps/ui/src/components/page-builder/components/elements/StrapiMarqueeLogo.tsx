@@ -9,7 +9,7 @@ export function StrapiMarqueeLogo({
   component,
   isVertical = false,
 }: {
-  readonly component: Data.Component<"elements.marquee-logo">
+  readonly component: Data.Component<"molecules.marquee-logo">
   readonly isVertical?: boolean
 }) {
   const logoImage = component.image ? (

@@ -1,13 +1,13 @@
 {
-  "key": "plugin_content_manager_configuration_components::elements.integration-card",
+  "key": "plugin_content_manager_configuration_components::molecules.testimonial-card",
   "value": {
     "settings": {
       "bulkable": true,
       "filterable": true,
       "searchable": true,
       "pageSize": 10,
-      "mainField": "title",
-      "defaultSortBy": "title",
+      "mainField": "authorName",
+      "defaultSortBy": "authorName",
       "defaultSortOrder": "ASC"
     },
     "metadatas": {
@@ -19,100 +19,100 @@
           "sortable": false
         }
       },
-      "title": {
+      "quote": {
         "edit": {
-          "label": "title",
+          "label": "quote",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "title",
+          "label": "quote",
           "searchable": true,
           "sortable": true
         }
       },
-      "icon": {
+      "authorName": {
         "edit": {
-          "label": "icon",
+          "label": "authorName",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "icon",
+          "label": "authorName",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "authorRole": {
+        "edit": {
+          "label": "authorRole",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "authorRole",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "authorCompany": {
+        "edit": {
+          "label": "authorCompany",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "authorCompany",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "authorImage": {
+        "edit": {
+          "label": "authorImage",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "authorImage",
           "searchable": false,
           "sortable": false
         }
       },
-      "description": {
+      "rating": {
         "edit": {
-          "label": "description",
+          "label": "rating",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "description",
+          "label": "rating",
           "searchable": true,
           "sortable": true
         }
       },
-      "category": {
+      "featured": {
         "edit": {
-          "label": "category",
+          "label": "featured",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "category",
-          "searchable": true,
-          "sortable": true
-        }
-      },
-      "link": {
-        "edit": {
-          "label": "link",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "link",
-          "searchable": true,
-          "sortable": true
-        }
-      },
-      "linkText": {
-        "edit": {
-          "label": "linkText",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "linkText",
-          "searchable": true,
-          "sortable": true
-        }
-      },
-      "newTab": {
-        "edit": {
-          "label": "newTab",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "newTab",
+          "label": "featured",
           "searchable": true,
           "sortable": true
         }
@@ -127,47 +127,52 @@
       }
     },
     "layouts": {
-      "list": ["id", "title", "icon", "description"],
+      "list": [
+        "id",
+        "quote",
+        "authorName",
+        "authorRole"
+      ],
       "edit": [
         [
           {
-            "name": "title",
+            "name": "quote",
             "size": 6
           },
           {
-            "name": "icon",
+            "name": "authorName",
             "size": 6
           }
         ],
         [
           {
-            "name": "description",
+            "name": "authorRole",
             "size": 6
           },
           {
-            "name": "link",
+            "name": "authorCompany",
             "size": 6
           }
         ],
         [
           {
-            "name": "category",
-            "size": 6
-          },
-          {
-            "name": "linkText",
-            "size": 6
+            "name": "authorImage",
+            "size": 12
           }
         ],
         [
           {
-            "name": "newTab",
+            "name": "rating",
+            "size": 4
+          },
+          {
+            "name": "featured",
             "size": 4
           }
         ]
       ]
     },
-    "uid": "elements.integration-card",
+    "uid": "molecules.testimonial-card",
     "isComponent": true
   },
   "type": "object",

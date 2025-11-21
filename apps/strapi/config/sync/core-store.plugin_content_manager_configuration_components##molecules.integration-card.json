@@ -1,13 +1,13 @@
 {
-  "key": "plugin_content_manager_configuration_components::elements.marquee-logo",
+  "key": "plugin_content_manager_configuration_components::molecules.integration-card",
   "value": {
     "settings": {
       "bulkable": true,
       "filterable": true,
       "searchable": true,
       "pageSize": 10,
-      "mainField": "name",
-      "defaultSortBy": "name",
+      "mainField": "title",
+      "defaultSortBy": "title",
       "defaultSortOrder": "ASC"
     },
     "metadatas": {
@@ -19,30 +19,58 @@
           "sortable": false
         }
       },
-      "image": {
+      "title": {
         "edit": {
-          "label": "image",
+          "label": "title",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "image",
+          "label": "title",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "icon": {
+        "edit": {
+          "label": "icon",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "icon",
           "searchable": false,
           "sortable": false
         }
       },
-      "name": {
+      "description": {
         "edit": {
-          "label": "name",
+          "label": "description",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "name",
+          "label": "description",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "category": {
+        "edit": {
+          "label": "category",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "category",
           "searchable": true,
           "sortable": true
         }
@@ -61,6 +89,20 @@
           "sortable": true
         }
       },
+      "linkText": {
+        "edit": {
+          "label": "linkText",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "linkText",
+          "searchable": true,
+          "sortable": true
+        }
+      },
       "newTab": {
         "edit": {
           "label": "newTab",
@@ -75,34 +117,6 @@
           "sortable": true
         }
       },
-      "showBackground": {
-        "edit": {
-          "label": "showBackground",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "showBackground",
-          "searchable": true,
-          "sortable": true
-        }
-      },
-      "altText": {
-        "edit": {
-          "label": "altText",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "altText",
-          "searchable": true,
-          "sortable": true
-        }
-      },
       "documentId": {
         "edit": {},
         "list": {
@@ -113,15 +127,30 @@
       }
     },
     "layouts": {
-      "list": ["id", "image", "name", "link"],
+      "list": [
+        "id",
+        "title",
+        "icon",
+        "description"
+      ],
       "edit": [
         [
           {
-            "name": "image",
+            "name": "title",
             "size": 6
           },
           {
-            "name": "name",
+            "name": "icon",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "description",
+            "size": 6
+          },
+          {
+            "name": "category",
             "size": 6
           }
         ],
@@ -131,7 +160,7 @@
             "size": 6
           },
           {
-            "name": "altText",
+            "name": "linkText",
             "size": 6
           }
         ],
@@ -139,15 +168,11 @@
           {
             "name": "newTab",
             "size": 4
-          },
-          {
-            "name": "showBackground",
-            "size": 4
           }
         ]
       ]
     },
-    "uid": "elements.marquee-logo",
+    "uid": "molecules.integration-card",
     "isComponent": true
   },
   "type": "object",

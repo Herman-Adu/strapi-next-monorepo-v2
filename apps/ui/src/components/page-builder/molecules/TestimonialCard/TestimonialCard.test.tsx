@@ -3,7 +3,7 @@ import { render, screen } from "@testing-library/react"
 import { Data } from "@repo/strapi"
 import { TestimonialCard } from "./TestimonialCard"
 
-const mockTestimonial: Data.Component<"elements.testimonial-card"> = {
+const mockTestimonial: Data.Component<"molecules.testimonial-card"> = {
   id: 1,
   quote: "This product changed my life! Highly recommend to everyone.",
   authorName: "John Doe",
@@ -36,7 +36,7 @@ const mockTestimonial: Data.Component<"elements.testimonial-card"> = {
       locale: null,
     },
   },
-} as Data.Component<"elements.testimonial-card">
+} as Data.Component<"molecules.testimonial-card">
 
 describe("TestimonialCard", () => {
   it("renders quote text", () => {

@@ -4,7 +4,7 @@ import { Check, Circle } from "lucide-react"
 export function StrapiListItem({
   component,
 }: {
-  readonly component: Data.Component<"elements.list-item">
+  readonly component: Data.Component<"molecules.list-item">
 }) {
   const renderIcon = () => {
     if (component.iconType === "check") {

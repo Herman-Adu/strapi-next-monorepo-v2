@@ -1,7 +1,7 @@
 # Component Inventory & Atomic Mapping - Day 1 Audit
 
 **Date**: November 21, 2025  
-**Status**: ✅ COMPLETE - Backend Audit (46/46 components)  
+**Status**: ✅ COMPLETE - Backend Audit (46/46 components) | ✅ UPDATED - Folder Restructure (Nov 22, 2025)  
 **Auditor**: AI Agent + Herman  
 **Next**: Frontend Component Audit → Gap Analysis → Phase 3 Refactoring
 
@@ -13,7 +13,7 @@
 
 - **Total Components**: 46/46 ✅
 - **Atoms**: 3 (text-style, gradient-colors, orb-animation) + 3 from utilities = **6 total**
-- **Molecules**: 13 (in elements/) + 4 from utilities + 2 forms = **19 total**
+- **Molecules**: 13 (in molecules/) ✅ RENAMED + 4 from utilities + 2 forms = **19 total**
 - **Organisms (Shared)**: 3 (section-header, section-badge, section-background)
 - **Sections**: 16 (14 conformant, 2 non-conformant)
 - **Special**: 5 SEO utilities + 1 ck-editor-content = **6 total**
@@ -26,7 +26,7 @@
 
 ### Folder Structure Issues Found
 
-- ❌ **`elements/` folder** - Should be renamed to `molecules/` (13 components affected)
+- ✅ **`molecules/` folder** - ✅ FIXED (Nov 22, 2025) - Renamed from `elements/` (13 components)
 - ⚠️ **`utilities/` folder** - 7/8 components misclassified (need reclassification)
 - ✅ **`atoms/`** - Correct atomic level (3 components)
 - ✅ **`shared/`** - Contains organisms (3 components, correct)
@@ -55,28 +55,28 @@
 
 ---
 
-### MOLECULES (Currently in "elements/" folder) ⚠️ FOLDER NAME WRONG
+### MOLECULES (in "molecules/" folder) ✅ RENAMED Nov 22, 2025
 
-| Component                   | Path                                    | Atomic Level | Attributes                                                                              | Used In                                                 | Media Fields | Middleware Status                                        | Priority |
-| --------------------------- | --------------------------------------- | ------------ | --------------------------------------------------------------------------------------- | ------------------------------------------------------- | ------------ | -------------------------------------------------------- | -------- |
-| **icon-button**             | `elements/icon-button.json`             | MOLECULE ✅  | label, href, icon (enum), variant (enum), newTab (bool)                                 | final-cta-section, newsletter-cta-section, landing-hero | None         | ✅ Primitives only                                       | KEEP     |
-| **feature-card**            | `elements/feature-card.json`            | MOLECULE ✅  | icon (string), title (string), description (text)                                       | feature-grid-section, benefits-section                  | None         | ✅ Primitives only                                       | KEEP     |
-| **testimonial-card**        | `elements/testimonial-card.json`        | MOLECULE ✅  | quote, authorName, authorRole, authorCompany, authorImage (component), rating, featured | testimonials-section                                    | authorImage  | ✅ CORRECT: `authorImage: { populate: { media: true } }` | KEEP     |
-| **integration-card**        | `elements/integration-card.json`        | MOLECULE ✅  | title, icon (media), description, category (enum), link, linkText, newTab               | integration-grid-section                                | icon         | 🐛 **BUG**: Missing `icon: true` populate                | KEEP     |
-| **partner-card**            | `elements/partner-card.json`            | MOLECULE ✅  | name, logo (media), description, link, linkText, newTab                                 | partner-showcase-section                                | logo         | ✅ CORRECT: `logo: true`                                 | KEEP     |
-| **stat-card**               | `elements/stat-card.json`               | MOLECULE ✅  | number (string), description (string)                                                   | metrics-section                                         | None         | ✅ Primitives only                                       | KEEP     |
-| **list-item**               | `elements/list-item.json`               | MOLECULE ✅  | title, description, iconType (enum)                                                     | newsletter-cta-section, benefits-section, roadmap       | None         | ✅ Primitives only                                       | KEEP     |
-| **company-logo**            | `elements/company-logo.json`            | MOLECULE ✅  | name (string), image (media, optional)                                                  | Credibility section                                     | image        | ✅ CORRECT: `image: true` (via populate)                 | KEEP     |
-| **footer-item**             | `elements/footer-item.json`             | MOLECULE ✅  | title (string), links (component → utilities.link)                                      | Footer                                                  | None         | ✅ CORRECT: `links: true`                                | KEEP     |
-| **marquee-logo**            | `elements/marquee-logo.json`            | MOLECULE ✅  | image (media), name, link, newTab, showBackground, altText                              | marquee-section                                         | image        | ✅ CORRECT: `image: true`                                | KEEP     |
-| **marquee-review**          | `elements/marquee-review.json`          | MOLECULE ✅  | name, username, avatar (media), body, rating                                            | marquee-section                                         | avatar       | ✅ CORRECT: `avatar: true`                               | KEEP     |
-| **marquee-testimonial**     | `elements/marquee-testimonial.json`     | MOLECULE ✅  | author, role, company, avatar (media), quote, rating                                    | marquee-section                                         | avatar       | ✅ CORRECT: `avatar: true`                               | KEEP     |
-| **marquee-testimonial-pro** | `elements/marquee-testimonial-pro.json` | MOLECULE ✅  | author, role, company, avatar (media), quote, rating (identical to marquee-testimonial) | marquee-section                                         | avatar       | ✅ CORRECT: `avatar: true`                               | KEEP     |
+| Component                   | Path                                     | Atomic Level | Attributes                                                                              | Used In                                                 | Media Fields | Middleware Status                                        | Priority |
+| --------------------------- | ---------------------------------------- | ------------ | --------------------------------------------------------------------------------------- | ------------------------------------------------------- | ------------ | -------------------------------------------------------- | -------- |
+| **icon-button**             | `molecules/icon-button.json`             | MOLECULE ✅  | label, href, icon (enum), variant (enum), newTab (bool)                                 | final-cta-section, newsletter-cta-section, landing-hero | None         | ✅ Primitives only                                       | KEEP     |
+| **feature-card**            | `molecules/feature-card.json`            | MOLECULE ✅  | icon (string), title (string), description (text)                                       | feature-grid-section, benefits-section                  | None         | ✅ Primitives only                                       | KEEP     |
+| **testimonial-card**        | `molecules/testimonial-card.json`        | MOLECULE ✅  | quote, authorName, authorRole, authorCompany, authorImage (component), rating, featured | testimonials-section                                    | authorImage  | ✅ CORRECT: `authorImage: { populate: { media: true } }` | KEEP     |
+| **integration-card**        | `molecules/integration-card.json`        | MOLECULE ✅  | title, icon (media), description, category (enum), link, linkText, newTab               | integration-grid-section                                | icon         | 🐛 **BUG**: Missing `icon: true` populate                | KEEP     |
+| **partner-card**            | `molecules/partner-card.json`            | MOLECULE ✅  | name, logo (media), description, link, linkText, newTab                                 | partner-showcase-section                                | logo         | ✅ CORRECT: `logo: true`                                 | KEEP     |
+| **stat-card**               | `molecules/stat-card.json`               | MOLECULE ✅  | number (string), description (string)                                                   | metrics-section                                         | None         | ✅ Primitives only                                       | KEEP     |
+| **list-item**               | `molecules/list-item.json`               | MOLECULE ✅  | title, description, iconType (enum)                                                     | newsletter-cta-section, benefits-section, roadmap       | None         | ✅ Primitives only                                       | KEEP     |
+| **company-logo**            | `molecules/company-logo.json`            | MOLECULE ✅  | name (string), image (media, optional)                                                  | Credibility section                                     | image        | ✅ CORRECT: `image: true` (via populate)                 | KEEP     |
+| **footer-item**             | `molecules/footer-item.json`             | MOLECULE ✅  | title (string), links (component → utilities.link)                                      | Footer                                                  | None         | ✅ CORRECT: `links: true`                                | KEEP     |
+| **marquee-logo**            | `molecules/marquee-logo.json`            | MOLECULE ✅  | image (media), name, link, newTab, showBackground, altText                              | marquee-section                                         | image        | ✅ CORRECT: `image: true`                                | KEEP     |
+| **marquee-review**          | `molecules/marquee-review.json`          | MOLECULE ✅  | name, username, avatar (media), body, rating                                            | marquee-section                                         | avatar       | ✅ CORRECT: `avatar: true`                               | KEEP     |
+| **marquee-testimonial**     | `molecules/marquee-testimonial.json`     | MOLECULE ✅  | author, role, company, avatar (media), quote, rating                                    | marquee-section                                         | avatar       | ✅ CORRECT: `avatar: true`                               | KEEP     |
+| **marquee-testimonial-pro** | `molecules/marquee-testimonial-pro.json` | MOLECULE ✅  | author, role, company, avatar (media), quote, rating (identical to marquee-testimonial) | marquee-section                                         | avatar       | ✅ CORRECT: `avatar: true`                               | KEEP     |
 
 **Molecules Assessment**:
 
 - ✅ **13 components total - ALL FULLY AUDITED**
-- ⚠️ **CRITICAL**: Folder named `elements/` should be `molecules/`
+- ✅ **FIXED**: Folder renamed `elements/` → `molecules/` (Nov 22, 2025)
 - ✅ **Atomic Level**: All correctly identified as molecules
 - 🐛 **1 MIDDLEWARE BUG FOUND**: integration-card missing `icon: true` populate
 - ✅ **12/13 Middleware Correct**: All other populates verified
@@ -89,7 +89,7 @@
 
 **ACTION ITEM**:
 
-1. Rename `elements/` → `molecules/` during refactoring
+1. ✅ COMPLETED: Renamed `elements/` → `molecules/` (Nov 22, 2025)
 2. Fix middleware bug for integration-card
 
 ---
@@ -303,13 +303,13 @@ background: true // No nested populates needed
 
 ### ⚠️ FOLDER NAMING ISSUES
 
-**1. `elements/` Folder Should Be `molecules/`**
+**1. `molecules/` Folder** ✅ FIXED (Nov 22, 2025)
 
-- **Current**: `apps/strapi/src/components/elements/` (13 components)
-- **Should Be**: `apps/strapi/src/components/molecules/`
+- **Previous**: `apps/strapi/src/components/elements/` (13 components)
+- **Current**: `apps/strapi/src/components/molecules/`
 - **Reason**: Atomic design terminology uses "molecules", not "elements"
-- **Impact**: Confusing for developers, inconsistent with architecture docs
-- **Action**: Rename folder during Phase 3 refactoring
+- **Impact**: Improved alignment with atomic architecture, clearer for developers
+- **Action**: ✅ COMPLETED - Renamed during Phase 3 refactoring batch operation
 
 **2. `utilities/` Folder Inappropriately Named**
 
@@ -394,7 +394,7 @@ SECTION = background (organism) + badge (organism) + header (organism) + content
 **By Atomic Level**:
 
 - **Atoms**: 3 (text-style, gradient-colors, orb-animation) + 3 from utilities (link, social-link, text) = **6 total**
-- **Molecules**: 13 (in elements/ folder) + 4 from utilities (basic-image, image-with-link, accordions, links-with-title) + 2 forms = **19 total**
+- **Molecules**: 13 (in molecules/ folder ✅) + 4 from utilities (basic-image, image-with-link, accordions, links-with-title) + 2 forms = **19 total**
 - **Organisms**: 3 (section-header, section-badge, section-background)
 - **Sections**: 16 (14 conformant, 2 non-conformant)
 - **Special**: 5 SEO utilities + 1 ck-editor-content = **6 total**
@@ -404,10 +404,10 @@ SECTION = background (organism) + badge (organism) + header (organism) + content
 - ✅ **45/46 correct** (97.8% accuracy)
 - 🐛 **1 bug found**: integration-grid-section missing icon populate
 
-**Folder Reclassification Needed**:
+**Folder Reclassification Status**:
 
-- ⚠️ Rename `elements/` → `molecules/` (13 components)
-- ⚠️ Reclassify `utilities/` (7 components move, 1 stays)
+- ✅ **FIXED**: Renamed `elements/` → `molecules/` (13 components, Nov 22, 2025)
+- ⚠️ **PENDING**: Reclassify `utilities/` (7 components move, 1 stays)
 - ✅ Keep `forms/` separate (2 components, special category)
 - ✅ Keep `seo-utilities/` separate (5 components, special category)
 
