@@ -226,7 +226,7 @@ const pagePopulateObject: FindOne<"api::page.page">["populate"] = {
             },
           },
           background: true,
-          integrations: true,
+          integrations: { populate: { icon: true } },
         },
       },
       "sections.testimonials-section": {
