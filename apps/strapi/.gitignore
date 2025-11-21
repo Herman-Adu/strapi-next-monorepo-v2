@@ -119,3 +119,18 @@ build
 src/extensions/documentation/*
 
 .strapi
+
+############################
+# Database backups and exports
+############################
+
+backups/
+exports/
+*.sql
+*.tar.gz
+*.tar.gz.enc
+.tmp/backups/
+.env.sqlite
+.env.postgres
+.env.*.backup
+.env.*.temp
