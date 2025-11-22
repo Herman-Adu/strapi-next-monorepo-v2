@@ -1,7 +1,8 @@
 "use client"
 
 import { useEffect, useRef, useState } from "react"
-import Markdown from "markdown-to-jsx"
+import ReactMarkdown from "react-markdown"
+import remarkGfm from "remark-gfm"
 
 interface MarkdownRendererProps {
   content: string
@@ -37,7 +38,7 @@ export function MarkdownRenderer({
       ref={containerRef}
       className={`prose prose-lg dark:prose-invert max-w-none ${className}`}
     >
-      <Markdown>{content}</Markdown>
+      <ReactMarkdown remarkPlugins={[remarkGfm]}>{content}</ReactMarkdown>
     </article>
   )
 }

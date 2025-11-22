@@ -1,5 +1,5 @@
 {
-  "collectionName": "components_elements_stat_cards",
+  "collectionName": "components_molecules_stat_cards",
   "info": {
     "displayName": "StatCard",
     "description": "Statistic card with number and description"

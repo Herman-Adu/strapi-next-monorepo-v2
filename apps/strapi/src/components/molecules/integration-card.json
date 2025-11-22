@@ -1,5 +1,5 @@
 {
-  "collectionName": "components_elements_integration_cards",
+  "collectionName": "components_molecules_integration_cards",
   "info": {
     "displayName": "IntegrationCard",
     "description": "Integration card with icon, title, description, category and link"

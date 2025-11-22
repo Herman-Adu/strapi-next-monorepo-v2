@@ -1,5 +1,5 @@
 {
-  "collectionName": "components_elements_testimonial_cards",
+  "collectionName": "components_molecules_testimonial_cards",
   "info": {
     "displayName": "TestimonialCard",
     "description": "Individual testimonial with author info, quote, and rating"

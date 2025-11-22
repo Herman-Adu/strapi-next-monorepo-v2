@@ -1,5 +1,5 @@
 {
-  "collectionName": "components_elements_partner_cards",
+  "collectionName": "components_molecules_partner_cards",
   "info": {
     "displayName": "PartnerCard",
     "description": "Partner showcase card with logo, name, description and link"

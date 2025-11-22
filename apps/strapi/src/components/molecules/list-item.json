@@ -1,5 +1,5 @@
 {
-  "collectionName": "components_elements_list_items",
+  "collectionName": "components_molecules_list_items",
   "info": {
     "displayName": "ListItem",
     "description": "List item with title, description and optional icon"

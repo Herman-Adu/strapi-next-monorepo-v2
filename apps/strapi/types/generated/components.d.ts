@@ -97,7 +97,7 @@ export interface FormsNewsletterForm extends Struct.ComponentSchema {
 }
 
 export interface MoleculesCompanyLogo extends Struct.ComponentSchema {
-  collectionName: "components_elements_company_logos"
+  collectionName: "components_molecules_company_logos"
   info: {
     description: "Company logo with name or image"
     displayName: "CompanyLogo"
@@ -109,7 +109,7 @@ export interface MoleculesCompanyLogo extends Struct.ComponentSchema {
 }
 
 export interface MoleculesFeatureCard extends Struct.ComponentSchema {
-  collectionName: "components_elements_feature_cards"
+  collectionName: "components_molecules_feature_cards"
   info: {
     description: "Feature card with icon, title and description"
     displayName: "FeatureCard"
@@ -122,7 +122,7 @@ export interface MoleculesFeatureCard extends Struct.ComponentSchema {
 }
 
 export interface MoleculesFooterItem extends Struct.ComponentSchema {
-  collectionName: "components_elements_footer_items"
+  collectionName: "components_molecules_footer_items"
   info: {
     description: ""
     displayName: "FooterItem"
@@ -134,7 +134,7 @@ export interface MoleculesFooterItem extends Struct.ComponentSchema {
 }
 
 export interface MoleculesIconButton extends Struct.ComponentSchema {
-  collectionName: "components_elements_icon_buttons"
+  collectionName: "components_molecules_icon_buttons"
   info: {
     description: "Button with icon and link"
     displayName: "IconButton"
@@ -160,7 +160,7 @@ export interface MoleculesIconButton extends Struct.ComponentSchema {
 }
 
 export interface MoleculesIntegrationCard extends Struct.ComponentSchema {
-  collectionName: "components_elements_integration_cards"
+  collectionName: "components_molecules_integration_cards"
   info: {
     description: "Integration card with icon, title, description, category and link"
     displayName: "IntegrationCard"
@@ -191,7 +191,7 @@ export interface MoleculesIntegrationCard extends Struct.ComponentSchema {
 }
 
 export interface MoleculesListItem extends Struct.ComponentSchema {
-  collectionName: "components_elements_list_items"
+  collectionName: "components_molecules_list_items"
   info: {
     description: "List item with title, description and optional icon"
     displayName: "ListItem"
@@ -205,7 +205,7 @@ export interface MoleculesListItem extends Struct.ComponentSchema {
 }
 
 export interface MoleculesMarqueeLogo extends Struct.ComponentSchema {
-  collectionName: "components_elements_marquee_logos"
+  collectionName: "components_molecules_marquee_logos"
   info: {
     description: "Logo item for marquee displays"
     displayName: "MarqueeLogo"
@@ -221,7 +221,7 @@ export interface MoleculesMarqueeLogo extends Struct.ComponentSchema {
 }
 
 export interface MoleculesMarqueeReview extends Struct.ComponentSchema {
-  collectionName: "components_elements_marquee_reviews"
+  collectionName: "components_molecules_marquee_reviews"
   info: {
     description: "Review/comment item for marquee displays"
     displayName: "MarqueeReview"
@@ -243,7 +243,7 @@ export interface MoleculesMarqueeReview extends Struct.ComponentSchema {
 }
 
 export interface MoleculesMarqueeTestimonial extends Struct.ComponentSchema {
-  collectionName: "components_elements_marquee_testimonials"
+  collectionName: "components_molecules_marquee_testimonials"
   info: {
     description: "Testimonial item for marquee displays"
     displayName: "MarqueeTestimonial"
@@ -266,7 +266,7 @@ export interface MoleculesMarqueeTestimonial extends Struct.ComponentSchema {
 }
 
 export interface MoleculesMarqueeTestimonialPro extends Struct.ComponentSchema {
-  collectionName: "components_elements_marquee_testimonials_pro"
+  collectionName: "components_molecules_marquee_testimonials_pro"
   info: {
     description: "Pro Block testimonial with emerald accents and enhanced styling"
     displayName: "MarqueeTestimonialPro"
@@ -289,7 +289,7 @@ export interface MoleculesMarqueeTestimonialPro extends Struct.ComponentSchema {
 }
 
 export interface MoleculesPartnerCard extends Struct.ComponentSchema {
-  collectionName: "components_elements_partner_cards"
+  collectionName: "components_molecules_partner_cards"
   info: {
     description: "Partner showcase card with logo, name, description and link"
     displayName: "PartnerCard"
@@ -305,7 +305,7 @@ export interface MoleculesPartnerCard extends Struct.ComponentSchema {
 }
 
 export interface MoleculesStatCard extends Struct.ComponentSchema {
-  collectionName: "components_elements_stat_cards"
+  collectionName: "components_molecules_stat_cards"
   info: {
     description: "Statistic card with number and description"
     displayName: "StatCard"
@@ -317,7 +317,7 @@ export interface MoleculesStatCard extends Struct.ComponentSchema {
 }
 
 export interface MoleculesTestimonialCard extends Struct.ComponentSchema {
-  collectionName: "components_elements_testimonial_cards"
+  collectionName: "components_molecules_testimonial_cards"
   info: {
     description: "Individual testimonial with author info, quote, and rating"
     displayName: "TestimonialCard"
