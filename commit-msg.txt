@@ -1,6 +1,7 @@
 feat(page-builder): implement responsive architecture with Icon Atom system
 
-BREAKING CHANGE: Migrated contact-method.json from separate icon/customIcon fields to unified Icon Atom component.
+BREAKING CHANGE: Migrated contact-method.json from separate icon/customIcon
+fields to unified Icon Atom component.
 
 ## 🎯 Overview
 
@@ -24,7 +25,8 @@ system to consolidate icon handling across all page-builder components.
 - Replaces 10+ inconsistent icon implementations
 
 **Migration:**
-- `contact-method.json`: Replaced `icon: string` + `customIcon: media` with `icon: component (atoms.icon)`
+- `contact-method.json`: Replaced `icon: string` + `customIcon: media` with
+  `icon: component (atoms.icon)`
 - Updated populate path: `contactMethods.icon.customImage.media`
 
 ### 2. Responsive Alignment Architecture
@@ -33,12 +35,14 @@ system to consolidate icon handling across all page-builder components.
 responsive alignment patterns (center mobile → left desktop).
 
 **Solution: Hybrid Approach**
-- Parent containers control layout via flex/grid (`items-center lg:items-start`)
+- Parent containers control layout via flex/grid
+  (`items-center lg:items-start`)
 - className prop can override Strapi alignment with responsive classes
 - SectionHeader detects responsive overrides via regex pattern matching
 - Divider alignment follows text alignment (static or responsive)
 
 **Pattern Established:**
+
 ```tsx
 // Parent controls layout
 <div className="flex items-center lg:items-start">
@@ -46,7 +50,7 @@ responsive alignment patterns (center mobile → left desktop).
   // Child overrides Strapi alignment
   <SectionHeader 
     header={component.header}
-    className="text-center lg:text-left"  // Overrides Strapi alignment
+    className="text-center lg:text-left"
   />
 </div>
 ```
@@ -54,7 +58,8 @@ responsive alignment patterns (center mobile → left desktop).
 **Implementation:**
 - `SectionHeader.tsx`: Added `hasResponsiveAlignment` regex detection
 - `SectionHeader.tsx`: Added `effectiveAlignmentClass` conditional logic
-- `SectionHeader.tsx`: Divider uses `mx-auto lg:mr-auto lg:ml-0` when responsive detected
+- `SectionHeader.tsx`: Divider uses `mx-auto lg:mr-auto lg:ml-0` when
+  responsive detected
 - Applied to both two-tone and default rendering paths
 
 ### 3. Form Height Matching & Dynamic Growth
@@ -106,7 +111,8 @@ responsive alignment patterns (center mobile → left desktop).
 - **icon.json**: New Atom schema (iconType, lucideName, emoji, customImage)
 
 ### API & Data Layer
-- **page.ts** (documentMiddlewares): Added `contactMethods.icon.customImage.media` populate
+- **page.ts** (documentMiddlewares): Added populate path
+  `contactMethods.icon.customImage.media`
 
 ### Section Updates
 - **StrapiContactSection.tsx**: Added `matchHeights` prop to TwoColumnLayout
@@ -114,11 +120,13 @@ responsive alignment patterns (center mobile → left desktop).
 ## 🎨 Architectural Patterns Established
 
 ### 1. Responsive Alignment Override Pattern
-**Generic components stay layout-agnostic. Parents control via className overrides.**
+**Generic components stay layout-agnostic. Parents control via className
+overrides.**
+
 ```tsx
 <SectionHeader 
   header={strapiData}
-  className="text-center lg:text-left"  // Overrides static Strapi alignment
+  className="text-center lg:text-left"
 />
 ```
 
@@ -130,17 +138,22 @@ responsive alignment patterns (center mobile → left desktop).
 
 ### 3. Parent Container Control
 **Parents control layout. Children inherit via flex/grid.**
+
 ```tsx
-<div className="flex items-center lg:items-start">  {/* Parent controls alignment */}
-  <ChildComponent />  {/* Child inherits alignment */}
+<div className="flex items-center lg:items-start">
+  <ChildComponent />
 </div>
 ```
 
 ### 4. Null-Safety for Strapi Data
 **Always guard against Strapi null/undefined values.**
+
 ```tsx
 {icon && icon.iconType && (
-  <Icon iconType={icon.iconType} lucideName={icon.lucideName ?? undefined} />
+  <Icon
+    iconType={icon.iconType}
+    lucideName={icon.lucideName ?? undefined}
+  />
 )}
 ```
 
@@ -170,15 +183,17 @@ responsive alignment patterns (center mobile → left desktop).
 ### For Responsive Alignment
 
 **Before:**
+
 ```tsx
-<SectionHeader header={component.header} />  // Static alignment from Strapi
+<SectionHeader header={component.header} />
 ```
 
 **After:**
+
 ```tsx
 <SectionHeader 
   header={component.header}
-  className="text-center lg:text-left"  // Responsive override
+  className="text-center lg:text-left"
 />
 ```
 
@@ -186,7 +201,7 @@ responsive alignment patterns (center mobile → left desktop).
 
 ### Developer Experience
 - ✅ Consistent icon API across all components
-- ✅ Responsive alignment patterns for future components (testimonials, grids)
+- ✅ Responsive alignment patterns for future components
 - ✅ Type-safe null handling for Strapi data
 - ✅ Reusable patterns documented and established
 
@@ -205,9 +220,10 @@ responsive alignment patterns (center mobile → left desktop).
 ## 📚 Files Changed (63 files)
 
 ### Core Components (10 files)
-- Icon.tsx (new), IconButton.tsx (new)
-- TwoColumnLayout.tsx, SectionHeader.tsx
-- ContactFormCard.tsx, ContactForm.tsx, ContactDetails.tsx, ContactMethod.tsx
+- Icon.tsx (new), IconButton.tsx (new), TwoColumnLayout.tsx,
+  SectionHeader.tsx
+- ContactFormCard.tsx, ContactForm.tsx, ContactDetails.tsx,
+  ContactMethod.tsx
 - Textarea.tsx, AppTextArea.tsx, AppForm.tsx
 
 ### Strapi Schemas (2 files)
@@ -221,9 +237,8 @@ responsive alignment patterns (center mobile → left desktop).
 - page.ts (populate path)
 
 ### Documentation (3 files)
-- faq.md (test data update)
-- ci-cd-e2e-testing.md (test workflow update)
-- SESSION-2025-11-24-E2E-TESTING.md (session summary update)
+- faq.md (test data), ci-cd-e2e-testing.md (test workflow),
+  SESSION-2025-11-24-E2E-TESTING.md (session summary)
 
 ### Test Results (1 file)
 - .last-run.json (test status)
@@ -254,18 +269,19 @@ responsive alignment patterns (center mobile → left desktop).
 ## 📖 Related Documentation
 
 - `COMPONENT_ARCHITECTURE.md` - Atomic design architecture
-- `RESPONSIVE_DESIGN_PATTERNS.md` - Responsive override patterns (future)
 - `GRADIENT_SYSTEM.md` - Tailwind v4 gradient system
 - `STYLING_GUIDE.md` - Component styling conventions
 
 ---
 
-**Architectural Milestone**: This commit establishes foundational responsive
-design patterns that enable component-level style control across breakpoints.
-Icon Atom system consolidates icon handling. Null-safety patterns prevent
-Strapi data crashes. Forms now dynamically fill vertical space and align
-responsively. All patterns documented and reusable for future components.
+**Architectural Milestone**: This commit establishes foundational
+responsive design patterns that enable component-level style control
+across breakpoints. Icon Atom system consolidates icon handling.
+Null-safety patterns prevent Strapi data crashes. Forms now
+dynamically fill vertical space and align responsively. All patterns
+documented and reusable for future components.
 
 **Build Status**: ✅ Successful (yarn build completed)
 **Tests**: ✅ Zero TypeScript errors
-**CI/CD**: ✅ All checks configured (pre-commit, commit-msg, GitHub Actions)
+**CI/CD**: ✅ All checks configured (pre-commit, commit-msg, GitHub
+Actions)
