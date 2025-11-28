@@ -246,8 +246,46 @@ const pagePopulateObject: FindOne<"api::page.page">["populate"] = {
           },
         },
       },
+      "sections.contact-section": {
+        populate: {
+          badge: { populate: { orbAnimation: true } },
+          header: {
+            populate: {
+              textStyle: { populate: { customGradient: true } },
+              descriptionTextStyle: { populate: { customGradient: true } },
+            },
+          },
+          background: true,
+          contactDetails: {
+            populate: {
+              sectionHeader: {
+                populate: {
+                  textStyle: { populate: { customGradient: true } },
+                  descriptionTextStyle: { populate: { customGradient: true } },
+                },
+              },
+              contactMethods: {
+                populate: {
+                  icon: {
+                    populate: {
+                      customImage: { populate: { media: true } },
+                    },
+                  },
+                  link: true,
+                },
+              },
+              ctaButtons: true,
+            },
+          },
+          contactForm: {
+            populate: {
+              gdprLink: true,
+            },
+          },
+        },
+      },
       "forms.newsletter-form": { populate: { gdpr: true } },
-      "forms.contact-form": { populate: { gdpr: true } },
+      "forms.contact-form": { populate: { gdprLink: true } },
       "utilities.ck-editor-content": true,
     } as any, // Temporary: Allow marquee-section until types are generated
   },

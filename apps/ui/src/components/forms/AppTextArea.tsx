@@ -14,6 +14,26 @@ import {
 } from "@/components/ui/form"
 import { Textarea } from "@/components/ui/textarea"
 
+/**
+ * AppTextArea - Generic textarea form field component
+ *
+ * @description
+ * Wraps shadcn/ui Textarea with React Hook Form integration.
+ * Keeps layout agnostic - parent controls sizing via containerClassName.
+ *
+ * @example
+ * ```tsx
+ * // Standard usage
+ * <AppTextArea name="message" label="Message" />
+ *
+ * // Dynamic height growth in flex layouts
+ * <AppTextArea
+ *   name="message"
+ *   label="Message"
+ *   containerClassName="flex-1"
+ * />
+ * ```
+ */
 type Props = {
   readonly name: string
   readonly label?: React.ReactNode

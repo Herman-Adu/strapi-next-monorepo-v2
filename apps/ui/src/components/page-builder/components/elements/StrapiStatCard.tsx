@@ -48,10 +48,13 @@ function useCountUp(end: number, duration: number = 2000) {
     return () => observer.disconnect()
   }, [end, duration, hasAnimated])
 
-  return { count, elementRef }
+  return { count, elementRef, hasAnimated }
 }
 
 function extractNumber(str: string): number {
+  // Handle special case: "24/7" should not animate (return 0)
+  if (str.includes("/")) return 0
+
   // Extract number from strings like "50,000+", "99.9%", "2M+", etc.
   const cleaned = str.replace(/[^0-9.]/g, "")
   const num = parseFloat(cleaned)
@@ -65,6 +68,9 @@ function extractNumber(str: string): number {
 }
 
 function formatNumber(num: number, original: string): string {
+  // Handle special case: "24/7" or similar formats - return as-is
+  if (original.includes("/")) return original
+
   // Preserve the original format
   if (original.includes("K") || original.includes("k")) {
     return (num / 1000).toFixed(original.includes(".") ? 1 : 0) + "K"
@@ -92,7 +98,7 @@ export function StrapiStatCard({
   // Fallback to "0" if number is null/undefined
   const numberValue = component.number ?? "0"
   const targetNumber = extractNumber(numberValue)
-  const { count, elementRef } = useCountUp(targetNumber)
+  const { count, elementRef, hasAnimated } = useCountUp(targetNumber)
 
   // Extract suffix (%, +, etc.)
   const suffix = numberValue.replace(/[0-9.,KMB]/gi, "").trim()
@@ -100,12 +106,21 @@ export function StrapiStatCard({
   return (
     <div
       ref={elementRef}
-      className="flex flex-col items-center justify-center text-center"
+      className={`flex flex-col items-center justify-center text-center transition-all duration-700 ${
+        hasAnimated ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"
+      }`}
     >
       <div className="text-primary mb-3 text-4xl font-bold tracking-tight md:text-4xl">
-        {formatNumber(count, numberValue)}
-        {suffix}
+        {numberValue.includes("/")
+          ? numberValue // Display "24/7" as-is but with fade-in animation
+          : `${formatNumber(count, numberValue)}${suffix}`}
       </div>
+      {/* Optional label field */}
+      {component.label && (
+        <div className="text-foreground mb-1 text-xs font-medium tracking-wider uppercase opacity-70">
+          {component.label}
+        </div>
+      )}
       <div className="text-muted-foreground dark:text-foreground text-sm leading-relaxed font-semibold md:text-base">
         {component.description}
       </div>

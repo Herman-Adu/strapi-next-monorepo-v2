@@ -719,7 +719,7 @@ Create a new page called "**Features**" with slug "**features**" and add all com
    - **Input Placeholder**: "Enter your email address"
    - **Button Text**: "Subscribe Now"
    - **GDPR Checkbox**:
-     - GDPR Label: "I agree to the"
+     - GDPR Label: "I agree to the privacy policy"
      - **GDPR Link** (component - utilities.link):
        - Label: "Privacy Policy"
        - Href: "/privacy-policy"

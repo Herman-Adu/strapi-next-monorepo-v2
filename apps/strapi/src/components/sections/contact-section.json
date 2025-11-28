@@ -1,0 +1,49 @@
+{
+  "collectionName": "components_sections_contact_sections",
+  "info": {
+    "displayName": "Contact Section",
+    "description": "2-column contact section: details + form with flexible layout and GDPR compliance"
+  },
+  "options": {},
+  "attributes": {
+    "background": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.section-background",
+      "description": "Section background styling"
+    },
+    "badge": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.section-badge",
+      "description": "Optional badge above section"
+    },
+    "header": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.section-header",
+      "description": "Main section header (appears above 2-column layout)"
+    },
+    "detailsPosition": {
+      "type": "enumeration",
+      "enum": ["left", "right"],
+      "default": "left",
+      "required": true,
+      "description": "Position of contact details column (left = details left/form right, right = form left/details right)"
+    },
+    "contactDetails": {
+      "type": "component",
+      "repeatable": false,
+      "component": "molecules.contact-details",
+      "required": true,
+      "description": "Contact information, methods, and CTAs"
+    },
+    "contactForm": {
+      "type": "component",
+      "repeatable": false,
+      "component": "forms.contact-form",
+      "required": true,
+      "description": "Contact form with GDPR compliance"
+    }
+  }
+}

@@ -57,6 +57,6 @@ export default defineConfig({
     command: "yarn dev",
     url: "http://localhost:3000",
     reuseExistingServer: !process.env.CI,
-    timeout: 120 * 1000,
+    timeout: 180 * 1000, // Increased timeout to allow Strapi health check
   },
 })

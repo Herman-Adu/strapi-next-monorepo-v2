@@ -23,6 +23,28 @@ export interface AtomsGradientColors extends Struct.ComponentSchema {
   }
 }
 
+export interface AtomsIcon extends Struct.ComponentSchema {
+  collectionName: "components_atoms_icons"
+  info: {
+    description: "Universal icon component - supports Lucide icons, emoji, or custom image uploads"
+    displayName: "Icon"
+    icon: "picture"
+  }
+  attributes: {
+    customImage: Schema.Attribute.Component<"utilities.basic-image", false>
+    emoji: Schema.Attribute.String &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 4
+      }>
+    iconType: Schema.Attribute.Enumeration<["lucide", "emoji", "custom"]> &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<"emoji">
+    lucideName: Schema.Attribute.String
+    size: Schema.Attribute.Enumeration<["sm", "md", "lg", "xl"]> &
+      Schema.Attribute.DefaultTo<"md">
+  }
+}
+
 export interface AtomsOrbAnimation extends Struct.ComponentSchema {
   collectionName: "components_atoms_orb_animations"
   info: {
@@ -75,12 +97,15 @@ export interface AtomsTextStyle extends Struct.ComponentSchema {
 export interface FormsContactForm extends Struct.ComponentSchema {
   collectionName: "components_forms_contact_forms"
   info: {
+    description: "Contact form with GDPR compliance - title/description handled by section header"
     displayName: "ContactForm"
   }
   attributes: {
-    description: Schema.Attribute.Text
-    gdpr: Schema.Attribute.Component<"utilities.link", false>
-    title: Schema.Attribute.String
+    gdprLabel: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<"I agree to the terms and conditions">
+    gdprLink: Schema.Attribute.Component<"utilities.link", false> &
+      Schema.Attribute.Required
   }
 }
 
@@ -105,6 +130,52 @@ export interface MoleculesCompanyLogo extends Struct.ComponentSchema {
   attributes: {
     image: Schema.Attribute.Media<"images">
     name: Schema.Attribute.String & Schema.Attribute.Required
+  }
+}
+
+export interface MoleculesContactDetails extends Struct.ComponentSchema {
+  collectionName: "components_molecules_contact_details"
+  info: {
+    description: "Left column content for contact section: header, methods, additional info, CTA buttons"
+    displayName: "Contact Details"
+  }
+  attributes: {
+    additionalContent: Schema.Attribute.RichText
+    contactMethods: Schema.Attribute.Component<
+      "molecules.contact-method",
+      true
+    > &
+      Schema.Attribute.SetMinMax<
+        {
+          max: 5
+          min: 1
+        },
+        number
+      >
+    ctaButtons: Schema.Attribute.Component<"molecules.icon-button", true> &
+      Schema.Attribute.SetMinMax<
+        {
+          max: 3
+        },
+        number
+      >
+    sectionHeader: Schema.Attribute.Component<"shared.section-header", false> &
+      Schema.Attribute.Required
+  }
+}
+
+export interface MoleculesContactMethod extends Struct.ComponentSchema {
+  collectionName: "components_molecules_contact_methods"
+  info: {
+    description: "Contact information item with icon, title, description, and optional link"
+    displayName: "Contact Method"
+  }
+  attributes: {
+    description: Schema.Attribute.Text & Schema.Attribute.Required
+    icon: Schema.Attribute.Component<"atoms.icon", false> &
+      Schema.Attribute.Required
+    link: Schema.Attribute.Component<"utilities.link", false>
+    title: Schema.Attribute.String & Schema.Attribute.Required
   }
 }
 
@@ -307,11 +378,12 @@ export interface MoleculesPartnerCard extends Struct.ComponentSchema {
 export interface MoleculesStatCard extends Struct.ComponentSchema {
   collectionName: "components_molecules_stat_cards"
   info: {
-    description: "Statistic card with number and description"
+    description: "Statistic card with number, label, and description"
     displayName: "StatCard"
   }
   attributes: {
     description: Schema.Attribute.String & Schema.Attribute.Required
+    label: Schema.Attribute.String
     number: Schema.Attribute.String & Schema.Attribute.Required
   }
 }
@@ -359,6 +431,29 @@ export interface SectionsBenefitsSection extends Struct.ComponentSchema {
       >
     gridColumns: Schema.Attribute.Enumeration<["2", "3", "4"]> &
       Schema.Attribute.DefaultTo<"3">
+    header: Schema.Attribute.Component<"shared.section-header", false>
+  }
+}
+
+export interface SectionsContactSection extends Struct.ComponentSchema {
+  collectionName: "components_sections_contact_sections"
+  info: {
+    description: "2-column contact section: details + form with flexible layout and GDPR compliance"
+    displayName: "Contact Section"
+  }
+  attributes: {
+    background: Schema.Attribute.Component<"shared.section-background", false>
+    badge: Schema.Attribute.Component<"shared.section-badge", false>
+    contactDetails: Schema.Attribute.Component<
+      "molecules.contact-details",
+      false
+    > &
+      Schema.Attribute.Required
+    contactForm: Schema.Attribute.Component<"forms.contact-form", false> &
+      Schema.Attribute.Required
+    detailsPosition: Schema.Attribute.Enumeration<["left", "right"]> &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<"left">
     header: Schema.Attribute.Component<"shared.section-header", false>
   }
 }
@@ -589,6 +684,8 @@ export interface SectionsMetricsSection extends Struct.ComponentSchema {
   attributes: {
     background: Schema.Attribute.Component<"shared.section-background", false>
     badge: Schema.Attribute.Component<"shared.section-badge", false>
+    gridColumns: Schema.Attribute.Enumeration<["2", "3", "4", "6"]> &
+      Schema.Attribute.DefaultTo<"4">
     header: Schema.Attribute.Component<"shared.section-header", false>
     metrics: Schema.Attribute.Component<"molecules.stat-card", true> &
       Schema.Attribute.SetMinMax<
@@ -775,7 +872,9 @@ export interface SeoUtilitiesSeo extends Struct.ComponentSchema {
         "index",
         "index,follow",
         "noindex",
+        "nofollow",
         "noindex,follow",
+        "index,nofollow",
         "noindex,nofollow",
         "none",
         "noarchive",
@@ -1029,11 +1128,14 @@ declare module "@strapi/strapi" {
   export module Public {
     export interface ComponentSchemas {
       "atoms.gradient-colors": AtomsGradientColors
+      "atoms.icon": AtomsIcon
       "atoms.orb-animation": AtomsOrbAnimation
       "atoms.text-style": AtomsTextStyle
       "forms.contact-form": FormsContactForm
       "forms.newsletter-form": FormsNewsletterForm
       "molecules.company-logo": MoleculesCompanyLogo
+      "molecules.contact-details": MoleculesContactDetails
+      "molecules.contact-method": MoleculesContactMethod
       "molecules.feature-card": MoleculesFeatureCard
       "molecules.footer-item": MoleculesFooterItem
       "molecules.icon-button": MoleculesIconButton
@@ -1047,6 +1149,7 @@ declare module "@strapi/strapi" {
       "molecules.stat-card": MoleculesStatCard
       "molecules.testimonial-card": MoleculesTestimonialCard
       "sections.benefits-section": SectionsBenefitsSection
+      "sections.contact-section": SectionsContactSection
       "sections.faq": SectionsFaq
       "sections.feature-grid-section": SectionsFeatureGridSection
       "sections.final-cta-section": SectionsFinalCtaSection

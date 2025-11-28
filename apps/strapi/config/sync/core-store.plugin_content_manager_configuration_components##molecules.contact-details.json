@@ -1,0 +1,127 @@
+{
+  "key": "plugin_content_manager_configuration_components::molecules.contact-details",
+  "value": {
+    "settings": {
+      "bulkable": true,
+      "filterable": true,
+      "searchable": true,
+      "pageSize": 10,
+      "mainField": "documentId",
+      "defaultSortBy": "documentId",
+      "defaultSortOrder": "ASC"
+    },
+    "metadatas": {
+      "id": {
+        "edit": {},
+        "list": {
+          "label": "id",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "sectionHeader": {
+        "edit": {
+          "label": "sectionHeader",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "sectionHeader",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "contactMethods": {
+        "edit": {
+          "label": "contactMethods",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "contactMethods",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "additionalContent": {
+        "edit": {
+          "label": "additionalContent",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "additionalContent",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "ctaButtons": {
+        "edit": {
+          "label": "ctaButtons",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "ctaButtons",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "documentId": {
+        "edit": {},
+        "list": {
+          "label": "documentId",
+          "searchable": true,
+          "sortable": true
+        }
+      }
+    },
+    "layouts": {
+      "list": [
+        "id",
+        "sectionHeader",
+        "contactMethods",
+        "ctaButtons"
+      ],
+      "edit": [
+        [
+          {
+            "name": "sectionHeader",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "contactMethods",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "additionalContent",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "ctaButtons",
+            "size": 12
+          }
+        ]
+      ]
+    },
+    "uid": "molecules.contact-details",
+    "isComponent": true
+  },
+  "type": "object",
+  "environment": null,
+  "tag": null
+}

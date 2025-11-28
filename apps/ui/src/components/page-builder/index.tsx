@@ -3,6 +3,7 @@ import { UID } from "@repo/strapi"
 import StrapiContactForm from "@/components/page-builder/components/forms/StrapiContactForm"
 import StrapiNewsletterForm from "@/components/page-builder/components/forms/StrapiNewsletterForm"
 import StrapiBenefitsSection from "@/components/page-builder/components/sections/StrapiBenefitsSection"
+import StrapiContactSection from "@/components/page-builder/components/sections/StrapiContactSection"
 import StrapiFaq from "@/components/page-builder/components/sections/StrapiFaq"
 import StrapiFeatureGridSection from "@/components/page-builder/components/sections/StrapiFeatureGridSection"
 import StrapiFinalCTASection from "@/components/page-builder/components/sections/StrapiFinalCTASection"
@@ -37,6 +38,7 @@ export const PageContentComponents: {
 
   // Sections
   "sections.benefits-section": StrapiBenefitsSection,
+  "sections.contact-section": StrapiContactSection,
   "sections.faq": StrapiFaq,
   "sections.hero": StrapiHero,
   "sections.horizontal-images": StrapiHorizontalImages,

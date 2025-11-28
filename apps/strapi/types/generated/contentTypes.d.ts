@@ -653,6 +653,7 @@ export interface ApiPagePage extends Struct.CollectionTypeSchema {
         "sections.roadmap-section",
         "sections.final-cta-section",
         "sections.benefits-section",
+        "sections.contact-section",
         "sections.metrics-section",
         "sections.partner-showcase-section",
         "sections.integration-grid-section",

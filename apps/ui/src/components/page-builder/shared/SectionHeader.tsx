@@ -162,23 +162,32 @@ export function SectionHeader({ header, className }: SectionHeaderProps) {
 
   const descriptionClasses = "text-lg text-muted-foreground"
 
-  // Divider alignment classes
-  const dividerAlignmentClass =
-    alignment === "right"
+  // Smart divider styling (matches header textStyle)
+  const dividerStyles = getDividerStyles(textStyle)
+
+  // Check if className contains responsive alignment overrides
+  const hasResponsiveAlignment = className?.match(
+    /(text-center|text-left|text-right).*(lg:|md:|sm:)(text-center|text-left|text-right)/
+  )
+
+  // Use alignment from Strapi unless className provides responsive override
+  const effectiveAlignmentClass = hasResponsiveAlignment ? "" : alignmentClass
+
+  // Divider alignment classes - responsive when className override is present
+  const dividerAlignmentClass = hasResponsiveAlignment
+    ? "mx-auto lg:mr-auto lg:ml-0" // Responsive: center mobile, left desktop
+    : alignment === "right"
       ? "ml-auto"
       : alignment === "left"
         ? "mr-auto"
-        : "mx-auto" // center
-
-  // Smart divider styling (matches header textStyle)
-  const dividerStyles = getDividerStyles(textStyle)
+        : "mx-auto" // Static center
 
   // Handle two-tone style (special rendering with accent + heading split)
   if (headingStyle === "two-tone" && headingAccent) {
     return (
       <>
         {/* Heading + Divider group (tight spacing with mt-2) */}
-        <div className={cn(alignmentClass, className)}>
+        <div className={cn(effectiveAlignmentClass, className)}>
           <h2 className={headingClasses}>
             <span className="text-primary">{headingAccent}</span>{" "}
             <span className="text-muted-foreground dark:text-foreground">
@@ -203,12 +212,22 @@ export function SectionHeader({ header, className }: SectionHeaderProps) {
             <TextStyle
               textStyle={descriptionTextStyle}
               as="p"
-              className={cn(descriptionClasses, alignmentClass)}
+              className={cn(
+                descriptionClasses,
+                effectiveAlignmentClass,
+                className
+              )}
             >
               {description}
             </TextStyle>
           ) : (
-            <p className={cn(descriptionClasses, alignmentClass)}>
+            <p
+              className={cn(
+                descriptionClasses,
+                effectiveAlignmentClass,
+                className
+              )}
+            >
               {description}
             </p>
           ))}
@@ -222,7 +241,7 @@ export function SectionHeader({ header, className }: SectionHeaderProps) {
   return (
     <>
       {/* Heading + Divider group (tight spacing with mt-2) */}
-      <div className={cn(alignmentClass, className)}>
+      <div className={cn(effectiveAlignmentClass, className)}>
         <TextStyle
           textStyle={textStyle ?? undefined}
           as="h2"
@@ -249,12 +268,22 @@ export function SectionHeader({ header, className }: SectionHeaderProps) {
           <TextStyle
             textStyle={descriptionTextStyle}
             as="p"
-            className={cn(descriptionClasses, alignmentClass)}
+            className={cn(
+              descriptionClasses,
+              effectiveAlignmentClass,
+              className
+            )}
           >
             {description}
           </TextStyle>
         ) : (
-          <p className={cn(descriptionClasses, alignmentClass)}>
+          <p
+            className={cn(
+              descriptionClasses,
+              effectiveAlignmentClass,
+              className
+            )}
+          >
             {description}
           </p>
         ))}

@@ -1,0 +1,166 @@
+name: E2E Tests
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.head_ref || github.run_id }}
+  cancel-in-progress: true
+
+env:
+  STRAPI_REST_READONLY_API_KEY: random-value-just-for-build
+
+jobs:
+  e2e-tests:
+    name: E2E Tests (Playwright)
+    timeout-minutes: 30
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres:16-alpine
+        env:
+          POSTGRES_USER: strapi
+          POSTGRES_PASSWORD: strapi
+          POSTGRES_DB: strapi_dev
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - 5432:5432
+
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Cache turbo build setup
+        uses: actions/cache@v4
+        with:
+          path: .turbo
+          key: '${{ runner.os }}-turbo-${{ github.sha }}'
+          restore-keys: |
+            ${{ runner.os }}-turbo-
+
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: 'yarn'
+
+      - name: Install dependencies
+        run: yarn --frozen-lockfile
+
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps chromium firefox webkit
+
+      - name: Prepare Environment Variables
+        run: |
+          cp apps/strapi/.env.example apps/strapi/.env
+          cp apps/ui/.env.local.example apps/ui/.env.local
+          echo "STRAPI_REST_READONLY_API_KEY=${{ env.STRAPI_REST_READONLY_API_KEY }}" >> apps/ui/.env.local
+          
+          # Database configuration for CI
+          echo "DATABASE_CLIENT=postgres" >> apps/strapi/.env
+          echo "DATABASE_HOST=localhost" >> apps/strapi/.env
+          echo "DATABASE_PORT=5432" >> apps/strapi/.env
+          echo "DATABASE_NAME=strapi_dev" >> apps/strapi/.env
+          echo "DATABASE_USERNAME=strapi" >> apps/strapi/.env
+          echo "DATABASE_PASSWORD=strapi" >> apps/strapi/.env
+          echo "DATABASE_SSL=false" >> apps/strapi/.env
+
+      - name: Build Strapi
+        run: yarn build:strapi
+
+      - name: Build UI
+        run: yarn build:ui
+
+      - name: Seed Strapi Database
+        run: |
+          # Start Strapi in background to initialize database
+          cd apps/strapi
+          NODE_ENV=development yarn start &
+          STRAPI_PID=$!
+          
+          # Wait for Strapi to be ready (max 120 seconds)
+          echo "Waiting for Strapi to be ready..."
+          timeout=120
+          elapsed=0
+          until curl -s http://localhost:1337/_health > /dev/null 2>&1; do
+            if [ $elapsed -ge $timeout ]; then
+              echo "Strapi failed to start within $timeout seconds"
+              kill $STRAPI_PID 2>/dev/null || true
+              exit 1
+            fi
+            echo "Waiting for Strapi... ($elapsed/$timeout seconds)"
+            sleep 5
+            elapsed=$((elapsed + 5))
+          done
+          
+          echo "Strapi is ready!"
+          
+          # TODO: Seed test data here
+          # For now, stop Strapi (tests will start it via webServer config)
+          kill $STRAPI_PID
+          wait $STRAPI_PID 2>/dev/null || true
+          
+      - name: Run Playwright E2E Tests
+        run: yarn test:e2e
+        env:
+          CI: true
+
+      - name: Upload Playwright Report
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: playwright-report
+          path: apps/ui/playwright-report/
+          retention-days: 30
+
+      - name: Upload Test Results
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: test-results
+          path: apps/ui/test-results/
+          retention-days: 7
+
+      - name: Upload Screenshots
+        uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: screenshots
+          path: apps/ui/test-results/**/*.png
+          retention-days: 7
+
+      - name: Upload Videos
+        uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: videos
+          path: apps/ui/test-results/**/*.webm
+          retention-days: 7
+
+      - name: Comment PR with Test Results
+        uses: daun/playwright-report-comment@v3
+        if: always() && github.event_name == 'pull_request'
+        with:
+          report-file: apps/ui/playwright-report/index.html
+          
+      - name: Check E2E Test Results
+        if: always()
+        run: |
+          if [ -f apps/ui/playwright-report/index.html ]; then
+            echo "✅ E2E tests completed. View report in artifacts."
+          else
+            echo "⚠️ No test report generated."
+          fi

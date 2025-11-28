@@ -6,8 +6,8 @@
       "filterable": true,
       "searchable": true,
       "pageSize": 10,
-      "mainField": "title",
-      "defaultSortBy": "title",
+      "mainField": "gdprLabel",
+      "defaultSortBy": "gdprLabel",
       "defaultSortOrder": "ASC"
     },
     "metadatas": {
@@ -19,44 +19,30 @@
           "sortable": false
         }
       },
-      "title": {
+      "gdprLabel": {
         "edit": {
-          "label": "title",
+          "label": "gdprLabel",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "title",
+          "label": "gdprLabel",
           "searchable": true,
           "sortable": true
         }
       },
-      "description": {
+      "gdprLink": {
         "edit": {
-          "label": "description",
+          "label": "gdprLink",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "description",
-          "searchable": true,
-          "sortable": true
-        }
-      },
-      "gdpr": {
-        "edit": {
-          "label": "gdpr",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "gdpr",
+          "label": "gdprLink",
           "searchable": false,
           "sortable": false
         }
@@ -71,21 +57,21 @@
       }
     },
     "layouts": {
-      "list": ["id", "title", "description", "gdpr"],
+      "list": [
+        "id",
+        "gdprLabel",
+        "gdprLink"
+      ],
       "edit": [
         [
           {
-            "name": "title",
-            "size": 6
-          },
-          {
-            "name": "description",
+            "name": "gdprLabel",
             "size": 6
           }
         ],
         [
           {
-            "name": "gdpr",
+            "name": "gdprLink",
             "size": 12
           }
         ]

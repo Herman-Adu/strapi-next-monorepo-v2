@@ -19,20 +19,6 @@
           "sortable": false
         }
       },
-      "badge": {
-        "edit": {
-          "label": "Badge",
-          "description": "Optional badge above section header (e.g., 'Newsletter', 'Stay Updated')",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "badge",
-          "searchable": false,
-          "sortable": false
-        }
-      },
       "background": {
         "edit": {
           "label": "Background Style",
@@ -43,6 +29,20 @@
         },
         "list": {
           "label": "background",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "badge": {
+        "edit": {
+          "label": "Badge",
+          "description": "Optional badge above section header (e.g., 'Newsletter', 'Stay Updated')",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "badge",
           "searchable": false,
           "sortable": false
         }
@@ -161,8 +161,8 @@
       },
       "gdprLabel": {
         "edit": {
-          "label": "GDPR Checkbox Label",
-          "description": "Text for GDPR consent checkbox",
+          "label": "gdprLabel",
+          "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
@@ -175,8 +175,8 @@
       },
       "gdprLink": {
         "edit": {
-          "label": "GDPR Link",
-          "description": "Link to privacy policy or terms (embedded in GDPR label)",
+          "label": "gdprLink",
+          "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
@@ -225,7 +225,12 @@
       }
     },
     "layouts": {
-      "list": ["id", "heading", "description", "ctaButtons"],
+      "list": [
+        "id",
+        "heading",
+        "description",
+        "ctaButtons"
+      ],
       "edit": [
         [
           {
@@ -285,18 +290,6 @@
         ],
         [
           {
-            "name": "gdprLabel",
-            "size": 12
-          }
-        ],
-        [
-          {
-            "name": "gdprLink",
-            "size": 12
-          }
-        ],
-        [
-          {
             "name": "ctaButtons",
             "size": 12
           }
@@ -305,6 +298,16 @@
           {
             "name": "showDivider",
             "size": 4
+          },
+          {
+            "name": "gdprLabel",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "gdprLink",
+            "size": 12
           }
         ]
       ]

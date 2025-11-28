@@ -1,0 +1,37 @@
+{
+  "collectionName": "components_molecules_contact_details",
+  "info": {
+    "displayName": "Contact Details",
+    "description": "Left column content for contact section: header, methods, additional info, CTA buttons"
+  },
+  "options": {},
+  "attributes": {
+    "sectionHeader": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.section-header",
+      "required": true,
+      "description": "Independent header for contact details section"
+    },
+    "contactMethods": {
+      "type": "component",
+      "repeatable": true,
+      "component": "molecules.contact-method",
+      "min": 1,
+      "max": 5,
+      "description": "Contact methods (email, phone, location, etc.)"
+    },
+    "additionalContent": {
+      "type": "richtext",
+      "required": false,
+      "description": "Additional information (CKEditor rich text)"
+    },
+    "ctaButtons": {
+      "type": "component",
+      "repeatable": true,
+      "component": "molecules.icon-button",
+      "max": 3,
+      "description": "Call-to-action buttons (e.g., Schedule Service, Emergency Contact)"
+    }
+  }
+}

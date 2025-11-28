@@ -1,0 +1,167 @@
+{
+  "key": "plugin_content_manager_configuration_components::sections.contact-section",
+  "value": {
+    "settings": {
+      "bulkable": true,
+      "filterable": true,
+      "searchable": true,
+      "pageSize": 10,
+      "mainField": "documentId",
+      "defaultSortBy": "documentId",
+      "defaultSortOrder": "ASC"
+    },
+    "metadatas": {
+      "id": {
+        "edit": {},
+        "list": {
+          "label": "id",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "background": {
+        "edit": {
+          "label": "background",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "background",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "badge": {
+        "edit": {
+          "label": "badge",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "badge",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "header": {
+        "edit": {
+          "label": "header",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "header",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "detailsPosition": {
+        "edit": {
+          "label": "detailsPosition",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "detailsPosition",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "contactDetails": {
+        "edit": {
+          "label": "contactDetails",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "contactDetails",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "contactForm": {
+        "edit": {
+          "label": "contactForm",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "contactForm",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "documentId": {
+        "edit": {},
+        "list": {
+          "label": "documentId",
+          "searchable": true,
+          "sortable": true
+        }
+      }
+    },
+    "layouts": {
+      "list": [
+        "id",
+        "background",
+        "badge",
+        "header"
+      ],
+      "edit": [
+        [
+          {
+            "name": "background",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "badge",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "header",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "contactForm",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "detailsPosition",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "contactDetails",
+            "size": 12
+          }
+        ]
+      ]
+    },
+    "uid": "sections.contact-section",
+    "isComponent": true
+  },
+  "type": "object",
+  "environment": null,
+  "tag": null
+}

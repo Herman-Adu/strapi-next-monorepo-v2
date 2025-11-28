@@ -16,6 +16,7 @@ export function StrapiMetricsSection({
     component.background || ({} as Data.Component<"shared.section-background">)
 
   const metrics = component.metrics || []
+  const gridColumns = component.gridColumns || "4"
 
   if (metrics.length === 0) return null
 
@@ -31,6 +32,15 @@ export function StrapiMetricsSection({
     spacious: "gap-16", // 64px - generous section separation
   }[backgroundPadding]
 
+  // Grid column configuration
+  const gridColsClass =
+    {
+      "2": "@2xl:grid-cols-2",
+      "3": "@2xl:grid-cols-3",
+      "4": "@2xl:grid-cols-4",
+      "6": "@2xl:grid-cols-6",
+    }[gridColumns] || "@2xl:grid-cols-4"
+
   return (
     <SectionWrapper background={backgroundConfig}>
       {/* Parent container with uniform gap controls ALL section spacing */}
@@ -42,7 +52,9 @@ export function StrapiMetricsSection({
         {component.header && <SectionHeader header={component.header} />}
 
         {/* Metrics Grid */}
-        <div className="grid gap-6 @sm:grid-cols-2 @lg:gap-8 @xl:gap-12 @2xl:grid-cols-3 @4xl:grid-cols-4">
+        <div
+          className={`grid gap-6 @sm:grid-cols-2 @lg:gap-8 @xl:gap-12 ${gridColsClass}`}
+        >
           {metrics.map((metric, index) => (
             <StrapiStatCard key={metric.id || index} component={metric} />
           ))}

@@ -33,6 +33,20 @@
           "sortable": true
         }
       },
+      "label": {
+        "edit": {
+          "label": "label",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "label",
+          "searchable": true,
+          "sortable": true
+        }
+      },
       "description": {
         "edit": {
           "label": "description",
@@ -57,17 +71,19 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "number",
-        "description"
-      ],
+      "list": ["id", "number", "label", "description"],
       "edit": [
         [
           {
             "name": "number",
             "size": 6
           },
+          {
+            "name": "label",
+            "size": 6
+          }
+        ],
+        [
           {
             "name": "description",
             "size": 6

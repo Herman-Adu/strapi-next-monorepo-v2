@@ -1,0 +1,33 @@
+{
+  "collectionName": "components_molecules_contact_methods",
+  "info": {
+    "displayName": "Contact Method",
+    "description": "Contact information item with icon, title, description, and optional link"
+  },
+  "options": {},
+  "attributes": {
+    "icon": {
+      "type": "component",
+      "repeatable": false,
+      "component": "atoms.icon",
+      "required": true,
+      "description": "Icon for this contact method (supports Lucide icons, emoji, or custom uploads)"
+    },
+    "title": {
+      "type": "string",
+      "required": true,
+      "description": "Contact method title (e.g., 'Email Us', 'Call Us', 'Business Hours')"
+    },
+    "description": {
+      "type": "text",
+      "required": true,
+      "description": "Contact details or additional information"
+    },
+    "link": {
+      "type": "component",
+      "repeatable": false,
+      "component": "utilities.link",
+      "description": "Optional link (e.g., mailto:, tel:, or page URL)"
+    }
+  }
+}

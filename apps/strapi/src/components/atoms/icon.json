@@ -1,0 +1,39 @@
+{
+  "collectionName": "components_atoms_icons",
+  "info": {
+    "displayName": "Icon",
+    "description": "Universal icon component - supports Lucide icons, emoji, or custom image uploads",
+    "icon": "picture"
+  },
+  "options": {},
+  "attributes": {
+    "iconType": {
+      "type": "enumeration",
+      "enum": ["lucide", "emoji", "custom"],
+      "required": true,
+      "default": "emoji",
+      "description": "Select icon display mode: Lucide (icon library), Emoji (character), or Custom (upload)"
+    },
+    "lucideName": {
+      "type": "string",
+      "description": "Lucide icon name (e.g., 'Mail', 'Phone', 'MapPin', 'Clock'). Browse all icons: https://lucide.dev/icons/"
+    },
+    "emoji": {
+      "type": "string",
+      "maxLength": 4,
+      "description": "Single emoji character (e.g., 📞, ✉️, ⏰, 🏢, 💬, 📅)"
+    },
+    "customImage": {
+      "type": "component",
+      "repeatable": false,
+      "component": "utilities.basic-image",
+      "description": "Upload custom icon image (SVG, PNG). Overrides lucideName and emoji if iconType is 'custom'"
+    },
+    "size": {
+      "type": "enumeration",
+      "enum": ["sm", "md", "lg", "xl"],
+      "default": "md",
+      "description": "Icon size: sm (16px), md (20px), lg (24px), xl (32px)"
+    }
+  }
+}

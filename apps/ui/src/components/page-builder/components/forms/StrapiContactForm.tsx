@@ -17,7 +17,7 @@ export function StrapiContactForm({
       <Container className="relative z-10 flex flex-col gap-10 lg:flex-row lg:gap-40">
         <div className="flex flex-1">
           <div className="flex max-w-[400px] flex-col gap-10">
-            {component.title && (
+            {/* {component.title && (
               <h2
                 className={cn(
                   "text-center font-semibold text-balance",
@@ -32,16 +32,16 @@ export function StrapiContactForm({
               <Paragraph className="text-muted-foreground">
                 {component.description}
               </Paragraph>
-            )}
+            )} */}
           </div>
         </div>
         <div className="flex flex-1">
           <ContactForm
-            gdpr={{
+          /* gdpr={{
               href: component.gdpr?.href ?? undefined,
               label: component.gdpr?.label ?? undefined,
               newTab: component.gdpr?.newTab ?? false,
-            }}
+            }} */
           />
         </div>
       </Container>

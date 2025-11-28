@@ -2,13 +2,17 @@
   "collectionName": "components_molecules_stat_cards",
   "info": {
     "displayName": "StatCard",
-    "description": "Statistic card with number and description"
+    "description": "Statistic card with number, label, and description"
   },
   "options": {},
   "attributes": {
     "number": {
       "type": "string",
       "required": true
+    },
+    "label": {
+      "type": "string",
+      "required": false
     },
     "description": {
       "type": "string",

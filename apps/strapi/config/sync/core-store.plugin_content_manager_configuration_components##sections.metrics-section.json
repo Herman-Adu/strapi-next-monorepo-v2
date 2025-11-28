@@ -75,6 +75,20 @@
           "sortable": false
         }
       },
+      "gridColumns": {
+        "edit": {
+          "label": "gridColumns",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "gridColumns",
+          "searchable": true,
+          "sortable": true
+        }
+      },
       "documentId": {
         "edit": {},
         "list": {
@@ -109,6 +123,12 @@
           {
             "name": "metrics",
             "size": 12
+          }
+        ],
+        [
+          {
+            "name": "gridColumns",
+            "size": 6
           }
         ]
       ]

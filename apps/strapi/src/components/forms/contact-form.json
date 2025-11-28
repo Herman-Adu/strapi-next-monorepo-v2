@@ -1,20 +1,23 @@
 {
   "collectionName": "components_forms_contact_forms",
   "info": {
-    "displayName": "ContactForm"
+    "displayName": "ContactForm",
+    "description": "Contact form with GDPR compliance - title/description handled by section header"
   },
   "options": {},
   "attributes": {
-    "title": {
-      "type": "string"
+    "gdprLabel": {
+      "type": "string",
+      "required": true,
+      "default": "I agree to the terms and conditions",
+      "description": "Text for GDPR checkbox label"
     },
-    "description": {
-      "type": "text"
-    },
-    "gdpr": {
+    "gdprLink": {
       "type": "component",
       "repeatable": false,
-      "component": "utilities.link"
+      "component": "utilities.link",
+      "required": true,
+      "description": "Link to privacy policy or terms"
     }
   }
 }
