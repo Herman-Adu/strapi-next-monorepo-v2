@@ -2,12 +2,15 @@ name: E2E Tests
 
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - main
+  # Disabled on push/PR to save resources - run manually or on schedule
+  # push:
+  #   branches:
+  #     - main
+  # pull_request:
+  #   branches:
+  #     - main
+  schedule:
+    - cron: '0 2 * * *'  # Daily at 2 AM UTC
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.head_ref || github.run_id }}
@@ -19,7 +22,7 @@ env:
 jobs:
   e2e-tests:
     name: E2E Tests (Playwright)
-    timeout-minutes: 30
+    timeout-minutes: 15  # Reduced from 30 - optimized workflow
     runs-on: ubuntu-latest
 
     services:
@@ -61,7 +64,7 @@ jobs:
         run: yarn --frozen-lockfile
 
       - name: Install Playwright Browsers
-        run: npx playwright install --with-deps chromium firefox webkit
+        run: npx playwright install --with-deps chromium  # Only Chromium for faster CI
 
       - name: Prepare Environment Variables
         run: |
@@ -84,34 +87,55 @@ jobs:
       - name: Build UI
         run: yarn build:ui
 
-      - name: Seed Strapi Database
+      - name: Start Strapi Server (Production Mode)
         run: |
-          # Start Strapi in background to initialize database
+          # Start Strapi in production mode (uses pre-built admin, faster)
           cd apps/strapi
-          NODE_ENV=development yarn start &
+          NODE_ENV=production yarn start &
           STRAPI_PID=$!
+          echo "STRAPI_PID=$STRAPI_PID" >> $GITHUB_ENV
           
-          # Wait for Strapi to be ready (max 120 seconds)
+          # Wait for Strapi health check (max 60 seconds)
           echo "Waiting for Strapi to be ready..."
-          timeout=120
+          timeout=60
           elapsed=0
           until curl -s http://localhost:1337/_health > /dev/null 2>&1; do
             if [ $elapsed -ge $timeout ]; then
-              echo "Strapi failed to start within $timeout seconds"
+              echo "❌ Strapi failed to start within $timeout seconds"
               kill $STRAPI_PID 2>/dev/null || true
               exit 1
             fi
-            echo "Waiting for Strapi... ($elapsed/$timeout seconds)"
+            echo "⏳ Waiting for Strapi... ($elapsed/$timeout seconds)"
             sleep 5
             elapsed=$((elapsed + 5))
           done
           
-          echo "Strapi is ready!"
+          echo "✅ Strapi is ready!"
+
+      - name: Start Next.js Server (Production Mode)
+        run: |
+          # Start Next.js in production mode
+          cd apps/ui
+          yarn start &
+          NEXTJS_PID=$!
+          echo "NEXTJS_PID=$NEXTJS_PID" >> $GITHUB_ENV
           
-          # TODO: Seed test data here
-          # For now, stop Strapi (tests will start it via webServer config)
-          kill $STRAPI_PID
-          wait $STRAPI_PID 2>/dev/null || true
+          # Wait for Next.js to be ready (max 30 seconds)
+          echo "Waiting for Next.js to be ready..."
+          timeout=30
+          elapsed=0
+          until curl -s http://localhost:3000 > /dev/null 2>&1; do
+            if [ $elapsed -ge $timeout ]; then
+              echo "❌ Next.js failed to start within $timeout seconds"
+              kill $NEXTJS_PID 2>/dev/null || true
+              exit 1
+            fi
+            echo "⏳ Waiting for Next.js... ($elapsed/$timeout seconds)"
+            sleep 3
+            elapsed=$((elapsed + 3))
+          done
+          
+          echo "✅ Next.js is ready!"
           
       - name: Run Playwright E2E Tests
         run: yarn test:e2e
@@ -164,3 +188,11 @@ jobs:
           else
             echo "⚠️ No test report generated."
           fi
+
+      - name: Cleanup Servers
+        if: always()
+        run: |
+          echo "🧹 Stopping servers..."
+          kill ${{ env.STRAPI_PID }} 2>/dev/null || true
+          kill ${{ env.NEXTJS_PID }} 2>/dev/null || true
+          echo "✅ Cleanup complete"

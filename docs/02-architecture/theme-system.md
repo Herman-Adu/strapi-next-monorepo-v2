@@ -390,30 +390,26 @@ useEffect(() => {
 ```css
 /* Layout */
 --background: /* Page background */ --foreground: /* Primary text color */
-  /* Components */ --card: /* Card background */
-  --card-foreground: /* Card text */
-  --popover: /* Popover/dropdown background */
-  --popover-foreground: /* Popover text */ /* Brand Colors */
-  --primary: /* Primary brand color */
-  --primary-foreground: /* Text on primary */
-  --secondary: /* Secondary actions */
-  --secondary-foreground: /* Text on secondary */ /* States */
-  --muted: /* Muted backgrounds */ --muted-foreground: /* Muted text */
-  --accent: /* Accent highlights */ --accent-foreground: /* Text on accent */
-  --destructive: /* Error/delete actions */
-  --destructive-foreground: /* Text on destructive */ /* Form Elements */
-  --border: /* Default borders */ --input: /* Input borders */
-  --ring: /* Focus ring color */ /* Sidebar (if applicable) */
-  --sidebar: /* Sidebar background */ --sidebar-foreground: /* Sidebar text */
-  --sidebar-primary: /* Sidebar active item */
-  --sidebar-primary-foreground: /* Text on sidebar primary */
-  --sidebar-accent: /* Sidebar hover state */
-  --sidebar-accent-foreground: /* Text on sidebar accent */
-  --sidebar-border: /* Sidebar borders */
-  --sidebar-ring: /* Sidebar focus ring */ /* Charts (optional) */
-  --chart-1: /* Chart color 1 */ --chart-2: /* Chart color 2 */
-  --chart-3: /* Chart color 3 */ --chart-4: /* Chart color 4 */
-  --chart-5: /* Chart color 5 */ /* Border Radius */
+  /* Components */ --card: /* Card background */ --card-foreground:
+  /* Card text */ --popover: /* Popover/dropdown background */
+  --popover-foreground: /* Popover text */ /* Brand Colors */ --primary:
+  /* Primary brand color */ --primary-foreground: /* Text on primary */
+  --secondary: /* Secondary actions */ --secondary-foreground:
+  /* Text on secondary */ /* States */ --muted: /* Muted backgrounds */
+  --muted-foreground: /* Muted text */ --accent: /* Accent highlights */
+  --accent-foreground: /* Text on accent */ --destructive:
+  /* Error/delete actions */ --destructive-foreground: /* Text on destructive */
+  /* Form Elements */ --border: /* Default borders */ --input:
+  /* Input borders */ --ring: /* Focus ring color */
+  /* Sidebar (if applicable) */ --sidebar: /* Sidebar background */
+  --sidebar-foreground: /* Sidebar text */ --sidebar-primary:
+  /* Sidebar active item */ --sidebar-primary-foreground:
+  /* Text on sidebar primary */ --sidebar-accent: /* Sidebar hover state */
+  --sidebar-accent-foreground: /* Text on sidebar accent */ --sidebar-border:
+  /* Sidebar borders */ --sidebar-ring: /* Sidebar focus ring */
+  /* Charts (optional) */ --chart-1: /* Chart color 1 */ --chart-2:
+  /* Chart color 2 */ --chart-3: /* Chart color 3 */ --chart-4:
+  /* Chart color 4 */ --chart-5: /* Chart color 5 */ /* Border Radius */
   --radius: /* Global border radius (default: 0.75rem) */;
 ```
 
