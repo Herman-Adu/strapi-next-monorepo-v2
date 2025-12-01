@@ -659,6 +659,7 @@ export interface ApiPagePage extends Struct.CollectionTypeSchema {
         "sections.integration-grid-section",
         "sections.marquee-section",
         "sections.testimonials-section",
+        "sections.ckeditor",
         "forms.newsletter-form",
         "forms.contact-form",
         "utilities.ck-editor-content",

@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_sections_ckeditors",
+  "info": {
+    "displayName": "CkEditor",
+    "description": "Rich text editor section with background only - no badge or header needed"
+  },
+  "options": {},
+  "attributes": {
+    "background": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.section-background"
+    },
+    "content": {
+      "type": "richtext",
+      "required": true
+    }
+  }
+}

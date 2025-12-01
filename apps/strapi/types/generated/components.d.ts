@@ -435,6 +435,18 @@ export interface SectionsBenefitsSection extends Struct.ComponentSchema {
   }
 }
 
+export interface SectionsCkeditor extends Struct.ComponentSchema {
+  collectionName: "components_sections_ckeditors"
+  info: {
+    description: "Rich text editor section with background only - no badge or header needed"
+    displayName: "CkEditor"
+  }
+  attributes: {
+    background: Schema.Attribute.Component<"shared.section-background", false>
+    content: Schema.Attribute.RichText & Schema.Attribute.Required
+  }
+}
+
 export interface SectionsContactSection extends Struct.ComponentSchema {
   collectionName: "components_sections_contact_sections"
   info: {
@@ -1149,6 +1161,7 @@ declare module "@strapi/strapi" {
       "molecules.stat-card": MoleculesStatCard
       "molecules.testimonial-card": MoleculesTestimonialCard
       "sections.benefits-section": SectionsBenefitsSection
+      "sections.ckeditor": SectionsCkeditor
       "sections.contact-section": SectionsContactSection
       "sections.faq": SectionsFaq
       "sections.feature-grid-section": SectionsFeatureGridSection
