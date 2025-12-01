@@ -11,6 +11,34 @@
 const path = require("path")
 const fs = require("fs")
 
+// Load environment variables from .env file BEFORE bootstrapping Strapi
+// This ensures DATABASE_URL, DATABASE_USERNAME, and other env vars are available
+const dotenv = require("dotenv")
+const envPath = path.join(__dirname, "..", ".env")
+
+if (fs.existsSync(envPath)) {
+  console.log("📋 Loading environment variables from .env file...")
+  const result = dotenv.config({ path: envPath })
+  if (result.error) {
+    console.error("❌ Error loading .env file:", result.error)
+  } else {
+    console.log("✅ Environment variables loaded successfully")
+    console.log(
+      "   DATABASE_USERNAME:",
+      process.env.DATABASE_USERNAME || "❌ NOT SET"
+    )
+    console.log("   DATABASE_HOST:", process.env.DATABASE_HOST || "❌ NOT SET")
+    console.log("   DATABASE_NAME:", process.env.DATABASE_NAME || "❌ NOT SET")
+  }
+} else {
+  console.log("⚠️  No .env file found at:", envPath)
+  console.log("   Using environment variables from system/workflow")
+  console.log(
+    "   DATABASE_USERNAME:",
+    process.env.DATABASE_USERNAME || "❌ NOT SET"
+  )
+}
+
 // Global handler for async errors (Tarn connection pool cleanup)
 process.on("unhandledRejection", (reason, promise) => {
   if (reason && reason.message && reason.message.includes("aborted")) {
