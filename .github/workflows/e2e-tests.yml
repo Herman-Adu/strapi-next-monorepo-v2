@@ -91,6 +91,9 @@ jobs:
           echo "DATABASE_USERNAME=strapi" >> apps/strapi/.env
           echo "DATABASE_PASSWORD=strapi" >> apps/strapi/.env
           echo "DATABASE_SSL=false" >> apps/strapi/.env
+          
+          # Next.js configuration for CI - disable standalone output
+          echo "NEXT_OUTPUT=" >> apps/ui/.env.local
 
       - name: Build Strapi
         run: yarn build:strapi
