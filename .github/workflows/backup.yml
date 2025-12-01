@@ -1,11 +1,12 @@
 name: Database Backup
 
 on:
-  # Run daily at 2 AM UTC
-  schedule:
-    - cron: "0 2 * * *"
+  # Disabled scheduled runs - requires production database secrets
+  # Re-enable when production deployment is configured
+  # schedule:
+  #   - cron: "0 2 * * *"
   
-  # Allow manual trigger
+  # Allow manual trigger (for production use only)
   workflow_dispatch:
     inputs:
       upload_to_s3:
