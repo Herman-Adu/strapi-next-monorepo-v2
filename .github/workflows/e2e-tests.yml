@@ -172,9 +172,12 @@ jobs:
           echo "✅ Both servers verified and ready for testing!"
           
           # Run E2E tests (servers still running in background)
+          # Run Playwright directly to avoid Turbo rebuilding dependencies
           echo "🧪 Running E2E tests..."
-          yarn test:e2e
+          cd apps/ui
+          npx playwright test
           TEST_EXIT_CODE=$?
+          cd ../..
           
           # Cleanup servers
           echo "🧹 Stopping servers..."
