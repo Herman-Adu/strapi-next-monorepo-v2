@@ -94,6 +94,9 @@ fi
 
 echo -e "${YELLOW}🗑️  Resetting database (drop + recreate schema)...${NC}"
 
+# Ensure DATABASE_URL is exported for psql subprocess
+export DATABASE_URL
+
 # Drop public schema and recreate (PostgreSQL)
 psql "$DATABASE_URL" -c "DROP SCHEMA IF EXISTS public CASCADE; CREATE SCHEMA public;" > /dev/null 2>&1
 
@@ -106,31 +109,11 @@ else
 fi
 
 # ------------------------------------------------------------------------------
-# 4. RUN MIGRATIONS TO CREATE DATABASE SCHEMA
-# ------------------------------------------------------------------------------
-
-echo -e "${YELLOW}🔄 Creating database schema from Strapi build...${NC}"
-
-# Change to Strapi directory
-cd "$(dirname "$0")/.."
-
-# Generate types and run build to create database tables
-# Note: This is still needed because database reset dropped all tables
-NODE_ENV=production yarn strapi ts:generate-types
-NODE_ENV=production yarn build
-
-if [ $? -eq 0 ]; then
-  echo -e "${GREEN}✅ Database schema created${NC}"
-else
-  echo -e "${RED}❌ Schema creation failed${NC}"
-  exit 1
-fi
-
-# ------------------------------------------------------------------------------
-# 5. SEED E2E TEST DATA
+# 4. SEED E2E TEST DATA (Schema will be created by strapi import)
 # ------------------------------------------------------------------------------
 
 echo -e "${YELLOW}🌱 Seeding E2E test data...${NC}"
+echo -e "${BLUE}ℹ️  Note: Database schema will be created automatically by strapi import${NC}"
 
 # Run the seed script (verification happens inside the seed function)
 node scripts/run-seed.js
