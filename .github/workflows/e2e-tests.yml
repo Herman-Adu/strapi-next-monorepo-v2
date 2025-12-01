@@ -108,10 +108,12 @@ jobs:
 
       - name: Start Servers and Run E2E Tests
         run: |
-          # Start Strapi in background
+          # Start Strapi in background (bypass Turbo, call directly in app directory)
           echo "🚀 Starting Strapi..."
-          NODE_ENV=production yarn start:strapi &
+          cd apps/strapi
+          NODE_ENV=production yarn start &
           STRAPI_PID=$!
+          cd ../..
           
           # Wait for Strapi health check
           echo "⏳ Waiting for Strapi to be ready..."
@@ -119,34 +121,52 @@ jobs:
           elapsed=0
           until curl -s http://localhost:1337/_health > /dev/null 2>&1; do
             if [ $elapsed -ge $timeout ]; then
-              echo "❌ Strapi failed to start"
+              echo "❌ Strapi failed to start within $timeout seconds"
               kill $STRAPI_PID 2>/dev/null || true
               exit 1
             fi
             sleep 5
             elapsed=$((elapsed + 5))
+            echo "  ⏱️  Waiting... ($elapsed/$timeout seconds)"
           done
-          echo "✅ Strapi is ready!"
+          echo "✅ Strapi is ready at http://localhost:1337!"
           
-          # Start Next.js in background
+          # Start Next.js in background (bypass Turbo, call directly in app directory)
           echo "🚀 Starting Next.js..."
-          yarn start:ui &
+          cd apps/ui
+          yarn start &
           NEXTJS_PID=$!
+          cd ../..
           
           # Wait for Next.js health check
           echo "⏳ Waiting for Next.js to be ready..."
-          timeout=30
+          timeout=60
           elapsed=0
           until curl -s http://localhost:3000 > /dev/null 2>&1; do
             if [ $elapsed -ge $timeout ]; then
-              echo "❌ Next.js failed to start"
+              echo "❌ Next.js failed to start within $timeout seconds"
               kill $STRAPI_PID $NEXTJS_PID 2>/dev/null || true
               exit 1
             fi
-            sleep 3
-            elapsed=$((elapsed + 3))
+            sleep 5
+            elapsed=$((elapsed + 5))
+            echo "  ⏱️  Waiting... ($elapsed/$timeout seconds)"
           done
-          echo "✅ Next.js is ready!"
+          echo "✅ Next.js is ready at http://localhost:3000!"
+          
+          # Verify both servers are still responding before running tests
+          echo "🔍 Verifying servers are still responding..."
+          if ! curl -f http://localhost:1337/_health > /dev/null 2>&1; then
+            echo "⚠️ Strapi health check failed before tests!"
+            kill $STRAPI_PID $NEXTJS_PID 2>/dev/null || true
+            exit 1
+          fi
+          if ! curl -f http://localhost:3000 > /dev/null 2>&1; then
+            echo "⚠️ Next.js health check failed before tests!"
+            kill $STRAPI_PID $NEXTJS_PID 2>/dev/null || true
+            exit 1
+          fi
+          echo "✅ Both servers verified and ready for testing!"
           
           # Run E2E tests (servers still running in background)
           echo "🧪 Running E2E tests..."
