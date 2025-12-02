@@ -43,7 +43,7 @@ jobs:
           POSTGRES_USER: strapi
           POSTGRES_PASSWORD: strapi
           POSTGRES_DB: strapi_dev
-        options: >
+        options: >-
           --health-cmd "pg_isready -U strapi"
           --health-interval 10s
           --health-timeout 5s
