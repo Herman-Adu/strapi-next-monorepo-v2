@@ -43,11 +43,11 @@ jobs:
           POSTGRES_USER: strapi
           POSTGRES_PASSWORD: strapi
           POSTGRES_DB: strapi_dev
-        options: >-
-          --health-cmd pg_isready
+        options: >
+          --health-cmd "pg_isready -U strapi"
           --health-interval 10s
           --health-timeout 5s
-          --health-retries 5
+          --health-retries 20
         ports:
           - 5432:5432
 
@@ -114,6 +114,11 @@ jobs:
           # Start Strapi in background (bypass Turbo, call directly in app directory)
           echo "🚀 Starting Strapi..."
           cd apps/strapi
+          export DATABASE_HOST=localhost
+          export DATABASE_PORT=5432
+          export DATABASE_NAME=strapi_dev
+          export DATABASE_USERNAME=strapi
+          export DATABASE_PASSWORD=strapi
           NODE_ENV=production yarn start &
           STRAPI_PID=$!
           cd ../..

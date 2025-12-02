@@ -94,11 +94,11 @@ fi
 
 echo -e "${YELLOW}🗑️  Resetting database (drop + recreate schema)...${NC}"
 
-# Ensure DATABASE_URL is exported for psql subprocess
-export DATABASE_URL
+# Set PostgreSQL password for psql commands
+export PGPASSWORD=strapi
 
-# Drop public schema and recreate (PostgreSQL)
-psql "$DATABASE_URL" -c "DROP SCHEMA IF EXISTS public CASCADE; CREATE SCHEMA public;" > /dev/null 2>&1
+# Drop public schema and recreate (PostgreSQL) with explicit credentials
+psql -h localhost -U strapi -d strapi_dev -c "DROP SCHEMA IF EXISTS public CASCADE; CREATE SCHEMA public;" > /dev/null 2>&1
 
 if [ $? -eq 0 ]; then
   echo -e "${GREEN}✅ Database reset complete${NC}"

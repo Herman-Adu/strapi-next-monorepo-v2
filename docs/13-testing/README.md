@@ -425,15 +425,67 @@ describe("useSubscriberForm", () => {
 
 ## 🎭 E2E TESTING (Playwright)
 
-### What We Test
+### Overview
 
-**Critical User Flows**:
+End-to-end (E2E) tests verify complete user workflows by simulating real user interactions in a browser. These tests ensure critical features work correctly from the user's perspective.
 
-1. Authentication (login, register, password reset)
-2. Form submissions (contact, newsletter)
-3. Navigation (page transitions)
-4. Search functionality
-5. Content creation (Strapi admin)
+**Purpose**:
+
+- ✅ Test critical user flows (authentication, forms, navigation)
+- ✅ Verify frontend-backend integration
+- ✅ Catch regressions in multi-step processes
+- ✅ Ensure consistent behavior across browsers
+
+**Current Status**: ✅ Infrastructure Complete
+
+- Test data seeding system established
+- Basic homepage test functional
+- Weekly GitHub Actions workflow configured
+- Ready for expanded coverage
+
+---
+
+### Documentation
+
+Comprehensive E2E testing documentation is available in the `e2e/` subdirectory:
+
+| Guide                                                                    | Purpose                                | Audience           |
+| ------------------------------------------------------------------------ | -------------------------------------- | ------------------ |
+| [E2E Testing Overview](./e2e/README.md)                                  | Quick start, workflow, best practices  | All developers     |
+| [Test Data Seeding](./e2e/test-data-seeding.md)                          | Creating and managing seed scripts     | Backend developers |
+| [Case Study: Seeding Best Practices](./e2e/strapi-seeding-case-study.md) | Deep-dive analysis and lessons learned | Senior developers  |
+
+**Quick Links**:
+
+- 📖 [Getting Started with E2E Testing](./e2e/README.md#-quick-start)
+- 🌱 [How to Seed Test Data](./e2e/test-data-seeding.md#-quick-start)
+- 🐛 [Troubleshooting E2E Tests](./e2e/README.md#-troubleshooting)
+- 🎯 [E2E Best Practices](./e2e/README.md#-best-practices)
+
+---
+
+### Current Coverage
+
+**Infrastructure** (✅ Complete):
+
+- ✅ Test data seeding (factory pattern)
+- ✅ Database reset automation
+- ✅ Strapi API integration
+- ✅ CI/CD workflow (weekly runs)
+
+**User Flows** (⏳ In Progress):
+
+- ✅ Homepage rendering and navigation
+- ⏳ Newsletter subscription form
+- ⏳ Contact form submission
+- ⏳ FAQ section interactions
+
+**Planned Coverage** (Next 3 Months):
+
+- ⏳ Authentication flows (login, register)
+- ⏳ Dynamic page routing
+- ⏳ Search functionality
+- ⏳ Responsive behavior validation
 
 ---
 
@@ -468,6 +520,26 @@ export default defineConfig({
 
 ---
 
+### Quick Start Commands
+
+```bash
+# Seed test data (resets database!)
+cd apps/strapi
+yarn seed:e2e
+
+# Run E2E tests (requires seeded data)
+cd apps/ui
+yarn test:e2e
+
+# Run tests in headed mode (see browser)
+yarn test:e2e --headed
+
+# Run tests in UI mode (interactive)
+yarn test:e2e --ui
+```
+
+---
+
 ### Example: Testing Homepage
 
 ```typescript
@@ -498,6 +570,41 @@ test("newsletter subscription works", async ({ page }) => {
   await expect(page.locator("text=Success")).toBeVisible()
 })
 ```
+
+---
+
+### CI/CD Integration
+
+**GitHub Actions**: `.github/workflows/e2e-tests.yml`
+
+```yaml
+name: E2E Tests
+on:
+  schedule:
+    - cron: "0 2 * * 0" # Weekly (Sunday 2 AM)
+
+jobs:
+  e2e:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Seed Test Data
+        run: |
+          cd apps/strapi
+          yarn seed:e2e
+
+      - name: Run E2E Tests
+        run: |
+          cd apps/ui
+          yarn test:e2e
+```
+
+---
+
+### Next Steps
+
+1. **Expand test coverage** - See [E2E README](./e2e/README.md#-coverage-goals) for roadmap
+2. **Learn seeding** - Follow [Test Data Seeding Guide](./e2e/test-data-seeding.md)
+3. **Review best practices** - Read [Case Study](./e2e/strapi-seeding-case-study.md)
 
 ---
 

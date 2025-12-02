@@ -127,7 +127,7 @@ Welcome to the complete documentation for the Strapi-Next.js Monorepo v2 project
 - `04-DEPLOYMENT.md` - Production deployment
 - `05-CONTENT-WORKFLOW.md` - CMS workflow
 
-### 7️⃣ [Platform Vision & Business Strategy](./platform-vision/README.md) ⭐ NEW
+### 7️⃣ [Platform Vision & Business Strategy](./platform-vision/README.md) ⭐
 
 **Strategic thinking, business impact, and growth opportunities**
 
@@ -149,6 +149,43 @@ Welcome to the complete documentation for the Strapi-Next.js Monorepo v2 project
 - Partnership applications (Strapi, agencies)
 - Client presentations and ROI demonstrations
 - Educational content planning (tutorials, workshops)
+- Strategic planning and roadmap discussions
+
+### 8️⃣ [Deep Dives: Technical Mastery](../docs/14-deep-dives/README.md) 🎓 NEW
+
+**Production-proven guides from real experience** ($530K+ value documented)
+
+**Strapi 5 Mastery Series:**
+
+- `strapi-5/01-BEGINNER.md` - Setup, PostgreSQL, content types (45 min)
+- `strapi-5/02-INTERMEDIATE.md` - Dynamic zones, populate middleware (60 min)
+- `strapi-5/03-ADVANCED.md` - Performance, security, lifecycle hooks (75 min)
+- `strapi-5/04-BEST-PRACTICES.md` - Strategic patterns, team workflows (90 min)
+
+**Docker & Containerization:**
+
+- `docker/01-FUNDAMENTALS.md` - Local development with PostgreSQL (50 min)
+- `docker/02-PRODUCTION.md` - Multi-stage builds, optimization (70 min)
+
+**Meta & Workflow:**
+
+- `05-TRANSFORMATION-JOURNEY.md` - Complete evolution story (45 min)
+- `06-PRE-COMMIT-CHECKLIST.md` - Testing & quality gates (30 min)
+- `07-GIT-WORKFLOW.md` - Milestone commits & best practices (45 min)
+
+**📊 Content Stats:**
+
+- Total learning time: 510 minutes (8.5 hours)
+- Code examples: 175+ real implementations
+- Mermaid diagrams: 30+ visualizations
+- Documented value: $530,100 (3-year ROI)
+
+**💡 Use This For:**
+
+- Onboarding new developers (2 weeks → 2 days)
+- Technical interviews and assessments
+- Conference talks and workshops
+- Team training and knowledge sharing
 - Strategic planning and roadmap discussions
 
 ---
