@@ -30,7 +30,21 @@ export default defineConfig({
         // CI: Chromium only for speed
         {
           name: "chromium",
-          use: { ...devices["Desktop Chrome"] },
+          use: {
+            ...devices["Desktop Chrome"],
+            // CI-specific browser args to fix connectivity issues
+            launchOptions: {
+              args: [
+                "--disable-web-security",
+                "--disable-features=IsolateOrigins,site-per-process",
+                "--no-sandbox",
+                "--disable-setuid-sandbox",
+                "--disable-dev-shm-usage",
+                "--proxy-server='direct://'",
+                "--proxy-bypass-list=*",
+              ],
+            },
+          },
         },
       ]
     : [
