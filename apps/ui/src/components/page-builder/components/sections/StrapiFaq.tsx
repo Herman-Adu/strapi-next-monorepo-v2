@@ -40,7 +40,7 @@ export function StrapiFaq({
         {/* Accordions */}
         {component.accordions && component.accordions.length > 0 && (
           <div className="mx-auto w-full max-w-3xl">
-            <Accordion type="single" collapsible className="w-full">
+            <Accordion type="multiple" className="w-full">
               {component.accordions.map((item) => (
                 <AccordionItem key={item.id} value={item.id.toString()}>
                   <AccordionTrigger>{item.question}</AccordionTrigger>

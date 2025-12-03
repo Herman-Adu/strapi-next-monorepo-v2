@@ -85,8 +85,19 @@
       }
     },
     "layouts": {
-      "list": ["id", "accordions", "background", "badge"],
+      "list": [
+        "id",
+        "accordions",
+        "background",
+        "badge"
+      ],
       "edit": [
+        [
+          {
+            "name": "accordions",
+            "size": 12
+          }
+        ],
         [
           {
             "name": "background",
@@ -102,12 +113,6 @@
         [
           {
             "name": "header",
-            "size": 12
-          }
-        ],
-        [
-          {
-            "name": "accordions",
             "size": 12
           }
         ]

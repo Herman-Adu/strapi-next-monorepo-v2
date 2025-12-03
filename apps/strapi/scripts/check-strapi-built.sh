@@ -40,8 +40,8 @@ if [ ! -d "dist" ]; then
 fi
 
 # Check if essential build artifacts exist
+# Note: dist/build (admin panel) is not required for seeding operations
 REQUIRED_PATHS=(
-  "dist/build"
   "dist/config"
   "dist/src"
 )

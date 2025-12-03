@@ -26,6 +26,7 @@
     "migrate:sqlite": "bash scripts/migrate-from-sqlite.sh",
     "run:db": "docker compose up -d db",
     "seed:e2e": "bash scripts/seed-e2e-data.sh",
+    "seed:e2e:safe": "bash scripts/seed-e2e-data-safe.sh",
     "seed:e2e:win": "powershell -ExecutionPolicy Bypass -File ./scripts/seed-e2e-data.ps1",
     "start": "strapi start",
     "strapi": "strapi",

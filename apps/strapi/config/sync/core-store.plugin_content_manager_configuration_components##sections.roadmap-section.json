@@ -99,8 +99,25 @@
       }
     },
     "layouts": {
-      "list": ["id", "roadmapItems", "background", "badge"],
+      "list": [
+        "id",
+        "roadmapItems",
+        "background",
+        "badge"
+      ],
       "edit": [
+        [
+          {
+            "name": "roadmapItems",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "footerNotes",
+            "size": 12
+          }
+        ],
         [
           {
             "name": "background",
@@ -116,18 +133,6 @@
         [
           {
             "name": "header",
-            "size": 12
-          }
-        ],
-        [
-          {
-            "name": "roadmapItems",
-            "size": 12
-          }
-        ],
-        [
-          {
-            "name": "footerNotes",
             "size": 12
           }
         ]

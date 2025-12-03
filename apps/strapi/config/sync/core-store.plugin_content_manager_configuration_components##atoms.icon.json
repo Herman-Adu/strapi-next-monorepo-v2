@@ -1,13 +1,13 @@
 {
-  "key": "plugin_content_manager_configuration_components::sections.contact-section",
+  "key": "plugin_content_manager_configuration_components::atoms.icon",
   "value": {
     "settings": {
       "bulkable": true,
       "filterable": true,
       "searchable": true,
       "pageSize": 10,
-      "mainField": "documentId",
-      "defaultSortBy": "documentId",
+      "mainField": "lucideName",
+      "defaultSortBy": "lucideName",
       "defaultSortOrder": "ASC"
     },
     "metadatas": {
@@ -19,88 +19,74 @@
           "sortable": false
         }
       },
-      "background": {
+      "iconType": {
         "edit": {
-          "label": "background",
+          "label": "iconType",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "background",
-          "searchable": false,
-          "sortable": false
-        }
-      },
-      "badge": {
-        "edit": {
-          "label": "badge",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "badge",
-          "searchable": false,
-          "sortable": false
-        }
-      },
-      "header": {
-        "edit": {
-          "label": "header",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "header",
-          "searchable": false,
-          "sortable": false
-        }
-      },
-      "detailsPosition": {
-        "edit": {
-          "label": "detailsPosition",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "detailsPosition",
+          "label": "iconType",
           "searchable": true,
           "sortable": true
         }
       },
-      "contactDetails": {
+      "lucideName": {
         "edit": {
-          "label": "contactDetails",
+          "label": "lucideName",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "contactDetails",
+          "label": "lucideName",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "emoji": {
+        "edit": {
+          "label": "emoji",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "emoji",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "customImage": {
+        "edit": {
+          "label": "customImage",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "customImage",
           "searchable": false,
           "sortable": false
         }
       },
-      "contactForm": {
+      "size": {
         "edit": {
-          "label": "contactForm",
+          "label": "size",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "contactForm",
-          "searchable": false,
-          "sortable": false
+          "label": "size",
+          "searchable": true,
+          "sortable": true
         }
       },
       "documentId": {
@@ -115,50 +101,42 @@
     "layouts": {
       "list": [
         "id",
-        "background",
-        "badge",
-        "header"
+        "iconType",
+        "lucideName",
+        "emoji"
       ],
       "edit": [
         [
           {
-            "name": "background",
-            "size": 12
-          }
-        ],
-        [
+            "name": "iconType",
+            "size": 6
+          },
           {
-            "name": "badge",
-            "size": 12
-          }
-        ],
-        [
-          {
-            "name": "header",
-            "size": 12
-          }
-        ],
-        [
-          {
-            "name": "detailsPosition",
+            "name": "lucideName",
             "size": 6
           }
         ],
         [
           {
-            "name": "contactDetails",
+            "name": "emoji",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "customImage",
             "size": 12
           }
         ],
         [
           {
-            "name": "contactForm",
-            "size": 12
+            "name": "size",
+            "size": 6
           }
         ]
       ]
     },
-    "uid": "sections.contact-section",
+    "uid": "atoms.icon",
     "isComponent": true
   },
   "type": "object",

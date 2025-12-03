@@ -94,11 +94,17 @@ fi
 
 echo -e "${YELLOW}🗑️  Resetting database (drop + recreate schema)...${NC}"
 
-# Set PostgreSQL password for psql commands
-export PGPASSWORD=strapi
+# Extract credentials from DATABASE_URL
+DB_USER=$(echo "$DATABASE_URL" | sed -n 's|.*://\([^:]*\):.*|\1|p')
+DB_PASS=$(echo "$DATABASE_URL" | sed -n 's|.*://[^:]*:\([^@]*\)@.*|\1|p')
+DB_HOST=$(echo "$DATABASE_URL" | sed -n 's|.*@\([^:]*\):.*|\1|p')
+DB_PORT=$(echo "$DATABASE_URL" | sed -n 's|.*:\([0-9]*\)/.*|\1|p')
 
-# Drop public schema and recreate (PostgreSQL) with explicit credentials
-psql -h localhost -U strapi -d strapi_dev -c "DROP SCHEMA IF EXISTS public CASCADE; CREATE SCHEMA public;" > /dev/null 2>&1
+# Set PostgreSQL password for psql commands
+export PGPASSWORD="$DB_PASS"
+
+# Drop public schema and recreate (PostgreSQL) with credentials from DATABASE_URL
+psql -h "$DB_HOST" -p "$DB_PORT" -U "$DB_USER" -d "$DB_NAME" -c "DROP SCHEMA IF EXISTS public CASCADE; CREATE SCHEMA public;" > /dev/null 2>&1
 
 if [ $? -eq 0 ]; then
   echo -e "${GREEN}✅ Database reset complete${NC}"

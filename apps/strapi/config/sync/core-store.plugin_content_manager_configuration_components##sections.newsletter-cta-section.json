@@ -19,20 +19,6 @@
           "sortable": false
         }
       },
-      "background": {
-        "edit": {
-          "label": "Background Style",
-          "description": "Section background and container styling",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "background",
-          "searchable": false,
-          "sortable": false
-        }
-      },
       "badge": {
         "edit": {
           "label": "Badge",
@@ -43,6 +29,20 @@
         },
         "list": {
           "label": "badge",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "background": {
+        "edit": {
+          "label": "Background Style",
+          "description": "Section background and container styling",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "background",
           "searchable": false,
           "sortable": false
         }
@@ -161,8 +161,8 @@
       },
       "gdprLabel": {
         "edit": {
-          "label": "gdprLabel",
-          "description": "",
+          "label": "GDPR Checkbox Label",
+          "description": "Text for GDPR consent checkbox",
           "placeholder": "",
           "visible": true,
           "editable": true
@@ -175,8 +175,8 @@
       },
       "gdprLink": {
         "edit": {
-          "label": "gdprLink",
-          "description": "",
+          "label": "GDPR Link",
+          "description": "Link to privacy policy or terms (embedded in GDPR label)",
           "placeholder": "",
           "visible": true,
           "editable": true
@@ -290,6 +290,18 @@
         ],
         [
           {
+            "name": "gdprLabel",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "gdprLink",
+            "size": 12
+          }
+        ],
+        [
+          {
             "name": "ctaButtons",
             "size": 12
           }
@@ -298,16 +310,6 @@
           {
             "name": "showDivider",
             "size": 4
-          },
-          {
-            "name": "gdprLabel",
-            "size": 6
-          }
-        ],
-        [
-          {
-            "name": "gdprLink",
-            "size": 12
           }
         ]
       ]
