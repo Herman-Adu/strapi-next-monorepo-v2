@@ -1,108 +1,110 @@
 # Page snapshot
 
 ```yaml
-- generic [ref=e2]:
-    - banner [ref=e3]:
-        - generic [ref=e5]:
-            - link "company logo" [ref=e7] [cursor=pointer]:
-                - /url: /
-                - img "company logo" [ref=e8]
-            - navigation [ref=e9]:
-                - link "Home" [ref=e10] [cursor=pointer]:
+- generic [active] [ref=e1]:
+    - generic [ref=e2]:
+        - banner [ref=e3]:
+            - generic [ref=e5]:
+                - link "company logo" [ref=e7] [cursor=pointer]:
                     - /url: /
-                - link "About" [ref=e11] [cursor=pointer]:
-                    - /url: /about
-                - link "Services" [ref=e12] [cursor=pointer]:
-                    - /url: /services
-                - link "Landing Demo" [ref=e13] [cursor=pointer]:
-                    - /url: /landing
-                - link "Contact" [ref=e14] [cursor=pointer]:
-                    - /url: /contact
-            - generic [ref=e15]:
-                - button "Toggle theme" [ref=e17]:
-                    - img [ref=e18]
-                    - generic [ref=e24]: Toggle theme
-                - generic [ref=e25]:
+                    - img "company logo" [ref=e8]
+                - navigation [ref=e9]:
+                    - link "Home" [ref=e10] [cursor=pointer]:
+                        - /url: /
+                    - link "About" [ref=e11] [cursor=pointer]:
+                        - /url: /about
+                    - link "Services" [ref=e12] [cursor=pointer]:
+                        - /url: /services
+                    - link "Landing Demo" [ref=e13] [cursor=pointer]:
+                        - /url: /landing
+                    - link "Contact" [ref=e14] [cursor=pointer]:
+                        - /url: /contact
+                - generic [ref=e15]:
+                    - button "Toggle theme" [ref=e17]:
+                        - img [ref=e18]
+                        - img
+                        - generic [ref=e24]: Toggle theme
                     - combobox [ref=e26]:
                         - text: en
                         - img [ref=e27]
-                    - combobox [ref=e29]
-                - link "Sign in" [ref=e30] [cursor=pointer]:
-                    - /url: /auth/signin
-    - generic [ref=e36]: xl
-    - region "Notifications (F8)":
-        - list
-    - contentinfo [ref=e37]:
-        - generic [ref=e39]:
-            - generic [ref=e40]:
-                - heading "Full Stack Fusion" [level=2] [ref=e41]
-                - paragraph [ref=e42]: We're a family-run business with a strong work ethic and a commitment to excellence. At Clogzilla, we believe in old-fashioned customer service, up-to-date solutions, and honest advice.
-                - generic [ref=e43]:
-                    - link [ref=e44] [cursor=pointer]:
-                        - /url: https://twitter.com/your-company
-                        - img [ref=e45]
-                    - link [ref=e47] [cursor=pointer]:
-                        - /url: https://github.com/your-company
-                        - img [ref=e48]
-                    - link [ref=e51] [cursor=pointer]:
-                        - /url: https://linkedin.com/company/your-company
-                        - img [ref=e52]
-            - generic [ref=e57]:
-                - generic [ref=e58]:
-                    - heading "Company" [level=3] [ref=e59]
-                    - generic [ref=e60]:
-                        - link "About Us" [ref=e61] [cursor=pointer]:
-                            - /url: /about
-                        - link "Our Team" [ref=e62] [cursor=pointer]:
-                            - /url: /about#team
-                        - link "Careers" [ref=e63] [cursor=pointer]:
-                            - /url: /careers
-                        - link "Press Kit" [ref=e64] [cursor=pointer]:
-                            - /url: /press
-                - generic [ref=e65]:
-                    - heading "Resources" [level=3] [ref=e66]
-                    - generic [ref=e67]:
-                        - link "Blog" [ref=e68] [cursor=pointer]:
-                            - /url: /blog
-                        - link "Documentation" [ref=e69] [cursor=pointer]:
-                            - /url: /docs
-                        - link "Support" [ref=e70] [cursor=pointer]:
-                            - /url: /support
-                        - link "API Reference" [ref=e71] [cursor=pointer]:
-                            - /url: /api
-                - generic [ref=e72]:
-                    - heading "Legal" [level=3] [ref=e73]
-                    - generic [ref=e74]:
-                        - link "Privacy" [ref=e75] [cursor=pointer]:
-                            - /url: /privacy
-                        - link "Terms" [ref=e76] [cursor=pointer]:
-                            - /url: /terms
-                        - link "Cookies" [ref=e77] [cursor=pointer]:
-                            - /url: /cookies
-                        - link "Disclaimer" [ref=e78] [cursor=pointer]:
-                            - /url: /disclaimer
-            - generic [ref=e80]:
-                - heading "NEWSLETTER" [level=3] [ref=e81]
-                - paragraph [ref=e82]: Subscribe to our newsletter, stay up-to-date on the latest plumbing, drainage news and discounts as special offers we offer to our customers in the community and more.
-                - generic [ref=e84]:
-                    - group [ref=e86]:
-                        - generic [ref=e87]:
-                            - textbox "email" [ref=e90]:
-                                - /placeholder: Enter your email
-                            - button "Submit form" [disabled]:
-                                - img
-                    - generic [ref=e92]:
-                        - checkbox "Stay in the Loop /privacy-policy" [ref=e93]
-                        - checkbox
-                        - generic [ref=e94] [cursor=pointer]:
-                            - text: Stay in the Loop
-                            - link "/privacy-policy" [ref=e95]:
-                                - /url: /privacy-policy
-                - generic [ref=e96]:
-                    - text: "Note: By subscribing, you agree to our"
-                    - link "Stay in the Loop" [ref=e97] [cursor=pointer]:
-                        - /url: /privacy-policy
-        - generic [ref=e100]:
-            - paragraph [ref=e102]: © 2025 Your Company Name. All rights reserved.
-            - paragraph [ref=e104]: Designed and built by Fullstack Fusion
+                    - link "Sign in" [ref=e29] [cursor=pointer]:
+                        - /url: /auth/signin
+        - generic [ref=e35]: xl
+        - region "Notifications (F8)":
+            - list
+        - contentinfo [ref=e36]:
+            - generic [ref=e38]:
+                - generic [ref=e39]:
+                    - heading "Full Stack Fusion" [level=2] [ref=e40]
+                    - paragraph [ref=e41]: We're a family-run business with a strong work ethic and a commitment to excellence. At Clogzilla, we believe in old-fashioned customer service, up-to-date solutions, and honest advice.
+                    - generic [ref=e42]:
+                        - link [ref=e43] [cursor=pointer]:
+                            - /url: https://twitter.com/your-company
+                            - img [ref=e44]
+                        - link [ref=e46] [cursor=pointer]:
+                            - /url: https://github.com/your-company
+                            - img [ref=e47]
+                        - link [ref=e50] [cursor=pointer]:
+                            - /url: https://linkedin.com/company/your-company
+                            - img [ref=e51]
+                - generic [ref=e56]:
+                    - generic [ref=e57]:
+                        - heading "Company" [level=3] [ref=e58]
+                        - generic [ref=e59]:
+                            - link "About Us" [ref=e60] [cursor=pointer]:
+                                - /url: /about
+                            - link "Our Team" [ref=e61] [cursor=pointer]:
+                                - /url: /about#team
+                            - link "Careers" [ref=e62] [cursor=pointer]:
+                                - /url: /careers
+                            - link "Press Kit" [ref=e63] [cursor=pointer]:
+                                - /url: /press
+                    - generic [ref=e64]:
+                        - heading "Resources" [level=3] [ref=e65]
+                        - generic [ref=e66]:
+                            - link "Blog" [ref=e67] [cursor=pointer]:
+                                - /url: /blog
+                            - link "Documentation" [ref=e68] [cursor=pointer]:
+                                - /url: /docs
+                            - link "Support" [ref=e69] [cursor=pointer]:
+                                - /url: /support
+                            - link "API Reference" [ref=e70] [cursor=pointer]:
+                                - /url: /api
+                    - generic [ref=e71]:
+                        - heading "Legal" [level=3] [ref=e72]
+                        - generic [ref=e73]:
+                            - link "Privacy" [ref=e74] [cursor=pointer]:
+                                - /url: /privacy
+                            - link "Terms" [ref=e75] [cursor=pointer]:
+                                - /url: /terms
+                            - link "Cookies" [ref=e76] [cursor=pointer]:
+                                - /url: /cookies
+                            - link "Disclaimer" [ref=e77] [cursor=pointer]:
+                                - /url: /disclaimer
+                - generic [ref=e79]:
+                    - heading "NEWSLETTER" [level=3] [ref=e80]
+                    - paragraph [ref=e81]: Subscribe to our newsletter, stay up-to-date on the latest plumbing, drainage news and discounts as special offers we offer to our customers in the community and more.
+                    - generic [ref=e83]:
+                        - group [ref=e85]:
+                            - generic [ref=e86]:
+                                - textbox "email" [ref=e89]:
+                                    - /placeholder: Enter your email
+                                - button "Submit form" [disabled]:
+                                    - img
+                        - generic [ref=e91]:
+                            - checkbox "Stay in the Loop /privacy-policy" [ref=e92]
+                            - generic [ref=e93] [cursor=pointer]:
+                                - text: Stay in the Loop
+                                - link "/privacy-policy" [ref=e94]:
+                                    - /url: /privacy-policy
+                    - generic [ref=e95]:
+                        - text: "Note: By subscribing, you agree to our"
+                        - link "Stay in the Loop" [ref=e96] [cursor=pointer]:
+                            - /url: /privacy-policy
+            - generic [ref=e99]:
+                - paragraph [ref=e101]: © 2025 Your Company Name. All rights reserved.
+                - paragraph [ref=e103]: Designed and built by Fullstack Fusion
+    - button "Open Next.js Dev Tools" [ref=e109] [cursor=pointer]:
+        - img [ref=e110]
+    - alert [ref=e113]
 ```

@@ -40,44 +40,70 @@ export default abstract class BaseStrapiClient {
       options
     )
 
-    const response = await fetch(url, {
-      ...requestInit,
-      next: {
-        ...requestInit?.next,
-        // if revalidate is set to a number since 0 implies cache: 'no-store' and a positive value implies cache: 'force-cache'.
-        revalidate: isDevelopment() ? 0 : requestInit?.next?.revalidate ?? 60,
-      },
-      headers: {
-        ...requestInit?.headers,
-        ...headers,
-      },
-    })
+    // Create AbortController for timeout (30s should be sufficient for SSR)
+    const controller = new AbortController()
+    const timeoutMs = 30000
+    const timeoutId = setTimeout(() => controller.abort(), timeoutMs)
 
-    const { json, text } = await this.parseResponse(response)
+    try {
+      const response = await fetch(url, {
+        ...requestInit,
+        signal: controller.signal,
+        next: {
+          ...requestInit?.next,
+          // if revalidate is set to a number since 0 implies cache: 'no-store' and a positive value implies cache: 'force-cache'.
+          revalidate: isDevelopment() ? 0 : requestInit?.next?.revalidate ?? 60,
+        },
+        headers: {
+          ...requestInit?.headers,
+          ...headers,
+        },
+      })
 
-    if (text) {
-      const appError: AppError = {
-        name: "Invalid response format",
-        message: text,
-        status: response.status,
+      clearTimeout(timeoutId)
+
+      const { json, text } = await this.parseResponse(response)
+
+      if (text) {
+        const appError: AppError = {
+          name: "Invalid response format",
+          message: text,
+          status: response.status,
+        }
+        console.error("[BaseStrapiClient] Strapi API request error: ", appError)
+        throw new Error(JSON.stringify(appError))
       }
-      console.error("[BaseStrapiClient] Strapi API request error: ", appError)
-      throw new Error(JSON.stringify(appError))
-    }
 
-    if (!response.ok) {
-      const { error } = json
-      const appError: AppError = {
-        name: error?.name,
-        message: error?.message,
-        details: error?.details,
-        status: response.status ?? error?.status,
+      if (!response.ok) {
+        const { error } = json
+        const appError: AppError = {
+          name: error?.name,
+          message: error?.message,
+          details: error?.details,
+          status: response.status ?? error?.status,
+        }
+        console.error("[BaseStrapiClient] Strapi API request error: ", appError)
+        throw new Error(JSON.stringify(appError))
       }
-      console.error("[BaseStrapiClient] Strapi API request error: ", appError)
-      throw new Error(JSON.stringify(appError))
-    }
 
-    return json
+      return json
+    } catch (error: any) {
+      clearTimeout(timeoutId)
+
+      // Handle abort timeout
+      if (error.name === "AbortError") {
+        const appError: AppError = {
+          name: "Request Timeout",
+          message: `Strapi API request to ${url} timed out after ${timeoutMs}ms`,
+          status: 408,
+        }
+        console.error("[BaseStrapiClient] Request timeout: ", appError)
+        throw new Error(JSON.stringify(appError))
+      }
+
+      // Re-throw other errors
+      throw error
+    }
   }
 
   /**
