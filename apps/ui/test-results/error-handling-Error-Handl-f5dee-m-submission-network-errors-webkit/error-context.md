@@ -1,0 +1,210 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e2]:
+    - banner [ref=e3]:
+        - generic [ref=e5]:
+            - link "company logo" [ref=e7]:
+                - /url: /
+                - img "company logo" [ref=e8]
+            - navigation [ref=e9]:
+                - link "Home" [ref=e10]:
+                    - /url: /
+                - link "About" [ref=e11]:
+                    - /url: /about
+                - link "Services" [ref=e12]:
+                    - /url: /services
+                - link "Landing Demo" [ref=e13]:
+                    - /url: /landing
+                - link "Contact" [ref=e14]:
+                    - /url: /contact
+            - generic [ref=e15]:
+                - button "Toggle theme" [ref=e17]:
+                    - img [ref=e18]
+                    - generic [ref=e24]: Toggle theme
+                - generic [ref=e25]:
+                    - combobox [ref=e26]:
+                        - text: en
+                        - img [ref=e27]
+                    - combobox [ref=e29]
+                - link "Sign in" [ref=e30]:
+                    - /url: /auth/signin
+    - main [ref=e34]:
+        - generic [ref=e38]: E2E Test Page
+        - generic [ref=e42]:
+            - heading "Stay Updated with Web Development Insights" [level=2] [ref=e44]
+            - paragraph [ref=e46]: Get the latest tips, trends, and insights delivered to your inbox. No spam, just value.
+            - generic [ref=e48]:
+                - generic [ref=e49]:
+                    - generic [ref=e50]:
+                        - heading "Subscribe to Our Newsletter" [level=2] [ref=e52]
+                        - paragraph [ref=e53]: Join 500+ developers and business owners staying ahead of the curve
+                    - generic [ref=e54]:
+                        - generic [ref=e55]:
+                            - textbox "your.email@example.com" [ref=e56]
+                            - button "Subscribe" [disabled]:
+                                - text: Subscribe
+                                - img
+                        - generic [ref=e60]:
+                            - checkbox "I agree to receive marketing emails Privacy Policy I agree to the privacy policy Privacy Policy" [ref=e61]
+                            - checkbox
+                            - generic [ref=e62] [cursor=pointer]:
+                                - text: I agree to receive marketing emails
+                                - link "Privacy Policy" [ref=e63]:
+                                    - /url: /privacy
+                - generic [ref=e64]:
+                    - generic [ref=e68]:
+                        - heading "Weekly insights" [level=3] [ref=e69]
+                        - paragraph [ref=e70]: Weekly insights and tutorials
+                    - generic [ref=e74]:
+                        - heading "Easy unsubscribe" [level=3] [ref=e75]
+                        - paragraph [ref=e76]: Unsubscribe anytime with one click
+        - generic [ref=e80]:
+            - generic [ref=e84]: FAQ
+            - heading "Common Frequently Asked Questions" [level=2] [ref=e86]
+            - paragraph [ref=e88]: Find answers to common questions about our services
+            - generic [ref=e90]:
+                - heading "What technologies do you use?" [level=3] [ref=e92]:
+                    - button "What technologies do you use?" [ref=e93]:
+                        - text: What technologies do you use?
+                        - img [ref=e94]
+                - heading "How long does a typical project take?" [level=3] [ref=e97]:
+                    - button "How long does a typical project take?" [ref=e98]:
+                        - text: How long does a typical project take?
+                        - img [ref=e99]
+                - heading "Do you provide ongoing support?" [level=3] [ref=e102]:
+                    - button "Do you provide ongoing support?" [ref=e103]:
+                        - text: Do you provide ongoing support?
+                        - img [ref=e104]
+                - heading "Can you redesign my existing website?" [level=3] [ref=e107]:
+                    - button "Can you redesign my existing website?" [ref=e108]:
+                        - text: Can you redesign my existing website?
+                        - img [ref=e109]
+                - heading "What's included in your pricing?" [level=3] [ref=e112]:
+                    - button "What's included in your pricing?" [ref=e113]:
+                        - text: What's included in your pricing?
+                        - img [ref=e114]
+        - generic [ref=e119]:
+            - generic [ref=e123]: Contact
+            - heading "Let's Talk Get in Touch" [level=2] [ref=e125]
+            - paragraph [ref=e127]: Have a project in mind? We'd love to hear from you.
+            - generic [ref=e128]:
+                - generic [ref=e130]:
+                    - heading "Contact Information" [level=2] [ref=e132]
+                    - generic [ref=e133]:
+                        - link "✉️ Email Us hello@example.com" [ref=e134]:
+                            - /url: mailto:hello@example.com
+                            - generic [ref=e135]:
+                                - img "✉️" [ref=e138]
+                                - generic [ref=e139]:
+                                    - heading "Email Us" [level=3] [ref=e140]
+                                    - paragraph [ref=e141]: hello@example.com
+                        - link "📞 Call Us +1 (555) 123-4567" [ref=e142]:
+                            - /url: tel:+15551234567
+                            - generic [ref=e143]:
+                                - img "📞" [ref=e146]
+                                - generic [ref=e147]:
+                                    - heading "Call Us" [level=3] [ref=e148]
+                                    - paragraph [ref=e149]: +1 (555) 123-4567
+                        - generic [ref=e151]:
+                            - img "⏰" [ref=e154]
+                            - generic [ref=e155]:
+                                - heading "Business Hours" [level=3] [ref=e156]
+                                - paragraph [ref=e157]: "Monday - Friday: 9:00 AM - 5:00 PM EST"
+                - generic [ref=e159]:
+                    - group [ref=e161]:
+                        - generic [ref=e162]:
+                            - generic [ref=e163]: First name and last name*
+                            - textbox "John Doe" [ref=e165]
+                        - generic [ref=e166]:
+                            - generic [ref=e167]: Email*
+                            - textbox "john.doe@gmail.com" [ref=e169]
+                        - generic [ref=e170]:
+                            - generic [ref=e171]: Message*
+                            - textbox "contact-message" [ref=e173]:
+                                - /placeholder: enter your message here
+                    - generic [ref=e178]:
+                        - checkbox [ref=e179]
+                        - checkbox
+                        - generic [ref=e180] [cursor=pointer]:
+                            - text: I agree to the privacy policy
+                            - link "Privacy Policy" [ref=e181]:
+                                - /url: /privacy
+                    - button "Send Message" [disabled]
+    - generic [ref=e183]: xl
+    - region "Notifications (F8)":
+        - list
+    - contentinfo [ref=e184]:
+        - generic [ref=e186]:
+            - generic [ref=e187]:
+                - heading "Full Stack Fusion" [level=2] [ref=e188]
+                - paragraph [ref=e189]: We're a family-run business with a strong work ethic and a commitment to excellence. At Clogzilla, we believe in old-fashioned customer service, up-to-date solutions, and honest advice.
+                - generic [ref=e190]:
+                    - link [ref=e191]:
+                        - /url: https://twitter.com/your-company
+                        - img [ref=e192]
+                    - link [ref=e194]:
+                        - /url: https://github.com/your-company
+                        - img [ref=e195]
+                    - link [ref=e198]:
+                        - /url: https://linkedin.com/company/your-company
+                        - img [ref=e199]
+            - generic [ref=e204]:
+                - generic [ref=e205]:
+                    - heading "Company" [level=3] [ref=e206]
+                    - generic [ref=e207]:
+                        - link "About Us" [ref=e208]:
+                            - /url: /about
+                        - link "Our Team" [ref=e209]:
+                            - /url: /about#team
+                        - link "Careers" [ref=e210]:
+                            - /url: /careers
+                        - link "Press Kit" [ref=e211]:
+                            - /url: /press
+                - generic [ref=e212]:
+                    - heading "Resources" [level=3] [ref=e213]
+                    - generic [ref=e214]:
+                        - link "Blog" [ref=e215]:
+                            - /url: /blog
+                        - link "Documentation" [ref=e216]:
+                            - /url: /docs
+                        - link "Support" [ref=e217]:
+                            - /url: /support
+                        - link "API Reference" [ref=e218]:
+                            - /url: /api
+                - generic [ref=e219]:
+                    - heading "Legal" [level=3] [ref=e220]
+                    - generic [ref=e221]:
+                        - link "Privacy" [ref=e222]:
+                            - /url: /privacy
+                        - link "Terms" [ref=e223]:
+                            - /url: /terms
+                        - link "Cookies" [ref=e224]:
+                            - /url: /cookies
+                        - link "Disclaimer" [ref=e225]:
+                            - /url: /disclaimer
+            - generic [ref=e227]:
+                - heading "NEWSLETTER" [level=3] [ref=e228]
+                - paragraph [ref=e229]: Subscribe to our newsletter, stay up-to-date on the latest plumbing, drainage news and discounts as special offers we offer to our customers in the community and more.
+                - generic [ref=e231]:
+                    - group [ref=e233]:
+                        - generic [ref=e234]:
+                            - textbox "email" [ref=e237]:
+                                - /placeholder: Enter your email
+                            - button "Submit form" [disabled]:
+                                - img
+                    - generic [ref=e239]:
+                        - checkbox "Stay in the Loop /privacy-policy" [ref=e240]
+                        - checkbox
+                        - generic [ref=e241] [cursor=pointer]:
+                            - text: Stay in the Loop
+                            - link "/privacy-policy" [ref=e242]:
+                                - /url: /privacy-policy
+                - generic [ref=e243]:
+                    - text: "Note: By subscribing, you agree to our"
+                    - link "Stay in the Loop" [ref=e244]:
+                        - /url: /privacy-policy
+        - generic [ref=e247]:
+            - paragraph [ref=e249]: © 2025 Your Company Name. All rights reserved.
+            - paragraph [ref=e251]: Designed and built by Fullstack Fusion
+```

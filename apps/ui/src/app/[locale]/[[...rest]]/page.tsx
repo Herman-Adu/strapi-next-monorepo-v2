@@ -62,7 +62,8 @@ export default async function StrapiPage(
 
   const data = response?.data
 
-  if (data?.content == null) {
+  // Return 404 if page doesn't exist or has no content
+  if (!data || data.content == null) {
     notFound()
   }
 

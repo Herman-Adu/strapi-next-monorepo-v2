@@ -19,10 +19,12 @@ export default defineConfig({
   use: {
     /* Base URL to use in actions like `await page.goto('/')`. */
     baseURL: process.env.CI ? "http://127.0.0.1:3000" : "http://localhost:3000",
-    /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
-    trace: "on-first-retry",
+    /* Collect trace - always on for debugging, retained on failures */
+    trace: process.env.CI ? "on-first-retry" : "retain-on-failure",
     screenshot: "only-on-failure",
-    headless: true,
+    video: process.env.CI ? "retain-on-failure" : "off", // Video only on CI
+    /* Headed mode - set HEADED=1 to run with visible browser for debugging */
+    headless: process.env.HEADED ? false : true,
     viewport: { width: 1280, height: 720 },
   },
 

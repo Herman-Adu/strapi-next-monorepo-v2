@@ -1,4 +1,8 @@
 import { test, expect } from "@playwright/test"
+import {
+  navigateAndWaitForContent,
+  checkGDPRCheckboxIfPresent,
+} from "./utils/test-helpers"
 
 test.describe("Error Handling", () => {
   test("should display 404 page for non-existent routes", async ({ page }) => {
@@ -94,6 +98,10 @@ test.describe("Error Handling", () => {
     const submitButton = page.locator('button:has-text("Subscribe")').first()
 
     await emailInput.fill("error@test.com")
+
+    // Check GDPR checkbox to enable submit button
+    await checkGDPRCheckboxIfPresent(page, { submitButton })
+
     await submitButton.click()
 
     // Wait for error handling
@@ -251,26 +259,27 @@ test.describe("Error Handling", () => {
 
   test("should handle browser back/forward navigation", async ({ page }) => {
     // Navigate to test page
-    await page.goto("/en/e2e-test-page", { waitUntil: "networkidle" })
+    await page.goto("/en/e2e-test-page", { waitUntil: "domcontentloaded" })
+    await page.waitForTimeout(1000)
 
-    // Expand an accordion
-    const firstQuestion = page
-      .locator("text=/what technologies|technologies do you use/i")
-      .first()
-    const questionExists = await firstQuestion
-      .isVisible({ timeout: 5000 })
-      .catch(() => false)
+    // Expand an accordion (if FAQ exists)
+    const faqButtons = page.locator(
+      'button[data-state], [data-accordion-item], button:has-text("What")'
+    )
+    const faqButtonCount = await faqButtons.count()
 
-    if (questionExists) {
-      await firstQuestion.click()
+    if (faqButtonCount > 0) {
+      await faqButtons.first().click()
       await page.waitForTimeout(500)
     }
 
     // Navigate to another page
-    await page.goto("/en", { waitUntil: "networkidle" })
+    await navigateAndWaitForContent(page, "/en", /Home|Services|Contact/i)
+    await page.waitForTimeout(1000) // Wait for page to render
 
     // Go back
-    await page.goBack({ waitUntil: "networkidle" })
+    await page.goBack({ waitUntil: "domcontentloaded" })
+    await page.waitForTimeout(1000)
 
     // Page should reload correctly
     const bodyContent = await page.locator("body").textContent()
@@ -282,10 +291,11 @@ test.describe("Error Handling", () => {
     await page.goto("/en/e2e-test-page", { waitUntil: "domcontentloaded" })
 
     // Rapidly navigate away and back
-    await page.goto("/en", { waitUntil: "domcontentloaded" })
+    await navigateAndWaitForContent(page, "/en", /Home|Services|Contact/i)
     await page.goto("/en/e2e-test-page", { waitUntil: "domcontentloaded" })
-    await page.goto("/en", { waitUntil: "domcontentloaded" })
-    await page.goto("/en/e2e-test-page", { waitUntil: "networkidle" })
+    await navigateAndWaitForContent(page, "/en", /Home|Services|Contact/i)
+    await page.goto("/en/e2e-test-page", { waitUntil: "domcontentloaded" })
+    await page.waitForTimeout(1000) // Wait for content to render
 
     // Page should load correctly after rapid navigation
     const bodyContent = await page.locator("body").textContent()
@@ -299,10 +309,15 @@ test.describe("Error Handling", () => {
     const submitButton = page.locator('button:has-text("Subscribe")').first()
 
     await emailInput.fill("reload@test.com")
+
+    // Check GDPR checkbox to enable submit button
+    await checkGDPRCheckboxIfPresent(page, { submitButton })
+
     await submitButton.click()
 
-    // Immediately reload page during submission
-    await page.reload({ waitUntil: "networkidle" })
+    // Immediately reload page during submission (use domcontentloaded)
+    await page.reload({ waitUntil: "domcontentloaded" })
+    await page.waitForTimeout(1000)
 
     // Page should reload cleanly without errors
     const bodyContent = await page.locator("body").textContent()
@@ -320,16 +335,14 @@ test.describe("Error Handling", () => {
     // Desktop size
     await page.setViewportSize({ width: 1920, height: 1080 })
 
-    // Expand accordion
-    const firstQuestion = page
-      .locator("text=/what technologies|technologies do you use/i")
-      .first()
-    const questionExists = await firstQuestion
-      .isVisible({ timeout: 5000 })
-      .catch(() => false)
+    // Expand accordion (if FAQ exists)
+    const faqButtons = page.locator(
+      'button[data-state], [data-accordion-item], button:has-text("What")'
+    )
+    const faqButtonCount = await faqButtons.count()
 
-    if (questionExists) {
-      await firstQuestion.click()
+    if (faqButtonCount > 0) {
+      await faqButtons.first().click()
       await page.waitForTimeout(500)
     }
 
@@ -337,15 +350,14 @@ test.describe("Error Handling", () => {
     await page.setViewportSize({ width: 375, height: 667 })
     await page.waitForTimeout(500)
 
-    // Accordion should still work after resize
-    if (questionExists) {
-      const answer = page.locator("text=/Next.js, React, TypeScript/i").first()
-      const isVisible = await answer
-        .isVisible({ timeout: 2000 })
-        .catch(() => false)
+    // Accordion should still work after resize (optional check)
+    if (faqButtonCount > 0) {
+      // Check if any accordion content is visible
+      const accordionContent = page.locator('[data-state="open"]')
+      const isExpanded = (await accordionContent.count()) > 0
       console.log(
         "Accordion state after resize:",
-        isVisible ? "expanded" : "collapsed"
+        isExpanded ? "expanded" : "collapsed"
       )
     }
 

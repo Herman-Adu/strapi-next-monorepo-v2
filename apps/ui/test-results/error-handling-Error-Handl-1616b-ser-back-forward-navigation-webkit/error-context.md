@@ -1,0 +1,323 @@
+# Page snapshot
+
+```yaml
+- generic:
+    - generic:
+        - banner:
+            - generic:
+                - generic:
+                    - generic:
+                        - link:
+                            - /url: /
+                            - img
+                    - navigation:
+                        - link:
+                            - /url: /
+                            - text: Home
+                        - link:
+                            - /url: /about
+                            - text: About
+                        - link:
+                            - /url: /services
+                            - text: Services
+                        - link:
+                            - /url: /landing
+                            - text: Landing Demo
+                        - link:
+                            - /url: /contact
+                            - text: Contact
+                    - generic:
+                        - generic:
+                            - button:
+                                - img
+                                - generic: Toggle theme
+                        - generic:
+                            - combobox [expanded]:
+                                - text: en
+                                - img
+                        - link:
+                            - /url: /auth/signin
+                            - text: Sign in
+        - generic:
+            - generic:
+                - generic:
+                    - main:
+                        - generic:
+                            - generic:
+                                - generic:
+                                    - generic: E2E Test Page
+                        - generic:
+                            - generic:
+                                - generic:
+                                    - generic:
+                                        - generic:
+                                            - heading [level=2]: Stay Updated with Web Development Insights
+                                        - paragraph: Get the latest tips, trends, and insights delivered to your inbox. No spam, just value.
+                                        - generic:
+                                            - generic:
+                                                - generic:
+                                                    - generic:
+                                                        - generic:
+                                                            - heading [level=2]: Subscribe to Our Newsletter
+                                                        - paragraph: Join 500+ developers and business owners staying ahead of the curve
+                                                    - generic:
+                                                        - generic:
+                                                            - textbox:
+                                                                - /placeholder: your.email@example.com
+                                                            - button [disabled]:
+                                                                - text: Subscribe
+                                                                - img
+                                                        - generic:
+                                                            - generic:
+                                                                - generic:
+                                                                    - checkbox
+                                                                    - checkbox
+                                                                    - generic:
+                                                                        - text: I agree to receive marketing emails
+                                                                        - link:
+                                                                            - /url: /privacy
+                                                                            - text: Privacy Policy
+                                                - generic:
+                                                    - generic:
+                                                        - generic:
+                                                            - generic:
+                                                                - heading [level=3]: Weekly insights
+                                                                - paragraph: Weekly insights and tutorials
+                                                    - generic:
+                                                        - generic:
+                                                            - generic:
+                                                                - heading [level=3]: Easy unsubscribe
+                                                                - paragraph: Unsubscribe anytime with one click
+                        - generic:
+                            - generic:
+                                - generic:
+                                    - generic:
+                                        - generic:
+                                            - generic:
+                                                - generic:
+                                                    - generic: FAQ
+                                        - generic:
+                                            - heading [level=2]: Common Frequently Asked Questions
+                                        - paragraph: Find answers to common questions about our services
+                                        - generic:
+                                            - generic:
+                                                - generic:
+                                                    - heading [level=3]:
+                                                        - button:
+                                                            - text: What technologies do you use?
+                                                            - img
+                                                - generic:
+                                                    - heading [level=3]:
+                                                        - button:
+                                                            - text: How long does a typical project take?
+                                                            - img
+                                                - generic:
+                                                    - heading [level=3]:
+                                                        - button:
+                                                            - text: Do you provide ongoing support?
+                                                            - img
+                                                - generic:
+                                                    - heading [level=3]:
+                                                        - button:
+                                                            - text: Can you redesign my existing website?
+                                                            - img
+                                                - generic:
+                                                    - heading [level=3]:
+                                                        - button:
+                                                            - text: What's included in your pricing?
+                                                            - img
+                        - generic:
+                            - generic:
+                                - generic:
+                                    - generic:
+                                        - generic:
+                                            - generic:
+                                                - generic:
+                                                    - generic: Contact
+                                        - generic:
+                                            - heading [level=2]: Let's Talk Get in Touch
+                                        - paragraph: Have a project in mind? We'd love to hear from you.
+                                        - generic:
+                                            - generic:
+                                                - generic:
+                                                    - generic:
+                                                        - heading [level=2]: Contact Information
+                                                    - generic:
+                                                        - link:
+                                                            - /url: mailto:hello@example.com
+                                                            - generic:
+                                                                - generic:
+                                                                    - generic:
+                                                                        - img: ✉️
+                                                                - generic:
+                                                                    - heading [level=3]: Email Us
+                                                                    - paragraph: hello@example.com
+                                                        - link:
+                                                            - /url: tel:+15551234567
+                                                            - generic:
+                                                                - generic:
+                                                                    - generic:
+                                                                        - img: 📞
+                                                                - generic:
+                                                                    - heading [level=3]: Call Us
+                                                                    - paragraph: +1 (555) 123-4567
+                                                        - generic:
+                                                            - generic:
+                                                                - generic:
+                                                                    - generic:
+                                                                        - img: ⏰
+                                                                - generic:
+                                                                    - heading [level=3]: Business Hours
+                                                                    - paragraph: "Monday - Friday: 9:00 AM - 5:00 PM EST"
+                                            - generic:
+                                                - generic:
+                                                    - generic:
+                                                        - group:
+                                                            - generic:
+                                                                - generic: First name and last name*
+                                                                - generic:
+                                                                    - textbox:
+                                                                        - /placeholder: John Doe
+                                                            - generic:
+                                                                - generic: Email*
+                                                                - generic:
+                                                                    - textbox:
+                                                                        - /placeholder: john.doe@gmail.com
+                                                            - generic:
+                                                                - generic: Message*
+                                                                - generic:
+                                                                    - textbox:
+                                                                        - /placeholder: enter your message here
+                                                    - generic:
+                                                        - generic:
+                                                            - generic:
+                                                                - generic:
+                                                                    - checkbox
+                                                                    - generic:
+                                                                        - text: I agree to the privacy policy
+                                                                        - link:
+                                                                            - /url: /privacy
+                                                                            - text: Privacy Policy
+                                                    - button [disabled]: Send Message
+        - generic:
+            - generic: xl
+        - list
+        - contentinfo:
+            - generic:
+                - generic:
+                    - generic:
+                        - heading [level=2]: Full Stack Fusion
+                        - paragraph: We're a family-run business with a strong work ethic and a commitment to excellence. At Clogzilla, we believe in old-fashioned customer service, up-to-date solutions, and honest advice.
+                        - generic:
+                            - link:
+                                - /url: https://twitter.com/your-company
+                                - img
+                            - link:
+                                - /url: https://github.com/your-company
+                                - img
+                            - link:
+                                - /url: https://linkedin.com/company/your-company
+                                - img
+                    - generic:
+                        - generic:
+                            - generic:
+                                - heading [level=3]: Company
+                                - generic:
+                                    - link:
+                                        - /url: /about
+                                        - text: About Us
+                                    - link:
+                                        - /url: /about#team
+                                        - text: Our Team
+                                    - link:
+                                        - /url: /careers
+                                        - text: Careers
+                                    - link:
+                                        - /url: /press
+                                        - text: Press Kit
+                            - generic:
+                                - heading [level=3]: Resources
+                                - generic:
+                                    - link:
+                                        - /url: /blog
+                                        - text: Blog
+                                    - link:
+                                        - /url: /docs
+                                        - text: Documentation
+                                    - link:
+                                        - /url: /support
+                                        - text: Support
+                                    - link:
+                                        - /url: /api
+                                        - text: API Reference
+                            - generic:
+                                - heading [level=3]: Legal
+                                - generic:
+                                    - link:
+                                        - /url: /privacy
+                                        - text: Privacy
+                                    - link:
+                                        - /url: /terms
+                                        - text: Terms
+                                    - link:
+                                        - /url: /cookies
+                                        - text: Cookies
+                                    - link:
+                                        - /url: /disclaimer
+                                        - text: Disclaimer
+                    - generic:
+                        - generic:
+                            - heading [level=3]: NEWSLETTER
+                            - paragraph: Subscribe to our newsletter, stay up-to-date on the latest plumbing, drainage news and discounts as special offers we offer to our customers in the community and more.
+                            - generic:
+                                - generic:
+                                    - generic:
+                                        - group:
+                                            - generic:
+                                                - generic:
+                                                    - generic:
+                                                        - textbox:
+                                                            - /placeholder: Enter your email
+                                                - button [disabled]:
+                                                    - img
+                                    - generic:
+                                        - generic:
+                                            - checkbox
+                                            - generic:
+                                                - text: Stay in the Loop
+                                                - link:
+                                                    - /url: /privacy-policy
+                                                    - text: /privacy-policy
+                            - generic:
+                                - text: "Note: By subscribing, you agree to our"
+                                - link:
+                                    - /url: /privacy-policy
+                                    - text: Stay in the Loop
+            - generic:
+                - generic:
+                    - generic:
+                        - generic:
+                            - paragraph: © 2025 Your Company Name. All rights reserved.
+                        - generic:
+                            - paragraph: Designed and built by Fullstack Fusion
+    - generic [ref=e5] [cursor=pointer]:
+        - button [ref=e6]:
+            - img [ref=e7]
+        - generic [ref=e12]:
+            - button [ref=e13]:
+                - generic [ref=e14]:
+                    - generic [ref=e15]: "1"
+                    - generic [ref=e16]: "2"
+                - generic [ref=e17]:
+                    - text: Issue
+                    - generic [ref=e18]: s
+            - button [ref=e19]:
+                - img [ref=e20]
+    - alert
+    - listbox [ref=e22]:
+        - option "Czech" [ref=e23]:
+            - generic [ref=e25]: Czech
+        - option "English" [active] [selected] [ref=e27]:
+            - img [ref=e30]
+            - generic [ref=e32]: English
+```

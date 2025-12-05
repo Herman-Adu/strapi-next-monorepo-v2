@@ -126,8 +126,8 @@ function getE2EPageData() {
         __component: "sections.newsletter-cta-section",
 
         header: {
-          heading: "Web Development Insights",
-          headingAccent: "Stay Updated with",
+          heading: "Stay Updated with Web Development Insights",
+          headingAccent: "",
           description:
             "Get the latest tips, trends, and insights delivered to your inbox. No spam, just value.",
           headingSize: "large",
@@ -201,29 +201,29 @@ function getE2EPageData() {
 
         accordions: [
           {
-            question: "What services do you offer?",
+            question: "What technologies do you use?",
             answer:
-              "We offer web development, mobile app development, UI/UX design, and digital consulting services.",
+              "We use modern technologies including Next.js, React, TypeScript, Tailwind CSS, and Strapi CMS. This stack ensures scalable, performant, and maintainable applications.",
           },
           {
             question: "How long does a typical project take?",
             answer:
-              "Project timelines vary based on scope, but most projects take 2-4 months from start to finish.",
+              "Project timelines vary based on complexity. Small projects typically take 4-6 weeks, while larger enterprise applications may take 8-12 weeks or more. We'll provide a detailed timeline after understanding your requirements.",
           },
           {
             question: "Do you provide ongoing support?",
             answer:
-              "Yes, we offer maintenance packages and ongoing support for all our projects.",
+              "Yes, we provide ongoing support and maintenance packages after launch. This includes bug fixes, security updates, feature enhancements, and technical support to ensure your application runs smoothly.",
           },
           {
-            question: "What is your development process?",
+            question: "Can you redesign my existing website?",
             answer:
-              "We follow an agile methodology with regular client check-ins and iterative development cycles.",
+              "Absolutely! We specialize in website redesigns and modernization. We can migrate your existing content, improve the design, enhance performance, and add new features while maintaining SEO rankings.",
           },
           {
-            question: "Can you work with existing codebases?",
+            question: "What's included in your pricing?",
             answer:
-              "Absolutely! We have experience modernizing and maintaining legacy applications.",
+              "Our pricing includes project planning, UI/UX design, development, testing, deployment, and training. We provide transparent pricing with no hidden fees, and offer flexible payment plans to suit your budget.",
           },
         ],
       },
