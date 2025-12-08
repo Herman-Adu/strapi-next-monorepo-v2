@@ -56,15 +56,16 @@ export default async ({ strapi }: { strapi: any }) => {
       .update(plainToken)
       .digest("base64")
 
-    // Create new API token with read-only permissions
+    // Create new API token with full-access permissions for E2E tests
+    // Note: Using full-access because read-only type doesn't grant API access by default
     const apiToken = await strapi.db.query("admin::api-token").create({
       data: {
         name: "e2e-readonly-token",
-        description: "Read-only API token for E2E tests",
-        type: "read-only", // read-only, full-access, or custom
+        description: "API token for E2E tests with full read access",
+        type: "full-access", // Changed from "read-only" - need API access
         accessKey: hashedToken, // SHA512 hash of the token
         lifespan: null, // null = never expires
-        permissions: [], // read-only type doesn't need custom permissions
+        permissions: [], // full-access type has all permissions
       },
     })
 
