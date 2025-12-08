@@ -141,29 +141,8 @@ jobs:
           DATABASE_URL: postgresql://strapi:strapi@localhost:5432/strapi_dev
 
       # ==============================================================================
-      # VERIFY API TOKEN EXISTS IN DATABASE
+      # START SERVERS AND RUN E2E TESTS
       # ==============================================================================
-      
-      - name: Verify API Token in Database
-        run: |
-          export PGPASSWORD=strapi
-          echo "🔍 Verifying API token was created in database..."
-          
-          TOKEN_COUNT=$(psql -h localhost -U strapi -d strapi_dev -t -c "SELECT COUNT(*) FROM api_tokens WHERE name = 'e2e-readonly-token';")
-          TOKEN_COUNT=$(echo $TOKEN_COUNT | tr -d '[:space:]')
-          
-          if [ "$TOKEN_COUNT" == "1" ]; then
-            echo "✅ API token found in database"
-            echo "📋 Token details:"
-            psql -h localhost -U strapi -d strapi_dev -c "SELECT id, name, type, lifespan, LEFT(access_key, 20) as access_key_preview FROM api_tokens WHERE name = 'e2e-readonly-token';"
-          else
-            echo "❌ API token NOT found in database (count: $TOKEN_COUNT)"
-            echo "📋 All tokens in database:"
-            psql -h localhost -U strapi -d strapi_dev -c "SELECT id, name, type FROM api_tokens;"
-            exit 1
-          fi
-        env:
-          DATABASE_URL: postgresql://strapi:strapi@localhost:5432/strapi_dev
 
       - name: Start Servers and Run E2E Tests
         run: |
