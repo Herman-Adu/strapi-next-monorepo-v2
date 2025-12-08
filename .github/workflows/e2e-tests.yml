@@ -81,7 +81,11 @@ jobs:
         run: |
           cp apps/strapi/.env.example apps/strapi/.env
           cp apps/ui/.env.local.example apps/ui/.env.local
-          echo "STRAPI_REST_READONLY_API_KEY=${{ env.STRAPI_REST_READONLY_API_KEY }}" >> apps/ui/.env.local
+          
+          # CRITICAL: Set API token BEFORE building Next.js (it bakes env vars at build time)
+          echo "STRAPI_REST_READONLY_API_KEY=e2e-test-token-12345678901234567890123456789012" >> apps/ui/.env.local
+          echo "STRAPI_URL=http://127.0.0.1:1337" >> apps/ui/.env.local
+          echo "APP_PUBLIC_URL=http://127.0.0.1:3000" >> apps/ui/.env.local
           
           # Database configuration for CI
           echo "DATABASE_CLIENT=postgres" >> apps/strapi/.env
@@ -100,6 +104,10 @@ jobs:
 
       - name: Build UI
         run: yarn build:ui
+        env:
+          STRAPI_REST_READONLY_API_KEY: e2e-test-token-12345678901234567890123456789012
+          STRAPI_URL: http://127.0.0.1:1337
+          APP_PUBLIC_URL: http://127.0.0.1:3000
 
       # ==============================================================================
       # VALIDATE POSTGRES CONNECTION
@@ -132,6 +140,31 @@ jobs:
         env:
           DATABASE_URL: postgresql://strapi:strapi@localhost:5432/strapi_dev
 
+      # ==============================================================================
+      # VERIFY API TOKEN EXISTS IN DATABASE
+      # ==============================================================================
+      
+      - name: Verify API Token in Database
+        run: |
+          export PGPASSWORD=strapi
+          echo "🔍 Verifying API token was created in database..."
+          
+          TOKEN_COUNT=$(psql -h localhost -U strapi -d strapi_dev -t -c "SELECT COUNT(*) FROM api_tokens WHERE name = 'e2e-readonly-token';")
+          TOKEN_COUNT=$(echo $TOKEN_COUNT | tr -d '[:space:]')
+          
+          if [ "$TOKEN_COUNT" == "1" ]; then
+            echo "✅ API token found in database"
+            echo "📋 Token details:"
+            psql -h localhost -U strapi -d strapi_dev -c "SELECT id, name, type, lifespan, LEFT(access_key, 20) as access_key_preview FROM api_tokens WHERE name = 'e2e-readonly-token';"
+          else
+            echo "❌ API token NOT found in database (count: $TOKEN_COUNT)"
+            echo "📋 All tokens in database:"
+            psql -h localhost -U strapi -d strapi_dev -c "SELECT id, name, type FROM api_tokens;"
+            exit 1
+          fi
+        env:
+          DATABASE_URL: postgresql://strapi:strapi@localhost:5432/strapi_dev
+
       - name: Start Servers and Run E2E Tests
         run: |
           # Start Strapi in background (bypass Turbo, call directly in app directory)
@@ -156,6 +189,34 @@ jobs:
             echo "  ⏱️  Waiting... ($elapsed/$timeout seconds)"
           done
           echo "✅ Strapi is ready at http://127.0.0.1:1337!"
+          
+          # ==============================================================================
+          # TEST API TOKEN AUTHENTICATION
+          # ==============================================================================
+          
+          echo "🔐 Testing API token authentication..."
+          API_RESPONSE=$(curl -s -w "\n%{http_code}" -H "Authorization: Bearer e2e-test-token-12345678901234567890123456789012" http://127.0.0.1:1337/api/pages)
+          HTTP_CODE=$(echo "$API_RESPONSE" | tail -n1)
+          RESPONSE_BODY=$(echo "$API_RESPONSE" | sed '$d')
+          
+          echo "HTTP Status: $HTTP_CODE"
+          
+          if [ "$HTTP_CODE" == "200" ]; then
+            echo "✅ API token authentication successful!"
+            echo "📄 Response preview:"
+            echo "$RESPONSE_BODY" | head -c 200
+            echo "..."
+          else
+            echo "❌ API token authentication FAILED!"
+            echo "📄 Full response:"
+            echo "$RESPONSE_BODY"
+            echo ""
+            echo "🔍 Debugging info:"
+            echo "Token used: e2e-test-token-12345678901234567890123456789012"
+            echo "Token length: 47"
+            kill $STRAPI_PID $NEXTJS_PID 2>/dev/null || true
+            exit 1
+          fi
           
           # Start Next.js in background (bypass Turbo, call directly in app directory)
           echo "🚀 Starting Next.js..."
