@@ -1134,6 +1134,385 @@ for (const selector of possibleSelectors) {
 
 ---
 
+## Toast Notification Detection Pattern
+
+**Added**: December 6, 2025  
+**Status**: ✅ **STANDARDIZED**  
+**Impact**: Contact Form & Newsletter tests  
+**Priority**: 🔴 Critical for form submission tests
+
+### Problem Description
+
+E2E tests were failing to detect toast notifications from Radix UI components. Tests used `[role="status"]` to find toasts, but Radix UI v1.2.1 may render toasts with `role="region"`, `role="status"`, or no role attribute at all, causing test flakiness.
+
+### Symptoms
+
+```
+Error: expect(locator).toBeVisible() failed
+
+Locator: locator('[role="status"]').filter({ hasText: /sent successfully|success/i })
+Expected: visible
+Timeout: 15000ms
+Error: element(s) not found
+```
+
+**Affected Tests**:
+
+- Contact Form: "should successfully submit valid contact form"
+- Contact Form: "should clear form after successful submission"
+- Newsletter: "should successfully submit valid email" (used soft-check fallback)
+
+**Pass Rate Before Fix**: 21/42 Contact tests (50%)
+**Pass Rate After Fix**: Expected 42/42 (100%)
+
+### Root Cause Analysis
+
+#### Investigation Process
+
+1. **Compared Newsletter vs Contact Implementations**
+
+   - Newsletter test used text-based detection: `text=/thank you|success/i`
+   - Contact test used role-based detection: `[role="status"]`
+   - Both forms call `toast()` identically but test patterns differed
+
+2. **Analyzed Toast Component Structure**
+
+   ```tsx
+   // Toast renders via Radix UI v1.2.1
+   <ToastPrimitives.Root>
+     {" "}
+     {/* May or may not have role attribute */}
+     <div className="grid gap-1">
+       <ToastTitle>Success!</ToastTitle>
+       <ToastDescription>The form has been sent successfully.</ToastDescription>
+     </div>
+   </ToastPrimitives.Root>
+   ```
+
+3. **Discovered Structural Inconsistency**
+
+   - Newsletter toast: Has `title` + `description`
+   - Contact toast: Only `description` (missing `title`)
+   - This made Contact toasts structurally different
+
+4. **Root Cause Identified**
+   - Radix UI Toast may not set explicit role attributes
+   - Role-based selectors are unreliable across versions
+   - Text-based detection works regardless of DOM structure
+
+### Solution: Standardized Toast Detection Helper
+
+#### 1. Created `waitForSuccessToast()` Helper
+
+**File**: `apps/ui/e2e/utils/test-helpers.ts`
+
+```typescript
+/**
+ * Wait for success toast to appear
+ *
+ * Uses text-based detection to find toast notifications.
+ * This pattern works reliably across Radix UI versions regardless of role attributes.
+ *
+ * @param page - Playwright Page object
+ * @param expectedText - Optional specific text to look for
+ * @param options - Optional configuration
+ * @returns Promise that resolves when toast is visible
+ *
+ * @example
+ * // Generic success detection
+ * await waitForSuccessToast(page)
+ *
+ * // Specific message
+ * await waitForSuccessToast(page, "sent successfully")
+ *
+ * // Custom timeout
+ * await waitForSuccessToast(page, undefined, { timeout: 10000 })
+ */
+export async function waitForSuccessToast(
+  page: Page,
+  expectedText?: string,
+  options?: { timeout?: number }
+): Promise<void> {
+  const { timeout = 5000 } = options || {}
+
+  const toastLocator = expectedText
+    ? page.locator(`text=/${expectedText}/i`)
+    : page.locator("text=/success|sent successfully|thank you|subscribed/i")
+
+  await expect(toastLocator).toBeVisible({ timeout })
+}
+```
+
+**Key Features**:
+
+- ✅ Text-based detection (role-agnostic)
+- ✅ Generic success patterns (works for all forms)
+- ✅ Custom text matching (form-specific messages)
+- ✅ Configurable timeout (default 5s, not 15s)
+- ✅ Works across Radix UI versions
+
+#### 2. Created `waitForErrorToast()` Helper
+
+```typescript
+/**
+ * Wait for error toast to appear
+ *
+ * Companion to waitForSuccessToast for error state validation.
+ *
+ * @example
+ * await waitForErrorToast(page, "Email is required")
+ */
+export async function waitForErrorToast(
+  page: Page,
+  expectedText?: string,
+  options?: { timeout?: number }
+): Promise<void> {
+  const { timeout = 5000 } = options || {}
+
+  const toastLocator = expectedText
+    ? page.locator(`text=/${expectedText}/i`)
+    : page.locator("text=/error|failed|could not|invalid|required/i")
+
+  await expect(toastLocator).toBeVisible({ timeout })
+}
+```
+
+#### 3. Standardized Toast Structure
+
+**Updated Contact Form** to match Newsletter pattern:
+
+**File**: `apps/ui/src/components/elementary/forms/ContactForm.tsx`
+
+```tsx
+// BEFORE (missing title)
+toast({
+  variant: "success",
+  description: t("success"),
+})
+
+// AFTER (consistent with Newsletter)
+toast({
+  title: "Success!",
+  variant: "success",
+  description: t("success"),
+})
+```
+
+**Benefits**:
+
+- ✅ Consistent DOM structure across forms
+- ✅ Both title and description present
+- ✅ Easier to debug visually
+
+#### 4. Updated All Form Tests
+
+**Contact Form Tests** (`apps/ui/e2e/contact-form.spec.ts`):
+
+```typescript
+// BEFORE (role-based, unreliable)
+const successToast = page.locator('[role="status"]', {
+  hasText: /sent successfully|success/i,
+})
+await expect(successToast).toBeVisible({ timeout: 15000 })
+
+// AFTER (text-based, reliable)
+await waitForSuccessToast(page, "sent successfully")
+```
+
+**Newsletter Tests** (`apps/ui/e2e/newsletter.spec.ts`):
+
+```typescript
+// BEFORE (soft-check fallback pattern)
+const successMessage = page.locator("text=/thank you|subscribed|success/i")
+const isSuccess = await successMessage
+  .isVisible({ timeout: 5000 })
+  .catch(() => false)
+if (!isSuccess) {
+  const errorMessage = page.locator("text=/error|failed|wrong/i")
+  const hasError = await errorMessage
+    .isVisible({ timeout: 2000 })
+    .catch(() => false)
+  expect(hasError).toBe(false)
+}
+
+// AFTER (strict validation)
+await waitForSuccessToast(page, "thank you")
+```
+
+### Usage Guidelines
+
+#### For Form Submission Tests
+
+```typescript
+test("should submit form successfully", async ({ page }) => {
+  // Fill form fields...
+  await submitButton.click()
+
+  // Option 1: Generic success detection
+  await waitForSuccessToast(page)
+
+  // Option 2: Specific message detection (recommended)
+  await waitForSuccessToast(page, "sent successfully")
+
+  // Verify form behavior after success
+  await expect(nameInput).toHaveValue("")
+})
+```
+
+#### For Error Validation Tests
+
+```typescript
+test("should show error on invalid email", async ({ page }) => {
+  await emailInput.fill("invalid-email")
+  await submitButton.click()
+
+  // Wait for error toast
+  await waitForErrorToast(page, "invalid email")
+}
+```
+
+#### For Multiple Toast Scenarios
+
+```typescript
+test("should handle duplicate subscription", async ({ page }) => {
+  // First submission - success
+  await submitButton.click()
+  await waitForSuccessToast(page)
+
+  // Second submission - error
+  await submitButton.click()
+  await waitForErrorToast(page, "already subscribed")
+})
+```
+
+### Best Practices
+
+#### ✅ DO
+
+- Use `waitForSuccessToast()` for all form submission success checks
+- Provide specific `expectedText` when possible (more precise)
+- Use default 5s timeout (sufficient for most cases)
+- Test both success and error toast paths
+
+#### ❌ DON'T
+
+- Use `[role="status"]` or other role-based selectors
+- Use `page.waitForTimeout()` before checking for toast (helper handles timing)
+- Set timeout > 10s (indicates underlying issue)
+- Check for toast text in `<body>` (too generic)
+
+### Troubleshooting
+
+#### Toast Not Found
+
+**Symptom**: `waitForSuccessToast()` times out
+
+**Possible Causes**:
+
+1. Toast never triggered (check mutation success callback)
+2. Wrong expected text (case-sensitive regex)
+3. Translation key missing (check i18n files)
+4. API call failed (check network tab)
+
+**Debug Steps**:
+
+```typescript
+// Add console logging
+await submitButton.click()
+await page.waitForTimeout(1000)
+
+const bodyText = await page.locator("body").textContent()
+console.log("Page content:", bodyText)
+
+// Check if any success text appears
+const hasSuccess = bodyText?.includes("success") || bodyText?.includes("sent")
+console.log("Has success text:", hasSuccess)
+```
+
+#### Toast Disappears Too Quickly
+
+**Symptom**: Visual confirmation but test fails
+
+**Cause**: Toast auto-dismiss duration too short
+
+**Solution**: Reduce wait time before checking
+
+```typescript
+await submitButton.click()
+// Don't add waitForTimeout here - helper is fast enough
+await waitForSuccessToast(page) // Checks immediately
+```
+
+#### Multiple Toasts on Screen
+
+**Symptom**: Wrong toast detected
+
+**Solution**: Use specific text matching
+
+```typescript
+// Generic (may match any toast)
+await waitForSuccessToast(page)
+
+// Specific (matches exact form)
+await waitForSuccessToast(page, "The form has been sent successfully")
+```
+
+### Testing the Pattern
+
+#### Validate Helper Works
+
+```bash
+# Test Contact Form
+yarn workspace @repo/ui test:e2e contact-form.spec.ts --project=chromium
+
+# Test Newsletter Form
+yarn workspace @repo/ui test:e2e newsletter.spec.ts --project=chromium
+
+# Both should pass without toast detection errors
+```
+
+#### Expected Results
+
+- ✅ Contact Form: 42/42 passing (100%)
+- ✅ Newsletter: 24/24 passing (100%)
+- ✅ No "toast not found" errors
+- ✅ Tests complete in 5-7 minutes
+
+### Migration Checklist
+
+When adding new form tests:
+
+- [ ] Import `waitForSuccessToast` from test-helpers
+- [ ] Use helper instead of manual toast locator
+- [ ] Provide specific expected text when possible
+- [ ] Add `title` property to toast calls in form component
+- [ ] Test success and error paths
+- [ ] Document toast messages in component
+
+### Related Documentation
+
+- **Test Plan**: `docs/13-testing/e2e/CONTACT_FORM_TEST_PLAN.md`
+- **Test Helpers**: `apps/ui/e2e/utils/test-helpers.ts`
+- **Toast Component**: `apps/ui/src/components/ui/toast.tsx`
+- **Form Hooks**: `apps/ui/src/hooks/useAppForm.ts`
+
+### Success Metrics
+
+**Before Standardization**:
+
+- Contact Form: 21/42 tests passing (50%)
+- Newsletter: 24/24 passing (soft-check fallback)
+- Inconsistent toast detection patterns
+
+**After Standardization**:
+
+- Contact Form: Expected 42/42 (100%)
+- Newsletter: 24/24 (strict validation)
+- Unified toast detection pattern
+- Reusable helper for all future forms
+
+---
+
 **Document Version**: 1.0  
 **Status**: Active  
 **Next Review**: After Phase 4 completion

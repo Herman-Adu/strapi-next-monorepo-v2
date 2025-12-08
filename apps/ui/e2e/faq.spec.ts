@@ -13,10 +13,7 @@ test.describe("FAQ Accordion", () => {
       timeout: 60000,
     })
 
-    // Ensure page is fully loaded
-    await page.waitForLoadState("networkidle", { timeout: 10000 })
-
-    // Wait for FAQ section to be visible - check for heading or badge
+    // Wait for FAQ section to be visible - more reliable than networkidle
     await page.waitForSelector(
       "text=/frequently asked|common.*questions|FAQ/i",
       {
@@ -289,7 +286,6 @@ test.describe("FAQ Accordion", () => {
       waitUntil: "domcontentloaded",
       timeout: 60000,
     })
-    await page.waitForLoadState("networkidle", { timeout: 10000 })
     await page.waitForSelector("body", { state: "attached" })
 
     // Verify FAQ section is visible on mobile

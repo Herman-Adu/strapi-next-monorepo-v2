@@ -1,9 +1,12 @@
 import { test as setup } from "@playwright/test"
 
 setup("verify servers are running", async ({ request }) => {
+  // Use 127.0.0.1 in CI for consistent DNS resolution (localhost can be flaky on Linux runners)
+  const baseURL = process.env.CI ? "http://127.0.0.1" : "http://localhost"
+
   // Check if Strapi is running
   try {
-    const strapiResponse = await request.get("http://localhost:1337/_health")
+    const strapiResponse = await request.get(`${baseURL}:1337/_health`)
     if (!strapiResponse.ok()) {
       throw new Error(
         `Strapi is not running or unhealthy. Status: ${strapiResponse.status()}`
@@ -17,7 +20,7 @@ setup("verify servers are running", async ({ request }) => {
 
   // Check if Next.js is running
   try {
-    const nextResponse = await request.get("http://localhost:3000")
+    const nextResponse = await request.get(`${baseURL}:3000`)
     if (!nextResponse.ok()) {
       throw new Error(
         `Next.js is not running properly. Status: ${nextResponse.status()}`

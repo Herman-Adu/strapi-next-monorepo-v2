@@ -182,17 +182,37 @@ jobs:
           
           # Verify both servers are still responding before running tests
           echo "🔍 Verifying servers are still responding..."
-          if ! curl -f http://127.0.0.1:1337/_health > /dev/null 2>&1; then
-            echo "⚠️ Strapi health check failed before tests!"
-            kill $STRAPI_PID $NEXTJS_PID 2>/dev/null || true
-            exit 1
-          fi
-          if ! curl -f http://127.0.0.1:3000 > /dev/null 2>&1; then
-            echo "⚠️ Next.js health check failed before tests!"
-            kill $STRAPI_PID $NEXTJS_PID 2>/dev/null || true
-            exit 1
-          fi
-          echo "✅ Both servers verified and ready for testing!"
+          
+          # Give servers a moment to fully stabilize after startup
+          sleep 3
+          
+          # Verify Strapi (with retries for stability)
+          attempts=0
+          until curl -f http://127.0.0.1:1337/_health > /dev/null 2>&1; do
+            attempts=$((attempts+1))
+            if [ $attempts -gt 5 ]; then
+              echo "⚠️ Strapi health check failed after $attempts attempts!"
+              kill $STRAPI_PID $NEXTJS_PID 2>/dev/null || true
+              exit 1
+            fi
+            echo "  🔄 Strapi verification attempt $attempts/5..."
+            sleep 2
+          done
+          
+          # Verify Next.js (with retries for stability)
+          attempts=0
+          until curl -f http://127.0.0.1:3000 > /dev/null 2>&1; do
+            attempts=$((attempts+1))
+            if [ $attempts -gt 5 ]; then
+              echo "⚠️ Next.js health check failed after $attempts attempts!"
+              kill $STRAPI_PID $NEXTJS_PID 2>/dev/null || true
+              exit 1
+            fi
+            echo "  🔄 Next.js verification attempt $attempts/5..."
+            sleep 2
+          done
+          
+          echo "✅ Both servers verified and stable!"
           
           # Run E2E tests (servers still running in background)
           # Run Playwright directly to avoid Turbo rebuilding dependencies

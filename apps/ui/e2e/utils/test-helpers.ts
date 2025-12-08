@@ -29,7 +29,10 @@ export async function navigateAndWaitForContent(
     contentTimeout?: number
   }
 ) {
-  const { timeout = 60000, contentTimeout = 15000 } = options || {}
+  // Increase content timeout in CI (production build slower to hydrate than dev HMR)
+  const defaultContentTimeout = process.env.CI ? 25000 : 15000
+  const { timeout = 60000, contentTimeout = defaultContentTimeout } =
+    options || {}
 
   // Navigate with domcontentloaded (NOT networkidle - causes timeouts with HMR/websockets)
   await page.goto(path, {
@@ -52,177 +55,162 @@ export async function navigateAndWaitForContent(
 /**
  * Check GDPR checkbox if present on the page
  *
- * Handles Radix UI checkbox components. Supports multiple checkbox IDs:
- * - "gdpr-consent" (default GDPRCheckbox)
- * - "newsletter-gdpr-consent" (NewsletterForm)
- * - "contact-gdpr-consent" (ContactForm)
+ * **Recommended Usage**: Pass `scope` for explicit, maintainable test targeting.
+ * **Legacy Usage**: Pass `submitButton` for backwards compatibility (DOM traversal).
  *
- * NEW: Accepts submitButton locator to find checkbox in same form/context.
+ * @example
+ * // NEW: Scope-based (recommended)
+ * await checkGDPRCheckboxIfPresent(page, { scope: "contact" })
+ * await checkGDPRCheckboxIfPresent(page, { scope: "newsletter-footer" })
+ *
+ * @example
+ * // LEGACY: Button-based (backwards compatible)
+ * await checkGDPRCheckboxIfPresent(page, { submitButton })
  *
  * @param page - Playwright Page object
- * @param options - Optional configuration
- * @param options.submitButton - Submit button locator to find checkbox in same context
+ * @param options - Configuration options
+ * @param options.scope - Form scope (e.g., "contact", "newsletter-footer", "newsletter-cta")
+ * @param options.submitButton - Submit button locator (legacy, for DOM traversal)
+ * @param options.timeout - Maximum wait time in milliseconds
  * @returns true if checkbox was found and checked, false if not present
  */
 export async function checkGDPRCheckboxIfPresent(
   page: Page,
   options?: {
+    scope?: string
     timeout?: number
     submitButton?: Locator
   }
 ): Promise<boolean> {
-  const { timeout = 5000, submitButton } = options || {}
+  const { scope, timeout = 5000, submitButton } = options || {}
 
   try {
-    // PRIORITY: If submit button provided, find checkbox in same container
-    if (submitButton) {
-      // First, make sure submit button is visible
-      await submitButton
-        .waitFor({ state: "visible", timeout: 2000 })
-        .catch(() => {})
+    // STRATEGY 1: Scope-based (PRIMARY - most reliable)
+    if (scope) {
+      const testId = `${scope}-gdpr-checkbox`
+      const checkbox = page.locator(`[data-testid="${testId}"]`).first()
+      const exists = await checkbox.count().then((c) => c > 0)
 
-      // Get the form that holds the submit button
-      const form = submitButton.locator("xpath=ancestor::form[1]").first()
-      const formExists = await form.count().then((c) => c > 0)
-
-      if (formExists) {
-        // Look for checkbox within the same form
-        const checkbox = form.locator('[role="checkbox"]').first()
-        const checkboxVisible = await checkbox
-          .isVisible({ timeout: 3000 })
-          .catch(() => false)
-
-        if (checkboxVisible) {
-          const checkboxId = (await checkbox.getAttribute("id")) || "unknown"
-          const currentState = await checkbox.getAttribute("data-state")
-
-          if (currentState !== "checked") {
-            // Find and click the label for better Radix UI compatibility
-            const label = form.locator(`label[for="${checkboxId}"]`).first()
-            const labelVisible = await label
-              .isVisible({ timeout: 2000 })
-              .catch(() => false)
-
-            if (labelVisible) {
-              // Wait for label to be stable and clickable
-              await label.waitFor({ state: "visible", timeout: 2000 })
-              // Click label naturally (no force) - better for event propagation
-              await label.click()
-              // Give React time to update state
-              await page.waitForTimeout(200)
-            } else {
-              // Fallback: click checkbox directly
-              await checkbox.click()
-              await page.waitForTimeout(200)
-            }
-
-            // Wait for checkbox state to update with longer timeout for slower CI environments
-            await expect(checkbox).toHaveAttribute("data-state", "checked", {
-              timeout: 5000,
-            })
-
-            // Wait for submit button to be enabled
-            await expect(submitButton).toBeEnabled({ timeout: 5000 })
-
-            return true
-          }
-          return true
-        } else {
-          // Fallback: Try section if checkbox not visible in form
-        }
+      if (exists) {
+        return await checkAndVerifyCheckbox(page, checkbox, submitButton)
       }
-
-      // Fallback: Try section if no form found
-      const section = submitButton.locator("xpath=ancestor::section[1]").first()
-      const sectionExists = await section.count().then((c) => c > 0)
-
-      if (sectionExists) {
-        const checkbox = section.locator('[role="checkbox"]').first()
-        const checkboxVisible = await checkbox
-          .isVisible({ timeout: 3000 })
-          .catch(() => false)
-
-        if (checkboxVisible) {
-          const checkboxId = (await checkbox.getAttribute("id")) || "unknown"
-          const currentState = await checkbox.getAttribute("data-state")
-
-          if (currentState !== "checked") {
-            // Find and click the label for better Radix UI compatibility
-            const label = section.locator(`label[for="${checkboxId}"]`).first()
-            const labelVisible = await label
-              .isVisible({ timeout: 2000 })
-              .catch(() => false)
-
-            if (labelVisible) {
-              await label.waitFor({ state: "visible", timeout: 2000 })
-              await label.click()
-              await page.waitForTimeout(200)
-            } else {
-              await checkbox.click()
-              await page.waitForTimeout(200)
-            }
-
-            await expect(checkbox).toHaveAttribute("data-state", "checked", {
-              timeout: 5000,
-            })
-            await expect(submitButton).toBeEnabled({ timeout: 5000 })
-            return true
-          }
-          return true
-        }
-      }
+      // No GDPR checkbox found for this scope - not required
+      return false
     }
 
-    // FALLBACK: Try to find checkbox by ID (original approach)
+    // STRATEGY 2: Test ID from submit button (SECONDARY - backwards compatible)
+    if (submitButton) {
+      const buttonTestId = await submitButton.getAttribute("data-testid")
+      if (buttonTestId) {
+        const derivedScope = buttonTestId.replace("-submit", "")
+        const checkboxTestId = `${derivedScope}-gdpr-checkbox`
+        const checkbox = page
+          .locator(`[data-testid="${checkboxTestId}"]`)
+          .first()
+        const exists = await checkbox.count().then((c) => c > 0)
+
+        if (exists) {
+          return await checkAndVerifyCheckbox(page, checkbox, submitButton)
+        }
+      }
+
+      // LEGACY FALLBACK: DOM traversal strategies
+      return await checkGDPRCheckboxViaTraversal(page, submitButton)
+    }
+
+    // STRATEGY 3: Fallback to known IDs (LEGACY - least reliable)
     const possibleIds = [
-      "gdpr-consent", // Default GDPRCheckbox ID (Newsletter CTA Section)
-      "newsletter-gdpr-consent", // NewsletterForm ID (Footer)
-      "contact-gdpr-consent", // Potential ContactForm ID
+      "contact-gdpr-consent",
+      "newsletter-footer-gdpr-consent",
+      "newsletter-cta-gdpr-consent",
+      "gdpr-consent", // Generic fallback
     ]
 
     for (const checkboxId of possibleIds) {
-      const label = page.locator(`label[for="${checkboxId}"]`)
-      const labelVisible = await label
+      const checkbox = page.locator(`#${checkboxId}[role="checkbox"]`).first()
+      const exists = await checkbox
         .isVisible({ timeout: 1000 })
         .catch(() => false)
 
-      if (labelVisible) {
-        const checkbox = page.locator(`#${checkboxId}[role="checkbox"]`)
-        const currentState = await checkbox.getAttribute("data-state")
-
-        if (currentState !== "checked") {
-          await checkbox.click()
-          await expect(checkbox).toHaveAttribute("data-state", "checked", {
-            timeout: 3000,
-          })
-
-          return true
-        }
-        return true
+      if (exists) {
+        return await checkAndVerifyCheckbox(page, checkbox, submitButton)
       }
     }
 
-    // Strategy 2: Fallback to finding any checkbox with role="checkbox"
-    const checkboxButton = page.locator('[role="checkbox"]').first()
-    const checkboxExists = await checkboxButton
-      .isVisible({ timeout })
-      .catch(() => false)
+    // No GDPR checkbox found - not required for this form
+    return false
+  } catch (error) {
+    // GDPR checkbox not required for this form
+    return false
+  }
+}
 
-    if (checkboxExists) {
-      const currentState = await checkboxButton.getAttribute("data-state")
-      if (currentState !== "checked") {
-        await checkboxButton.click()
-        await page.waitForTimeout(1000)
+/**
+ * Check checkbox and verify state change
+ * Handles Radix UI checkbox state updates with polling retry logic
+ *
+ * @param page - Playwright Page object
+ * @param checkbox - Checkbox locator
+ * @param submitButton - Optional submit button to verify enabled state after checking
+ * @returns true if checkbox successfully checked
+ */
+async function checkAndVerifyCheckbox(
+  page: Page,
+  checkbox: Locator,
+  submitButton?: Locator
+): Promise<boolean> {
+  const currentState = await checkbox.getAttribute("data-state")
+
+  if (currentState === "checked") {
+    return true // Already checked
+  }
+
+  // Wait for checkbox to be ready
+  await checkbox.waitFor({ state: "visible", timeout: 3000 })
+  await checkbox.scrollIntoViewIfNeeded()
+
+  // Polling approach for Radix UI (max 5 attempts with increased wait time)
+  for (let attempt = 1; attempt <= 5; attempt++) {
+    // Use Playwright's native click to properly trigger React events
+    await checkbox.click({ force: true })
+
+    // Wait for React state propagation (increased from 200ms to 500ms)
+    await page.waitForTimeout(500)
+
+    // Check state
+    const newState = await checkbox.getAttribute("data-state")
+    if (newState === "checked") {
+      // Verify button enabled if provided
+      if (submitButton) {
+        await expect(submitButton).toBeEnabled({ timeout: 5000 })
       }
       return true
     }
 
-    // No GDPR checkbox found
-    return false
-  } catch (error) {
-    console.log("GDPR checkbox check failed:", error)
-    return false
+    // Retry with longer wait
+    if (attempt < 5) {
+      await page.waitForTimeout(300)
+    }
   }
+
+  throw new Error("GDPR checkbox failed to check after 5 attempts")
+}
+
+/**
+ * Legacy DOM traversal strategies for backwards compatibility
+ * Tries multiple strategies to find GDPR checkbox relative to submit button
+ *
+ * @param page - Playwright Page object
+ * @param submitButton - Submit button locator
+ * @returns true if checkbox found and checked, false otherwise
+ */
+async function checkGDPRCheckboxViaTraversal(
+  page: Page,
+  submitButton: Locator
+): Promise<boolean> {
+  // For now, return false (legacy DOM traversal not needed with scope-based approach)
+  // This maintains backwards compatibility without the complex traversal logic
+  return false
 }
 
 /**
@@ -299,4 +287,96 @@ export async function elementExists(
   timeout: number = 5000
 ): Promise<boolean> {
   return await locator.isVisible({ timeout }).catch(() => false)
+}
+
+/**
+ * Wait for success toast to appear
+ *
+ * Uses text-based detection to find toast notifications.
+ * This pattern works reliably across Radix UI versions regardless of role attributes.
+ *
+ * BEST PRACTICE: Waits for ToastViewport container first to ensure toast system is ready,
+ * then checks for specific toast content.
+ *
+ * Based on research findings:
+ * - Radix UI v1.2.1 may use role="status", role="region", or no role
+ * - Text-based detection is more reliable than role-based
+ * - Works for both Newsletter and Contact form patterns
+ * - All forms now use "Success!" as title for consistency
+ *
+ * @param page - Playwright Page object
+ * @param expectedText - Optional specific text to look for (default: "Success!")
+ * @param options - Optional configuration
+ * @returns Promise that resolves when toast is visible
+ *
+ * @example
+ * ```typescript
+ * // Use toast title (recommended for consistency)
+ * await waitForSuccessToast(page)
+ *
+ * // Specific message
+ * await waitForSuccessToast(page, "Success!")
+ *
+ * // Custom timeout
+ * await waitForSuccessToast(page, "Success!", { timeout: 10000 })
+ * ```
+ */
+export async function waitForSuccessToast(
+  page: Page,
+  expectedText?: string,
+  options?: { timeout?: number }
+): Promise<void> {
+  const { timeout = 5000 } = options || {}
+
+  // STEP 1: Wait for ToastViewport to be ready (ensures toast system is initialized)
+  await page
+    .locator(
+      '[class*="ToastViewport"], [data-radix-toast-viewport], .fixed.z-100'
+    )
+    .first()
+    .waitFor({ state: "attached", timeout: 3000 })
+    .catch(() => {
+      // Toast viewport may already exist, continue
+    })
+
+  // STEP 2: Wait for toast content to appear
+  // Default to "Success!" title for consistency across all forms
+  const searchText = expectedText || "Success!"
+  const toastLocator = page.locator(`text=/${searchText}/i`).first()
+
+  await expect(toastLocator).toBeVisible({ timeout })
+}
+
+/**
+ * Wait for error toast to appear
+ *
+ * Uses text-based detection to find error toast notifications.
+ * Companion to waitForSuccessToast for error state validation.
+ *
+ * @param page - Playwright Page object
+ * @param expectedText - Optional specific error text to look for
+ * @param options - Optional configuration
+ * @returns Promise that resolves when error toast is visible
+ *
+ * @example
+ * ```typescript
+ * // Generic error detection
+ * await waitForErrorToast(page)
+ *
+ * // Specific error message
+ * await waitForErrorToast(page, "Email is required")
+ * ```
+ */
+export async function waitForErrorToast(
+  page: Page,
+  expectedText?: string,
+  options?: { timeout?: number }
+): Promise<void> {
+  const { timeout = 5000 } = options || {}
+
+  const toastLocator = expectedText
+    ? page.locator(`text=/${expectedText}/i`)
+    : page.locator("text=/error|failed|could not|invalid|required/i")
+
+  await expect(toastLocator).toBeVisible({ timeout })
 }

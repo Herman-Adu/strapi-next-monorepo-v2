@@ -3,6 +3,7 @@ import {
   navigateAndWaitForContent,
   checkGDPRCheckboxIfPresent,
   setStandardTimeout,
+  waitForSuccessToast,
 } from "./utils/test-helpers"
 
 test.describe("Newsletter Subscription", () => {
@@ -20,10 +21,8 @@ test.describe("Newsletter Subscription", () => {
       /Stay Updated|Newsletter|Subscribe/i
     )
 
-    // Ensure page is fully loaded and stable before each test
-    await page
-      .waitForLoadState("networkidle", { timeout: 10000 })
-      .catch(() => {})
+    // navigateAndWaitForContent already waits for content visibility
+    // No need for networkidle wait (causes timeouts in production/CI)
   })
 
   test("should display newsletter CTA section", async ({ page }) => {
@@ -64,6 +63,9 @@ test.describe("Newsletter Subscription", () => {
     const emailInput = page.locator('input[type="email"]').first()
     const submitButton = page.locator('button:has-text("Subscribe")').first()
 
+    // Wait for input to be ready
+    await emailInput.waitFor({ state: "visible" })
+
     // Enter invalid email
     await emailInput.fill("notanemail")
 
@@ -83,6 +85,12 @@ test.describe("Newsletter Subscription", () => {
     const emailInput = page.locator('input[type="email"]').first()
     const submitButton = page.locator('button:has-text("Subscribe")').first()
 
+    // In serial mode, ensure form has reset from previous test
+    await expect(emailInput).toHaveValue("", { timeout: 5000 })
+
+    // Wait for input to be ready
+    await emailInput.waitFor({ state: "visible" })
+
     // Enter valid email
     const testEmail = `test${Date.now()}@example.com`
     await emailInput.fill(testEmail)
@@ -93,25 +101,8 @@ test.describe("Newsletter Subscription", () => {
     // Submit form
     await submitButton.click()
 
-    // Wait for success message or loading state
-    // Adjust selectors based on your actual implementation
-    await page.waitForTimeout(2000) // Wait for API call
-
-    // Check for success state (adjust based on your implementation)
-    // This could be a success message, disabled button, or changed text
-    const successMessage = page.locator("text=/thank you|subscribed|success/i")
-    const isSuccess = await successMessage
-      .isVisible({ timeout: 5000 })
-      .catch(() => false)
-
-    // If no success message, at least verify no error occurred
-    if (!isSuccess) {
-      const errorMessage = page.locator("text=/error|failed|wrong/i")
-      const hasError = await errorMessage
-        .isVisible({ timeout: 2000 })
-        .catch(() => false)
-      expect(hasError).toBe(false)
-    }
+    // Wait for success toast to appear (using standardized "Success!" title)
+    await waitForSuccessToast(page, "Success!")
   })
 
   test("should show privacy notice", async ({ page }) => {
@@ -154,6 +145,9 @@ test.describe("Newsletter Subscription", () => {
 
   test("should handle keyboard navigation", async ({ page }) => {
     const emailInput = page.locator('input[type="email"]').first()
+
+    // Wait for input to be ready
+    await emailInput.waitFor({ state: "visible" })
 
     // Focus the email input directly
     await emailInput.focus()
@@ -213,25 +207,26 @@ test.describe("Newsletter Subscription", () => {
     const emailInput = page.locator('input[type="email"]').first()
     const submitButton = page.locator('button:has-text("Subscribe")').first()
 
-    await emailInput.fill("loading@test.com")
+    // In serial mode, ensure form has reset from previous test
+    await expect(emailInput).toHaveValue("", { timeout: 5000 })
+
+    // Wait for input to be ready
+    await emailInput.waitFor({ state: "visible" })
+
+    const testEmail = `loading${Date.now()}@test.com`
+    await emailInput.fill(testEmail)
 
     // Check GDPR checkbox if present using helper - pass submit button for context
     await checkGDPRCheckboxIfPresent(page, { submitButton })
 
-    // Submit and immediately check for loading state
+    // Wait for submit button to be enabled (email validation passed)
+    await expect(submitButton).toBeEnabled({ timeout: 3000 })
+
+    // Submit and wait for success (submission is too fast to reliably catch loading state)
     await submitButton.click()
+    await waitForSuccessToast(page, "Success!", { timeout: 10000 })
 
-    // Check if button shows loading state (disabled, spinner, changed text)
-    // Adjust based on your implementation
-    const hasLoadingState =
-      (await submitButton.isDisabled().catch(() => false)) ||
-      (await submitButton
-        .locator("svg")
-        .isVisible()
-        .catch(() => false)) ||
-      (await submitButton.textContent())?.toLowerCase().includes("sending")
-
-    // At least one loading indicator should be present during submission
-    await page.waitForTimeout(1000)
+    // Verify form cleared after success, confirming submission completed
+    await expect(emailInput).toHaveValue("", { timeout: 5000 })
   })
 })
