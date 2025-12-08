@@ -6,6 +6,7 @@
  * **Required Test Data:**
  * - Page: E2E Test Page (slug: e2e-test-page)
  * - Sections: Newsletter CTA, FAQ (5 questions), Contact Form
+ * - API Token: Read-only token for Next.js authentication
  *
  * **Usage:**
  * - Local: `yarn seed:e2e` (from apps/strapi)
@@ -21,6 +22,8 @@
  * - Slower than SQL snapshot (~30-60s vs ~5-10s)
  * - Acceptable for CI since tests run weekly, not on every push
  */
+
+import crypto from "crypto"
 
 export default async ({ strapi }: { strapi: any }) => {
   console.log("🌱 Starting E2E test data seeding...")
@@ -44,22 +47,31 @@ export default async ({ strapi }: { strapi: any }) => {
       console.log(`   ♻️  Deleted existing token: ${token.name}`)
     }
 
+    // The plain text token that will be used in CI
+    const plainToken = "e2e-test-token-12345678901234567890123456789012"
+
+    // Strapi stores the SHA512 hash of the token, not the plain text
+    const hashedToken = crypto
+      .createHash("sha512")
+      .update(plainToken)
+      .digest("base64")
+
     // Create new API token with read-only permissions
     const apiToken = await strapi.db.query("admin::api-token").create({
       data: {
         name: "e2e-readonly-token",
         description: "Read-only API token for E2E tests",
         type: "read-only", // read-only, full-access, or custom
-        accessKey: "e2e-test-token-12345678901234567890123456789012", // 32+ chars
+        accessKey: hashedToken, // SHA512 hash of the token
         lifespan: null, // null = never expires
         permissions: [], // read-only type doesn't need custom permissions
       },
     })
 
     console.log(`✅ API token created: ${apiToken.name}`)
-    console.log(`   📝 Access key: ${apiToken.accessKey}`)
+    console.log(`   📝 Plain token: ${plainToken}`)
     console.log(
-      `   💡 Set this in CI: STRAPI_REST_READONLY_API_KEY=${apiToken.accessKey}`
+      `   💡 Set this in CI: STRAPI_REST_READONLY_API_KEY=${plainToken}`
     )
 
     // ============================================================================
