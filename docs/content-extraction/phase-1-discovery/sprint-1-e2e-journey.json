@@ -1,0 +1,681 @@
+{
+  "trials": [
+    {
+      "title": "Toast Detection Nightmare in Playwright",
+      "problem": "Contact form E2E tests failing to detect Radix UI toast notifications. Tests used `[role='status']` selector which was unreliable - Radix UI may render toasts with `role='region'`, `role='status'`, or no role attribute at all. Pass rate plummeted from Newsletter's 100% to Contact's 50%.",
+      "timeInvested": "6+ hours across multiple sessions",
+      "attempts": [
+        "Used `[role='status']` selector with hasText filter (15s timeout)",
+        "Tried `role='region'` as fallback selector",
+        "Added soft-check pattern with isVisible() catch blocks",
+        "Increased timeout from 5s to 15s thinking it was timing",
+        "Inspected DOM snapshots in Playwright trace files"
+      ],
+      "deadEnds": [
+        "Role-based selectors unreliable across Radix UI versions - no guarantee role attribute exists",
+        "Longer timeouts didn't help - selector was fundamentally wrong",
+        "Soft-check pattern masked real failures instead of fixing root cause"
+      ],
+      "breakthrough": "Compared Newsletter tests (100% passing) to Contact tests (50% failing). Newsletter used simple text-based locator: `page.locator('text=/thank you|success/i')`. No role attribute needed. This worked reliably regardless of Radix UI version or DOM structure.",
+      "beforeMetrics": "Contact Form: 21/42 tests passing (50%), Newsletter: 24/24 passing with soft-check fallback",
+      "afterMetrics": "Contact Form: 42/42 tests passing (100%), Newsletter: 24/24 passing with strict validation, unified pattern across all form tests",
+      "lessonsLearned": [
+        "Text-based locators are more resilient than role-based for third-party UI libraries",
+        "Always compare working implementation vs failing one - pattern differences reveal root cause",
+        "Don't increase timeouts to fix selector issues - fix the selector instead",
+        "Create reusable test helpers (`waitForSuccessToast()`) to standardize patterns across codebase",
+        "Radix UI Toast component doesn't guarantee consistent role attributes across versions"
+      ]
+    },
+    {
+      "title": "GDPR Checkbox ID Mismatch Horror",
+      "problem": "10 tests timing out when clicking submit buttons. Buttons stayed `disabled` even though GDPR checkbox appeared visually checked. Test helper searched for `label[for='gdpr-consent']` but NewsletterForm used custom ID `newsletter-gdpr-consent`. Label never found, checkbox clicked directly via fallback, `onCheckedChange` event didn't fire, React state `agreedToTerms` stayed `false`, submit button remained disabled.",
+      "timeInvested": "4+ hours of DOM inspection and trace analysis",
+      "attempts": [
+        "Clicked checkbox button directly via `[role='checkbox']` selector",
+        "Added waitForTimeout() after click thinking state update delayed",
+        "Increased click timeout from 5s to 30s",
+        "Tried force click with { force: true } option",
+        "Inspected trace files showing checkbox `[active]` but button still `[disabled]`"
+      ],
+      "deadEnds": [
+        "Direct checkbox click bypassed proper event handlers - visual state changed but React state didn't",
+        "Longer timeouts irrelevant when event never fires",
+        "Force click didn't solve event propagation issue"
+      ],
+      "breakthrough": "Analyzed DOM snapshot in error-context.md trace file. Checkbox showed `[active]` state but button still `[disabled]`. Realized test helper had hardcoded `gdpr-consent` ID but component used `newsletter-gdpr-consent`. Updated helper to check array of possible IDs: `['gdpr-consent', 'newsletter-gdpr-consent', 'contact-gdpr-consent']`. Now clicks label (proper accessibility pattern) which triggers Radix UI event handlers correctly.",
+      "beforeMetrics": "Newsletter: 8/9 tests passing (1 skipped, 2 failures due to disabled button), Error Handling: 8 tests failing with 30s timeouts on button click",
+      "afterMetrics": "Newsletter: 8/9 tests passing (1 legitimately skipped - no GDPR on test page), Error Handling: All form submission tests passing, submit buttons enable correctly",
+      "lessonsLearned": [
+        "Always click labels instead of checkbox buttons for proper event propagation",
+        "Test helpers must be flexible - check multiple possible IDs instead of hardcoding",
+        "Playwright trace files (error-context.md) provide exact DOM snapshots at failure point",
+        "Visual state (`[active]`) doesn't guarantee React state updated - verify button enable state",
+        "Use `waitForFunction()` to verify React state updates after interaction"
+      ]
+    },
+    {
+      "title": "The DROP SCHEMA Disaster",
+      "problem": "E2E seed script (`seed-e2e-data.sh`) contained `DROP SCHEMA IF EXISTS public CASCADE; CREATE SCHEMA public;` - a command designed for CI environments. Ran it in development environment with 1 day of content. Lost all 10 pages, 331 media assets, navbar, footer, all Strapi configuration. Complete data wipeout.",
+      "timeInvested": "30 minutes to discover + 30 minutes to restore + 2 hours to create safe scripts",
+      "attempts": [
+        "Initially ran destructive seed script without checking environment",
+        "Realized data loss immediately after command completed",
+        "Searched for backups in multiple directories",
+        "Found `pre-config-import-backup-20251201-185738.tar.gz` (1 day old)",
+        "Restored via `yarn strapi import -f backup.tar.gz --force`"
+      ],
+      "deadEnds": [
+        "No way to undo DROP SCHEMA - PostgreSQL doesn't have transaction rollback for DDL",
+        "Strapi doesn't have built-in undo functionality",
+        "Only option: restore from backup"
+      ],
+      "breakthrough": "Created environment-specific seed scripts: `seed-e2e.sh` (destructive, CI only) and `seed-e2e-safe.sh` (non-destructive, local dev). Safe script checks if E2E page exists, updates instead of dropping schema. Added clear warnings in script headers.",
+      "beforeMetrics": "1 seed script (destructive for all environments), 203 entities lost, 331 assets lost, recovery time unknown",
+      "afterMetrics": "2 seed scripts (environment-aware), 203 entities restored, 331 assets restored, recovery time: 30 minutes from 1-day-old backup",
+      "lessonsLearned": [
+        "NEVER run destructive scripts in development without explicit confirmation",
+        "Create environment-specific scripts (CI vs local dev)",
+        "Add safety checks: verify environment, confirm user intent, check backup exists",
+        "Add explicit warnings in script headers: 'CI USE ONLY - THIS WILL DELETE ALL DATA'",
+        "Safe scripts should check if content exists (update vs create) instead of dropping schemas",
+        "Regular backups are essential - 1-day-old backup prevented complete loss",
+        "Document backup/restore procedures before they're needed"
+      ]
+    },
+    {
+      "title": "Strapi API Timeout Black Hole",
+      "problem": "41 error handling tests failing with 30-second timeouts when navigating to `/en/e2e-test-page`. Page existed in Strapi (confirmed via screenshots), routed correctly (confirmed via curl), but tests hung indefinitely. Initial diagnosis incorrectly assumed page didn't exist. Real issue: `BaseStrapiClient.fetchAPI()` had no timeout mechanism. Parallel test execution (9 workers) overwhelmed Next.js dev server. Each request slower than previous, cascade effect, fetch hung waiting for response that never came.",
+      "timeInvested": "8+ hours across 2 sessions (4 hours misdiagnosis + 4 hours finding real cause)",
+      "attempts": [
+        "Verified page exists in Strapi (screenshots confirmed)",
+        "Tested routing logic with curl (200 OK responses)",
+        "Checked URL parsing (`/en/e2e-test-page` → locale: `en`, fullPath: `/e2e-test-page`)",
+        "Ran single test in isolation (passed instantly)",
+        "Ran full suite in parallel (failures cascaded after 20+ tests)",
+        "Analyzed server logs showing slow response times accumulating"
+      ],
+      "deadEnds": [
+        "Page DID exist - screenshots proved it, so creating E2E page wouldn't help",
+        "Routing logic was correct - curl tests confirmed proper API queries",
+        "Single tests passed - so code wasn't fundamentally broken",
+        "Parallel execution exposed dev server resource exhaustion, not test bugs"
+      ],
+      "breakthrough": "Added AbortController pattern to `BaseStrapiClient.fetchAPI()`. Creates timeout timer (30s), passes abort signal to fetch, aborts request if timeout exceeded. Catches `AbortError` specifically, returns 408 Request Timeout. Tests now fail fast (10s) instead of hanging (30s). Sequential execution (`--workers=1`) prevents dev server exhaustion.",
+      "beforeMetrics": "Error Handling: 4/45 tests passing (9%), total test time: 30+ minutes (many timeouts), dev server crashes after 20+ tests",
+      "afterMetrics": "Error Handling: 34/45 tests passing (76%), test time: 16 minutes (sequential), failures now due to dev server exhaustion (not production issue), tests fail fast with clear timeout errors",
+      "lessonsLearned": [
+        "ALWAYS add timeout mechanisms to network requests - fetch has no default timeout",
+        "AbortController is standard pattern for canceling async operations in modern JavaScript",
+        "Dev server limitations don't indicate production problems - Next.js dev mode can't handle high concurrency",
+        "Parallel test execution can overwhelm development servers even if production handles load fine",
+        "Clean up timers in both success and error paths to prevent memory leaks",
+        "Sequential execution (`--workers=1`) essential for dev environment E2E tests",
+        "Verify assumptions with evidence - page DID exist despite timeouts",
+        "Resource exhaustion shows as increasing latency, not immediate failures"
+      ]
+    },
+    {
+      "title": "404 Status Code Deception in Dev Mode",
+      "problem": "Tests expected 404 status code for non-existent pages, but Next.js development server returns 200 even when `notFound()` is called and 404 page renders correctly. Production returns proper 404 status codes. This is Next.js dev mode behavior, not a bug.",
+      "timeInvested": "2 hours debugging + 1 hour researching Next.js behavior",
+      "attempts": [
+        "Checked if `notFound()` called in catch-all route (it was)",
+        "Verified 404 page renders visually (it did)",
+        "Tested in production build (404 status correct)",
+        "Researched Next.js dev mode vs production differences",
+        "Considered adding custom middleware to override status"
+      ],
+      "deadEnds": [
+        "Can't change Next.js dev mode status code behavior - it's framework-level",
+        "Middleware can't override `notFound()` status in dev mode",
+        "Production build works correctly - so implementation is fine"
+      ],
+      "breakthrough": "Changed test strategy from status code assertion to content-based validation. Instead of `expect(response?.status()).toBe(404)`, check for 404 text in page body: `bodyContent.toLowerCase().includes('404') || bodyContent.toLowerCase().includes('not found')`. This works in both dev and production.",
+      "beforeMetrics": "3/3 tests failing (100% failure on 404 status check), dev mode returns 200, production returns 404",
+      "afterMetrics": "3/3 tests passing (100%), content-based checks work in all environments, test validates user experience (seeing 404 page) not HTTP implementation detail",
+      "lessonsLearned": [
+        "Test user-facing behavior (404 page displays) not implementation details (HTTP status code)",
+        "Next.js dev mode optimizes for developer experience, may differ from production",
+        "Content-based assertions more reliable across environments than status codes",
+        "Always verify behavior in production build when dev mode acts unexpectedly",
+        "HTTP status codes are important for SEO but less important for E2E functional tests",
+        "Document known dev/prod differences to prevent future confusion"
+      ]
+    },
+    {
+      "title": "GitHub Actions CI/CD Authentication Saga",
+      "problem": "All API requests in GitHub Actions CI returned 401 Unauthorized. Next.js was built WITHOUT `STRAPI_REST_READONLY_API_KEY` environment variable, so runtime API calls had no authentication token. Additionally, Strapi required SHA512 token hashing but we were storing plaintext tokens.",
+      "timeInvested": "4 hours debugging + 2 hours implementing SHA512 hashing",
+      "attempts": [
+        "Verified API token existed in GitHub Secrets (it did)",
+        "Checked if token set in workflow environment variables (it was)",
+        "Tested token authentication locally (worked fine)",
+        "Analyzed workflow execution order - discovered Next.js build happened BEFORE token set",
+        "Researched Strapi token hashing requirements"
+      ],
+      "deadEnds": [
+        "Plaintext tokens don't work - Strapi compares against SHA512 hashes",
+        "Setting token AFTER build means Next.js lacks it at build time",
+        "Runtime-only environment variables don't help for SSR routes"
+      ],
+      "breakthrough": "Two fixes: (1) Implemented SHA512 token hashing in Strapi seed script using Node.js crypto module. (2) Moved API token environment variable setup BEFORE Next.js build step in workflow. This ensures token available at both build time and runtime.",
+      "beforeMetrics": "CI: 100% API requests failing with 401, Local: 100% passing, token mismatch between environments",
+      "afterMetrics": "CI: API authentication working, E2E tests running (some failures remain due to other issues), consistent token format across environments",
+      "lessonsLearned": [
+        "Environment variables needed at build time must be set before build step in CI workflows",
+        "Never assume token formats match between local dev and production - verify hashing requirements",
+        "Strapi API tokens use SHA512 hashing - must hash before storing in database",
+        "CI/CD workflow order matters - dependencies must be available when needed",
+        "Test authentication in CI environment separately from local before running E2E tests",
+        "Document token generation and hashing process for future reference"
+      ]
+    },
+    {
+      "title": "Homepage Navigation Black Hole",
+      "problem": "Tests navigating to `/en` (homepage) timing out after 60 seconds waiting for `domcontentloaded` event. `/en/e2e-test-page` loads fine, but `/en` hangs indefinitely. Next.js App Router with heavy SSR processing or slow API calls causing `domcontentloaded` to never fire in dev mode.",
+      "timeInvested": "3 hours debugging navigation patterns",
+      "attempts": [
+        "Increased timeout from 30s to 60s (didn't help)",
+        "Tried different waitUntil strategies: 'domcontentloaded', 'networkidle', 'load'",
+        "Checked for infinite loops in page component (none found)",
+        "Verified homepage renders manually in browser (works fine)",
+        "Compared to FAQ tests which navigate successfully"
+      ],
+      "deadEnds": [
+        "`domcontentloaded` unreliable with Next.js HMR and websockets in dev mode",
+        "`networkidle` times out waiting for HMR connections to close",
+        "Longer timeouts don't help when event never fires"
+      ],
+      "breakthrough": "Used `navigateAndWaitForContent()` pattern from working FAQ tests. Instead of waiting for lifecycle event, navigate and immediately wait for specific content to appear: `await page.goto('/en'); await page.waitForSelector('nav', { state: 'visible', timeout: 15000 })`. Content-based waiting works regardless of load event timing.",
+      "beforeMetrics": "Homepage: 0/9 tests passing (100% timeout), navigation tests: 4/6 failing on `/en` route",
+      "afterMetrics": "Homepage: 9/9 tests passing (100%), navigation tests: 6/6 passing, average navigation time: <5s",
+      "lessonsLearned": [
+        "Next.js App Router with HMR makes `domcontentloaded` unreliable in dev mode",
+        "Content-based waiting (`waitForSelector`) more reliable than lifecycle events",
+        "Reuse proven patterns from working tests instead of debugging same issue twice",
+        "Different routes may have different load characteristics - test navigation patterns across all routes",
+        "Dev mode HMR websockets can interfere with network idle detection"
+      ]
+    }
+  ],
+  "breakthroughs": [
+    {
+      "title": "Text-Based Toast Detection Pattern",
+      "context": "Radix UI Toast components don't guarantee consistent role attributes across versions. Role-based selectors (`[role='status']`) caused 50% test failure rate. Needed reliable way to detect toast notifications regardless of DOM structure.",
+      "discovery": "Newsletter tests (100% passing) used simple text-based locator: `page.locator('text=/thank you|success/i')`. No role attribute needed. This pattern worked reliably because toast text content is stable across versions while ARIA roles may change.",
+      "implementation": "Created `waitForSuccessToast()` helper in test-helpers.ts. Takes optional `expectedText` parameter for specific messages, falls back to generic success patterns. Reduced timeout from 15s to 5s (sufficient). Added companion `waitForErrorToast()` for error states. Standardized all form tests to use helpers.",
+      "impact": "Contact Form: 50% → 100% pass rate (+50%), Newsletter: Upgraded from soft-check fallback to strict validation, unified pattern across all future form tests, helper reusable for any component using toast notifications",
+      "reusability": "High - Any form using Radix UI Toast (Contact, Newsletter, future forms). Any component showing success/error notifications. Pattern applicable to other third-party UI libraries with unstable DOM structures."
+    },
+    {
+      "title": "Polling Click for Dynamic UI Elements",
+      "context": "GDPR checkbox state changes required clicking exact element at exact moment. Standard click often missed timing window when element just appeared or was still rendering. Needed reliable way to click dynamically appearing elements.",
+      "discovery": "Implemented retry pattern with exponential backoff in `checkGDPRCheckboxIfPresent()`. Attempts click up to 5 times with 500ms wait between attempts. Verifies element visible AND enabled before clicking. Waits for React state update after click using `waitForFunction()`.",
+      "implementation": "Test helper tries multiple ID possibilities: `['gdpr-consent', 'newsletter-gdpr-consent', 'contact-gdpr-consent']`. For each ID, verifies label visible, clicks label (accessibility pattern), waits for checkbox `data-state='checked'`, verifies submit button enabled. Falls back to generic `[role='checkbox']` selector if no ID matches.",
+      "impact": "Newsletter: 2 failures → 0 failures (+100%), Error Handling: 8 timeouts → 0 timeouts (+100%), eliminated 30-second timeout failures on submit buttons, reliable across all browsers (Chromium, Firefox, WebKit)",
+      "reusability": "High - Any dynamically rendered checkbox, form fields that appear conditionally, modals with delayed content, lazy-loaded components. Pattern generalizes to any element requiring timing-dependent interaction."
+    },
+    {
+      "title": "AbortController Timeout Pattern for Fetch",
+      "context": "Strapi API fetch calls had no timeout mechanism. Parallel test execution (9 workers) overwhelmed Next.js dev server. Requests hung indefinitely, tests hit Playwright's 30s timeout before fetch resolved. Needed way to cancel slow requests.",
+      "discovery": "Modern fetch API supports AbortController for canceling requests. Create controller, set timeout timer, pass signal to fetch. If timer expires before response, abort() cancels request. Catch AbortError specifically and return 408 Request Timeout.",
+      "implementation": "Added to `BaseStrapiClient.fetchAPI()`: `const controller = new AbortController(); const timeoutId = setTimeout(() => controller.abort(), 30000); const response = await fetch(url, { ...options, signal: controller.signal })`. Clean up timer in both success and error paths: `clearTimeout(timeoutId)`.",
+      "impact": "Error Handling: 9% → 76% pass rate (+67%), tests fail fast (10s) instead of hanging (30s), clear error messages ('Request Timeout' vs 'Test timeout exceeded'), dev server no longer crashes from resource exhaustion, same pattern applicable to production",
+      "reusability": "High - Any fetch call in the application (API routes, SSR data fetching, client-side requests). Applicable to all async operations that can hang (WebSocket connections, file uploads, external API calls). Standard modern JavaScript pattern."
+    },
+    {
+      "title": "Environment-Specific Seed Scripts",
+      "context": "E2E seed script contained `DROP SCHEMA CASCADE` - safe for CI (fresh environment) but catastrophic for development (real content). Needed way to seed test data without destroying existing content.",
+      "discovery": "Created two scripts: `seed-e2e.sh` (destructive, CI only) and `seed-e2e-safe.sh` (non-destructive, local dev). Safe script checks if E2E test page exists: if exists, update content; if not, create new. Never touches other content. Never drops schema.",
+      "implementation": "Safe seed logic: `const existing = await strapi.documents('api::page.page').findMany({ filters: { slug: 'e2e-test-page' } }); if (existing.length > 0) { await update(...) } else { await create(...) }`. Added clear warnings in script headers. Updated package.json: `seed:e2e` (CI) and `seed:e2e:safe` (local dev).",
+      "impact": "Data loss incident: 100% content lost → 100% restored in 30 minutes from backup. Prevention: future seed operations safe for development. Recovery time: 30 minutes (vs potential days recreating content). Developer confidence: can seed test data without fear.",
+      "reusability": "High - Template for all database seed scripts (E2E, integration tests, demo data). Pattern applicable to any operation with different safety requirements per environment (migrations, backups, deployments). Clear separation of concerns."
+    },
+    {
+      "title": "Content-Based Navigation Waiting",
+      "context": "Next.js App Router with HMR makes `domcontentloaded` event unreliable in dev mode. Tests timing out waiting for lifecycle events that never fire. Needed reliable way to know when page ready for interaction.",
+      "discovery": "FAQ tests (100% passing) used content-based waiting: `await page.goto(url); await page.waitForSelector('nav', { state: 'visible' })`. Instead of waiting for browser lifecycle events, wait for specific content to appear. User doesn't care about `domcontentloaded` - they care if content visible.",
+      "implementation": "Created `navigateAndWaitForContent(page, url, expectedContentRegex)` helper. Navigates to URL, waits for text matching regex to appear. Falls back to selector-based waiting for structural elements (nav, header, main). Timeout: 15s (much faster than 60s lifecycle timeout).",
+      "impact": "Homepage: 0/9 → 9/9 tests passing (+100%), Navigation tests: 4/6 → 6/6 passing (+100%), average navigation time: <5s (vs 60s timeout), pattern works in both dev and production modes",
+      "reusability": "High - Any page navigation in E2E tests. Applicable to SPA route changes, server-side redirects, modal openings. Generalizes to any scenario where waiting for content more reliable than waiting for events."
+    },
+    {
+      "title": "Sequential Test Execution for Dev Server",
+      "context": "Next.js dev server can't handle 9 parallel workers running SSR-heavy tests. After 30+ tests (16 minutes), server degrades and times out. But production handles concurrency fine - this is dev-specific limitation.",
+      "discovery": "Adding `--workers=1` to test command forces sequential execution. Tests run one at a time, preventing dev server resource exhaustion. Trade-off: longer total execution time (16 min vs 10 min parallel) but higher pass rate (76% vs 9%).",
+      "implementation": "Updated test commands in package.json: `test:e2e:sequential: 'playwright test --workers=1'`. Use for error-handling tests (SSR-heavy). Keep parallel execution for lightweight tests (FAQ, Newsletter). Document in README when to use each mode.",
+      "impact": "Error Handling: 9% → 76% pass rate in dev mode (+67%), dev server no longer crashes mid-test, CI can still use parallel execution (production server handles concurrency), clear separation: dev limitations don't indicate production issues",
+      "reusability": "Medium - Specific to development environment E2E testing. Not needed in CI (uses production build). Pattern: identify resource-intensive test suites, run sequentially in dev, parallel in production. Applicable to any dev server with concurrency limits (Vite, Webpack dev server, etc.)."
+    }
+  ],
+  "criticalDecisions": [
+    {
+      "title": "Remove API Mocking from E2E Tests",
+      "context": "Contact form tests initially used Playwright `route.fulfill()` to mock Strapi API responses. Newsletter tests didn't mock - they used real Strapi backend. Inconsistent patterns made debugging harder and didn't test real integration.",
+      "options": [
+        "Keep API mocking - faster tests, no Strapi dependency, predictable responses",
+        "Remove mocking - real integration testing, matches Newsletter pattern, tests actual API behavior",
+        "Hybrid approach - mock for validation tests, real API for submission tests"
+      ],
+      "chosen": "Remove all API mocking - E2E tests should test real integrations. Unit/integration tests are better place for mocking. Matches Newsletter pattern (100% passing). Ensures tests catch real API issues (auth, timeouts, data format).",
+      "tradeoffs": "Tests now require Strapi running (setup complexity +), Test execution slightly slower (~1s per test), but: tests more realistic, catch real integration bugs, consistent pattern across all E2E tests",
+      "outcome": "Contact Form: achieved 100% pass rate with real API, discovered AbortController timeout issue (wouldn't have found with mocking), Newsletter consistency maintained, future forms follow same pattern, no mocking maintenance burden"
+    },
+    {
+      "title": "Static 404 Page vs Strapi-Managed Content",
+      "context": "Next.js `not-found.tsx` currently uses static translations via `next-intl`. Could alternatively fetch 404 page content from Strapi CMS for full content management. Decision needed for long-term architecture.",
+      "options": [
+        "Keep static 404 page - simple, no API call, always available even if Strapi down, translations already configured",
+        "Strapi-managed 404 page - CMS control, dynamic content updates, consistent with other pages, SEO flexibility",
+        "Hybrid - static fallback with optional Strapi enhancement"
+      ],
+      "chosen": "Keep static 404 page (Option A) - follows Next.js best practices, no additional API overhead, works even if Strapi down, translations sufficient for error messaging, simpler mental model.",
+      "tradeoffs": "Sacrificed: CMS content management for 404 page, dynamic 404 content updates. Gained: reliability (no Strapi dependency), performance (no API call), simplicity (standard Next.js pattern), resilience (works during Strapi downtime).",
+      "outcome": "404 page always available, tests pass using content-based checks (not status codes), production-ready implementation, follows Next.js documentation recommendations, no maintenance burden from API integration"
+    },
+    {
+      "title": "Content-Based vs Status Code Assertions",
+      "context": "Tests for 404 pages initially checked `expect(response?.status()).toBe(404)`. Next.js dev mode returns 200 even when `notFound()` called and 404 page renders. Production returns proper 404. Tests failed in dev, passed in production.",
+      "options": [
+        "Keep status code check - HTTP semantics correct, SEO important, matches REST conventions",
+        "Content-based check - works in dev and production, tests user experience, more resilient",
+        "Environment-conditional - check status in CI (production build), content in local dev"
+      ],
+      "chosen": "Content-based assertions - check for '404' or 'not found' text in page body. Works in all environments. Tests user-facing behavior (seeing 404 page) not HTTP implementation detail. More important that user sees error page than status code correct.",
+      "tradeoffs": "Sacrificed: strict HTTP status code validation in dev mode. Gained: tests work in dev and production, validate user experience, resilient to framework behavior changes, simpler test logic (no environment conditionals).",
+      "outcome": "3/3 404 tests passing in all environments, test validates user sees 404 page (actual goal), SEO still correct in production (verified separately), documented Next.js dev mode behavior for future reference"
+    },
+    {
+      "title": "CI Workflow Order: Token Before Build",
+      "context": "GitHub Actions workflow was building Next.js before setting `STRAPI_REST_READONLY_API_KEY` environment variable. This meant Next.js lacked API token at build time for SSR routes. All API calls returned 401 in CI.",
+      "options": [
+        "Set token after build - simpler workflow, token only needed at runtime",
+        "Set token before build - token available for SSR, build-time API calls work, matches local dev",
+        "Use separate token for build vs runtime - complex but isolated concerns"
+      ],
+      "chosen": "Set token before build (Option B) - ensures token available when Next.js performs SSR during build. Matches local development where token always present. Prevents 401 errors in CI.",
+      "tradeoffs": "Sacrificed: simpler linear workflow (setup → build → run). Gained: working SSR API calls in CI, consistency between local and CI environments, prevents 401 errors, no runtime-only workarounds needed.",
+      "outcome": "CI API authentication working (401 errors resolved), build succeeds with Strapi integration, E2E tests can run in CI, workflow now mirrors local development environment, documented for future CI setup"
+    },
+    {
+      "title": "Sequential vs Parallel Test Execution",
+      "context": "Playwright supports parallel execution (default 9 workers). Error handling tests overwhelmed Next.js dev server when run in parallel. After 30+ tests, server degraded and timed out. Production handles concurrency fine.",
+      "options": [
+        "Keep parallel execution - faster tests (10 min), matches production behavior, industry standard",
+        "Force sequential execution - slower (16 min) but higher pass rate, prevents dev server exhaustion",
+        "Smart batching - parallel for lightweight tests, sequential for heavy tests"
+      ],
+      "chosen": "Smart batching (Option C implemented as separate commands) - `test:e2e` (parallel, default) for lightweight tests (FAQ, Newsletter), `test:e2e:sequential` (workers=1) for heavy tests (Error Handling). Document when to use each.",
+      "tradeoffs": "Sacrificed: single universal test command, consistent execution strategy. Gained: optimal performance per test suite, high pass rates in dev mode (76%), dev server stability, flexibility to choose strategy per suite.",
+      "outcome": "Error Handling: 76% pass rate with sequential execution (vs 9% parallel), FAQ/Newsletter: still use parallel (faster, no issues), documented in README which tests need sequential, CI uses parallel (production build handles concurrency), developer choice based on context"
+    },
+    {
+      "title": "Label Click vs Direct Checkbox Click",
+      "context": "GDPR checkbox tests had two click strategies: (1) click label element, (2) click checkbox button directly. Direct click faster but skipped proper event handlers. Label click slower but triggered Radix UI event propagation correctly.",
+      "options": [
+        "Click checkbox button directly - faster, fewer DOM queries, simpler selector",
+        "Click label element - proper accessibility pattern, triggers onCheckedChange event, matches user behavior",
+        "Click both (fallback) - redundant but maximizes compatibility"
+      ],
+      "chosen": "Click label element (Option B) - proper accessibility pattern recommended by Radix UI. Clicking label triggers checkbox toggle which fires `onCheckedChange` event. React state updates correctly. Submit buttons enable as expected.",
+      "tradeoffs": "Sacrificed: slight performance (additional label query). Gained: proper event propagation, React state updates work, tests match real user behavior (users click labels), accessibility best practice, reliable across browsers.",
+      "outcome": "10 GDPR tests passing (100%), submit buttons enable correctly, React state `agreedToTerms` updates reliably, pattern works in Chromium/Firefox/WebKit, future checkboxes use same pattern, accessibility-first approach"
+    }
+  ],
+  "evolutionStories": [
+    {
+      "title": "From Flaky Tests to Reliable CI/CD Pipeline",
+      "beforeState": "88/162 tests passing (54%), 29 failures, 42 tests not run, test execution: 5.7 minutes with frequent timeouts, inconsistent patterns across test files (Newsletter used text locators, Contact used role locators), no timeout handling on API calls, dev server crashes during test runs",
+      "painPoints": [
+        "Contact form tests 50% failure rate due to toast detection issues",
+        "10 tests timing out on GDPR checkbox interactions (30s each = 5 min wasted)",
+        "41 tests failing with API timeouts (30s each = 20+ min wasted)",
+        "Homepage navigation tests 100% failure (6/6 timing out)",
+        "Inconsistent test patterns made debugging difficult",
+        "No way to know if failures were real bugs or test flakiness"
+      ],
+      "transformationSteps": [
+        "Step 1: Analyzed trace files to identify root causes (GDPR ID mismatch, toast role unreliability)",
+        "Step 2: Created reusable test helpers (waitForSuccessToast, checkGDPRCheckboxIfPresent)",
+        "Step 3: Standardized toast detection across all forms (text-based pattern)",
+        "Step 4: Added AbortController timeout to all API fetch calls (30s limit)",
+        "Step 5: Implemented environment-specific seed scripts (safe for dev, destructive for CI)",
+        "Step 6: Switched navigation from lifecycle events to content-based waiting",
+        "Step 7: Documented patterns in TROUBLESHOOTING.md for future developers",
+        "Step 8: Separated sequential execution for resource-heavy tests"
+      ],
+      "afterState": "152/159 tests passing (95.6%), 7 failures (dev server exhaustion only), execution: 47.6 minutes (sequential), consistent patterns across all test files, API timeout handling prevents hangs, dev server stable during test runs, clear documentation of known issues",
+      "metrics": {
+        "before": "54% pass rate, 5.7 min (parallel, many timeouts), 41 API timeouts, 10 GDPR failures, 6 navigation failures",
+        "after": "95.6% pass rate, 47.6 min (sequential, no timeouts), 0 API timeouts, 0 GDPR failures, 0 navigation failures, 7 failures (dev server limitation only)",
+        "gain": "+41.6% pass rate, -34 critical failures, +100% test reliability (failures now deterministic), documented troubleshooting guide (1523 lines)"
+      }
+    },
+    {
+      "title": "From Data Loss Disaster to Resilient Workflows",
+      "beforeState": "Single seed script (`seed-e2e-data.sh`) with `DROP SCHEMA CASCADE` command. Used in both CI and local development. No environment awareness. No safety checks. No confirmation prompts. Result: ran in dev environment, lost 203 entities, 331 assets, all configuration. Recovery: 30 minutes from 1-day-old backup. No prevention measures in place.",
+      "painPoints": [
+        "One wrong command = complete data loss",
+        "No distinction between CI (safe to destroy) and dev (contains real content)",
+        "No backup verification before destructive operations",
+        "No way to seed test data without dropping schema",
+        "Fear of running seed scripts after incident",
+        "Unclear which script to use when"
+      ],
+      "transformationSteps": [
+        "Step 1: Created `seed-e2e-safe.sh` for local development (non-destructive)",
+        "Step 2: Renamed original to `seed-e2e.sh` with 'CI ONLY' warning in header",
+        "Step 3: Implemented check-if-exists logic in safe script (update vs create)",
+        "Step 4: Added package.json commands: `seed:e2e` (CI) and `seed:e2e:safe` (dev)",
+        "Step 5: Documented seed script usage in README and recovery document",
+        "Step 6: Created backup/restore procedures documentation",
+        "Step 7: Added prevention checklist (verify environment, check backup, confirm user intent)"
+      ],
+      "afterState": "Two environment-specific seed scripts. Safe script checks if E2E page exists, updates instead of dropping schema. Clear warnings in script headers. Package.json commands document intent. Backup procedures documented. Prevention checklist for future operations. Developer confidence restored.",
+      "metrics": {
+        "before": "1 seed script (destructive for all envs), 0 safety checks, 100% data loss risk, 30 min recovery time from backup, 0 documentation",
+        "after": "2 seed scripts (environment-aware), 3 safety checks (env verification, backup check, user confirmation), 0% data loss risk in dev, <1 min to seed safely, comprehensive documentation (349 lines incident report)",
+        "gain": "Eliminated data loss risk in development, reduced recovery time from 30 min to 0 (prevention), increased developer confidence, reusable pattern for all database operations"
+      }
+    },
+    {
+      "title": "From Ad-Hoc Testing to Systematic Debugging Workflow",
+      "beforeState": "Tests failed with generic timeout errors. No trace files analyzed. No systematic debugging approach. Guesswork: try increasing timeouts, add waitForTimeout(), change selectors randomly. Debugging one test at a time. No documentation of fixes. Same issues reappeared in different tests.",
+      "painPoints": [
+        "Same debugging effort repeated for each failing test",
+        "No understanding of root causes (treated symptoms)",
+        "Timeout increases band-aided selector issues",
+        "No reusable solutions (fixed same bug 3+ times)",
+        "IDE overwhelmed by 200+ trace files (45 GB)",
+        "Couldn't find root cause without evidence",
+        "Knowledge lost between sessions"
+      ],
+      "transformationSteps": [
+        "Step 1: Documented systematic debugging workflow (run with trace, examine results, read error context, analyze trace, implement fix, verify)",
+        "Step 2: Created test helper utilities (navigateAndWaitForContent, waitForSuccessToast, checkGDPRCheckboxIfPresent)",
+        "Step 3: Standardized patterns across test files (Newsletter → Contact → Error Handling)",
+        "Step 4: Wrote comprehensive TROUBLESHOOTING.md (1523 lines)",
+        "Step 5: Documented common patterns (disabled buttons, navigation timeouts, toast detection, state updates, element not found)",
+        "Step 6: Created session recovery document (SESSION_RECOVERY_CONTACT_FORM_TESTS.md, 488 lines)",
+        "Step 7: Added resource management tips (clean test results, batch execution, limit trace collection)"
+      ],
+      "afterState": "Systematic 7-step debugging workflow documented. Test helpers encapsulate reusable solutions. Comprehensive troubleshooting guide with trace file examples. Session recovery documents enable picking up where left off. Common patterns documented with solutions. Knowledge captured for future developers and AI agents.",
+      "metrics": {
+        "before": "No systematic workflow, 0 documented patterns, debugging time: 2-4 hours per issue, same issues debugged 3+ times, knowledge lost between sessions",
+        "after": "7-step workflow documented, 5 common patterns cataloged, debugging time: 15-30 min per new issue, reusable helpers prevent re-debugging, knowledge preserved in 2400+ lines of documentation",
+        "gain": "75% reduction in debugging time (2-4 hrs → 15-30 min), eliminated repeated debugging of same issues, enabled session continuity, created knowledge base for team"
+      }
+    },
+    {
+      "title": "From Inconsistent Form Tests to Unified Pattern",
+      "beforeState": "Newsletter tests: text-based toast detection, no GDPR helper, soft-check fallback pattern. Contact tests: role-based toast detection, GDPR helper with hardcoded ID, strict expectations. Error Handling tests: mix of both patterns. Result: 50% Contact failures, 100% Newsletter success, debugging confusion from inconsistent approaches.",
+      "painPoints": [
+        "Different patterns for same functionality (form submissions)",
+        "Newsletter success didn't transfer to Contact (different implementation)",
+        "Had to understand two different toast detection strategies",
+        "GDPR helper only worked for one ID (not reusable)",
+        "Couldn't reuse Newsletter solutions for Contact",
+        "Future forms would repeat same issues"
+      ],
+      "transformationSteps": [
+        "Step 1: Identified Newsletter as working reference implementation",
+        "Step 2: Created `waitForSuccessToast()` helper from Newsletter pattern",
+        "Step 3: Updated Contact form component to add toast title (match Newsletter structure)",
+        "Step 4: Refactored all Contact tests to use new helper",
+        "Step 5: Upgraded Newsletter tests from soft-check to strict validation",
+        "Step 6: Updated GDPR helper to check multiple possible IDs",
+        "Step 7: Documented unified pattern in TROUBLESHOOTING.md"
+      ],
+      "afterState": "All form tests use `waitForSuccessToast()` helper. Consistent toast structure (title + description). GDPR helper checks array of IDs (reusable). Newsletter and Contact both 100% passing. Future forms follow documented pattern. Single source of truth for form testing.",
+      "metrics": {
+        "before": "2 toast detection patterns, Contact: 50% pass rate, Newsletter: 100% pass rate (soft-check), 0 reusability",
+        "after": "1 unified toast detection pattern, Contact: 100% pass rate, Newsletter: 100% pass rate (strict), helper reusable for all future forms",
+        "gain": "Contact: +50% pass rate, Newsletter: upgraded to strict validation, 100% reusability for future forms, reduced maintenance burden (single pattern to maintain)"
+      }
+    }
+  ],
+  "contentIdeas": [
+    {
+      "type": "article",
+      "title": "Why Your Playwright Tests Can't Find Radix UI Toasts (And How to Fix It)",
+      "hook": "I spent 6 hours debugging 'toast not found' errors before I realized I was using the wrong selector pattern entirely.",
+      "targetAudience": "intermediate",
+      "estimatedReadingTime": "8 minutes",
+      "seoKeywords": ["playwright", "radix ui", "toast testing", "e2e testing", "react testing"],
+      "difficulty": 3,
+      "seriesPart": null,
+      "uniqueValue": "Real trace file analysis showing why role-based selectors fail. Working code snippet for text-based detection pattern. Comparison of 50% failure rate vs 100% success with pattern change."
+    },
+    {
+      "type": "case-study",
+      "title": "The E2E Test That Deleted My Entire Database (And What I Learned)",
+      "hook": "One command. 203 entities gone. 331 images vanished. 30 minutes to realize what happened. Here's the incident report.",
+      "targetAudience": "intermediate",
+      "estimatedReadingTime": "12 minutes",
+      "seoKeywords": ["database recovery", "strapi backup", "e2e testing disaster", "drop schema", "development safety"],
+      "difficulty": 3,
+      "seriesPart": null,
+      "uniqueValue": "Complete incident timeline from mistake to recovery. Environment-specific seed script implementation. Prevention checklist applicable to any database operation. Emotional journey from panic to resolution."
+    },
+    {
+      "type": "tutorial",
+      "title": "AbortController: The Missing Timeout Pattern for Fetch API",
+      "hook": "Your fetch() calls are probably hanging indefinitely. Here's why JavaScript has no default timeout and how to fix it.",
+      "targetAudience": "intermediate",
+      "estimatedReadingTime": "6 minutes",
+      "seoKeywords": ["javascript fetch timeout", "abortcontroller", "async timeout", "api timeout", "fetch cancel"],
+      "difficulty": 2,
+      "seriesPart": "Part 1 of API Resilience Series",
+      "uniqueValue": "Complete code example with cleanup in both success and error paths. Real metrics: 41 tests hanging 30s → failing fast at 10s. Reusable pattern for any fetch call."
+    },
+    {
+      "type": "thread",
+      "title": "I debugged GDPR checkbox tests for 4 hours. The ID was wrong. 🧵",
+      "hook": "Tests showed checkbox checked ✅. Button stayed disabled ❌. Trace files revealed the smoking gun.",
+      "targetAudience": "intermediate",
+      "estimatedReadingTime": "3 minutes",
+      "seoKeywords": ["playwright debugging", "gdpr checkbox", "radix ui checkbox", "react state", "e2e testing"],
+      "difficulty": 2,
+      "seriesPart": null,
+      "uniqueValue": "Twitter thread format (8-10 tweets) with screenshots from actual trace files. Shows DOM snapshot with [active] checkbox but [disabled] button. Reveals ID mismatch. Thread-worthy aha moment."
+    },
+    {
+      "type": "article",
+      "title": "Next.js Returns 200 for 404 Pages in Dev Mode. Here's Why.",
+      "hook": "My E2E tests expected 404 status codes. Next.js dev mode returned 200. Both were correct.",
+      "targetAudience": "intermediate",
+      "estimatedReadingTime": "5 minutes",
+      "seoKeywords": ["nextjs 404", "dev mode production differences", "http status codes", "notfound", "e2e testing"],
+      "difficulty": 2,
+      "seriesPart": null,
+      "uniqueValue": "Explanation of Next.js dev mode vs production behavior. Decision framework: test user experience vs HTTP implementation. Content-based assertion pattern that works everywhere."
+    },
+    {
+      "type": "tutorial",
+      "title": "Building Resilient E2E Tests: The Complete GDPR Checkbox Pattern",
+      "hook": "Your checkbox is checked. Your button is disabled. Here's the 7-line fix that makes it work.",
+      "targetAudience": "intermediate",
+      "estimatedReadingTime": "10 minutes",
+      "seoKeywords": ["playwright checkbox", "gdpr testing", "radix ui testing", "dynamic elements", "polling pattern"],
+      "difficulty": 3,
+      "seriesPart": null,
+      "uniqueValue": "Complete test helper with polling click, multiple ID fallbacks, React state verification. Real metrics: 10 timeouts → 0 failures. Works across Chromium, Firefox, WebKit."
+    },
+    {
+      "type": "article",
+      "title": "When Parallel Tests Kill Your Dev Server (And What to Do)",
+      "hook": "9 workers. 41 tests. Next.js dev server: 💀. But production handles it fine. Here's why.",
+      "targetAudience": "advanced",
+      "estimatedReadingTime": "8 minutes",
+      "seoKeywords": ["playwright parallel", "nextjs dev server", "e2e performance", "resource exhaustion", "sequential execution"],
+      "difficulty": 4,
+      "seriesPart": null,
+      "uniqueValue": "Analysis of dev server limitations vs production capabilities. Metrics showing 9% pass rate (parallel) → 76% (sequential). Smart batching strategy per test suite. When to sacrifice speed for reliability."
+    },
+    {
+      "type": "case-study",
+      "title": "From 54% to 96%: Rescuing a Failing E2E Test Suite",
+      "hook": "88 tests passing. 29 failing. 42 not running. 6 weeks to 96% success. Here's the systematic approach.",
+      "targetAudience": "advanced",
+      "estimatedReadingTime": "15 minutes",
+      "seoKeywords": ["e2e testing", "playwright", "test debugging", "nextjs testing", "strapi testing"],
+      "difficulty": 4,
+      "seriesPart": null,
+      "uniqueValue": "Complete journey from chaos to reliability. 7 distinct issues debugged. Before/after metrics for each fix. Reusable debugging workflow. 2400+ lines of documentation created."
+    },
+    {
+      "type": "tutorial",
+      "title": "Why domcontentloaded Fails in Next.js (Use This Instead)",
+      "hook": "page.goto({ waitUntil: 'domcontentloaded' }) → 60s timeout. Here's the content-based pattern that works.",
+      "targetAudience": "intermediate",
+      "estimatedReadingTime": "6 minutes",
+      "seoKeywords": ["playwright navigation", "nextjs app router", "page load events", "hmr testing", "domcontentloaded"],
+      "difficulty": 3,
+      "seriesPart": null,
+      "uniqueValue": "Explanation of why Next.js HMR interferes with load events. navigateAndWaitForContent() helper implementation. Metrics: 0/9 passing (lifecycle events) → 9/9 (content-based). Works in dev and production."
+    },
+    {
+      "type": "article",
+      "title": "GitHub Actions 401 Errors: The Environment Variable Timing Bug",
+      "hook": "Local tests: 100% passing ✅. CI tests: 100% failing with 401 ❌. The token was set. Just too late.",
+      "targetAudience": "intermediate",
+      "estimatedReadingTime": "7 minutes",
+      "seoKeywords": ["github actions", "environment variables", "ci cd", "strapi api token", "build time vs runtime"],
+      "difficulty": 3,
+      "seriesPart": null,
+      "uniqueValue": "Workflow order matters: token must exist before Next.js build. SHA512 hashing requirement for Strapi tokens. Before/after workflow YAML showing exact fix. Debugging strategy for CI-only failures."
+    },
+    {
+      "type": "tutorial",
+      "title": "Creating Environment-Safe Database Seed Scripts",
+      "hook": "This seed script works great in CI. It just destroyed your development database. Let's fix that.",
+      "targetAudience": "intermediate",
+      "estimatedReadingTime": "9 minutes",
+      "seoKeywords": ["database seeding", "strapi seed", "development safety", "ci vs local", "drop schema"],
+      "difficulty": 3,
+      "seriesPart": null,
+      "uniqueValue": "Check-if-exists pattern (update vs create). Side-by-side comparison: destructive CI script vs safe dev script. Prevention checklist applicable to any database operation. Real incident: 203 entities lost → recovered in 30 min."
+    },
+    {
+      "type": "thread",
+      "title": "7 Playwright patterns I wish I knew before writing 162 E2E tests 🧵",
+      "hook": "Text-based locators beat role-based. AbortController prevents hangs. Click labels, not checkboxes. Here's why.",
+      "targetAudience": "intermediate",
+      "estimatedReadingTime": "4 minutes",
+      "seoKeywords": ["playwright tips", "e2e testing patterns", "test automation", "best practices"],
+      "difficulty": 2,
+      "seriesPart": null,
+      "uniqueValue": "Twitter thread with 7 concrete patterns. Each pattern: problem → solution → metric improvement. Screenshots from trace files. Reusable helpers linked. Concise format perfect for social media."
+    },
+    {
+      "type": "article",
+      "title": "Test What Users See, Not What Browsers Emit",
+      "hook": "I spent 3 hours waiting for domcontentloaded. Users don't see events. They see content.",
+      "targetAudience": "intermediate",
+      "estimatedReadingTime": "6 minutes",
+      "seoKeywords": ["testing philosophy", "user experience testing", "playwright patterns", "content based testing"],
+      "difficulty": 2,
+      "seriesPart": null,
+      "uniqueValue": "Philosophy shift: browser events → user experience. Examples: status codes vs 404 page, domcontentloaded vs visible content, role attributes vs text. Metrics showing content-based tests more reliable. Generalizable to any testing framework."
+    },
+    {
+      "type": "tutorial",
+      "title": "Playwright Trace Files: Your Debugging Superpower",
+      "hook": "Your test failed. You have a 45 GB trace file. Here's how to find the bug in under 5 minutes.",
+      "targetAudience": "beginner",
+      "estimatedReadingTime": "8 minutes",
+      "seoKeywords": ["playwright trace", "test debugging", "playwright inspector", "dom snapshots", "trace analysis"],
+      "difficulty": 2,
+      "seriesPart": null,
+      "uniqueValue": "Step-by-step trace file analysis workflow. Screenshots of Playwright Inspector. Real example: GDPR checkbox showing [active] but button [disabled]. How to find exact failure point. Resource management tips to prevent IDE overload."
+    },
+    {
+      "type": "case-study",
+      "title": "Documentation as Recovery: How 2400 Lines Saved 8 Hours",
+      "hook": "Session 1: 6 hours debugging. Session 2: 15 minutes to resume. The difference? SESSION_RECOVERY.md",
+      "targetAudience": "intermediate",
+      "estimatedReadingTime": "10 minutes",
+      "seoKeywords": ["documentation", "session recovery", "knowledge management", "debugging workflow", "ai agent handoff"],
+      "difficulty": 3,
+      "seriesPart": null,
+      "uniqueValue": "Real example of session recovery document structure. Before: repeat debugging effort each session. After: resume in 15 min. Includes template for session recovery docs. Benefits for human developers AND AI agents picking up context."
+    }
+  ],
+  "metrics": {
+    "testCoverage": {
+      "before": "88/162 tests (54%), 29 failures, 42 not run, inconsistent patterns across suites",
+      "after": "152/159 tests (95.6%), 7 failures (dev server exhaustion only), unified patterns, comprehensive documentation"
+    },
+    "passRate": {
+      "before": "54% overall, Contact: 50%, Error Handling: 9%, Homepage: 0%, Newsletter: 100% (soft-check)",
+      "after": "95.6% overall, Contact: 100%, Error Handling: 76%, Homepage: 100%, Newsletter: 100% (strict), FAQ: 100%, API Integration: 100%"
+    },
+    "timeSaved": "Debugging time reduced from 2-4 hours per issue to 15-30 minutes (75% reduction). Session recovery time reduced from 6 hours to 15 minutes (96% reduction). Eliminated repeated debugging of same issues (3+ times per issue → 0).",
+    "incidentCount": 1,
+    "recoveryTime": "30 minutes from 1-day-old backup. Content loss: 203 entities, 331 assets. Future incidents prevented via environment-specific seed scripts.",
+    "automationROI": "Test execution: 47.6 minutes (sequential) vs manual testing estimated 4-6 hours for equivalent coverage. ROI increases with each test run. Reusable helpers eliminate 2-3 hours debugging per future form. Documentation prevents 4-8 hours knowledge transfer per new developer/AI agent."
+  },
+  "skillsGained": [
+    {
+      "skill": "Playwright Trace File Analysis",
+      "level": "advanced",
+      "evidence": "Analyzed 200+ trace files to identify root causes. Used DOM snapshots to discover GDPR ID mismatch. Documented systematic debugging workflow in 1523-line troubleshooting guide."
+    },
+    {
+      "skill": "Radix UI Testing Patterns",
+      "level": "advanced",
+      "evidence": "Created text-based toast detection helper working across Radix UI versions. Implemented polling click pattern for dynamic checkbox interactions. Achieved 100% pass rate on Radix UI components (Toast, Checkbox)."
+    },
+    {
+      "skill": "AbortController for Async Timeouts",
+      "level": "intermediate",
+      "evidence": "Implemented AbortController pattern in BaseStrapiClient.fetchAPI(). Reduced API timeout failures from 41 to 0. Added cleanup in both success and error paths to prevent memory leaks."
+    },
+    {
+      "skill": "Next.js Dev Mode vs Production Behavior",
+      "level": "advanced",
+      "evidence": "Identified and documented 404 status code differences. Explained HMR interference with domcontentloaded events. Created content-based navigation pattern working in both environments."
+    },
+    {
+      "skill": "Database Disaster Recovery",
+      "level": "intermediate",
+      "evidence": "Recovered 203 entities and 331 assets from backup in 30 minutes. Created environment-specific seed scripts preventing future data loss. Documented complete incident report with prevention measures."
+    },
+    {
+      "skill": "CI/CD Environment Debugging",
+      "level": "intermediate",
+      "evidence": "Diagnosed GitHub Actions 401 authentication failures. Implemented SHA512 token hashing for Strapi. Fixed workflow order: token before build. Tests now authenticate correctly in CI."
+    },
+    {
+      "skill": "Test Pattern Standardization",
+      "level": "advanced",
+      "evidence": "Unified toast detection across 66 form tests (Contact 42 + Newsletter 24). Created 5 reusable test helpers (waitForSuccessToast, checkGDPRCheckboxIfPresent, navigateAndWaitForContent, etc.). Increased Contact pass rate from 50% to 100%."
+    },
+    {
+      "skill": "Performance Profiling for Dev Servers",
+      "level": "intermediate",
+      "evidence": "Identified Next.js dev server resource exhaustion under parallel testing. Implemented smart batching strategy (parallel for lightweight, sequential for heavy). Increased Error Handling pass rate from 9% to 76%."
+    },
+    {
+      "skill": "Technical Documentation Writing",
+      "level": "advanced",
+      "evidence": "Created 2400+ lines of comprehensive documentation: TROUBLESHOOTING.md (1523 lines), SESSION_RECOVERY (488 lines), E2E_DATA_LOSS_INCIDENT_REPORT (349 lines), POST_RECOVERY (370 lines). Documentation enabled 15-minute session recovery vs 6-hour re-debugging."
+    },
+    {
+      "skill": "React State Testing with waitForFunction",
+      "level": "intermediate",
+      "evidence": "Implemented waitForFunction() pattern to verify React state updates after checkbox click. Verified data-state='checked' attribute change. Ensured submit button enabled state matches React state. Pattern works across browsers."
+    },
+    {
+      "skill": "Accessibility-First Testing",
+      "level": "intermediate",
+      "evidence": "Changed from direct checkbox clicks to label clicks (proper ARIA pattern). Multiple ID fallback pattern for flexible component matching. Tests now verify accessibility interactions work correctly."
+    },
+    {
+      "skill": "Content-Based Test Assertions",
+      "level": "intermediate",
+      "evidence": "Migrated from status code assertions to content presence checks. Replaced waitUntil lifecycle events with content visibility verification. Tests now resilient to framework behavior changes. Works in dev and production."
+    }
+  ]
+}
