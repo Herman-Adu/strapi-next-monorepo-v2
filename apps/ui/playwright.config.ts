@@ -36,11 +36,13 @@ export default defineConfig({
           name: "chromium",
           use: {
             ...devices["Desktop Chrome"],
-            // CI-specific browser args to fix connectivity issues
+            // CI-specific browser args to fix HTTPS auto-upgrade and connectivity issues
             launchOptions: {
               args: [
                 "--disable-web-security",
-                "--disable-features=IsolateOrigins,site-per-process,AutoupgradeToHttps",
+                "--disable-features=IsolateOrigins,site-per-process,AutoupgradeToHttps,HttpsUpgrades",
+                "--allow-insecure-localhost",
+                "--ignore-certificate-errors",
                 "--no-sandbox",
                 "--disable-setuid-sandbox",
                 "--disable-dev-shm-usage",
