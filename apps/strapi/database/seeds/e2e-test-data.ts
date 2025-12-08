@@ -27,6 +27,42 @@ export default async ({ strapi }: { strapi: any }) => {
 
   try {
     // ============================================================================
+    // 0. CREATE READ-ONLY API TOKEN FOR E2E TESTS
+    // ============================================================================
+
+    console.log("🔑 Creating read-only API token for E2E tests...")
+
+    // Delete existing e2e-readonly-token if it exists
+    const existingTokens = await strapi.db
+      .query("admin::api-token")
+      .findMany({ where: { name: "e2e-readonly-token" } })
+
+    for (const token of existingTokens) {
+      await strapi.db
+        .query("admin::api-token")
+        .delete({ where: { id: token.id } })
+      console.log(`   ♻️  Deleted existing token: ${token.name}`)
+    }
+
+    // Create new API token with read-only permissions
+    const apiToken = await strapi.db.query("admin::api-token").create({
+      data: {
+        name: "e2e-readonly-token",
+        description: "Read-only API token for E2E tests",
+        type: "read-only", // read-only, full-access, or custom
+        accessKey: "e2e-test-token-12345678901234567890123456789012", // 32+ chars
+        lifespan: null, // null = never expires
+        permissions: [], // read-only type doesn't need custom permissions
+      },
+    })
+
+    console.log(`✅ API token created: ${apiToken.name}`)
+    console.log(`   📝 Access key: ${apiToken.accessKey}`)
+    console.log(
+      `   💡 Set this in CI: STRAPI_REST_READONLY_API_KEY=${apiToken.accessKey}`
+    )
+
+    // ============================================================================
     // 1. CREATE E2E TEST PAGE WITH ALL REQUIRED SECTIONS
     // ============================================================================
 

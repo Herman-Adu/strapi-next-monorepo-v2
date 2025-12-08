@@ -231,6 +231,10 @@ jobs:
         env:
           CI: true
           DATABASE_URL: postgresql://strapi:strapi@localhost:5432/strapi_dev
+          # Use the token created by seed script (see apps/strapi/database/seeds/e2e-test-data.ts)
+          STRAPI_REST_READONLY_API_KEY: e2e-test-token-12345678901234567890123456789012
+          STRAPI_URL: http://127.0.0.1:1337
+          APP_PUBLIC_URL: http://127.0.0.1:3000
 
       - name: Upload Playwright Report
         uses: actions/upload-artifact@v4
