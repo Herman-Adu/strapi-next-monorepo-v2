@@ -29,9 +29,11 @@ const authMiddleware = withAuth(
 export default function middleware(req: NextRequest) {
   // Handle HTTPS redirection in production in Heroku servers
   // Comment this block when running locally (using `next start`)
+  // Skip HTTPS redirect in CI environment for E2E testing (servers run on HTTP)
   const xForwardedProtoHeader = req.headers.get("x-forwarded-proto")
   if (
     !isDevelopment() &&
+    !process.env.CI &&
     (xForwardedProtoHeader === null ||
       xForwardedProtoHeader.includes("https") === false)
   ) {
