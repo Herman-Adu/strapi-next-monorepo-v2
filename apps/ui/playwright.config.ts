@@ -40,7 +40,7 @@ export default defineConfig({
             launchOptions: {
               args: [
                 "--disable-web-security",
-                "--disable-features=IsolateOrigins,site-per-process",
+                "--disable-features=IsolateOrigins,site-per-process,AutoupgradeToHttps",
                 "--no-sandbox",
                 "--disable-setuid-sandbox",
                 "--disable-dev-shm-usage",
