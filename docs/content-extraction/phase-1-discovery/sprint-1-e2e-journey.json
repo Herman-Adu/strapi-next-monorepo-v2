@@ -442,7 +442,13 @@
       "hook": "I spent 6 hours debugging 'toast not found' errors before I realized I was using the wrong selector pattern entirely.",
       "targetAudience": "intermediate",
       "estimatedReadingTime": "8 minutes",
-      "seoKeywords": ["playwright", "radix ui", "toast testing", "e2e testing", "react testing"],
+      "seoKeywords": [
+        "playwright",
+        "radix ui",
+        "toast testing",
+        "e2e testing",
+        "react testing"
+      ],
       "difficulty": 3,
       "seriesPart": null,
       "uniqueValue": "Real trace file analysis showing why role-based selectors fail. Working code snippet for text-based detection pattern. Comparison of 50% failure rate vs 100% success with pattern change."
@@ -453,7 +459,13 @@
       "hook": "One command. 203 entities gone. 331 images vanished. 30 minutes to realize what happened. Here's the incident report.",
       "targetAudience": "intermediate",
       "estimatedReadingTime": "12 minutes",
-      "seoKeywords": ["database recovery", "strapi backup", "e2e testing disaster", "drop schema", "development safety"],
+      "seoKeywords": [
+        "database recovery",
+        "strapi backup",
+        "e2e testing disaster",
+        "drop schema",
+        "development safety"
+      ],
       "difficulty": 3,
       "seriesPart": null,
       "uniqueValue": "Complete incident timeline from mistake to recovery. Environment-specific seed script implementation. Prevention checklist applicable to any database operation. Emotional journey from panic to resolution."
@@ -464,7 +476,13 @@
       "hook": "Your fetch() calls are probably hanging indefinitely. Here's why JavaScript has no default timeout and how to fix it.",
       "targetAudience": "intermediate",
       "estimatedReadingTime": "6 minutes",
-      "seoKeywords": ["javascript fetch timeout", "abortcontroller", "async timeout", "api timeout", "fetch cancel"],
+      "seoKeywords": [
+        "javascript fetch timeout",
+        "abortcontroller",
+        "async timeout",
+        "api timeout",
+        "fetch cancel"
+      ],
       "difficulty": 2,
       "seriesPart": "Part 1 of API Resilience Series",
       "uniqueValue": "Complete code example with cleanup in both success and error paths. Real metrics: 41 tests hanging 30s → failing fast at 10s. Reusable pattern for any fetch call."
@@ -475,7 +493,13 @@
       "hook": "Tests showed checkbox checked ✅. Button stayed disabled ❌. Trace files revealed the smoking gun.",
       "targetAudience": "intermediate",
       "estimatedReadingTime": "3 minutes",
-      "seoKeywords": ["playwright debugging", "gdpr checkbox", "radix ui checkbox", "react state", "e2e testing"],
+      "seoKeywords": [
+        "playwright debugging",
+        "gdpr checkbox",
+        "radix ui checkbox",
+        "react state",
+        "e2e testing"
+      ],
       "difficulty": 2,
       "seriesPart": null,
       "uniqueValue": "Twitter thread format (8-10 tweets) with screenshots from actual trace files. Shows DOM snapshot with [active] checkbox but [disabled] button. Reveals ID mismatch. Thread-worthy aha moment."
@@ -486,7 +510,13 @@
       "hook": "My E2E tests expected 404 status codes. Next.js dev mode returned 200. Both were correct.",
       "targetAudience": "intermediate",
       "estimatedReadingTime": "5 minutes",
-      "seoKeywords": ["nextjs 404", "dev mode production differences", "http status codes", "notfound", "e2e testing"],
+      "seoKeywords": [
+        "nextjs 404",
+        "dev mode production differences",
+        "http status codes",
+        "notfound",
+        "e2e testing"
+      ],
       "difficulty": 2,
       "seriesPart": null,
       "uniqueValue": "Explanation of Next.js dev mode vs production behavior. Decision framework: test user experience vs HTTP implementation. Content-based assertion pattern that works everywhere."
@@ -497,7 +527,13 @@
       "hook": "Your checkbox is checked. Your button is disabled. Here's the 7-line fix that makes it work.",
       "targetAudience": "intermediate",
       "estimatedReadingTime": "10 minutes",
-      "seoKeywords": ["playwright checkbox", "gdpr testing", "radix ui testing", "dynamic elements", "polling pattern"],
+      "seoKeywords": [
+        "playwright checkbox",
+        "gdpr testing",
+        "radix ui testing",
+        "dynamic elements",
+        "polling pattern"
+      ],
       "difficulty": 3,
       "seriesPart": null,
       "uniqueValue": "Complete test helper with polling click, multiple ID fallbacks, React state verification. Real metrics: 10 timeouts → 0 failures. Works across Chromium, Firefox, WebKit."
@@ -508,7 +544,13 @@
       "hook": "9 workers. 41 tests. Next.js dev server: 💀. But production handles it fine. Here's why.",
       "targetAudience": "advanced",
       "estimatedReadingTime": "8 minutes",
-      "seoKeywords": ["playwright parallel", "nextjs dev server", "e2e performance", "resource exhaustion", "sequential execution"],
+      "seoKeywords": [
+        "playwright parallel",
+        "nextjs dev server",
+        "e2e performance",
+        "resource exhaustion",
+        "sequential execution"
+      ],
       "difficulty": 4,
       "seriesPart": null,
       "uniqueValue": "Analysis of dev server limitations vs production capabilities. Metrics showing 9% pass rate (parallel) → 76% (sequential). Smart batching strategy per test suite. When to sacrifice speed for reliability."
@@ -519,7 +561,13 @@
       "hook": "88 tests passing. 29 failing. 42 not running. 6 weeks to 96% success. Here's the systematic approach.",
       "targetAudience": "advanced",
       "estimatedReadingTime": "15 minutes",
-      "seoKeywords": ["e2e testing", "playwright", "test debugging", "nextjs testing", "strapi testing"],
+      "seoKeywords": [
+        "e2e testing",
+        "playwright",
+        "test debugging",
+        "nextjs testing",
+        "strapi testing"
+      ],
       "difficulty": 4,
       "seriesPart": null,
       "uniqueValue": "Complete journey from chaos to reliability. 7 distinct issues debugged. Before/after metrics for each fix. Reusable debugging workflow. 2400+ lines of documentation created."
@@ -530,7 +578,13 @@
       "hook": "page.goto({ waitUntil: 'domcontentloaded' }) → 60s timeout. Here's the content-based pattern that works.",
       "targetAudience": "intermediate",
       "estimatedReadingTime": "6 minutes",
-      "seoKeywords": ["playwright navigation", "nextjs app router", "page load events", "hmr testing", "domcontentloaded"],
+      "seoKeywords": [
+        "playwright navigation",
+        "nextjs app router",
+        "page load events",
+        "hmr testing",
+        "domcontentloaded"
+      ],
       "difficulty": 3,
       "seriesPart": null,
       "uniqueValue": "Explanation of why Next.js HMR interferes with load events. navigateAndWaitForContent() helper implementation. Metrics: 0/9 passing (lifecycle events) → 9/9 (content-based). Works in dev and production."
@@ -541,7 +595,13 @@
       "hook": "Local tests: 100% passing ✅. CI tests: 100% failing with 401 ❌. The token was set. Just too late.",
       "targetAudience": "intermediate",
       "estimatedReadingTime": "7 minutes",
-      "seoKeywords": ["github actions", "environment variables", "ci cd", "strapi api token", "build time vs runtime"],
+      "seoKeywords": [
+        "github actions",
+        "environment variables",
+        "ci cd",
+        "strapi api token",
+        "build time vs runtime"
+      ],
       "difficulty": 3,
       "seriesPart": null,
       "uniqueValue": "Workflow order matters: token must exist before Next.js build. SHA512 hashing requirement for Strapi tokens. Before/after workflow YAML showing exact fix. Debugging strategy for CI-only failures."
@@ -552,7 +612,13 @@
       "hook": "This seed script works great in CI. It just destroyed your development database. Let's fix that.",
       "targetAudience": "intermediate",
       "estimatedReadingTime": "9 minutes",
-      "seoKeywords": ["database seeding", "strapi seed", "development safety", "ci vs local", "drop schema"],
+      "seoKeywords": [
+        "database seeding",
+        "strapi seed",
+        "development safety",
+        "ci vs local",
+        "drop schema"
+      ],
       "difficulty": 3,
       "seriesPart": null,
       "uniqueValue": "Check-if-exists pattern (update vs create). Side-by-side comparison: destructive CI script vs safe dev script. Prevention checklist applicable to any database operation. Real incident: 203 entities lost → recovered in 30 min."
@@ -563,7 +629,12 @@
       "hook": "Text-based locators beat role-based. AbortController prevents hangs. Click labels, not checkboxes. Here's why.",
       "targetAudience": "intermediate",
       "estimatedReadingTime": "4 minutes",
-      "seoKeywords": ["playwright tips", "e2e testing patterns", "test automation", "best practices"],
+      "seoKeywords": [
+        "playwright tips",
+        "e2e testing patterns",
+        "test automation",
+        "best practices"
+      ],
       "difficulty": 2,
       "seriesPart": null,
       "uniqueValue": "Twitter thread with 7 concrete patterns. Each pattern: problem → solution → metric improvement. Screenshots from trace files. Reusable helpers linked. Concise format perfect for social media."
@@ -574,7 +645,12 @@
       "hook": "I spent 3 hours waiting for domcontentloaded. Users don't see events. They see content.",
       "targetAudience": "intermediate",
       "estimatedReadingTime": "6 minutes",
-      "seoKeywords": ["testing philosophy", "user experience testing", "playwright patterns", "content based testing"],
+      "seoKeywords": [
+        "testing philosophy",
+        "user experience testing",
+        "playwright patterns",
+        "content based testing"
+      ],
       "difficulty": 2,
       "seriesPart": null,
       "uniqueValue": "Philosophy shift: browser events → user experience. Examples: status codes vs 404 page, domcontentloaded vs visible content, role attributes vs text. Metrics showing content-based tests more reliable. Generalizable to any testing framework."
@@ -585,7 +661,13 @@
       "hook": "Your test failed. You have a 45 GB trace file. Here's how to find the bug in under 5 minutes.",
       "targetAudience": "beginner",
       "estimatedReadingTime": "8 minutes",
-      "seoKeywords": ["playwright trace", "test debugging", "playwright inspector", "dom snapshots", "trace analysis"],
+      "seoKeywords": [
+        "playwright trace",
+        "test debugging",
+        "playwright inspector",
+        "dom snapshots",
+        "trace analysis"
+      ],
       "difficulty": 2,
       "seriesPart": null,
       "uniqueValue": "Step-by-step trace file analysis workflow. Screenshots of Playwright Inspector. Real example: GDPR checkbox showing [active] but button [disabled]. How to find exact failure point. Resource management tips to prevent IDE overload."
@@ -596,7 +678,13 @@
       "hook": "Session 1: 6 hours debugging. Session 2: 15 minutes to resume. The difference? SESSION_RECOVERY.md",
       "targetAudience": "intermediate",
       "estimatedReadingTime": "10 minutes",
-      "seoKeywords": ["documentation", "session recovery", "knowledge management", "debugging workflow", "ai agent handoff"],
+      "seoKeywords": [
+        "documentation",
+        "session recovery",
+        "knowledge management",
+        "debugging workflow",
+        "ai agent handoff"
+      ],
       "difficulty": 3,
       "seriesPart": null,
       "uniqueValue": "Real example of session recovery document structure. Before: repeat debugging effort each session. After: resume in 15 min. Includes template for session recovery docs. Benefits for human developers AND AI agents picking up context."
