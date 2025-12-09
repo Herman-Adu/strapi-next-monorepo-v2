@@ -302,7 +302,13 @@
       "hook": "I spent 15-20 hours/month on manual QA. Now I spend zero. Here's what changed 🧵",
       "audience": "Solo developers, startup founders, tech leads drowning in manual testing",
       "readingTime": 3,
-      "seoKeywords": ["CI/CD automation", "GitHub Actions", "DevOps ROI", "automated testing", "developer productivity"],
+      "seoKeywords": [
+        "CI/CD automation",
+        "GitHub Actions",
+        "DevOps ROI",
+        "automated testing",
+        "developer productivity"
+      ],
       "difficulty": "beginner",
       "uniqueValue": "Exact ROI calculation: 40 hrs invested → 180-240 hrs saved annually = 540% ROI. $20K/year savings documented with receipts. Solo developer POV (no DevOps team required). Thread format perfect for social media virality."
     },
@@ -312,7 +318,13 @@
       "hook": "Most CI/CD pipelines fail 15% of the time. Mine fails 2%. Here's the architecture that made it possible.",
       "audience": "DevOps engineers, CI/CD practitioners, engineering managers tired of flaky builds",
       "readingTime": 12,
-      "seoKeywords": ["CI/CD best practices", "GitHub Actions optimization", "workflow reliability", "flaky tests", "deployment automation"],
+      "seoKeywords": [
+        "CI/CD best practices",
+        "GitHub Actions optimization",
+        "workflow reliability",
+        "flaky tests",
+        "deployment automation"
+      ],
       "difficulty": "intermediate",
       "uniqueValue": "Beats industry average by 13 percentage points. Specific workflow patterns with code examples. Metrics: path-based triggering (50% fewer runs), Turbo caching (50% faster builds), parallel execution (3x feedback speed). Solo developer achieving enterprise results."
     },
@@ -322,7 +334,13 @@
       "hook": "Every API call in GitHub Actions returned 401 Unauthorized. Local tests: 100% pass rate. CI tests: 100% failure. Here's what I learned debugging this nightmare.",
       "audience": "Developers debugging CI-only failures, Next.js SSR developers, Strapi CMS users",
       "readingTime": 10,
-      "seoKeywords": ["GitHub Actions debugging", "401 Unauthorized CI", "Next.js SSR authentication", "Strapi API tokens", "SHA512 hashing"],
+      "seoKeywords": [
+        "GitHub Actions debugging",
+        "401 Unauthorized CI",
+        "Next.js SSR authentication",
+        "Strapi API tokens",
+        "SHA512 hashing"
+      ],
       "difficulty": "advanced",
       "uniqueValue": "Complete debugging journey: wrong hypotheses → dead ends → breakthrough. Two root causes: SHA512 token hashing + build-time env var timing. Specific to Next.js + Strapi but principles apply broadly. Workflow YAML code showing exact fix."
     },
@@ -332,7 +350,13 @@
       "hook": "Reduce your development startup from 2 minutes to 15 seconds. One command instead of three terminals and eight manual steps. Here's the complete implementation.",
       "audience": "Developers with multi-service architectures, Docker users, monorepo maintainers",
       "readingTime": 15,
-      "seoKeywords": ["dev environment automation", "Docker orchestration", "health check patterns", "monorepo tooling", "developer experience"],
+      "seoKeywords": [
+        "dev environment automation",
+        "Docker orchestration",
+        "health check patterns",
+        "monorepo tooling",
+        "developer experience"
+      ],
       "difficulty": "intermediate",
       "uniqueValue": "Complete Node.js implementation with health check polling pattern. Copy-paste ready code (224 lines). Works cross-platform (Windows/macOS/Linux). Metrics: 8x faster, 0% error rate. Reusable for any multi-service stack."
     },
@@ -342,7 +366,13 @@
       "hook": "Fixed sleep timers are the enemy of reliable service orchestration. Health check polling is the answer. Here's why and how to implement it.",
       "audience": "DevOps engineers, backend developers, microservices architects",
       "readingTime": 8,
-      "seoKeywords": ["health checks", "service orchestration", "race conditions", "polling pattern", "distributed systems"],
+      "seoKeywords": [
+        "health checks",
+        "service orchestration",
+        "race conditions",
+        "polling pattern",
+        "distributed systems"
+      ],
       "difficulty": "intermediate",
       "uniqueValue": "Explains why sleep timers fail (machine speed variance). HTTP polling implementation in Node.js with exponential backoff. Pattern used in production (Kubernetes, Docker, AWS ECS). 100% reliability improvement in startup orchestration."
     },
@@ -352,7 +382,13 @@
       "hook": "My GitHub Actions bill was getting out of control. These 5 optimizations cut CI minutes by 50% and saved $67/year. Thread 🧵",
       "audience": "Developers using GitHub Actions, teams optimizing CI costs, DevOps engineers",
       "readingTime": 4,
-      "seoKeywords": ["GitHub Actions optimization", "CI cost reduction", "workflow efficiency", "Turbo cache", "parallel jobs"],
+      "seoKeywords": [
+        "GitHub Actions optimization",
+        "CI cost reduction",
+        "workflow efficiency",
+        "Turbo cache",
+        "parallel jobs"
+      ],
       "difficulty": "beginner",
       "uniqueValue": "Specific YAML code for each optimization. Metrics: 1,800 CI min/month → 1,100 min/month (38% reduction). Path-based triggers, Turbo caching, parallel jobs, smart dependencies, artifacts. Quick wins with immediate ROI."
     },
@@ -362,7 +398,13 @@
       "hook": "Our Next.js build was succeeding. Our API calls were failing. The problem? Environment variable timing. Here's what we learned about SSR and build-time configuration.",
       "audience": "Next.js developers, SSR framework users, CI/CD pipeline maintainers",
       "readingTime": 7,
-      "seoKeywords": ["Next.js environment variables", "SSR configuration", "build-time vs runtime", "GitHub Actions secrets", "deployment debugging"],
+      "seoKeywords": [
+        "Next.js environment variables",
+        "SSR configuration",
+        "build-time vs runtime",
+        "GitHub Actions secrets",
+        "deployment debugging"
+      ],
       "difficulty": "intermediate",
       "uniqueValue": "Explains Next.js SSR data fetching at build time (not just runtime). Workflow order decision: token before vs after build. YAML code showing exact fix. Principle applies to Nuxt, SvelteKit, Remix, any SSR framework."
     },
@@ -372,7 +414,13 @@
       "hook": "Your Strapi seed scripts are failing with 401 errors? Here's why: Strapi hashes API tokens with SHA512. Your seeds need to match that format.",
       "audience": "Strapi CMS developers, database seeding practitioners, API authentication implementers",
       "readingTime": 5,
-      "seoKeywords": ["Strapi API tokens", "SHA512 hashing", "database seeding", "Node.js crypto", "API authentication"],
+      "seoKeywords": [
+        "Strapi API tokens",
+        "SHA512 hashing",
+        "database seeding",
+        "Node.js crypto",
+        "API authentication"
+      ],
       "difficulty": "intermediate",
       "uniqueValue": "Specific to Strapi but illustrates important principle: seed data must match production storage format. Complete Node.js implementation with crypto module. Solves common Strapi CI authentication issue."
     },
@@ -382,7 +430,13 @@
       "hook": "'Sorry, this script only works on Mac.' I'll never say that again. Here's our three-tier strategy for cross-platform development tooling.",
       "audience": "Teams with mixed OS environments, open-source maintainers, dev tooling creators",
       "readingTime": 10,
-      "seoKeywords": ["cross-platform scripts", "Node.js scripting", "POSIX shell", "PowerShell Core", "developer tooling"],
+      "seoKeywords": [
+        "cross-platform scripts",
+        "Node.js scripting",
+        "POSIX shell",
+        "PowerShell Core",
+        "developer tooling"
+      ],
       "difficulty": "intermediate",
       "uniqueValue": "Three-tier strategy: Node.js first (90%), POSIX shell (simple tasks), PowerShell Core (Windows-specific only). Real-world migration: converted 31 bash scripts. Team has Windows and macOS developers - zero platform-specific bugs."
     },
@@ -392,7 +446,13 @@
       "hook": "I reduced our dev environment startup from 2 minutes to 15 seconds. That's 8x faster. Here's how 🧵",
       "audience": "Developers frustrated with slow startup, teams optimizing DX, monorepo maintainers",
       "readingTime": 3,
-      "seoKeywords": ["dev environment", "startup optimization", "developer experience", "orchestration", "productivity"],
+      "seoKeywords": [
+        "dev environment",
+        "startup optimization",
+        "developer experience",
+        "orchestration",
+        "productivity"
+      ],
       "difficulty": "beginner",
       "uniqueValue": "Thread format with metrics. Comparison: 3 terminals, 6-8 steps, 2 min → 1 terminal, 1 command, 15s. Architecture diagram in thread. ROI: 140 min/month saved. Developer satisfaction improvement anecdote."
     }
