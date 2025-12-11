@@ -24,7 +24,7 @@ This section covers **everything needed to integrate Strapi with Next.js**, incl
 
 ## 🗂️ Documentation Structure
 
-### 📄 [00-INTEGRATION-OVERVIEW.md](./00-INTEGRATION-OVERVIEW.md)
+### 📄 [00-INTEGRATION-OVERVIEW.md](/docs/00-integration-overview)
 
 **Quick Reference for composable architecture patterns**
 
@@ -38,7 +38,7 @@ This section covers **everything needed to integrate Strapi with Next.js**, incl
 
 ---
 
-### 🔧 [01-ENVIRONMENT-SETUP.md](./01-ENVIRONMENT-SETUP.md)
+### 🔧 [01-ENVIRONMENT-SETUP.md](/docs/01-environment-setup)
 
 **Configuration management and environment variables**
 
@@ -53,7 +53,7 @@ This section covers **everything needed to integrate Strapi with Next.js**, incl
 
 ---
 
-### 📡 [02-API-CLIENT.md](./02-API-CLIENT.md)
+### 📡 [02-API-CLIENT.md](/docs/02-api-client)
 
 **Complete API consumption guide**
 
@@ -84,7 +84,7 @@ const blogs = await strapi.find("blogs", {
 
 ---
 
-### 🔷 [03-TYPE-GENERATION.md](./03-TYPE-GENERATION.md)
+### 🔷 [03-TYPE-GENERATION.md](/docs/03-type-generation)
 
 **Automatic TypeScript type generation**
 
@@ -102,7 +102,7 @@ const blogs = await strapi.find("blogs", {
 
 ---
 
-### 🎣 [04-WEBHOOKS.md](./04-WEBHOOKS.md)
+### 🎣 [04-WEBHOOKS.md](/docs/04-webhooks)
 
 **Real-time updates and cache invalidation**
 
@@ -133,7 +133,7 @@ export async function POST(request: Request) {
 
 ---
 
-### 🔒 [05-SECURITY.md](./05-SECURITY.md)
+### 🔒 [05-SECURITY.md](/docs/05-security)
 
 **Authentication, authorization, and secure practices**
 
@@ -155,7 +155,7 @@ export async function POST(request: Request) {
 
 #### Fetch blog posts with author and category
 
-**Go to:** [02-API-CLIENT.md](./02-API-CLIENT.md) → Query Patterns → Population
+**Go to:** [02-API-CLIENT.md](/docs/02-api-client) → Query Patterns → Population
 
 ```typescript
 const blogs = await strapi.find("blogs", {
@@ -170,7 +170,7 @@ const blogs = await strapi.find("blogs", {
 
 #### Set up type-safe API calls
 
-**Go to:** [03-TYPE-GENERATION.md](./03-TYPE-GENERATION.md) → Schema to Types
+**Go to:** [03-TYPE-GENERATION.md](/docs/03-type-generation) → Schema to Types
 
 ```typescript
 import type { Blog } from "@/types/strapi"
@@ -182,7 +182,7 @@ const blog: Blog = await strapi.findOne("blogs", { id: params.id })
 
 #### Invalidate cache when content changes
 
-**Go to:** [04-WEBHOOKS.md](./04-WEBHOOKS.md) → Cache Invalidation
+**Go to:** [04-WEBHOOKS.md](/docs/04-webhooks) → Cache Invalidation
 
 ```typescript
 // Strapi webhook → Next.js API route
@@ -193,7 +193,7 @@ revalidatePath("/blog")
 
 #### Configure environment variables
 
-**Go to:** [01-ENVIRONMENT-SETUP.md](./01-ENVIRONMENT-SETUP.md) → Environment Variables
+**Go to:** [01-ENVIRONMENT-SETUP.md](/docs/01-environment-setup) → Environment Variables
 
 ```bash
 STRAPI_API_URL=http://localhost:1337
@@ -204,7 +204,7 @@ STRAPI_API_TOKEN=your_read_only_token
 
 #### Secure API calls in production
 
-**Go to:** [05-SECURITY.md](./05-SECURITY.md) → API Tokens & CORS
+**Go to:** [05-SECURITY.md](/docs/05-security) → API Tokens & CORS
 
 ---
 
@@ -508,10 +508,10 @@ export async function POST(req: Request) {
 
 ## 🔗 Related Documentation
 
-- [Content Modeling](../content-modeling/README.md) - Schema design
-- [Performance Optimization](../performance-optimization/README.md) - Caching strategies
-- [Workflows & Automation](../workflows-automation/README.md) - CI/CD integration
-- [Atomic Architecture](../atomic-architecture/README.md) - Component mapping
+- [Content Modeling](/docs/readme) - Schema design
+- [Performance Optimization](/docs/readme) - Caching strategies
+- [Workflows & Automation](/docs/readme) - CI/CD integration
+- [Atomic Architecture](/docs/readme) - Component mapping
 
 ---
 
@@ -550,21 +550,21 @@ export async function POST(req: Request) {
 
 ### Beginner (1-2 days)
 
-1. Read [01-ENVIRONMENT-SETUP.md](./01-ENVIRONMENT-SETUP.md)
+1. Read [01-ENVIRONMENT-SETUP.md](/docs/01-environment-setup)
 2. Set up `.env` variables and test connection
-3. Read [02-API-CLIENT.md](./02-API-CLIENT.md)
+3. Read [02-API-CLIENT.md](/docs/02-api-client)
 4. Fetch simple data (e.g., list of blogs)
 
 ### Intermediate (3-5 days)
 
-5. Read [03-TYPE-GENERATION.md](./03-TYPE-GENERATION.md)
+5. Read [03-TYPE-GENERATION.md](/docs/03-type-generation)
 6. Generate and use TypeScript types
-7. Read [04-WEBHOOKS.md](./04-WEBHOOKS.md)
+7. Read [04-WEBHOOKS.md](/docs/04-webhooks)
 8. Implement cache invalidation
 
 ### Advanced (1 week)
 
-9. Read [05-SECURITY.md](./05-SECURITY.md)
+9. Read [05-SECURITY.md](/docs/05-security)
 10. Configure production security (API tokens, CORS)
 11. Optimize queries with selective population
 12. Monitor performance and iterate
@@ -573,4 +573,4 @@ export async function POST(req: Request) {
 
 **🎉 You're ready to integrate Strapi with Next.js!**
 
-Start with [00-INTEGRATION-OVERVIEW.md](./00-INTEGRATION-OVERVIEW.md) for architecture context, then proceed to [01-ENVIRONMENT-SETUP.md](./01-ENVIRONMENT-SETUP.md) for hands-on configuration.
+Start with [00-INTEGRATION-OVERVIEW.md](/docs/00-integration-overview) for architecture context, then proceed to [01-ENVIRONMENT-SETUP.md](/docs/01-environment-setup) for hands-on configuration.

@@ -35,7 +35,7 @@ These portfolio articles showcase **senior-level engineering expertise** demonst
 - Automated 100% of testing, deployment, and maintenance tasks
 - Designed for scalability (team-ready infrastructure)
 
-**Read**: [Article →](./enterprise-cicd-solo.md) ⏳
+**Read**: [Article →](/docs/12-planning-articles-enterprise-cicd-solo) ⏳
 
 ---
 
@@ -53,7 +53,7 @@ These portfolio articles showcase **senior-level engineering expertise** demonst
 - Achieved 90% reduction in seeding time
 - Maintained data integrity and test reliability
 
-**Read**: [Article →](./hybrid-seeding-60x.md) ⏳
+**Read**: [Article →](/docs/12-planning-articles-hybrid-seeding-60x) ⏳
 
 ---
 
@@ -71,7 +71,7 @@ These portfolio articles showcase **senior-level engineering expertise** demonst
 - Cross-platform compatibility (Windows + macOS/Linux)
 - Graceful error handling and cleanup
 
-**Read**: [Article →](./orchestrated-dev-15sec.md) ⏳
+**Read**: [Article →](/docs/12-planning-articles-orchestrated-dev-15sec) ⏳
 
 ---
 
@@ -89,7 +89,7 @@ These portfolio articles showcase **senior-level engineering expertise** demonst
 - Used Node.js for universal tools (31 scripts total)
 - Documented platform-specific gotchas
 
-**Read**: [Article →](./cross-platform-universal.md) ⏳
+**Read**: [Article →](/docs/12-planning-articles-cross-platform-universal) ⏳
 
 ---
 
@@ -107,7 +107,7 @@ These portfolio articles showcase **senior-level engineering expertise** demonst
 - Achieved 95-98 performance score (industry avg: 70-80)
 - Automated 6-page audits on every UI change
 
-**Read**: [Article →](./performance-budgets-scale.md) ⏳
+**Read**: [Article →](/docs/12-planning-articles-performance-budgets-scale) ⏳
 
 ---
 
@@ -125,7 +125,7 @@ These portfolio articles showcase **senior-level engineering expertise** demonst
 - Automated baseline updates (auto-accept on main)
 - Caught 3-4 regressions/month automatically
 
-**Read**: [Article →](./visual-regression-chromatic.md) ⏳
+**Read**: [Article →](/docs/12-planning-articles-visual-regression-chromatic) ⏳
 
 ---
 
@@ -210,21 +210,21 @@ Articles showcase:
 
 ### Technical Deep-Dives
 
-- [Workflows Complete Reference](../../13-testing/deep-dives/workflows-complete-reference.md) ⏳
-- [Scripts Ecosystem Guide](../../13-testing/deep-dives/scripts-ecosystem-guide.md) ⏳
-- [Dev Experience Architecture](../../13-testing/deep-dives/dev-experience-architecture.md) ⏳
+- [Workflows Complete Reference](/docs/13-testing-deep-dives-workflows-complete-reference) ⏳
+- [Scripts Ecosystem Guide](/docs/13-testing-deep-dives-scripts-ecosystem-guide) ⏳
+- [Dev Experience Architecture](/docs/13-testing-deep-dives-dev-experience-architecture) ⏳
 
 ### Innovations
 
-- [Innovations Index](../../08-devops/innovations/README.md) ✅
-- [Orchestrated Development](../../08-devops/innovations/orchestrated-dev.md) ⏳
-- [Hybrid Seeding](../../08-devops/innovations/hybrid-seeding.md) ⏳
+- [Innovations Index](/docs/08-devops-innovations-readme) ✅
+- [Orchestrated Development](/docs/08-devops-innovations-orchestrated-dev) ⏳
+- [Hybrid Seeding](/docs/08-devops-innovations-hybrid-seeding) ⏳
 
 ### Workflows
 
-- [Workflows Index](../../08-devops/workflows/README.md) ✅
-- [CI Workflow](../../08-devops/workflows/01-ci-workflow.md) ✅
-- [E2E Workflow](../../08-devops/workflows/02-e2e-workflow.md) ✅
+- [Workflows Index](/docs/08-devops-workflows-readme) ✅
+- [CI Workflow](/docs/08-devops-workflows-01-ci-workflow) ✅
+- [E2E Workflow](/docs/08-devops-workflows-02-e2e-workflow) ✅
 
 ---
 

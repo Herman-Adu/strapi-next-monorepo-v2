@@ -1040,10 +1040,10 @@ Frontend Components: 35
 
 ## References
 
-- [DAY-1-CHECKLIST.md](./DAY-1-CHECKLIST.md) - Process guide
-- [02-ATOMIC-DESIGN-PRIMER.md](./02-ATOMIC-DESIGN-PRIMER.md) - Atomic principles
-- [03-CURRENT-STATE-ANALYSIS.md](./03-CURRENT-STATE-ANALYSIS.md) - Known issues
-- [00-BLUEPRINT-TEMPLATE.md](./component-blueprints/00-BLUEPRINT-TEMPLATE.md) - Component analysis template
+- [DAY-1-CHECKLIST.md](/docs/02-architecture-atomic-design-day-1-checklist) - Process guide
+- [02-ATOMIC-DESIGN-PRIMER.md](/docs/02-architecture-atomic-design-02-atomic-design-primer) - Atomic principles
+- [03-CURRENT-STATE-ANALYSIS.md](/docs/02-architecture-atomic-design-03-current-state-analysis) - Known issues
+- [00-BLUEPRINT-TEMPLATE.md](/docs/02-architecture-atomic-design-component-blueprints-00-blueprint-template) - Component analysis template
 
 ---
 

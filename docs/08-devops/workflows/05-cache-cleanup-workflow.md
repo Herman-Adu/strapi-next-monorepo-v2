@@ -562,8 +562,8 @@ All workflows create caches:
 
 ### Internal Documentation
 
-- [Workflows Index](./README.md)
-- [CI Workflow](./01-ci-workflow.md) (caching strategy)
+- [Workflows Index](/docs/08-devops-workflows-readme)
+- [CI Workflow](/docs/08-devops-workflows-01-ci-workflow) (caching strategy)
 
 ### External Resources
 
@@ -592,4 +592,4 @@ Healthy cache management:
 **Cache Limit**: 10 GB (GitHub Actions)  
 **Cleanup Threshold**: 9 GB  
 **Max Age**: 3 days  
-**Next**: [Database Backup Workflow Documentation](./06-database-backup-workflow.md) ⏳ Coming Soon
+**Next**: [Database Backup Workflow Documentation](/docs/08-devops-workflows-06-database-backup-workflow) ⏳ Coming Soon

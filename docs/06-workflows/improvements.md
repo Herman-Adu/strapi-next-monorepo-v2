@@ -26,7 +26,7 @@ Based on our marquee section implementation experience, we identified and docume
 
 **Documentation Updated:**
 
-- [COMPONENT_WORKFLOW.md](./COMPONENT_WORKFLOW.md) - Phase 1, Step 1.3
+- [Component Workflow](/docs/04-components-workflow) - Phase 1, Step 1.3
 - Critical step with ⚠️ warning markers
 
 ---
@@ -49,7 +49,7 @@ Based on our marquee section implementation experience, we identified and docume
 
 **Documentation Updated:**
 
-- [COMPONENT_WORKFLOW.md](./COMPONENT_WORKFLOW.md) - Phase 1, Step 1.4
+- [Component Workflow](/docs/04-components-workflow) - Phase 1, Step 1.4
 - Includes populate patterns for different field types
 - Examples for nested components, media fields, multiple levels
 
@@ -74,7 +74,7 @@ Based on our marquee section implementation experience, we identified and docume
 
 **Documentation Updated:**
 
-- [COMPONENT_WORKFLOW.md](./COMPONENT_WORKFLOW.md) - Phase 1, Step 1.5 & Phase 2, Step 2.3
+- [Component Workflow](/docs/04-components-workflow) - Phase 1, Step 1.5 & Phase 2, Step 2.3
 - Explains WHY temporary assertion is needed
 - Reminds to remove it after types generate
 
@@ -98,7 +98,7 @@ Based on our marquee section implementation experience, we identified and docume
 
 **Documentation Updated:**
 
-- [COMPONENT_WORKFLOW.md](./COMPONENT_WORKFLOW.md) - Phase 1, Step 1.7
+- [Component Workflow](/docs/04-components-workflow) - Phase 1, Step 1.7
 - Explains what config sync does
 - Shows expected files created
 - Reminds to commit to Git
@@ -124,7 +124,7 @@ Based on our marquee section implementation experience, we identified and docume
 
 **Documentation Updated:**
 
-- [COMPONENT_WORKFLOW.md](./COMPONENT_WORKFLOW.md) - Phase 3, Step 3.3
+- [COMPONENT_WORKFLOW.md](/docs/component_workflow) - Phase 3, Step 3.3
 - Shows exact code examples
 - Lists common mistakes (typos, wrong UID, missing comma)
 
@@ -260,7 +260,7 @@ PHASE 4: Test Everything
 
 ## 📖 Documentation Structure
 
-### [COMPONENT_WORKFLOW.md](./COMPONENT_WORKFLOW.md) ⭐ NEW
+### [COMPONENT_WORKFLOW.md](/docs/component_workflow) ⭐ NEW
 
 **Purpose:** Step-by-step process guide for creating components
 
@@ -281,7 +281,7 @@ PHASE 4: Test Everything
 
 ---
 
-### [COMPONENT_DEVELOPMENT_GUIDE.md](./COMPONENT_DEVELOPMENT_GUIDE.md)
+### [COMPONENT_DEVELOPMENT_GUIDE.md](/docs/component_development_guide)
 
 **Purpose:** Architecture reference and detailed examples
 
@@ -302,7 +302,7 @@ PHASE 4: Test Everything
 
 ---
 
-### [DEVELOPMENT_GUIDE.md](./DEVELOPMENT_GUIDE.md)
+### [DEVELOPMENT_GUIDE.md](/docs/development_guide)
 
 **Purpose:** Git workflow and deployment
 
@@ -436,7 +436,7 @@ const pagePopulateObject = {
 
 ## 🚀 Next Steps
 
-1. **Test the workflow** - Create a new component using [COMPONENT_WORKFLOW.md](./COMPONENT_WORKFLOW.md)
+1. **Test the workflow** - Create a new component using [COMPONENT_WORKFLOW.md](/docs/component_workflow)
 2. **Refine as needed** - Update documentation based on experience
 3. **Train team** - Share workflow with other developers
 4. **Keep improving** - Add more examples and patterns as we discover them

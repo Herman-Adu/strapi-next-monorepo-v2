@@ -805,10 +805,10 @@ Error: Could not start server on port 3000
 
 ### Internal Documentation
 
-- [Workflows Index](./README.md)
-- [CI Workflow](./01-ci-workflow.md)
-- [E2E Workflow](./02-e2e-workflow.md)
-- [Performance Optimization Guide](../deep-dives/performance-optimization.md) ⏳
+- [Workflows Index](/docs/08-devops-workflows-readme)
+- [CI Workflow](/docs/08-devops-workflows-01-ci-workflow)
+- [E2E Workflow](/docs/08-devops-workflows-02-e2e-workflow)
+- [Performance Optimization Guide](/docs/deep-dives-performance-optimization) ⏳
 
 ### External Resources
 
@@ -845,4 +845,4 @@ Before merging PR with UI changes:
 **Workflow Version**: 2.0 (Temporary public storage)  
 **Pages Audited**: 6 key pages  
 **Performance Budget**: 90+ all categories  
-**Next**: [Visual Regression Workflow Documentation](./04-visual-regression-workflow.md) ⏳ Coming Soon
+**Next**: [Visual Regression Workflow Documentation](/docs/08-devops-workflows-04-visual-regression-workflow) ⏳ Coming Soon

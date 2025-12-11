@@ -932,10 +932,10 @@ Tested:
 
 ## Related Documentation
 
-- [SPACING_ARCHITECTURE_GUIDE.md](./SPACING_ARCHITECTURE_GUIDE.md) - Spacing patterns and principles
-- [COMPONENT_INTEGRATION_GUIDE.md](./COMPONENT_INTEGRATION_GUIDE.md) - Strapi → Frontend workflow
-- [COMPONENT_DEVELOPMENT_GUIDE.md](./COMPONENT_DEVELOPMENT_GUIDE.md) - Creating new components
-- [STYLING_GUIDE.md](./STYLING_GUIDE.md) - Container queries and responsive patterns
+- [SPACING_ARCHITECTURE_GUIDE.md](/docs/spacing_architecture_guide) - Spacing patterns and principles
+- [COMPONENT_INTEGRATION_GUIDE.md](/docs/component_integration_guide) - Strapi → Frontend workflow
+- [COMPONENT_DEVELOPMENT_GUIDE.md](/docs/component_development_guide) - Creating new components
+- [STYLING_GUIDE.md](/docs/styling_guide) - Container queries and responsive patterns
 
 ---
 

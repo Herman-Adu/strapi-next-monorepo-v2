@@ -86,7 +86,13 @@ export function SignInForm() {
         </AppForm>
       </CardContent>
       <CardFooter className="flex flex-col items-center gap-2">
-        <Button type="submit" size="lg" variant="default" form={signInFormName}>
+        <Button
+          type="submit"
+          size="lg"
+          variant="default"
+          form={signInFormName}
+          data-testid="signin-submit"
+        >
           {t("submit")}
         </Button>
 

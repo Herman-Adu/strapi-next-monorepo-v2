@@ -705,9 +705,9 @@ gh secret set AWS_REGION
 
 ### Internal Documentation
 
-- [Workflows Index](./README.md)
-- [Database Restore Guide](../deep-dives/database-restore.md) ⏳
-- [Disaster Recovery Plan](../../12-planning/disaster-recovery.md) ⏳
+- [Workflows Index](/docs/08-devops-workflows-readme)
+- [Database Restore Guide](/docs/deep-dives-database-restore) ⏳
+- [Disaster Recovery Plan](/docs/12-planning-disaster-recovery) ⏳
 
 ### External Resources
 

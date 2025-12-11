@@ -115,7 +115,7 @@ yarn dev
 - Lines: 200
 - Dependencies: `concurrently`, `wait-on`, `open-cli`
 
-**See**: [Orchestrated Development Deep-Dive](./orchestrated-dev.md) ⏳
+**See**: [Orchestrated Development Deep-Dive](/docs/orchestrated-dev) ⏳
 
 ---
 
@@ -169,7 +169,7 @@ psql $DATABASE_URL -c "SELECT COUNT(*) FROM shared_components;"
 - Lines: 120 (script) + 5,000 (SQL)
 - Success Rate: 100% (64 E2E tests pass consistently)
 
-**See**: [Hybrid Seeding Deep-Dive](./hybrid-seeding.md) ⏳
+**See**: [Hybrid Seeding Deep-Dive](/docs/hybrid-seeding) ⏳
 
 ---
 
@@ -223,7 +223,7 @@ Development Workflow:
 - Node.js scripts: 9 (1,200 lines)
 - Total: 31 scripts, ~2,800 lines
 
-**See**: [Cross-Platform Scripts Deep-Dive](./cross-platform.md) ⏳
+**See**: [Cross-Platform Scripts Deep-Dive](/docs/cross-platform) ⏳
 
 ---
 
@@ -276,7 +276,7 @@ SQL snapshot for instant restoration:
 - Lines: 70 + 60 + 5,000
 - Snapshot Size: 500 KB (compressed)
 
-**See**: [SQL Snapshots Deep-Dive](./sql-snapshots.md) ⏳
+**See**: [SQL Snapshots Deep-Dive](/docs/sql-snapshots) ⏳
 
 ---
 
@@ -328,7 +328,7 @@ Turbo remote caching + GitHub Actions cache:
 - Cache size: ~4-5 GB (managed by cleanup workflow)
 - Cache lifetime: 3 days (cleanup threshold)
 
-**See**: [Turbo Caching Deep-Dive](./turbo-caching.md) ⏳
+**See**: [Turbo Caching Deep-Dive](/docs/turbo-caching) ⏳
 
 ---
 
@@ -385,7 +385,7 @@ jobs:
 - Lines: 60 (workflow) + 80 (script)
 - Backup Size: 50-100 MB (compressed)
 
-**See**: [Database Backup Workflow](../workflows/06-database-backup-workflow.md) ✅
+**See**: [Database Backup Workflow](/docs/08-devops-workflows-06-database-backup-workflow) ✅
 
 ---
 
@@ -440,7 +440,7 @@ Lighthouse CI with performance budgets:
 - Lines: 60 (workflow) + 30 (config)
 - Audits: 3 runs per page (median score)
 
-**See**: [Lighthouse Workflow](../workflows/03-lighthouse-workflow.md) ✅
+**See**: [Lighthouse Workflow](/docs/08-devops-workflows-03-lighthouse-workflow) ✅
 
 ---
 
@@ -492,7 +492,7 @@ Chromatic visual testing:
 - Lines: 40 (workflow) + ~3,000 (stories)
 - Snapshot Quota: 5,000/month (free tier)
 
-**See**: [Visual Regression Workflow](../workflows/04-visual-regression-workflow.md) ✅
+**See**: [Visual Regression Workflow](/docs/08-devops-workflows-04-visual-regression-workflow) ✅
 
 ---
 
@@ -546,7 +546,7 @@ for (const cache of sortedCaches) {
 - Lines: 80 (workflow script)
 - Caches Managed: ~20-30 active caches
 
-**See**: [Cache Cleanup Workflow](../workflows/05-cache-cleanup-workflow.md) ✅
+**See**: [Cache Cleanup Workflow](/docs/08-devops-workflows-05-cache-cleanup-workflow) ✅
 
 ---
 
@@ -605,7 +605,7 @@ Daily at 2 AM → Triggers:
 - Lines: ~600 total
 - Jobs: 7 (1 per workflow + 2 in CI)
 
-**See**: [Workflows Index](../workflows/README.md) ✅
+**See**: [Workflows Index](/docs/08-devops-workflows-readme) ✅
 
 ---
 
@@ -681,7 +681,7 @@ Each innovation followed this pattern:
 3. Prototype: SQL snapshot approach
 4. Measure: 5 min → 30 sec
 5. Iterate: Add validation, error handling
-6. Document: [Hybrid Seeding Guide](./hybrid-seeding.md)
+6. Document: [Hybrid Seeding Guide](/docs/hybrid-seeding)
 
 ---
 
@@ -712,28 +712,28 @@ Each innovation followed this pattern:
 
 1. **Read Deep-Dive Guides**:
 
-   - [Orchestrated Development](./orchestrated-dev.md) ⏳
-   - [Hybrid Seeding](./hybrid-seeding.md) ⏳
-   - [Cross-Platform Scripts](./cross-platform.md) ⏳
+   - [Orchestrated Development](/docs/orchestrated-dev) ⏳
+   - [Hybrid Seeding](/docs/hybrid-seeding) ⏳
+   - [Cross-Platform Scripts](/docs/cross-platform) ⏳
 
 2. **Explore Workflows**:
 
-   - [Workflows Index](../workflows/README.md) ✅
-   - [E2E Workflow](../workflows/02-e2e-workflow.md) ✅
+   - [Workflows Index](/docs/08-devops-workflows-readme) ✅
+   - [E2E Workflow](/docs/08-devops-workflows-02-e2e-workflow) ✅
 
 3. **Try Scripts**:
-   - [Scripts Index](../scripts/README.md) ✅
+   - [Scripts Index](/docs/08-devops-scripts-readme) ✅
 
 ### For Hiring Managers
 
 1. **Portfolio Articles**:
 
-   - [Building Enterprise CI/CD Solo](../portfolio/enterprise-cicd-solo.md) ⏳
-   - [60x Performance Gain with Hybrid Seeding](../portfolio/hybrid-seeding-60x.md) ⏳
+   - [Building Enterprise CI/CD Solo](/docs/12-planning-articles-enterprise-cicd-solo) ⏳
+   - [60x Performance Gain with Hybrid Seeding](/docs/12-planning-articles-hybrid-seeding-60x) ⏳
 
 2. **Technical Deep-Dives**:
-   - [GitHub Actions Mastery](../deep-dives/github-actions.md) ⏳
-   - [Performance Optimization](../deep-dives/performance.md) ⏳
+   - [GitHub Actions Mastery](/docs/deep-dives-github-actions) ⏳
+   - [Performance Optimization](/docs/deep-dives-performance) ⏳
 
 ---
 

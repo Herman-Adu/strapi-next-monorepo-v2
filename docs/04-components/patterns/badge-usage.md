@@ -233,9 +233,9 @@ When adding or testing badges:
 
 ## Related Documentation
 
-- [Component Workflow](./COMPONENT_WORKFLOW.md) - Schema modification process
-- [Development Guide](./DEVELOPMENT_GUIDE.md) - General development practices
-- [Component Architecture](./COMPONENT_ARCHITECTURE.md) - Component structure
+- [Component Workflow](/docs/04-components-workflow) - Schema modification process
+- [Development Guide](/docs/development_guide) - General development practices
+- [Component Architecture](/docs/component_architecture) - Component structure
 
 ---
 

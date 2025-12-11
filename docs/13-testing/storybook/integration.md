@@ -318,9 +318,9 @@ Storybook Sidebar                  Atomic Design Docs
 **Atomic Design Docs Provide**:
 
 - ✅ Architectural context ([02-architecture/atomic-design/](../../02-architecture/atomic-design/))
-- ✅ Design principles ([01-ETHOS.md](../../02-architecture/atomic-design/01-ETHOS.md))
-- ✅ Component inventory ([05-COMPONENT-INVENTORY.md](../../02-architecture/atomic-design/05-COMPONENT-INVENTORY.md))
-- ✅ Strategic planning ([04-STRATEGIC-PLAN.md](../../02-architecture/atomic-design/04-STRATEGIC-PLAN.md))
+- ✅ Design principles ([01-ETHOS.md](/docs/02-architecture-atomic-design-01-ethos))
+- ✅ Component inventory ([05-COMPONENT-INVENTORY.md](/docs/02-architecture-atomic-design-05-component-inventory))
+- ✅ Strategic planning ([04-STRATEGIC-PLAN.md](/docs/02-architecture-atomic-design-04-strategic-plan))
 - ✅ Best practices
 
 **Together**:
@@ -431,7 +431,7 @@ const config: StorybookConfig = {
        description: {
          component: `
            Molecule-level component following atomic design principles.
-           See: [Atomic Design Primer](../../docs/02-architecture/atomic-design/02-ATOMIC-DESIGN-PRIMER.md)
+           See: [Atomic Design Primer](/docs/02-architecture-atomic-design-02-atomic-design-primer)
          `,
        },
      },
@@ -475,7 +475,7 @@ const config: StorybookConfig = {
 
 3. **Don't Ignore Architecture**:
    - Every component should fit atomic design model
-   - If unsure, consult [05-COMPONENT-INVENTORY.md](../../02-architecture/atomic-design/05-COMPONENT-INVENTORY.md)
+   - If unsure, consult [05-COMPONENT-INVENTORY.md](/docs/02-architecture-atomic-design-05-component-inventory)
 
 ---
 
@@ -485,9 +485,9 @@ const config: StorybookConfig = {
 
 1. **Understand Atomic Design**:
 
-   - Read [01-ETHOS.md](../../02-architecture/atomic-design/01-ETHOS.md)
-   - Study [02-ATOMIC-DESIGN-PRIMER.md](../../02-architecture/atomic-design/02-ATOMIC-DESIGN-PRIMER.md)
-   - Review [05-COMPONENT-INVENTORY.md](../../02-architecture/atomic-design/05-COMPONENT-INVENTORY.md)
+   - Read [01-ETHOS.md](/docs/02-architecture-atomic-design-01-ethos)
+   - Study [02-ATOMIC-DESIGN-PRIMER.md](/docs/02-architecture-atomic-design-02-atomic-design-primer)
+   - Review [05-COMPONENT-INVENTORY.md](/docs/02-architecture-atomic-design-05-component-inventory)
 
 2. **Explore Existing Stories**:
 
@@ -503,7 +503,7 @@ const config: StorybookConfig = {
    - Notice naming conventions
 
 4. **Create Your First Story**:
-   - Follow [component development guide](../../04-components/development-guide.md)
+   - Follow [component development guide](/docs/04-components-development-guide)
    - Use atomic design template above
    - Test in Storybook UI
 
@@ -513,22 +513,22 @@ const config: StorybookConfig = {
 
 ### Architecture
 
-- [Atomic Design Ethos](../../02-architecture/atomic-design/01-ETHOS.md)
-- [Atomic Design Primer](../../02-architecture/atomic-design/02-ATOMIC-DESIGN-PRIMER.md)
-- [Component Inventory](../../02-architecture/atomic-design/05-COMPONENT-INVENTORY.md)
-- [Strategic Plan](../../02-architecture/atomic-design/04-STRATEGIC-PLAN.md)
+- [Atomic Design Ethos](/docs/02-architecture-atomic-design-01-ethos)
+- [Atomic Design Primer](/docs/02-architecture-atomic-design-02-atomic-design-primer)
+- [Component Inventory](/docs/02-architecture-atomic-design-05-component-inventory)
+- [Strategic Plan](/docs/02-architecture-atomic-design-04-strategic-plan)
 
 ### Development
 
-- [Component Development Guide](../../04-components/development-guide.md)
-- [Component Integration Guide](../../04-components/integration-guide.md)
-- [Component Workflow](../../04-components/workflow.md)
+- [Component Development Guide](/docs/04-components-development-guide)
+- [Component Integration Guide](/docs/04-components-integration-guide)
+- [Component Workflow](/docs/04-components-workflow)
 
 ### Testing
 
-- [Testing Strategy Overview](../README.md)
-- [Chromatic Visual Regression](../chromatic/setup.md)
-- [E2E Testing Guide](../e2e/playwright.md)
+- [Testing Strategy Overview](/docs/13-testing-readme)
+- [Chromatic Visual Regression](/docs/13-testing-chromatic-setup)
+- [E2E Testing Guide](/docs/e2e-playwright)
 
 ---
 
@@ -575,4 +575,4 @@ Use template above, replace `BlogCard` with your component.
 
 ---
 
-**Questions?** See [Testing Strategy](../README.md) or [Component Development](../../04-components/development-guide.md)! 🚀
+**Questions?** See [Testing Strategy](/docs/13-testing-readme) or [Component Development](/docs/04-components-development-guide)! 🚀

@@ -274,7 +274,7 @@ e2e-tests:
 
 **Performance**: ~30 seconds (vs 5+ minutes with API-only)
 
-**See Also**: [Hybrid Seeding Innovation](../innovations/hybrid-seeding.md)
+**See Also**: [Hybrid Seeding Innovation](/docs/innovations-hybrid-seeding)
 
 ---
 
@@ -610,7 +610,7 @@ git add database/data/e2e-snapshot.sql
 git commit -m "chore: update e2e SQL snapshot"
 ```
 
-**See Also**: [SQL Snapshot Innovation](../innovations/sql-snapshots.md)
+**See Also**: [SQL Snapshot Innovation](/docs/innovations-sql-snapshots)
 
 ---
 
@@ -961,11 +961,11 @@ CI Workflow (Build) → E2E Workflow → [Tests Pass]
 
 ### Internal Documentation
 
-- [Workflows Index](./README.md)
-- [CI Workflow](./01-ci-workflow.md)
-- [Hybrid Seeding Innovation](../innovations/hybrid-seeding.md)
-- [SQL Snapshots Innovation](../innovations/sql-snapshots.md)
-- [Orchestrated Dev Script](../scripts/orchestrated-dev.md)
+- [Workflows Index](/docs/08-devops-workflows-readme)
+- [CI Workflow](/docs/08-devops-workflows-01-ci-workflow)
+- [Hybrid Seeding Innovation](/docs/innovations-hybrid-seeding)
+- [SQL Snapshots Innovation](/docs/innovations-sql-snapshots)
+- [Orchestrated Dev Script](/docs/scripts-orchestrated-dev)
 
 ### External Resources
 
@@ -993,4 +993,4 @@ Before merging PR with E2E changes:
 **Last Updated**: November 30, 2025  
 **Workflow Version**: 3.0 (Hybrid seeding + optimized timeout)  
 **Tests**: 64+ Playwright E2E tests  
-**Next**: [Lighthouse Workflow Documentation](./03-lighthouse-workflow.md) ⏳ Coming Soon
+**Next**: [Lighthouse Workflow Documentation](/docs/08-devops-workflows-03-lighthouse-workflow) ⏳ Coming Soon

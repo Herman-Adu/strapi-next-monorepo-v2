@@ -290,7 +290,7 @@ Before creating/modifying any section component:
 ## 🔗 Related Documentation
 
 - [SectionWrapper.tsx](apps/ui/src/components/page-builder/shared/SectionWrapper.tsx) - Container query implementation
-- [COMPONENT_DEVELOPMENT_GUIDE.md](COMPONENT_DEVELOPMENT_GUIDE.md) - Component creation workflow
+- [COMPONENT_DEVELOPMENT_GUIDE.md](/docs/04-components-development-guide) - Component creation workflow
 - [MARQUEE_COMPONENT_GUIDE.md](MARQUEE_COMPONENT_GUIDE.md) - Advanced responsive patterns
 - [Tailwind Container Queries Docs](https://tailwindcss.com/docs/container-queries)
 

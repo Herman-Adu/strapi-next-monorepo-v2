@@ -24,7 +24,7 @@ This section covers **performance optimization strategies** for a Strapi-powered
 
 ## 🗂️ Documentation Structure
 
-### 📄 [00-PERFORMANCE-OVERVIEW.md](./00-PERFORMANCE-OVERVIEW.md)
+### 📄 [00-PERFORMANCE-OVERVIEW.md](/docs/00-performance-overview)
 
 **High-level performance strategy**
 
@@ -38,7 +38,7 @@ This section covers **performance optimization strategies** for a Strapi-powered
 
 ---
 
-### 💾 [01-CACHING.md](./01-CACHING.md)
+### 💾 [01-CACHING.md](/docs/01-caching)
 
 **Complete caching strategy**
 
@@ -75,7 +75,7 @@ export async function POST(request: Request) {
 
 ---
 
-### 🗄️ [02-DATABASE-OPTIMIZATION.md](./02-DATABASE-OPTIMIZATION.md)
+### 🗄️ [02-DATABASE-OPTIMIZATION.md](/docs/02-database-optimization)
 
 **Database performance tuning**
 
@@ -111,7 +111,7 @@ const blogs = await strapi.entityService.findMany("api::blog.blog", {
 
 ---
 
-### 🌐 [03-CDN-SETUP.md](./03-CDN-SETUP.md)
+### 🌐 [03-CDN-SETUP.md](/docs/03-cdn-setup)
 
 **Content Delivery Network configuration**
 
@@ -142,7 +142,7 @@ const optimizedImage = `https://res.cloudinary.com/your-cloud/image/upload/w_800
 
 ---
 
-### 🖼️ [04-IMAGE-OPTIMIZATION.md](./04-IMAGE-OPTIMIZATION.md)
+### 🖼️ [04-IMAGE-OPTIMIZATION.md](/docs/04-image-optimization)
 
 **Image performance best practices**
 
@@ -173,7 +173,7 @@ import Image from "next/image"
 
 ---
 
-### 📊 [05-MONITORING.md](./05-MONITORING.md)
+### 📊 [05-MONITORING.md](/docs/05-monitoring)
 
 **Performance monitoring and alerting**
 
@@ -208,7 +208,7 @@ import Image from "next/image"
 
 #### Enable Next.js ISR with on-demand revalidation
 
-**Go to:** [01-CACHING.md](./01-CACHING.md) → ISR + Webhooks
+**Go to:** [01-CACHING.md](/docs/01-caching) → ISR + Webhooks
 
 ```typescript
 export const revalidate = 60 // Revalidate every 60s
@@ -221,7 +221,7 @@ revalidatePath("/blog")
 
 #### Optimize slow Strapi API queries
 
-**Go to:** [02-DATABASE-OPTIMIZATION.md](./02-DATABASE-OPTIMIZATION.md) → Query Optimization
+**Go to:** [02-DATABASE-OPTIMIZATION.md](/docs/02-database-optimization) → Query Optimization
 
 ```typescript
 // Selective population (fast)
@@ -236,7 +236,7 @@ populate: {
 
 #### Set up Cloudinary for media
 
-**Go to:** [03-CDN-SETUP.md](./03-CDN-SETUP.md) → Media CDN
+**Go to:** [03-CDN-SETUP.md](/docs/03-cdn-setup) → Media CDN
 
 ```bash
 npm install cloudinary
@@ -246,7 +246,7 @@ npm install cloudinary
 
 #### Lazy load images with blur placeholder
 
-**Go to:** [04-IMAGE-OPTIMIZATION.md](./04-IMAGE-OPTIMIZATION.md) → Placeholder Strategies
+**Go to:** [04-IMAGE-OPTIMIZATION.md](/docs/04-image-optimization) → Placeholder Strategies
 
 ```tsx
 <Image placeholder="blur" blurDataURL={thumbnail} />
@@ -256,7 +256,7 @@ npm install cloudinary
 
 #### Monitor Core Web Vitals
 
-**Go to:** [05-MONITORING.md](./05-MONITORING.md) → RUM + Performance Budgets
+**Go to:** [05-MONITORING.md](/docs/05-monitoring) → RUM + Performance Budgets
 
 ---
 
@@ -494,10 +494,10 @@ CREATE INDEX idx_blogs_slug ON blogs(slug);
 
 ## 🔗 Related Documentation
 
-- [Strapi Integration](../strapi-integration/README.md) - API optimization
-- [Content Modeling](../content-modeling/README.md) - Query-friendly schemas
-- [Workflows & Automation](../workflows-automation/README.md) - CI performance testing
-- [CSS Architecture](../css-architecture/README.md) - CSS optimization
+- [Strapi Integration](/docs/readme) - API optimization
+- [Content Modeling](/docs/readme) - Query-friendly schemas
+- [Workflows & Automation](/docs/readme) - CI performance testing
+- [CSS Architecture](/docs/readme) - CSS optimization
 
 ---
 
@@ -535,27 +535,27 @@ CREATE INDEX idx_blogs_slug ON blogs(slug);
 
 ### Beginner (1-2 days)
 
-1. Read [00-PERFORMANCE-OVERVIEW.md](./00-PERFORMANCE-OVERVIEW.md)
+1. Read [00-PERFORMANCE-OVERVIEW.md](/docs/00-performance-overview)
 2. Understand multi-layer caching
-3. Read [01-CACHING.md](./01-CACHING.md)
+3. Read [01-CACHING.md](/docs/01-caching)
 4. Enable Next.js ISR
 
 ### Intermediate (3-5 days)
 
-5. Read [02-DATABASE-OPTIMIZATION.md](./02-DATABASE-OPTIMIZATION.md)
+5. Read [02-DATABASE-OPTIMIZATION.md](/docs/02-database-optimization)
 6. Add database indexes
-7. Read [04-IMAGE-OPTIMIZATION.md](./04-IMAGE-OPTIMIZATION.md)
+7. Read [04-IMAGE-OPTIMIZATION.md](/docs/04-image-optimization)
 8. Replace <img> with Next.js <Image>
 
 ### Advanced (1 week)
 
-9. Read [03-CDN-SETUP.md](./03-CDN-SETUP.md)
+9. Read [03-CDN-SETUP.md](/docs/03-cdn-setup)
 10. Set up CDN for media
-11. Read [05-MONITORING.md](./05-MONITORING.md)
+11. Read [05-MONITORING.md](/docs/05-monitoring)
 12. Configure performance monitoring and budgets
 
 ---
 
 **⚡ You're ready to optimize performance!**
 
-Start with [00-PERFORMANCE-OVERVIEW.md](./00-PERFORMANCE-OVERVIEW.md) for strategy context, then proceed to [01-CACHING.md](./01-CACHING.md) for hands-on caching implementation.
+Start with [00-PERFORMANCE-OVERVIEW.md](/docs/00-performance-overview) for strategy context, then proceed to [01-CACHING.md](/docs/01-caching) for hands-on caching implementation.

@@ -27,13 +27,17 @@ export function ContactForm() {
     contactFormMutation.mutate(values, {
       onSuccess: () => {
         toast({
+          title: "Success!",
           variant: "success",
           description: t("success"),
+          // @ts-ignore - Custom prop for E2E testing
+          "data-testid": "contact-form-success-toast",
         })
         form.reset()
       },
       onError: (error) => {
         toast({
+          title: "Error",
           variant: "destructive",
           description: error.message || t("error"),
         })

@@ -820,18 +820,18 @@ This transformation took 8 weeks, but you can compress it with:
 
 **Complete Technical Guides**:
 
-- [Strapi 5 Beginner](./strapi-5/01-BEGINNER.md) - Week 1-2
-- [Strapi 5 Intermediate](./strapi-5/02-INTERMEDIATE.md) - Week 3-4
-- [Strapi 5 Advanced](./strapi-5/03-ADVANCED.md) - Week 5-6
-- [Strapi 5 Best Practices](./strapi-5/04-BEST-PRACTICES.md) - Week 7-8
-- [Docker Fundamentals](./docker/01-FUNDAMENTALS.md) - Week 7
-- [Docker Production](./docker/02-PRODUCTION.md) - Week 7-8
+- [Strapi 5 Beginner](/docs/14-deep-dives-strapi-5-01-beginner) - Week 1-2
+- [Strapi 5 Intermediate](/docs/14-deep-dives-strapi-5-02-intermediate) - Week 3-4
+- [Strapi 5 Advanced](/docs/14-deep-dives-strapi-5-03-advanced) - Week 5-6
+- [Strapi 5 Best Practices](/docs/14-deep-dives-strapi-5-04-best-practices) - Week 7-8
+- [Docker Fundamentals](/docs/14-deep-dives-docker-01-fundamentals) - Week 7
+- [Docker Production](/docs/14-deep-dives-docker-02-production) - Week 7-8
 
 **Workflow Documentation**:
 
-- [Git Strategy](../workflows-automation/01-GIT-STRATEGY.md)
-- [CI/CD Pipeline](../workflows-automation/02-CI-CD-PIPELINE.md)
-- [Testing Strategy](../workflows-automation/03-TESTING-STRATEGY.md)
+- [Git Strategy](/docs/workflows-automation-01-git-strategy)
+- [CI/CD Pipeline](/docs/workflows-automation-02-ci-cd-pipeline)
+- [Testing Strategy](/docs/workflows-automation-03-testing-strategy)
 
 **Monorepo Examples**:
 
@@ -863,5 +863,5 @@ We had:
 
 **Last Updated**: December 1, 2025  
 **Article**: The Complete Transformation Journey  
-**Part of**: [Deep Dives - Technical Mastery](./README.md)  
+**Part of**: [Deep Dives - Technical Mastery](/docs/14-deep-dives-readme)  
 **Value Created**: $530,100 (3 years)

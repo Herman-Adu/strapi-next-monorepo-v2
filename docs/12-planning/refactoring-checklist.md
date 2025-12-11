@@ -2,7 +2,7 @@
 
 **Use this checklist EVERY TIME you add/remove/modify fields in existing Strapi components.**
 
-**📌 Quick Reference:** See [POPULATE_PATTERNS_REFERENCE.md](./POPULATE_PATTERNS_REFERENCE.md) for populate patterns.
+**📌 Quick Reference:** See [POPULATE_PATTERNS_REFERENCE.md](/docs/populate_patterns_reference) for populate patterns.
 
 ---
 
@@ -486,9 +486,9 @@ const value = component.newField?.toLowerCase() ?? "default"
 
 ## 📚 Related Documentation
 
-- [COMPONENT_WORKFLOW.md](./COMPONENT_WORKFLOW.md) - Creating new components
-- [DEVELOPMENT_GUIDE.md](./DEVELOPMENT_GUIDE.md) - General development setup
-- [QUICK_START.md](./QUICK_START.md) - Project quick start
+- [COMPONENT_WORKFLOW.md](/docs/component_workflow) - Creating new components
+- [DEVELOPMENT_GUIDE.md](/docs/development_guide) - General development setup
+- [QUICK_START.md](/docs/quick_start) - Project quick start
 
 ---
 

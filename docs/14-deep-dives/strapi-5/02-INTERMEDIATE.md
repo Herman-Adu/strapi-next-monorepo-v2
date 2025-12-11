@@ -1097,7 +1097,7 @@ yarn generate:types
 
 **You're Ready For**:
 
-- [Strapi 5 Advanced](./03-ADVANCED.md) - Performance tuning, security, custom plugins
+- [Strapi 5 Advanced](/docs/14-deep-dives-strapi-5-03-advanced) - Performance tuning, security, custom plugins
 - Creating complex component architectures
 - Building custom middleware patterns
 - Scaling Strapi for high-traffic applications
@@ -1120,10 +1120,10 @@ yarn generate:types
 
 ---
 
-**Next**: [Strapi 5 Advanced](./03-ADVANCED.md) - Performance optimization, security hardening, and plugin architecture
+**Next**: [Strapi 5 Advanced](/docs/14-deep-dives-strapi-5-03-advanced) - Performance optimization, security hardening, and plugin architecture
 
 ---
 
 **Last Updated**: December 1, 2025  
 **Article**: Strapi 5 Intermediate Guide  
-**Part of**: [Deep Dives - Technical Mastery](../README.md)
+**Part of**: [Deep Dives - Technical Mastery](/docs/14-deep-dives-readme)

@@ -2,7 +2,7 @@
 
 > **Mission-Critical Reference**: Complete workflow for integrating Strapi components with Next.js frontend, based on real-world lessons from Newsletter CTA Section implementation.
 
-**📌 Quick Reference:** See [POPULATE_PATTERNS_REFERENCE.md](./POPULATE_PATTERNS_REFERENCE.md) for all populate patterns.
+**📌 Quick Reference:** See [POPULATE_PATTERNS_REFERENCE.md](/docs/populate_patterns_reference) for all populate patterns.
 
 ## Table of Contents
 

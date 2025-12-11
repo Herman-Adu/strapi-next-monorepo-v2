@@ -442,11 +442,11 @@ yarn dev
 
 ## 📚 Related Docs
 
-- **Full Setup:** [AUTOMATION-SETUP.md](./AUTOMATION-SETUP.md)
-- **Strategy:** [docs/AUTOMATION-STRATEGY.md](./docs/AUTOMATION-STRATEGY.md)
-- **Webhooks:** [docs/strapi-integration/README.md#-04-webhooksmd](./docs/strapi-integration/README.md)
-- **Types:** [docs/strapi-integration/README.md#-03-type-generationmd](./docs/strapi-integration/README.md)
-- **Testing:** [docs/workflows-automation/README.md#-03-testing-strategymd](./docs/workflows-automation/README.md)
+- **Full Setup:** [AUTOMATION-SETUP.md](/docs/automation-setup)
+- **Strategy:** [docs/AUTOMATION-STRATEGY.md](/docs/docs-automation-strategy)
+- **Webhooks:** [docs/strapi-integration/README.md#-04-webhooksmd](/docs/readme)
+- **Types:** [docs/strapi-integration/README.md#-03-type-generationmd](/docs/readme)
+- **Testing:** [docs/workflows-automation/README.md#-03-testing-strategymd](/docs/readme)
 
 ---
 

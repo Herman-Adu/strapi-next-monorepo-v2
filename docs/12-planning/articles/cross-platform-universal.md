@@ -615,9 +615,9 @@ $ yarn seed:e2e
 
 ### Related Documentation
 
-- [Scripts Index](../../08-devops/scripts/README.md)
-- [Development Workflow](../../07-development/DEVELOPMENT_WORKFLOW.md)
-- [Quick Start Guide](../../QUICK_START.md)
+- [Scripts Index](/docs/08-devops-scripts-readme)
+- [Development Workflow](/docs/07-development-development_workflow)
+- [Quick Start Guide](/docs/quick_start)
 
 ### Tools Used
 

@@ -1,11 +1,11 @@
 # 📚 Complete Guide: Adding Components to Strapi & Frontend
 
 > **⚠️ IMPORTANT:** This guide provides detailed component examples and architecture overview.  
-> **For step-by-step workflow**, see **[COMPONENT_WORKFLOW.md](./COMPONENT_WORKFLOW.md)** - the definitive process guide.
+> **For step-by-step workflow**, see [Component Workflow](/docs/04-components-workflow) - the definitive process guide.
 
-> **For Junior Developers**: This is your reference guide for understanding component architecture, schemas, and examples. For creating new components, **always follow [COMPONENT_WORKFLOW.md](./COMPONENT_WORKFLOW.md) first**.
+> **For Junior Developers**: This is your reference guide for understanding component architecture, schemas, and examples. For creating new components, **always follow [Component Workflow](/docs/04-components-workflow) first**.
 
-**📌 Populate Patterns:** See [POPULATE_PATTERNS_REFERENCE.md](./POPULATE_PATTERNS_REFERENCE.md) for all populate middleware patterns.
+**📌 Populate Patterns:** See [POPULATE_PATTERNS_REFERENCE.md](/docs/populate_patterns_reference) for all populate middleware patterns.
 
 ---
 
@@ -27,7 +27,7 @@
 
 **If you want to create a new component:**
 
-1. ✅ **START HERE:** [COMPONENT_WORKFLOW.md](./COMPONENT_WORKFLOW.md)
+1. ✅ **START HERE:** [Component Workflow](/docs/04-components-workflow)
 2. Follow the 4-phase process (Backend → Types → Frontend → Testing)
 3. Refer back to this guide for detailed examples and architecture
 
@@ -35,7 +35,7 @@
 
 - Component architecture → This guide
 - Schema examples → This guide
-- **Step-by-step process → [COMPONENT_WORKFLOW.md](./COMPONENT_WORKFLOW.md)** ⭐
+- **Step-by-step process → [Component Workflow](/docs/04-components-workflow)** ⭐
 - TypeScript patterns → This guide
 - Troubleshooting → Both guides
 

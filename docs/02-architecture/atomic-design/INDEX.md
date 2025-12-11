@@ -8,22 +8,22 @@
 
 ### 📚 Onboarding (Read First)
 
-1. **[README.md](./README.md)** - Start here, reading guide
-2. **[00-WELCOME.md](./00-WELCOME.md)** - Journey overview
-3. **[01-ETHOS.md](./01-ETHOS.md)** - Our principles
-4. **[02-ATOMIC-DESIGN-PRIMER.md](./02-ATOMIC-DESIGN-PRIMER.md)** - Methodology deep dive
-5. **[03-CURRENT-STATE-ANALYSIS.md](./03-CURRENT-STATE-ANALYSIS.md)** - Where we are
-6. **[04-STRATEGIC-PLAN.md](./04-STRATEGIC-PLAN.md)** - 10-day roadmap
-7. **[05-PAGE-THEME-ARCHITECTURE.md](./05-PAGE-THEME-ARCHITECTURE.md)** - Page/theme level system
+1. **[README.md](/docs/02-architecture-atomic-design-readme)** - Start here, reading guide
+2. **[00-WELCOME.md](/docs/02-architecture-atomic-design-00-welcome)** - Journey overview
+3. **[01-ETHOS.md](/docs/02-architecture-atomic-design-01-ethos)** - Our principles
+4. **[02-ATOMIC-DESIGN-PRIMER.md](/docs/02-architecture-atomic-design-02-atomic-design-primer)** - Methodology deep dive
+5. **[03-CURRENT-STATE-ANALYSIS.md](/docs/02-architecture-atomic-design-03-current-state-analysis)** - Where we are
+6. **[04-STRATEGIC-PLAN.md](/docs/02-architecture-atomic-design-04-strategic-plan)** - 10-day roadmap
+7. **[05-PAGE-THEME-ARCHITECTURE.md](/docs/02-architecture-atomic-design-05-page-theme-architecture)** - Page/theme level system
 
 ### 🔍 Component Blueprints (Before Building Complex Components)
 
-- **[component-blueprints/00-BLUEPRINT-TEMPLATE.md](./component-blueprints/00-BLUEPRINT-TEMPLATE.md)** - Analysis template
-- **[component-blueprints/01-clogzilla-hero-carousel-blueprint.md](./component-blueprints/01-clogzilla-hero-carousel-blueprint.md)** - Hero example
+- **[component-blueprints/00-BLUEPRINT-TEMPLATE.md](/docs/02-architecture-atomic-design-component-blueprints-00-blueprint-template)** - Analysis template
+- **[component-blueprints/01-clogzilla-hero-carousel-blueprint.md](/docs/02-architecture-atomic-design-component-blueprints-01-clogzilla-hero-carousel-blueprint)** - Hero example
 
 ### ✅ Execution (Use During Work)
 
-- **[DAY-1-CHECKLIST.md](./DAY-1-CHECKLIST.md)** - Day 1 step-by-step
+- **[DAY-1-CHECKLIST.md](/docs/02-architecture-atomic-design-day-1-checklist)** - Day 1 step-by-step
 - **06-COMPONENT-INVENTORY.md** (Create on Day 1)
 - **07-NEWSLETTER-DESIGN.md** (Create on Day 3)
 - **08-PATTERNS-LIBRARY.md** (Create on Day 8)
@@ -31,9 +31,9 @@
 
 ### 📖 Reference (Keep Open)
 
-- **[01-ETHOS.md](./01-ETHOS.md)** - Decision framework
-- **[02-ATOMIC-DESIGN-PRIMER.md](./02-ATOMIC-DESIGN-PRIMER.md)** - Level clarification
-- **[04-STRATEGIC-PLAN.md](./04-STRATEGIC-PLAN.md)** - Current phase activities
+- **[01-ETHOS.md](/docs/02-architecture-atomic-design-01-ethos)** - Decision framework
+- **[02-ATOMIC-DESIGN-PRIMER.md](/docs/02-architecture-atomic-design-02-atomic-design-primer)** - Level clarification
+- **[04-STRATEGIC-PLAN.md](/docs/02-architecture-atomic-design-04-strategic-plan)** - Current phase activities
 
 ---
 
@@ -239,7 +239,7 @@ We're preparing well. Let's succeed together.
 
 ---
 
-**Start with: [README.md](./README.md)**
+**Start with: [README.md](/docs/02-architecture-atomic-design-readme)**
 
 Good luck! 🚀
 

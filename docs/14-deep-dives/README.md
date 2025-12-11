@@ -28,12 +28,12 @@ Deep-dive guides provide comprehensive technical documentation based on our actu
 
 **From first install to production architecture** - Complete progression with $312K+/year value
 
-| Article                                                  | Level        | Time   | Focus                                                      | Value/Year      |
-| -------------------------------------------------------- | ------------ | ------ | ---------------------------------------------------------- | --------------- |
-| [**01-Beginner**](./strapi-5/01-BEGINNER.md)             | 🟢 Entry     | 45 min | Setup, content types, API basics, first admin panel        | 7+ hours saved  |
-| [**02-Intermediate**](./strapi-5/02-INTERMEDIATE.md)     | 🟡 Growing   | 60 min | Dynamic zones, populate middleware, config sync automation | $66,400         |
-| [**03-Advanced**](./strapi-5/03-ADVANCED.md)             | 🔴 Expert    | 75 min | Performance optimization, security, plugin architecture    | $166,840+       |
-| [**04-Best Practices**](./strapi-5/04-BEST-PRACTICES.md) | 💎 Strategic | 90 min | Team workflows, automation, CTO-level decisions            | $79,475-106,675 |
+| Article                                                                 | Level        | Time   | Focus                                                      | Value/Year      |
+| ----------------------------------------------------------------------- | ------------ | ------ | ---------------------------------------------------------- | --------------- |
+| [**01-Beginner**](/docs/14-deep-dives-strapi-5-01-beginner)             | 🟢 Entry     | 45 min | Setup, content types, API basics, first admin panel        | 7+ hours saved  |
+| [**02-Intermediate**](/docs/14-deep-dives-strapi-5-02-intermediate)     | 🟡 Growing   | 60 min | Dynamic zones, populate middleware, config sync automation | $66,400         |
+| [**03-Advanced**](/docs/14-deep-dives-strapi-5-03-advanced)             | 🔴 Expert    | 75 min | Performance optimization, security, plugin architecture    | $166,840+       |
+| [**04-Best Practices**](/docs/14-deep-dives-strapi-5-04-best-practices) | 💎 Strategic | 90 min | Team workflows, automation, CTO-level decisions            | $79,475-106,675 |
 
 **Total**: 270 minutes of structured content, 30+ Mermaid diagrams, 100+ code examples
 
@@ -43,10 +43,10 @@ Deep-dive guides provide comprehensive technical documentation based on our actu
 
 **Development to production deployment mastery** - Build optimization with $43K+/year value
 
-| Article                                            | Level       | Time   | Focus                                                | Value/Year |
-| -------------------------------------------------- | ----------- | ------ | ---------------------------------------------------- | ---------- |
-| [**01-Fundamentals**](./docker/01-FUNDAMENTALS.md) | 🟢 Entry    | 50 min | Containers, images, Docker Compose, local PostgreSQL | Setup time |
-| [**02-Production**](./docker/02-PRODUCTION.md)     | 🟡 Advanced | 70 min | Multi-stage builds, optimization, CI/CD integration  | $43,020+   |
+| Article                                                           | Level       | Time   | Focus                                                | Value/Year |
+| ----------------------------------------------------------------- | ----------- | ------ | ---------------------------------------------------- | ---------- |
+| [**01-Fundamentals**](/docs/14-deep-dives-docker-01-fundamentals) | 🟢 Entry    | 50 min | Containers, images, Docker Compose, local PostgreSQL | Setup time |
+| [**02-Production**](/docs/14-deep-dives-docker-02-production)     | 🟡 Advanced | 70 min | Multi-stage builds, optimization, CI/CD integration  | $43,020+   |
 
 **Total**: 120 minutes, image size 73% smaller (1.8GB → 477MB), builds 70% faster
 
@@ -56,11 +56,11 @@ Deep-dive guides provide comprehensive technical documentation based on our actu
 
 **Professional development workflows** - Career-long skills
 
-| Article                                                         | Level      | Time   | Focus                                      |
-| --------------------------------------------------------------- | ---------- | ------ | ------------------------------------------ |
-| [**05-Transformation Journey**](./05-TRANSFORMATION-JOURNEY.md) | 🌟 Story   | 45 min | Complete 8-week evolution (beginner → CTO) |
-| [**06-Pre-Commit Checklist**](./06-PRE-COMMIT-CHECKLIST.md)     | ✅ Quality | 30 min | Testing & validation before commits        |
-| [**07-Git Workflow**](./07-GIT-WORKFLOW.md)                     | 🔀 Process | 45 min | Conventional commits, milestone management |
+| Article                                                                        | Level      | Time   | Focus                                      |
+| ------------------------------------------------------------------------------ | ---------- | ------ | ------------------------------------------ |
+| [**05-Transformation Journey**](/docs/14-deep-dives-05-transformation-journey) | 🌟 Story   | 45 min | Complete 8-week evolution (beginner → CTO) |
+| [**06-Pre-Commit Checklist**](/docs/14-deep-dives-06-pre-commit-checklist)     | ✅ Quality | 30 min | Testing & validation before commits        |
+| [**07-Git Workflow**](/docs/14-deep-dives-07-git-workflow)                     | 🔀 Process | 45 min | Conventional commits, milestone management |
 
 **Total**: 120 minutes, complete professional workflow toolkit
 
@@ -140,25 +140,25 @@ Each article = 1 workshop, ready for presentations
 
 **Infrastructure and workflow automation**
 
-1. **[Workflows Complete Reference](./workflows-complete-reference.md)** (⭐ Essential)
+1. **[Workflows Complete Reference](/docs/workflows-complete-reference)** (⭐ Essential)
 
    - All 6 GitHub Actions workflows explained
    - Architecture, triggers, optimization strategies
    - Target: DevOps engineers, CI/CD specialists
 
-2. **[Scripts Ecosystem Guide](./scripts-ecosystem-guide.md)** (⭐ Essential)
+2. **[Scripts Ecosystem Guide](/docs/scripts-ecosystem-guide)** (⭐ Essential)
 
    - All 31 scripts documented
    - Development, database, deployment, utilities
    - Target: All developers, platform engineers
 
-3. **[Dev Experience Architecture](./dev-experience-architecture.md)** (⭐ Recommended)
+3. **[Dev Experience Architecture](/docs/dev-experience-architecture)** (⭐ Recommended)
 
    - Orchestrated development environment
    - Tooling, automation, DX optimizations
    - Target: DX engineers, team leads
 
-4. **[Performance & Quality Automation](./performance-quality-automation.md)** (⭐ Recommended)
+4. **[Performance & Quality Automation](/docs/performance-quality-automation)** (⭐ Recommended)
    - Lighthouse CI + Chromatic integration
    - Performance budgets, visual regression
    - Target: QA engineers, performance specialists
@@ -209,28 +209,28 @@ Each article = 1 workshop, ready for presentations
 
 **Set up CI/CD from scratch**:
 
-1. Read [Workflows Complete Reference](./workflows-complete-reference.md)
+1. Read [Workflows Complete Reference](/docs/workflows-complete-reference)
 2. Follow step-by-step setup guides
 3. Configure secrets and environment variables
 4. Test workflows in development branch
 
 **Automate development tasks**:
 
-1. Browse [Scripts Ecosystem Guide](./scripts-ecosystem-guide.md)
+1. Browse [Scripts Ecosystem Guide](/docs/scripts-ecosystem-guide)
 2. Find relevant script category (development, database, etc.)
 3. Run script via `yarn <command>`
 4. Customize for your needs
 
 **Optimize developer experience**:
 
-1. Read [Dev Experience Architecture](./dev-experience-architecture.md)
+1. Read [Dev Experience Architecture](/docs/dev-experience-architecture)
 2. Implement orchestrated development
 3. Add automation scripts
 4. Measure productivity improvements
 
 **Implement quality gates**:
 
-1. Read [Performance & Quality Automation](./performance-quality-automation.md)
+1. Read [Performance & Quality Automation](/docs/performance-quality-automation)
 2. Set up Lighthouse CI
 3. Configure Chromatic visual regression
 4. Define performance budgets
@@ -241,21 +241,21 @@ Each article = 1 workshop, ready for presentations
 
 ### Workflows
 
-- [Workflows Index](../../08-devops/workflows/README.md) - Quick reference
-- [CI Workflow](../../08-devops/workflows/01-ci-workflow.md) - Detailed guide
-- [E2E Workflow](../../08-devops/workflows/02-e2e-workflow.md) - Detailed guide
+- [Workflows Index](/docs/readme) - Quick reference
+- [CI Workflow](/docs/08-devops-workflows-01-ci-workflow) - Detailed guide
+- [E2E Workflow](/docs/08-devops-workflows-02-e2e-workflow) - Detailed guide
 
 ### Scripts
 
-- [Scripts Index](../../08-devops/scripts/README.md) - All scripts listed
-- [Database Scripts](../../08-devops/scripts/database-scripts.md) - Database automation
-- [Development Scripts](../../08-devops/scripts/dev-scripts.md) - Development tools
+- [Scripts Index](/docs/readme) - All scripts listed
+- [Database Scripts](/docs/08-devops-scripts-database-scripts) - Database automation
+- [Development Scripts](/docs/08-devops-scripts-dev-scripts) - Development tools
 
 ### Architecture
 
-- [Project Architecture](../../01-architecture/PROJECT_ARCHITECTURE.md) - System overview
-- [Tech Stack](../../01-architecture/TECH_STACK.md) - Technology choices
-- [Infrastructure](../../02-infrastructure/INFRASTRUCTURE.md) - Deployment architecture
+- [Project Architecture](/docs/01-architecture-project_architecture) - System overview
+- [Tech Stack](/docs/01-architecture-tech_stack) - Technology choices
+- [Infrastructure](/docs/02-infrastructure-infrastructure) - Deployment architecture
 
 ---
 
@@ -265,13 +265,13 @@ Each article = 1 workshop, ready for presentations
 
 1. Start with quick references:
 
-   - [CI/CD Cheat Sheet](../quick-references/cicd-cheat-sheet.md)
-   - [E2E Quick Start](../quick-references/e2e-quick-start.md)
+   - [CI/CD Cheat Sheet](/docs/13-testing-quick-reference-cicd-cheat-sheet)
+   - [E2E Quick Start](/docs/13-testing-quick-reference-e2e-quick-start)
 
 2. Progress to ecosystem guides:
 
-   - [Scripts Ecosystem Guide](./scripts-ecosystem-guide.md)
-   - Skim [Dev Experience Architecture](./dev-experience-architecture.md)
+   - [Scripts Ecosystem Guide](/docs/scripts-ecosystem-guide)
+   - Skim [Dev Experience Architecture](/docs/dev-experience-architecture)
 
 3. Goal: Run existing workflows and scripts
 
@@ -279,12 +279,12 @@ Each article = 1 workshop, ready for presentations
 
 1. Deep-dive into workflows:
 
-   - [Workflows Complete Reference](./workflows-complete-reference.md)
+   - [Workflows Complete Reference](/docs/workflows-complete-reference)
    - Understand CI/CD architecture
 
 2. Explore quality automation:
 
-   - [Performance & Quality Automation](./performance-quality-automation.md)
+   - [Performance & Quality Automation](/docs/performance-quality-automation)
    - Implement Lighthouse budgets
 
 3. Goal: Customize workflows, add new scripts

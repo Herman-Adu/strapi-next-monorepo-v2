@@ -432,7 +432,7 @@ git push origin main
 # - If rejected → Fix and push again 🔄
 ```
 
-**See**: [Build-Commit-Push Workflow](../../06-workflows/build-commit-push.md)
+**See**: [Build-Commit-Push Workflow](/docs/06-workflows-build-commit-push)
 
 ---
 
@@ -446,9 +446,9 @@ git push origin main
 
 ### Internal Guides
 
-- [Storybook Integration](../storybook/integration.md)
-- [Testing Strategy](../README.md)
-- [Component Development](../../04-components/development-guide.md)
+- [Storybook Integration](/docs/13-testing-storybook-integration)
+- [Testing Strategy](/docs/13-testing-readme)
+- [Component Development](/docs/04-components-development-guide)
 
 ---
 
@@ -495,4 +495,4 @@ npx chromatic --project-token=<your-token>
 
 ---
 
-**Questions?** See [Testing Strategy](../README.md) or ask the team! 🚀
+**Questions?** See [Testing Strategy](/docs/13-testing-readme) or ask the team! 🚀

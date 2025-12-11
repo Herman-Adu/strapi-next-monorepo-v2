@@ -31,6 +31,16 @@ export const DOC_METADATA_MAP: Record<string, Omit<DocMetadata, "slug">> = {
     badge: "Start Here",
     audience: "all",
   },
+  "00-DOCUMENTATION-LINKING-GUIDE.md": {
+    title: "Documentation Linking Guide",
+    description: "Essential guide for creating internal documentation links",
+    category: "reference",
+    order: 0,
+    readTime: "10 min",
+    status: "published",
+    badge: "Essential",
+    audience: "developer",
+  },
   "README.md": {
     title: "Documentation Hub",
     description: "Overview of all documentation categories",
@@ -84,6 +94,7 @@ export const DOC_METADATA_MAP: Record<string, Omit<DocMetadata, "slug">> = {
     title: "Atomic Architecture Guide",
     description: "Complete guide to atomic design transformation",
     category: "architecture",
+    subcategory: "atomic-design",
     order: 0,
     readTime: "10 min",
     status: "published",
@@ -94,6 +105,7 @@ export const DOC_METADATA_MAP: Record<string, Omit<DocMetadata, "slug">> = {
     title: "Welcome to Atomic Journey",
     description: "Journey overview and motivation",
     category: "architecture",
+    subcategory: "atomic-design",
     order: 1,
     readTime: "15 min",
     status: "published",
@@ -104,6 +116,7 @@ export const DOC_METADATA_MAP: Record<string, Omit<DocMetadata, "slug">> = {
     title: "Design Ethos",
     description: "Core principles and commitments",
     category: "architecture",
+    subcategory: "atomic-design",
     order: 2,
     readTime: "15 min",
     status: "published",
@@ -114,6 +127,7 @@ export const DOC_METADATA_MAP: Record<string, Omit<DocMetadata, "slug">> = {
     title: "Atomic Design Primer",
     description: "Methodology deep dive and fundamentals",
     category: "architecture",
+    subcategory: "atomic-design",
     order: 3,
     readTime: "20 min",
     status: "published",
@@ -123,6 +137,7 @@ export const DOC_METADATA_MAP: Record<string, Omit<DocMetadata, "slug">> = {
     title: "Current State Analysis",
     description: "Codebase assessment and technical debt",
     category: "architecture",
+    subcategory: "atomic-design",
     order: 4,
     readTime: "30 min",
     status: "published",
@@ -133,6 +148,7 @@ export const DOC_METADATA_MAP: Record<string, Omit<DocMetadata, "slug">> = {
     title: "Strategic Implementation Plan",
     description: "10-day transformation roadmap",
     category: "architecture",
+    subcategory: "atomic-design",
     order: 5,
     readTime: "20 min",
     status: "published",
@@ -143,6 +159,7 @@ export const DOC_METADATA_MAP: Record<string, Omit<DocMetadata, "slug">> = {
     title: "Page & Theme Architecture",
     description: "Theming system and page-level design",
     category: "architecture",
+    subcategory: "atomic-design",
     order: 6,
     readTime: "15 min",
     status: "published",
@@ -152,6 +169,7 @@ export const DOC_METADATA_MAP: Record<string, Omit<DocMetadata, "slug">> = {
     title: "Component Inventory",
     description: "Living audit of all components",
     category: "architecture",
+    subcategory: "atomic-design",
     order: 7,
     readTime: "30 min",
     status: "published",
@@ -161,6 +179,7 @@ export const DOC_METADATA_MAP: Record<string, Omit<DocMetadata, "slug">> = {
     title: "Day 1 Checklist",
     description: "Step-by-step implementation guide",
     category: "architecture",
+    subcategory: "atomic-design",
     order: 8,
     readTime: "10 min",
     status: "published",
@@ -171,6 +190,7 @@ export const DOC_METADATA_MAP: Record<string, Omit<DocMetadata, "slug">> = {
       title: "Component Blueprint Template",
       description: "Template for analyzing new components",
       category: "architecture",
+      subcategory: "atomic-design",
       order: 9,
       readTime: "15 min",
       status: "published",
@@ -181,6 +201,7 @@ export const DOC_METADATA_MAP: Record<string, Omit<DocMetadata, "slug">> = {
       title: "Hero Carousel Blueprint",
       description: "Example component breakdown",
       category: "architecture",
+      subcategory: "atomic-design",
       order: 10,
       readTime: "20 min",
       status: "published",
@@ -217,6 +238,16 @@ export const DOC_METADATA_MAP: Record<string, Omit<DocMetadata, "slug">> = {
   },
 
   // 03 - Strapi
+  "03-strapi/README.md": {
+    title: "Strapi Overview",
+    description: "CMS integration overview and getting started",
+    category: "strapi",
+    order: 0,
+    readTime: "5 min",
+    status: "published",
+    badge: "Start Here",
+    audience: "all",
+  },
   "03-strapi/integration.md": {
     title: "Strapi Integration",
     description: "Connecting Next.js with Strapi CMS",
@@ -244,13 +275,114 @@ export const DOC_METADATA_MAP: Record<string, Omit<DocMetadata, "slug">> = {
     status: "published",
     audience: "developer",
   },
-  "03-strapi/database-backup.md": {
-    title: "Database Backup",
-    description: "Backup and restore procedures",
+
+  // 03-strapi/backup-and-safety
+  "03-strapi/backup-and-safety/README.md": {
+    title: "Backup Quick Start",
+    description: "Common backup and restore commands",
     category: "strapi",
-    order: 4,
+    subcategory: "backup-and-safety",
+    order: 1,
+    readTime: "5 min",
+    status: "published",
+    badge: "Critical",
+    audience: "all",
+  },
+  "03-strapi/backup-and-safety/safety-guidelines.md": {
+    title: "Data Safety Guidelines",
+    description: "Comprehensive backup safety protocols",
+    category: "strapi",
+    subcategory: "backup-and-safety",
+    order: 2,
     readTime: "15 min",
     status: "published",
+    badge: "Critical",
+    audience: "all",
+  },
+  "03-strapi/backup-and-safety/backup-procedures.md": {
+    title: "Backup Procedures",
+    description: "Detailed backup and restore workflows",
+    category: "strapi",
+    subcategory: "backup-and-safety",
+    order: 3,
+    readTime: "20 min",
+    status: "published",
+    audience: "developer",
+  },
+  "03-strapi/backup-and-safety/investigation-summary.md": {
+    title: "Investigation Summary",
+    description: "Contact messages backup incident overview",
+    category: "strapi",
+    subcategory: "backup-and-safety",
+    order: 4,
+    readTime: "10 min",
+    status: "published",
+    audience: "developer",
+  },
+  "03-strapi/backup-and-safety/investigation-report.md": {
+    title: "Full Investigation Report",
+    description: "Detailed technical analysis of backup incident",
+    category: "strapi",
+    subcategory: "backup-and-safety",
+    order: 5,
+    readTime: "25 min",
+    status: "published",
+    audience: "developer",
+  },
+
+  // 03-strapi/config-sync
+  "03-strapi/config-sync/workflow-definitive.md": {
+    title: "Config Sync Workflow",
+    description: "Definitive guide to import/export workflows",
+    category: "strapi",
+    subcategory: "config-sync",
+    order: 1,
+    readTime: "20 min",
+    status: "published",
+    badge: "Essential",
+    audience: "developer",
+  },
+  "03-strapi/config-sync/simplified.md": {
+    title: "Simplified Config Sync",
+    description: "Quick reference for common config sync tasks",
+    category: "strapi",
+    subcategory: "config-sync",
+    order: 2,
+    readTime: "10 min",
+    status: "published",
+    audience: "all",
+  },
+  "03-strapi/config-sync/field-organization.md": {
+    title: "Field Organization",
+    description: "Best practices for organizing content type fields",
+    category: "strapi",
+    subcategory: "config-sync",
+    order: 3,
+    readTime: "15 min",
+    status: "published",
+    audience: "developer",
+  },
+  "03-strapi/config-sync/common-mistakes.md": {
+    title: "Common Config Sync Mistakes",
+    description: "Pitfalls to avoid and troubleshooting guide",
+    category: "strapi",
+    subcategory: "config-sync",
+    order: 4,
+    readTime: "12 min",
+    status: "published",
+    audience: "developer",
+  },
+
+  // 03-strapi/content-modeling
+  "03-strapi/content-modeling/00-CONTENT-MODELING-GUIDE.md": {
+    title: "Complete Content Modeling Guide",
+    description: "Comprehensive guide to content modeling in Strapi",
+    category: "strapi",
+    subcategory: "content-modeling",
+    order: 1,
+    readTime: "45 min",
+    status: "published",
+    badge: "Essential",
     audience: "developer",
   },
 
@@ -289,6 +421,68 @@ export const DOC_METADATA_MAP: Record<string, Omit<DocMetadata, "slug">> = {
     category: "developer",
     order: 7,
     readTime: "20 min",
+    status: "published",
+    audience: "developer",
+  },
+
+  // 04-components/patterns
+  "04-components/patterns/gradient-system.md": {
+    title: "Gradient Text System",
+    description: "Flexible gradient text with direction controls",
+    category: "components",
+    subcategory: "patterns",
+    order: 1,
+    readTime: "15 min",
+    status: "published",
+    audience: "developer",
+  },
+  "04-components/patterns/gradient-text.md": {
+    title: "Gradient Text Patterns",
+    description: "Advanced gradient text techniques",
+    category: "components",
+    subcategory: "patterns",
+    order: 2,
+    readTime: "10 min",
+    status: "published",
+    audience: "developer",
+  },
+  "04-components/patterns/marquee.md": {
+    title: "Marquee Component",
+    description: "Scrolling text and content marquee",
+    category: "components",
+    subcategory: "patterns",
+    order: 3,
+    readTime: "12 min",
+    status: "published",
+    audience: "developer",
+  },
+  "04-components/patterns/newsletter.md": {
+    title: "Newsletter Component",
+    description: "Newsletter subscription patterns",
+    category: "components",
+    subcategory: "patterns",
+    order: 4,
+    readTime: "10 min",
+    status: "published",
+    audience: "developer",
+  },
+  "04-components/patterns/badge-usage.md": {
+    title: "Badge Usage Patterns",
+    description: "Badge component usage guidelines",
+    category: "components",
+    subcategory: "patterns",
+    order: 5,
+    readTime: "8 min",
+    status: "published",
+    audience: "developer",
+  },
+  "04-components/patterns/gdpr-checkbox.md": {
+    title: "GDPR Checkbox Pattern",
+    description: "Privacy consent checkbox implementation",
+    category: "components",
+    subcategory: "patterns",
+    order: 6,
+    readTime: "8 min",
     status: "published",
     audience: "developer",
   },
@@ -343,13 +537,45 @@ export const DOC_METADATA_MAP: Record<string, Omit<DocMetadata, "slug">> = {
     audience: "content-manager",
   },
 
+  // 06-workflows/automation
+  "06-workflows/automation/quick-ref.md": {
+    title: "Automation Quick Reference",
+    description: "One-page cheat sheet for automation commands",
+    category: "workflows",
+    subcategory: "automation",
+    order: 1,
+    readTime: "10 min",
+    status: "published",
+    audience: "developer",
+  },
+  "06-workflows/automation/setup.md": {
+    title: "Automation Setup",
+    description: "Setting up automation tools and scripts",
+    category: "workflows",
+    subcategory: "automation",
+    order: 2,
+    readTime: "15 min",
+    status: "published",
+    audience: "developer",
+  },
+  "06-workflows/automation/strategy.md": {
+    title: "Automation Strategy",
+    description: "Comprehensive automation strategy guide",
+    category: "workflows",
+    subcategory: "automation",
+    order: 3,
+    readTime: "20 min",
+    status: "published",
+    audience: "developer",
+  },
+
   // 13 - Testing
   "13-testing/README.md": {
     title: "Testing Strategy & Tools",
     description:
       "Comprehensive testing strategy: Storybook, Chromatic, Vitest, Playwright",
-    category: "developer",
-    order: 10,
+    category: "testing",
+    order: 1,
     readTime: "45 min",
     status: "published",
     badge: "Essential",
@@ -358,8 +584,8 @@ export const DOC_METADATA_MAP: Record<string, Omit<DocMetadata, "slug">> = {
   "13-testing/storybook/integration.md": {
     title: "Storybook Integration",
     description: "Component isolation and visual regression with Atomic Design",
-    category: "developer",
-    order: 11,
+    category: "testing",
+    order: 2,
     readTime: "30 min",
     status: "published",
     audience: "developer",
@@ -367,9 +593,94 @@ export const DOC_METADATA_MAP: Record<string, Omit<DocMetadata, "slug">> = {
   "13-testing/chromatic/setup.md": {
     title: "Chromatic Visual Regression",
     description: "Automated visual testing in CI/CD",
-    category: "developer",
-    order: 12,
+    category: "testing",
+    order: 3,
     readTime: "25 min",
+    status: "published",
+    audience: "developer",
+  },
+
+  // 13-testing/e2e
+  "13-testing/e2e/README.md": {
+    title: "E2E Testing Guide",
+    description: "Comprehensive guide to end-to-end testing",
+    category: "testing",
+    subcategory: "e2e",
+    order: 1,
+    readTime: "10 min",
+    status: "published",
+    badge: "Start Here",
+    audience: "developer",
+  },
+  "13-testing/e2e/test-data-seeding.md": {
+    title: "Test Data Seeding",
+    description: "Strategies for test data management",
+    category: "testing",
+    subcategory: "e2e",
+    order: 2,
+    readTime: "15 min",
+    status: "published",
+    audience: "developer",
+  },
+  "13-testing/e2e/strapi-seeding-case-study.md": {
+    title: "Strapi Seeding Case Study",
+    description: "Real-world test data seeding implementation",
+    category: "testing",
+    subcategory: "e2e",
+    order: 3,
+    readTime: "20 min",
+    status: "published",
+    audience: "developer",
+  },
+  "13-testing/e2e/CONTACT_FORM_TEST_PLAN.md": {
+    title: "Contact Form Test Plan",
+    description: "Comprehensive contact form testing strategy",
+    category: "testing",
+    subcategory: "e2e",
+    order: 4,
+    readTime: "12 min",
+    status: "published",
+    audience: "developer",
+  },
+  "13-testing/e2e/TROUBLESHOOTING.md": {
+    title: "E2E Testing Troubleshooting",
+    description: "Common issues and solutions",
+    category: "testing",
+    subcategory: "e2e",
+    order: 5,
+    readTime: "15 min",
+    status: "published",
+    audience: "developer",
+  },
+
+  // 13-testing/quick-reference
+  "13-testing/quick-reference/e2e-quick-start.md": {
+    title: "E2E Quick Start",
+    description: "Fast track to E2E testing",
+    category: "testing",
+    subcategory: "quick-reference",
+    order: 1,
+    readTime: "10 min",
+    status: "published",
+    audience: "developer",
+  },
+  "13-testing/quick-reference/e2e-patterns-quick-ref.md": {
+    title: "E2E Patterns Reference",
+    description: "Common E2E testing patterns",
+    category: "testing",
+    subcategory: "quick-reference",
+    order: 2,
+    readTime: "12 min",
+    status: "published",
+    audience: "developer",
+  },
+  "13-testing/quick-reference/cicd-cheat-sheet.md": {
+    title: "CI/CD Cheat Sheet",
+    description: "Quick reference for CI/CD commands",
+    category: "testing",
+    subcategory: "quick-reference",
+    order: 3,
+    readTime: "8 min",
     status: "published",
     audience: "developer",
   },
@@ -485,29 +796,6 @@ export const DOC_METADATA_MAP: Record<string, Omit<DocMetadata, "slug">> = {
     audience: "all",
   },
 
-  // 11 - Recovery & Session Reviews
-  "11-recovery/SESSION-2025-11-22-REVIEW.md": {
-    title: "Session Review: Nov 22, 2025",
-    description:
-      "Complete review of documentation reorganization, test data architecture, and lessons learned",
-    category: "reference",
-    order: 4,
-    readTime: "30 min",
-    status: "published",
-    badge: "Session Review",
-    audience: "all",
-  },
-  "11-recovery/RECOVERY-INSTRUCTIONS-2025-11-23.md": {
-    title: "Recovery Instructions: Nov 23, 2025",
-    description:
-      "Start here tomorrow - context restoration, testing workflow, and next steps",
-    category: "reference",
-    order: 5,
-    readTime: "15 min",
-    status: "published",
-    badge: "Start Here",
-    audience: "all",
-  },
   "07-content-manager/TEST-DATA-UPDATE.md": {
     title: "Test Data Update Summary",
     description:
@@ -517,6 +805,531 @@ export const DOC_METADATA_MAP: Record<string, Omit<DocMetadata, "slug">> = {
     readTime: "10 min",
     status: "published",
     audience: "content-manager",
+  },
+
+  // 04 - Components (see patterns/ subfolder)
+
+  // 05 - Styling
+
+  // 08 - DevOps
+  "08-devops/ci-cd-e2e-testing.md": {
+    title: "E2E Testing in CI/CD",
+    description: "Automated end-to-end testing pipeline",
+    category: "devops",
+    order: 2,
+    readTime: "25 min",
+    status: "published",
+    audience: "developer",
+  },
+
+  // 08-devops/workflows
+  "08-devops/workflows/README.md": {
+    title: "DevOps Workflows Overview",
+    description: "Complete guide to CI/CD and automation workflows",
+    category: "devops",
+    subcategory: "workflows",
+    order: 1,
+    readTime: "10 min",
+    status: "published",
+    badge: "Start Here",
+    audience: "developer",
+  },
+  "08-devops/workflows/01-ci-workflow.md": {
+    title: "CI Workflow",
+    description: "Continuous integration pipeline setup",
+    category: "devops",
+    subcategory: "workflows",
+    order: 2,
+    readTime: "15 min",
+    status: "published",
+    audience: "developer",
+  },
+  "08-devops/workflows/02-e2e-workflow.md": {
+    title: "E2E Testing Workflow",
+    description: "End-to-end testing automation",
+    category: "devops",
+    subcategory: "workflows",
+    order: 3,
+    readTime: "12 min",
+    status: "published",
+    audience: "developer",
+  },
+  "08-devops/workflows/03-lighthouse-workflow.md": {
+    title: "Lighthouse CI Workflow",
+    description: "Performance testing automation",
+    category: "devops",
+    subcategory: "workflows",
+    order: 4,
+    readTime: "10 min",
+    status: "published",
+    audience: "developer",
+  },
+  "08-devops/workflows/04-visual-regression-workflow.md": {
+    title: "Visual Regression Workflow",
+    description: "Automated UI testing pipeline",
+    category: "devops",
+    subcategory: "workflows",
+    order: 5,
+    readTime: "12 min",
+    status: "published",
+    audience: "developer",
+  },
+  "08-devops/workflows/05-cache-cleanup-workflow.md": {
+    title: "Cache Cleanup Workflow",
+    description: "Automated cache management",
+    category: "devops",
+    subcategory: "workflows",
+    order: 6,
+    readTime: "8 min",
+    status: "published",
+    audience: "developer",
+  },
+  "08-devops/workflows/06-database-backup-workflow.md": {
+    title: "Database Backup Workflow",
+    description: "Automated database backup procedures",
+    category: "devops",
+    subcategory: "workflows",
+    order: 7,
+    readTime: "10 min",
+    status: "published",
+    audience: "developer",
+  },
+
+  // 08-devops/performance
+  "08-devops/performance/optimization.md": {
+    title: "Performance Optimization",
+    description: "Application performance optimization techniques",
+    category: "devops",
+    subcategory: "performance",
+    order: 1,
+    readTime: "20 min",
+    status: "published",
+    audience: "developer",
+  },
+
+  // 09 - Troubleshooting
+  "09-troubleshooting/cross-platform-compatibility.md": {
+    title: "Cross-Platform Compatibility",
+    description: "Windows/Linux compatibility and debugging",
+    category: "troubleshooting",
+    order: 1,
+    readTime: "20 min",
+    status: "published",
+    audience: "all",
+  },
+  "09-troubleshooting/backend-health-check.md": {
+    title: "Backend Health Check",
+    description: "Verifying Strapi backend status",
+    category: "troubleshooting",
+    order: 2,
+    readTime: "10 min",
+    status: "published",
+    audience: "all",
+  },
+
+  // 11 - Recovery (Update existing entries)
+  "11-recovery/SESSION-2025-11-22-REVIEW.md": {
+    title: "Session Review: Nov 22, 2025",
+    description:
+      "Complete review of documentation reorganization, test data architecture, and lessons learned",
+    category: "recovery",
+    order: 1,
+    readTime: "30 min",
+    status: "published",
+    badge: "Session Review",
+    audience: "all",
+  },
+  "11-recovery/RECOVERY-INSTRUCTIONS-2025-11-23.md": {
+    title: "Recovery Instructions: Nov 23, 2025",
+    description:
+      "Start here tomorrow - context restoration, testing workflow, and next steps",
+    category: "recovery",
+    order: 2,
+    readTime: "15 min",
+    status: "published",
+    badge: "Start Here",
+    audience: "all",
+  },
+
+  // 12 - Planning (see articles/ subfolder)
+
+  // 12-planning/articles
+  "12-planning/articles/README.md": {
+    title: "Technical Articles",
+    description: "Collection of technical writing and case studies",
+    category: "planning",
+    subcategory: "articles",
+    order: 1,
+    readTime: "5 min",
+    status: "published",
+    audience: "all",
+  },
+  "12-planning/articles/orchestrated-dev-15sec.md": {
+    title: "Orchestrated Development Environment",
+    description: "8x faster dev startup through process orchestration",
+    category: "planning",
+    subcategory: "articles",
+    order: 2,
+    readTime: "12 min",
+    status: "published",
+    badge: "Featured",
+    audience: "all",
+  },
+  "12-planning/articles/hybrid-seeding-60x.md": {
+    title: "Hybrid Seeding Strategy",
+    description: "60x faster database seeding with smart caching",
+    category: "planning",
+    subcategory: "articles",
+    order: 3,
+    readTime: "10 min",
+    status: "published",
+    badge: "Featured",
+    audience: "developer",
+  },
+  "12-planning/articles/visual-regression-chromatic.md": {
+    title: "Visual Regression Testing",
+    description: "Automated UI testing with Chromatic",
+    category: "planning",
+    subcategory: "articles",
+    order: 4,
+    readTime: "12 min",
+    status: "published",
+    audience: "developer",
+  },
+  "12-planning/articles/enterprise-cicd-solo.md": {
+    title: "Enterprise CI/CD Solo",
+    description: "Building production CI/CD as solo developer",
+    category: "planning",
+    subcategory: "articles",
+    order: 5,
+    readTime: "15 min",
+    status: "published",
+    audience: "developer",
+  },
+  "12-planning/articles/performance-budgets-scale.md": {
+    title: "Performance Budgets at Scale",
+    description: "Maintaining performance across large applications",
+    category: "planning",
+    subcategory: "articles",
+    order: 6,
+    readTime: "10 min",
+    status: "published",
+    audience: "developer",
+  },
+  "12-planning/articles/cross-platform-universal.md": {
+    title: "Cross-Platform Universal Code",
+    description: "Writing code that runs everywhere",
+    category: "planning",
+    subcategory: "articles",
+    order: 7,
+    readTime: "12 min",
+    status: "published",
+    audience: "developer",
+  },
+
+  // 14 - Deep Dives
+  "14-deep-dives/05-TRANSFORMATION-JOURNEY.md": {
+    title: "Transformation Journey",
+    description: "Technical deep dive into project evolution",
+    category: "deep-dives",
+    order: 1,
+    readTime: "45 min",
+    status: "published",
+    badge: "Deep Dive",
+    audience: "developer",
+  },
+  "14-deep-dives/06-PRE-COMMIT-CHECKLIST.md": {
+    title: "Pre-Commit Checklist",
+    description: "Essential checks before committing code",
+    category: "deep-dives",
+    order: 2,
+    readTime: "10 min",
+    status: "published",
+    audience: "developer",
+  },
+  "14-deep-dives/07-GIT-WORKFLOW.md": {
+    title: "Git Workflow",
+    description: "Branch strategy and commit conventions",
+    category: "deep-dives",
+    order: 3,
+    readTime: "20 min",
+    status: "published",
+    audience: "developer",
+  },
+
+  // 14-deep-dives/strapi-5
+  "14-deep-dives/strapi-5/01-BEGINNER.md": {
+    title: "Strapi 5 Beginner Guide",
+    description: "Getting started with Strapi 5",
+    category: "deep-dives",
+    subcategory: "strapi-5",
+    order: 1,
+    readTime: "20 min",
+    status: "published",
+    badge: "Start Here",
+    audience: "all",
+  },
+  "14-deep-dives/strapi-5/02-INTERMEDIATE.md": {
+    title: "Strapi 5 Intermediate",
+    description: "Advanced Strapi 5 concepts",
+    category: "deep-dives",
+    subcategory: "strapi-5",
+    order: 2,
+    readTime: "25 min",
+    status: "published",
+    audience: "developer",
+  },
+  "14-deep-dives/strapi-5/03-ADVANCED.md": {
+    title: "Strapi 5 Advanced",
+    description: "Expert-level Strapi 5 techniques",
+    category: "deep-dives",
+    subcategory: "strapi-5",
+    order: 3,
+    readTime: "30 min",
+    status: "published",
+    audience: "developer",
+  },
+  "14-deep-dives/strapi-5/04-BEST-PRACTICES.md": {
+    title: "Strapi 5 Best Practices",
+    description: "Production-ready Strapi 5 patterns",
+    category: "deep-dives",
+    subcategory: "strapi-5",
+    order: 4,
+    readTime: "25 min",
+    status: "published",
+    badge: "Essential",
+    audience: "developer",
+  },
+
+  // 14-deep-dives/docker
+  "14-deep-dives/docker/01-FUNDAMENTALS.md": {
+    title: "Docker Fundamentals",
+    description: "Docker basics and core concepts",
+    category: "deep-dives",
+    subcategory: "docker",
+    order: 1,
+    readTime: "20 min",
+    status: "published",
+    badge: "Start Here",
+    audience: "developer",
+  },
+  "14-deep-dives/docker/02-PRODUCTION.md": {
+    title: "Docker in Production",
+    description: "Production Docker deployments",
+    category: "deep-dives",
+    subcategory: "docker",
+    order: 2,
+    readTime: "25 min",
+    status: "published",
+    audience: "developer",
+  },
+
+  // 15 - Professional Presence
+  "15-professional-presence/CTO-POSITIONING-STRATEGY.md": {
+    title: "CTO Positioning Strategy",
+    description: "Building technical leadership presence",
+    category: "professional-presence",
+    order: 1,
+    readTime: "30 min",
+    status: "published",
+    audience: "all",
+  },
+  "15-professional-presence/LINKEDIN-CONTENT-CALENDAR.md": {
+    title: "LinkedIn Content Calendar",
+    description: "Strategic content planning for thought leadership",
+    category: "professional-presence",
+    order: 2,
+    readTime: "20 min",
+    status: "published",
+    audience: "all",
+  },
+
+  // 15-professional-presence/content-calendar
+  "15-professional-presence/content-calendar/MASTER-CONTENT-INDEX.md": {
+    title: "Master Content Index",
+    description: "Complete content calendar overview",
+    category: "professional-presence",
+    subcategory: "content-calendar",
+    order: 1,
+    readTime: "10 min",
+    status: "published",
+    badge: "Start Here",
+    audience: "all",
+  },
+  "15-professional-presence/content-calendar/SCHEDULING-WORKFLOW.md": {
+    title: "Content Scheduling Workflow",
+    description: "Efficient content planning and scheduling",
+    category: "professional-presence",
+    subcategory: "content-calendar",
+    order: 2,
+    readTime: "15 min",
+    status: "published",
+    audience: "all",
+  },
+  "15-professional-presence/content-calendar/TWITTER-THREADS-PART-1.md": {
+    title: "Twitter Threads Part 1",
+    description: "Technical Twitter thread content",
+    category: "professional-presence",
+    subcategory: "content-calendar",
+    order: 3,
+    readTime: "12 min",
+    status: "published",
+    audience: "all",
+  },
+  "15-professional-presence/content-calendar/TWITTER-THREADS-PART-2.md": {
+    title: "Twitter Threads Part 2",
+    description: "More technical Twitter content",
+    category: "professional-presence",
+    subcategory: "content-calendar",
+    order: 4,
+    readTime: "12 min",
+    status: "published",
+    audience: "all",
+  },
+  "15-professional-presence/content-calendar/TWITTER-THREADS-PART-3.md": {
+    title: "Twitter Threads Part 3",
+    description: "Advanced Twitter thread strategies",
+    category: "professional-presence",
+    subcategory: "content-calendar",
+    order: 5,
+    readTime: "12 min",
+    status: "published",
+    audience: "all",
+  },
+  "15-professional-presence/content-calendar/WEEK-3-LINKEDIN.md": {
+    title: "Week 3 LinkedIn Content",
+    description: "LinkedIn posts for week 3",
+    category: "professional-presence",
+    subcategory: "content-calendar",
+    order: 6,
+    readTime: "10 min",
+    status: "published",
+    audience: "all",
+  },
+  "15-professional-presence/content-calendar/WEEK-4-LINKEDIN.md": {
+    title: "Week 4 LinkedIn Content",
+    description: "LinkedIn posts for week 4",
+    category: "professional-presence",
+    subcategory: "content-calendar",
+    order: 7,
+    readTime: "10 min",
+    status: "published",
+    audience: "all",
+  },
+  "15-professional-presence/content-calendar/FINAL-DAYS-21-30.md": {
+    title: "Final Days 21-30",
+    description: "Final push content strategy",
+    category: "professional-presence",
+    subcategory: "content-calendar",
+    order: 8,
+    readTime: "15 min",
+    status: "published",
+    audience: "all",
+  },
+  "15-professional-presence/content-calendar/DAYS-28-30-FINALE.md": {
+    title: "Days 28-30 Finale",
+    description: "Campaign finale content",
+    category: "professional-presence",
+    subcategory: "content-calendar",
+    order: 9,
+    readTime: "12 min",
+    status: "published",
+    audience: "all",
+  },
+
+  // 16 - Platform Vision
+  "16-platform-vision/README.md": {
+    title: "Platform Vision Overview",
+    description: "Strategic vision and business impact",
+    category: "platform-vision",
+    order: 1,
+    readTime: "15 min",
+    status: "published",
+    badge: "Vision",
+    audience: "all",
+  },
+  "16-platform-vision/01-PLATFORM-VISION.md": {
+    title: "Platform Vision Document",
+    description: "Comprehensive platform vision and strategy",
+    category: "platform-vision",
+    order: 2,
+    readTime: "45 min",
+    status: "published",
+    badge: "Strategic",
+    audience: "all",
+  },
+  "16-platform-vision/02-FUTURE-CONSIDERATIONS.md": {
+    title: "Future Considerations",
+    description: "Roadmap and future enhancements",
+    category: "platform-vision",
+    order: 3,
+    readTime: "30 min",
+    status: "published",
+    audience: "all",
+  },
+
+  // 17 - Learning Lessons
+  "17-learning-lessons/README.md": {
+    title: "Learning Lessons Overview",
+    description: "Project evolution and troubleshooting insights",
+    category: "learning-lessons",
+    order: 1,
+    readTime: "10 min",
+    status: "published",
+    badge: "Learning",
+    audience: "all",
+  },
+  "17-learning-lessons/troubleshooting-lessons/prettier-import-sorting.md": {
+    title: "Prettier Import Sorting",
+    description: "Fixing import sorting issues",
+    category: "learning-lessons",
+    subcategory: "troubleshooting-lessons",
+    order: 1,
+    readTime: "8 min",
+    status: "published",
+    audience: "developer",
+  },
+  "17-learning-lessons/troubleshooting-lessons/fix-newsletter-fields.md": {
+    title: "Newsletter Field Fixes",
+    description: "Troubleshooting newsletter form fields",
+    category: "learning-lessons",
+    subcategory: "troubleshooting-lessons",
+    order: 2,
+    readTime: "10 min",
+    status: "published",
+    audience: "developer",
+  },
+
+  // 17-learning-lessons/learning-history
+  "17-learning-lessons/learning-history/documentation-summary.md": {
+    title: "Documentation Summary",
+    description: "Documentation evolution and lessons",
+    category: "learning-lessons",
+    subcategory: "learning-history",
+    order: 1,
+    readTime: "15 min",
+    status: "published",
+    audience: "all",
+  },
+  "17-learning-lessons/learning-history/refactor-summary.md": {
+    title: "Refactor Summary",
+    description: "Major refactoring learnings",
+    category: "learning-lessons",
+    subcategory: "learning-history",
+    order: 2,
+    readTime: "12 min",
+    status: "published",
+    audience: "developer",
+  },
+  "17-learning-lessons/learning-history/audit-consolidation.md": {
+    title: "Audit Consolidation",
+    description: "Codebase audit findings and actions",
+    category: "learning-lessons",
+    subcategory: "learning-history",
+    order: 3,
+    readTime: "20 min",
+    status: "published",
+    audience: "developer",
   },
 }
 
@@ -617,4 +1430,64 @@ export function searchDocs(query: string): DocContent[] {
       doc.metadata.description.toLowerCase().includes(lowerQuery) ||
       doc.content.toLowerCase().includes(lowerQuery)
   )
+}
+
+/**
+ * Get document slug by file path
+ * Useful for generating links to specific documents from their file paths
+ *
+ * @param filePath - Relative path from docs/ folder (e.g., "03-strapi/backup-and-safety/README.md")
+ * @returns The generated slug or null if document not found
+ *
+ * @example
+ * getDocumentSlugByPath("03-strapi/backup-and-safety/README.md")
+ * // returns "03-strapi-backup-and-safety-readme"
+ */
+export function getDocumentSlugByPath(filePath: string): string | null {
+  // Check if this path exists in our metadata map
+  if (DOC_METADATA_MAP[filePath]) {
+    return filenameToSlug(filePath)
+  }
+  return null
+}
+
+/**
+ * Get document by category and subcategory
+ * Useful for finding README or overview documents for subfolder navigation
+ *
+ * @param category - The category ID
+ * @param subcategory - The subcategory name
+ * @param preferredTitles - Array of title patterns to prioritize (e.g., ["readme", "overview", "quick start"])
+ * @returns The best matching document or null
+ */
+export function getDocByCategoryAndSubcategory(
+  category: DocCategory,
+  subcategory: string,
+  preferredTitles: string[] = ["readme", "overview", "quick start", "guide"]
+): DocContent | null {
+  const docs = getAllDocs()
+
+  // Filter documents by category and subcategory
+  const matchingDocs = docs.filter(
+    (doc) =>
+      doc.metadata.category === category &&
+      doc.metadata.subcategory === subcategory
+  )
+
+  if (matchingDocs.length === 0) {
+    return null
+  }
+
+  // Try to find a document with preferred title
+  for (const preferredTitle of preferredTitles) {
+    const match = matchingDocs.find((doc) =>
+      doc.metadata.title.toLowerCase().includes(preferredTitle)
+    )
+    if (match) {
+      return match
+    }
+  }
+
+  // Fallback to first document with lowest order
+  return matchingDocs.sort((a, b) => a.metadata.order - b.metadata.order)[0]
 }

@@ -681,7 +681,7 @@ Container A ✗ Container B (isolated)
 
 **You're Ready For**:
 
-- [Docker Production](./02-PRODUCTION.md) - Multi-stage builds, optimization, CI/CD
+- [Docker Production](/docs/14-deep-dives-docker-02-production) - Multi-stage builds, optimization, CI/CD
 - Running Strapi in a container (Dockerfile)
 - Multi-container apps (Strapi + PostgreSQL + Redis)
 - Docker Compose for full stack (frontend + backend + database)
@@ -894,10 +894,10 @@ Team of 5: 12 hours saved
 
 ---
 
-**Next**: [Docker Production](./02-PRODUCTION.md) - Multi-stage builds, optimization, and deployment
+**Next**: [Docker Production](/docs/14-deep-dives-docker-02-production) - Multi-stage builds, optimization, and deployment
 
 ---
 
 **Last Updated**: December 1, 2025  
 **Article**: Docker & Containerization - Fundamentals  
-**Part of**: [Deep Dives - Technical Mastery](../README.md)
+**Part of**: [Deep Dives - Technical Mastery](/docs/14-deep-dives-readme)

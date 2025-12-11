@@ -3,7 +3,7 @@
 > **THE COMPLETE, STEP-BY-STEP PROCESS**  
 > Follow this guide EXACTLY to create new Strapi components without issues.
 
-**📌 Quick Reference:** See [POPULATE_PATTERNS_REFERENCE.md](./POPULATE_PATTERNS_REFERENCE.md) for populate middleware patterns.
+**📌 Quick Reference:** See [POPULATE_PATTERNS_REFERENCE.md](/docs/populate_patterns_reference) for populate middleware patterns.
 
 ---
 
@@ -402,7 +402,7 @@ When using shared atomic components (badge, header, background), you MUST popula
 - ❌ Component shows in API response ❌ (empty/null)
 - ❌ Component renders on frontend ❌ (no data)
 
-**📚 Quick Reference:** See [Middleware Populate Patterns Guide](../../03-strapi/middleware-populate-patterns.md) for detailed patterns and troubleshooting.
+**📚 Quick Reference:** See [Middleware Populate Patterns Guide](/docs/03-strapi-middleware-populate-patterns) for detailed patterns and troubleshooting.
 
 ---
 
@@ -2115,7 +2115,7 @@ When modifying an existing component:
 - [ ] 3. Export Config Sync in Strapi admin
 - [ ] 4. **Check if middleware needs update** (field type changed?)
   - [ ] If YES: Update `apps/strapi/src/documentMiddlewares/page.ts`
-  - [ ] See [Middleware Populate Patterns](../../03-strapi/middleware-populate-patterns.md)
+  - [ ] See [Middleware Populate Patterns](/docs/03-strapi-middleware-populate-patterns)
 - [ ] 5. Regenerate types: `yarn generate:types`
 - [ ] 6. Update frontend component (if needed)
 - [ ] 7. **Test locally** (start dev servers, check for errors)
@@ -2123,7 +2123,7 @@ When modifying an existing component:
 - [ ] 9. Verify on frontend (functionality works)
 - [ ] 10. Commit changes (only after all tests pass)
 
-**🚨 Common Mistake:** Forgetting step 4 (middleware update) after refactoring icon components to iconType enums. This causes ValidationError on page load. See [Nov 20, 2025 bug fix](../../11-recovery/recovery-document.md) for real-world example.
+**🚨 Common Mistake:** Forgetting step 4 (middleware update) after refactoring icon components to iconType enums. This causes ValidationError on page load. See [Nov 20, 2025 bug fix](/docs/11-recovery-recovery-document) for real-world example.
 
 ---
 

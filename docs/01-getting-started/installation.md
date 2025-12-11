@@ -537,7 +537,7 @@ vercel
 1. [Strapi Documentation](https://docs.strapi.io/)
 2. [Next.js Documentation](https://nextjs.org/docs)
 3. [Turborepo Documentation](https://turbo.build/repo/docs)
-4. [Project CI/CD Documentation](./CI_CD_DOCUMENTATION.md)
+4. [Project CI/CD Documentation](/docs/ci_cd_documentation)
 
 ### Explore Features
 
@@ -560,7 +560,7 @@ vercel
 ### Getting Help
 
 1. Check this guide first
-2. Review [CI/CD Documentation](./CI_CD_DOCUMENTATION.md)
+2. Review [CI/CD Documentation](/docs/ci_cd_documentation)
 3. Search existing GitHub issues
 4. Create new issue with:
    - Error message

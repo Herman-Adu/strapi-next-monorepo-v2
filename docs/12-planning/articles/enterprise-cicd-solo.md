@@ -164,7 +164,7 @@ jobs:
 
 **Performance**: 12-15 minutes, 95% pass rate
 
-**See**: [60x Performance Gain Article](./hybrid-seeding-60x.md) ⏳
+**See**: [60x Performance Gain Article](/docs/12-planning-articles-hybrid-seeding-60x) ⏳
 
 ---
 
@@ -300,7 +300,7 @@ psql $DB_URL < e2e-snapshot.sql
 
 **Impact**: 5 minutes → 30 seconds (90% faster)
 
-**See**: [Hybrid Seeding Deep-Dive](./hybrid-seeding-60x.md) ⏳
+**See**: [Hybrid Seeding Deep-Dive](/docs/12-planning-articles-hybrid-seeding-60x) ⏳
 
 ---
 
@@ -598,10 +598,10 @@ strategy:
 
 ### Documentation
 
-- [Workflows Index](../../08-devops/workflows/README.md) ✅
-- [CI Workflow](../../08-devops/workflows/01-ci-workflow.md) ✅
-- [E2E Workflow](../../08-devops/workflows/02-e2e-workflow.md) ✅
-- [Phase 3 Master Reference](../../08-devops/PHASE-3-MASTER-REFERENCE.md) ✅
+- [Workflows Index](/docs/08-devops-workflows-readme) ✅
+- [CI Workflow](/docs/08-devops-workflows-01-ci-workflow) ✅
+- [E2E Workflow](/docs/08-devops-workflows-02-e2e-workflow) ✅
+- [Phase 3 Master Reference](/docs/08-devops-phase-3-master-reference) ✅
 
 ### Tools
 
@@ -638,6 +638,6 @@ Building enterprise CI/CD as a solo developer is **absolutely achievable** with 
 
 _This article is part of a series documenting Phase 3 infrastructure achievements. Read more:_
 
-- [60x Performance Gain: Hybrid Seeding](./hybrid-seeding-60x.md) ⏳
-- [Orchestrated Development: 15-Second Startup](./orchestrated-dev-15sec.md) ⏳
-- [Cross-Platform Scripts](./cross-platform-universal.md) ⏳
+- [60x Performance Gain: Hybrid Seeding](/docs/12-planning-articles-hybrid-seeding-60x) ⏳
+- [Orchestrated Development: 15-Second Startup](/docs/12-planning-articles-orchestrated-dev-15sec) ⏳
+- [Cross-Platform Scripts](/docs/12-planning-articles-cross-platform-universal) ⏳

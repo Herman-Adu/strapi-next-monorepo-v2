@@ -1107,16 +1107,16 @@ Total Annual Value: $43,020+
 
 **Complete Docker Series**:
 
-- [Fundamentals](./01-FUNDAMENTALS.md) - Local development, PostgreSQL containers
+- [Fundamentals](/docs/14-deep-dives-docker-01-fundamentals) - Local development, PostgreSQL containers
 - **Production** (You are here) - Multi-stage builds, optimization, deployment ✅
 
 **Related Guides**:
 
-- [Strapi 5 Mastery](../strapi-5/01-BEGINNER.md) - Complete Strapi learning path
-- [DevOps Implementation](../01-devops-implementation.md) - CI/CD, monitoring, automation
+- [Strapi 5 Mastery](/docs/14-deep-dives-strapi-5-01-beginner) - Complete Strapi learning path
+- [DevOps Implementation](/docs/01-devops-implementation) - CI/CD, monitoring, automation
 
 ---
 
 **Last Updated**: December 1, 2025  
 **Article**: Docker & Containerization - Production Deployment  
-**Part of**: [Deep Dives - Technical Mastery](../README.md)
+**Part of**: [Deep Dives - Technical Mastery](/docs/14-deep-dives-readme)

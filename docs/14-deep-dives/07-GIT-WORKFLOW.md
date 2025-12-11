@@ -1055,10 +1055,10 @@ git push --force-with-lease  # Only if no one else has pulled
 
 ## 📚 Related Documentation
 
-- [Pre-Commit Checklist](./06-PRE-COMMIT-CHECKLIST.md) - Testing before commits
-- [Development Workflow](../../DEVELOPMENT_WORKFLOW.md) - Overall process
-- [Component Workflow](../../COMPONENT_WORKFLOW.md) - Component-specific flow
-- [Strapi Best Practices](./strapi-5/04-BEST-PRACTICES.md) - Team workflows
+- [Pre-Commit Checklist](/docs/14-deep-dives-06-pre-commit-checklist) - Testing before commits
+- [Development Workflow](/docs/development_workflow) - Overall process
+- [Component Workflow](/docs/component_workflow) - Component-specific flow
+- [Strapi Best Practices](/docs/14-deep-dives-strapi-5-04-best-practices) - Team workflows
 
 ---
 
@@ -1132,4 +1132,4 @@ Next phase: Z"
 
 **Last Updated**: December 1, 2025  
 **Guide**: Git Workflow - Milestone Commits & Best Practices  
-**Part of**: [Deep Dives - Technical Mastery](./README.md)
+**Part of**: [Deep Dives - Technical Mastery](/docs/14-deep-dives-readme)

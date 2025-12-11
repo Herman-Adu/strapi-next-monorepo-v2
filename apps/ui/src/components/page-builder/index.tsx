@@ -3,6 +3,7 @@ import { UID } from "@repo/strapi"
 import StrapiContactForm from "@/components/page-builder/components/forms/StrapiContactForm"
 import StrapiNewsletterForm from "@/components/page-builder/components/forms/StrapiNewsletterForm"
 import StrapiBenefitsSection from "@/components/page-builder/components/sections/StrapiBenefitsSection"
+import StrapiCkEditorSection from "@/components/page-builder/components/sections/StrapiCkEditorSection"
 import StrapiContactSection from "@/components/page-builder/components/sections/StrapiContactSection"
 import StrapiFaq from "@/components/page-builder/components/sections/StrapiFaq"
 import StrapiFeatureGridSection from "@/components/page-builder/components/sections/StrapiFeatureGridSection"
@@ -19,7 +20,6 @@ import StrapiPartnerShowcaseSection from "@/components/page-builder/components/s
 import StrapiRoadmapSection from "@/components/page-builder/components/sections/StrapiRoadmapSection"
 import StrapiTestimonialsSection from "@/components/page-builder/components/sections/StrapiTestimonialsSection"
 import StrapiWorkflowSection from "@/components/page-builder/components/sections/StrapiWorkflowSection"
-import StrapiCkEditorContent from "@/components/page-builder/components/utilities/StrapiCkEditorContent"
 
 /**
  * Mapping of Strapi Component UID to React Component
@@ -34,10 +34,10 @@ export const PageContentComponents: {
   // elements, seo-utilities, utilities
   // They are usually rendered or used deep inside other components or handlers
   // Add them here if they can be used on Page content level
-  "utilities.ck-editor-content": StrapiCkEditorContent,
 
   // Sections
   "sections.benefits-section": StrapiBenefitsSection,
+  "sections.ck-editor-section": StrapiCkEditorSection,
   "sections.contact-section": StrapiContactSection,
   "sections.faq": StrapiFaq,
   "sections.hero": StrapiHero,

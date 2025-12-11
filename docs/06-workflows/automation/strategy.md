@@ -259,7 +259,7 @@ generateComponent()
 
 **Documentation Reference:**
 
-- [Atomic Architecture → Component Blueprints](./atomic-architecture/README.md)
+- [Atomic Architecture → Component Blueprints](/docs/readme)
 - [CSS Architecture → Naming Conventions](./css-architecture/README.md#-05-naming-conventionsmd)
 
 ---
@@ -629,7 +629,7 @@ psql $DATABASE_URL < backups/strapi-2025-11-16.sql
 
 **Documentation Reference:**
 
-- [Existing: DATABASE_BACKUP_RESTORE.md](./DATABASE_BACKUP_RESTORE.md)
+- [Existing: DATABASE_BACKUP_RESTORE.md](/docs/database_backup_restore)
 
 ---
 
@@ -872,13 +872,13 @@ syncTokens()
 
 All automations are documented in detail across our new documentation:
 
-- **Type Generation:** [Strapi Integration → 03-TYPE-GENERATION.md](./strapi-integration/README.md)
-- **Webhooks:** [Strapi Integration → 04-WEBHOOKS.md](./strapi-integration/README.md)
-- **Component Patterns:** [Atomic Architecture](./atomic-architecture/README.md)
-- **Testing:** [Workflows → 03-TESTING-STRATEGY.md](./workflows-automation/README.md)
-- **CI/CD:** [Workflows → 02-CI-CD-PIPELINE.md](./workflows-automation/README.md)
-- **Performance:** [Performance → 05-MONITORING.md](./performance-optimization/README.md)
-- **Backups:** [DATABASE_BACKUP_RESTORE.md](./DATABASE_BACKUP_RESTORE.md)
+- **Type Generation:** [Strapi Integration → 03-TYPE-GENERATION.md](/docs/readme)
+- **Webhooks:** [Strapi Integration → 04-WEBHOOKS.md](/docs/readme)
+- **Component Patterns:** [Atomic Architecture](/docs/readme)
+- **Testing:** [Workflows → 03-TESTING-STRATEGY.md](/docs/readme)
+- **CI/CD:** [Workflows → 02-CI-CD-PIPELINE.md](/docs/readme)
+- **Performance:** [Performance → 05-MONITORING.md](/docs/readme)
+- **Backups:** [DATABASE_BACKUP_RESTORE.md](/docs/database_backup_restore)
 
 ---
 

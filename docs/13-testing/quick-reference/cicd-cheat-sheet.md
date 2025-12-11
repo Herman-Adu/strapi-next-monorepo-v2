@@ -361,9 +361,9 @@ gh api repos/{owner}/{repo}/actions/caches | \
 
 ### Documentation
 
-- [Workflows Index](../../08-devops/workflows/README.md)
-- [Scripts Index](../../08-devops/scripts/README.md)
-- [Master Reference](../../08-devops/PHASE-3-MASTER-REFERENCE.md)
+- [Workflows Index](/docs/08-devops-workflows-readme)
+- [Scripts Index](/docs/08-devops-scripts-readme)
+- [Master Reference](/docs/08-devops-phase-3-master-reference)
 
 ### Dashboards
 

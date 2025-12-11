@@ -295,7 +295,7 @@ containerWidth: "wide" // max-w-screen-2xl (1536px)
 containerWidth: "full" // w-full (100%)
 ```
 
-**📖 Full Guide:** [STYLING_GUIDE.md](./STYLING_GUIDE.md)
+**📖 Full Guide:** [STYLING_GUIDE.md](/docs/styling_guide)
 
 ---
 
@@ -316,9 +316,9 @@ containerWidth: "full" // w-full (100%)
 
 ## 📚 Full Guides
 
-- **Step-by-Step Process:** [COMPONENT_WORKFLOW.md](./COMPONENT_WORKFLOW.md) ⭐
-- **Architecture & Examples:** [COMPONENT_DEVELOPMENT_GUIDE.md](./COMPONENT_DEVELOPMENT_GUIDE.md)
-- **Git & Deployment:** [DEVELOPMENT_GUIDE.md](./DEVELOPMENT_GUIDE.md)
+- **Step-by-Step Process:** [COMPONENT_WORKFLOW.md](/docs/component_workflow) ⭐
+- **Architecture & Examples:** [COMPONENT_DEVELOPMENT_GUIDE.md](/docs/component_development_guide)
+- **Git & Deployment:** [DEVELOPMENT_GUIDE.md](/docs/development_guide)
 
 ---
 

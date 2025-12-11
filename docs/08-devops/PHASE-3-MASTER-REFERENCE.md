@@ -60,13 +60,13 @@ docs/
 **First 15 Minutes**:
 
 1. Read this document (overview)
-2. Read [Workflows Index](./workflows/README.md) (CI/CD understanding)
-3. Read [Scripts Index](./scripts/README.md) (automation tools)
+2. Read [Workflows Index](/docs/08-devops-workflows-readme) (CI/CD understanding)
+3. Read [Scripts Index](/docs/08-devops-scripts-readme) (automation tools)
 4. Run `yarn dev` (experience orchestrated development)
 
-**First Day**: 5. Read [CI Workflow](./workflows/01-ci-workflow.md) (quality gates) 6. Read [E2E Workflow](./workflows/02-e2e-workflow.md) (testing infrastructure) 7. Make a small change and observe CI/CD in action
+**First Day**: 5. Read [CI Workflow](/docs/08-devops-workflows-01-ci-workflow) (quality gates) 6. Read [E2E Workflow](/docs/08-devops-workflows-02-e2e-workflow) (testing infrastructure) 7. Make a small change and observe CI/CD in action
 
-**First Week**: 8. Read [Innovations Index](./innovations/README.md) (technical depth) 9. Explore individual workflow docs as needed 10. Contribute to documentation (living document)
+**First Week**: 8. Read [Innovations Index](/docs/08-devops-innovations-readme) (technical depth) 9. Explore individual workflow docs as needed 10. Contribute to documentation (living document)
 
 ---
 
@@ -74,15 +74,15 @@ docs/
 
 **Strategic Overview**:
 
-1. [Innovations Index](./innovations/README.md) - ROI and impact metrics
-2. [Workflows Index](./workflows/README.md) - CI/CD architecture
+1. [Innovations Index](/docs/08-devops-innovations-readme) - ROI and impact metrics
+2. [Workflows Index](/docs/08-devops-workflows-readme) - CI/CD architecture
 3. This document - Complete landscape
 
 **Deep Dives** (as needed):
 
-- Performance optimization: [Lighthouse Workflow](./workflows/03-lighthouse-workflow.md)
-- Testing strategy: [E2E Workflow](./workflows/02-e2e-workflow.md)
-- Database engineering: [Database Backup Workflow](./workflows/06-database-backup-workflow.md)
+- Performance optimization: [Lighthouse Workflow](/docs/08-devops-workflows-03-lighthouse-workflow)
+- Testing strategy: [E2E Workflow](/docs/08-devops-workflows-02-e2e-workflow)
+- Database engineering: [Database Backup Workflow](/docs/08-devops-workflows-06-database-backup-workflow)
 
 ---
 
@@ -97,9 +97,9 @@ docs/
 
 **Key Documents**:
 
-- [Innovations Index](./innovations/README.md) - Technical achievements
-- [Workflows Index](./workflows/README.md) - Production systems
-- [Scripts Index](./scripts/README.md) - Automation expertise
+- [Innovations Index](/docs/08-devops-innovations-readme) - Technical achievements
+- [Workflows Index](/docs/08-devops-workflows-readme) - Production systems
+- [Scripts Index](/docs/08-devops-scripts-readme) - Automation expertise
 
 ---
 
@@ -145,14 +145,14 @@ docs/
 
 ### Workflow Comparison Matrix
 
-| Workflow                                                              | Triggers      | Duration  | Frequency  | Blocking | Purpose             |
-| --------------------------------------------------------------------- | ------------- | --------- | ---------- | -------- | ------------------- |
-| **[CI](./workflows/01-ci-workflow.md)**                               | Every push/PR | 10-15 min | ~150/month | ✅       | Lint + Build        |
-| **[E2E Tests](./workflows/02-e2e-workflow.md)**                       | Code changes  | 12-15 min | ~50/month  | ✅       | Integration testing |
-| **[Lighthouse](./workflows/03-lighthouse-workflow.md)**               | UI changes    | 15-20 min | ~30/month  | ✅       | Performance budgets |
-| **[Visual Regression](./workflows/04-visual-regression-workflow.md)** | UI changes    | 10-15 min | ~40/month  | ✅       | UI consistency      |
-| **[Cache Cleanup](./workflows/05-cache-cleanup-workflow.md)**         | Daily 2 AM    | 2-5 min   | ~30/month  | ❌       | Storage management  |
-| **[Database Backup](./workflows/06-database-backup-workflow.md)**     | Daily 2 AM    | 5-10 min  | ~30/month  | ❌       | Data safety         |
+| Workflow                                                                         | Triggers      | Duration  | Frequency  | Blocking | Purpose             |
+| -------------------------------------------------------------------------------- | ------------- | --------- | ---------- | -------- | ------------------- |
+| **[CI](/docs/08-devops-workflows-01-ci-workflow)**                               | Every push/PR | 10-15 min | ~150/month | ✅       | Lint + Build        |
+| **[E2E Tests](/docs/08-devops-workflows-02-e2e-workflow)**                       | Code changes  | 12-15 min | ~50/month  | ✅       | Integration testing |
+| **[Lighthouse](/docs/08-devops-workflows-03-lighthouse-workflow)**               | UI changes    | 15-20 min | ~30/month  | ✅       | Performance budgets |
+| **[Visual Regression](/docs/08-devops-workflows-04-visual-regression-workflow)** | UI changes    | 10-15 min | ~40/month  | ✅       | UI consistency      |
+| **[Cache Cleanup](/docs/08-devops-workflows-05-cache-cleanup-workflow)**         | Daily 2 AM    | 2-5 min   | ~30/month  | ❌       | Storage management  |
+| **[Database Backup](/docs/08-devops-workflows-06-database-backup-workflow)**     | Daily 2 AM    | 5-10 min  | ~30/month  | ❌       | Data safety         |
 
 **Total Monthly CI/CD Minutes**: ~1,000 (within GitHub Actions free tier: 2,000)
 
@@ -232,7 +232,7 @@ Daily 2 AM UTC
 - `rm-all.sh` - Clean workspace
 - And more...
 
-**See**: [Scripts Index](./scripts/README.md) for complete details
+**See**: [Scripts Index](/docs/08-devops-scripts-readme) for complete details
 
 ---
 
@@ -312,7 +312,7 @@ Daily 2 AM UTC
     - 98% success rate
     - Foundation for everything
 
-**See**: [Innovations Index](./innovations/README.md) for detailed breakdowns
+**See**: [Innovations Index](/docs/08-devops-innovations-readme) for detailed breakdowns
 
 ---
 

@@ -48,6 +48,7 @@ export function ContactFormCard({ contactFormData }: ContactFormCardProps) {
       {contactFormData.gdprLink && (
         <div className="mt-6">
           <GDPRCheckbox
+            scope="contact"
             checked={agreedToTerms}
             onCheckedChange={setAgreedToTerms}
             link={{
@@ -67,6 +68,7 @@ export function ContactFormCard({ contactFormData }: ContactFormCardProps) {
         className="mt-6 w-full"
         size="lg"
         form="contactForm"
+        data-testid="contact-submit"
         disabled={
           contactFormMutation.isPending ||
           (contactFormData.gdprLink ? !agreedToTerms : false)

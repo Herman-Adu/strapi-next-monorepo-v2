@@ -644,7 +644,7 @@ export function StrapiNewsletterCTASection({ component }) {
 
 - [ ] Create shared organism components (SectionBadge, SectionHeader, SectionWrapper)
 - [ ] Update section schema (add background, badge, header fields)
-- [ ] **UPDATE MIDDLEWARE POPULATES** (See [Middleware Patterns](../../03-strapi/middleware-populate-patterns.md))
+- [ ] **UPDATE MIDDLEWARE POPULATES** (See [Middleware Patterns](/docs/03-strapi-middleware-populate-patterns))
   - [ ] Check schema for component vs primitive fields
   - [ ] Update `apps/strapi/src/documentMiddlewares/page.ts`
   - [ ] Use correct populate pattern (primitives: `true`, nested: `{ populate: {...} }`)
@@ -688,9 +688,9 @@ export function StrapiNewsletterCTASection({ component }) {
 
 **See Also:**
 
-- [Test-Driven Refactoring Workflow](../../06-workflows/test-driven-refactoring.md) - Mandatory testing discipline
-- [Component Workflow](../../04-components/workflow.md) - Detailed step-by-step process
-- [Middleware Populate Patterns](../../03-strapi/middleware-populate-patterns.md) - Critical reference
+- [Test-Driven Refactoring Workflow](/docs/06-workflows-test-driven-refactoring) - Mandatory testing discipline
+- [Component Workflow](/docs/04-components-workflow) - Detailed step-by-step process
+- [Middleware Populate Patterns](/docs/03-strapi-middleware-populate-patterns) - Critical reference
 
 **Time Estimate**: 40-60 minutes per section (with proper testing)
 

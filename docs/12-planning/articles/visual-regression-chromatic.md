@@ -719,9 +719,9 @@ Net annual value: $30,000 + $3,000 - $1,800 = $31,200/year
 
 ### Related Documentation
 
-- [Visual Regression Workflow](../../08-devops/workflows/04-visual-regression-workflow.md)
-- [Storybook Setup Guide](../../07-development/storybook-setup.md)
-- [Design System](../../packages/design-system/README.md)
+- [Visual Regression Workflow](/docs/08-devops-workflows-04-visual-regression-workflow)
+- [Storybook Setup Guide](/docs/07-development-storybook-setup)
+- [Design System](/docs/readme)
 
 ### Tools Used
 

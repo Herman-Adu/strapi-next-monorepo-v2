@@ -636,10 +636,10 @@ yarn build
 
 ## 📚 Related Documentation
 
-- [Git Strategy](../workflows-automation/01-GIT-STRATEGY.md) - Branching and commit conventions
-- [CI/CD Pipeline](../workflows-automation/02-CI-CD-PIPELINE.md) - Automated testing
-- [Testing Strategy](../workflows-automation/03-TESTING-STRATEGY.md) - Test types and coverage
-- [Component Workflow](../../COMPONENT_WORKFLOW.md) - Development process
+- [Git Strategy](/docs/workflows-automation-01-git-strategy) - Branching and commit conventions
+- [CI/CD Pipeline](/docs/workflows-automation-02-ci-cd-pipeline) - Automated testing
+- [Testing Strategy](/docs/workflows-automation-03-testing-strategy) - Test types and coverage
+- [Component Workflow](/docs/component_workflow) - Development process
 
 ---
 
@@ -683,4 +683,4 @@ yarn build
 
 **Last Updated**: December 1, 2025  
 **Guide**: Pre-Commit Checklist - Testing & Git Finalization  
-**Part of**: [Deep Dives - Technical Mastery](./README.md)
+**Part of**: [Deep Dives - Technical Mastery](/docs/14-deep-dives-readme)

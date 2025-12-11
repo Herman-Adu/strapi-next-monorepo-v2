@@ -118,7 +118,7 @@ yarn dev
 - Automatic browser launch
 - Error handling & recovery
 
-**See**: [Orchestrated Development Deep-Dive](./01-orchestrated-dev.md) ⏳
+**See**: [Orchestrated Development Deep-Dive](/docs/01-orchestrated-dev) ⏳
 
 ---
 
@@ -148,7 +148,7 @@ yarn seed:e2e
 - 60x faster than API-only
 - Idempotent (safe to re-run)
 
-**See**: [Hybrid Seeding Innovation](../innovations/hybrid-seeding.md) ⏳
+**See**: [Hybrid Seeding Innovation](/docs/innovations-hybrid-seeding) ⏳
 
 ---
 
@@ -179,7 +179,7 @@ UPLOAD_TO_S3=false ./scripts/backup-database.sh
 - S3 integration
 - Retention policy (7 days local, 30 days S3)
 
-**See**: [Database Backup Workflow](../workflows/06-database-backup-workflow.md) ✅
+**See**: [Database Backup Workflow](/docs/08-devops-workflows-06-database-backup-workflow) ✅
 
 ---
 
@@ -206,7 +206,7 @@ yarn setup:env
 - Cross-platform (Node.js)
 - Safe defaults
 
-**See**: [Database Setup Script](./03-database-scripts.md) ⏳
+**See**: [Database Setup Script](/docs/03-database-scripts) ⏳
 
 ---
 
@@ -623,21 +623,21 @@ yarn dev
 
 ### Deep-Dive Guides
 
-- [Orchestrated Development Script](./01-orchestrated-dev.md) ⏳
-- [Hybrid Seeding Script](./02-hybrid-seeding.md) ⏳
-- [Database Scripts](./03-database-scripts.md) ⏳
-- [Utility Scripts](./04-utility-scripts.md) ⏳
+- [Orchestrated Development Script](/docs/01-orchestrated-dev) ⏳
+- [Hybrid Seeding Script](/docs/02-hybrid-seeding) ⏳
+- [Database Scripts](/docs/03-database-scripts) ⏳
+- [Utility Scripts](/docs/04-utility-scripts) ⏳
 
 ### Workflow Integration
 
-- [E2E Workflow](../workflows/02-e2e-workflow.md) (uses seed-e2e-data.sh)
-- [Database Backup Workflow](../workflows/06-database-backup-workflow.md) (uses backup-database.sh)
+- [E2E Workflow](/docs/08-devops-workflows-02-e2e-workflow) (uses seed-e2e-data.sh)
+- [Database Backup Workflow](/docs/08-devops-workflows-06-database-backup-workflow) (uses backup-database.sh)
 
 ### Innovations
 
-- [Orchestrated Development Innovation](../innovations/orchestrated-dev.md) ⏳
-- [Hybrid Seeding Innovation](../innovations/hybrid-seeding.md) ⏳
-- [Cross-Platform Scripts Innovation](../innovations/cross-platform.md) ⏳
+- [Orchestrated Development Innovation](/docs/innovations-orchestrated-dev) ⏳
+- [Hybrid Seeding Innovation](/docs/innovations-hybrid-seeding) ⏳
+- [Cross-Platform Scripts Innovation](/docs/innovations-cross-platform) ⏳
 
 ---
 

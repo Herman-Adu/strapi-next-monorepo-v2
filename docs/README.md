@@ -9,7 +9,7 @@ Welcome to the complete documentation for the Strapi-Next.js Monorepo v2 project
 
 ## 🗂️ Documentation Structure
 
-### 1️⃣ [Atomic Architecture](./atomic-architecture/README.md)
+### 1️⃣ [Atomic Architecture](/docs/readme)
 
 **Core design system and component methodology**
 
@@ -28,7 +28,7 @@ Welcome to the complete documentation for the Strapi-Next.js Monorepo v2 project
 - `05-PAGE-THEME-ARCHITECTURE.md` - Theming system
 - `component-blueprints/` - Component templates
 
-### 2️⃣ [Content Modeling](./content-modeling/README.md)
+### 2️⃣ [Content Modeling](/docs/readme)
 
 **Strapi content structure and best practices**
 
@@ -47,7 +47,7 @@ Welcome to the complete documentation for the Strapi-Next.js Monorepo v2 project
 - `04-RELATIONS.md` - Data relationships
 - `05-BEST-PRACTICES.md` - Dos and don'ts
 
-### 3️⃣ [Strapi Integration](./strapi-integration/README.md)
+### 3️⃣ [Strapi Integration](/docs/readme)
 
 **Connecting Strapi CMS with Next.js frontend**
 
@@ -66,7 +66,7 @@ Welcome to the complete documentation for the Strapi-Next.js Monorepo v2 project
 - `04-WEBHOOKS.md` - Real-time updates
 - `05-SECURITY.md` - Best practices
 
-### 4️⃣ [CSS Architecture](./css-architecture/README.md)
+### 4️⃣ [CSS Architecture](/docs/readme)
 
 **Scalable styling system**
 
@@ -87,7 +87,7 @@ Welcome to the complete documentation for the Strapi-Next.js Monorepo v2 project
 - `05-NAMING-CONVENTIONS.md` - BEM + Atomic
 - `06-RESPONSIVE-DESIGN.md` - Breakpoint strategy
 
-### 5️⃣ [Performance Optimization](./performance-optimization/README.md)
+### 5️⃣ [Performance Optimization](/docs/readme)
 
 **Optimization strategies for Strapi and Next.js**
 
@@ -107,7 +107,7 @@ Welcome to the complete documentation for the Strapi-Next.js Monorepo v2 project
 - `04-IMAGE-OPTIMIZATION.md` - Media handling
 - `05-MONITORING.md` - Performance tracking
 
-### 6️⃣ [Workflows & Automation](./workflows-automation/README.md)
+### 6️⃣ [Workflows & Automation](/docs/readme)
 
 **Development workflows and CI/CD**
 
@@ -127,7 +127,7 @@ Welcome to the complete documentation for the Strapi-Next.js Monorepo v2 project
 - `04-DEPLOYMENT.md` - Production deployment
 - `05-CONTENT-WORKFLOW.md` - CMS workflow
 
-### 7️⃣ [Platform Vision & Business Strategy](./platform-vision/README.md) ⭐
+### 7️⃣ [Platform Vision & Business Strategy](/docs/16-platform-vision-readme) ⭐
 
 **Strategic thinking, business impact, and growth opportunities**
 
@@ -151,7 +151,7 @@ Welcome to the complete documentation for the Strapi-Next.js Monorepo v2 project
 - Educational content planning (tutorials, workshops)
 - Strategic planning and roadmap discussions
 
-### 8️⃣ [Deep Dives: Technical Mastery](../docs/14-deep-dives/README.md) 🎓 NEW
+### 8️⃣ [Deep Dives: Technical Mastery](/docs/14-deep-dives-readme) 🎓 NEW
 
 **Production-proven guides from real experience** ($530K+ value documented)
 
@@ -194,22 +194,22 @@ Welcome to the complete documentation for the Strapi-Next.js Monorepo v2 project
 
 ### For New Developers
 
-1. Start with [Atomic Architecture Welcome](./atomic-architecture/00-WELCOME.md)
-2. Read [Content Modeling Guide](./content-modeling/00-CONTENT-MODELING-GUIDE.md)
-3. Review [Integration Overview](./strapi-integration/00-INTEGRATION-OVERVIEW.md)
-4. Check [Day 1 Checklist](./atomic-architecture/DAY-1-CHECKLIST.md)
+1. Start with [Atomic Architecture Welcome](/docs/02-architecture-atomic-design-00-welcome)
+2. Read [Content Modeling Guide](/docs/03-strapi-content-modeling-00-content-modeling-guide)
+3. Review [Integration Overview](/docs/strapi-integration-00-integration-overview)
+4. Check [Day 1 Checklist](/docs/02-architecture-atomic-design-day-1-checklist)
 
 ### For Content Editors
 
-1. Review [Content Modeling Best Practices](./content-modeling/05-BEST-PRACTICES.md)
-2. Learn [Dynamic Zones](./content-modeling/03-DYNAMIC-ZONES.md)
-3. Understand [Content Workflow](./workflows-automation/05-CONTENT-WORKFLOW.md)
+1. Review [Content Modeling Best Practices](/docs/content-modeling-05-best-practices)
+2. Learn [Dynamic Zones](/docs/content-modeling-03-dynamic-zones)
+3. Understand [Content Workflow](/docs/workflows-automation-05-content-workflow)
 
 ### For DevOps/Infrastructure
 
-1. Review [Performance Overview](./performance-optimization/00-PERFORMANCE-OVERVIEW.md)
-2. Study [CI/CD Pipeline](./workflows-automation/02-CI-CD-PIPELINE.md)
-3. Check [Deployment Guide](./workflows-automation/04-DEPLOYMENT.md)
+1. Review [Performance Overview](/docs/performance-optimization-00-performance-overview)
+2. Study [CI/CD Pipeline](/docs/workflows-automation-02-ci-cd-pipeline)
+3. Check [Deployment Guide](/docs/workflows-automation-04-deployment)
 
 ---
 
@@ -221,23 +221,23 @@ Welcome to the complete documentation for the Strapi-Next.js Monorepo v2 project
 
 - [Atomic Architecture](./atomic-architecture/)
 - [CSS Architecture](./css-architecture/)
-- [Strapi Integration - API Client](./strapi-integration/02-API-CLIENT.md)
+- [Strapi Integration - API Client](/docs/strapi-integration-02-api-client)
 
 **Backend Developer:**
 
 - [Content Modeling](./content-modeling/)
 - [Strapi Integration](./strapi-integration/)
-- [Performance Optimization - Database](./performance-optimization/02-DATABASE-OPTIMIZATION.md)
+- [Performance Optimization - Database](/docs/performance-optimization-02-database-optimization)
 
 **Full-Stack Developer:**
 
 - All sections relevant
-- Start with [Integration Overview](./strapi-integration/00-INTEGRATION-OVERVIEW.md)
+- Start with [Integration Overview](/docs/strapi-integration-00-integration-overview)
 
 **Content Manager:**
 
 - [Content Modeling](./content-modeling/)
-- [Content Workflow](./workflows-automation/05-CONTENT-WORKFLOW.md)
+- [Content Workflow](/docs/workflows-automation-05-content-workflow)
 
 **DevOps Engineer:**
 
@@ -249,26 +249,26 @@ Welcome to the complete documentation for the Strapi-Next.js Monorepo v2 project
 **Creating a New Component:**
 
 1. [Component Blueprints](./atomic-architecture/component-blueprints/)
-2. [CSS Naming Conventions](./css-architecture/05-NAMING-CONVENTIONS.md)
-3. [Strapi Type Generation](./strapi-integration/03-TYPE-GENERATION.md)
+2. [CSS Naming Conventions](/docs/css-architecture-05-naming-conventions)
+3. [Strapi Type Generation](/docs/strapi-integration-03-type-generation)
 
 **Adding a New Page:**
 
 1. [Content Modeling - Pages](./content-modeling/01-COLLECTION-TYPES.md#page-collection-type)
-2. [Dynamic Zones](./content-modeling/03-DYNAMIC-ZONES.md)
-3. [Page Theme Architecture](./atomic-architecture/05-PAGE-THEME-ARCHITECTURE.md)
+2. [Dynamic Zones](/docs/content-modeling-03-dynamic-zones)
+3. [Page Theme Architecture](/docs/02-architecture-atomic-design-05-page-theme-architecture)
 
 **Optimizing Performance:**
 
-1. [Performance Overview](./performance-optimization/00-PERFORMANCE-OVERVIEW.md)
-2. [Caching Strategy](./performance-optimization/01-CACHING.md)
-3. [Database Optimization](./performance-optimization/02-DATABASE-OPTIMIZATION.md)
+1. [Performance Overview](/docs/performance-optimization-00-performance-overview)
+2. [Caching Strategy](/docs/performance-optimization-01-caching)
+3. [Database Optimization](/docs/performance-optimization-02-database-optimization)
 
 **Setting Up CI/CD:**
 
-1. [CI/CD Pipeline](./workflows-automation/02-CI-CD-PIPELINE.md)
-2. [Git Strategy](./workflows-automation/01-GIT-STRATEGY.md)
-3. [Deployment](./workflows-automation/04-DEPLOYMENT.md)
+1. [CI/CD Pipeline](/docs/workflows-automation-02-ci-cd-pipeline)
+2. [Git Strategy](/docs/workflows-automation-01-git-strategy)
+3. [Deployment](/docs/workflows-automation-04-deployment)
 
 ---
 

@@ -13,8 +13,8 @@ This guide explains how to seed test data in Strapi for end-to-end (E2E) testing
 
 **Related Docs:**
 
-- [E2E Testing Overview](./README.md) - General E2E testing guide
-- [Case Study: Best Practices](./strapi-seeding-case-study.md) - Deep-dive analysis
+- [E2E Testing Overview](/docs/13-testing-e2e-readme) - General E2E testing guide
+- [Case Study: Best Practices](/docs/13-testing-e2e-strapi-seeding-case-study) - Deep-dive analysis
 
 ---
 
@@ -604,9 +604,9 @@ yarn seed:e2e  # ~25 seconds
 
 ### Internal Documentation
 
-- [E2E Testing Guide](./README.md) - Overview of E2E testing
-- [Case Study: Seeding Best Practices](./strapi-seeding-case-study.md) - Deep-dive analysis
-- [Best Practice Checklist](../../../BEST_PRACTICE_CHECKLIST.md) - Universal development guidelines
+- [E2E Testing Guide](/docs/13-testing-e2e-readme) - Overview of E2E testing
+- [Case Study: Seeding Best Practices](/docs/13-testing-e2e-strapi-seeding-case-study) - Deep-dive analysis
+- [Best Practice Checklist](/docs/best_practice_checklist) - Universal development guidelines
 
 ### External Resources
 
@@ -649,4 +649,4 @@ http://localhost:1337/admin/content-manager/collection-types/api::page.page
 
 ---
 
-**Questions?** See [Troubleshooting](#-troubleshooting) or check the [Case Study](./strapi-seeding-case-study.md) for detailed examples! 🌱
+**Questions?** See [Troubleshooting](#-troubleshooting) or check the [Case Study](/docs/13-testing-e2e-strapi-seeding-case-study) for detailed examples! 🌱

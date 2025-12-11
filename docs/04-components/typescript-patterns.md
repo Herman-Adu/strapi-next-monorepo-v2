@@ -305,9 +305,9 @@ Before committing a new component:
 
 ## 🔗 Related Documentation
 
-- [Component Development Guide](./development-guide.md)
+- [Component Development Guide](/docs/04-components-development-guide)
 - [Atomic Design Architecture](../02-architecture/atomic-design/)
-- [Workflow for Component Creation](./workflow.md)
+- [Workflow for Component Creation](/docs/04-components-workflow)
 
 ---
 

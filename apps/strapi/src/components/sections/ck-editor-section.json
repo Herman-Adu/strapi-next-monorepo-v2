@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_sections_ck_editor_sections",
+  "info": {
+    "displayName": "CkEditorSection",
+    "description": "Rich text editor section with full CKEditor5 toolbar, background control, and atomic design pattern"
+  },
+  "options": {},
+  "attributes": {
+    "background": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.section-background"
+    },
+    "content": {
+      "type": "component",
+      "repeatable": false,
+      "component": "utilities.ck-editor-content",
+      "required": true
+    }
+  }
+}

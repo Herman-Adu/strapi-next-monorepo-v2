@@ -85,19 +85,8 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "ctaButtons",
-        "background",
-        "badge"
-      ],
+      "list": ["id", "ctaButtons", "background", "badge"],
       "edit": [
-        [
-          {
-            "name": "ctaButtons",
-            "size": 12
-          }
-        ],
         [
           {
             "name": "background",
@@ -113,6 +102,12 @@
         [
           {
             "name": "header",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "ctaButtons",
             "size": 12
           }
         ]

@@ -10,29 +10,40 @@ import { GlassmorphismCard } from "@/components/page-builder/molecules/Glassmorp
  * - glassmorphic-sm: Glassmorphic card with rounded-sm corners
  * - simple: Minimal styling without card wrapper
  *
- * @example
- * // Glassmorphic variant (Newsletter CTA)
- * <GDPRCheckbox
- *   checked={agreedToTerms}
- *   onCheckedChange={setAgreedToTerms}
- *   link={{ href: "/privacy", label: "Privacy Policy", newTab: true }}
- *   variant="glassmorphic-xl"
- * />
+ * **Testing Strategy**: Use `scope` prop for consistent test targeting across all forms.
  *
  * @example
- * // Simple variant (NewsletterForm)
+ * // Recommended: Use scope for auto-generated IDs
  * <GDPRCheckbox
+ *   scope="contact"
  *   checked={agreedToTerms}
  *   onCheckedChange={setAgreedToTerms}
- *   link={{ href: "/terms", label: "Terms & Conditions" }}
- *   labelPrefix="I consent to the"
- *   variant="simple"
+ *   link={{ href: "/privacy", label: "Privacy Policy" }}
+ * />
+ * // Generates: id="contact-gdpr-consent", data-testid="contact-gdpr-checkbox"
+ *
+ * @example
+ * // Legacy: Explicit IDs (backwards compatible)
+ * <GDPRCheckbox
+ *   id="custom-id"
+ *   data-testid="custom-testid"
+ *   checked={agreedToTerms}
+ *   onCheckedChange={setAgreedToTerms}
+ *   link={{ href: "/terms", label: "Terms" }}
  * />
  */
 
 export interface GDPRCheckboxProps {
-  /** Checkbox HTML id attribute */
+  /**
+   * Form scope for auto-generating consistent IDs
+   * Examples: "contact", "newsletter-footer", "newsletter-cta", "signin"
+   * When provided, auto-generates id and data-testid
+   */
+  scope?: string
+  /** Checkbox HTML id attribute (overrides scope-generated id) */
   id?: string
+  /** Data-testid for E2E testing (overrides scope-generated testid) */
+  "data-testid"?: string
   /** Checkbox checked state */
   checked: boolean
   /** Callback when checkbox state changes */
@@ -52,7 +63,9 @@ export interface GDPRCheckboxProps {
 }
 
 export function GDPRCheckbox({
-  id = "gdpr-consent",
+  scope,
+  id,
+  "data-testid": dataTestId,
   checked,
   onCheckedChange,
   link,
@@ -60,6 +73,11 @@ export function GDPRCheckbox({
   variant = "simple",
   className,
 }: Readonly<GDPRCheckboxProps>) {
+  // Auto-generate IDs from scope if provided, otherwise use explicit values or defaults
+  const actualId = id || (scope ? `${scope}-gdpr-consent` : "gdpr-consent")
+  const actualTestId =
+    dataTestId || (scope ? `${scope}-gdpr-checkbox` : undefined)
+
   const isGlassmorphic = variant.startsWith("glassmorphic")
   const isSimple = variant === "simple"
 
@@ -72,13 +90,14 @@ export function GDPRCheckbox({
       }
     >
       <Checkbox
-        id={id}
+        id={actualId}
+        data-testid={actualTestId}
         checked={checked}
         onCheckedChange={(checked) => onCheckedChange(checked === true)}
         className="border-input bg-background data-[state=checked]:border-primary data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground mt-0.5 border-2"
       />
       <Label
-        htmlFor={id}
+        htmlFor={actualId}
         className={
           isSimple
             ? "hover:text-foreground cursor-pointer text-xs leading-relaxed transition-colors"

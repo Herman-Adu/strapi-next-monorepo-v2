@@ -478,10 +478,10 @@ Error: "Invalid key icon at content.ctaButtons"
 
 ## Related Documentation
 
-- [Component Development Workflow](../04-components/workflow.md) - Complete workflow including middleware updates
-- [Test-Driven Refactoring](../06-workflows/test-driven-refactoring.md) - Mandatory testing discipline
-- [Populate Patterns Quick Reference](../10-reference/populate-patterns.md) - Quick lookup for patterns
-- [Recovery Document](../11-recovery/recovery-document.md) - Session context and debugging wins
+- [Component Development Workflow](/docs/04-components-workflow) - Complete workflow including middleware updates
+- [Test-Driven Refactoring](/docs/06-workflows-test-driven-refactoring) - Mandatory testing discipline
+- [Populate Patterns Quick Reference](/docs/10-reference-populate-patterns) - Quick lookup for patterns
+- [Recovery Document](/docs/11-recovery-recovery-document) - Session context and debugging wins
 
 ---
 

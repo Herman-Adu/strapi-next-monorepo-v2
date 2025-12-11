@@ -398,9 +398,9 @@ The human must:
 
 ## Related Documentation
 
-- [Component Development Workflow](../04-components/workflow.md) - Complete workflow including testing phases
-- [Middleware Populate Patterns](../03-strapi/middleware-populate-patterns.md) - When and how to update middleware
-- [Recovery Document](../11-recovery/recovery-document.md) - November 20, 2025 debugging session context
+- [Component Development Workflow](/docs/04-components-workflow) - Complete workflow including testing phases
+- [Middleware Populate Patterns](/docs/03-strapi-middleware-populate-patterns) - When and how to update middleware
+- [Recovery Document](/docs/11-recovery-recovery-document) - November 20, 2025 debugging session context
 
 ---
 

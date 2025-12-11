@@ -125,7 +125,16 @@ docs/
 ├── 11-recovery/                  # Session recovery (for AI)
 ├── 12-planning/                  # Future planning & proposals
 ├── 13-testing/                   # Testing strategy, Storybook, Chromatic
-└── 99-archive/                   # Deprecated documentation
+├── 14-deep-dives/                # Technical deep dives
+├── 15-professional-presence/     # Career & positioning strategy
+├── 16-platform-vision/           # Product vision & roadmap
+└── 17-learning-lessons/          # Learning resources & project evolution
+
+content/                          # Publication-ready content library
+├── articles/                     # 20 technical articles (5 series)
+├── tutorials/                    # 17 step-by-step tutorials (4 series)
+├── social-media/                 # 28 social posts (Twitter, LinkedIn)
+└── planning/                     # Phase 1-3 content creation docs
 ```
 
 ---
@@ -227,25 +236,25 @@ docs/
 
 ### By Problem
 
-| Problem                      | Solution                                                      |
-| ---------------------------- | ------------------------------------------------------------- |
-| Build errors                 | [Build-Commit-Push](06-workflows/build-commit-push.md)        |
-| Lost connection (AI)         | [Recovery Document](11-recovery/recovery-document.md)         |
-| Component not rendering      | [Troubleshooting](09-troubleshooting/playbook.md)             |
-| Need to test component       | [Storybook Integration](13-testing/storybook/integration.md)  |
-| Visual regression detected   | [Chromatic Setup](13-testing/chromatic/setup.md)              |
-| Need to delete component     | [Deletion Workflow](06-workflows/component-deletion.md)       |
-| Field order wrong            | [Field Order Changes](06-workflows/field-order-changes.md)    |
-| Gradient not working         | [Gradient System](04-components/patterns/gradient-system.md)  |
-| Don't know what to build     | [Component Inventory](02-architecture/atomic-design/)         |
-| Strapi schema issues         | [Best Practices](03-strapi/best-practices.md)                 |
-| CI/CD failing                | [CI/CD Guide](08-devops/ci-cd.md)                             |
-| Database backup needed       | [Backup & Restore](03-strapi/database-backup.md)              |
-| New page creation            | [Page Workflow](06-workflows/page-creation.md)                |
-| Newsletter setup             | [Newsletter Pattern](04-components/patterns/newsletter.md)    |
-| Contact form configuration   | [Contact Page](07-content-manager/contact-page-backup.md)     |
-| Performance optimization     | [Performance Guide](08-devops/performance/optimization.md)    |
-| Component refactoring needed | [Refactoring Playbook](04-components/refactoring-playbook.md) |
+| Problem                      | Solution                                                                       |
+| ---------------------------- | ------------------------------------------------------------------------------ |
+| Build errors                 | [Build-Commit-Push](06-workflows/build-commit-push.md)                         |
+| Lost connection (AI)         | [Recovery Document](11-recovery/recovery-document.md)                          |
+| Component not rendering      | [Troubleshooting](09-troubleshooting/playbook.md)                              |
+| Need to test component       | [Storybook Integration](13-testing/storybook/integration.md)                   |
+| Visual regression detected   | [Chromatic Setup](13-testing/chromatic/setup.md)                               |
+| Need to delete component     | [Deletion Workflow](06-workflows/component-deletion.md)                        |
+| Field order wrong            | [Field Order Changes](06-workflows/field-order-changes.md)                     |
+| Gradient not working         | [Gradient System](04-components/patterns/gradient-system.md)                   |
+| Don't know what to build     | [Component Inventory](02-architecture/atomic-design/)                          |
+| Strapi schema issues         | [Best Practices](03-strapi/best-practices.md)                                  |
+| CI/CD failing                | [CI/CD Guide](08-devops/ci-cd.md)                                              |
+| Database backup needed       | [Backup & Restore](03-strapi/database-backup.md)                               |
+| New page creation            | [Page Workflow](06-workflows/page-creation.md)                                 |
+| Newsletter setup             | [Newsletter Pattern](04-components/patterns/newsletter.md)                     |
+| Contact form configuration   | [Atomic Component Migration](07-content-manager/atomic-component-migration.md) |
+| Performance optimization     | [Performance Guide](08-devops/performance/optimization.md)                     |
+| Component refactoring needed | [Refactoring Playbook](04-components/refactoring-playbook.md)                  |
 
 ---
 
@@ -285,7 +294,7 @@ git push origin main
 
 **Great!** Follow these steps:
 
-1. Choose appropriate category (01-12, or 99-archive)
+1. Choose appropriate category (01-17, numbered by topic)
 2. Create markdown file with front matter
 3. Add to this START-HERE page (if frequently used)
 4. Update [INDEX.md](INDEX.md) with entry
@@ -305,6 +314,6 @@ Herman's words: _"this is paramount to the build process"_
 
 ---
 
-**Last Updated**: November 19, 2025
+**Last Updated**: December 11, 2025 (Documentation Cleanup Phase 1-4 Complete)
 **Maintainers**: All developers
 **Feedback**: Update this file if you find gaps!

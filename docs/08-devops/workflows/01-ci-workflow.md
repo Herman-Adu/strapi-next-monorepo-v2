@@ -693,10 +693,10 @@ gh run list --workflow=ci.yml --json databaseId -q '.[0].databaseId' | xargs gh 
 
 ### Internal Documentation
 
-- [Workflows Index](./README.md)
-- [E2E Workflow](./02-e2e-workflow.md)
-- [Cross-Platform Scripts](../innovations/cross-platform-revolution.md)
-- [Turbo Caching](../innovations/turbo-caching.md)
+- [Workflows Index](/docs/08-devops-workflows-readme)
+- [E2E Workflow](/docs/08-devops-workflows-02-e2e-workflow)
+- [Cross-Platform Scripts](/docs/innovations-cross-platform-revolution)
+- [Turbo Caching](/docs/innovations-turbo-caching)
 
 ### External Resources
 
@@ -723,4 +723,4 @@ Before merging PR, verify:
 
 **Last Updated**: November 30, 2025  
 **Workflow Version**: 2.0 (Cross-platform with rimraf)  
-**Next**: [E2E Workflow Documentation](./02-e2e-workflow.md) ⏳ Coming Soon
+**Next**: [E2E Workflow Documentation](/docs/08-devops-workflows-02-e2e-workflow) ⏳ Coming Soon

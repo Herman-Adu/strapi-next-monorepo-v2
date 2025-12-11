@@ -561,9 +561,9 @@ Total annual value: $20,067 from seeding optimization alone
 
 ### Related Documentation
 
-- [E2E Workflow Guide](../../08-devops/workflows/02-e2e-workflow.md)
-- [Database Backup Strategy](../../08-devops/workflows/06-database-backup-workflow.md)
-- [Scripts Index](../../08-devops/scripts/README.md)
+- [E2E Workflow Guide](/docs/08-devops-workflows-02-e2e-workflow)
+- [Database Backup Strategy](/docs/08-devops-workflows-06-database-backup-workflow)
+- [Scripts Index](/docs/08-devops-scripts-readme)
 
 ### Tools Used
 

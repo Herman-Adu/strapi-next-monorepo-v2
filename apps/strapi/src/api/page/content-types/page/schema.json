@@ -73,10 +73,9 @@
         "sections.integration-grid-section",
         "sections.marquee-section",
         "sections.testimonials-section",
-        "sections.ckeditor",
+        "sections.ck-editor-section",
         "forms.newsletter-form",
-        "forms.contact-form",
-        "utilities.ck-editor-content"
+        "forms.contact-form"
       ],
       "pluginOptions": {
         "i18n": {

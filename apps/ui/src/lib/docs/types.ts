@@ -3,11 +3,21 @@
 export type DocCategory =
   | "getting-started"
   | "architecture"
-  | "developer"
   | "strapi"
-  | "content-management"
+  | "components"
+  | "styling"
   | "workflows"
+  | "content-management"
+  | "devops"
+  | "troubleshooting"
   | "reference"
+  | "recovery"
+  | "planning"
+  | "testing"
+  | "deep-dives"
+  | "professional-presence"
+  | "platform-vision"
+  | "learning-lessons"
 
 export type DocAudience = "developer" | "content-manager" | "all" | "admin"
 
@@ -17,6 +27,7 @@ export interface DocMetadata {
   title: string
   description: string
   category: string
+  subcategory?: string
   slug: string
   order: number
   readTime: string
@@ -51,16 +62,9 @@ export const DOC_CATEGORIES: CategoryInfo[] = [
   },
   {
     id: "architecture",
-    title: "🏗️ Architecture & Planning",
+    title: "🏗️ Architecture",
     description: "System design, patterns, and architectural decisions",
     icon: "code2",
-    audience: "developer",
-  },
-  {
-    id: "developer",
-    title: "💻 Developer Guides",
-    description: "Component development, workflows, and best practices",
-    icon: "code",
     audience: "developer",
   },
   {
@@ -71,6 +75,27 @@ export const DOC_CATEGORIES: CategoryInfo[] = [
     audience: "all",
   },
   {
+    id: "components",
+    title: "🧩 Components",
+    description: "Component development, workflow, and patterns",
+    icon: "box",
+    audience: "developer",
+  },
+  {
+    id: "styling",
+    title: "🎨 Styling",
+    description: "Tailwind CSS, theme system, and design tokens",
+    icon: "palette",
+    audience: "developer",
+  },
+  {
+    id: "workflows",
+    title: "⚙️ Workflows",
+    description: "Development workflows and processes",
+    icon: "cog",
+    audience: "developer",
+  },
+  {
     id: "content-management",
     title: "📝 Content Management",
     description: "Guides for content creators and editors",
@@ -78,17 +103,73 @@ export const DOC_CATEGORIES: CategoryInfo[] = [
     audience: "content-manager",
   },
   {
-    id: "workflows",
-    title: "⚙️ Workflows & DevOps",
-    description: "CI/CD, deployment, and automation",
-    icon: "cog",
+    id: "devops",
+    title: "🚀 DevOps & CI/CD",
+    description: "Deployment, infrastructure, and automation",
+    icon: "server",
     audience: "developer",
+  },
+  {
+    id: "troubleshooting",
+    title: "🔧 Troubleshooting",
+    description: "Common issues and solutions",
+    icon: "wrench",
+    audience: "all",
   },
   {
     id: "reference",
     title: "📚 Reference",
     description: "Quick references and technical documentation",
     icon: "book-open",
+    audience: "all",
+  },
+  {
+    id: "recovery",
+    title: "💾 Recovery",
+    description: "Session recovery and context restoration",
+    icon: "history",
+    audience: "developer",
+  },
+  {
+    id: "planning",
+    title: "📋 Planning",
+    description: "Project roadmaps and strategic planning",
+    icon: "clipboard",
+    audience: "developer",
+  },
+  {
+    id: "testing",
+    title: "🧪 Testing",
+    description: "Testing strategies, E2E, and visual regression",
+    icon: "flask",
+    audience: "developer",
+  },
+  {
+    id: "deep-dives",
+    title: "🔬 Deep Dives",
+    description: "Technical deep dives and transformation journeys",
+    icon: "microscope",
+    audience: "developer",
+  },
+  {
+    id: "professional-presence",
+    title: "💼 Professional Presence",
+    description: "Career development and thought leadership",
+    icon: "briefcase",
+    audience: "all",
+  },
+  {
+    id: "platform-vision",
+    title: "🌟 Platform Vision",
+    description: "Strategic vision and future roadmap",
+    icon: "target",
+    audience: "all",
+  },
+  {
+    id: "learning-lessons",
+    title: "📖 Learning Lessons",
+    description: "Project evolution and troubleshooting insights",
+    icon: "graduation-cap",
     audience: "all",
   },
 ]

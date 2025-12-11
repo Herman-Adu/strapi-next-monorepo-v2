@@ -763,6 +763,106 @@ Visual guide to field organization:
 
 ---
 
+## Case Study: November 2025 Atomic Architecture Refactoring
+
+### The Challenge
+
+During component refactoring for atomic architecture implementation, three sections had incorrect field ordering that violated the standard pattern:
+
+**Problem Sections**:
+
+1. **FeatureGridSection**: items → listItems → footerNote → gridColumns → background → badge → header
+2. **RoadmapSection**: roadmapItems → footerNotes → background → badge → header
+3. **FinalCTASection**: ctaButtons → background → badge → header
+
+**Issues**:
+
+- ❌ Section chrome (background, badge, header) buried at bottom
+- ❌ Violated atomic architecture pattern: Background → Badge → Header → Content
+- ❌ Inconsistent with other sections (WorkflowSection, MetricsSection, etc.)
+- ❌ Content managers saw component-specific fields BEFORE section structure
+
+### The Solution
+
+Reordered fields to follow atomic architecture standard:
+
+**After Refactoring**:
+
+1. **FeatureGridSection**: background → badge → header → items → listItems → footerNote → gridColumns
+2. **RoadmapSection**: background → badge → header → roadmapItems → footerNotes
+3. **FinalCTASection**: background → badge → header → ctaButtons
+
+### Files Modified
+
+**Config Sync Files** (3):
+
+- `config/sync/core-store.plugin_content_manager_configuration_components##sections.feature-grid-section.json`
+- `config/sync/core-store.plugin_content_manager_configuration_components##sections.roadmap-section.json`
+- `config/sync/core-store.plugin_content_manager_configuration_components##sections.final-cta-section.json`
+
+**Changes Made**:
+
+```json
+// Before: content fields first
+"layouts": {
+  "edit": [
+    [{ "name": "items", "size": 12 }],
+    [{ "name": "listItems", "size": 12 }],
+    [{ "name": "background", "size": 6 }],
+    [{ "name": "badge", "size": 6 }],
+    [{ "name": "header", "size": 12 }]
+  ]
+}
+
+// After: atomic architecture pattern
+"layouts": {
+  "edit": [
+    [
+      { "name": "background", "size": 6 },
+      { "name": "badge", "size": 6 }
+    ],
+    [{ "name": "header", "size": 12 }],
+    [{ "name": "items", "size": 12 }],
+    [{ "name": "listItems", "size": 12 }]
+  ]
+}
+```
+
+### Results
+
+**Before**: 3/8 landing page sections violated atomic pattern (37.5% inconsistency)  
+**After**: 8/8 landing page sections follow atomic pattern (100% consistency)
+
+**Components with Correct Structure** (After refactoring):
+
+1. WorkflowSection ✅
+2. NewsletterCTASection ✅
+3. BenefitsSection ✅
+4. MetricsSection ✅
+5. PartnerShowcaseSection ✅
+6. **FeatureGridSection** ✅ (fixed)
+7. **RoadmapSection** ✅ (fixed)
+8. **FinalCTASection** ✅ (fixed)
+
+### Key Lessons
+
+1. **Consistency Matters**: When 5 sections follow pattern A and 3 follow pattern B, fix the 3
+2. **Config Sync Power**: Can reorder fields without schema changes
+3. **Import Process Critical**: Must import config sync + rebuild + restart to see changes
+4. **Atomic First**: Section chrome (background, badge, header) ALWAYS comes before content
+5. **Documentation**: Update component docs after refactoring field order
+
+### Related Enhancement
+
+The same refactoring session also enhanced MetricsSection:
+
+- Added optional `label` field to StatCard molecule (displays between number and description)
+- Added `gridColumns` enumeration to MetricsSection (options: 2, 3, 4, 6 columns)
+
+See: [MetricsSection Component Guide](../../04-components/specific/metrics-section.md)
+
+---
+
 ## Implementation Checklist
 
 When refactoring a component's field organization:

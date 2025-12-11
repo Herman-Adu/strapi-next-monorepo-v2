@@ -13,9 +13,9 @@ This index provides an overview of all **6 GitHub Actions workflows** that power
 
 **Related Documentation**:
 
-- [Phase 3 Documentation Roadmap](../../12-planning/PHASE-3-DOCUMENTATION-ROADMAP.md)
-- [CI/CD Overview](../ci-cd.md)
-- [E2E Testing Guide](../../13-testing/e2e/README.md)
+- [Phase 3 Documentation Roadmap](/docs/12-planning-phase-3-documentation-roadmap)
+- [CI/CD Overview](/docs/08-devops-ci-cd)
+- [E2E Testing Guide](/docs/13-testing-e2e-readme)
 
 ---
 
@@ -39,7 +39,7 @@ This index provides an overview of all **6 GitHub Actions workflows** that power
 ### 1. CI Workflow (Lint + Build) 🏗️
 
 **Purpose**: Code quality and build verification  
-**Documentation**: [01-ci-workflow.md](./01-ci-workflow.md) ⏳ Coming Soon
+**Documentation**: [01-ci-workflow.md](/docs/08-devops-workflows-01-ci-workflow) ⏳ Coming Soon
 
 **What It Does**:
 
@@ -84,7 +84,7 @@ on:
 ### 2. E2E Testing Workflow 🎭
 
 **Purpose**: End-to-end testing with Playwright  
-**Documentation**: [02-e2e-workflow.md](./02-e2e-workflow.md) ⏳ Coming Soon
+**Documentation**: [02-e2e-workflow.md](/docs/08-devops-workflows-02-e2e-workflow) ⏳ Coming Soon
 
 **What It Does**:
 
@@ -141,7 +141,7 @@ on:
 ### 3. Lighthouse Performance Workflow 💡
 
 **Purpose**: Performance budget enforcement  
-**Documentation**: [03-lighthouse-workflow.md](./03-lighthouse-workflow.md) ⏳ Coming Soon
+**Documentation**: [03-lighthouse-workflow.md](/docs/08-devops-workflows-03-lighthouse-workflow) ⏳ Coming Soon
 
 **What It Does**:
 
@@ -192,7 +192,7 @@ on:
 ### 4. Visual Regression Workflow 👁️
 
 **Purpose**: Chromatic visual testing  
-**Documentation**: [04-visual-regression-workflow.md](./04-visual-regression-workflow.md) ⏳ Coming Soon
+**Documentation**: [04-visual-regression-workflow.md](/docs/08-devops-workflows-04-visual-regression-workflow) ⏳ Coming Soon
 
 **What It Does**:
 
@@ -239,7 +239,7 @@ on:
 ### 5. Cache Cleanup Workflow 🧹
 
 **Purpose**: Prevent GitHub cache limit issues  
-**Documentation**: [05-cache-cleanup-workflow.md](./05-cache-cleanup-workflow.md) ⏳ Coming Soon
+**Documentation**: [05-cache-cleanup-workflow.md](/docs/08-devops-workflows-05-cache-cleanup-workflow) ⏳ Coming Soon
 
 **What It Does**:
 
@@ -278,7 +278,7 @@ on:
 ### 6. Database Backup Workflow 💾
 
 **Purpose**: Daily PostgreSQL backups  
-**Documentation**: [06-database-backup-workflow.md](./06-database-backup-workflow.md) ⏳ Coming Soon
+**Documentation**: [06-database-backup-workflow.md](/docs/08-devops-workflows-06-database-backup-workflow) ⏳ Coming Soon
 
 **What It Does**:
 
@@ -625,11 +625,11 @@ Cleanup Strategy:         Delete >3 days OR oldest if >9 GB
 
 ### Internal Docs
 
-- [Phase 3 Documentation Roadmap](../../12-planning/PHASE-3-DOCUMENTATION-ROADMAP.md)
-- [CI/CD Overview](../ci-cd.md)
-- [E2E Testing Guide](../../13-testing/e2e/README.md)
-- [Test Data Seeding](../../13-testing/e2e/test-data-seeding.md)
-- [Storybook Integration](../../13-testing/README.md)
+- [Phase 3 Documentation Roadmap](/docs/12-planning-phase-3-documentation-roadmap)
+- [CI/CD Overview](/docs/08-devops-ci-cd)
+- [E2E Testing Guide](/docs/13-testing-e2e-readme)
+- [Test Data Seeding](/docs/13-testing-e2e-test-data-seeding)
+- [Storybook Integration](/docs/13-testing-readme)
 
 ### External Resources
 
@@ -709,4 +709,4 @@ Add to README.md:
 
 **Last Updated**: November 30, 2025  
 **Status**: ✅ Active  
-**Next**: [CI Workflow Documentation](./01-ci-workflow.md) ⏳ Coming Soon
+**Next**: [CI Workflow Documentation](/docs/08-devops-workflows-01-ci-workflow) ⏳ Coming Soon

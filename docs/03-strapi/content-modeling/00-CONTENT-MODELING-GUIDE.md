@@ -888,7 +888,7 @@ const blogs = await strapi.entityService.findMany("api::blog.blog", {
 
 1. **Implement in Strapi:** Follow Phase 1-6 checklist
 2. **Populate Sample Data:** Test all relations and queries
-3. **Frontend Integration:** Map to Next.js components ([See Strapi Integration docs](../strapi-integration/README.md))
+3. **Frontend Integration:** Map to Next.js components ([See Strapi Integration docs](/docs/readme))
 4. **Performance Testing:** Monitor query times
 5. **Iterate:** Refine based on editor feedback and performance data
 
@@ -896,11 +896,11 @@ const blogs = await strapi.entityService.findMany("api::blog.blog", {
 
 ## 📚 Related Documentation
 
-- [Collection Types Reference](./01-COLLECTION-TYPES.md) - Detailed schemas
-- [Components Reference](./02-COMPONENTS.md) - Component patterns
-- [Dynamic Zones Guide](./03-DYNAMIC-ZONES.md) - Page builder setup
-- [Relations Deep Dive](./04-RELATIONS.md) - Relationship patterns
-- [Best Practices](./05-BEST-PRACTICES.md) - Comprehensive do's and don'ts
+- [Collection Types Reference](/docs/01-collection-types) - Detailed schemas
+- [Components Reference](/docs/02-components) - Component patterns
+- [Dynamic Zones Guide](/docs/03-dynamic-zones) - Page builder setup
+- [Relations Deep Dive](/docs/04-relations) - Relationship patterns
+- [Best Practices](/docs/05-best-practices) - Comprehensive do's and don'ts
 
 ---
 

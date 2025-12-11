@@ -449,11 +449,11 @@ End-to-end (E2E) tests verify complete user workflows by simulating real user in
 
 Comprehensive E2E testing documentation is available in the `e2e/` subdirectory:
 
-| Guide                                                                    | Purpose                                | Audience           |
-| ------------------------------------------------------------------------ | -------------------------------------- | ------------------ |
-| [E2E Testing Overview](./e2e/README.md)                                  | Quick start, workflow, best practices  | All developers     |
-| [Test Data Seeding](./e2e/test-data-seeding.md)                          | Creating and managing seed scripts     | Backend developers |
-| [Case Study: Seeding Best Practices](./e2e/strapi-seeding-case-study.md) | Deep-dive analysis and lessons learned | Senior developers  |
+| Guide                                                                                | Purpose                                | Audience           |
+| ------------------------------------------------------------------------------------ | -------------------------------------- | ------------------ |
+| [E2E Testing Overview](/docs/13-testing-e2e-readme)                                  | Quick start, workflow, best practices  | All developers     |
+| [Test Data Seeding](/docs/13-testing-e2e-test-data-seeding)                          | Creating and managing seed scripts     | Backend developers |
+| [Case Study: Seeding Best Practices](/docs/13-testing-e2e-strapi-seeding-case-study) | Deep-dive analysis and lessons learned | Senior developers  |
 
 **Quick Links**:
 
@@ -603,8 +603,8 @@ jobs:
 ### Next Steps
 
 1. **Expand test coverage** - See [E2E README](./e2e/README.md#-coverage-goals) for roadmap
-2. **Learn seeding** - Follow [Test Data Seeding Guide](./e2e/test-data-seeding.md)
-3. **Review best practices** - Read [Case Study](./e2e/strapi-seeding-case-study.md)
+2. **Learn seeding** - Follow [Test Data Seeding Guide](/docs/13-testing-e2e-test-data-seeding)
+3. **Review best practices** - Read [Case Study](/docs/13-testing-e2e-strapi-seeding-case-study)
 
 ---
 

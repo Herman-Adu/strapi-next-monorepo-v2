@@ -476,8 +476,8 @@ retries: 2
 ### Documentation
 
 - [Playwright Docs](https://playwright.dev)
-- [E2E Workflow](../../08-devops/workflows/02-e2e-workflow.md)
-- [Hybrid Seeding](../../08-devops/innovations/hybrid-seeding.md)
+- [E2E Workflow](/docs/08-devops-workflows-02-e2e-workflow)
+- [Hybrid Seeding](/docs/08-devops-innovations-hybrid-seeding)
 
 ### Useful Commands
 

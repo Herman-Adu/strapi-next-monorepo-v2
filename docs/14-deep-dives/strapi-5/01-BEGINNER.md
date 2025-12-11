@@ -752,7 +752,7 @@ Changes in Strapi automatically update TypeScript types. Frontend stays in sync.
 
 **You're Ready For**:
 
-- [Strapi 5 Intermediate](./02-INTERMEDIATE.md) - Dynamic zones, populate middleware, config sync
+- [Strapi 5 Intermediate](/docs/14-deep-dives-strapi-5-02-intermediate) - Dynamic zones, populate middleware, config sync
 - Creating more complex content types (relations, components)
 - Understanding Strapi plugins (SEO, user-permissions, etc.)
 
@@ -838,8 +838,8 @@ yarn develop
 
 **Our Monorepo Docs**:
 
-- [Strapi README](../../../apps/strapi/README.md) - App-specific documentation
-- [Component Workflow](../../04-components/workflow.md) - How we build features
+- [Strapi README](/docs/readme) - App-specific documentation
+- [Component Workflow](/docs/04-components-workflow) - How we build features
 - [Config Sync](../../03-strapi/config-sync/) - Team collaboration
 
 **Video Tutorials**:
@@ -873,10 +873,10 @@ yarn develop
 
 ---
 
-**Next**: [Strapi 5 Intermediate](./02-INTERMEDIATE.md) - Dynamic zones, populate middleware, and team workflows
+**Next**: [Strapi 5 Intermediate](/docs/14-deep-dives-strapi-5-02-intermediate) - Dynamic zones, populate middleware, and team workflows
 
 ---
 
 **Last Updated**: December 1, 2025  
 **Article**: Strapi 5 Beginner Guide  
-**Part of**: [Deep Dives - Technical Mastery](../README.md)
+**Part of**: [Deep Dives - Technical Mastery](/docs/14-deep-dives-readme)

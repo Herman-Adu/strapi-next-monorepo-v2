@@ -435,6 +435,19 @@ export interface SectionsBenefitsSection extends Struct.ComponentSchema {
   }
 }
 
+export interface SectionsCkEditorSection extends Struct.ComponentSchema {
+  collectionName: "components_sections_ck_editor_sections"
+  info: {
+    description: "Rich text editor section with full CKEditor5 toolbar, background control, and atomic design pattern"
+    displayName: "CkEditorSection"
+  }
+  attributes: {
+    background: Schema.Attribute.Component<"shared.section-background", false>
+    content: Schema.Attribute.Component<"utilities.ck-editor-content", false> &
+      Schema.Attribute.Required
+  }
+}
+
 export interface SectionsCkeditor extends Struct.ComponentSchema {
   collectionName: "components_sections_ckeditors"
   info: {
@@ -1161,6 +1174,7 @@ declare module "@strapi/strapi" {
       "molecules.stat-card": MoleculesStatCard
       "molecules.testimonial-card": MoleculesTestimonialCard
       "sections.benefits-section": SectionsBenefitsSection
+      "sections.ck-editor-section": SectionsCkEditorSection
       "sections.ckeditor": SectionsCkeditor
       "sections.contact-section": SectionsContactSection
       "sections.faq": SectionsFaq

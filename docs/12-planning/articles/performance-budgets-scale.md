@@ -616,8 +616,8 @@ Total annual value: $60,000 from performance automation
 
 ### Related Documentation
 
-- [Lighthouse Workflow](../../08-devops/workflows/03-lighthouse-workflow.md)
-- [Performance Optimization Guide](../../07-development/performance-optimization.md)
+- [Lighthouse Workflow](/docs/08-devops-workflows-03-lighthouse-workflow)
+- [Performance Optimization Guide](/docs/07-development-performance-optimization)
 - [Next.js Performance Best Practices](https://nextjs.org/docs/pages/building-your-application/optimizing)
 
 ### Tools Used

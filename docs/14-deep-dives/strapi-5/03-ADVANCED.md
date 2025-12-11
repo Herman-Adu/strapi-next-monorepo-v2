@@ -72,7 +72,7 @@ CPU usage: 12% (86% reduction)
 
 ### Strategy 1: Query Optimization with Populate Middleware
 
-You already learned populate middleware in [intermediate guide](./02-INTERMEDIATE.md). Let's go deeper.
+You already learned populate middleware in [intermediate guide](/docs/14-deep-dives-strapi-5-02-intermediate). Let's go deeper.
 
 #### Advanced Populate Patterns
 
@@ -1235,7 +1235,7 @@ When Strapi's core doesn't fit, extend it.
 
 **You're Ready For**:
 
-- [Strapi 5 Best Practices](./04-BEST-PRACTICES.md) - Strategic patterns and team workflows
+- [Strapi 5 Best Practices](/docs/14-deep-dives-strapi-5-04-best-practices) - Strategic patterns and team workflows
 - Building production-grade custom plugins
 - Implementing CI/CD for Strapi deployments
 - Multi-tenant Strapi architectures
@@ -1413,10 +1413,10 @@ Total Annual Value:       $166,840+
 
 ---
 
-**Next**: [Strapi 5 Best Practices](./04-BEST-PRACTICES.md) - Team workflows, strategic patterns, and leadership
+**Next**: [Strapi 5 Best Practices](/docs/14-deep-dives-strapi-5-04-best-practices) - Team workflows, strategic patterns, and leadership
 
 ---
 
 **Last Updated**: December 1, 2025  
 **Article**: Strapi 5 Advanced Guide  
-**Part of**: [Deep Dives - Technical Mastery](../README.md)
+**Part of**: [Deep Dives - Technical Mastery](/docs/14-deep-dives-readme)

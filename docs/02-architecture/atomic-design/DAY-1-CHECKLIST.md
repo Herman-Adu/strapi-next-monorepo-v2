@@ -170,7 +170,7 @@
 - Note which components need testing workflows
 - Identify components that had refactoring issues in past
 - Flag any components with unclear middleware patterns
-- See [Test-Driven Refactoring](../../06-workflows/test-driven-refactoring.md) for discipline
+- See [Test-Driven Refactoring](/docs/06-workflows-test-driven-refactoring) for discipline
 
 ---
 
@@ -309,7 +309,7 @@
 - Could this be simpler?
 - Is this at the right level?
 - What does the content manager experience?
-- **NEW**: Does middleware populate pattern match schema? (See [Middleware Patterns](../../03-strapi/middleware-populate-patterns.md))
+- **NEW**: Does middleware populate pattern match schema? (See [Middleware Patterns](/docs/03-strapi-middleware-populate-patterns))
 
 ### Document Everything
 

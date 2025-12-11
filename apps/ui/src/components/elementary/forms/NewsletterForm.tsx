@@ -36,6 +36,8 @@ export function NewsletterForm({
           title: "Success!",
           description: "Thank you for subscribing to our newsletter.",
           variant: "success",
+          // @ts-ignore - Custom prop for E2E testing
+          "data-testid": "newsletter-form-success-toast",
         })
         form.reset()
         setAgreedToTerms(false)
@@ -87,6 +89,7 @@ export function NewsletterForm({
             type="submit"
             className="absolute top-1/2 right-3 -translate-y-1/2 md:w-fit"
             form={newsletterForm}
+            data-testid="newsletter-footer-submit"
             aria-label="Submit form"
             disabled={
               subscriberMutation.isPending ||
@@ -105,7 +108,7 @@ export function NewsletterForm({
       {/* GDPR Checkbox */}
       {gdpr?.href && (
         <GDPRCheckbox
-          id="newsletter-gdpr-consent"
+          scope="newsletter-footer"
           checked={agreedToTerms}
           onCheckedChange={setAgreedToTerms}
           link={{

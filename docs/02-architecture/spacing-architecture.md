@@ -656,9 +656,9 @@ Parent gap is too small, or main content has negative margin.
 
 ## Related Documentation
 
-- [STYLING_GUIDE.md](./STYLING_GUIDE.md) - Container queries and responsive patterns
-- [COMPONENT_INTEGRATION_GUIDE.md](./COMPONENT_INTEGRATION_GUIDE.md) - Strapi → Frontend workflow
-- [COMPONENT_DEVELOPMENT_GUIDE.md](./COMPONENT_DEVELOPMENT_GUIDE.md) - Component creation patterns
+- [STYLING_GUIDE.md](/docs/styling_guide) - Container queries and responsive patterns
+- [COMPONENT_INTEGRATION_GUIDE.md](/docs/component_integration_guide) - Strapi → Frontend workflow
+- [COMPONENT_DEVELOPMENT_GUIDE.md](/docs/component_development_guide) - Component creation patterns
 
 ---
 

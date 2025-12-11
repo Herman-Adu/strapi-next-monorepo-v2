@@ -776,11 +776,11 @@ Error: Snapshot limit reached (5,000/month on free plan)
 
 ### Internal Documentation
 
-- [Workflows Index](./README.md)
-- [CI Workflow](./01-ci-workflow.md)
-- [E2E Workflow](./02-e2e-workflow.md)
-- [Lighthouse Workflow](./03-lighthouse-workflow.md)
-- [Storybook Setup Guide](../deep-dives/storybook-setup.md) ⏳
+- [Workflows Index](/docs/08-devops-workflows-readme)
+- [CI Workflow](/docs/08-devops-workflows-01-ci-workflow)
+- [E2E Workflow](/docs/08-devops-workflows-02-e2e-workflow)
+- [Lighthouse Workflow](/docs/08-devops-workflows-03-lighthouse-workflow)
+- [Storybook Setup Guide](/docs/deep-dives-storybook-setup) ⏳
 
 ### External Resources
 
@@ -817,4 +817,4 @@ Before merging PR with visual changes:
 **Workflow Version**: 2.0 (onlyChanged optimization)  
 **Stories**: 56+ Storybook components  
 **Snapshot Limit**: 5,000/month (free tier)  
-**Next**: [Cache Cleanup Workflow Documentation](./05-cache-cleanup-workflow.md) ⏳ Coming Soon
+**Next**: [Cache Cleanup Workflow Documentation](/docs/08-devops-workflows-05-cache-cleanup-workflow) ⏳ Coming Soon

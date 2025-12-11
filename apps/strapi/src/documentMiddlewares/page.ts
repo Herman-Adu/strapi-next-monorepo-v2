@@ -286,7 +286,12 @@ const pagePopulateObject: FindOne<"api::page.page">["populate"] = {
       },
       "forms.newsletter-form": { populate: { gdpr: true } },
       "forms.contact-form": { populate: { gdprLink: true } },
-      "utilities.ck-editor-content": true,
+      "sections.ck-editor-section": {
+        populate: {
+          background: true,
+          content: true,
+        },
+      },
     } as any, // Temporary: Allow marquee-section until types are generated
   },
   seo: {

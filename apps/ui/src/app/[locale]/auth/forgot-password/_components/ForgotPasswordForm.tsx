@@ -62,6 +62,7 @@ export function ForgotPasswordForm() {
           size="lg"
           variant="default"
           form={forgotPasswordFormName}
+          data-testid="forgot-password-submit"
         >
           {t("submit")}
         </Button>

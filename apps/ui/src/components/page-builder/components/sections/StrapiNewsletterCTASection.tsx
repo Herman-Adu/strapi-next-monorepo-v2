@@ -42,6 +42,8 @@ export function StrapiNewsletterCTASection({
             title: "Success!",
             description: "Thank you for subscribing to our newsletter.",
             variant: "success",
+            // @ts-ignore - Custom prop for E2E testing
+            "data-testid": "newsletter-cta-success-toast",
           })
 
           // Reset form on success
@@ -177,6 +179,7 @@ export function StrapiNewsletterCTASection({
                   <Button
                     type="submit"
                     size="lg"
+                    data-testid="newsletter-cta-submit"
                     disabled={!agreedToTerms || subscriberMutation.isPending}
                     className="rounded-lg shadow-md transition-shadow hover:shadow-lg"
                   >
@@ -194,6 +197,7 @@ export function StrapiNewsletterCTASection({
                 {/* GDPR Checkbox */}
                 {component.gdprLink && (
                   <GDPRCheckbox
+                    scope="newsletter-cta"
                     checked={agreedToTerms}
                     onCheckedChange={setAgreedToTerms}
                     link={{

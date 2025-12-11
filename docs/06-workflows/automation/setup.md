@@ -321,7 +321,7 @@ You've successfully implemented:
    - [Webhooks Guide](./docs/strapi-integration/README.md#-04-webhooksmd)
    - [Type Generation Guide](./docs/strapi-integration/README.md#-03-type-generationmd)
 
-2. **Phase 2 Automations** (see [AUTOMATION-STRATEGY.md](./docs/AUTOMATION-STRATEGY.md)):
+2. **Phase 2 Automations** (see [AUTOMATION-STRATEGY.md](/docs/docs-automation-strategy)):
 
    - Component Scaffolding CLI
    - Automated Testing in CI
@@ -335,4 +335,4 @@ You've successfully implemented:
 
 ---
 
-**Questions? Check the [Troubleshooting Playbook](./TROUBLESHOOTING_PLAYBOOK.md) or [Automation Strategy](./docs/AUTOMATION-STRATEGY.md)**
+**Questions? Check the [Troubleshooting Playbook](/docs/troubleshooting_playbook) or [Automation Strategy](/docs/docs-automation-strategy)**

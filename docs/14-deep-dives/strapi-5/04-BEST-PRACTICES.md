@@ -474,7 +474,7 @@ Developer E: Manually recreates schema from screenshots
 
 ### Strategy 1: Config Sync as Source of Truth
 
-We covered config sync basics in [intermediate guide](./02-INTERMEDIATE.md). Now: Team workflow patterns.
+We covered config sync basics in [intermediate guide](/docs/14-deep-dives-strapi-5-02-intermediate). Now: Team workflow patterns.
 
 **Workflow Pattern**:
 
@@ -1591,15 +1591,15 @@ Total Annual Value:         $79,475-$106,675/year
 
 **Team Workflow Docs**:
 
-- [Git Strategy](../../workflows-automation/01-GIT-STRATEGY.md)
-- [CI/CD Pipeline](../../workflows-automation/02-CI-CD-PIPELINE.md)
-- [Testing Strategy](../../workflows-automation/03-TESTING-STRATEGY.md)
+- [Git Strategy](/docs/workflows-automation-01-git-strategy)
+- [CI/CD Pipeline](/docs/workflows-automation-02-ci-cd-pipeline)
+- [Testing Strategy](/docs/workflows-automation-03-testing-strategy)
 
 **Strategic Frameworks**:
 
-- [Deep Dives Overview](../README.md) - $151K automation stack
-- [DevOps Implementation](../01-devops-implementation.md) - Infrastructure patterns
-- [Component Architecture](../../../COMPONENT_ARCHITECTURE.md) - Design system thinking
+- [Deep Dives Overview](/docs/14-deep-dives-readme) - $151K automation stack
+- [DevOps Implementation](/docs/01-devops-implementation) - Infrastructure patterns
+- [Component Architecture](/docs/component_architecture) - Design system thinking
 
 ---
 
@@ -1660,5 +1660,5 @@ Total Annual Value:         $79,475-$106,675/year
 
 **Last Updated**: December 1, 2025  
 **Article**: Strapi 5 Best Practices & Strategic Patterns  
-**Part of**: [Deep Dives - Technical Mastery](../README.md)  
-**Series**: [Strapi 5 Mastery](./01-BEGINNER.md) → [Intermediate](./02-INTERMEDIATE.md) → [Advanced](./03-ADVANCED.md) → **Best Practices** ✅
+**Part of**: [Deep Dives - Technical Mastery](/docs/14-deep-dives-readme)  
+**Series**: [Strapi 5 Mastery](/docs/14-deep-dives-strapi-5-01-beginner) → [Intermediate](/docs/14-deep-dives-strapi-5-02-intermediate) → [Advanced](/docs/14-deep-dives-strapi-5-03-advanced) → **Best Practices** ✅

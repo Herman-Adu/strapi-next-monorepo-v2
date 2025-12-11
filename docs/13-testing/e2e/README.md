@@ -17,9 +17,9 @@ This guide covers end-to-end (E2E) testing for the Next.js + Strapi monorepo, in
 
 ### Quick Links
 
-- **[Test Data Seeding Guide](./test-data-seeding.md)** - Practical guide for seeding E2E test data in Strapi
-- **[Strapi Seeding Case Study](./strapi-seeding-case-study.md)** - Deep-dive analysis and best practices learned
-- **[Main Testing Strategy](../README.md)** - Overview of all testing approaches (Storybook, Chromatic, Unit, E2E)
+- **[Test Data Seeding Guide](/docs/13-testing-e2e-test-data-seeding)** - Practical guide for seeding E2E test data in Strapi
+- **[Strapi Seeding Case Study](/docs/13-testing-e2e-strapi-seeding-case-study)** - Deep-dive analysis and best practices learned
+- **[Main Testing Strategy](/docs/13-testing-readme)** - Overview of all testing approaches (Storybook, Chromatic, Unit, E2E)
 
 ---
 
@@ -128,7 +128,7 @@ E2E tests require consistent, predictable test data. We use a **factory pattern*
 6. Verify data created
 ```
 
-**Detailed Guide**: See [Test Data Seeding Guide](./test-data-seeding.md)
+**Detailed Guide**: See [Test Data Seeding Guide](/docs/13-testing-e2e-test-data-seeding)
 
 ---
 
@@ -407,10 +407,10 @@ npx playwright show-report
 
 ### Internal Guides
 
-- [Test Data Seeding Guide](./test-data-seeding.md) - How to seed test data
-- [Strapi Seeding Case Study](./strapi-seeding-case-study.md) - Best practices analysis
-- [Main Testing Strategy](../README.md) - Overview of all testing
-- [Troubleshooting Playbook](../../09-troubleshooting/playbook.md) - Common issues
+- [Test Data Seeding Guide](/docs/13-testing-e2e-test-data-seeding) - How to seed test data
+- [Strapi Seeding Case Study](/docs/13-testing-e2e-strapi-seeding-case-study) - Best practices analysis
+- [Main Testing Strategy](/docs/13-testing-readme) - Overview of all testing
+- [Troubleshooting Playbook](/docs/09-troubleshooting-playbook) - Common issues
 
 ### External Resources
 
@@ -455,4 +455,4 @@ Before considering E2E tests "done":
 
 ---
 
-**Questions?** See [Troubleshooting Guide](../../09-troubleshooting/playbook.md) or ask the team! 🚀
+**Questions?** See [Troubleshooting Guide](/docs/09-troubleshooting-playbook) or ask the team! 🚀

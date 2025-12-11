@@ -343,9 +343,9 @@ git commit -m "refactor: reorder testimonials fields - background first"
 
 ## 📚 Related Documentation
 
-- [COMPONENT_WORKFLOW.md](./COMPONENT_WORKFLOW.md) - Creating new components
-- [STRAPI_BEST_PRACTICES.md](./STRAPI_BEST_PRACTICES.md) - Config Sync best practices
-- [COMPONENT_DEVELOPMENT_GUIDE.md](./COMPONENT_DEVELOPMENT_GUIDE.md) - Overall component patterns
+- [Component Workflow](/docs/04-components-workflow) - Creating new components
+- [STRAPI_BEST_PRACTICES.md](/docs/strapi_best_practices) - Config Sync best practices
+- [COMPONENT_DEVELOPMENT_GUIDE.md](/docs/component_development_guide) - Overall component patterns
 
 ---
 
