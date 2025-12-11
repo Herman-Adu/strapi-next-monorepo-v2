@@ -1,0 +1,91 @@
+docs: comprehensive documentation cleanup & reorganization (Phases 1-4)
+
+OVERVIEW:
+Major documentation reorganization removing root clutter, consolidating 
+historical files, separating content library, and improving navigation.
+All changes are documentation-only with zero code/database impact.
+
+PHASE 1: Root Cleanup (87.5% reduction)
+- Relocated/enhanced 7 root markdown files to proper documentation folders
+- POSTGRES_AUTH_FIX.md to docs/09-troubleshooting/postgresql-authentication.md
+  (89 to 290 lines, added 3 solution approaches + prevention checklist)
+- E2E_DATA_LOSS_INCIDENT_REPORT.md to docs/17-learning-lessons/troubleshooting-lessons/e2e-data-loss-incident.md
+  (349 to 800 lines, full incident narrative + $3K recovery analysis)
+- DOCUMENTATION_REFACTOR_PLAN.md to docs/17-learning-lessons/learning-history/documentation-refactor-2025-11.md
+  (653 to 900 lines, historical record + $78K annual value documentation)
+- BEST_PRACTICE_CHECKLIST.md to docs/06-workflows/best-practice-checklist.md
+  (relocated unchanged, 410 lines)
+- POST_RECOVERY_CONTENT_FIXES.md to docs/07-content-manager/atomic-component-migration.md
+  (370 lines to comprehensive migration guide for content managers)
+- COMPONENT_REFACTORING_SUMMARY.md split into:
+  * docs/04-components/specific/metrics-section.md (component guide)
+  * docs/03-strapi/config-sync/field-organization.md (case study added)
+- SESSION_RECOVERY_CONTACT_FORM_TESTS.md deleted (outdated, superseded)
+- Result: Root folder cleaned (8 to 1 file, only README.md remains)
+
+PHASE 2: Folder Consolidation
+Created archives/ subfolders in 4 locations:
+- docs/11-recovery/archives/ (3 dated session files moved)
+- docs/12-planning/archives/ (3 completed plans moved)
+  * Merged future-considerations-phase-4.md + future-enhancements.md into future-planning.md
+- docs/15-professional-presence/archives/ (content-calendar/ + 2 files moved)
+- docs/07-content-manager/archives/ (2 outdated backup files moved)
+- Result: 18 files archived, historical content preserved but separated
+
+PHASE 3: Content Separation
+- Created top-level content/ folder (peer to docs/)
+- Moved docs/content-extraction/ to content/ with reorganization:
+  * content/articles/ (20 articles across 5 series)
+  * content/tutorials/ (17 tutorials across 4 series)  
+  * content/social-media/ (28 social posts)
+  * content/planning/ (Phase 1-3 content creation documentation)
+- Created comprehensive content/README.md ($32K+ ROI, 65 pieces)
+- Removed docs/content-extraction/ folder completely
+- Updated cross-references in docs/12-planning/ and docs/11-recovery/
+- Result: Clear separation (technical docs vs. content library)
+
+PHASE 4: Quality Pass
+- Updated docs/00-START-HERE.md:
+  * Added content/ folder to structure diagram
+  * Reflected all 17 documentation categories
+  * Fixed cross-reference to atomic-component-migration.md
+  * Updated timestamp (December 11, 2025)
+- Created docs/CHANGELOG-DOCS.md:
+  * Comprehensive record of all structural changes
+  * Phase-by-phase breakdown with file counts
+  * Migration notes for reverting/referencing old structure
+  * Maintenance schedule and standards
+- Verified all cross-references functional
+- Result: Navigation current, changes tracked
+
+STATISTICS:
+- Root files: 8 to 1 (87.5% reduction)
+- Files relocated/enhanced: 7
+- Files archived: 18
+- Files merged: 2 to 1
+- Content pieces moved: 65
+- Archive folders created: 4
+- Documentation files: 172 in docs/, 46 in content/
+- Time investment: ~4 hours
+- Code impact: ZERO (documentation only)
+
+DATABASE RESTORATION CONTEXT:
+This documentation work followed database restoration after E2E test
+incident. Previous commit (564b121) fixed API token type (read-only to
+full-access) which was causing 401 authentication failures. No database
+operations were performed during this documentation cleanup.
+
+SAFETY VERIFICATION:
+- No code changes
+- No database scripts modified
+- No GitHub Actions workflows changed
+- No environment configs touched
+- Only documentation reorganization
+- All dangerous scripts remain unchanged
+- Build safety intact (documentation-only changes)
+
+RELATED COMMITS:
+- 564b121: fix(e2e): change API token type (last push before doc work)
+- 39cb170-193a01e: docs(content-extraction): Phase 3 content creation
+
+See docs/CHANGELOG-DOCS.md for complete change history and migration guide.

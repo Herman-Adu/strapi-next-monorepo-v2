@@ -39,7 +39,7 @@ export function findSimilarSlug(input: string): string | null {
 
   if (matches.length > 0) {
     // Return shortest match (likely most specific)
-    return matches.sort((a, b) => a.length - b.length)[0]
+    return matches.sort((a, b) => a.length - b.length)[0] ?? null
   }
 
   return null
@@ -67,6 +67,9 @@ export function normalizeLegacyLinkServer(href: string): string {
   }
 
   const filename = filenameMatch[1]
+  if (!filename) {
+    return href // No filename found
+  }
 
   // Check legacy mapping first
   if (LEGACY_FILE_MAP[filename]) {

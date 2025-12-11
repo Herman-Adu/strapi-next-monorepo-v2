@@ -1489,5 +1489,7 @@ export function getDocByCategoryAndSubcategory(
   }
 
   // Fallback to first document with lowest order
-  return matchingDocs.sort((a, b) => a.metadata.order - b.metadata.order)[0]
+  return (
+    matchingDocs.sort((a, b) => a.metadata.order - b.metadata.order)[0] ?? null
+  )
 }
