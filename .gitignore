@@ -65,3 +65,23 @@ playwright/.cache/
 
 # TypeScript build info
 *.tsbuildinfo
+
+# TypeScript compiled output - Sentry configs (Next.js uses .ts files)
+apps/ui/sentry.*.config.js
+
+# TypeScript compiled output - Test configs (should use .ts files)
+apps/ui/vitest.config.js
+apps/ui/vitest.setup.js
+apps/ui/playwright.config.js
+
+# TypeScript compiled output - Package files (should only be in dist/)
+packages/shared-data/index.js
+packages/shared-data/strapi-types.js
+
+# TypeScript compiled output - Strapi types (should only be in build/)
+apps/strapi/types/index.js
+apps/strapi/types/internals.js
+
+# TypeScript compiled output - Strapi seed files (should only be in build/)
+apps/strapi/database/seeds/e2e-test-data.js
+apps/strapi/database/seeds/e2e-test-data-safe.js
