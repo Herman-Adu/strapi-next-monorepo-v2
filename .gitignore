@@ -45,3 +45,23 @@ yarn-error.log*
 
 *storybook.log
 storybook-static
+
+# test compiled output (TypeScript)
+apps/ui/e2e/*.js
+apps/ui/e2e/*.js.map
+apps/ui/e2e/*.d.ts
+apps/ui/e2e/**/*.js
+apps/ui/e2e/**/*.js.map
+apps/ui/e2e/**/*.d.ts
+# Preserve config files
+!apps/ui/e2e/*.config.js
+!apps/ui/e2e/playwright.config.js
+
+# test artifacts
+test-results/
+playwright-report/
+playwright/.cache/
+*.trace.zip
+
+# TypeScript build info
+*.tsbuildinfo
