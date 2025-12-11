@@ -1,3 +1,15 @@
 echo '🏗️👷 Styling your changes before committing 👷‍♂️🏗️'
+
+# Check for compiled test output in staging area
+COMPILED_TESTS=$(git diff --cached --name-only | grep -E 'e2e/.*\.spec\.js$')
+
+if [ -n "$COMPILED_TESTS" ]; then
+  echo "❌ ERROR: Attempting to commit compiled test files:"
+  echo "$COMPILED_TESTS"
+  echo ""
+  echo "These are TypeScript compiled output and should not be committed."
+  echo "Run: git reset HEAD apps/ui/e2e/*.spec.js"
+  exit 1
+fi
  
 git rev-parse -q --no-revs --verify MERGE_HEAD || npx lint-staged --verbose --concurrent false
