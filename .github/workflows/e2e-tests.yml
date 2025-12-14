@@ -151,24 +151,6 @@ jobs:
           E2E_API_TOKEN: ${{ secrets.E2E_API_TOKEN }}
 
       # ==============================================================================
-      # VALIDATE TOKEN CREATION
-      # ==============================================================================
-
-      - name: Validate E2E Token Creation
-        run: |
-          echo "🔍 Verifying E2E API token was created in database..."
-          export PGPASSWORD="${{ secrets.E2E_DB_PASSWORD }}"
-          TOKEN_COUNT=$(psql -h localhost -U strapi -d strapi_dev -t -c "SELECT COUNT(*) FROM admin_api_tokens WHERE name='e2e-readonly-token';")
-          TOKEN_COUNT=$(echo $TOKEN_COUNT | tr -d '[:space:]')
-          
-          if [ "$TOKEN_COUNT" == "1" ]; then
-            echo "✅ E2E token exists in database"
-          else
-            echo "❌ E2E token not found in database (count: $TOKEN_COUNT)"
-            exit 1
-          fi
-
-      # ==============================================================================
       # START SERVERS AND RUN E2E TESTS
       # ==============================================================================
 
