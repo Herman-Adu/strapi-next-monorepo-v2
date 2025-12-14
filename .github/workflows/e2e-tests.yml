@@ -98,9 +98,8 @@ jobs:
           WEBHOOKS_POPULATE_RELATIONS=false
           EOF
           
-          # Build UI .env.local from scratch (all required variables present)
+          # Build UI .env.local from scratch (CI uses default Next.js output mode)
           cat > apps/ui/.env.local << 'EOF'
-          NEXT_OUTPUT=
           NEXTAUTH_URL=http://localhost:3000
           NEXTAUTH_SECRET=password_secret
           STRAPI_URL=http://127.0.0.1:1337
