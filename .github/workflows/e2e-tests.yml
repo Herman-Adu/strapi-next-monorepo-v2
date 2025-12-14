@@ -27,8 +27,8 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.head_ref || github.run_id }}
   cancel-in-progress: true
 
-env:
-  STRAPI_REST_READONLY_API_KEY: random-value-just-for-build
+permissions:
+  contents: read
 
 jobs:
   e2e-tests:
@@ -83,7 +83,7 @@ jobs:
           cp apps/ui/.env.local.example apps/ui/.env.local
           
           # CRITICAL: Set API token BEFORE building Next.js (it bakes env vars at build time)
-          echo "STRAPI_REST_READONLY_API_KEY=e2e-test-token-12345678901234567890123456789012" >> apps/ui/.env.local
+          echo "E2E_TESTS_PLAYWRIGHT_API_KEY=${{ secrets.E2E_API_TOKEN }}" >> apps/ui/.env.local
           echo "STRAPI_URL=http://127.0.0.1:1337" >> apps/ui/.env.local
           echo "APP_PUBLIC_URL=http://127.0.0.1:3000" >> apps/ui/.env.local
           
@@ -93,8 +93,11 @@ jobs:
           echo "DATABASE_PORT=5432" >> apps/strapi/.env
           echo "DATABASE_NAME=strapi_dev" >> apps/strapi/.env
           echo "DATABASE_USERNAME=strapi" >> apps/strapi/.env
-          echo "DATABASE_PASSWORD=strapi" >> apps/strapi/.env
+          echo "DATABASE_PASSWORD=${{ secrets.E2E_DB_PASSWORD }}" >> apps/strapi/.env
           echo "DATABASE_SSL=false" >> apps/strapi/.env
+          
+          # Disable preview feature in CI (not currently used)
+          echo "STRAPI_PREVIEW_ENABLED=false" >> apps/strapi/.env
           
           # Next.js configuration for CI - disable standalone output
           echo "NEXT_OUTPUT=" >> apps/ui/.env.local
@@ -105,7 +108,7 @@ jobs:
       - name: Build UI
         run: yarn build:ui
         env:
-          STRAPI_REST_READONLY_API_KEY: e2e-test-token-12345678901234567890123456789012
+          E2E_TESTS_PLAYWRIGHT_API_KEY: ${{ secrets.E2E_API_TOKEN }}
           STRAPI_URL: http://127.0.0.1:1337
           APP_PUBLIC_URL: http://127.0.0.1:3000
 
@@ -138,7 +141,26 @@ jobs:
           chmod +x scripts/seed-e2e-data.sh
           ./scripts/seed-e2e-data.sh
         env:
-          DATABASE_URL: postgresql://strapi:strapi@localhost:5432/strapi_dev
+          DATABASE_URL: postgresql://strapi:${{ secrets.E2E_DB_PASSWORD }}@localhost:5432/strapi_dev
+          E2E_API_TOKEN: ${{ secrets.E2E_API_TOKEN }}
+
+      # ==============================================================================
+      # VALIDATE TOKEN CREATION
+      # ==============================================================================
+
+      - name: Validate E2E Token Creation
+        run: |
+          echo "🔍 Verifying E2E API token was created in database..."
+          export PGPASSWORD="${{ secrets.E2E_DB_PASSWORD }}"
+          TOKEN_COUNT=$(psql -h localhost -U strapi -d strapi_dev -t -c "SELECT COUNT(*) FROM api_tokens WHERE name='e2e-readonly-token';")
+          TOKEN_COUNT=$(echo $TOKEN_COUNT | tr -d '[:space:]')
+          
+          if [ "$TOKEN_COUNT" == "1" ]; then
+            echo "✅ E2E token exists in database"
+          else
+            echo "❌ E2E token not found in database (count: $TOKEN_COUNT)"
+            exit 1
+          fi
 
       # ==============================================================================
       # START SERVERS AND RUN E2E TESTS
@@ -149,8 +171,9 @@ jobs:
           # Start Strapi in background (bypass Turbo, call directly in app directory)
           echo "🚀 Starting Strapi..."
           cd apps/strapi
-          NODE_ENV=production DATABASE_HOST=localhost DATABASE_PORT=5432 DATABASE_NAME=strapi_dev DATABASE_USERNAME=strapi DATABASE_PASSWORD=strapi DATABASE_CLIENT=postgres DATABASE_SSL=false yarn start &
+          NODE_ENV=production DATABASE_HOST=localhost DATABASE_PORT=5432 DATABASE_NAME=strapi_dev DATABASE_USERNAME=strapi DATABASE_PASSWORD="${{ secrets.E2E_DB_PASSWORD }}" DATABASE_CLIENT=postgres DATABASE_SSL=false yarn start &
           STRAPI_PID=$!
+          echo "STRAPI_PID=$STRAPI_PID" >> $GITHUB_ENV
           cd ../..
           
           # Wait for Strapi health check
@@ -174,7 +197,7 @@ jobs:
           # ==============================================================================
           
           echo "🔐 Testing API token authentication..."
-          API_RESPONSE=$(curl -s -w "\n%{http_code}" -H "Authorization: Bearer e2e-test-token-12345678901234567890123456789012" http://127.0.0.1:1337/api/pages)
+          API_RESPONSE=$(curl -s -w "\n%{http_code}" -H "Authorization: Bearer ${{ secrets.E2E_API_TOKEN }}" http://127.0.0.1:1337/api/pages)
           HTTP_CODE=$(echo "$API_RESPONSE" | tail -n1)
           RESPONSE_BODY=$(echo "$API_RESPONSE" | sed '$d')
           
@@ -190,9 +213,7 @@ jobs:
             echo "📄 Full response:"
             echo "$RESPONSE_BODY"
             echo ""
-            echo "🔍 Debugging info:"
-            echo "Token used: e2e-test-token-12345678901234567890123456789012"
-            echo "Token length: 47"
+            echo "🔍 Debugging info: Token authentication failed with HTTP $HTTP_CODE"
             kill $STRAPI_PID $NEXTJS_PID 2>/dev/null || true
             exit 1
           fi
@@ -202,6 +223,7 @@ jobs:
           cd apps/ui
           yarn start &
           NEXTJS_PID=$!
+          echo "NEXTJS_PID=$NEXTJS_PID" >> $GITHUB_ENV
           cd ../..
           
           # Wait for Next.js health check
@@ -270,9 +292,9 @@ jobs:
           exit $TEST_EXIT_CODE
         env:
           CI: true
-          DATABASE_URL: postgresql://strapi:strapi@localhost:5432/strapi_dev
-          # Use the token created by seed script (see apps/strapi/database/seeds/e2e-test-data.ts)
-          STRAPI_REST_READONLY_API_KEY: e2e-test-token-12345678901234567890123456789012
+          DATABASE_URL: postgresql://strapi:${{ secrets.E2E_DB_PASSWORD }}@localhost:5432/strapi_dev
+          # Use the E2E token created by seed script (injected via GitHub Secrets)
+          E2E_TESTS_PLAYWRIGHT_API_KEY: ${{ secrets.E2E_API_TOKEN }}
           STRAPI_URL: http://127.0.0.1:1337
           APP_PUBLIC_URL: http://127.0.0.1:3000
 
@@ -335,6 +357,10 @@ jobs:
         if: always()
         run: |
           echo "🧹 Stopping servers..."
-          kill ${{ env.STRAPI_PID }} 2>/dev/null || true
-          kill ${{ env.NEXTJS_PID }} 2>/dev/null || true
+          if [ ! -z "$STRAPI_PID" ]; then
+            kill $STRAPI_PID 2>/dev/null || true
+          fi
+          if [ ! -z "$NEXTJS_PID" ]; then
+            kill $NEXTJS_PID 2>/dev/null || true
+          fi
           echo "✅ Cleanup complete"

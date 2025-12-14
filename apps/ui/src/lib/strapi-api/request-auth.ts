@@ -2,6 +2,7 @@ import { env } from "@/env.mjs"
 import { getSession } from "next-auth/react"
 
 import { getAuth } from "@/lib/auth"
+import { getE2eToken } from "./get-e2e-token"
 
 // List of allowed endpoints for GET requests to Strapi
 const ALLOWED_GET_STRAPI_ENDPOINTS = ["api/pages", "api/footer", "api/navbar"]
@@ -35,7 +36,7 @@ export const createStrapiAuthHeader = async ({
   }
 
   const apiToken = isReadOnly
-    ? env.STRAPI_REST_READONLY_API_KEY
+    ? getE2eToken() // Uses E2E token in CI, read-only in production
     : env.STRAPI_REST_CUSTOM_API_KEY
 
   return formatStrapiAuthorizationHeader(apiToken)

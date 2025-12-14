@@ -23,6 +23,8 @@ export const env = createEnv({
 
     // Optional environment variables
     STRAPI_REST_CUSTOM_API_KEY: z.string().optional(),
+    // E2E testing token (full-access). Overrides STRAPI_REST_READONLY_API_KEY when defined.
+    E2E_TESTS_PLAYWRIGHT_API_KEY: z.string().optional(),
 
     NEXT_OUTPUT: z.string().optional(),
     WEBPACK_CACHE_TYPE: z.enum(["filesystem", "memory"]).optional(),
@@ -65,6 +67,7 @@ export const env = createEnv({
     STRAPI_URL: process.env.STRAPI_URL,
     STRAPI_REST_READONLY_API_KEY: process.env.STRAPI_REST_READONLY_API_KEY,
     STRAPI_REST_CUSTOM_API_KEY: process.env.STRAPI_REST_CUSTOM_API_KEY,
+    E2E_TESTS_PLAYWRIGHT_API_KEY: process.env.E2E_TESTS_PLAYWRIGHT_API_KEY,
 
     NEXT_OUTPUT: process.env.NEXT_OUTPUT,
     WEBPACK_CACHE_TYPE: process.env.WEBPACK_CACHE_TYPE,

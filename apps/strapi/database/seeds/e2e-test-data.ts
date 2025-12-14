@@ -47,8 +47,15 @@ export default async ({ strapi }: { strapi: any }) => {
       console.log(`   ♻️  Deleted existing token: ${token.name}`)
     }
 
-    // The plain text token that will be used in CI
-    const plainToken = "e2e-test-token-12345678901234567890123456789012"
+    // The plain text token that will be used in CI (from environment variable)
+    const plainToken =
+      process.env.E2E_API_TOKEN || "e2e-test-token-local-dev-fallback"
+
+    if (!process.env.E2E_API_TOKEN) {
+      console.warn(
+        "   ⚠️  WARNING: E2E_API_TOKEN not set, using fallback token (not secure for CI)"
+      )
+    }
 
     // Strapi stores the SHA512 hash of the token, not the plain text
     const hashedToken = crypto
