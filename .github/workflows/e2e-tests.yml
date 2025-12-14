@@ -79,28 +79,35 @@ jobs:
 
       - name: Prepare Environment Variables
         run: |
-          cp apps/strapi/.env.example apps/strapi/.env
-          cp apps/ui/.env.local.example apps/ui/.env.local
+          # Build Strapi .env from scratch (no .env.example copy to avoid empty placeholders)
+          cat > apps/strapi/.env << 'EOF'
+          HOST=0.0.0.0
+          PORT=1337
+          APP_KEYS=l8ftzyp2hNmEtNXBYU5hhQ==,lH7EcVVZxIoTFRorjrV9Vw==,jxWii7EjavRgJ4jYPZ60hA==,FlZM4tyij/HDFcKZhsmlXQ==
+          API_TOKEN_SALT=usReW/cYjLHmpLEoRnWf+g==
+          ADMIN_JWT_SECRET=Xw39b/xXxEHW1x1WMM6ugQ==
+          JWT_SECRET=ShuOcfjTi/RwcchWEIKYKA==
+          DATABASE_CLIENT=postgres
+          DATABASE_HOST=localhost
+          DATABASE_PORT=5432
+          DATABASE_NAME=strapi_dev
+          DATABASE_USERNAME=strapi
+          DATABASE_PASSWORD=${{ secrets.E2E_DB_PASSWORD }}
+          DATABASE_SSL=false
+          STRAPI_PREVIEW_ENABLED=false
+          WEBHOOKS_POPULATE_RELATIONS=false
+          EOF
           
-          # CRITICAL: Set API token BEFORE building Next.js (it bakes env vars at build time)
-          echo "E2E_TESTS_PLAYWRIGHT_API_KEY=${{ secrets.E2E_API_TOKEN }}" >> apps/ui/.env.local
-          echo "STRAPI_URL=http://127.0.0.1:1337" >> apps/ui/.env.local
-          echo "APP_PUBLIC_URL=http://127.0.0.1:3000" >> apps/ui/.env.local
-          
-          # Database configuration for CI
-          echo "DATABASE_CLIENT=postgres" >> apps/strapi/.env
-          echo "DATABASE_HOST=localhost" >> apps/strapi/.env
-          echo "DATABASE_PORT=5432" >> apps/strapi/.env
-          echo "DATABASE_NAME=strapi_dev" >> apps/strapi/.env
-          echo "DATABASE_USERNAME=strapi" >> apps/strapi/.env
-          echo "DATABASE_PASSWORD=${{ secrets.E2E_DB_PASSWORD }}" >> apps/strapi/.env
-          echo "DATABASE_SSL=false" >> apps/strapi/.env
-          
-          # Disable preview feature in CI (not currently used)
-          echo "STRAPI_PREVIEW_ENABLED=false" >> apps/strapi/.env
-          
-          # Next.js configuration for CI - disable standalone output
-          echo "NEXT_OUTPUT=" >> apps/ui/.env.local
+          # Build UI .env.local from scratch (all required variables present)
+          cat > apps/ui/.env.local << 'EOF'
+          NEXT_OUTPUT=
+          NEXTAUTH_URL=http://localhost:3000
+          NEXTAUTH_SECRET=password_secret
+          STRAPI_URL=http://127.0.0.1:1337
+          STRAPI_REST_READONLY_API_KEY=${{ secrets.E2E_API_TOKEN }}
+          E2E_TESTS_PLAYWRIGHT_API_KEY=${{ secrets.E2E_API_TOKEN }}
+          APP_PUBLIC_URL=http://127.0.0.1:3000
+          EOF
 
       - name: Build Strapi
         run: yarn build:strapi
