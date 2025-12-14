@@ -57,11 +57,10 @@ export default async ({ strapi }: { strapi: any }) => {
       )
     }
 
-    // Strapi stores the SHA512 hash of the token, not the plain text
-    const hashedToken = crypto
-      .createHash("sha512")
-      .update(plainToken)
-      .digest("base64")
+    // Strapi stores the SHA512 hash of the token WITH SALT, not just the plain token
+    // Must use strapi.get('token').hash() to match Strapi's internal hashing
+    const tokenService = strapi.get("token")
+    const hashedToken = tokenService.hash(plainToken)
 
     // Create new API token with full-access permissions for E2E tests
     // Note: Using full-access because read-only type doesn't grant API access by default
