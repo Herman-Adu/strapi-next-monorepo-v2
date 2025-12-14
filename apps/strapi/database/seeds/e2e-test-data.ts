@@ -57,10 +57,17 @@ export default async ({ strapi }: { strapi: any }) => {
       )
     }
 
-    // Strapi stores the SHA512 hash of the token WITH SALT, not just the plain token
-    // Must use strapi.get('token').hash() to match Strapi's internal hashing
-    const tokenService = strapi.get("token")
-    const hashedToken = tokenService.hash(plainToken)
+    // Strapi hashes API tokens with: SHA512(API_TOKEN_SALT + plainToken)
+    // We need to replicate this exact hashing to match Strapi's authentication
+    const apiTokenSalt = process.env.API_TOKEN_SALT
+    if (!apiTokenSalt) {
+      throw new Error("API_TOKEN_SALT environment variable is required for token hashing")
+    }
+    
+    const hashedToken = crypto
+      .createHash("sha512")
+      .update(`${apiTokenSalt}${plainToken}`)
+      .digest("hex")
 
     // Create new API token with full-access permissions for E2E tests
     // Note: Using full-access because read-only type doesn't grant API access by default
