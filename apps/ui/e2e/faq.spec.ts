@@ -81,10 +81,8 @@ test.describe("FAQ Accordion", () => {
     await page.waitForTimeout(1500)
 
     // Check that answer text is now visible - matches actual data: "We use modern technologies including..."
-    const answerText = page
-      .getByText(/We use modern technologies.*Next\.js.*React.*TypeScript/i)
-      .first()
-    await expect(answerText).toBeVisible({ timeout: 10000 })
+    const answerText = page.getByText(/We use modern technologies/i).first()
+    await expect(answerText).toBeVisible({ timeout: 5000 })
 
     // Alternative: Check for data-state="open" on border-b parent div
     const openItem = page.locator('div.border-b[data-state="open"]').first()

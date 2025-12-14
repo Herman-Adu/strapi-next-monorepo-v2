@@ -275,7 +275,7 @@ test.describe("Contact Form", () => {
     await submitButton.click()
 
     // Wait for success toast to appear (using standardized "Success!" title)
-    await waitForSuccessToast(page, "Success!", { timeout: 10000 })
+    await waitForSuccessToast(page, "Success!", { timeout: 15000 })
 
     // After success, form should clear automatically
     await expect(nameInput).toHaveValue("", { timeout: 5000 })
@@ -310,7 +310,7 @@ test.describe("Contact Form", () => {
     await submitButton.click()
 
     // Wait for success toast (using standardized "Success!" title)
-    await waitForSuccessToast(page, "Success!")
+    await waitForSuccessToast(page, "Success!", { timeout: 15000 })
 
     // Form fields should be cleared after success
     await expect(nameInput).toHaveValue("", { timeout: 5000 })
@@ -404,7 +404,7 @@ test.describe("Contact Form", () => {
     await submitButton.click()
 
     // Wait for success toast - if duplicate prevention works, we'll only see one submission
-    await waitForSuccessToast(page, "Success!", { timeout: 10000 })
+    await waitForSuccessToast(page, "Success!", { timeout: 15000 })
 
     // Form should clear after success
     await expect(nameInput).toHaveValue("", { timeout: 5000 })

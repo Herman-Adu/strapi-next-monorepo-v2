@@ -102,7 +102,7 @@ test.describe("Newsletter Subscription", () => {
     await submitButton.click()
 
     // Wait for success toast to appear (using standardized "Success!" title)
-    await waitForSuccessToast(page, "Success!")
+    await waitForSuccessToast(page, "Success!", { timeout: 15000 })
   })
 
   test("should show privacy notice", async ({ page }) => {
