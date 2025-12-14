@@ -158,7 +158,7 @@ jobs:
         run: |
           echo "🔍 Verifying E2E API token was created in database..."
           export PGPASSWORD="${{ secrets.E2E_DB_PASSWORD }}"
-          TOKEN_COUNT=$(psql -h localhost -U strapi -d strapi_dev -t -c "SELECT COUNT(*) FROM api_tokens WHERE name='e2e-readonly-token';")
+          TOKEN_COUNT=$(psql -h localhost -U strapi -d strapi_dev -t -c "SELECT COUNT(*) FROM admin_api_tokens WHERE name='e2e-readonly-token';")
           TOKEN_COUNT=$(echo $TOKEN_COUNT | tr -d '[:space:]')
           
           if [ "$TOKEN_COUNT" == "1" ]; then
