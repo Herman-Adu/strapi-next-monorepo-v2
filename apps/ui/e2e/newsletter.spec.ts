@@ -5,6 +5,7 @@ import {
   setStandardTimeout,
   waitForSuccessToast,
 } from "./utils/test-helpers"
+import { setupApiMocks } from "./fixtures/mock-api"
 
 test.describe("Newsletter Subscription", () => {
   // Run tests serially to avoid race conditions with parallel execution
@@ -13,6 +14,9 @@ test.describe("Newsletter Subscription", () => {
   test.beforeEach(async ({ page }) => {
     // Increase timeout for slow dev server
     test.setTimeout(setStandardTimeout())
+
+    // Setup API mocking before navigation
+    await setupApiMocks(page)
 
     // Use helper to navigate and wait for content
     await navigateAndWaitForContent(

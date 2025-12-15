@@ -1,8 +1,10 @@
 import { test, expect } from "@playwright/test"
+import { setupApiMocks } from "./fixtures/mock-api"
 
 test.describe("Homepage", () => {
   test("should load successfully", async ({ page }) => {
     test.setTimeout(60000) // Increased timeout for initial page load
+    await setupApiMocks(page)
     await page.goto("/en", { waitUntil: "domcontentloaded" })
 
     // Wait for page to be interactive - no networkidle due to Next.js HMR/websockets

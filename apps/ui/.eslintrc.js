@@ -17,6 +17,18 @@ module.exports = {
   parserOptions: {
     project: true,
   },
+  overrides: [
+    {
+      files: ["e2e/**/*.ts", "tests/**/*.ts"],
+      parserOptions: {
+        project: false,
+      },
+      rules: {
+        "@typescript-eslint/no-floating-promises": "off",
+        "@typescript-eslint/no-misused-promises": "off",
+      },
+    },
+  ],
   rules: {
     "no-console": ["warn", { allow: ["warn", "error"] }],
     "@next/next/no-html-link-for-pages": "off",

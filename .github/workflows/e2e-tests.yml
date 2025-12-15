@@ -33,23 +33,8 @@ permissions:
 jobs:
   e2e-tests:
     name: E2E Tests (Playwright)
-    timeout-minutes: 15  # Reduced from 30 - optimized workflow
+    timeout-minutes: 10  # Reduced - no Strapi startup needed
     runs-on: ubuntu-latest
-
-    services:
-      postgres:
-        image: postgres:16-alpine
-        env:
-          POSTGRES_USER: strapi
-          POSTGRES_PASSWORD: strapi
-          POSTGRES_DB: strapi_dev
-        options: >-
-          --health-cmd "pg_isready -U strapi"
-          --health-interval 10s
-          --health-timeout 5s
-          --health-retries 20
-        ports:
-          - 5432:5432
 
     steps:
       - name: Check out code
@@ -109,183 +94,16 @@ jobs:
           APP_PUBLIC_URL=http://127.0.0.1:3000
           EOF
 
-      - name: Build Strapi
-        run: yarn build:strapi
-
       - name: Build UI
         run: yarn build:ui
-        env:
-          E2E_TESTS_PLAYWRIGHT_API_KEY: ${{ secrets.E2E_API_TOKEN }}
-          STRAPI_URL: http://127.0.0.1:1337
-          APP_PUBLIC_URL: http://127.0.0.1:3000
 
-      # ==============================================================================
-      # VALIDATE POSTGRES CONNECTION
-      # ==============================================================================
-
-      - name: Wait for Postgres (validate strapi user and database)
+      - name: Run E2E Tests
         run: |
-          export PGPASSWORD=strapi
-          attempts=0
-          until psql -h localhost -U strapi -d strapi_dev -c '\q' >/dev/null 2>&1; do
-            attempts=$((attempts+1))
-            if [ $attempts -gt 30 ]; then
-              echo "❌ Postgres did not become available for user 'strapi' and database 'strapi_dev' after $attempts attempts"
-              exit 1
-            fi
-            echo "⏳ Waiting for Postgres to accept connections as 'strapi' to database 'strapi_dev' (attempt $attempts/30)..."
-            sleep 2
-          done
-          echo "✅ Postgres is accepting connections as 'strapi' to database 'strapi_dev'"
-
-      # ==============================================================================
-      # SEED E2E TEST DATA
-      # ==============================================================================
-
-      - name: Seed E2E Test Data
-        run: |
-          cd apps/strapi
-          chmod +x scripts/seed-e2e-data.sh
-          ./scripts/seed-e2e-data.sh
-        env:
-          DATABASE_URL: postgresql://strapi:${{ secrets.E2E_DB_PASSWORD }}@localhost:5432/strapi_dev
-          E2E_API_TOKEN: ${{ secrets.E2E_API_TOKEN }}
-
-      - name: Debug - Verify Token in Database
-        run: |
-          cd apps/strapi
-          chmod +x scripts/debug-token.sh
-          ./scripts/debug-token.sh || echo "⚠️  Debug script failed, continuing..."
-        env:
-          DATABASE_URL: postgresql://strapi:${{ secrets.E2E_DB_PASSWORD }}@localhost:5432/strapi_dev
-          E2E_DB_PASSWORD: ${{ secrets.E2E_DB_PASSWORD }}
-          E2E_API_TOKEN: ${{ secrets.E2E_API_TOKEN }}
-
-      # ==============================================================================
-      # START SERVERS AND RUN E2E TESTS
-      # ==============================================================================
-
-      - name: Start Servers and Run E2E Tests
-        run: |
-          # Start Strapi in background (bypass Turbo, call directly in app directory)
-          echo "🚀 Starting Strapi..."
-          cd apps/strapi
-          NODE_ENV=production DATABASE_HOST=localhost DATABASE_PORT=5432 DATABASE_NAME=strapi_dev DATABASE_USERNAME=strapi DATABASE_PASSWORD="${{ secrets.E2E_DB_PASSWORD }}" DATABASE_CLIENT=postgres DATABASE_SSL=false yarn start &
-          STRAPI_PID=$!
-          echo "STRAPI_PID=$STRAPI_PID" >> $GITHUB_ENV
-          cd ../..
-          
-          # Wait for Strapi health check
-          echo "⏳ Waiting for Strapi to be ready..."
-          timeout=60
-          elapsed=0
-          until curl -s http://127.0.0.1:1337/_health > /dev/null 2>&1; do
-            if [ $elapsed -ge $timeout ]; then
-              echo "❌ Strapi failed to start within $timeout seconds"
-              kill $STRAPI_PID 2>/dev/null || true
-              exit 1
-            fi
-            sleep 5
-            elapsed=$((elapsed + 5))
-            echo "  ⏱️  Waiting... ($elapsed/$timeout seconds)"
-          done
-          echo "✅ Strapi is ready at http://127.0.0.1:1337!"
-          
-          # ==============================================================================
-          # TEST API TOKEN AUTHENTICATION
-          # ==============================================================================
-          
-          echo "🔐 Testing API token authentication..."
-          API_RESPONSE=$(curl -s -w "\n%{http_code}" -H "Authorization: Bearer ${{ secrets.E2E_API_TOKEN }}" http://127.0.0.1:1337/api/pages)
-          HTTP_CODE=$(echo "$API_RESPONSE" | tail -n1)
-          RESPONSE_BODY=$(echo "$API_RESPONSE" | sed '$d')
-          
-          echo "HTTP Status: $HTTP_CODE"
-          
-          if [ "$HTTP_CODE" == "200" ]; then
-            echo "✅ API token authentication successful!"
-            echo "📄 Response preview:"
-            echo "$RESPONSE_BODY" | head -c 200
-            echo "..."
-          else
-            echo "❌ API token authentication FAILED!"
-            echo "📄 Full response:"
-            echo "$RESPONSE_BODY"
-            echo ""
-            echo "🔍 Debugging info: Token authentication failed with HTTP $HTTP_CODE"
-            kill $STRAPI_PID $NEXTJS_PID 2>/dev/null || true
-            exit 1
-          fi
-          
-          # Start Next.js in background (bypass Turbo, call directly in app directory)
-          echo "🚀 Starting Next.js..."
-          cd apps/ui
-          yarn start &
-          NEXTJS_PID=$!
-          echo "NEXTJS_PID=$NEXTJS_PID" >> $GITHUB_ENV
-          cd ../..
-          
-          # Wait for Next.js health check
-          echo "⏳ Waiting for Next.js to be ready..."
-          timeout=60
-          elapsed=0
-          until curl -s http://127.0.0.1:3000 > /dev/null 2>&1; do
-            if [ $elapsed -ge $timeout ]; then
-              echo "❌ Next.js failed to start within $timeout seconds"
-              kill $STRAPI_PID $NEXTJS_PID 2>/dev/null || true
-              exit 1
-            fi
-            sleep 5
-            elapsed=$((elapsed + 5))
-            echo "  ⏱️  Waiting... ($elapsed/$timeout seconds)"
-          done
-          echo "✅ Next.js is ready at http://127.0.0.1:3000!"
-          
-          # Verify both servers are still responding before running tests
-          echo "🔍 Verifying servers are still responding..."
-          
-          # Give servers a moment to fully stabilize after startup
-          sleep 3
-          
-          # Verify Strapi (with retries for stability)
-          attempts=0
-          until curl -f http://127.0.0.1:1337/_health > /dev/null 2>&1; do
-            attempts=$((attempts+1))
-            if [ $attempts -gt 5 ]; then
-              echo "⚠️ Strapi health check failed after $attempts attempts!"
-              kill $STRAPI_PID $NEXTJS_PID 2>/dev/null || true
-              exit 1
-            fi
-            echo "  🔄 Strapi verification attempt $attempts/5..."
-            sleep 2
-          done
-          
-          # Verify Next.js (with retries for stability)
-          attempts=0
-          until curl -f http://127.0.0.1:3000 > /dev/null 2>&1; do
-            attempts=$((attempts+1))
-            if [ $attempts -gt 5 ]; then
-              echo "⚠️ Next.js health check failed after $attempts attempts!"
-              kill $STRAPI_PID $NEXTJS_PID 2>/dev/null || true
-              exit 1
-            fi
-            echo "  🔄 Next.js verification attempt $attempts/5..."
-            sleep 2
-          done
-          
-          echo "✅ Both servers verified and stable!"
-          
-          # Run E2E tests (servers still running in background)
-          # Run Playwright directly to avoid Turbo rebuilding dependencies
-          echo "🧪 Running E2E tests..."
+          echo "🧪 Running E2E tests with mocked API..."
           cd apps/ui
           npx playwright test
           TEST_EXIT_CODE=$?
           cd ../..
-          
-          # Cleanup servers
-          echo "🧹 Stopping servers..."
-          kill $STRAPI_PID $NEXTJS_PID 2>/dev/null || true
           
           # Exit with test exit code
           exit $TEST_EXIT_CODE

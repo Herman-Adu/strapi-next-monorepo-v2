@@ -1,4 +1,5 @@
 import { test, expect } from "@playwright/test"
+import { setupApiMocks } from "./fixtures/mock-api"
 
 test.describe("FAQ Accordion", () => {
   // Run tests serially to avoid race conditions with parallel execution
@@ -7,6 +8,9 @@ test.describe("FAQ Accordion", () => {
   test.beforeEach(async ({ page }) => {
     // Increase timeout for slow dev server
     test.setTimeout(60000)
+
+    // Setup API mocking
+    await setupApiMocks(page)
 
     await page.goto("/en/e2e-test-page", {
       waitUntil: "domcontentloaded",

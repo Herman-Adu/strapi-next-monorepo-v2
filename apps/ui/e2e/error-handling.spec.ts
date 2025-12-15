@@ -3,12 +3,14 @@ import {
   navigateAndWaitForContent,
   checkGDPRCheckboxIfPresent,
 } from "./utils/test-helpers"
+import { setupApiMocks } from "./fixtures/mock-api"
 
 test.describe("Error Handling", () => {
   // Run tests serially to avoid dev server exhaustion from rapid navigations
   test.describe.configure({ mode: "serial" })
 
   test("should display 404 page for non-existent routes", async ({ page }) => {
+    // No API mocking for 404 test
     await page.goto("/en/this-page-does-not-exist-12345", {
       waitUntil: "domcontentloaded",
       timeout: 15000,

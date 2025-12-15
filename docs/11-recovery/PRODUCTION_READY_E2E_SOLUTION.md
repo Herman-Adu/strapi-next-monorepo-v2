@@ -51,15 +51,18 @@ Separate Integration Tests → Real Strapi API
 **From Official Docs** (playwright.dev/docs/best-practices):
 
 1. ❌ **"Avoid testing third-party dependencies"**
+
    - Your E2E tests depend on Strapi API (third-party CMS)
    - Should only test UI behavior, not backend integration
 
 2. ❌ **"Test user-visible behavior"**
+
    - `api-integration.spec.ts` tests console errors and network failures
    - Users don't see console logs or network requests
    - This is integration testing, not E2E testing
 
 3. ❌ **"Use the Playwright Network API"**
+
    - Not using `page.route()` to mock API responses
    - Missing opportunity for fast, isolated tests
 
@@ -94,7 +97,7 @@ export const mockE2EPageData = {
           placeholderText: "your.email@example.com",
           buttonText: "Subscribe",
           successMessage: "Thank you for subscribing!",
-          errorMessage: "Something went wrong..."
+          errorMessage: "Something went wrong...",
         },
         {
           __component: "sections.faq",
@@ -104,19 +107,19 @@ export const mockE2EPageData = {
             {
               id: 1,
               question: "What is this platform?",
-              answer: "This is a demo platform..."
-            }
-          ]
+              answer: "This is a demo platform...",
+            },
+          ],
         },
         {
           __component: "sections.contact-section",
           id: 3,
           heading: "Get in Touch",
-          description: "We'd love to hear from you"
-        }
-      ]
-    }
-  }
+          description: "We'd love to hear from you",
+        },
+      ],
+    },
+  },
 }
 ```
 
@@ -125,35 +128,39 @@ export const mockE2EPageData = {
 **File**: `apps/ui/e2e/fixtures/mock-api.ts`
 
 ```typescript
-import { Page } from '@playwright/test'
-import { mockE2EPageData } from './mock-e2e-page'
+import { Page } from "@playwright/test"
+import { mockE2EPageData } from "./mock-e2e-page"
 
 export async function setupApiMocks(page: Page) {
   // Mock Strapi API pages endpoint
-  await page.route('**/api/pages*', async (route) => {
+  await page.route("**/api/pages*", async (route) => {
     const url = route.request().url()
-    
-    if (url.includes('/api/pages')) {
+
+    if (url.includes("/api/pages")) {
       return route.fulfill({
         status: 200,
-        contentType: 'application/json',
-        body: JSON.stringify(mockE2EPageData)
+        contentType: "application/json",
+        body: JSON.stringify(mockE2EPageData),
       })
     }
-    
+
     route.continue()
   })
 
   // Mock other API endpoints as needed
-  await page.route('**/api/navbar*', route => route.fulfill({
-    status: 200,
-    body: JSON.stringify({ data: { attributes: { links: [] } } })
-  }))
+  await page.route("**/api/navbar*", (route) =>
+    route.fulfill({
+      status: 200,
+      body: JSON.stringify({ data: { attributes: { links: [] } } }),
+    })
+  )
 
-  await page.route('**/api/footer*', route => route.fulfill({
-    status: 200,
-    body: JSON.stringify({ data: { attributes: { links: [] } } })
-  }))
+  await page.route("**/api/footer*", (route) =>
+    route.fulfill({
+      status: 200,
+      body: JSON.stringify({ data: { attributes: { links: [] } } }),
+    })
+  )
 }
 ```
 
@@ -172,7 +179,7 @@ import { setupApiMocks } from "./fixtures/mock-api"
 test.beforeEach(async ({ page }) => {
   // Add API mocking FIRST
   await setupApiMocks(page)
-  
+
   // Then navigate (will use mocked API)
   await navigateAndWaitForContent(...)
 })
@@ -185,6 +192,7 @@ test.beforeEach(async ({ page }) => {
 **Reason**: This file tests API behavior, not UI behavior. Move to integration test suite later.
 
 **Files to keep** (UI-focused):
+
 - `newsletter.spec.ts` ✅
 - `faq.spec.ts` ✅
 - `contact-form.spec.ts` ✅
@@ -206,13 +214,15 @@ test("should have clean console with no API errors", async ({ page }) => {
 // KEEP THIS - tests UI error states
 test("should show error message when API fails", async ({ page }) => {
   // Mock failed API response
-  await page.route('**/api/pages*', route => route.fulfill({
-    status: 500,
-    body: JSON.stringify({ error: "Internal Server Error" })
-  }))
-  
-  await page.goto('/en/e2e-test-page')
-  
+  await page.route("**/api/pages*", (route) =>
+    route.fulfill({
+      status: 500,
+      body: JSON.stringify({ error: "Internal Server Error" }),
+    })
+  )
+
+  await page.goto("/en/e2e-test-page")
+
   // Verify UI shows error to user
   await expect(page.getByText(/error|something went wrong/i)).toBeVisible()
 })
@@ -227,15 +237,15 @@ Remove unnecessary steps:
 ```yaml
 # DELETE - No longer needed with mocked API
 - name: Seed E2E Test Data
-- name: Debug - Verify Token in Database  
-- name: Start Strapi  # Don't need real Strapi
+- name: Debug - Verify Token in Database
+- name: Start Strapi # Don't need real Strapi
 
 # KEEP - Still need to build Next.js
 - name: Build UI
   run: yarn build:ui
   env:
-    NEXT_PUBLIC_STRAPI_API_URL: http://localhost:1337  # Mocked
-    STRAPI_REST_READONLY_API_KEY: mock-token  # Doesn't matter
+    NEXT_PUBLIC_STRAPI_API_URL: http://localhost:1337 # Mocked
+    STRAPI_REST_READONLY_API_KEY: mock-token # Doesn't matter
 
 # UPDATE - Simplified test run
 - name: Run E2E Tests
@@ -266,19 +276,19 @@ apps/ui/tests/integration/
 **Config**: `apps/ui/tests/integration/playwright.config.ts`
 
 ```typescript
-import { defineConfig } from '@playwright/test'
+import { defineConfig } from "@playwright/test"
 
 export default defineConfig({
-  testDir: './',
+  testDir: "./",
   timeout: 30000,
   use: {
-    baseURL: process.env.STRAPI_API_URL || 'http://127.0.0.1:1337',
+    baseURL: process.env.STRAPI_API_URL || "http://127.0.0.1:1337",
   },
   // Only run in CI on schedule or manual trigger
   projects: [
     {
-      name: 'integration-tests',
-      testMatch: '**/*.spec.ts',
+      name: "integration-tests",
+      testMatch: "**/*.spec.ts",
     },
   ],
 })
@@ -287,15 +297,15 @@ export default defineConfig({
 **Test**: `api-authentication.spec.ts`
 
 ```typescript
-import { test, expect } from '@playwright/test'
+import { test, expect } from "@playwright/test"
 
-test('API token authentication works', async ({ request }) => {
-  const response = await request.get('/api/pages', {
+test("API token authentication works", async ({ request }) => {
+  const response = await request.get("/api/pages", {
     headers: {
-      Authorization: `Bearer ${process.env.E2E_API_TOKEN}`
-    }
+      Authorization: `Bearer ${process.env.E2E_API_TOKEN}`,
+    },
   })
-  
+
   expect(response.status()).toBe(200)
   const data = await response.json()
   expect(data.data).toBeDefined()
@@ -310,33 +320,33 @@ test('API token authentication works', async ({ request }) => {
 name: Integration Tests
 
 on:
-  workflow_dispatch:  # Manual trigger
+  workflow_dispatch: # Manual trigger
   schedule:
-    - cron: '0 2 * * 1'  # Weekly Monday 2 AM
+    - cron: "0 2 * * 1" # Weekly Monday 2 AM
 
 jobs:
   integration-tests:
     runs-on: ubuntu-latest
     services:
-      postgres:  # Only for integration tests
+      postgres: # Only for integration tests
         image: postgres:16-alpine
         # ... postgres config
-    
+
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
-      
+
       - name: Build Strapi
         run: yarn build:strapi
-      
+
       - name: Seed Database
         run: ./apps/strapi/scripts/seed-e2e-data.sh
         env:
           E2E_API_TOKEN: ${{ secrets.E2E_API_TOKEN }}
-      
+
       - name: Start Strapi
         run: yarn start:strapi &
-      
+
       - name: Run Integration Tests
         run: yarn test:integration
         env:
@@ -447,6 +457,7 @@ Total: 2.5 min (E2E) + 4 min (Integration weekly)
 **Dependencies**: None (self-contained)
 
 **What to test**:
+
 - ✅ User can navigate pages
 - ✅ User can submit forms
 - ✅ User can interact with UI elements
@@ -454,6 +465,7 @@ Total: 2.5 min (E2E) + 4 min (Integration weekly)
 - ✅ Error states display correctly
 
 **What NOT to test**:
+
 - ❌ API returns correct data (integration test)
 - ❌ Database stores data correctly (integration test)
 - ❌ Console has no errors (not user-visible)
@@ -468,6 +480,7 @@ Total: 2.5 min (E2E) + 4 min (Integration weekly)
 **Dependencies**: Strapi, PostgreSQL, seeded data
 
 **What to test**:
+
 - ✅ API authentication works
 - ✅ Data fetches correctly from Strapi
 - ✅ Error responses handled properly
@@ -482,6 +495,7 @@ Total: 2.5 min (E2E) + 4 min (Integration weekly)
 **Dependencies**: None (fully mocked)
 
 **Current State**: ✅ Already correct!
+
 - You're already mocking Next.js router in Vitest
 - Tests run fast and reliably
 - No changes needed here
@@ -493,6 +507,7 @@ Total: 2.5 min (E2E) + 4 min (Integration weekly)
 ### Current Approach (Real API)
 
 **Costs**:
+
 - 5+ min CI time per run
 - Requires PostgreSQL service ($)
 - Complex debugging (token auth, database, etc.)
@@ -500,15 +515,18 @@ Total: 2.5 min (E2E) + 4 min (Integration weekly)
 - Developer frustration (days spent debugging)
 
 **Benefits**:
+
 - Tests "real" integration (but so do integration tests)
 
 ### Recommended Approach (Mocked API)
 
 **Costs**:
+
 - Need to maintain mock data fixtures
 - Separate integration test suite
 
 **Benefits**:
+
 - 2.5 min CI time (50% faster)
 - No database needed (save $$)
 - Simple debugging (just UI)
@@ -527,13 +545,14 @@ Total: 2.5 min (E2E) + 4 min (Integration weekly)
 
 1. **Playwright Official Recommendation**:
    > "Avoid testing third-party dependencies"
-   
 2. **Industry Best Practice**:
+
    - Clerk (auth platform) mocks API in E2E: github.com/clerk/playwright-e2e-template
    - Vercel mocks API in Next.js E2E tests
    - React Testing Library recommends mocking external services
 
 3. **Your Current Pain Point**:
+
    - Spent 2+ days debugging API authentication
    - Tests still don't work
    - Problem is architectural, not technical
@@ -553,14 +572,17 @@ Total: 2.5 min (E2E) + 4 min (Integration weekly)
 ### Today (2-3 hours)
 
 1. **Create mock fixtures** (30 min)
+
    - Copy actual API response structure
    - Save as TypeScript fixtures
 
 2. **Add API mocking** (30 min)
+
    - Create setupApiMocks helper
    - Add to all test files
 
 3. **Update workflow** (15 min)
+
    - Remove Strapi/database steps
    - Simplify to just Build UI + Run Tests
 
@@ -572,10 +594,12 @@ Total: 2.5 min (E2E) + 4 min (Integration weekly)
 ### Next Session (2 hours)
 
 1. **Create integration test suite** (1 hour)
+
    - New directory structure
    - Write API-focused tests
 
 2. **Create integration workflow** (30 min)
+
    - Weekly schedule
    - Keep Strapi/database for this workflow
 
@@ -588,12 +612,14 @@ Total: 2.5 min (E2E) + 4 min (Integration weekly)
 ## 🎯 SUCCESS METRICS
 
 **Phase 1 Complete When**:
+
 - [ ] E2E tests pass in CI
 - [ ] No dependency on Strapi/database
 - [ ] CI runtime < 3 minutes
 - [ ] Tests pass 100% of time
 
 **Phase 2 Complete When**:
+
 - [ ] Separate integration test suite exists
 - [ ] Integration tests verify API authentication
 - [ ] Clear documentation of test strategy
