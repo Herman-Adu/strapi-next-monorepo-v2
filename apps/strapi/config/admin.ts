@@ -13,6 +13,11 @@ export default ({ env }) => {
         salt: env("TRANSFER_TOKEN_SALT"),
       },
     },
+    // Strapi 5: Enable persistent token visibility in admin panel
+    // Without this, tokens are only viewable once after creation
+    secrets: {
+      encryptionKey: env("ENCRYPTION_KEY"),
+    },
     preview: {
       enabled: true,
       config: {

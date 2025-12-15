@@ -57,12 +57,35 @@ export default async ({ strapi }: { strapi: any }) => {
       )
     }
 
-    // Strapi hashes API tokens with SHA512 and stores as base64
+    // Strapi 5: Hash tokens with SHA512 for validation (stored in accessKey)
     // The API_TOKEN_SALT is used internally by Strapi, but token hashing is just SHA512(plainToken)
     const hashedToken = crypto
       .createHash("sha512")
       .update(plainToken)
       .digest("base64")
+
+    // Strapi 5: Optionally encrypt plain token for admin panel viewing (stored in encryptedKey)
+    // This allows tokens to be viewed anytime in admin UI if ENCRYPTION_KEY is configured
+    let encryptedToken: string | undefined
+    const encryptionKey = process.env.ENCRYPTION_KEY
+
+    if (encryptionKey) {
+      // Use AES-256-CBC encryption (Strapi 5 standard)
+      const iv = crypto.randomBytes(16)
+      const cipher = crypto.createCipheriv(
+        "aes-256-cbc",
+        Buffer.from(encryptionKey).subarray(0, 32), // Ensure 32 bytes
+        iv
+      )
+      let encrypted = cipher.update(plainToken, "utf8", "base64")
+      encrypted += cipher.final("base64")
+      encryptedToken = `${iv.toString("base64")}:${encrypted}`
+      console.log("   🔐 Token encryption enabled (viewable in admin panel)")
+    }
+
+    // Best Practice: Set token expiration (90 days for E2E tokens)
+    const lifespanMs = 90 * 24 * 60 * 60 * 1000 // 90 days in milliseconds
+    const expiresAt = new Date(Date.now() + lifespanMs)
 
     // Create new API token with full-access permissions for E2E tests
     // Note: Using full-access because read-only type doesn't grant API access by default
@@ -71,14 +94,17 @@ export default async ({ strapi }: { strapi: any }) => {
         name: "e2e-readonly-token",
         description: "API token for E2E tests with full read access",
         type: "full-access", // Changed from "read-only" - need API access
-        accessKey: hashedToken, // SHA512 hash of the token
-        lifespan: null, // null = never expires
+        accessKey: hashedToken, // SHA512 hash for validation
+        encryptedKey: encryptedToken, // Encrypted plain token (Strapi 5 feature)
+        lifespan: lifespanMs,
+        expiresAt: expiresAt,
         permissions: [], // full-access type has all permissions
       },
     })
 
     console.log(`✅ API token created: ${apiToken.name}`)
     console.log(`   📝 Plain token: ${plainToken}`)
+    console.log(`   ⏰ Expires: ${expiresAt.toISOString()} (90 days)`)
     console.log(
       `   💡 Set this in CI: STRAPI_REST_READONLY_API_KEY=${plainToken}`
     )

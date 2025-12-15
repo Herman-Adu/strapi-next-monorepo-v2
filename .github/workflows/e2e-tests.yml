@@ -87,6 +87,7 @@ jobs:
           API_TOKEN_SALT=usReW/cYjLHmpLEoRnWf+g==
           ADMIN_JWT_SECRET=Xw39b/xXxEHW1x1WMM6ugQ==
           JWT_SECRET=ShuOcfjTi/RwcchWEIKYKA==
+          ENCRYPTION_KEY=${{ secrets.ENCRYPTION_KEY }}
           DATABASE_CLIENT=postgres
           DATABASE_HOST=localhost
           DATABASE_PORT=5432
