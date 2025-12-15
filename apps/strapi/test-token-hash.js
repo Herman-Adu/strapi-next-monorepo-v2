@@ -48,9 +48,7 @@ console.log("")
 if (process.env.DATABASE_URL) {
   console.log("Database Verification")
   console.log("=====================")
-  console.log(
-    "To verify token in database, run:"
-  )
+  console.log("To verify token in database, run:")
   console.log(
     'psql $DATABASE_URL -c "SELECT name, LEFT(\\"accessKey\\", 20) as hash_prefix, LENGTH(\\"accessKey\\") as hash_length, expires_at FROM admin_api_tokens WHERE name=\'e2e-readonly-token\';"'
   )

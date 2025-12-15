@@ -70,17 +70,30 @@ export default async ({ strapi }: { strapi: any }) => {
     const encryptionKey = process.env.ENCRYPTION_KEY
 
     if (encryptionKey) {
-      // Use AES-256-CBC encryption (Strapi 5 standard)
-      const iv = crypto.randomBytes(16)
-      const cipher = crypto.createCipheriv(
-        "aes-256-cbc",
-        Buffer.from(encryptionKey).subarray(0, 32), // Ensure 32 bytes
-        iv
-      )
-      let encrypted = cipher.update(plainToken, "utf8", "base64")
-      encrypted += cipher.final("base64")
-      encryptedToken = `${iv.toString("base64")}:${encrypted}`
-      console.log("   🔐 Token encryption enabled (viewable in admin panel)")
+      try {
+        // Decode base64 key and ensure it's 32 bytes for AES-256
+        const keyBuffer = Buffer.from(encryptionKey, "base64")
+        if (keyBuffer.length >= 32) {
+          const iv = crypto.randomBytes(16)
+          const cipher = crypto.createCipheriv(
+            "aes-256-cbc",
+            keyBuffer.subarray(0, 32),
+            iv
+          )
+          let encrypted = cipher.update(plainToken, "utf8", "base64")
+          encrypted += cipher.final("base64")
+          encryptedToken = `${iv.toString("base64")}:${encrypted}`
+          console.log("   🔐 Token encryption enabled (viewable in admin panel)")
+        } else {
+          console.warn(
+            "   ⚠️  ENCRYPTION_KEY too short, skipping token encryption"
+          )
+        }
+      } catch (error) {
+        console.warn(
+          `   ⚠️  Failed to encrypt token: ${error.message}, continuing without encryption`
+        )
+      }
     }
 
     // Best Practice: Set token expiration (90 days for E2E tokens)
