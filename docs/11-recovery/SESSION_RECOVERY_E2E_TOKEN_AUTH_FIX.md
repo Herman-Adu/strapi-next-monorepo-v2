@@ -17,6 +17,7 @@ Fix persistent 401 Unauthorized errors in E2E workflow API token authentication 
 ### ✅ Completed Today
 
 1. **Strapi 5 Best Practices Research** ✅
+
    - Researched official Strapi 5 documentation
    - Identified correct token storage mechanism:
      - `accessKey`: SHA512 hash for validation
@@ -25,6 +26,7 @@ Fix persistent 401 Unauthorized errors in E2E workflow API token authentication 
      - Strapi hashes received token and compares with database
 
 2. **Implemented Strapi 5 Features** ✅
+
    - **Commit**: `3a68cbf` - feat(strapi): implement Strapi 5 best practices
    - Added `ENCRYPTION_KEY` support in `config/admin.ts`
    - Enhanced seed script with token encryption (AES-256-CBC)
@@ -33,6 +35,7 @@ Fix persistent 401 Unauthorized errors in E2E workflow API token authentication 
    - Added GitHub Secret: `ENCRYPTION_KEY`
 
 3. **Fixed Issues** ✅
+
    - **Commit**: `31afdea` - Prettier formatting + encryption error handling
    - Applied prettier to `test-token-hash.js`
    - Added try-catch around encryption logic
@@ -68,16 +71,19 @@ Response: {"data":null,"error":{"status":401,"name":"UnauthorizedError","message
 **Key Findings** (from https://docs.strapi.io/cms/features/api-tokens):
 
 1. **Token Storage**:
+
    - Database table: `admin_api_tokens`
    - `accessKey` field: SHA512 hash (required) - used for validation
    - `encryptedKey` field: Encrypted plain token (optional) - for admin panel viewing
 
 2. **Token Usage**:
+
    - Client sends: `Authorization: Bearer <PLAIN_TOKEN>`
    - Strapi receives plain token → hashes it → compares with `accessKey` in database
    - Hash format: SHA512 with base64 OR hex encoding (both work)
 
 3. **Encryption Key (New in Strapi 5)**:
+
    - Optional feature for persistent token visibility in admin panel
    - Without it: tokens viewable only once after creation
    - With it: tokens viewable anytime in admin UI
@@ -91,6 +97,7 @@ Response: {"data":null,"error":{"status":401,"name":"UnauthorizedError","message
 ### Current Implementation
 
 **Seed Script** (`apps/strapi/database/seeds/e2e-test-data.ts`):
+
 ```typescript
 // Hash token with SHA512 base64
 const hashedToken = crypto
@@ -108,15 +115,16 @@ if (encryptionKey) {
 // Create token with 90-day expiration
 await strapi.db.query("admin::api-token").create({
   data: {
-    accessKey: hashedToken,        // SHA512 hash for validation
-    encryptedKey: encryptedToken,  // Encrypted for viewing (optional)
+    accessKey: hashedToken, // SHA512 hash for validation
+    encryptedKey: encryptedToken, // Encrypted for viewing (optional)
     expiresAt: new Date(Date.now() + 90 * 24 * 60 * 60 * 1000),
-    type: "full-access"
-  }
+    type: "full-access",
+  },
 })
 ```
 
 **Authentication Test** (`.github/workflows/e2e-tests.yml`):
+
 ```bash
 curl -H "Authorization: Bearer ${{ secrets.E2E_API_TOKEN }}" \
   http://127.0.0.1:1337/api/pages
@@ -127,14 +135,17 @@ curl -H "Authorization: Bearer ${{ secrets.E2E_API_TOKEN }}" \
 **Possible Causes**:
 
 1. **Token Mismatch** ⚠️ MOST LIKELY
+
    - GitHub Secret `E2E_API_TOKEN` value doesn't match seeded token value
    - Different token used in seed vs. authentication test
 
 2. **Seed Not Running**
+
    - Workflow logs don't show seed output
    - Lint job failing prevents E2E job from running with latest code
 
 3. **Token Expiration**
+
    - Just added 90-day expiration - could old tokens be expired?
    - But we're creating fresh tokens in seed
 
@@ -151,6 +162,7 @@ curl -H "Authorization: Bearer ${{ secrets.E2E_API_TOKEN }}" \
 **Purpose**: Diagnose token authentication issues
 
 **What It Does**:
+
 - ✅ Checks if token exists in database (`admin_api_tokens` table)
 - ✅ Shows database hash prefix and length
 - ✅ Computes expected hash from `E2E_API_TOKEN` environment variable
@@ -159,6 +171,7 @@ curl -H "Authorization: Bearer ${{ secrets.E2E_API_TOKEN }}" \
 - ✅ Provides troubleshooting tips
 
 **Usage**:
+
 ```bash
 export DATABASE_URL="postgresql://strapi:password@localhost:5432/strapi_dev"
 export E2E_API_TOKEN="your-token-here"
@@ -167,6 +180,7 @@ cd apps/strapi
 ```
 
 **Expected Output**:
+
 ```
 🔍 API Token Debugging
 ========================================
@@ -188,6 +202,7 @@ HTTP Status: 200
 ### 2. Workflow Debug Step
 
 **Added After Seed Step**:
+
 ```yaml
 - name: Debug - Verify Token in Database
   run: |
@@ -201,6 +216,7 @@ HTTP Status: 200
 ```
 
 **What It Will Show**:
+
 - Whether token exists in database after seeding
 - Hash prefix comparison (database vs. computed)
 - Identifies token value mismatch
@@ -213,12 +229,14 @@ HTTP Status: 200
 ### Latest Commits
 
 1. **3a68cbf** - feat(strapi): implement Strapi 5 best practices for API tokens
+
    - `apps/strapi/config/admin.ts` - Added `secrets.encryptionKey`
    - `apps/strapi/database/seeds/e2e-test-data.ts` - Token encryption + expiration
    - `apps/strapi/test-token-hash.js` - Database verification instructions
    - `.github/workflows/e2e-tests.yml` - Added `ENCRYPTION_KEY` env var
 
 2. **31afdea** - fix(strapi): prettier format and improve encryption error handling
+
    - `apps/strapi/test-token-hash.js` - Prettier formatting
    - `apps/strapi/database/seeds/e2e-test-data.ts` - Error handling for encryption
 
@@ -241,6 +259,7 @@ HTTP Status: 200
 ### 1. Review Debug Output from Next Workflow Run
 
 **Look For**:
+
 - ✅ Does token exist in database?
 - ✅ Does database hash prefix match computed hash prefix?
 - ✅ Are both hashes 88 characters (base64)?
@@ -249,6 +268,7 @@ HTTP Status: 200
 ### 2. If Token Mismatch Found
 
 **Action**: Verify GitHub Secret value
+
 ```bash
 # Check what token value is in GitHub Secret E2E_API_TOKEN
 # Compare with what's expected/documented
@@ -259,12 +279,14 @@ HTTP Status: 200
 ### 3. If Hashes Match But Still 401
 
 **Possible Issues**:
+
 - Token type permissions (full-access vs read-only)
 - Strapi internal validation logic changed
 - Database field name mismatch
 - Timing issue (token not committed to DB before auth test)
 
 **Actions**:
+
 - Check Strapi logs for detailed authentication error
 - Verify `admin_api_tokens` table schema
 - Test authentication with manually created token via Strapi admin UI
@@ -273,11 +295,13 @@ HTTP Status: 200
 ### 4. If Debug Script Fails
 
 **Possible Issues**:
+
 - Seed step not running at all
 - Database connection issues
 - Token not persisting to database
 
 **Actions**:
+
 - Check seed script logs in workflow
 - Verify PostgreSQL service is running
 - Test seed script locally
@@ -295,6 +319,7 @@ HTTP Status: 200
 ### Key Concepts
 
 **Token Storage (Strapi 5)**:
+
 ```
 Client              Strapi               Database
 ------              ------               --------
@@ -303,6 +328,7 @@ PLAIN_TOKEN  →  Hash(PLAIN_TOKEN)  →  accessKey: HASH
 ```
 
 **Validation Flow**:
+
 ```
 1. Client sends: Authorization: Bearer PLAIN_TOKEN
 2. Strapi receives PLAIN_TOKEN
@@ -313,6 +339,7 @@ PLAIN_TOKEN  →  Hash(PLAIN_TOKEN)  →  accessKey: HASH
 ```
 
 **Hash Formats** (both work):
+
 - Base64: 88 characters (e.g., `lK7xH3qP9vJ4rN8xT2y...`)
 - Hex: 128 characters (e.g., `8f3a9b2c1d4e5f6g7h8i...`)
 
@@ -323,15 +350,18 @@ PLAIN_TOKEN  →  Hash(PLAIN_TOKEN)  →  accessKey: HASH
 ### Required Secrets
 
 1. **E2E_API_TOKEN** ✅
+
    - Plain text API token value
    - Must match token used in seed script
    - Used in Authorization header
 
 2. **E2E_DB_PASSWORD** ✅
+
    - PostgreSQL password for `strapi` user
    - Used in DATABASE_URL connection string
 
 3. **ENCRYPTION_KEY** ✅ (NEW)
+
    - Base64 encoded 32-byte key
    - For encrypting tokens in `encryptedKey` field
    - Optional - tokens work without it
@@ -369,11 +399,13 @@ PLAIN_TOKEN  →  Hash(PLAIN_TOKEN)  →  accessKey: HASH
 ## 💡 Lessons Learned
 
 1. **Strapi 5 Token Storage**:
+
    - `API_TOKEN_SALT` is NOT used for token hashing
    - Token hashing is pure SHA512 without salt
    - `encryptedKey` is optional (new in v5)
 
 2. **Debugging Strategy**:
+
    - Add verification steps after data mutations (seed)
    - Compare expected vs actual values (hash comparison)
    - Test authentication immediately after seeding
@@ -389,6 +421,7 @@ PLAIN_TOKEN  →  Hash(PLAIN_TOKEN)  →  accessKey: HASH
 ## 🎯 Success Criteria
 
 **E2E Workflow Should**:
+
 - ✅ Pass lint checks
 - ✅ Build Strapi and UI
 - ✅ Seed database with test data
@@ -398,6 +431,7 @@ PLAIN_TOKEN  →  Hash(PLAIN_TOKEN)  →  accessKey: HASH
 - ✅ Report results
 
 **Current State**:
+
 - ✅ Lint should pass (fixed)
 - ✅ Build passes
 - ⚠️ Seed status unclear (no logs)

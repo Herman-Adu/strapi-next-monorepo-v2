@@ -83,7 +83,9 @@ export default async ({ strapi }: { strapi: any }) => {
           let encrypted = cipher.update(plainToken, "utf8", "base64")
           encrypted += cipher.final("base64")
           encryptedToken = `${iv.toString("base64")}:${encrypted}`
-          console.log("   🔐 Token encryption enabled (viewable in admin panel)")
+          console.log(
+            "   🔐 Token encryption enabled (viewable in admin panel)"
+          )
         } else {
           console.warn(
             "   ⚠️  ENCRYPTION_KEY too short, skipping token encryption"
