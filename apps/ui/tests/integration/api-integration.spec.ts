@@ -1,8 +1,9 @@
+/// <reference lib="dom" />
 import { test, expect } from "@playwright/test"
 import {
   navigateAndWaitForContent,
   setStandardTimeout,
-} from "./utils/test-helpers"
+} from "../../e2e/utils/test-helpers"
 
 test.describe("API Integration", () => {
   // Run tests serially to avoid race conditions
@@ -73,9 +74,6 @@ test.describe("API Integration", () => {
         !error.includes("_next/static")
     )
 
-    console.log("Console errors:", criticalErrors)
-    console.log("Network errors:", criticalNetworkErrors)
-
     // Should have no critical errors
     expect(criticalErrors.length).toBe(0)
     expect(criticalNetworkErrors.length).toBe(0)
@@ -113,9 +111,6 @@ test.describe("API Integration", () => {
     // At least one section should be visible
     const hasStrapiContent = faqExists || hasSubstantialContent
 
-    console.log("FAQ visible:", faqExists)
-    console.log("Body content length:", body?.length)
-
     expect(hasStrapiContent).toBe(true)
   })
 
@@ -132,8 +127,6 @@ test.describe("API Integration", () => {
       // Any section wrapper elements
       anySection: await page.locator("section, [data-testid]").count(),
     }
-
-    console.log("Sections found:", sections)
 
     // Should have at least some sections rendered
     const hasSections =
@@ -174,7 +167,6 @@ test.describe("API Integration", () => {
       bodyContent!.toLowerCase().includes("try again") ||
       bodyContent!.length < 50 // Empty state
 
-    console.log("Page state when API down:", bodyContent?.substring(0, 200))
     expect(hasGracefulFallback).toBe(true)
   })
 
@@ -198,9 +190,6 @@ test.describe("API Integration", () => {
       waitUntil: "networkidle",
       timeout: 60000,
     })
-
-    // If retry logic exists, should have made at least 2 requests
-    console.log("Total API requests made:", requestCount)
 
     // Page should eventually load successfully despite initial failure
     const hasContent = await page.locator("body").textContent()
@@ -269,8 +258,6 @@ test.describe("API Integration", () => {
     )
     const faqButtonCount = await faqButtons.count()
 
-    console.log("FAQ buttons found:", faqButtonCount)
-
     // Should have at least one FAQ item
     expect(faqButtonCount).toBeGreaterThan(0)
 
@@ -279,20 +266,7 @@ test.describe("API Integration", () => {
       await faqButtons.first().click()
       await page.waitForTimeout(1000) // Wait longer for animation
 
-      // After clicking, check if content expanded or state changed
-      // Note: Different accordion implementations use different patterns
-      const expandedItem = page.locator('[data-state="open"]')
-      const isExpanded = await expandedItem.count()
-
-      console.log("Expanded items after click:", isExpanded)
-
       // FAQ exists and is clickable - that's the key verification
-      // Accordion state may vary by implementation, so we don't fail on it
-      if (isExpanded === 0) {
-        console.log(
-          "Note: FAQ clicked but accordion state pattern not detected (may use different implementation)"
-        )
-      }
     }
   })
 
@@ -304,7 +278,6 @@ test.describe("API Integration", () => {
     // Page should have loaded successfully
     // Note: Next.js may rewrite URLs, so we verify lang attribute instead of URL
     const url = page.url()
-    console.log("Current URL:", url)
 
     // Verify we're on the test page (locale may be in URL or handled by Next.js rewrites)
     expect(url).toContain("e2e-test-page")
@@ -338,10 +311,6 @@ test.describe("API Integration", () => {
 
     // Page should handle rate limiting (show error or retry)
     const bodyContent = await page.locator("body").textContent()
-    console.log(
-      "Page state during rate limiting:",
-      bodyContent?.substring(0, 200)
-    )
 
     // Should not crash or show blank page
     expect(bodyContent).toBeTruthy()
@@ -356,8 +325,6 @@ test.describe("API Integration", () => {
       // Check first image
       const firstImage = images.first()
       const src = await firstImage.getAttribute("src")
-
-      console.log("First image src:", src)
 
       // Image should either be from Strapi (localhost:1337) or optimized by Next.js
       expect(src).toBeTruthy()
@@ -379,13 +346,11 @@ test.describe("API Integration", () => {
     })
 
     // Try to load page with timeout
-    const loadResult = await page
+    await page
       .goto("/en/e2e-test-page", { timeout: 30000 })
       .catch((error) => error)
 
     // Should handle timeout gracefully
-    console.log("Timeout handling result:", loadResult)
-
     // Page should show timeout error or loading state
     const bodyContent = await page.locator("body").textContent()
     expect(bodyContent).toBeTruthy()
