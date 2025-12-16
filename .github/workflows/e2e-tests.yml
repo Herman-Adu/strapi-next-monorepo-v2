@@ -36,7 +36,7 @@ jobs:
     # NOTE: These tests use mocked API responses (see apps/ui/e2e/fixtures/mock-api.ts)
     # No Strapi or database required - tests UI behavior only
     # For API integration tests with real Strapi, see integration-tests.yml
-    timeout-minutes: 10  # Fast - no Strapi startup needed
+    timeout-minutes: 15  # Dev server + tests need more time
     runs-on: ubuntu-latest
 
     steps:
@@ -97,22 +97,19 @@ jobs:
           APP_PUBLIC_URL=http://127.0.0.1:3000
           EOF
 
-      - name: Build UI
-        run: yarn build:ui
-
-      - name: Start Next.js Server
+      - name: Start Next.js Dev Server
         run: |
-          echo "🚀 Starting Next.js server in production mode..."
+          echo "🚀 Starting Next.js dev server (matches local environment)..."
           cd apps/ui
-          yarn start &
+          yarn dev &
           NEXTJS_PID=$!
           echo "NEXTJS_PID=$NEXTJS_PID" >> $GITHUB_ENV
           cd ../..
           
-          # Wait for server to be ready
-          echo "⏳ Waiting for Next.js server on http://127.0.0.1:3000..."
-          npx wait-on http://127.0.0.1:3000 --timeout 60000
-          echo "✅ Next.js server ready!"
+          # Wait for dev server to be ready (takes longer than production)
+          echo "⏳ Waiting for Next.js dev server on http://127.0.0.1:3000..."
+          npx wait-on http://127.0.0.1:3000 --timeout 120000
+          echo "✅ Next.js dev server ready!"
 
       - name: Run E2E Tests
         run: |
