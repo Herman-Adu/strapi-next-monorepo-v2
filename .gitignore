@@ -85,3 +85,7 @@ apps/strapi/types/internals.js
 # TypeScript compiled output - Strapi seed files (should only be in build/)
 apps/strapi/database/seeds/e2e-test-data.js
 apps/strapi/database/seeds/e2e-test-data-safe.js
+
+# Temporary CI analysis artifacts
+temp-*
+apps/ui/temp-*
