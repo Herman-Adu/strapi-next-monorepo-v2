@@ -100,6 +100,20 @@ jobs:
       - name: Build UI
         run: yarn build:ui
 
+      - name: Start Next.js Server
+        run: |
+          echo "🚀 Starting Next.js server in production mode..."
+          cd apps/ui
+          yarn start &
+          NEXTJS_PID=$!
+          echo "NEXTJS_PID=$NEXTJS_PID" >> $GITHUB_ENV
+          cd ../..
+          
+          # Wait for server to be ready
+          echo "⏳ Waiting for Next.js server on http://127.0.0.1:3000..."
+          npx wait-on http://127.0.0.1:3000 --timeout 60000
+          echo "✅ Next.js server ready!"
+
       - name: Run E2E Tests
         run: |
           echo "🧪 Running E2E tests with mocked API..."
@@ -176,11 +190,9 @@ jobs:
       - name: Cleanup Servers
         if: always()
         run: |
-          echo "🧹 Stopping servers..."
-          if [ ! -z "$STRAPI_PID" ]; then
-            kill $STRAPI_PID 2>/dev/null || true
-          fi
-          if [ ! -z "$NEXTJS_PID" ]; then
-            kill $NEXTJS_PID 2>/dev/null || true
+          echo "🧹 Stopping Next.js server..."
+          if [ ! -z "${{ env.NEXTJS_PID }}" ]; then
+            kill ${{ env.NEXTJS_PID }} 2>/dev/null || true
+            echo "✅ Stopped Next.js (PID: ${{ env.NEXTJS_PID }})"
           fi
           echo "✅ Cleanup complete"
