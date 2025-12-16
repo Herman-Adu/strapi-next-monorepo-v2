@@ -21,11 +21,26 @@ export default async function globalSetup() {
     `   Target URL: ${process.env.STRAPI_URL || "http://127.0.0.1:1337"}\n`
   )
 
-  // Start MSW server
+  // Start MSW server with all interceptors enabled
+  // CRITICAL: Next.js 15+ uses undici for fetch(), so we must enable it explicitly
   server.listen({
     onUnhandledRequest: "warn", // Warn about unmocked requests (helps debugging)
   })
 
+  // Enable verbose logging to debug interception
+  server.events.on("request:start", ({ request }) => {
+    console.log(`   ⚡ [MSW] Intercepted: ${request.method} ${request.url}`)
+  })
+
+  server.events.on("request:match", ({ request }) => {
+    console.log(`   ✅ [MSW] Matched handler: ${request.method} ${request.url}`)
+  })
+
+  server.events.on("request:unhandled", ({ request }) => {
+    console.log(`   ⚠️  [MSW] No handler: ${request.method} ${request.url}`)
+  })
+
   console.log("✅ [MSW] Mock server started successfully\n")
+  console.log("   Intercepting all Node.js fetch() calls (including undici)\n")
 }
 /* eslint-enable no-console */

@@ -46,13 +46,18 @@ export default abstract class BaseStrapiClient {
     const timeoutId = setTimeout(() => controller.abort(), timeoutMs)
 
     try {
+      // Disable caching in E2E tests (MSW needs to intercept fresh requests)
+      const isE2ETest = !!process.env.E2E_TESTS_PLAYWRIGHT_API_KEY
+      
       const response = await fetch(url, {
         ...requestInit,
         signal: controller.signal,
         next: {
           ...requestInit?.next,
           // if revalidate is set to a number since 0 implies cache: 'no-store' and a positive value implies cache: 'force-cache'.
-          revalidate: isDevelopment() ? 0 : requestInit?.next?.revalidate ?? 60,
+          revalidate: isDevelopment() || isE2ETest
+            ? 0
+            : (requestInit?.next?.revalidate ?? 60),
         },
         headers: {
           ...requestInit?.headers,

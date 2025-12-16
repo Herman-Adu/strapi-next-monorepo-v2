@@ -19,6 +19,7 @@ export const handlers = [
   // Mock pages API endpoint
   // Matches: GET /api/pages?filters[path][$eq]=/e2e-test-page&locale=en&populate=deep
   http.get(`${STRAPI_URL}/api/pages`, ({ request }) => {
+    console.log(`[MSW Handler] Received request: ${request.method} ${request.url}`)
     const url = new URL(request.url)
     const path = url.searchParams.get("filters[path][$eq]")
 
