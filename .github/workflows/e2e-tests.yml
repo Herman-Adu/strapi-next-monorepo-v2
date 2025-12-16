@@ -74,88 +74,21 @@ jobs:
 
       - name: Prepare Environment Variables
         run: |
-          # Build Strapi .env from scratch (no .env.example copy to avoid empty placeholders)
-          cat > apps/strapi/.env << 'EOF'
-          HOST=0.0.0.0
-          PORT=1337
-          APP_KEYS=l8ftzyp2hNmEtNXBYU5hhQ==,lH7EcVVZxIoTFRorjrV9Vw==,jxWii7EjavRgJ4jYPZ60hA==,FlZM4tyij/HDFcKZhsmlXQ==
-          API_TOKEN_SALT=usReW/cYjLHmpLEoRnWf+g==
-          ADMIN_JWT_SECRET=Xw39b/xXxEHW1x1WMM6ugQ==
-          JWT_SECRET=ShuOcfjTi/RwcchWEIKYKA==
-          ENCRYPTION_KEY=${{ secrets.ENCRYPTION_KEY }}
-          DATABASE_CLIENT=postgres
-          DATABASE_HOST=localhost
-          DATABASE_PORT=5432
-          DATABASE_NAME=strapi_dev
-          DATABASE_USERNAME=strapi
-          DATABASE_PASSWORD=${{ secrets.E2E_DB_PASSWORD }}
-          DATABASE_SSL=false
-          STRAPI_PREVIEW_ENABLED=false
-          WEBHOOKS_POPULATE_RELATIONS=false
-          EOF
-          
-          # Build UI .env.local from scratch (CI uses default Next.js output mode)
+          # Build UI .env.local (no Strapi needed - MSW handles all API mocking)
           cat > apps/ui/.env.local << 'EOF'
           NEXTAUTH_URL=http://localhost:3000
           NEXTAUTH_SECRET=password_secret
           STRAPI_URL=http://127.0.0.1:1337
-          STRAPI_REST_READONLY_API_KEY=${{ secrets.E2E_API_TOKEN }}
-          E2E_TESTS_PLAYWRIGHT_API_KEY=${{ secrets.E2E_API_TOKEN }}
           APP_PUBLIC_URL=http://127.0.0.1:3000
           EOF
 
-      - name: Start Next.js Dev Server
-        run: |
-          echo "🚀 Starting Next.js dev server (bypassing Strapi dependency)..."
-          cd apps/ui
-          
-          # Start Next.js dev server with output logging
-          echo "Starting server with environment validation..."
-          npx next dev > next-server.log 2>&1 &
-          NEXTJS_PID=$!
-          echo "NEXTJS_PID=$NEXTJS_PID" >> $GITHUB_ENV
-          echo "Server started with PID: $NEXTJS_PID"
-          
-          # Give it a moment to fail fast if there are env issues
-          sleep 5
-          
-          # Check if process is still running
-          if ! kill -0 $NEXTJS_PID 2>/dev/null; then
-            echo "❌ Server process died immediately. Logs:"
-            cat next-server.log
-            exit 1
-          fi
-          
-          cd ../..
-          
-          # Wait for dev server to be ready with longer timeout
-          echo "⏳ Waiting for Next.js dev server on http://127.0.0.1:3000..."
-          npx wait-on http://127.0.0.1:3000 --timeout 180000 --interval 1000 --verbose
-          
-          if [ $? -eq 0 ]; then
-            echo "✅ Next.js dev server ready!"
-          else
-            echo "❌ Server failed to respond. Checking logs:"
-            cd apps/ui
-            cat next-server.log
-            exit 1
-          fi
-
       - name: Run E2E Tests
         run: |
-          echo "🧪 Running E2E tests with mocked API..."
+          echo "🧪 Running E2E tests with MSW (Playwright will manage server)..."
           cd apps/ui
-          npx playwright test e2e/
-          TEST_EXIT_CODE=$?
-          cd ../..
-          
-          # Exit with test exit code
-          exit $TEST_EXIT_CODE
+          npx playwright test
         env:
           CI: true
-          DATABASE_URL: postgresql://strapi:${{ secrets.E2E_DB_PASSWORD }}@localhost:5432/strapi_dev
-          # Use the E2E token created by seed script (injected via GitHub Secrets)
-          E2E_TESTS_PLAYWRIGHT_API_KEY: ${{ secrets.E2E_API_TOKEN }}
           STRAPI_URL: http://127.0.0.1:1337
           APP_PUBLIC_URL: http://127.0.0.1:3000
 
@@ -164,7 +97,7 @@ jobs:
         if: always()
         with:
           name: next-server-logs
-          path: apps/ui/next-server.log
+          path: apps/ui/.next/server-logs/next-server.log
           retention-days: 7
           if-no-files-found: ignore
 
@@ -228,12 +161,7 @@ jobs:
             echo "⚠️ No test report generated."
           fi
 
-      - name: Cleanup Servers
+      - name: Cleanup
         if: always()
         run: |
-          echo "🧹 Stopping Next.js server..."
-          if [ ! -z "${{ env.NEXTJS_PID }}" ]; then
-            kill ${{ env.NEXTJS_PID }} 2>/dev/null || true
-            echo "✅ Stopped Next.js (PID: ${{ env.NEXTJS_PID }})"
-          fi
-          echo "✅ Cleanup complete"
+          echo "✅ Playwright handles server cleanup automatically"
