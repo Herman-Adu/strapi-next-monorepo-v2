@@ -7,8 +7,11 @@ import { mockE2EPage, mockNavbar, mockFooter } from "./mock-data"
  * This allows tests to run without a real backend
  */
 export async function setupApiMocks(page: Page) {
-  // Mock pages API endpoint
-  await page.route("**/api/pages**", async (route) => {
+  // Get the Strapi URL from environment (defaults to localhost:1337)
+  const strapiUrl = process.env.STRAPI_URL || "http://localhost:1337"
+
+  // Mock pages API endpoint - matches Strapi backend requests
+  await page.route(`${strapiUrl}/api/pages**`, async (route) => {
     await route.fulfill({
       status: 200,
       contentType: "application/json",
@@ -16,8 +19,8 @@ export async function setupApiMocks(page: Page) {
     })
   })
 
-  // Mock navbar API endpoint
-  await page.route("**/api/navbar**", async (route) => {
+  // Mock navbar API endpoint - matches Strapi backend requests
+  await page.route(`${strapiUrl}/api/navbar**`, async (route) => {
     await route.fulfill({
       status: 200,
       contentType: "application/json",
@@ -25,8 +28,8 @@ export async function setupApiMocks(page: Page) {
     })
   })
 
-  // Mock footer API endpoint
-  await page.route("**/api/footer**", async (route) => {
+  // Mock footer API endpoint - matches Strapi backend requests
+  await page.route(`${strapiUrl}/api/footer**`, async (route) => {
     await route.fulfill({
       status: 200,
       contentType: "application/json",
@@ -34,7 +37,7 @@ export async function setupApiMocks(page: Page) {
     })
   })
 
-  // Mock newsletter subscription endpoint (POST)
+  // Mock newsletter subscription endpoint (POST) - client-side proxy requests
   await page.route("**/api/public-proxy/subscribers**", async (route) => {
     if (route.request().method() === "POST") {
       await route.fulfill({
@@ -50,7 +53,7 @@ export async function setupApiMocks(page: Page) {
     }
   })
 
-  // Mock contact form submission endpoint (POST)
+  // Mock contact form submission endpoint (POST) - client-side proxy requests
   await page.route("**/api/public-proxy/contact-messages**", async (route) => {
     if (route.request().method() === "POST") {
       await route.fulfill({
@@ -62,13 +65,6 @@ export async function setupApiMocks(page: Page) {
         }),
       })
     } else {
-      route.continue()
-    }
-  })
-
-  // Allow all other requests to pass through
-  await page.route("**/*", (route) => {
-    if (!route.request().url().includes("/api/")) {
       route.continue()
     }
   })

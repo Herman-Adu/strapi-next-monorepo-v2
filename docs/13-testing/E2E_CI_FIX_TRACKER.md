@@ -201,16 +201,65 @@ Module not found: Can't resolve '@repo/shared-data'
 
 ---
 
+## ✅ **ATTEMPT 6** - Fix Mock API URL Patterns (Dec 16, 2025)
+
+### What We Changed
+
+Fixed mock API patterns to match actual Strapi backend URLs.
+
+**Problem Identified:**
+
+- Tests were executing but failing with "element(s) not found" and timeout errors
+- All 5 failing tests couldn't find page content (Contact, FAQ, Newsletter, Homepage Nav)
+- Downloaded playwright-report artifact and analyzed failure screenshots (all ~6KB = blank pages)
+- Root cause: Mock API patterns used `**/api/**` but Strapi requests go to `http://127.0.0.1:1337/api/**`
+- The `PublicClient` makes requests to `${env.STRAPI_URL}/api/...` which doesn't match wildcard pattern
+
+**Solution Applied:**
+
+```typescript
+// OLD (didn't work - wrong URL pattern)
+await page.route("**/api/pages**", async (route) => {
+  // This never matched because Strapi requests are to specific origin
+})
+
+// NEW (correct - matches actual Strapi URL)
+const strapiUrl = process.env.STRAPI_URL || "http://localhost:1337"
+await page.route(`${strapiUrl}/api/pages**`, async (route) => {
+  // Now matches actual backend requests!
+})
+```
+
+**Files Modified:**
+
+- `apps/ui/e2e/fixtures/mock-api.ts` - Updated all Strapi API route patterns to use full URL
+
+**Test Results:**
+
+- Run: 20280172516
+- Status: 5 failed, 4 passed (9 total ran)
+- All failures: Timeout waiting for content (pages were blank because API wasn't mocked)
+- Server: ✅ Started successfully (no longer an issue)
+- Build: ✅ Workspace packages built correctly
+
+**Key Insights:**
+
+1. **Server startup is now fixed** - `@repo/shared-data` builds before server starts
+2. **Tests execute successfully** - No more crashes or compilation failures
+3. **Mock API was misconfigured** - Patterns didn't match actual request URLs
+4. **SSR makes Strapi requests** - Server-side rendering calls backend directly, not through proxy
+
+---
+
 ## 📝 **NEXT STEPS**
 
-1. **Revert to commit `a90c53b`** (had server start logic)
-2. **Fix by using `npx next start`** instead of `yarn start`
-3. **OR use `npx next dev`** instead of `yarn dev`
-4. **Test that it doesn't wait for Strapi**
-5. **Verify build output exists before starting**
+1. **Test the mock API fix locally** to ensure it works
+2. **Push changes and monitor CI** to see if tests pass
+3. **If still failing, check which specific routes need mocking** (investigate with traces)
+4. **Verify all content types are properly mocked** (pages, navbar, footer)
 
 ---
 
 **Last Updated:** December 16, 2025  
-**Status:** Ready to implement correct fix  
-**Next Commit:** Should fix without breaking previous work
+**Status:** Mock API patterns fixed, ready to test  
+**Next Commit:** Fix mock API URL patterns to match Strapi backend
