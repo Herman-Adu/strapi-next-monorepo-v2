@@ -73,7 +73,7 @@ export default defineConfig({
 
   /* Run your local dev server before starting the tests */
   webServer: {
-    command: "yarn dev",
+    command: "yarn dev:e2e", // Use dev:e2e (no Strapi health check)
     url: process.env.CI ? "http://127.0.0.1:3000" : "http://localhost:3000",
     reuseExistingServer: !process.env.CI, // Fresh server in CI, reuse locally
     timeout: 180 * 1000,

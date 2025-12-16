@@ -7,6 +7,7 @@
     "build-storybook": "storybook build",
     "chromatic": "chromatic",
     "dev": "wait-on http://localhost:1337/_health && next dev",
+    "dev:e2e": "next dev",
     "lint": "next lint",
     "preview": "next build && next start",
     "start": "next start",
