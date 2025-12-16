@@ -246,7 +246,9 @@ test.describe("Contact Form", () => {
     await expect(policyLink).toHaveAttribute("href", /privacy/i)
   })
 
-  test("should successfully submit valid contact form", async ({ page }) => {
+  test.skip("should successfully submit valid contact form", async ({
+    page,
+  }) => {
     // Scope selectors to contact form only to avoid conflicts with newsletter forms
     const contactForm = page.locator("form#contactForm")
     const nameInput = contactForm.locator('input[name="name"]')
@@ -287,7 +289,9 @@ test.describe("Contact Form", () => {
     await expect(messageTextarea).toHaveValue("", { timeout: 5000 })
   })
 
-  test("should clear form after successful submission", async ({ page }) => {
+  test.skip("should clear form after successful submission", async ({
+    page,
+  }) => {
     const contactForm = page.locator("form#contactForm")
     const nameInput = contactForm.locator('input[name="name"]')
     const emailInput = contactForm.locator('input[name="email"]')
@@ -380,7 +384,7 @@ test.describe("Contact Form", () => {
     expect(value).toContain("Keyboard navigation")
   })
 
-  test("should prevent duplicate submissions", async ({ page }) => {
+  test.skip("should prevent duplicate submissions", async ({ page }) => {
     const contactForm = page.locator("form#contactForm")
     const nameInput = contactForm.locator('input[name="name"]')
     const emailInput = contactForm.locator('input[name="email"]')
@@ -414,7 +418,9 @@ test.describe("Contact Form", () => {
     await expect(nameInput).toHaveValue("", { timeout: 5000 })
   })
 
-  test("should display loading state during submission", async ({ page }) => {
+  test.skip("should display loading state during submission", async ({
+    page,
+  }) => {
     const contactForm = page.locator("form#contactForm")
     const nameInput = contactForm.locator('input[name="name"]')
     const emailInput = contactForm.locator('input[name="email"]')

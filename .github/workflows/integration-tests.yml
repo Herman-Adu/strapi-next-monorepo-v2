@@ -1,0 +1,186 @@
+name: Integration Tests
+
+on:
+  workflow_dispatch: # Manual trigger
+  schedule:
+    - cron: "0 3 * * 1" # Monday 3 AM UTC (weekly)
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.head_ref || github.run_id }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  integration-tests:
+    name: Integration Tests (Real API)
+    timeout-minutes: 15
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres:16-alpine
+        env:
+          POSTGRES_USER: strapi
+          POSTGRES_PASSWORD: ${{ secrets.E2E_DB_PASSWORD }}
+          POSTGRES_DB: strapi_dev
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - 5432:5432
+
+    steps:
+      # ========================================
+      # 1. SETUP
+      # ========================================
+      - name: Check out code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: "yarn"
+
+      - name: Install dependencies
+        run: yarn --frozen-lockfile
+
+      - name: Install Playwright browsers
+        run: npx playwright install --with-deps chromium
+
+      # ========================================
+      # 2. BUILD STRAPI
+      # ========================================
+      - name: Build Strapi
+        working-directory: apps/strapi
+        run: yarn build
+        env:
+          DATABASE_URL: postgresql://strapi:${{ secrets.E2E_DB_PASSWORD }}@localhost:5432/strapi_dev
+          NODE_ENV: production
+
+      # ========================================
+      # 3. SEED DATABASE (Destructive - CI only)
+      # ========================================
+      - name: Seed E2E Test Data
+        working-directory: apps/strapi
+        run: yarn seed:e2e
+        env:
+          DATABASE_URL: postgresql://strapi:${{ secrets.E2E_DB_PASSWORD }}@localhost:5432/strapi_dev
+          E2E_API_TOKEN: ${{ secrets.E2E_API_TOKEN }}
+          CI: true
+
+      # ========================================
+      # 4. START STRAPI (Background)
+      # ========================================
+      - name: Start Strapi
+        working-directory: apps/strapi
+        run: |
+          yarn start > strapi.log 2>&1 &
+          echo $! > strapi.pid
+        env:
+          DATABASE_URL: postgresql://strapi:${{ secrets.E2E_DB_PASSWORD }}@localhost:5432/strapi_dev
+          NODE_ENV: production
+          HOST: 127.0.0.1
+          PORT: 1337
+
+      # ========================================
+      # 5. HEALTH CHECK
+      # ========================================
+      - name: Wait for Strapi Health Check
+        run: |
+          echo "Waiting for Strapi to be ready..."
+          timeout 120 bash -c 'until curl -f http://127.0.0.1:1337/_health; do 
+            echo "Waiting for Strapi..."
+            sleep 3
+          done'
+          echo "Strapi is ready!"
+
+      - name: Verify Strapi is serving content
+        run: |
+          curl -f http://127.0.0.1:1337/_health || (cat apps/strapi/strapi.log && exit 1)
+
+      # ========================================
+      # 6. BUILD & START NEXT.JS
+      # ========================================
+      - name: Build UI
+        working-directory: apps/ui
+        run: yarn build
+        env:
+          STRAPI_URL: http://127.0.0.1:1337
+          STRAPI_REST_READONLY_API_KEY: ${{ secrets.E2E_API_TOKEN }}
+          NODE_ENV: production
+
+      - name: Start Next.js
+        working-directory: apps/ui
+        run: |
+          yarn start > nextjs.log 2>&1 &
+          echo $! > nextjs.pid
+          sleep 10
+        env:
+          STRAPI_URL: http://127.0.0.1:1337
+          STRAPI_REST_READONLY_API_KEY: ${{ secrets.E2E_API_TOKEN }}
+          PORT: 3000
+
+      - name: Verify Next.js is serving
+        run: |
+          curl -f http://localhost:3000 || (cat apps/ui/nextjs.log && exit 1)
+
+      # ========================================
+      # 7. RUN INTEGRATION TESTS
+      # ========================================
+      - name: Run Integration Tests
+        working-directory: apps/ui
+        run: npx playwright test tests/integration/ --reporter=html
+        env:
+          STRAPI_URL: http://127.0.0.1:1337
+          E2E_TESTS_PLAYWRIGHT_API_KEY: ${{ secrets.E2E_API_TOKEN }}
+
+      # ========================================
+      # 8. UPLOAD ARTIFACTS
+      # ========================================
+      - name: Upload Playwright Report
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: integration-playwright-report
+          path: apps/ui/playwright-report/
+          retention-days: 30
+
+      - name: Upload Test Results
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: integration-test-results
+          path: apps/ui/test-results/
+          retention-days: 30
+
+      # ========================================
+      # 9. CLEANUP & DEBUG
+      # ========================================
+      - name: Display Strapi Logs
+        if: failure()
+        run: |
+          echo "=== STRAPI LOGS ==="
+          cat apps/strapi/strapi.log || echo "No Strapi logs found"
+
+      - name: Display Next.js Logs
+        if: failure()
+        run: |
+          echo "=== NEXT.JS LOGS ==="
+          cat apps/ui/nextjs.log || echo "No Next.js logs found"
+
+      - name: Cleanup Servers
+        if: always()
+        run: |
+          if [ -f apps/strapi/strapi.pid ]; then
+            kill $(cat apps/strapi/strapi.pid) 2>/dev/null || true
+          fi
+          if [ -f apps/ui/nextjs.pid ]; then
+            kill $(cat apps/ui/nextjs.pid) 2>/dev/null || true
+          fi

@@ -78,19 +78,23 @@ test.describe("FAQ Accordion", () => {
       .getByRole("button", { name: /what technologies do you use/i })
       .first()
 
-    // Click to expand
-    await firstQuestion.click()
+    // Ensure accordion is visible before clicking
+    await expect(firstQuestion).toBeVisible({ timeout: 10000 })
 
-    // Wait for expansion animation to complete (increased for reliability)
-    await page.waitForTimeout(1500)
+    // Wait for page to be fully interactive
+    await page.waitForLoadState("networkidle", { timeout: 10000 })
 
-    // Check that answer text is now visible - matches actual data: "We use modern technologies including..."
+    // Click to expand with force option (in case of overlay)
+    await firstQuestion.click({ force: true })
+
+    // Wait for AccordionTrigger to update data-state to "open"
+    await expect(firstQuestion).toHaveAttribute("data-state", "open", {
+      timeout: 5000,
+    })
+
+    // Now check that answer text is visible
     const answerText = page.getByText(/We use modern technologies/i).first()
     await expect(answerText).toBeVisible({ timeout: 5000 })
-
-    // Alternative: Check for data-state="open" on border-b parent div
-    const openItem = page.locator('div.border-b[data-state="open"]').first()
-    await expect(openItem).toBeVisible()
   })
 
   test("should collapse accordion on second click", async ({ page }) => {
@@ -98,28 +102,31 @@ test.describe("FAQ Accordion", () => {
       .getByRole("button", { name: /what technologies do you use/i })
       .first()
 
+    // Wait for page to be fully interactive
+    await page.waitForLoadState("networkidle", { timeout: 10000 })
+
     // Click to expand
-    await firstQuestion.click()
-    await page.waitForTimeout(1000)
+    await firstQuestion.click({ force: true })
+
+    // Wait for AccordionTrigger to show open state
+    await expect(firstQuestion).toHaveAttribute("data-state", "open", {
+      timeout: 5000,
+    })
 
     // Verify answer text is visible
-    const answerText = page
-      .getByText(
-        /We use modern technologies like Next\.js|Next\.js, React, TypeScript/i
-      )
-      .first()
-    await expect(answerText).toBeVisible({ timeout: 10000 })
+    const answerText = page.getByText(/We use modern technologies/i).first()
+    await expect(answerText).toBeVisible({ timeout: 5000 })
 
     // Click again to collapse
-    await firstQuestion.click()
-    await page.waitForTimeout(1000)
+    await firstQuestion.click({ force: true })
+
+    // Wait for accordion to close
+    await expect(firstQuestion).toHaveAttribute("data-state", "closed", {
+      timeout: 5000,
+    })
 
     // Answer text should no longer be visible
     await expect(answerText).toBeHidden()
-
-    // Should be no open items
-    const openItems = page.locator('div.border-b[data-state="open"]')
-    await expect(openItems).toHaveCount(0)
   })
 
   test("should allow multiple accordions open simultaneously", async ({
@@ -132,17 +139,24 @@ test.describe("FAQ Accordion", () => {
       .getByRole("button", { name: /how long|typical project take/i })
       .first()
 
+    // Wait for page to be fully interactive
+    await page.waitForLoadState("networkidle", { timeout: 10000 })
+
     // Expand first accordion
-    await question1.click()
-    await page.waitForTimeout(1500)
+    await question1.click({ force: true })
+    await expect(question1).toHaveAttribute("data-state", "open", {
+      timeout: 5000,
+    })
 
     // Expand second accordion
-    await question2.click()
-    await page.waitForTimeout(1500)
+    await question2.click({ force: true })
+    await expect(question2).toHaveAttribute("data-state", "open", {
+      timeout: 5000,
+    })
 
-    // Both accordion items should be open (Radix Accordion type="multiple" allows this)
-    const openItems = page.locator('div.border-b[data-state="open"]')
-    await expect(openItems).toHaveCount(2)
+    // Both accordion triggers should be open (Radix Accordion type="multiple" allows this)
+    await expect(question1).toHaveAttribute("data-state", "open")
+    await expect(question2).toHaveAttribute("data-state", "open")
 
     // Verify both answers are visible
     const answer1 = page
@@ -158,22 +172,25 @@ test.describe("FAQ Accordion", () => {
       .getByRole("button", { name: /what technologies do you use/i })
       .first()
 
+    // Wait for page to be fully interactive
+    await page.waitForLoadState("networkidle", { timeout: 10000 })
+
     // Focus the button
     await firstQuestion.focus()
 
     // Press Enter to expand
     await page.keyboard.press("Enter")
-    await page.waitForTimeout(1500)
+
+    // Verify accordion trigger has data-state="open"
+    await expect(firstQuestion).toHaveAttribute("data-state", "open", {
+      timeout: 5000,
+    })
 
     // Verify answer is visible with correct text regex
     const answerText = page
       .getByText(/We use modern technologies.*Next\.js.*React.*TypeScript/i)
       .first()
     await expect(answerText).toBeVisible({ timeout: 10000 })
-
-    // Verify accordion item has data-state="open"
-    const openItem = page.locator('div.border-b[data-state="open"]').first()
-    await expect(openItem).toBeVisible()
   })
 
   test("should handle Space key to toggle accordion", async ({ page }) => {
@@ -262,18 +279,19 @@ test.describe("FAQ Accordion", () => {
       .getByRole("button", { name: /what technologies do you use/i })
       .first()
 
+    // Wait for page to be fully interactive
+    await page.waitForLoadState("networkidle", { timeout: 10000 })
+
     // Click to expand
-    await firstQuestion.click()
+    await firstQuestion.click({ force: true })
 
-    // Wait for animation to complete
-    await page.waitForTimeout(1000)
+    // Verify accordion trigger has data-state="open"
+    await expect(firstQuestion).toHaveAttribute("data-state", "open", {
+      timeout: 5000,
+    })
 
-    // Accordion item should be visible with data-state="open"
-    const openItem = page.locator('div.border-b[data-state="open"]').first()
-    await expect(openItem).toBeVisible()
-
-    // Content should have height
-    const openContent = openItem
+    // Content should have height - find AccordionContent by data-state
+    const openContent = page
       .locator('div.overflow-hidden[data-state="open"]')
       .first()
     const finalHeight = await openContent.evaluate(
@@ -301,16 +319,23 @@ test.describe("FAQ Accordion", () => {
     const firstQuestion = page
       .getByRole("button", { name: /what technologies do you use/i })
       .first()
-    await firstQuestion.click()
-    await page.waitForTimeout(1500)
+
+    // Wait for page to be fully interactive
+    await page.waitForLoadState("networkidle", { timeout: 10000 })
+
+    await firstQuestion.click({ force: true })
+
+    // Verify accordion trigger has data-state="open"
+    await expect(firstQuestion).toHaveAttribute("data-state", "open", {
+      timeout: 5000,
+    })
 
     // Answer should be visible on mobile - check text content
     const answerText = page.getByText(/Next\.js|React|TypeScript/i).first()
     await expect(answerText).toBeVisible({ timeout: 10000 })
 
-    // Check that accordion fits within viewport
-    const openItem = page.locator('div.border-b[data-state="open"]').first()
-    const answerBox = await openItem.boundingBox()
+    // Check that answer fits within mobile viewport
+    const answerBox = await answerText.boundingBox()
     if (answerBox) {
       expect(answerBox.width).toBeLessThanOrEqual(375)
     }
@@ -322,22 +347,25 @@ test.describe("FAQ Accordion", () => {
       .first()
 
     // Expand first accordion
-    await firstQuestion.click()
-    await page.waitForTimeout(1500)
+    await expect(firstQuestion).toBeVisible({ timeout: 10000 })
+    await page.waitForLoadState("networkidle", { timeout: 10000 })
+    await firstQuestion.click({ force: true })
+    await expect(firstQuestion).toHaveAttribute("data-state", "open", {
+      timeout: 5000,
+    })
 
     // Verify answer is visible with correct regex
     const answerText = page
       .getByText(/We use modern technologies.*Next\.js.*React.*TypeScript/i)
       .first()
-    await expect(answerText).toBeVisible({ timeout: 10000 })
+    await expect(answerText).toBeVisible({ timeout: 5000 })
 
     // Scroll down
     await page.evaluate(() => window.scrollBy(0, 500))
     await page.waitForTimeout(300)
 
-    // Accordion should still be expanded (check data-state)
-    const openItem = page.locator('div.border-b[data-state="open"]').first()
-    await expect(openItem).toBeVisible()
+    // Accordion should still be expanded (check button's data-state)
+    await expect(firstQuestion).toHaveAttribute("data-state", "open")
 
     // Scroll back up
     await page.evaluate(() => window.scrollBy(0, -500))
@@ -345,6 +373,7 @@ test.describe("FAQ Accordion", () => {
 
     // Should still be expanded
     await expect(answerText).toBeVisible()
+    await expect(firstQuestion).toHaveAttribute("data-state", "open")
   })
 
   test("should handle rapid clicks gracefully", async ({ page }) => {

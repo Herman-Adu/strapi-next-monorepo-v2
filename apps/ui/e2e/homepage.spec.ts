@@ -15,12 +15,13 @@ test.describe("Homepage", () => {
   })
 
   test("should have navigation", async ({ page }) => {
-    test.setTimeout(60000) // Increased timeout
-    await page.goto("/en", { waitUntil: "domcontentloaded" })
+    test.setTimeout(90000) // Increased timeout for Firefox
+    await setupApiMocks(page)
+    await page.goto("/en", { waitUntil: "domcontentloaded", timeout: 60000 })
 
     // Look for common navigation elements
     const nav = page.locator("nav").first()
-    await expect(nav).toBeVisible({ timeout: 15000 })
+    await expect(nav).toBeVisible({ timeout: 20000 })
   })
 
   test("should be responsive", async ({ page }) => {

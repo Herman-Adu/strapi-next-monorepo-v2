@@ -32,8 +32,11 @@ permissions:
 
 jobs:
   e2e-tests:
-    name: E2E Tests (Playwright)
-    timeout-minutes: 10  # Reduced - no Strapi startup needed
+    name: E2E Tests (Playwright - Mocked API)
+    # NOTE: These tests use mocked API responses (see apps/ui/e2e/fixtures/mock-api.ts)
+    # No Strapi or database required - tests UI behavior only
+    # For API integration tests with real Strapi, see integration-tests.yml
+    timeout-minutes: 10  # Fast - no Strapi startup needed
     runs-on: ubuntu-latest
 
     steps:

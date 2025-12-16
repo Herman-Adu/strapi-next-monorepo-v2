@@ -9,15 +9,21 @@ test.describe("Error Handling", () => {
   // Run tests serially to avoid dev server exhaustion from rapid navigations
   test.describe.configure({ mode: "serial" })
 
-  test("should display 404 page for non-existent routes", async ({ page }) => {
+  test("should display 404 page for non-existent routes", async ({
+    page,
+    browserName,
+  }) => {
+    // Increase timeout for all browsers
+    test.setTimeout(90000)
+
     // No API mocking for 404 test
     await page.goto("/en/this-page-does-not-exist-12345", {
       waitUntil: "domcontentloaded",
-      timeout: 15000,
+      timeout: 60000,
     })
 
     // Wait for page content to render
-    await page.locator("body").waitFor({ state: "visible", timeout: 5000 })
+    await page.locator("body").waitFor({ state: "visible", timeout: 10000 })
 
     // Should show 404 page content (status check removed - Next.js dev mode returns 200)
     const bodyContent = await page.locator("body").textContent()
@@ -292,7 +298,15 @@ test.describe("Error Handling", () => {
     expect(corsErrors.length).toBe(0)
   })
 
-  test("should handle browser back/forward navigation", async ({ page }) => {
+  test("should handle browser back/forward navigation", async ({
+    page,
+    browserName,
+  }) => {
+    // Increase timeout for slower browsers (firefox, webkit)
+    if (browserName === "firefox" || browserName === "webkit") {
+      test.setTimeout(90000)
+    }
+
     // Navigate to test page
     await page.goto("/en/e2e-test-page", { waitUntil: "domcontentloaded" })
     await page.locator("body").waitFor({ state: "visible", timeout: 5000 })

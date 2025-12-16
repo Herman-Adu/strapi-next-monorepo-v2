@@ -12,8 +12,11 @@
     "start": "next start",
     "storybook": "storybook dev -p 6006",
     "test": "vitest",
+    "test:all": "yarn test:e2e && yarn test:integration",
     "test:e2e": "playwright test",
     "test:e2e:ui": "playwright test --ui",
+    "test:integration": "playwright test tests/integration/",
+    "test:integration:ui": "playwright test tests/integration/ --ui",
     "test:ui": "vitest --ui",
     "test:watch": "vitest --watch",
     "typecheck": "tsc --noEmit"
