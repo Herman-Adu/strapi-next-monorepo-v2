@@ -72,12 +72,12 @@ export default defineConfig({
       ],
 
   /* Run your local dev server before starting the tests */
-  webServer: process.env.CI
-    ? undefined // In CI, servers are started manually in workflow for better control
-    : {
-        command: "yarn dev",
-        url: "http://localhost:3000",
-        reuseExistingServer: true,
-        timeout: 180 * 1000,
-      },
+  webServer: {
+    command: "yarn dev",
+    url: process.env.CI ? "http://127.0.0.1:3000" : "http://localhost:3000",
+    reuseExistingServer: !process.env.CI, // Fresh server in CI, reuse locally
+    timeout: 180 * 1000,
+    stdout: "pipe", // Capture server logs
+    stderr: "pipe",
+  },
 })
