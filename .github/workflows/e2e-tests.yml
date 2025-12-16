@@ -79,6 +79,7 @@ jobs:
           NEXTAUTH_URL=http://localhost:3000
           NEXTAUTH_SECRET=password_secret
           STRAPI_URL=http://127.0.0.1:1337
+          STRAPI_REST_READONLY_API_KEY=dummy_key_for_e2e_tests
           APP_PUBLIC_URL=http://127.0.0.1:3000
           EOF
 
