@@ -62,6 +62,12 @@ jobs:
       - name: Install dependencies
         run: yarn --frozen-lockfile
 
+      - name: Build workspace packages
+        run: |
+          echo "🔨 Building @repo/shared-data package..."
+          yarn workspace @repo/shared-data build
+          echo "✅ Workspace packages built"
+
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps chromium  # Only Chromium for faster CI
 

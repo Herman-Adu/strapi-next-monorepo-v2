@@ -59,10 +59,34 @@ Get E2E tests passing in GitHub Actions workflow (currently 141 passing locally)
 **Why:** Server process starts but never becomes responsive on port 3000
 
 **Root Cause Analysis:**
+
 - Server runs in background (`&`) so errors not visible
 - `env.mjs` validation may be failing silently
 - No logs captured to debug what's happening
 - Need to check if server process actually stays alive
+
+### Attempt 5: `66e753e` - Added Logging (FOUND ROOT CAUSE!)
+
+**Change:** Capture server logs, check process health  
+**Result:** ✅ Server logs captured successfully!  
+**What Logs Revealed:**
+
+```
+✓ Ready in 5.3s  <-- Server started!
+◐ Compiling /[locale]/[[...rest]] ...
+Module not found: Can't resolve '@repo/shared-data'
+```
+
+**THE REAL PROBLEM:**
+
+- ✅ Server starts and listens on port 3000
+- ✅ Environment validation passes
+- ❌ **First page request fails - missing workspace package**
+- ❌ `@repo/shared-data` not built in monorepo
+- ❌ `wait-on` makes HEAD request → compilation fails
+- ❌ Server stuck in error state, never responds
+
+**Solution:** Build workspace packages BEFORE starting server!
 
 ---
 
@@ -128,17 +152,17 @@ Get E2E tests passing in GitHub Actions workflow (currently 141 passing locally)
     # Capture stdout/stderr to debug why server won't respond
     npx next dev > next-server.log 2>&1 &
     NEXTJS_PID=$!
-    
+
     # Check if process dies immediately (env validation errors)
     sleep 5
     if ! kill -0 $NEXTJS_PID 2>/dev/null; then
       cat next-server.log
       exit 1
     fi
-    
+
     # Wait with longer timeout and verbose output
     npx wait-on http://127.0.0.1:3000 --timeout 180000 --interval 1000 --verbose
-    
+
     # If wait-on fails, show server logs
     if [ $? -ne 0 ]; then
       cat next-server.log
@@ -147,6 +171,7 @@ Get E2E tests passing in GitHub Actions workflow (currently 141 passing locally)
 ```
 
 **What This Fixes:**
+
 - ✅ Captures server output to debug startup issues
 - ✅ Checks if process dies (env validation failures)
 - ✅ Increased timeout to 3 minutes (dev mode is slower)
