@@ -51,6 +51,19 @@ Get E2E tests passing in GitHub Actions workflow (currently 141 passing locally)
 **Error:** `wait-on http://localhost:1337/_health` times out  
 **Why:** No Strapi running in E2E workflow (only tests UI with mocked API)
 
+### Attempt 4: `86b94fd` - Used `npx next dev` Directly (Still Failed)
+
+**Change:** Changed to `npx next dev &` to bypass yarn script  
+**Problem:** Server still times out after 120s  
+**Error:** `wait-on` timeout, process exits with code 1, no test artifacts  
+**Why:** Server process starts but never becomes responsive on port 3000
+
+**Root Cause Analysis:**
+- Server runs in background (`&`) so errors not visible
+- `env.mjs` validation may be failing silently
+- No logs captured to debug what's happening
+- Need to check if server process actually stays alive
+
 ---
 
 ## 🔍 **ROOT CAUSE ANALYSIS**
@@ -92,17 +105,54 @@ Get E2E tests passing in GitHub Actions workflow (currently 141 passing locally)
     npx wait-on http://127.0.0.1:3000 --timeout 120000
 ```
 
-### Option B: Use Dev Server Without Strapi Check
+### Option B: Use Dev Server Without Strapi Check (ATTEMPTED - commit `86b94fd`)
 
 ```yaml
 - name: Start Next.js Dev Server
   run: |
     cd apps/ui
-    npx next dev &
+    npx next dev &  # ❌ FAILED - server starts but doesn't respond
     NEXTJS_PID=$!
     echo "NEXTJS_PID=$NEXTJS_PID" >> $GITHUB_ENV
-    npx wait-on http://127.0.0.1:3000 --timeout 120000
+    npx wait-on http://127.0.0.1:3000 --timeout 120000  # Times out
 ```
+
+**Issue:** Server process starts but never becomes responsive. Need logs!
+
+### Option C: Dev Server WITH Error Logging (CURRENT ATTEMPT)
+
+```yaml
+- name: Start Next.js Dev Server
+  run: |
+    cd apps/ui
+    # Capture stdout/stderr to debug why server won't respond
+    npx next dev > next-server.log 2>&1 &
+    NEXTJS_PID=$!
+    
+    # Check if process dies immediately (env validation errors)
+    sleep 5
+    if ! kill -0 $NEXTJS_PID 2>/dev/null; then
+      cat next-server.log
+      exit 1
+    fi
+    
+    # Wait with longer timeout and verbose output
+    npx wait-on http://127.0.0.1:3000 --timeout 180000 --interval 1000 --verbose
+    
+    # If wait-on fails, show server logs
+    if [ $? -ne 0 ]; then
+      cat next-server.log
+      exit 1
+    fi
+```
+
+**What This Fixes:**
+- ✅ Captures server output to debug startup issues
+- ✅ Checks if process dies (env validation failures)
+- ✅ Increased timeout to 3 minutes (dev mode is slower)
+- ✅ Verbose wait-on output
+- ✅ Shows logs on failure
+- ✅ Server logs uploaded as artifact
 
 ---
 
