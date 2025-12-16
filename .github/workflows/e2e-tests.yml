@@ -99,14 +99,15 @@ jobs:
 
       - name: Start Next.js Dev Server
         run: |
-          echo "🚀 Starting Next.js dev server (matches local environment)..."
+          echo "🚀 Starting Next.js dev server (bypassing Strapi dependency)..."
           cd apps/ui
-          yarn dev &
+          # Run next dev directly (bypasses yarn dev which waits for Strapi)
+          npx next dev &
           NEXTJS_PID=$!
           echo "NEXTJS_PID=$NEXTJS_PID" >> $GITHUB_ENV
           cd ../..
           
-          # Wait for dev server to be ready (takes longer than production)
+          # Wait for dev server to be ready
           echo "⏳ Waiting for Next.js dev server on http://127.0.0.1:3000..."
           npx wait-on http://127.0.0.1:3000 --timeout 120000
           echo "✅ Next.js dev server ready!"
