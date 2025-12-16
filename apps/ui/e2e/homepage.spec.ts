@@ -1,10 +1,9 @@
 import { test, expect } from "@playwright/test"
-import { setupApiMocks } from "./fixtures/mock-api"
 
 test.describe("Homepage", () => {
   test("should load successfully", async ({ page }) => {
     test.setTimeout(60000) // Increased timeout for initial page load
-    await setupApiMocks(page)
+    // Note: MSW (Mock Service Worker) handles API mocking globally
     await page.goto("/en", { waitUntil: "domcontentloaded" })
 
     // Wait for page to be interactive - no networkidle due to Next.js HMR/websockets
@@ -16,7 +15,7 @@ test.describe("Homepage", () => {
 
   test("should have navigation", async ({ page }) => {
     test.setTimeout(90000) // Increased timeout for Firefox
-    await setupApiMocks(page)
+    // Note: MSW (Mock Service Worker) handles API mocking globally
     await page.goto("/en", { waitUntil: "domcontentloaded", timeout: 60000 })
 
     // Look for common navigation elements

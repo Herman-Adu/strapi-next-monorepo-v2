@@ -5,7 +5,6 @@ import {
   checkGDPRCheckboxIfPresent,
   waitForSuccessToast,
 } from "./utils/test-helpers"
-import { setupApiMocks } from "./fixtures/mock-api"
 
 test.describe("Contact Form", () => {
   // Run tests serially to avoid dev server exhaustion
@@ -15,10 +14,8 @@ test.describe("Contact Form", () => {
     // Set standard timeout
     test.setTimeout(setStandardTimeout())
 
-    // Setup API mocking
-    await setupApiMocks(page)
-
     // Navigate to test page with contact form
+    // Note: MSW (Mock Service Worker) handles API mocking globally
     await navigateAndWaitForContent(
       page,
       "/en/e2e-test-page",

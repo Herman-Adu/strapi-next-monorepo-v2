@@ -32,9 +32,10 @@ permissions:
 
 jobs:
   e2e-tests:
-    name: E2E Tests (Playwright - Mocked API)
-    # NOTE: These tests use mocked API responses (see apps/ui/e2e/fixtures/mock-api.ts)
-    # No Strapi or database required - tests UI behavior only
+    name: E2E Tests (Playwright - MSW Mocked API)
+    # NOTE: These tests use MSW (Mock Service Worker) to mock API responses
+    # MSW intercepts network requests at the Node.js level, enabling SSR mocking
+    # This allows testing without a real Strapi backend - UI behavior only
     # For API integration tests with real Strapi, see integration-tests.yml
     timeout-minutes: 15  # Dev server + tests need more time
     runs-on: ubuntu-latest
