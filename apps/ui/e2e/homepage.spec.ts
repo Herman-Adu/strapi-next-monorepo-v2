@@ -5,11 +5,7 @@ test.describe("Homepage", () => {
   test("should load successfully", async ({ page }) => {
     test.setTimeout(60000)
     // Use helper to wait for MSW-mocked content to render
-    await navigateAndWaitForContent(
-      page,
-      "/en",
-      /Home|Welcome|Get Started/i
-    )
+    await navigateAndWaitForContent(page, "/en", /Home|Welcome|Get Started/i)
 
     // Check that the page title is set
     await expect(page).toHaveTitle(/.*/)
