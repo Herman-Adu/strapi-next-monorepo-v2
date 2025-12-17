@@ -46,7 +46,7 @@
     "@repo/design-system": "*",
     "@repo/shared-data": "*",
     "@strapi/plugin-color-picker": "^5.29.0",
-    "@strapi/plugin-sentry": "^5.29.0",
+    "@strapi/plugin-sentry": "^5.32.0",
     "@strapi/plugin-seo": "2.0.8",
     "@strapi/plugin-users-permissions": "^5.29.0",
     "@strapi/provider-email-mailgun": "^5.29.0",
