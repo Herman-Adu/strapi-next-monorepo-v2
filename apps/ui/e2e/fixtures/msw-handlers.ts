@@ -29,17 +29,24 @@ export const handlers = [
   }),
 
   // Mock pages API endpoint
-  // Matches: GET /api/pages?filters[path][$eq]=/e2e-test-page&locale=en&populate=deep
+  // Matches: GET /api/pages?filters[fullPath][$eq]=/e2e-test-page&locale=en&populate=deep
+  // Note: Changed from filters[path] to filters[fullPath] to match actual API calls
   http.get(`${STRAPI_URL}/api/pages`, ({ request }) => {
     // eslint-disable-next-line no-console
     console.log(
       `[MSW Handler] Received request: ${request.method} ${request.url}`
     )
     const url = new URL(request.url)
+    
+    // Check both fullPath (actual) and path (legacy) for compatibility
+    const fullPath = url.searchParams.get("filters[fullPath][$eq]")
     const path = url.searchParams.get("filters[path][$eq]")
+    const searchPath = fullPath || path
 
     // Return mock E2E test page for test path
-    if (path?.includes("e2e-test-page")) {
+    if (searchPath?.includes("e2e-test-page")) {
+      // eslint-disable-next-line no-console
+      console.log(`[MSW Handler] Matched e2e-test-page request`)
       return HttpResponse.json({
         data: [mockE2EPage.data],
         meta: {
@@ -54,6 +61,8 @@ export const handlers = [
     }
 
     // Return empty array for other paths (404 behavior)
+    // eslint-disable-next-line no-console
+    console.log(`[MSW Handler] No match for path: ${searchPath}`)
     return HttpResponse.json({
       data: [],
       meta: {

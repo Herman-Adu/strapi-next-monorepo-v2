@@ -6,17 +6,17 @@
 export const mockE2EPage = {
   data: {
     id: 1,
-    attributes: {
-      title: "E2E Test Page",
-      slug: "e2e-test-page",
-      fullPath: "/e2e-test-page",
-      locale: "en",
-      publishedAt: "2024-01-01T00:00:00.000Z",
-      seo: {
-        metaTitle: "E2E Test Page",
-        metaDescription: "Test page for E2E tests",
-      },
-      sections: [
+    documentId: "test-page-doc-id",
+    title: "E2E Test Page",
+    slug: "e2e-test-page",
+    fullPath: "/e2e-test-page",
+    locale: "en",
+    publishedAt: "2024-01-01T00:00:00.000Z",
+    seo: {
+      metaTitle: "E2E Test Page",
+      metaDescription: "Test page for E2E tests",
+    },
+    content: [
         {
           __component: "sections.newsletter-cta-section",
           id: 1,
@@ -77,16 +77,15 @@ export const mockE2EPage = {
             showBackground: false,
           },
         },
-        {
-          __component: "sections.contact-section",
-          id: 3,
-          heading: "Get in Touch",
-          description: "We'd love to hear from you. Send us a message!",
-          email: "contact@example.com",
-          phone: "+1 (555) 123-4567",
-        },
-      ],
-    },
+      {
+        __component: "sections.contact-section",
+        id: 3,
+        heading: "Get in Touch",
+        description: "We'd love to hear from you. Send us a message!",
+        email: "contact@example.com",
+        phone: "+1 (555) 123-4567",
+      },
+    ],
   },
   meta: {},
 }
