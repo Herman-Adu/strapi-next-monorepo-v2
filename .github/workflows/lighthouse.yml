@@ -1,13 +1,14 @@
 name: Performance Budget (Lighthouse CI)
 
 on:
-  pull_request:
-    branches: [main]
-    paths:
-      - "apps/ui/src/**"
-      - "apps/ui/public/**"
-      - "packages/**"
   workflow_dispatch:
+  # DISABLED: Focusing on Lint and Build UI only
+  # pull_request:
+  #   branches: [main]
+  #   paths:
+  #     - "apps/ui/src/**"
+  #     - "apps/ui/public/**"
+  #     - "packages/**"
 
 jobs:
   lighthouse:

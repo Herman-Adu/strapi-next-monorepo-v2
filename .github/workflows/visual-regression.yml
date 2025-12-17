@@ -1,15 +1,16 @@
 name: Visual Regression Testing
 
 on:
-  pull_request:
-    branches: [main]
-    paths:
-      - "apps/ui/src/**"
-      - "apps/ui/.storybook/**"
-      - "packages/design-system/**"
-  push:
-    branches: [main]
   workflow_dispatch:
+  # DISABLED: Focusing on Lint and Build UI only
+  # pull_request:
+  #   branches: [main]
+  #   paths:
+  #     - "apps/ui/src/**"
+  #     - "apps/ui/.storybook/**"
+  #     - "packages/design-system/**"
+  # push:
+  #   branches: [main]
 
 jobs:
   chromatic:

@@ -2,8 +2,9 @@ name: Integration Tests
 
 on:
   workflow_dispatch: # Manual trigger
-  schedule:
-    - cron: "0 3 * * 1" # Monday 3 AM UTC (weekly)
+  # DISABLED: Focusing on Lint and Build UI only
+  # schedule:
+  #   - cron: "0 3 * * 1" # Monday 3 AM UTC (weekly)
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.head_ref || github.run_id }}

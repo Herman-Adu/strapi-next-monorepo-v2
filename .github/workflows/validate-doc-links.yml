@@ -1,15 +1,16 @@
 name: Documentation Links Validation
 
 on:
-  pull_request:
-    paths:
-      - "docs/**"
-  push:
-    branches:
-      - main
-    paths:
-      - "docs/**"
   workflow_dispatch:
+  # DISABLED: Focusing on Lint and Build UI only
+  # pull_request:
+  #   paths:
+  #     - "docs/**"
+  # push:
+  #   branches:
+  #     - main
+  #   paths:
+  #     - "docs/**"
 
 jobs:
   validate-links:

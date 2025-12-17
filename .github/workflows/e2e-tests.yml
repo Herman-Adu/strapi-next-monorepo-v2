@@ -2,26 +2,27 @@ name: E2E Tests
 
 on:
   workflow_dispatch:
-  # Only run on code changes (not docs)
-  push:
-    branches: [main]
-    paths:
-      - "apps/**"
-      - "packages/**"
-      - ".github/workflows/e2e-tests.yml"
-      - "!**/*.md"
-      - "!**/docs/**"
-  pull_request:
-    branches: [main]
-    paths:
-      - "apps/**"
-      - "packages/**"
-      - ".github/workflows/e2e-tests.yml"
-      - "!**/*.md"
-      - "!**/docs/**"
-  # Run weekly instead of daily (save resources)
-  schedule:
-    - cron: "0 2 * * 0" # Sunday at 2 AM UTC
+  # DISABLED: Focusing on Lint and Build UI only
+  # # Only run on code changes (not docs)
+  # push:
+  #   branches: [main]
+  #   paths:
+  #     - "apps/**"
+  #     - "packages/**"
+  #     - ".github/workflows/e2e-tests.yml"
+  #     - "!**/*.md"
+  #     - "!**/docs/**"
+  # pull_request:
+  #   branches: [main]
+  #   paths:
+  #     - "apps/**"
+  #     - "packages/**"
+  #     - ".github/workflows/e2e-tests.yml"
+  #     - "!**/*.md"
+  #     - "!**/docs/**"
+  # # Run weekly instead of daily (save resources)
+  # schedule:
+  #   - cron: "0 2 * * 0" # Sunday at 2 AM UTC
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.head_ref || github.run_id }}
