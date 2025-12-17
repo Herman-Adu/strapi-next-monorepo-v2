@@ -1,26 +1,32 @@
 import { test, expect } from "@playwright/test"
+import { navigateAndWaitForContent } from "./utils/test-helpers"
 
 test.describe("Homepage", () => {
   test("should load successfully", async ({ page }) => {
-    test.setTimeout(60000) // Increased timeout for initial page load
-    // Note: MSW (Mock Service Worker) handles API mocking globally
-    await page.goto("/en", { waitUntil: "domcontentloaded" })
-
-    // Wait for page to be interactive - no networkidle due to Next.js HMR/websockets
-    await page.waitForSelector("body", { state: "attached" })
+    test.setTimeout(60000)
+    // Use helper to wait for MSW-mocked content to render
+    await navigateAndWaitForContent(
+      page,
+      "/en",
+      /Home|Welcome|Get Started/i
+    )
 
     // Check that the page title is set
     await expect(page).toHaveTitle(/.*/)
   })
 
   test("should have navigation", async ({ page }) => {
-    test.setTimeout(90000) // Increased timeout for Firefox
-    // Note: MSW (Mock Service Worker) handles API mocking globally
-    await page.goto("/en", { waitUntil: "domcontentloaded", timeout: 60000 })
+    test.setTimeout(90000)
+    // Use helper to wait for navbar content from MSW
+    await navigateAndWaitForContent(
+      page,
+      "/en",
+      /Home|About|Contact/i // Wait for actual nav link text
+    )
 
-    // Look for common navigation elements
+    // Now nav should be fully rendered with links
     const nav = page.locator("nav").first()
-    await expect(nav).toBeVisible({ timeout: 20000 })
+    await expect(nav).toBeVisible({ timeout: 5000 })
   })
 
   test("should be responsive", async ({ page }) => {

@@ -335,7 +335,13 @@ test.describe("Error Handling", () => {
     await page.goBack({ waitUntil: "domcontentloaded" })
     await page.locator("body").waitFor({ state: "visible", timeout: 5000 })
 
-    // Page should reload correctly
+    // Wait for FAQ content to re-render after MSW re-intercepts
+    await page.waitForSelector("text=/FAQ|Frequently Asked/i", {
+      timeout: 15000,
+      state: "visible",
+    })
+
+    // Page should reload correctly - now safe to check body content
     const bodyContent = await page.locator("body").textContent()
     expect(bodyContent).toContain("FAQ")
   })
