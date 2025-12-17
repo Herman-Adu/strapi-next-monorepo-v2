@@ -61,15 +61,15 @@ export const mockE2EPage = {
           },
           {
             id: 4,
-            question: "What is your development process?",
+            question: "Can you redesign my existing website?",
             answer:
-              "We follow an agile development process with regular check-ins, iterative development, and continuous feedback.",
+              "Absolutely! We specialize in website redesigns and can modernize your existing website while preserving your brand identity and valuable content.",
           },
           {
             id: 5,
-            question: "Can you work with existing systems?",
+            question: "What's included in your pricing?",
             answer:
-              "Absolutely! We can integrate with existing systems, migrate data, or build new solutions that work alongside your current setup.",
+              "Our pricing includes design, development, testing, deployment, and post-launch support. We provide transparent quotes with no hidden fees.",
           },
         ],
         background: {
