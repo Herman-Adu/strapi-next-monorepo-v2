@@ -1,1 +1,15 @@
-{"ext":".jpg","url":"/uploads/thumbnail_testimonial_edec8c9c0f.jpg","hash":"thumbnail_testimonial_edec8c9c0f","mime":"image/jpeg","name":"thumbnail_testimonial.jpg","path":null,"size":5.37,"width":245,"height":133,"sizeInBytes":5365,"type":"thumbnail","id":27,"mainHash":"testimonial_edec8c9c0f"}
+{
+  "ext": ".jpg",
+  "url": "/uploads/thumbnail_testimonial_edec8c9c0f.jpg",
+  "hash": "thumbnail_testimonial_edec8c9c0f",
+  "mime": "image/jpeg",
+  "name": "thumbnail_testimonial.jpg",
+  "path": null,
+  "size": 5.37,
+  "width": 245,
+  "height": 133,
+  "sizeInBytes": 5365,
+  "type": "thumbnail",
+  "id": 27,
+  "mainHash": "testimonial_edec8c9c0f"
+}

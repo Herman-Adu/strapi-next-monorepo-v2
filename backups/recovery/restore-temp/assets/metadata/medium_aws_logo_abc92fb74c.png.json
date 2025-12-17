@@ -1,1 +1,15 @@
-{"ext":".png","url":"/uploads/medium_aws_logo_abc92fb74c.png","hash":"medium_aws_logo_abc92fb74c","mime":"image/png","name":"medium_aws-logo.png","path":null,"size":83.89,"width":750,"height":509,"sizeInBytes":83893,"type":"medium","id":63,"mainHash":"aws_logo_abc92fb74c"}
+{
+  "ext": ".png",
+  "url": "/uploads/medium_aws_logo_abc92fb74c.png",
+  "hash": "medium_aws_logo_abc92fb74c",
+  "mime": "image/png",
+  "name": "medium_aws-logo.png",
+  "path": null,
+  "size": 83.89,
+  "width": 750,
+  "height": 509,
+  "sizeInBytes": 83893,
+  "type": "medium",
+  "id": 63,
+  "mainHash": "aws_logo_abc92fb74c"
+}

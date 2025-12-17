@@ -11,15 +11,9 @@
       "actionParameters": {},
       "subject": "api::contact-message.contact-message",
       "properties": {
-        "fields": [
-          "name",
-          "email",
-          "message"
-        ]
+        "fields": ["name", "email", "message"]
       },
-      "conditions": [
-        "admin::is-creator"
-      ],
+      "conditions": ["admin::is-creator"],
       "locale": null
     },
     {
@@ -28,9 +22,7 @@
       "actionParameters": {},
       "subject": "api::contact-message.contact-message",
       "properties": {},
-      "conditions": [
-        "admin::is-creator"
-      ],
+      "conditions": ["admin::is-creator"],
       "locale": null
     },
     {
@@ -39,15 +31,9 @@
       "actionParameters": {},
       "subject": "api::contact-message.contact-message",
       "properties": {
-        "fields": [
-          "name",
-          "email",
-          "message"
-        ]
+        "fields": ["name", "email", "message"]
       },
-      "conditions": [
-        "admin::is-creator"
-      ],
+      "conditions": ["admin::is-creator"],
       "locale": null
     },
     {
@@ -56,15 +42,9 @@
       "actionParameters": {},
       "subject": "api::contact-message.contact-message",
       "properties": {
-        "fields": [
-          "name",
-          "email",
-          "message"
-        ]
+        "fields": ["name", "email", "message"]
       },
-      "conditions": [
-        "admin::is-creator"
-      ],
+      "conditions": ["admin::is-creator"],
       "locale": null
     },
     {
@@ -99,9 +79,7 @@
           "newsletter.gdpr.newTab"
         ]
       },
-      "conditions": [
-        "admin::is-creator"
-      ],
+      "conditions": ["admin::is-creator"],
       "locale": null
     },
     {
@@ -136,9 +114,7 @@
           "newsletter.gdpr.newTab"
         ]
       },
-      "conditions": [
-        "admin::is-creator"
-      ],
+      "conditions": ["admin::is-creator"],
       "locale": null
     },
     {
@@ -173,9 +149,7 @@
           "newsletter.gdpr.newTab"
         ]
       },
-      "conditions": [
-        "admin::is-creator"
-      ],
+      "conditions": ["admin::is-creator"],
       "locale": null
     },
     {
@@ -184,17 +158,9 @@
       "actionParameters": {},
       "subject": "api::internal-job.internal-job",
       "properties": {
-        "fields": [
-          "jobType",
-          "relatedDocumentId",
-          "payload",
-          "state",
-          "error"
-        ]
+        "fields": ["jobType", "relatedDocumentId", "payload", "state", "error"]
       },
-      "conditions": [
-        "admin::is-creator"
-      ],
+      "conditions": ["admin::is-creator"],
       "locale": null
     },
     {
@@ -203,9 +169,7 @@
       "actionParameters": {},
       "subject": "api::internal-job.internal-job",
       "properties": {},
-      "conditions": [
-        "admin::is-creator"
-      ],
+      "conditions": ["admin::is-creator"],
       "locale": null
     },
     {
@@ -214,17 +178,9 @@
       "actionParameters": {},
       "subject": "api::internal-job.internal-job",
       "properties": {
-        "fields": [
-          "jobType",
-          "relatedDocumentId",
-          "payload",
-          "state",
-          "error"
-        ]
+        "fields": ["jobType", "relatedDocumentId", "payload", "state", "error"]
       },
-      "conditions": [
-        "admin::is-creator"
-      ],
+      "conditions": ["admin::is-creator"],
       "locale": null
     },
     {
@@ -233,17 +189,9 @@
       "actionParameters": {},
       "subject": "api::internal-job.internal-job",
       "properties": {
-        "fields": [
-          "jobType",
-          "relatedDocumentId",
-          "payload",
-          "state",
-          "error"
-        ]
+        "fields": ["jobType", "relatedDocumentId", "payload", "state", "error"]
       },
-      "conditions": [
-        "admin::is-creator"
-      ],
+      "conditions": ["admin::is-creator"],
       "locale": null
     },
     {
@@ -269,9 +217,7 @@
           "socialLinks.label"
         ]
       },
-      "conditions": [
-        "admin::is-creator"
-      ],
+      "conditions": ["admin::is-creator"],
       "locale": null
     },
     {
@@ -297,9 +243,7 @@
           "socialLinks.label"
         ]
       },
-      "conditions": [
-        "admin::is-creator"
-      ],
+      "conditions": ["admin::is-creator"],
       "locale": null
     },
     {
@@ -325,9 +269,7 @@
           "socialLinks.label"
         ]
       },
-      "conditions": [
-        "admin::is-creator"
-      ],
+      "conditions": ["admin::is-creator"],
       "locale": null
     },
     {
@@ -368,9 +310,7 @@
           "seo.structuredData"
         ]
       },
-      "conditions": [
-        "admin::is-creator"
-      ],
+      "conditions": ["admin::is-creator"],
       "locale": null
     },
     {
@@ -411,9 +351,7 @@
           "seo.structuredData"
         ]
       },
-      "conditions": [
-        "admin::is-creator"
-      ],
+      "conditions": ["admin::is-creator"],
       "locale": null
     },
     {
@@ -454,9 +392,7 @@
           "seo.structuredData"
         ]
       },
-      "conditions": [
-        "admin::is-creator"
-      ],
+      "conditions": ["admin::is-creator"],
       "locale": null
     },
     {
@@ -465,16 +401,9 @@
       "actionParameters": {},
       "subject": "api::redirect.redirect",
       "properties": {
-        "fields": [
-          "source",
-          "destination",
-          "permanent",
-          "page"
-        ]
+        "fields": ["source", "destination", "permanent", "page"]
       },
-      "conditions": [
-        "admin::is-creator"
-      ],
+      "conditions": ["admin::is-creator"],
       "locale": null
     },
     {
@@ -483,9 +412,7 @@
       "actionParameters": {},
       "subject": "api::redirect.redirect",
       "properties": {},
-      "conditions": [
-        "admin::is-creator"
-      ],
+      "conditions": ["admin::is-creator"],
       "locale": null
     },
     {
@@ -494,16 +421,9 @@
       "actionParameters": {},
       "subject": "api::redirect.redirect",
       "properties": {
-        "fields": [
-          "source",
-          "destination",
-          "permanent",
-          "page"
-        ]
+        "fields": ["source", "destination", "permanent", "page"]
       },
-      "conditions": [
-        "admin::is-creator"
-      ],
+      "conditions": ["admin::is-creator"],
       "locale": null
     },
     {
@@ -512,16 +432,9 @@
       "actionParameters": {},
       "subject": "api::redirect.redirect",
       "properties": {
-        "fields": [
-          "source",
-          "destination",
-          "permanent",
-          "page"
-        ]
+        "fields": ["source", "destination", "permanent", "page"]
       },
-      "conditions": [
-        "admin::is-creator"
-      ],
+      "conditions": ["admin::is-creator"],
       "locale": null
     },
     {
@@ -530,15 +443,9 @@
       "actionParameters": {},
       "subject": "api::subscriber.subscriber",
       "properties": {
-        "fields": [
-          "name",
-          "email",
-          "message"
-        ]
+        "fields": ["name", "email", "message"]
       },
-      "conditions": [
-        "admin::is-creator"
-      ],
+      "conditions": ["admin::is-creator"],
       "locale": null
     },
     {
@@ -547,9 +454,7 @@
       "actionParameters": {},
       "subject": "api::subscriber.subscriber",
       "properties": {},
-      "conditions": [
-        "admin::is-creator"
-      ],
+      "conditions": ["admin::is-creator"],
       "locale": null
     },
     {
@@ -558,15 +463,9 @@
       "actionParameters": {},
       "subject": "api::subscriber.subscriber",
       "properties": {
-        "fields": [
-          "name",
-          "email",
-          "message"
-        ]
+        "fields": ["name", "email", "message"]
       },
-      "conditions": [
-        "admin::is-creator"
-      ],
+      "conditions": ["admin::is-creator"],
       "locale": null
     },
     {
@@ -575,15 +474,9 @@
       "actionParameters": {},
       "subject": "api::subscriber.subscriber",
       "properties": {
-        "fields": [
-          "name",
-          "email",
-          "message"
-        ]
+        "fields": ["name", "email", "message"]
       },
-      "conditions": [
-        "admin::is-creator"
-      ],
+      "conditions": ["admin::is-creator"],
       "locale": null
     },
     {
@@ -619,9 +512,7 @@
       "actionParameters": {},
       "subject": null,
       "properties": {},
-      "conditions": [
-        "admin::is-creator"
-      ],
+      "conditions": ["admin::is-creator"],
       "locale": null
     },
     {
@@ -639,9 +530,7 @@
       "actionParameters": {},
       "subject": null,
       "properties": {},
-      "conditions": [
-        "admin::is-creator"
-      ],
+      "conditions": ["admin::is-creator"],
       "locale": null
     }
   ]

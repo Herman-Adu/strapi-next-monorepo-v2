@@ -1,1 +1,48 @@
-{"id":16,"documentId":"lkmbynozciox01leufv741yx","name":"PostgreSQL_logo.png","alternativeText":null,"caption":null,"width":540,"height":557,"formats":{"small":{"ext":".png","url":"/uploads/small_Postgre_SQL_logo_27e04ea56a.png","hash":"small_Postgre_SQL_logo_27e04ea56a","mime":"image/png","name":"small_PostgreSQL_logo.png","path":null,"size":72.04,"width":485,"height":500,"sizeInBytes":72040},"thumbnail":{"ext":".png","url":"/uploads/thumbnail_Postgre_SQL_logo_27e04ea56a.png","hash":"thumbnail_Postgre_SQL_logo_27e04ea56a","mime":"image/png","name":"thumbnail_PostgreSQL_logo.png","path":null,"size":16.35,"width":151,"height":156,"sizeInBytes":16352}},"hash":"Postgre_SQL_logo_27e04ea56a","ext":".png","mime":"image/png","size":12.36,"url":"/uploads/Postgre_SQL_logo_27e04ea56a.png","previewUrl":null,"provider":"local","provider_metadata":null,"folderPath":"/","createdAt":"2025-10-31T20:50:09.108Z","updatedAt":"2025-10-31T20:50:09.108Z","publishedAt":"2025-10-31T20:50:09.108Z","locale":null}
+{
+  "id": 16,
+  "documentId": "lkmbynozciox01leufv741yx",
+  "name": "PostgreSQL_logo.png",
+  "alternativeText": null,
+  "caption": null,
+  "width": 540,
+  "height": 557,
+  "formats": {
+    "small": {
+      "ext": ".png",
+      "url": "/uploads/small_Postgre_SQL_logo_27e04ea56a.png",
+      "hash": "small_Postgre_SQL_logo_27e04ea56a",
+      "mime": "image/png",
+      "name": "small_PostgreSQL_logo.png",
+      "path": null,
+      "size": 72.04,
+      "width": 485,
+      "height": 500,
+      "sizeInBytes": 72040
+    },
+    "thumbnail": {
+      "ext": ".png",
+      "url": "/uploads/thumbnail_Postgre_SQL_logo_27e04ea56a.png",
+      "hash": "thumbnail_Postgre_SQL_logo_27e04ea56a",
+      "mime": "image/png",
+      "name": "thumbnail_PostgreSQL_logo.png",
+      "path": null,
+      "size": 16.35,
+      "width": 151,
+      "height": 156,
+      "sizeInBytes": 16352
+    }
+  },
+  "hash": "Postgre_SQL_logo_27e04ea56a",
+  "ext": ".png",
+  "mime": "image/png",
+  "size": 12.36,
+  "url": "/uploads/Postgre_SQL_logo_27e04ea56a.png",
+  "previewUrl": null,
+  "provider": "local",
+  "provider_metadata": null,
+  "folderPath": "/",
+  "createdAt": "2025-10-31T20:50:09.108Z",
+  "updatedAt": "2025-10-31T20:50:09.108Z",
+  "publishedAt": "2025-10-31T20:50:09.108Z",
+  "locale": null
+}

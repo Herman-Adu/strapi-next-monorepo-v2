@@ -1,1 +1,60 @@
-{"id":35,"documentId":"f5a4fl5hx37eorvogjovztwt","name":"twilio-logo.png","alternativeText":null,"caption":null,"width":1000,"height":1000,"formats":{"small":{"ext":".png","url":"/uploads/small_twilio_logo_d99be2eba4.png","hash":"small_twilio_logo_d99be2eba4","mime":"image/png","name":"small_twilio-logo.png","path":null,"size":23.26,"width":500,"height":500,"sizeInBytes":23257},"medium":{"ext":".png","url":"/uploads/medium_twilio_logo_d99be2eba4.png","hash":"medium_twilio_logo_d99be2eba4","mime":"image/png","name":"medium_twilio-logo.png","path":null,"size":39.41,"width":750,"height":750,"sizeInBytes":39412},"thumbnail":{"ext":".png","url":"/uploads/thumbnail_twilio_logo_d99be2eba4.png","hash":"thumbnail_twilio_logo_d99be2eba4","mime":"image/png","name":"thumbnail_twilio-logo.png","path":null,"size":7.55,"width":156,"height":156,"sizeInBytes":7552}},"hash":"twilio_logo_d99be2eba4","ext":".png","mime":"image/png","size":6.49,"url":"/uploads/twilio_logo_d99be2eba4.png","previewUrl":null,"provider":"local","provider_metadata":null,"folderPath":"/","createdAt":"2025-11-03T09:14:28.656Z","updatedAt":"2025-11-03T09:14:28.656Z","publishedAt":"2025-11-03T09:14:28.656Z","locale":null}
+{
+  "id": 35,
+  "documentId": "f5a4fl5hx37eorvogjovztwt",
+  "name": "twilio-logo.png",
+  "alternativeText": null,
+  "caption": null,
+  "width": 1000,
+  "height": 1000,
+  "formats": {
+    "small": {
+      "ext": ".png",
+      "url": "/uploads/small_twilio_logo_d99be2eba4.png",
+      "hash": "small_twilio_logo_d99be2eba4",
+      "mime": "image/png",
+      "name": "small_twilio-logo.png",
+      "path": null,
+      "size": 23.26,
+      "width": 500,
+      "height": 500,
+      "sizeInBytes": 23257
+    },
+    "medium": {
+      "ext": ".png",
+      "url": "/uploads/medium_twilio_logo_d99be2eba4.png",
+      "hash": "medium_twilio_logo_d99be2eba4",
+      "mime": "image/png",
+      "name": "medium_twilio-logo.png",
+      "path": null,
+      "size": 39.41,
+      "width": 750,
+      "height": 750,
+      "sizeInBytes": 39412
+    },
+    "thumbnail": {
+      "ext": ".png",
+      "url": "/uploads/thumbnail_twilio_logo_d99be2eba4.png",
+      "hash": "thumbnail_twilio_logo_d99be2eba4",
+      "mime": "image/png",
+      "name": "thumbnail_twilio-logo.png",
+      "path": null,
+      "size": 7.55,
+      "width": 156,
+      "height": 156,
+      "sizeInBytes": 7552
+    }
+  },
+  "hash": "twilio_logo_d99be2eba4",
+  "ext": ".png",
+  "mime": "image/png",
+  "size": 6.49,
+  "url": "/uploads/twilio_logo_d99be2eba4.png",
+  "previewUrl": null,
+  "provider": "local",
+  "provider_metadata": null,
+  "folderPath": "/",
+  "createdAt": "2025-11-03T09:14:28.656Z",
+  "updatedAt": "2025-11-03T09:14:28.656Z",
+  "publishedAt": "2025-11-03T09:14:28.656Z",
+  "locale": null
+}

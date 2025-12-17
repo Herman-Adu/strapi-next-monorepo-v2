@@ -1,1 +1,72 @@
-{"id":38,"documentId":"qpkl5v8p06gsvaawa45foar8","name":"next-js-logo-freelogovectors.net_.png","alternativeText":null,"caption":null,"width":1280,"height":800,"formats":{"large":{"ext":".png","url":"/uploads/large_next_js_logo_freelogovectors_net_10271b6b01.png","hash":"large_next_js_logo_freelogovectors_net_10271b6b01","mime":"image/png","name":"large_next-js-logo-freelogovectors.net_.png","path":null,"size":21.3,"width":1000,"height":625,"sizeInBytes":21299},"small":{"ext":".png","url":"/uploads/small_next_js_logo_freelogovectors_net_10271b6b01.png","hash":"small_next_js_logo_freelogovectors_net_10271b6b01","mime":"image/png","name":"small_next-js-logo-freelogovectors.net_.png","path":null,"size":8.84,"width":500,"height":313,"sizeInBytes":8840},"medium":{"ext":".png","url":"/uploads/medium_next_js_logo_freelogovectors_net_10271b6b01.png","hash":"medium_next_js_logo_freelogovectors_net_10271b6b01","mime":"image/png","name":"medium_next-js-logo-freelogovectors.net_.png","path":null,"size":14.63,"width":750,"height":469,"sizeInBytes":14628},"thumbnail":{"ext":".png","url":"/uploads/thumbnail_next_js_logo_freelogovectors_net_10271b6b01.png","hash":"thumbnail_next_js_logo_freelogovectors_net_10271b6b01","mime":"image/png","name":"thumbnail_next-js-logo-freelogovectors.net_.png","path":null,"size":4.38,"width":245,"height":153,"sizeInBytes":4382}},"hash":"next_js_logo_freelogovectors_net_10271b6b01","ext":".png","mime":"image/png","size":7.5,"url":"/uploads/next_js_logo_freelogovectors_net_10271b6b01.png","previewUrl":null,"provider":"local","provider_metadata":null,"folderPath":"/","createdAt":"2025-05-08T14:05:57.292Z","updatedAt":"2025-05-08T14:05:57.292Z","publishedAt":"2025-05-08T14:05:57.292Z","locale":null}
+{
+  "id": 38,
+  "documentId": "qpkl5v8p06gsvaawa45foar8",
+  "name": "next-js-logo-freelogovectors.net_.png",
+  "alternativeText": null,
+  "caption": null,
+  "width": 1280,
+  "height": 800,
+  "formats": {
+    "large": {
+      "ext": ".png",
+      "url": "/uploads/large_next_js_logo_freelogovectors_net_10271b6b01.png",
+      "hash": "large_next_js_logo_freelogovectors_net_10271b6b01",
+      "mime": "image/png",
+      "name": "large_next-js-logo-freelogovectors.net_.png",
+      "path": null,
+      "size": 21.3,
+      "width": 1000,
+      "height": 625,
+      "sizeInBytes": 21299
+    },
+    "small": {
+      "ext": ".png",
+      "url": "/uploads/small_next_js_logo_freelogovectors_net_10271b6b01.png",
+      "hash": "small_next_js_logo_freelogovectors_net_10271b6b01",
+      "mime": "image/png",
+      "name": "small_next-js-logo-freelogovectors.net_.png",
+      "path": null,
+      "size": 8.84,
+      "width": 500,
+      "height": 313,
+      "sizeInBytes": 8840
+    },
+    "medium": {
+      "ext": ".png",
+      "url": "/uploads/medium_next_js_logo_freelogovectors_net_10271b6b01.png",
+      "hash": "medium_next_js_logo_freelogovectors_net_10271b6b01",
+      "mime": "image/png",
+      "name": "medium_next-js-logo-freelogovectors.net_.png",
+      "path": null,
+      "size": 14.63,
+      "width": 750,
+      "height": 469,
+      "sizeInBytes": 14628
+    },
+    "thumbnail": {
+      "ext": ".png",
+      "url": "/uploads/thumbnail_next_js_logo_freelogovectors_net_10271b6b01.png",
+      "hash": "thumbnail_next_js_logo_freelogovectors_net_10271b6b01",
+      "mime": "image/png",
+      "name": "thumbnail_next-js-logo-freelogovectors.net_.png",
+      "path": null,
+      "size": 4.38,
+      "width": 245,
+      "height": 153,
+      "sizeInBytes": 4382
+    }
+  },
+  "hash": "next_js_logo_freelogovectors_net_10271b6b01",
+  "ext": ".png",
+  "mime": "image/png",
+  "size": 7.5,
+  "url": "/uploads/next_js_logo_freelogovectors_net_10271b6b01.png",
+  "previewUrl": null,
+  "provider": "local",
+  "provider_metadata": null,
+  "folderPath": "/",
+  "createdAt": "2025-05-08T14:05:57.292Z",
+  "updatedAt": "2025-05-08T14:05:57.292Z",
+  "publishedAt": "2025-05-08T14:05:57.292Z",
+  "locale": null
+}

@@ -1,1 +1,15 @@
-{"ext":".webp","url":"/uploads/thumbnail_Stripe_Logo_2_024a427084.webp","hash":"thumbnail_Stripe_Logo_2_024a427084","mime":"image/webp","name":"thumbnail_Stripe_Logo_2.webp","path":null,"size":3.23,"width":245,"height":116,"sizeInBytes":3226,"type":"thumbnail","id":11,"mainHash":"Stripe_Logo_2_024a427084"}
+{
+  "ext": ".webp",
+  "url": "/uploads/thumbnail_Stripe_Logo_2_024a427084.webp",
+  "hash": "thumbnail_Stripe_Logo_2_024a427084",
+  "mime": "image/webp",
+  "name": "thumbnail_Stripe_Logo_2.webp",
+  "path": null,
+  "size": 3.23,
+  "width": 245,
+  "height": 116,
+  "sizeInBytes": 3226,
+  "type": "thumbnail",
+  "id": 11,
+  "mainHash": "Stripe_Logo_2_024a427084"
+}

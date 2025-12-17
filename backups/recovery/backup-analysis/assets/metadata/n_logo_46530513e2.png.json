@@ -1,1 +1,36 @@
-{"id":65,"documentId":"c5b9xe1bhthlxmfch97oxzn4","name":"n-logo.png","alternativeText":null,"caption":null,"width":172,"height":172,"formats":{"thumbnail":{"ext":".png","url":"/uploads/thumbnail_n_logo_46530513e2.png","hash":"thumbnail_n_logo_46530513e2","mime":"image/png","name":"thumbnail_n-logo.png","path":null,"size":5.79,"width":156,"height":156,"sizeInBytes":5786}},"hash":"n_logo_46530513e2","ext":".png","mime":"image/png","size":1.46,"url":"/uploads/n_logo_46530513e2.png","previewUrl":null,"provider":"local","provider_metadata":null,"folderPath":"/","createdAt":"2025-10-31T21:01:34.226Z","updatedAt":"2025-10-31T21:01:34.226Z","publishedAt":"2025-10-31T21:01:34.226Z","locale":null}
+{
+  "id": 65,
+  "documentId": "c5b9xe1bhthlxmfch97oxzn4",
+  "name": "n-logo.png",
+  "alternativeText": null,
+  "caption": null,
+  "width": 172,
+  "height": 172,
+  "formats": {
+    "thumbnail": {
+      "ext": ".png",
+      "url": "/uploads/thumbnail_n_logo_46530513e2.png",
+      "hash": "thumbnail_n_logo_46530513e2",
+      "mime": "image/png",
+      "name": "thumbnail_n-logo.png",
+      "path": null,
+      "size": 5.79,
+      "width": 156,
+      "height": 156,
+      "sizeInBytes": 5786
+    }
+  },
+  "hash": "n_logo_46530513e2",
+  "ext": ".png",
+  "mime": "image/png",
+  "size": 1.46,
+  "url": "/uploads/n_logo_46530513e2.png",
+  "previewUrl": null,
+  "provider": "local",
+  "provider_metadata": null,
+  "folderPath": "/",
+  "createdAt": "2025-10-31T21:01:34.226Z",
+  "updatedAt": "2025-10-31T21:01:34.226Z",
+  "publishedAt": "2025-10-31T21:01:34.226Z",
+  "locale": null
+}

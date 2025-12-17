@@ -1,1 +1,72 @@
-{"id":19,"documentId":"c75815egxdm1nijyzzz5zw6q","name":"hero-image-v2.png","alternativeText":null,"caption":null,"width":2250,"height":1500,"formats":{"large":{"ext":".png","url":"/uploads/large_hero_image_v2_4d7ba07b22.png","hash":"large_hero_image_v2_4d7ba07b22","mime":"image/png","name":"large_hero-image-v2.png","path":null,"size":40.93,"width":1000,"height":667,"sizeInBytes":40932},"small":{"ext":".png","url":"/uploads/small_hero_image_v2_4d7ba07b22.png","hash":"small_hero_image_v2_4d7ba07b22","mime":"image/png","name":"small_hero-image-v2.png","path":null,"size":15.94,"width":500,"height":333,"sizeInBytes":15942},"medium":{"ext":".png","url":"/uploads/medium_hero_image_v2_4d7ba07b22.png","hash":"medium_hero_image_v2_4d7ba07b22","mime":"image/png","name":"medium_hero-image-v2.png","path":null,"size":28.95,"width":750,"height":500,"sizeInBytes":28950},"thumbnail":{"ext":".png","url":"/uploads/thumbnail_hero_image_v2_4d7ba07b22.png","hash":"thumbnail_hero_image_v2_4d7ba07b22","mime":"image/png","name":"thumbnail_hero-image-v2.png","path":null,"size":5.53,"width":234,"height":156,"sizeInBytes":5530}},"hash":"hero_image_v2_4d7ba07b22","ext":".png","mime":"image/png","size":127.13,"url":"/uploads/hero_image_v2_4d7ba07b22.png","previewUrl":null,"provider":"local","provider_metadata":null,"folderPath":"/","createdAt":"2025-11-16T19:54:02.904Z","updatedAt":"2025-11-16T19:54:02.904Z","publishedAt":"2025-11-16T19:54:02.904Z","locale":null}
+{
+  "id": 19,
+  "documentId": "c75815egxdm1nijyzzz5zw6q",
+  "name": "hero-image-v2.png",
+  "alternativeText": null,
+  "caption": null,
+  "width": 2250,
+  "height": 1500,
+  "formats": {
+    "large": {
+      "ext": ".png",
+      "url": "/uploads/large_hero_image_v2_4d7ba07b22.png",
+      "hash": "large_hero_image_v2_4d7ba07b22",
+      "mime": "image/png",
+      "name": "large_hero-image-v2.png",
+      "path": null,
+      "size": 40.93,
+      "width": 1000,
+      "height": 667,
+      "sizeInBytes": 40932
+    },
+    "small": {
+      "ext": ".png",
+      "url": "/uploads/small_hero_image_v2_4d7ba07b22.png",
+      "hash": "small_hero_image_v2_4d7ba07b22",
+      "mime": "image/png",
+      "name": "small_hero-image-v2.png",
+      "path": null,
+      "size": 15.94,
+      "width": 500,
+      "height": 333,
+      "sizeInBytes": 15942
+    },
+    "medium": {
+      "ext": ".png",
+      "url": "/uploads/medium_hero_image_v2_4d7ba07b22.png",
+      "hash": "medium_hero_image_v2_4d7ba07b22",
+      "mime": "image/png",
+      "name": "medium_hero-image-v2.png",
+      "path": null,
+      "size": 28.95,
+      "width": 750,
+      "height": 500,
+      "sizeInBytes": 28950
+    },
+    "thumbnail": {
+      "ext": ".png",
+      "url": "/uploads/thumbnail_hero_image_v2_4d7ba07b22.png",
+      "hash": "thumbnail_hero_image_v2_4d7ba07b22",
+      "mime": "image/png",
+      "name": "thumbnail_hero-image-v2.png",
+      "path": null,
+      "size": 5.53,
+      "width": 234,
+      "height": 156,
+      "sizeInBytes": 5530
+    }
+  },
+  "hash": "hero_image_v2_4d7ba07b22",
+  "ext": ".png",
+  "mime": "image/png",
+  "size": 127.13,
+  "url": "/uploads/hero_image_v2_4d7ba07b22.png",
+  "previewUrl": null,
+  "provider": "local",
+  "provider_metadata": null,
+  "folderPath": "/",
+  "createdAt": "2025-11-16T19:54:02.904Z",
+  "updatedAt": "2025-11-16T19:54:02.904Z",
+  "publishedAt": "2025-11-16T19:54:02.904Z",
+  "locale": null
+}

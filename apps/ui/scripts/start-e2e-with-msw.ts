@@ -1,4 +1,4 @@
-#!/usr/bin/env node
+#!/usr/bin/env tsx
 /**
  * Start E2E environment with MSW before Next.js
  *
@@ -6,18 +6,17 @@
  * race conditions where Next.js tries to fetch data before MSW is ready.
  */
 
-const { spawn } = require("child_process")
-const path = require("path")
-
-// Import MSW setup
-const { setupMSW, teardownMSW } = require("../e2e/global-setup")
+import { spawn } from "child_process"
+import path from "path"
+import globalSetup from "../e2e/global-setup"
+import globalTeardown from "../e2e/global-teardown"
 
 async function start() {
   console.log("🚀 [E2E] Starting MSW before Next.js...\n")
 
   try {
     // Start MSW first
-    await setupMSW()
+    await globalSetup()
     console.log("\n✅ [E2E] MSW ready - starting Next.js dev server...\n")
 
     // Now start Next.js
@@ -31,7 +30,7 @@ async function start() {
     const cleanup = async () => {
       console.log("\n\n🛑 [E2E] Shutting down...")
       nextProcess.kill()
-      await teardownMSW()
+      await globalTeardown()
       process.exit(0)
     }
 
@@ -44,11 +43,12 @@ async function start() {
     })
 
     nextProcess.on("exit", (code) => {
-      console.log(`\n[E2E] Next.js exited with code ${code}`)
+      console.log(`\n[E2E] Next.js process exited with code ${code}`)
       cleanup()
     })
   } catch (error) {
     console.error("❌ [E2E] Failed to start:", error)
+    await globalTeardown()
     process.exit(1)
   }
 }

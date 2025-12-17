@@ -1,1 +1,15 @@
-{"ext":".jpg","url":"/uploads/small_james_williams_70c11b9d46.jpg","hash":"small_james_williams_70c11b9d46","mime":"image/jpeg","name":"small_james-williams.jpg","path":null,"size":22.44,"width":500,"height":500,"sizeInBytes":22435,"type":"small","id":82,"mainHash":"james_williams_70c11b9d46"}
+{
+  "ext": ".jpg",
+  "url": "/uploads/small_james_williams_70c11b9d46.jpg",
+  "hash": "small_james_williams_70c11b9d46",
+  "mime": "image/jpeg",
+  "name": "small_james-williams.jpg",
+  "path": null,
+  "size": 22.44,
+  "width": 500,
+  "height": 500,
+  "sizeInBytes": 22435,
+  "type": "small",
+  "id": 82,
+  "mainHash": "james_williams_70c11b9d46"
+}

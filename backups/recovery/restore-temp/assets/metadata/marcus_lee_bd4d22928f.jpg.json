@@ -1,1 +1,72 @@
-{"id":81,"documentId":"d1gnvcpt9szfz5l9rctlba46","name":"maria-thompson.jpg","alternativeText":null,"caption":null,"width":1024,"height":1024,"formats":{"large":{"ext":".jpg","url":"/uploads/large_marcus_lee_bd4d22928f.jpg","hash":"large_marcus_lee_bd4d22928f","mime":"image/jpeg","name":"large_marcus-lee.jpg","path":null,"size":57.23,"width":1000,"height":1000,"sizeInBytes":57227},"small":{"ext":".jpg","url":"/uploads/small_marcus_lee_bd4d22928f.jpg","hash":"small_marcus_lee_bd4d22928f","mime":"image/jpeg","name":"small_marcus-lee.jpg","path":null,"size":19.51,"width":500,"height":500,"sizeInBytes":19505},"medium":{"ext":".jpg","url":"/uploads/medium_marcus_lee_bd4d22928f.jpg","hash":"medium_marcus_lee_bd4d22928f","mime":"image/jpeg","name":"medium_marcus-lee.jpg","path":null,"size":36.14,"width":750,"height":750,"sizeInBytes":36135},"thumbnail":{"ext":".jpg","url":"/uploads/thumbnail_marcus_lee_bd4d22928f.jpg","hash":"thumbnail_marcus_lee_bd4d22928f","mime":"image/jpeg","name":"thumbnail_marcus-lee.jpg","path":null,"size":3.68,"width":156,"height":156,"sizeInBytes":3680}},"hash":"marcus_lee_bd4d22928f","ext":".jpg","mime":"image/jpeg","size":59.5,"url":"/uploads/marcus_lee_bd4d22928f.jpg","previewUrl":null,"provider":"local","provider_metadata":null,"folderPath":"/1","createdAt":"2025-11-09T01:10:16.003Z","updatedAt":"2025-11-09T01:17:30.484Z","publishedAt":"2025-11-09T01:10:16.003Z","locale":null}
+{
+  "id": 81,
+  "documentId": "d1gnvcpt9szfz5l9rctlba46",
+  "name": "maria-thompson.jpg",
+  "alternativeText": null,
+  "caption": null,
+  "width": 1024,
+  "height": 1024,
+  "formats": {
+    "large": {
+      "ext": ".jpg",
+      "url": "/uploads/large_marcus_lee_bd4d22928f.jpg",
+      "hash": "large_marcus_lee_bd4d22928f",
+      "mime": "image/jpeg",
+      "name": "large_marcus-lee.jpg",
+      "path": null,
+      "size": 57.23,
+      "width": 1000,
+      "height": 1000,
+      "sizeInBytes": 57227
+    },
+    "small": {
+      "ext": ".jpg",
+      "url": "/uploads/small_marcus_lee_bd4d22928f.jpg",
+      "hash": "small_marcus_lee_bd4d22928f",
+      "mime": "image/jpeg",
+      "name": "small_marcus-lee.jpg",
+      "path": null,
+      "size": 19.51,
+      "width": 500,
+      "height": 500,
+      "sizeInBytes": 19505
+    },
+    "medium": {
+      "ext": ".jpg",
+      "url": "/uploads/medium_marcus_lee_bd4d22928f.jpg",
+      "hash": "medium_marcus_lee_bd4d22928f",
+      "mime": "image/jpeg",
+      "name": "medium_marcus-lee.jpg",
+      "path": null,
+      "size": 36.14,
+      "width": 750,
+      "height": 750,
+      "sizeInBytes": 36135
+    },
+    "thumbnail": {
+      "ext": ".jpg",
+      "url": "/uploads/thumbnail_marcus_lee_bd4d22928f.jpg",
+      "hash": "thumbnail_marcus_lee_bd4d22928f",
+      "mime": "image/jpeg",
+      "name": "thumbnail_marcus-lee.jpg",
+      "path": null,
+      "size": 3.68,
+      "width": 156,
+      "height": 156,
+      "sizeInBytes": 3680
+    }
+  },
+  "hash": "marcus_lee_bd4d22928f",
+  "ext": ".jpg",
+  "mime": "image/jpeg",
+  "size": 59.5,
+  "url": "/uploads/marcus_lee_bd4d22928f.jpg",
+  "previewUrl": null,
+  "provider": "local",
+  "provider_metadata": null,
+  "folderPath": "/1",
+  "createdAt": "2025-11-09T01:10:16.003Z",
+  "updatedAt": "2025-11-09T01:17:30.484Z",
+  "publishedAt": "2025-11-09T01:10:16.003Z",
+  "locale": null
+}

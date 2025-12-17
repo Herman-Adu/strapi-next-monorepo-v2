@@ -1,1 +1,15 @@
-{"ext":".jpg","url":"/uploads/medium_amanda_foster_df3bec3530.jpg","hash":"medium_amanda_foster_df3bec3530","mime":"image/jpeg","name":"medium_amanda-foster.jpg","path":null,"size":33.66,"width":750,"height":750,"sizeInBytes":33660,"type":"medium","id":88,"mainHash":"amanda_foster_df3bec3530"}
+{
+  "ext": ".jpg",
+  "url": "/uploads/medium_amanda_foster_df3bec3530.jpg",
+  "hash": "medium_amanda_foster_df3bec3530",
+  "mime": "image/jpeg",
+  "name": "medium_amanda-foster.jpg",
+  "path": null,
+  "size": 33.66,
+  "width": 750,
+  "height": 750,
+  "sizeInBytes": 33660,
+  "type": "medium",
+  "id": 88,
+  "mainHash": "amanda_foster_df3bec3530"
+}

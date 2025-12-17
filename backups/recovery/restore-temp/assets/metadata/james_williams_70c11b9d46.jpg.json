@@ -1,1 +1,72 @@
-{"id":82,"documentId":"clymnzorhyygvetqg4s20o0x","name":"gupta-patel.jpg","alternativeText":null,"caption":null,"width":1024,"height":1024,"formats":{"large":{"ext":".jpg","url":"/uploads/large_james_williams_70c11b9d46.jpg","hash":"large_james_williams_70c11b9d46","mime":"image/jpeg","name":"large_james-williams.jpg","path":null,"size":75.07,"width":1000,"height":1000,"sizeInBytes":75071},"small":{"ext":".jpg","url":"/uploads/small_james_williams_70c11b9d46.jpg","hash":"small_james_williams_70c11b9d46","mime":"image/jpeg","name":"small_james-williams.jpg","path":null,"size":22.44,"width":500,"height":500,"sizeInBytes":22435},"medium":{"ext":".jpg","url":"/uploads/medium_james_williams_70c11b9d46.jpg","hash":"medium_james_williams_70c11b9d46","mime":"image/jpeg","name":"medium_james-williams.jpg","path":null,"size":44.92,"width":750,"height":750,"sizeInBytes":44922},"thumbnail":{"ext":".jpg","url":"/uploads/thumbnail_james_williams_70c11b9d46.jpg","hash":"thumbnail_james_williams_70c11b9d46","mime":"image/jpeg","name":"thumbnail_james-williams.jpg","path":null,"size":4.06,"width":156,"height":156,"sizeInBytes":4064}},"hash":"james_williams_70c11b9d46","ext":".jpg","mime":"image/jpeg","size":79.06,"url":"/uploads/james_williams_70c11b9d46.jpg","previewUrl":null,"provider":"local","provider_metadata":null,"folderPath":"/1","createdAt":"2025-11-09T01:10:15.842Z","updatedAt":"2025-11-09T01:25:41.592Z","publishedAt":"2025-11-09T01:10:15.842Z","locale":null}
+{
+  "id": 82,
+  "documentId": "clymnzorhyygvetqg4s20o0x",
+  "name": "gupta-patel.jpg",
+  "alternativeText": null,
+  "caption": null,
+  "width": 1024,
+  "height": 1024,
+  "formats": {
+    "large": {
+      "ext": ".jpg",
+      "url": "/uploads/large_james_williams_70c11b9d46.jpg",
+      "hash": "large_james_williams_70c11b9d46",
+      "mime": "image/jpeg",
+      "name": "large_james-williams.jpg",
+      "path": null,
+      "size": 75.07,
+      "width": 1000,
+      "height": 1000,
+      "sizeInBytes": 75071
+    },
+    "small": {
+      "ext": ".jpg",
+      "url": "/uploads/small_james_williams_70c11b9d46.jpg",
+      "hash": "small_james_williams_70c11b9d46",
+      "mime": "image/jpeg",
+      "name": "small_james-williams.jpg",
+      "path": null,
+      "size": 22.44,
+      "width": 500,
+      "height": 500,
+      "sizeInBytes": 22435
+    },
+    "medium": {
+      "ext": ".jpg",
+      "url": "/uploads/medium_james_williams_70c11b9d46.jpg",
+      "hash": "medium_james_williams_70c11b9d46",
+      "mime": "image/jpeg",
+      "name": "medium_james-williams.jpg",
+      "path": null,
+      "size": 44.92,
+      "width": 750,
+      "height": 750,
+      "sizeInBytes": 44922
+    },
+    "thumbnail": {
+      "ext": ".jpg",
+      "url": "/uploads/thumbnail_james_williams_70c11b9d46.jpg",
+      "hash": "thumbnail_james_williams_70c11b9d46",
+      "mime": "image/jpeg",
+      "name": "thumbnail_james-williams.jpg",
+      "path": null,
+      "size": 4.06,
+      "width": 156,
+      "height": 156,
+      "sizeInBytes": 4064
+    }
+  },
+  "hash": "james_williams_70c11b9d46",
+  "ext": ".jpg",
+  "mime": "image/jpeg",
+  "size": 79.06,
+  "url": "/uploads/james_williams_70c11b9d46.jpg",
+  "previewUrl": null,
+  "provider": "local",
+  "provider_metadata": null,
+  "folderPath": "/1",
+  "createdAt": "2025-11-09T01:10:15.842Z",
+  "updatedAt": "2025-11-09T01:25:41.592Z",
+  "publishedAt": "2025-11-09T01:10:15.842Z",
+  "locale": null
+}

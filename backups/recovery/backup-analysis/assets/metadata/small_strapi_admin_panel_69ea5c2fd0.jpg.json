@@ -1,1 +1,15 @@
-{"ext":".jpg","url":"/uploads/small_strapi_admin_panel_69ea5c2fd0.jpg","hash":"small_strapi_admin_panel_69ea5c2fd0","mime":"image/jpeg","name":"small_strapi-admin-panel.jpg","path":null,"size":9.96,"width":500,"height":260,"sizeInBytes":9958,"type":"small","id":54,"mainHash":"strapi_admin_panel_69ea5c2fd0"}
+{
+  "ext": ".jpg",
+  "url": "/uploads/small_strapi_admin_panel_69ea5c2fd0.jpg",
+  "hash": "small_strapi_admin_panel_69ea5c2fd0",
+  "mime": "image/jpeg",
+  "name": "small_strapi-admin-panel.jpg",
+  "path": null,
+  "size": 9.96,
+  "width": 500,
+  "height": 260,
+  "sizeInBytes": 9958,
+  "type": "small",
+  "id": 54,
+  "mainHash": "strapi_admin_panel_69ea5c2fd0"
+}

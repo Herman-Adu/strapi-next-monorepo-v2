@@ -1,1 +1,72 @@
-{"id":55,"documentId":"png934fvj0uzkfrctse9howu","name":"strapi-admin-panel-2.jpg","alternativeText":null,"caption":null,"width":1126,"height":858,"formats":{"large":{"ext":".jpg","url":"/uploads/large_strapi_admin_panel_2_a20a87879e.jpg","hash":"large_strapi_admin_panel_2_a20a87879e","mime":"image/jpeg","name":"large_strapi-admin-panel-2.jpg","path":null,"size":49.68,"width":1000,"height":762,"sizeInBytes":49684},"small":{"ext":".jpg","url":"/uploads/small_strapi_admin_panel_2_a20a87879e.jpg","hash":"small_strapi_admin_panel_2_a20a87879e","mime":"image/jpeg","name":"small_strapi-admin-panel-2.jpg","path":null,"size":16.92,"width":500,"height":381,"sizeInBytes":16921},"medium":{"ext":".jpg","url":"/uploads/medium_strapi_admin_panel_2_a20a87879e.jpg","hash":"medium_strapi_admin_panel_2_a20a87879e","mime":"image/jpeg","name":"medium_strapi-admin-panel-2.jpg","path":null,"size":31.87,"width":750,"height":571,"sizeInBytes":31874},"thumbnail":{"ext":".jpg","url":"/uploads/thumbnail_strapi_admin_panel_2_a20a87879e.jpg","hash":"thumbnail_strapi_admin_panel_2_a20a87879e","mime":"image/jpeg","name":"thumbnail_strapi-admin-panel-2.jpg","path":null,"size":3.9,"width":205,"height":156,"sizeInBytes":3896}},"hash":"strapi_admin_panel_2_a20a87879e","ext":".jpg","mime":"image/jpeg","size":55.19,"url":"/uploads/strapi_admin_panel_2_a20a87879e.jpg","previewUrl":null,"provider":"local","provider_metadata":null,"folderPath":"/","createdAt":"2025-10-31T14:32:54.467Z","updatedAt":"2025-10-31T14:32:54.467Z","publishedAt":"2025-10-31T14:32:54.467Z","locale":null}
+{
+  "id": 55,
+  "documentId": "png934fvj0uzkfrctse9howu",
+  "name": "strapi-admin-panel-2.jpg",
+  "alternativeText": null,
+  "caption": null,
+  "width": 1126,
+  "height": 858,
+  "formats": {
+    "large": {
+      "ext": ".jpg",
+      "url": "/uploads/large_strapi_admin_panel_2_a20a87879e.jpg",
+      "hash": "large_strapi_admin_panel_2_a20a87879e",
+      "mime": "image/jpeg",
+      "name": "large_strapi-admin-panel-2.jpg",
+      "path": null,
+      "size": 49.68,
+      "width": 1000,
+      "height": 762,
+      "sizeInBytes": 49684
+    },
+    "small": {
+      "ext": ".jpg",
+      "url": "/uploads/small_strapi_admin_panel_2_a20a87879e.jpg",
+      "hash": "small_strapi_admin_panel_2_a20a87879e",
+      "mime": "image/jpeg",
+      "name": "small_strapi-admin-panel-2.jpg",
+      "path": null,
+      "size": 16.92,
+      "width": 500,
+      "height": 381,
+      "sizeInBytes": 16921
+    },
+    "medium": {
+      "ext": ".jpg",
+      "url": "/uploads/medium_strapi_admin_panel_2_a20a87879e.jpg",
+      "hash": "medium_strapi_admin_panel_2_a20a87879e",
+      "mime": "image/jpeg",
+      "name": "medium_strapi-admin-panel-2.jpg",
+      "path": null,
+      "size": 31.87,
+      "width": 750,
+      "height": 571,
+      "sizeInBytes": 31874
+    },
+    "thumbnail": {
+      "ext": ".jpg",
+      "url": "/uploads/thumbnail_strapi_admin_panel_2_a20a87879e.jpg",
+      "hash": "thumbnail_strapi_admin_panel_2_a20a87879e",
+      "mime": "image/jpeg",
+      "name": "thumbnail_strapi-admin-panel-2.jpg",
+      "path": null,
+      "size": 3.9,
+      "width": 205,
+      "height": 156,
+      "sizeInBytes": 3896
+    }
+  },
+  "hash": "strapi_admin_panel_2_a20a87879e",
+  "ext": ".jpg",
+  "mime": "image/jpeg",
+  "size": 55.19,
+  "url": "/uploads/strapi_admin_panel_2_a20a87879e.jpg",
+  "previewUrl": null,
+  "provider": "local",
+  "provider_metadata": null,
+  "folderPath": "/",
+  "createdAt": "2025-10-31T14:32:54.467Z",
+  "updatedAt": "2025-10-31T14:32:54.467Z",
+  "publishedAt": "2025-10-31T14:32:54.467Z",
+  "locale": null
+}

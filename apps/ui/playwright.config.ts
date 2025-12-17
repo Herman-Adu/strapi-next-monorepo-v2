@@ -72,7 +72,7 @@ export default defineConfig({
   /* Run your local dev server before starting the tests */
   webServer: {
     // Start MSW BEFORE Next.js to avoid race conditions
-    command: "node scripts/start-e2e-with-msw.js",
+    command: "npx tsx scripts/start-e2e-with-msw.ts",
     url: process.env.CI ? "http://127.0.0.1:3000" : "http://localhost:3000",
     reuseExistingServer: !process.env.CI, // Fresh server in CI, reuse locally
     timeout: 180 * 1000,

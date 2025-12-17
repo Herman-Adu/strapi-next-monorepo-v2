@@ -1,1 +1,15 @@
-{"ext":".jpg","url":"/uploads/medium_michael_chen_3115d24273.jpg","hash":"medium_michael_chen_3115d24273","mime":"image/jpeg","name":"medium_michael-chen.jpg","path":null,"size":70.51,"width":750,"height":750,"sizeInBytes":70511,"type":"medium","id":83,"mainHash":"michael_chen_3115d24273"}
+{
+  "ext": ".jpg",
+  "url": "/uploads/medium_michael_chen_3115d24273.jpg",
+  "hash": "medium_michael_chen_3115d24273",
+  "mime": "image/jpeg",
+  "name": "medium_michael-chen.jpg",
+  "path": null,
+  "size": 70.51,
+  "width": 750,
+  "height": 750,
+  "sizeInBytes": 70511,
+  "type": "medium",
+  "id": 83,
+  "mainHash": "michael_chen_3115d24273"
+}

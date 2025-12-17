@@ -1,1 +1,60 @@
-{"id":61,"documentId":"gz03wj4se67b4y2uedf7k0mx","name":"Next.js_Symbol_Alternative_1.png","alternativeText":null,"caption":null,"width":800,"height":800,"formats":{"small":{"ext":".png","url":"/uploads/small_Next_js_Symbol_Alternative_1_47a3c35e1f.png","hash":"small_Next_js_Symbol_Alternative_1_47a3c35e1f","mime":"image/png","name":"small_Next.js_Symbol_Alternative_1.png","path":null,"size":75.49,"width":500,"height":500,"sizeInBytes":75488},"medium":{"ext":".png","url":"/uploads/medium_Next_js_Symbol_Alternative_1_47a3c35e1f.png","hash":"medium_Next_js_Symbol_Alternative_1_47a3c35e1f","mime":"image/png","name":"medium_Next.js_Symbol_Alternative_1.png","path":null,"size":146.97,"width":750,"height":750,"sizeInBytes":146968},"thumbnail":{"ext":".png","url":"/uploads/thumbnail_Next_js_Symbol_Alternative_1_47a3c35e1f.png","hash":"thumbnail_Next_js_Symbol_Alternative_1_47a3c35e1f","mime":"image/png","name":"thumbnail_Next.js_Symbol_Alternative_1.png","path":null,"size":10.88,"width":156,"height":156,"sizeInBytes":10882}},"hash":"Next_js_Symbol_Alternative_1_47a3c35e1f","ext":".png","mime":"image/png","size":29.71,"url":"/uploads/Next_js_Symbol_Alternative_1_47a3c35e1f.png","previewUrl":null,"provider":"local","provider_metadata":null,"folderPath":"/","createdAt":"2025-10-31T20:59:18.362Z","updatedAt":"2025-10-31T20:59:18.362Z","publishedAt":"2025-10-31T20:59:18.363Z","locale":null}
+{
+  "id": 61,
+  "documentId": "gz03wj4se67b4y2uedf7k0mx",
+  "name": "Next.js_Symbol_Alternative_1.png",
+  "alternativeText": null,
+  "caption": null,
+  "width": 800,
+  "height": 800,
+  "formats": {
+    "small": {
+      "ext": ".png",
+      "url": "/uploads/small_Next_js_Symbol_Alternative_1_47a3c35e1f.png",
+      "hash": "small_Next_js_Symbol_Alternative_1_47a3c35e1f",
+      "mime": "image/png",
+      "name": "small_Next.js_Symbol_Alternative_1.png",
+      "path": null,
+      "size": 75.49,
+      "width": 500,
+      "height": 500,
+      "sizeInBytes": 75488
+    },
+    "medium": {
+      "ext": ".png",
+      "url": "/uploads/medium_Next_js_Symbol_Alternative_1_47a3c35e1f.png",
+      "hash": "medium_Next_js_Symbol_Alternative_1_47a3c35e1f",
+      "mime": "image/png",
+      "name": "medium_Next.js_Symbol_Alternative_1.png",
+      "path": null,
+      "size": 146.97,
+      "width": 750,
+      "height": 750,
+      "sizeInBytes": 146968
+    },
+    "thumbnail": {
+      "ext": ".png",
+      "url": "/uploads/thumbnail_Next_js_Symbol_Alternative_1_47a3c35e1f.png",
+      "hash": "thumbnail_Next_js_Symbol_Alternative_1_47a3c35e1f",
+      "mime": "image/png",
+      "name": "thumbnail_Next.js_Symbol_Alternative_1.png",
+      "path": null,
+      "size": 10.88,
+      "width": 156,
+      "height": 156,
+      "sizeInBytes": 10882
+    }
+  },
+  "hash": "Next_js_Symbol_Alternative_1_47a3c35e1f",
+  "ext": ".png",
+  "mime": "image/png",
+  "size": 29.71,
+  "url": "/uploads/Next_js_Symbol_Alternative_1_47a3c35e1f.png",
+  "previewUrl": null,
+  "provider": "local",
+  "provider_metadata": null,
+  "folderPath": "/",
+  "createdAt": "2025-10-31T20:59:18.362Z",
+  "updatedAt": "2025-10-31T20:59:18.362Z",
+  "publishedAt": "2025-10-31T20:59:18.363Z",
+  "locale": null
+}

@@ -99,12 +99,7 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "workflowPoints",
-        "background",
-        "badge"
-      ],
+      "list": ["id", "workflowPoints", "background", "badge"],
       "edit": [
         [
           {

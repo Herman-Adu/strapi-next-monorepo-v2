@@ -1,1 +1,15 @@
-{"ext":".png","url":"/uploads/thumbnail_Postgre_SQL_logo_27e04ea56a.png","hash":"thumbnail_Postgre_SQL_logo_27e04ea56a","mime":"image/png","name":"thumbnail_PostgreSQL_logo.png","path":null,"size":16.35,"width":151,"height":156,"sizeInBytes":16352,"type":"thumbnail","id":55,"mainHash":"Postgre_SQL_logo_27e04ea56a"}
+{
+  "ext": ".png",
+  "url": "/uploads/thumbnail_Postgre_SQL_logo_27e04ea56a.png",
+  "hash": "thumbnail_Postgre_SQL_logo_27e04ea56a",
+  "mime": "image/png",
+  "name": "thumbnail_PostgreSQL_logo.png",
+  "path": null,
+  "size": 16.35,
+  "width": 151,
+  "height": 156,
+  "sizeInBytes": 16352,
+  "type": "thumbnail",
+  "id": 55,
+  "mainHash": "Postgre_SQL_logo_27e04ea56a"
+}

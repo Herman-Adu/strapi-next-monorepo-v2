@@ -1,1 +1,15 @@
-{"ext":".jpg","url":"/uploads/small_apple_log_938a9b0a0b.jpg","hash":"small_apple_log_938a9b0a0b","mime":"image/jpeg","name":"small_apple-log.jpg","path":null,"size":33.96,"width":500,"height":497,"sizeInBytes":33958,"type":"small","id":10,"mainHash":"apple_log_938a9b0a0b"}
+{
+  "ext": ".jpg",
+  "url": "/uploads/small_apple_log_938a9b0a0b.jpg",
+  "hash": "small_apple_log_938a9b0a0b",
+  "mime": "image/jpeg",
+  "name": "small_apple-log.jpg",
+  "path": null,
+  "size": 33.96,
+  "width": 500,
+  "height": 497,
+  "sizeInBytes": 33958,
+  "type": "small",
+  "id": 10,
+  "mainHash": "apple_log_938a9b0a0b"
+}

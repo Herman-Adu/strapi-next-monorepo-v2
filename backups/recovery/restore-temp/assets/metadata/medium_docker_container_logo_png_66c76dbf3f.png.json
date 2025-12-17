@@ -1,1 +1,15 @@
-{"ext":".png","url":"/uploads/medium_docker_container_logo_png_66c76dbf3f.png","hash":"medium_docker_container_logo_png_66c76dbf3f","mime":"image/png","name":"medium_docker-container-logo-png.png","path":null,"size":37.9,"width":750,"height":462,"sizeInBytes":37896,"type":"medium","id":64,"mainHash":"docker_container_logo_png_66c76dbf3f"}
+{
+  "ext": ".png",
+  "url": "/uploads/medium_docker_container_logo_png_66c76dbf3f.png",
+  "hash": "medium_docker_container_logo_png_66c76dbf3f",
+  "mime": "image/png",
+  "name": "medium_docker-container-logo-png.png",
+  "path": null,
+  "size": 37.9,
+  "width": 750,
+  "height": 462,
+  "sizeInBytes": 37896,
+  "type": "medium",
+  "id": 64,
+  "mainHash": "docker_container_logo_png_66c76dbf3f"
+}

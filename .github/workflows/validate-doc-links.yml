@@ -3,28 +3,28 @@ name: Documentation Links Validation
 on:
   pull_request:
     paths:
-      - 'docs/**'
+      - "docs/**"
   push:
     branches:
       - main
     paths:
-      - 'docs/**'
+      - "docs/**"
   workflow_dispatch:
 
 jobs:
   validate-links:
     name: Validate Documentation Links
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-      
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
-      
+          node-version: "20"
+
       - name: Run enhanced link validation
         id: validate
         continue-on-error: true
@@ -32,11 +32,11 @@ jobs:
           node scripts/validate-doc-links-enhanced.js > validation-output.txt 2>&1
           echo "exit_code=$?" >> $GITHUB_OUTPUT
         shell: bash
-      
+
       - name: Display validation results
         if: always()
         run: cat validation-output.txt
-      
+
       - name: Comment on PR (if broken links found)
         if: github.event_name == 'pull_request' && steps.validate.outputs.exit_code != '0'
         uses: actions/github-script@v7
@@ -44,42 +44,42 @@ jobs:
           script: |
             const fs = require('fs');
             const output = fs.readFileSync('validation-output.txt', 'utf8');
-            
+
             const body = `## 📚 Documentation Links Validation Results
-            
+
             ⚠️ **Some documentation links need attention**
-            
+
             <details>
             <summary>Click to see full validation report</summary>
-            
+
             \`\`\`
             ${output}
             \`\`\`
-            
+
             </details>
-            
+
             ### 🔧 How to fix:
-            
+
             1. Review the broken links above
             2. Run \`node scripts/validate-doc-links-enhanced.js\` locally
             3. Fix manually or run \`node scripts/migrate-all-links.js --apply\` for automatic fixes
             4. Commit and push your changes
-            
+
             > ℹ️ This check is currently in **warning mode** and won't block your PR.
             `;
-            
+
             // Find existing bot comment
             const comments = await github.rest.issues.listComments({
               owner: context.repo.owner,
               repo: context.repo.repo,
               issue_number: context.issue.number,
             });
-            
+
             const botComment = comments.data.find(comment => 
               comment.user.type === 'Bot' && 
               comment.body.includes('Documentation Links Validation Results')
             );
-            
+
             if (botComment) {
               // Update existing comment
               await github.rest.issues.updateComment({
@@ -97,7 +97,7 @@ jobs:
                 body: body
               });
             }
-      
+
       - name: Set status (warning mode)
         if: always()
         run: |

@@ -57,11 +57,7 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "gdprLabel",
-        "gdprLink"
-      ],
+      "list": ["id", "gdprLabel", "gdprLink"],
       "edit": [
         [
           {

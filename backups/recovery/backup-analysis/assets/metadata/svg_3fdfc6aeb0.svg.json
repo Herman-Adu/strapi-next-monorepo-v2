@@ -1,1 +1,23 @@
-{"id":1,"documentId":"yzscsgcjsttko4vpjf6bz1mp","name":"james-martinez","alternativeText":"James martinez avatar","caption":null,"width":280,"height":280,"formats":null,"hash":"svg_3fdfc6aeb0","ext":".svg","mime":"image/svg+xml","size":5.15,"url":"/uploads/svg_3fdfc6aeb0.svg","previewUrl":null,"provider":"local","provider_metadata":null,"folderPath":"/","createdAt":"2025-11-08T21:13:58.340Z","updatedAt":"2025-11-08T21:24:37.847Z","publishedAt":"2025-11-08T21:13:58.340Z","locale":null}
+{
+  "id": 1,
+  "documentId": "yzscsgcjsttko4vpjf6bz1mp",
+  "name": "james-martinez",
+  "alternativeText": "James martinez avatar",
+  "caption": null,
+  "width": 280,
+  "height": 280,
+  "formats": null,
+  "hash": "svg_3fdfc6aeb0",
+  "ext": ".svg",
+  "mime": "image/svg+xml",
+  "size": 5.15,
+  "url": "/uploads/svg_3fdfc6aeb0.svg",
+  "previewUrl": null,
+  "provider": "local",
+  "provider_metadata": null,
+  "folderPath": "/",
+  "createdAt": "2025-11-08T21:13:58.340Z",
+  "updatedAt": "2025-11-08T21:24:37.847Z",
+  "publishedAt": "2025-11-08T21:13:58.340Z",
+  "locale": null
+}

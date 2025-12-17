@@ -1,1 +1,15 @@
-{"ext":".png","url":"/uploads/small_Stripe_Logo_1_720b6869f8.png","hash":"small_Stripe_Logo_1_720b6869f8","mime":"image/png","name":"small_Stripe_Logo_1.png","path":null,"size":14.81,"width":500,"height":238,"sizeInBytes":14809,"type":"small","id":24,"mainHash":"Stripe_Logo_1_720b6869f8"}
+{
+  "ext": ".png",
+  "url": "/uploads/small_Stripe_Logo_1_720b6869f8.png",
+  "hash": "small_Stripe_Logo_1_720b6869f8",
+  "mime": "image/png",
+  "name": "small_Stripe_Logo_1.png",
+  "path": null,
+  "size": 14.81,
+  "width": 500,
+  "height": 238,
+  "sizeInBytes": 14809,
+  "type": "small",
+  "id": 24,
+  "mainHash": "Stripe_Logo_1_720b6869f8"
+}

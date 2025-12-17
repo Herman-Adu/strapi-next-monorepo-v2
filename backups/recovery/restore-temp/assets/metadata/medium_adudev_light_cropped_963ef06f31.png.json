@@ -1,1 +1,15 @@
-{"ext":".png","url":"/uploads/medium_adudev_light_cropped_963ef06f31.png","hash":"medium_adudev_light_cropped_963ef06f31","mime":"image/png","name":"medium_adudev-light-cropped.png","path":null,"size":47.85,"width":750,"height":253,"sizeInBytes":47850,"type":"medium","id":70,"mainHash":"adudev_light_cropped_963ef06f31"}
+{
+  "ext": ".png",
+  "url": "/uploads/medium_adudev_light_cropped_963ef06f31.png",
+  "hash": "medium_adudev_light_cropped_963ef06f31",
+  "mime": "image/png",
+  "name": "medium_adudev-light-cropped.png",
+  "path": null,
+  "size": 47.85,
+  "width": 750,
+  "height": 253,
+  "sizeInBytes": 47850,
+  "type": "medium",
+  "id": 70,
+  "mainHash": "adudev_light_cropped_963ef06f31"
+}

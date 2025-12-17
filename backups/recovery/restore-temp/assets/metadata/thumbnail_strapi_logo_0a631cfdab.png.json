@@ -1,1 +1,15 @@
-{"ext":".png","url":"/uploads/thumbnail_strapi_logo_0a631cfdab.png","hash":"thumbnail_strapi_logo_0a631cfdab","mime":"image/png","name":"thumbnail_strapi-logo.png","path":null,"size":2.21,"width":156,"height":156,"sizeInBytes":2210,"type":"thumbnail","id":54,"mainHash":"strapi_logo_0a631cfdab"}
+{
+  "ext": ".png",
+  "url": "/uploads/thumbnail_strapi_logo_0a631cfdab.png",
+  "hash": "thumbnail_strapi_logo_0a631cfdab",
+  "mime": "image/png",
+  "name": "thumbnail_strapi-logo.png",
+  "path": null,
+  "size": 2.21,
+  "width": 156,
+  "height": 156,
+  "sizeInBytes": 2210,
+  "type": "thumbnail",
+  "id": 54,
+  "mainHash": "strapi_logo_0a631cfdab"
+}

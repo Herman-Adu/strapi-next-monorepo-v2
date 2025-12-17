@@ -1,1 +1,15 @@
-{"ext":".jpg","url":"/uploads/large_testimonial_edec8c9c0f.jpg","hash":"large_testimonial_edec8c9c0f","mime":"image/jpeg","name":"large_testimonial.jpg","path":null,"size":45.54,"width":1000,"height":542,"sizeInBytes":45540,"type":"large","id":18,"mainHash":"testimonial_edec8c9c0f"}
+{
+  "ext": ".jpg",
+  "url": "/uploads/large_testimonial_edec8c9c0f.jpg",
+  "hash": "large_testimonial_edec8c9c0f",
+  "mime": "image/jpeg",
+  "name": "large_testimonial.jpg",
+  "path": null,
+  "size": 45.54,
+  "width": 1000,
+  "height": 542,
+  "sizeInBytes": 45540,
+  "type": "large",
+  "id": 18,
+  "mainHash": "testimonial_edec8c9c0f"
+}

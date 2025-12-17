@@ -113,12 +113,7 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "author",
-        "role",
-        "company"
-      ],
+      "list": ["id", "author", "role", "company"],
       "edit": [
         [
           {

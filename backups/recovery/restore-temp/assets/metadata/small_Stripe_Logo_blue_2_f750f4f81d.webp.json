@@ -1,1 +1,15 @@
-{"ext":".webp","url":"/uploads/small_Stripe_Logo_blue_2_f750f4f81d.webp","hash":"small_Stripe_Logo_blue_2_f750f4f81d","mime":"image/webp","name":"small_Stripe_Logo_blue_2.webp","path":null,"size":6.29,"width":500,"height":238,"sizeInBytes":6290,"type":"small","id":17,"mainHash":"Stripe_Logo_blue_2_f750f4f81d"}
+{
+  "ext": ".webp",
+  "url": "/uploads/small_Stripe_Logo_blue_2_f750f4f81d.webp",
+  "hash": "small_Stripe_Logo_blue_2_f750f4f81d",
+  "mime": "image/webp",
+  "name": "small_Stripe_Logo_blue_2.webp",
+  "path": null,
+  "size": 6.29,
+  "width": 500,
+  "height": 238,
+  "sizeInBytes": 6290,
+  "type": "small",
+  "id": 17,
+  "mainHash": "Stripe_Logo_blue_2_f750f4f81d"
+}

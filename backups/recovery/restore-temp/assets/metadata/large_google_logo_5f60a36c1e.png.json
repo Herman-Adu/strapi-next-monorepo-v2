@@ -1,1 +1,15 @@
-{"ext":".png","url":"/uploads/large_google_logo_5f60a36c1e.png","hash":"large_google_logo_5f60a36c1e","mime":"image/png","name":"large_google_logo.png","path":null,"size":64.63,"width":1000,"height":1000,"sizeInBytes":64629,"type":"large","id":42,"mainHash":"google_logo_5f60a36c1e"}
+{
+  "ext": ".png",
+  "url": "/uploads/large_google_logo_5f60a36c1e.png",
+  "hash": "large_google_logo_5f60a36c1e",
+  "mime": "image/png",
+  "name": "large_google_logo.png",
+  "path": null,
+  "size": 64.63,
+  "width": 1000,
+  "height": 1000,
+  "sizeInBytes": 64629,
+  "type": "large",
+  "id": 42,
+  "mainHash": "google_logo_5f60a36c1e"
+}

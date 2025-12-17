@@ -1,1 +1,72 @@
-{"id":75,"documentId":"hqtl4d9mv78eiovasavqbj5i","name":"transparent-amazon-logo.png","alternativeText":null,"caption":null,"width":1801,"height":1529,"formats":{"large":{"ext":".png","url":"/uploads/large_transparent_amazon_logo_3ccdc98912.png","hash":"large_transparent_amazon_logo_3ccdc98912","mime":"image/png","name":"large_transparent-amazon-logo.png","path":null,"size":55.61,"width":1000,"height":849,"sizeInBytes":55610},"small":{"ext":".png","url":"/uploads/small_transparent_amazon_logo_3ccdc98912.png","hash":"small_transparent_amazon_logo_3ccdc98912","mime":"image/png","name":"small_transparent-amazon-logo.png","path":null,"size":25.65,"width":500,"height":424,"sizeInBytes":25651},"medium":{"ext":".png","url":"/uploads/medium_transparent_amazon_logo_3ccdc98912.png","hash":"medium_transparent_amazon_logo_3ccdc98912","mime":"image/png","name":"medium_transparent-amazon-logo.png","path":null,"size":39,"width":750,"height":637,"sizeInBytes":39002},"thumbnail":{"ext":".png","url":"/uploads/thumbnail_transparent_amazon_logo_3ccdc98912.png","hash":"thumbnail_transparent_amazon_logo_3ccdc98912","mime":"image/png","name":"thumbnail_transparent-amazon-logo.png","path":null,"size":7.8,"width":184,"height":156,"sizeInBytes":7802}},"hash":"transparent_amazon_logo_3ccdc98912","ext":".png","mime":"image/png","size":18.59,"url":"/uploads/transparent_amazon_logo_3ccdc98912.png","previewUrl":null,"provider":"local","provider_metadata":null,"folderPath":"/","createdAt":"2025-11-07T00:39:01.774Z","updatedAt":"2025-11-07T00:39:01.774Z","publishedAt":"2025-11-07T00:39:01.774Z","locale":null}
+{
+  "id": 75,
+  "documentId": "hqtl4d9mv78eiovasavqbj5i",
+  "name": "transparent-amazon-logo.png",
+  "alternativeText": null,
+  "caption": null,
+  "width": 1801,
+  "height": 1529,
+  "formats": {
+    "large": {
+      "ext": ".png",
+      "url": "/uploads/large_transparent_amazon_logo_3ccdc98912.png",
+      "hash": "large_transparent_amazon_logo_3ccdc98912",
+      "mime": "image/png",
+      "name": "large_transparent-amazon-logo.png",
+      "path": null,
+      "size": 55.61,
+      "width": 1000,
+      "height": 849,
+      "sizeInBytes": 55610
+    },
+    "small": {
+      "ext": ".png",
+      "url": "/uploads/small_transparent_amazon_logo_3ccdc98912.png",
+      "hash": "small_transparent_amazon_logo_3ccdc98912",
+      "mime": "image/png",
+      "name": "small_transparent-amazon-logo.png",
+      "path": null,
+      "size": 25.65,
+      "width": 500,
+      "height": 424,
+      "sizeInBytes": 25651
+    },
+    "medium": {
+      "ext": ".png",
+      "url": "/uploads/medium_transparent_amazon_logo_3ccdc98912.png",
+      "hash": "medium_transparent_amazon_logo_3ccdc98912",
+      "mime": "image/png",
+      "name": "medium_transparent-amazon-logo.png",
+      "path": null,
+      "size": 39,
+      "width": 750,
+      "height": 637,
+      "sizeInBytes": 39002
+    },
+    "thumbnail": {
+      "ext": ".png",
+      "url": "/uploads/thumbnail_transparent_amazon_logo_3ccdc98912.png",
+      "hash": "thumbnail_transparent_amazon_logo_3ccdc98912",
+      "mime": "image/png",
+      "name": "thumbnail_transparent-amazon-logo.png",
+      "path": null,
+      "size": 7.8,
+      "width": 184,
+      "height": 156,
+      "sizeInBytes": 7802
+    }
+  },
+  "hash": "transparent_amazon_logo_3ccdc98912",
+  "ext": ".png",
+  "mime": "image/png",
+  "size": 18.59,
+  "url": "/uploads/transparent_amazon_logo_3ccdc98912.png",
+  "previewUrl": null,
+  "provider": "local",
+  "provider_metadata": null,
+  "folderPath": "/",
+  "createdAt": "2025-11-07T00:39:01.774Z",
+  "updatedAt": "2025-11-07T00:39:01.774Z",
+  "publishedAt": "2025-11-07T00:39:01.774Z",
+  "locale": null
+}

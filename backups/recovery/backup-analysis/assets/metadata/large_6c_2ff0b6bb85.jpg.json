@@ -1,1 +1,15 @@
-{"ext":".jpg","url":"/uploads/large_6c_2ff0b6bb85.jpg","hash":"large_6c_2ff0b6bb85","mime":"image/jpeg","name":"large_6c.jpg","path":null,"size":34.08,"width":1000,"height":1000,"sizeInBytes":34082,"type":"large","id":53,"mainHash":"6c_2ff0b6bb85"}
+{
+  "ext": ".jpg",
+  "url": "/uploads/large_6c_2ff0b6bb85.jpg",
+  "hash": "large_6c_2ff0b6bb85",
+  "mime": "image/jpeg",
+  "name": "large_6c.jpg",
+  "path": null,
+  "size": 34.08,
+  "width": 1000,
+  "height": 1000,
+  "sizeInBytes": 34082,
+  "type": "large",
+  "id": 53,
+  "mainHash": "6c_2ff0b6bb85"
+}

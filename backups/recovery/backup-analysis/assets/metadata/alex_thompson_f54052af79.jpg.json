@@ -1,1 +1,72 @@
-{"id":85,"documentId":"nxki9muhqehyw82cgxwn2b33","name":"andrew-wright.jpg","alternativeText":null,"caption":null,"width":1024,"height":1024,"formats":{"large":{"ext":".jpg","url":"/uploads/large_alex_thompson_f54052af79.jpg","hash":"large_alex_thompson_f54052af79","mime":"image/jpeg","name":"large_alex-thompson.jpg","path":null,"size":78.31,"width":1000,"height":1000,"sizeInBytes":78306},"small":{"ext":".jpg","url":"/uploads/small_alex_thompson_f54052af79.jpg","hash":"small_alex_thompson_f54052af79","mime":"image/jpeg","name":"small_alex-thompson.jpg","path":null,"size":21.95,"width":500,"height":500,"sizeInBytes":21950},"medium":{"ext":".jpg","url":"/uploads/medium_alex_thompson_f54052af79.jpg","hash":"medium_alex_thompson_f54052af79","mime":"image/jpeg","name":"medium_alex-thompson.jpg","path":null,"size":45.77,"width":750,"height":750,"sizeInBytes":45768},"thumbnail":{"ext":".jpg","url":"/uploads/thumbnail_alex_thompson_f54052af79.jpg","hash":"thumbnail_alex_thompson_f54052af79","mime":"image/jpeg","name":"thumbnail_alex-thompson.jpg","path":null,"size":3.81,"width":156,"height":156,"sizeInBytes":3811}},"hash":"alex_thompson_f54052af79","ext":".jpg","mime":"image/jpeg","size":82.83,"url":"/uploads/alex_thompson_f54052af79.jpg","previewUrl":null,"provider":"local","provider_metadata":null,"folderPath":"/1","createdAt":"2025-11-09T01:10:16.509Z","updatedAt":"2025-11-09T01:24:27.327Z","publishedAt":"2025-11-09T01:10:16.509Z","locale":null}
+{
+  "id": 85,
+  "documentId": "nxki9muhqehyw82cgxwn2b33",
+  "name": "andrew-wright.jpg",
+  "alternativeText": null,
+  "caption": null,
+  "width": 1024,
+  "height": 1024,
+  "formats": {
+    "large": {
+      "ext": ".jpg",
+      "url": "/uploads/large_alex_thompson_f54052af79.jpg",
+      "hash": "large_alex_thompson_f54052af79",
+      "mime": "image/jpeg",
+      "name": "large_alex-thompson.jpg",
+      "path": null,
+      "size": 78.31,
+      "width": 1000,
+      "height": 1000,
+      "sizeInBytes": 78306
+    },
+    "small": {
+      "ext": ".jpg",
+      "url": "/uploads/small_alex_thompson_f54052af79.jpg",
+      "hash": "small_alex_thompson_f54052af79",
+      "mime": "image/jpeg",
+      "name": "small_alex-thompson.jpg",
+      "path": null,
+      "size": 21.95,
+      "width": 500,
+      "height": 500,
+      "sizeInBytes": 21950
+    },
+    "medium": {
+      "ext": ".jpg",
+      "url": "/uploads/medium_alex_thompson_f54052af79.jpg",
+      "hash": "medium_alex_thompson_f54052af79",
+      "mime": "image/jpeg",
+      "name": "medium_alex-thompson.jpg",
+      "path": null,
+      "size": 45.77,
+      "width": 750,
+      "height": 750,
+      "sizeInBytes": 45768
+    },
+    "thumbnail": {
+      "ext": ".jpg",
+      "url": "/uploads/thumbnail_alex_thompson_f54052af79.jpg",
+      "hash": "thumbnail_alex_thompson_f54052af79",
+      "mime": "image/jpeg",
+      "name": "thumbnail_alex-thompson.jpg",
+      "path": null,
+      "size": 3.81,
+      "width": 156,
+      "height": 156,
+      "sizeInBytes": 3811
+    }
+  },
+  "hash": "alex_thompson_f54052af79",
+  "ext": ".jpg",
+  "mime": "image/jpeg",
+  "size": 82.83,
+  "url": "/uploads/alex_thompson_f54052af79.jpg",
+  "previewUrl": null,
+  "provider": "local",
+  "provider_metadata": null,
+  "folderPath": "/1",
+  "createdAt": "2025-11-09T01:10:16.509Z",
+  "updatedAt": "2025-11-09T01:24:27.327Z",
+  "publishedAt": "2025-11-09T01:10:16.509Z",
+  "locale": null
+}

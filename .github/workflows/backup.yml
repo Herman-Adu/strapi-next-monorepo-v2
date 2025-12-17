@@ -5,7 +5,7 @@ on:
   # Re-enable when production deployment is configured
   # schedule:
   #   - cron: "0 2 * * *"
-  
+
   # Allow manual trigger (for production use only)
   workflow_dispatch:
     inputs:

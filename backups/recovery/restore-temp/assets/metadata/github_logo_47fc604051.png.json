@@ -1,1 +1,48 @@
-{"id":11,"documentId":"g6ur0h1p87v4o7fpgp1ds2q4","name":"github-logo.png","alternativeText":null,"caption":null,"width":512,"height":512,"formats":{"small":{"ext":".png","url":"/uploads/small_github_logo_47fc604051.png","hash":"small_github_logo_47fc604051","mime":"image/png","name":"small_github-logo.png","path":null,"size":21.12,"width":500,"height":500,"sizeInBytes":21120},"thumbnail":{"ext":".png","url":"/uploads/thumbnail_github_logo_47fc604051.png","hash":"thumbnail_github_logo_47fc604051","mime":"image/png","name":"thumbnail_github-logo.png","path":null,"size":5.17,"width":156,"height":156,"sizeInBytes":5169}},"hash":"github_logo_47fc604051","ext":".png","mime":"image/png","size":5.15,"url":"/uploads/github_logo_47fc604051.png","previewUrl":null,"provider":"local","provider_metadata":null,"folderPath":"/","createdAt":"2025-10-31T13:49:21.598Z","updatedAt":"2025-10-31T13:50:47.530Z","publishedAt":"2025-10-31T13:49:21.598Z","locale":null}
+{
+  "id": 11,
+  "documentId": "g6ur0h1p87v4o7fpgp1ds2q4",
+  "name": "github-logo.png",
+  "alternativeText": null,
+  "caption": null,
+  "width": 512,
+  "height": 512,
+  "formats": {
+    "small": {
+      "ext": ".png",
+      "url": "/uploads/small_github_logo_47fc604051.png",
+      "hash": "small_github_logo_47fc604051",
+      "mime": "image/png",
+      "name": "small_github-logo.png",
+      "path": null,
+      "size": 21.12,
+      "width": 500,
+      "height": 500,
+      "sizeInBytes": 21120
+    },
+    "thumbnail": {
+      "ext": ".png",
+      "url": "/uploads/thumbnail_github_logo_47fc604051.png",
+      "hash": "thumbnail_github_logo_47fc604051",
+      "mime": "image/png",
+      "name": "thumbnail_github-logo.png",
+      "path": null,
+      "size": 5.17,
+      "width": 156,
+      "height": 156,
+      "sizeInBytes": 5169
+    }
+  },
+  "hash": "github_logo_47fc604051",
+  "ext": ".png",
+  "mime": "image/png",
+  "size": 5.15,
+  "url": "/uploads/github_logo_47fc604051.png",
+  "previewUrl": null,
+  "provider": "local",
+  "provider_metadata": null,
+  "folderPath": "/",
+  "createdAt": "2025-10-31T13:49:21.598Z",
+  "updatedAt": "2025-10-31T13:50:47.530Z",
+  "publishedAt": "2025-10-31T13:49:21.598Z",
+  "locale": null
+}

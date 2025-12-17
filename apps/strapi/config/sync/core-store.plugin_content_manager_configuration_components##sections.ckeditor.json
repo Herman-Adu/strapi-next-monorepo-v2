@@ -57,10 +57,7 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "background"
-      ],
+      "list": ["id", "background"],
       "edit": [
         [
           {

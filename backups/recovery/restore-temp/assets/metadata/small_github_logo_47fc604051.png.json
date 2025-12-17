@@ -1,1 +1,15 @@
-{"ext":".png","url":"/uploads/small_github_logo_47fc604051.png","hash":"small_github_logo_47fc604051","mime":"image/png","name":"small_github-logo.png","path":null,"size":21.12,"width":500,"height":500,"sizeInBytes":21120,"type":"small","id":11,"mainHash":"github_logo_47fc604051"}
+{
+  "ext": ".png",
+  "url": "/uploads/small_github_logo_47fc604051.png",
+  "hash": "small_github_logo_47fc604051",
+  "mime": "image/png",
+  "name": "small_github-logo.png",
+  "path": null,
+  "size": 21.12,
+  "width": 500,
+  "height": 500,
+  "sizeInBytes": 21120,
+  "type": "small",
+  "id": 11,
+  "mainHash": "github_logo_47fc604051"
+}

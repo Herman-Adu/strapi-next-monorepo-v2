@@ -1,1 +1,72 @@
-{"id":20,"documentId":"b6p7houe4wmskcg9kgfjmu2q","name":"website-development-hero-v1.png","alternativeText":null,"caption":null,"width":1200,"height":630,"formats":{"large":{"ext":".png","url":"/uploads/large_website_development_hero_v1_17f697aeb9.png","hash":"large_website_development_hero_v1_17f697aeb9","mime":"image/png","name":"large_website-development-hero-v1.png","path":null,"size":1112.07,"width":1000,"height":525,"sizeInBytes":1112071},"small":{"ext":".png","url":"/uploads/small_website_development_hero_v1_17f697aeb9.png","hash":"small_website_development_hero_v1_17f697aeb9","mime":"image/png","name":"small_website-development-hero-v1.png","path":null,"size":288.03,"width":500,"height":263,"sizeInBytes":288027},"medium":{"ext":".png","url":"/uploads/medium_website_development_hero_v1_17f697aeb9.png","hash":"medium_website_development_hero_v1_17f697aeb9","mime":"image/png","name":"medium_website-development-hero-v1.png","path":null,"size":636.8,"width":750,"height":394,"sizeInBytes":636801},"thumbnail":{"ext":".png","url":"/uploads/thumbnail_website_development_hero_v1_17f697aeb9.png","hash":"thumbnail_website_development_hero_v1_17f697aeb9","mime":"image/png","name":"thumbnail_website-development-hero-v1.png","path":null,"size":76.23,"width":245,"height":129,"sizeInBytes":76227}},"hash":"website_development_hero_v1_17f697aeb9","ext":".png","mime":"image/png","size":299.86,"url":"/uploads/website_development_hero_v1_17f697aeb9.png","previewUrl":null,"provider":"local","provider_metadata":null,"folderPath":"/","createdAt":"2025-11-16T19:54:03.192Z","updatedAt":"2025-11-16T19:54:03.192Z","publishedAt":"2025-11-16T19:54:03.192Z","locale":null}
+{
+  "id": 20,
+  "documentId": "b6p7houe4wmskcg9kgfjmu2q",
+  "name": "website-development-hero-v1.png",
+  "alternativeText": null,
+  "caption": null,
+  "width": 1200,
+  "height": 630,
+  "formats": {
+    "large": {
+      "ext": ".png",
+      "url": "/uploads/large_website_development_hero_v1_17f697aeb9.png",
+      "hash": "large_website_development_hero_v1_17f697aeb9",
+      "mime": "image/png",
+      "name": "large_website-development-hero-v1.png",
+      "path": null,
+      "size": 1112.07,
+      "width": 1000,
+      "height": 525,
+      "sizeInBytes": 1112071
+    },
+    "small": {
+      "ext": ".png",
+      "url": "/uploads/small_website_development_hero_v1_17f697aeb9.png",
+      "hash": "small_website_development_hero_v1_17f697aeb9",
+      "mime": "image/png",
+      "name": "small_website-development-hero-v1.png",
+      "path": null,
+      "size": 288.03,
+      "width": 500,
+      "height": 263,
+      "sizeInBytes": 288027
+    },
+    "medium": {
+      "ext": ".png",
+      "url": "/uploads/medium_website_development_hero_v1_17f697aeb9.png",
+      "hash": "medium_website_development_hero_v1_17f697aeb9",
+      "mime": "image/png",
+      "name": "medium_website-development-hero-v1.png",
+      "path": null,
+      "size": 636.8,
+      "width": 750,
+      "height": 394,
+      "sizeInBytes": 636801
+    },
+    "thumbnail": {
+      "ext": ".png",
+      "url": "/uploads/thumbnail_website_development_hero_v1_17f697aeb9.png",
+      "hash": "thumbnail_website_development_hero_v1_17f697aeb9",
+      "mime": "image/png",
+      "name": "thumbnail_website-development-hero-v1.png",
+      "path": null,
+      "size": 76.23,
+      "width": 245,
+      "height": 129,
+      "sizeInBytes": 76227
+    }
+  },
+  "hash": "website_development_hero_v1_17f697aeb9",
+  "ext": ".png",
+  "mime": "image/png",
+  "size": 299.86,
+  "url": "/uploads/website_development_hero_v1_17f697aeb9.png",
+  "previewUrl": null,
+  "provider": "local",
+  "provider_metadata": null,
+  "folderPath": "/",
+  "createdAt": "2025-11-16T19:54:03.192Z",
+  "updatedAt": "2025-11-16T19:54:03.192Z",
+  "publishedAt": "2025-11-16T19:54:03.192Z",
+  "locale": null
+}

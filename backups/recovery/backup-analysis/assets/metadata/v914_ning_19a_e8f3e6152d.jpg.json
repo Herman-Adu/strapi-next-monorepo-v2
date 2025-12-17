@@ -1,1 +1,72 @@
-{"id":51,"documentId":"v7bo0d0731sdu70rv5renb2l","name":"v914-ning-19a.jpg","alternativeText":null,"caption":null,"width":5000,"height":5000,"formats":{"large":{"ext":".jpg","url":"/uploads/large_v914_ning_19a_e8f3e6152d.jpg","hash":"large_v914_ning_19a_e8f3e6152d","mime":"image/jpeg","name":"large_v914-ning-19a.jpg","path":null,"size":24.6,"width":1000,"height":1000,"sizeInBytes":24604},"small":{"ext":".jpg","url":"/uploads/small_v914_ning_19a_e8f3e6152d.jpg","hash":"small_v914_ning_19a_e8f3e6152d","mime":"image/jpeg","name":"small_v914-ning-19a.jpg","path":null,"size":10.2,"width":500,"height":500,"sizeInBytes":10195},"medium":{"ext":".jpg","url":"/uploads/medium_v914_ning_19a_e8f3e6152d.jpg","hash":"medium_v914_ning_19a_e8f3e6152d","mime":"image/jpeg","name":"medium_v914-ning-19a.jpg","path":null,"size":17.05,"width":750,"height":750,"sizeInBytes":17046},"thumbnail":{"ext":".jpg","url":"/uploads/thumbnail_v914_ning_19a_e8f3e6152d.jpg","hash":"thumbnail_v914_ning_19a_e8f3e6152d","mime":"image/jpeg","name":"thumbnail_v914-ning-19a.jpg","path":null,"size":2.68,"width":156,"height":156,"sizeInBytes":2677}},"hash":"v914_ning_19a_e8f3e6152d","ext":".jpg","mime":"image/jpeg","size":246.94,"url":"/uploads/v914_ning_19a_e8f3e6152d.jpg","previewUrl":null,"provider":"local","provider_metadata":null,"folderPath":"/","createdAt":"2025-10-31T13:49:30.537Z","updatedAt":"2025-10-31T13:49:30.537Z","publishedAt":"2025-10-31T13:49:30.537Z","locale":null}
+{
+  "id": 51,
+  "documentId": "v7bo0d0731sdu70rv5renb2l",
+  "name": "v914-ning-19a.jpg",
+  "alternativeText": null,
+  "caption": null,
+  "width": 5000,
+  "height": 5000,
+  "formats": {
+    "large": {
+      "ext": ".jpg",
+      "url": "/uploads/large_v914_ning_19a_e8f3e6152d.jpg",
+      "hash": "large_v914_ning_19a_e8f3e6152d",
+      "mime": "image/jpeg",
+      "name": "large_v914-ning-19a.jpg",
+      "path": null,
+      "size": 24.6,
+      "width": 1000,
+      "height": 1000,
+      "sizeInBytes": 24604
+    },
+    "small": {
+      "ext": ".jpg",
+      "url": "/uploads/small_v914_ning_19a_e8f3e6152d.jpg",
+      "hash": "small_v914_ning_19a_e8f3e6152d",
+      "mime": "image/jpeg",
+      "name": "small_v914-ning-19a.jpg",
+      "path": null,
+      "size": 10.2,
+      "width": 500,
+      "height": 500,
+      "sizeInBytes": 10195
+    },
+    "medium": {
+      "ext": ".jpg",
+      "url": "/uploads/medium_v914_ning_19a_e8f3e6152d.jpg",
+      "hash": "medium_v914_ning_19a_e8f3e6152d",
+      "mime": "image/jpeg",
+      "name": "medium_v914-ning-19a.jpg",
+      "path": null,
+      "size": 17.05,
+      "width": 750,
+      "height": 750,
+      "sizeInBytes": 17046
+    },
+    "thumbnail": {
+      "ext": ".jpg",
+      "url": "/uploads/thumbnail_v914_ning_19a_e8f3e6152d.jpg",
+      "hash": "thumbnail_v914_ning_19a_e8f3e6152d",
+      "mime": "image/jpeg",
+      "name": "thumbnail_v914-ning-19a.jpg",
+      "path": null,
+      "size": 2.68,
+      "width": 156,
+      "height": 156,
+      "sizeInBytes": 2677
+    }
+  },
+  "hash": "v914_ning_19a_e8f3e6152d",
+  "ext": ".jpg",
+  "mime": "image/jpeg",
+  "size": 246.94,
+  "url": "/uploads/v914_ning_19a_e8f3e6152d.jpg",
+  "previewUrl": null,
+  "provider": "local",
+  "provider_metadata": null,
+  "folderPath": "/",
+  "createdAt": "2025-10-31T13:49:30.537Z",
+  "updatedAt": "2025-10-31T13:49:30.537Z",
+  "publishedAt": "2025-10-31T13:49:30.537Z",
+  "locale": null
+}

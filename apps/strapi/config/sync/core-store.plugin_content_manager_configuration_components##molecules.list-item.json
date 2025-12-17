@@ -71,12 +71,7 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "title",
-        "description",
-        "iconType"
-      ],
+      "list": ["id", "title", "description", "iconType"],
       "edit": [
         [
           {

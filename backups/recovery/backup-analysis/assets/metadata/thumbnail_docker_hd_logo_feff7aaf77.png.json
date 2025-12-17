@@ -1,1 +1,15 @@
-{"ext":".png","url":"/uploads/thumbnail_docker_hd_logo_feff7aaf77.png","hash":"thumbnail_docker_hd_logo_feff7aaf77","mime":"image/png","name":"thumbnail_docker-hd-logo.png","path":null,"size":31.42,"width":186,"height":156,"sizeInBytes":31419,"type":"thumbnail","id":70,"mainHash":"docker_hd_logo_feff7aaf77"}
+{
+  "ext": ".png",
+  "url": "/uploads/thumbnail_docker_hd_logo_feff7aaf77.png",
+  "hash": "thumbnail_docker_hd_logo_feff7aaf77",
+  "mime": "image/png",
+  "name": "thumbnail_docker-hd-logo.png",
+  "path": null,
+  "size": 31.42,
+  "width": 186,
+  "height": 156,
+  "sizeInBytes": 31419,
+  "type": "thumbnail",
+  "id": 70,
+  "mainHash": "docker_hd_logo_feff7aaf77"
+}

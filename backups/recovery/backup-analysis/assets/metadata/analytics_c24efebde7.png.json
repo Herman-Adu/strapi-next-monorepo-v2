@@ -1,1 +1,48 @@
-{"id":62,"documentId":"eijpu8ng27my9o3cej0ftywp","name":"analytics.png","alternativeText":null,"caption":null,"width":512,"height":512,"formats":{"small":{"ext":".png","url":"/uploads/small_analytics_c24efebde7.png","hash":"small_analytics_c24efebde7","mime":"image/png","name":"small_analytics.png","path":null,"size":41.39,"width":500,"height":500,"sizeInBytes":41393},"thumbnail":{"ext":".png","url":"/uploads/thumbnail_analytics_c24efebde7.png","hash":"thumbnail_analytics_c24efebde7","mime":"image/png","name":"thumbnail_analytics.png","path":null,"size":11.36,"width":156,"height":156,"sizeInBytes":11356}},"hash":"analytics_c24efebde7","ext":".png","mime":"image/png","size":5.83,"url":"/uploads/analytics_c24efebde7.png","previewUrl":null,"provider":"local","provider_metadata":null,"folderPath":"/","createdAt":"2025-11-03T08:53:53.384Z","updatedAt":"2025-11-03T08:53:53.384Z","publishedAt":"2025-11-03T08:53:53.384Z","locale":null}
+{
+  "id": 62,
+  "documentId": "eijpu8ng27my9o3cej0ftywp",
+  "name": "analytics.png",
+  "alternativeText": null,
+  "caption": null,
+  "width": 512,
+  "height": 512,
+  "formats": {
+    "small": {
+      "ext": ".png",
+      "url": "/uploads/small_analytics_c24efebde7.png",
+      "hash": "small_analytics_c24efebde7",
+      "mime": "image/png",
+      "name": "small_analytics.png",
+      "path": null,
+      "size": 41.39,
+      "width": 500,
+      "height": 500,
+      "sizeInBytes": 41393
+    },
+    "thumbnail": {
+      "ext": ".png",
+      "url": "/uploads/thumbnail_analytics_c24efebde7.png",
+      "hash": "thumbnail_analytics_c24efebde7",
+      "mime": "image/png",
+      "name": "thumbnail_analytics.png",
+      "path": null,
+      "size": 11.36,
+      "width": 156,
+      "height": 156,
+      "sizeInBytes": 11356
+    }
+  },
+  "hash": "analytics_c24efebde7",
+  "ext": ".png",
+  "mime": "image/png",
+  "size": 5.83,
+  "url": "/uploads/analytics_c24efebde7.png",
+  "previewUrl": null,
+  "provider": "local",
+  "provider_metadata": null,
+  "folderPath": "/",
+  "createdAt": "2025-11-03T08:53:53.384Z",
+  "updatedAt": "2025-11-03T08:53:53.384Z",
+  "publishedAt": "2025-11-03T08:53:53.384Z",
+  "locale": null
+}

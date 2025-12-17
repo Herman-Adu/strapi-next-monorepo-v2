@@ -1,1 +1,15 @@
-{"ext":".jpg","url":"/uploads/thumbnail_amazon_logo_90f5621407.jpg","hash":"thumbnail_amazon_logo_90f5621407","mime":"image/jpeg","name":"thumbnail_amazon-logo.jpg","path":null,"size":8.09,"width":157,"height":156,"sizeInBytes":8094,"type":"thumbnail","id":40,"mainHash":"amazon_logo_90f5621407"}
+{
+  "ext": ".jpg",
+  "url": "/uploads/thumbnail_amazon_logo_90f5621407.jpg",
+  "hash": "thumbnail_amazon_logo_90f5621407",
+  "mime": "image/jpeg",
+  "name": "thumbnail_amazon-logo.jpg",
+  "path": null,
+  "size": 8.09,
+  "width": 157,
+  "height": 156,
+  "sizeInBytes": 8094,
+  "type": "thumbnail",
+  "id": 40,
+  "mainHash": "amazon_logo_90f5621407"
+}

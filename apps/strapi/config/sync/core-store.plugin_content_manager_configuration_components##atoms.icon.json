@@ -99,12 +99,7 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "iconType",
-        "lucideName",
-        "emoji"
-      ],
+      "list": ["id", "iconType", "lucideName", "emoji"],
       "edit": [
         [
           {

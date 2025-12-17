@@ -1,1 +1,36 @@
-{"id":9,"documentId":"wbgdwoh8pwlvbqy6hkr9yr8e","name":"square-stripe-logo.png","alternativeText":null,"caption":null,"width":225,"height":225,"formats":{"thumbnail":{"ext":".png","url":"/uploads/thumbnail_square_stripe_logo_a96c897213.png","hash":"thumbnail_square_stripe_logo_a96c897213","mime":"image/png","name":"thumbnail_square-stripe-logo.png","path":null,"size":3.39,"width":156,"height":156,"sizeInBytes":3391}},"hash":"square_stripe_logo_a96c897213","ext":".png","mime":"image/png","size":0.98,"url":"/uploads/square_stripe_logo_a96c897213.png","previewUrl":null,"provider":"local","provider_metadata":null,"folderPath":"/","createdAt":"2025-11-07T00:41:09.196Z","updatedAt":"2025-11-07T00:41:09.196Z","publishedAt":"2025-11-07T00:41:09.196Z","locale":null}
+{
+  "id": 9,
+  "documentId": "wbgdwoh8pwlvbqy6hkr9yr8e",
+  "name": "square-stripe-logo.png",
+  "alternativeText": null,
+  "caption": null,
+  "width": 225,
+  "height": 225,
+  "formats": {
+    "thumbnail": {
+      "ext": ".png",
+      "url": "/uploads/thumbnail_square_stripe_logo_a96c897213.png",
+      "hash": "thumbnail_square_stripe_logo_a96c897213",
+      "mime": "image/png",
+      "name": "thumbnail_square-stripe-logo.png",
+      "path": null,
+      "size": 3.39,
+      "width": 156,
+      "height": 156,
+      "sizeInBytes": 3391
+    }
+  },
+  "hash": "square_stripe_logo_a96c897213",
+  "ext": ".png",
+  "mime": "image/png",
+  "size": 0.98,
+  "url": "/uploads/square_stripe_logo_a96c897213.png",
+  "previewUrl": null,
+  "provider": "local",
+  "provider_metadata": null,
+  "folderPath": "/",
+  "createdAt": "2025-11-07T00:41:09.196Z",
+  "updatedAt": "2025-11-07T00:41:09.196Z",
+  "publishedAt": "2025-11-07T00:41:09.196Z",
+  "locale": null
+}

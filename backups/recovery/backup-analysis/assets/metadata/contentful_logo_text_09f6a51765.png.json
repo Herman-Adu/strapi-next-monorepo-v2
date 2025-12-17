@@ -1,1 +1,36 @@
-{"id":6,"documentId":"pxwfa9z0recmz230g4u5rjjf","name":"contentful-logo-text.png","alternativeText":null,"caption":null,"width":360,"height":360,"formats":{"thumbnail":{"ext":".png","url":"/uploads/thumbnail_contentful_logo_text_09f6a51765.png","hash":"thumbnail_contentful_logo_text_09f6a51765","mime":"image/png","name":"thumbnail_contentful-logo-text.png","path":null,"size":15.32,"width":156,"height":156,"sizeInBytes":15319}},"hash":"contentful_logo_text_09f6a51765","ext":".png","mime":"image/png","size":7.22,"url":"/uploads/contentful_logo_text_09f6a51765.png","previewUrl":null,"provider":"local","provider_metadata":null,"folderPath":"/","createdAt":"2025-11-03T09:17:46.072Z","updatedAt":"2025-11-03T09:17:46.072Z","publishedAt":"2025-11-03T09:17:46.072Z","locale":null}
+{
+  "id": 6,
+  "documentId": "pxwfa9z0recmz230g4u5rjjf",
+  "name": "contentful-logo-text.png",
+  "alternativeText": null,
+  "caption": null,
+  "width": 360,
+  "height": 360,
+  "formats": {
+    "thumbnail": {
+      "ext": ".png",
+      "url": "/uploads/thumbnail_contentful_logo_text_09f6a51765.png",
+      "hash": "thumbnail_contentful_logo_text_09f6a51765",
+      "mime": "image/png",
+      "name": "thumbnail_contentful-logo-text.png",
+      "path": null,
+      "size": 15.32,
+      "width": 156,
+      "height": 156,
+      "sizeInBytes": 15319
+    }
+  },
+  "hash": "contentful_logo_text_09f6a51765",
+  "ext": ".png",
+  "mime": "image/png",
+  "size": 7.22,
+  "url": "/uploads/contentful_logo_text_09f6a51765.png",
+  "previewUrl": null,
+  "provider": "local",
+  "provider_metadata": null,
+  "folderPath": "/",
+  "createdAt": "2025-11-03T09:17:46.072Z",
+  "updatedAt": "2025-11-03T09:17:46.072Z",
+  "publishedAt": "2025-11-03T09:17:46.072Z",
+  "locale": null
+}

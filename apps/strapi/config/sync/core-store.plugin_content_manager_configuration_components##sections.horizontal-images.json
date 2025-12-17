@@ -141,12 +141,7 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "images",
-        "documentId",
-        "background"
-      ],
+      "list": ["id", "images", "documentId", "background"],
       "edit": [
         [
           {

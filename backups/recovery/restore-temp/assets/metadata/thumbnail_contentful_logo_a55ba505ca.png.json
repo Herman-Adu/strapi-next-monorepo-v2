@@ -1,1 +1,15 @@
-{"ext":".png","url":"/uploads/thumbnail_contentful_logo_a55ba505ca.png","hash":"thumbnail_contentful_logo_a55ba505ca","mime":"image/png","name":"thumbnail_contentful-logo.png","path":null,"size":12.79,"width":187,"height":156,"sizeInBytes":12793,"type":"thumbnail","id":31,"mainHash":"contentful_logo_a55ba505ca"}
+{
+  "ext": ".png",
+  "url": "/uploads/thumbnail_contentful_logo_a55ba505ca.png",
+  "hash": "thumbnail_contentful_logo_a55ba505ca",
+  "mime": "image/png",
+  "name": "thumbnail_contentful-logo.png",
+  "path": null,
+  "size": 12.79,
+  "width": 187,
+  "height": 156,
+  "sizeInBytes": 12793,
+  "type": "thumbnail",
+  "id": 31,
+  "mainHash": "contentful_logo_a55ba505ca"
+}

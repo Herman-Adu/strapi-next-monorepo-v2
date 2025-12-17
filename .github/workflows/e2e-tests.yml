@@ -6,22 +6,22 @@ on:
   push:
     branches: [main]
     paths:
-      - 'apps/**'
-      - 'packages/**'
-      - '.github/workflows/e2e-tests.yml'
-      - '!**/*.md'
-      - '!**/docs/**'
+      - "apps/**"
+      - "packages/**"
+      - ".github/workflows/e2e-tests.yml"
+      - "!**/*.md"
+      - "!**/docs/**"
   pull_request:
     branches: [main]
     paths:
-      - 'apps/**'
-      - 'packages/**'
-      - '.github/workflows/e2e-tests.yml'
-      - '!**/*.md'
-      - '!**/docs/**'
+      - "apps/**"
+      - "packages/**"
+      - ".github/workflows/e2e-tests.yml"
+      - "!**/*.md"
+      - "!**/docs/**"
   # Run weekly instead of daily (save resources)
   schedule:
-    - cron: '0 2 * * 0'  # Sunday at 2 AM UTC
+    - cron: "0 2 * * 0" # Sunday at 2 AM UTC
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.head_ref || github.run_id }}
@@ -37,7 +37,7 @@ jobs:
     # MSW intercepts network requests at the Node.js level, enabling SSR mocking
     # This allows testing without a real Strapi backend - UI behavior only
     # For API integration tests with real Strapi, see integration-tests.yml
-    timeout-minutes: 15  # Dev server + tests need more time
+    timeout-minutes: 15 # Dev server + tests need more time
     runs-on: ubuntu-latest
 
     steps:
@@ -50,7 +50,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 22
-          cache: 'yarn'
+          cache: "yarn"
 
       - name: Cache turbo build setup
         uses: actions/cache@v4
@@ -70,7 +70,7 @@ jobs:
           echo "✅ Workspace packages built"
 
       - name: Install Playwright Browsers
-        run: npx playwright install --with-deps chromium  # Only Chromium for faster CI
+        run: npx playwright install --with-deps chromium # Only Chromium for faster CI
 
       - name: Prepare Environment Variables
         run: |
@@ -154,7 +154,7 @@ jobs:
         if: always() && github.event_name == 'pull_request'
         with:
           report-file: apps/ui/playwright-report/index.html
-          
+
       - name: Check E2E Test Results
         if: always()
         run: |

@@ -1,1 +1,23 @@
-{"id":9,"documentId":"ta0xobhnggu4ji5zcp9jkzsj","name":"amanda-white","alternativeText":"Amanda white avatar","caption":null,"width":280,"height":280,"formats":null,"hash":"svg_f8b9a1276a","ext":".svg","mime":"image/svg+xml","size":4.73,"url":"/uploads/svg_f8b9a1276a.svg","previewUrl":null,"provider":"local","provider_metadata":null,"folderPath":"/","createdAt":"2025-11-08T21:17:51.062Z","updatedAt":"2025-11-08T21:25:46.205Z","publishedAt":"2025-11-08T21:17:51.062Z","locale":null}
+{
+  "id": 9,
+  "documentId": "ta0xobhnggu4ji5zcp9jkzsj",
+  "name": "amanda-white",
+  "alternativeText": "Amanda white avatar",
+  "caption": null,
+  "width": 280,
+  "height": 280,
+  "formats": null,
+  "hash": "svg_f8b9a1276a",
+  "ext": ".svg",
+  "mime": "image/svg+xml",
+  "size": 4.73,
+  "url": "/uploads/svg_f8b9a1276a.svg",
+  "previewUrl": null,
+  "provider": "local",
+  "provider_metadata": null,
+  "folderPath": "/",
+  "createdAt": "2025-11-08T21:17:51.062Z",
+  "updatedAt": "2025-11-08T21:25:46.205Z",
+  "publishedAt": "2025-11-08T21:17:51.062Z",
+  "locale": null
+}

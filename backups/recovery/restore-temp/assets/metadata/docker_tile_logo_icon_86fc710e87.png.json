@@ -1,1 +1,48 @@
-{"id":76,"documentId":"xe6vstplnm5mgw0ebz1e4usm","name":"docker_tile_logo_icon.png","alternativeText":null,"caption":null,"width":512,"height":512,"formats":{"small":{"ext":".png","url":"/uploads/small_docker_tile_logo_icon_86fc710e87.png","hash":"small_docker_tile_logo_icon_86fc710e87","mime":"image/png","name":"small_docker_tile_logo_icon.png","path":null,"size":18.81,"width":500,"height":500,"sizeInBytes":18808},"thumbnail":{"ext":".png","url":"/uploads/thumbnail_docker_tile_logo_icon_86fc710e87.png","hash":"thumbnail_docker_tile_logo_icon_86fc710e87","mime":"image/png","name":"thumbnail_docker_tile_logo_icon.png","path":null,"size":5.71,"width":156,"height":156,"sizeInBytes":5705}},"hash":"docker_tile_logo_icon_86fc710e87","ext":".png","mime":"image/png","size":3.43,"url":"/uploads/docker_tile_logo_icon_86fc710e87.png","previewUrl":null,"provider":"local","provider_metadata":null,"folderPath":"/","createdAt":"2025-11-07T00:42:55.656Z","updatedAt":"2025-11-07T00:42:55.656Z","publishedAt":"2025-11-07T00:42:55.656Z","locale":null}
+{
+  "id": 76,
+  "documentId": "xe6vstplnm5mgw0ebz1e4usm",
+  "name": "docker_tile_logo_icon.png",
+  "alternativeText": null,
+  "caption": null,
+  "width": 512,
+  "height": 512,
+  "formats": {
+    "small": {
+      "ext": ".png",
+      "url": "/uploads/small_docker_tile_logo_icon_86fc710e87.png",
+      "hash": "small_docker_tile_logo_icon_86fc710e87",
+      "mime": "image/png",
+      "name": "small_docker_tile_logo_icon.png",
+      "path": null,
+      "size": 18.81,
+      "width": 500,
+      "height": 500,
+      "sizeInBytes": 18808
+    },
+    "thumbnail": {
+      "ext": ".png",
+      "url": "/uploads/thumbnail_docker_tile_logo_icon_86fc710e87.png",
+      "hash": "thumbnail_docker_tile_logo_icon_86fc710e87",
+      "mime": "image/png",
+      "name": "thumbnail_docker_tile_logo_icon.png",
+      "path": null,
+      "size": 5.71,
+      "width": 156,
+      "height": 156,
+      "sizeInBytes": 5705
+    }
+  },
+  "hash": "docker_tile_logo_icon_86fc710e87",
+  "ext": ".png",
+  "mime": "image/png",
+  "size": 3.43,
+  "url": "/uploads/docker_tile_logo_icon_86fc710e87.png",
+  "previewUrl": null,
+  "provider": "local",
+  "provider_metadata": null,
+  "folderPath": "/",
+  "createdAt": "2025-11-07T00:42:55.656Z",
+  "updatedAt": "2025-11-07T00:42:55.656Z",
+  "publishedAt": "2025-11-07T00:42:55.656Z",
+  "locale": null
+}

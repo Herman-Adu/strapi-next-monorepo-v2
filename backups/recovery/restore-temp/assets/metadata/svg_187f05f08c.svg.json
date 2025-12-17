@@ -1,1 +1,23 @@
-{"id":7,"documentId":"vq6budofa8ethum1pgqu2i0h","name":"lisa-anderson","alternativeText":"Lisa anderson avatar","caption":null,"width":280,"height":280,"formats":null,"hash":"svg_187f05f08c","ext":".svg","mime":"image/svg+xml","size":3.31,"url":"/uploads/svg_187f05f08c.svg","previewUrl":null,"provider":"local","provider_metadata":null,"folderPath":"/","createdAt":"2025-11-08T21:15:48.965Z","updatedAt":"2025-11-08T21:25:04.528Z","publishedAt":"2025-11-08T21:15:48.965Z","locale":null}
+{
+  "id": 7,
+  "documentId": "vq6budofa8ethum1pgqu2i0h",
+  "name": "lisa-anderson",
+  "alternativeText": "Lisa anderson avatar",
+  "caption": null,
+  "width": 280,
+  "height": 280,
+  "formats": null,
+  "hash": "svg_187f05f08c",
+  "ext": ".svg",
+  "mime": "image/svg+xml",
+  "size": 3.31,
+  "url": "/uploads/svg_187f05f08c.svg",
+  "previewUrl": null,
+  "provider": "local",
+  "provider_metadata": null,
+  "folderPath": "/",
+  "createdAt": "2025-11-08T21:15:48.965Z",
+  "updatedAt": "2025-11-08T21:25:04.528Z",
+  "publishedAt": "2025-11-08T21:15:48.965Z",
+  "locale": null
+}

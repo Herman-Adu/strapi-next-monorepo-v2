@@ -1,1 +1,15 @@
-{"ext":".png","url":"/uploads/small_microsoft_logo_transparent_87ccf3c718.png","hash":"small_microsoft_logo_transparent_87ccf3c718","mime":"image/png","name":"small_microsoft-logo-transparent.png","path":null,"size":1.45,"width":500,"height":500,"sizeInBytes":1448,"type":"small","id":48,"mainHash":"microsoft_logo_transparent_87ccf3c718"}
+{
+  "ext": ".png",
+  "url": "/uploads/small_microsoft_logo_transparent_87ccf3c718.png",
+  "hash": "small_microsoft_logo_transparent_87ccf3c718",
+  "mime": "image/png",
+  "name": "small_microsoft-logo-transparent.png",
+  "path": null,
+  "size": 1.45,
+  "width": 500,
+  "height": 500,
+  "sizeInBytes": 1448,
+  "type": "small",
+  "id": 48,
+  "mainHash": "microsoft_logo_transparent_87ccf3c718"
+}

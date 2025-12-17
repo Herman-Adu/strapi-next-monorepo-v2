@@ -1,1 +1,72 @@
-{"id":90,"documentId":"qmtwcpgcwy2f1ujzasj7etm4","name":"sarah-johnson.png","alternativeText":null,"caption":null,"width":1024,"height":576,"formats":{"large":{"ext":".png","url":"/uploads/large_sarah_johnson_52a83f6d07.png","hash":"large_sarah_johnson_52a83f6d07","mime":"image/png","name":"large_sarah-johnson.png","path":null,"size":897.44,"width":1000,"height":563,"sizeInBytes":897442},"small":{"ext":".png","url":"/uploads/small_sarah_johnson_52a83f6d07.png","hash":"small_sarah_johnson_52a83f6d07","mime":"image/png","name":"small_sarah-johnson.png","path":null,"size":271.35,"width":500,"height":281,"sizeInBytes":271351},"medium":{"ext":".png","url":"/uploads/medium_sarah_johnson_52a83f6d07.png","hash":"medium_sarah_johnson_52a83f6d07","mime":"image/png","name":"medium_sarah-johnson.png","path":null,"size":566.97,"width":750,"height":422,"sizeInBytes":566974},"thumbnail":{"ext":".png","url":"/uploads/thumbnail_sarah_johnson_52a83f6d07.png","hash":"thumbnail_sarah_johnson_52a83f6d07","mime":"image/png","name":"thumbnail_sarah-johnson.png","path":null,"size":75.12,"width":245,"height":138,"sizeInBytes":75121}},"hash":"sarah_johnson_52a83f6d07","ext":".png","mime":"image/png","size":253.31,"url":"/uploads/sarah_johnson_52a83f6d07.png","previewUrl":null,"provider":"local","provider_metadata":null,"folderPath":"/1","createdAt":"2025-11-09T01:10:17.081Z","updatedAt":"2025-11-09T01:10:17.081Z","publishedAt":"2025-11-09T01:10:17.081Z","locale":null}
+{
+  "id": 90,
+  "documentId": "qmtwcpgcwy2f1ujzasj7etm4",
+  "name": "sarah-johnson.png",
+  "alternativeText": null,
+  "caption": null,
+  "width": 1024,
+  "height": 576,
+  "formats": {
+    "large": {
+      "ext": ".png",
+      "url": "/uploads/large_sarah_johnson_52a83f6d07.png",
+      "hash": "large_sarah_johnson_52a83f6d07",
+      "mime": "image/png",
+      "name": "large_sarah-johnson.png",
+      "path": null,
+      "size": 897.44,
+      "width": 1000,
+      "height": 563,
+      "sizeInBytes": 897442
+    },
+    "small": {
+      "ext": ".png",
+      "url": "/uploads/small_sarah_johnson_52a83f6d07.png",
+      "hash": "small_sarah_johnson_52a83f6d07",
+      "mime": "image/png",
+      "name": "small_sarah-johnson.png",
+      "path": null,
+      "size": 271.35,
+      "width": 500,
+      "height": 281,
+      "sizeInBytes": 271351
+    },
+    "medium": {
+      "ext": ".png",
+      "url": "/uploads/medium_sarah_johnson_52a83f6d07.png",
+      "hash": "medium_sarah_johnson_52a83f6d07",
+      "mime": "image/png",
+      "name": "medium_sarah-johnson.png",
+      "path": null,
+      "size": 566.97,
+      "width": 750,
+      "height": 422,
+      "sizeInBytes": 566974
+    },
+    "thumbnail": {
+      "ext": ".png",
+      "url": "/uploads/thumbnail_sarah_johnson_52a83f6d07.png",
+      "hash": "thumbnail_sarah_johnson_52a83f6d07",
+      "mime": "image/png",
+      "name": "thumbnail_sarah-johnson.png",
+      "path": null,
+      "size": 75.12,
+      "width": 245,
+      "height": 138,
+      "sizeInBytes": 75121
+    }
+  },
+  "hash": "sarah_johnson_52a83f6d07",
+  "ext": ".png",
+  "mime": "image/png",
+  "size": 253.31,
+  "url": "/uploads/sarah_johnson_52a83f6d07.png",
+  "previewUrl": null,
+  "provider": "local",
+  "provider_metadata": null,
+  "folderPath": "/1",
+  "createdAt": "2025-11-09T01:10:17.081Z",
+  "updatedAt": "2025-11-09T01:10:17.081Z",
+  "publishedAt": "2025-11-09T01:10:17.081Z",
+  "locale": null
+}

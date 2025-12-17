@@ -1,1 +1,15 @@
-{"ext":".png","url":"/uploads/large_meta_logo_v2_0cfafcfc01.png","hash":"large_meta_logo_v2_0cfafcfc01","mime":"image/png","name":"large_meta-logo-v2.png","path":null,"size":117.22,"width":1000,"height":664,"sizeInBytes":117220,"type":"large","id":78,"mainHash":"meta_logo_v2_0cfafcfc01"}
+{
+  "ext": ".png",
+  "url": "/uploads/large_meta_logo_v2_0cfafcfc01.png",
+  "hash": "large_meta_logo_v2_0cfafcfc01",
+  "mime": "image/png",
+  "name": "large_meta-logo-v2.png",
+  "path": null,
+  "size": 117.22,
+  "width": 1000,
+  "height": 664,
+  "sizeInBytes": 117220,
+  "type": "large",
+  "id": 78,
+  "mainHash": "meta_logo_v2_0cfafcfc01"
+}

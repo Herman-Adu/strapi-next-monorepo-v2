@@ -1,1 +1,36 @@
-{"id":10,"documentId":"mtjgsarob2o3c2vj7ijo4i7u","name":"Icon.jpeg","alternativeText":null,"caption":null,"width":480,"height":480,"formats":{"thumbnail":{"ext":".jpeg","url":"/uploads/thumbnail_Icon_15d5d8fdf3.jpeg","hash":"thumbnail_Icon_15d5d8fdf3","mime":"image/jpeg","name":"thumbnail_Icon.jpeg","path":null,"size":1.33,"width":156,"height":156,"sizeInBytes":1328}},"hash":"Icon_15d5d8fdf3","ext":".jpeg","mime":"image/jpeg","size":3.93,"url":"/uploads/Icon_15d5d8fdf3.jpeg","previewUrl":null,"provider":"local","provider_metadata":null,"folderPath":"/","createdAt":"2025-11-03T08:47:42.354Z","updatedAt":"2025-11-03T08:47:42.354Z","publishedAt":"2025-11-03T08:47:42.354Z","locale":null}
+{
+  "id": 10,
+  "documentId": "mtjgsarob2o3c2vj7ijo4i7u",
+  "name": "Icon.jpeg",
+  "alternativeText": null,
+  "caption": null,
+  "width": 480,
+  "height": 480,
+  "formats": {
+    "thumbnail": {
+      "ext": ".jpeg",
+      "url": "/uploads/thumbnail_Icon_15d5d8fdf3.jpeg",
+      "hash": "thumbnail_Icon_15d5d8fdf3",
+      "mime": "image/jpeg",
+      "name": "thumbnail_Icon.jpeg",
+      "path": null,
+      "size": 1.33,
+      "width": 156,
+      "height": 156,
+      "sizeInBytes": 1328
+    }
+  },
+  "hash": "Icon_15d5d8fdf3",
+  "ext": ".jpeg",
+  "mime": "image/jpeg",
+  "size": 3.93,
+  "url": "/uploads/Icon_15d5d8fdf3.jpeg",
+  "previewUrl": null,
+  "provider": "local",
+  "provider_metadata": null,
+  "folderPath": "/",
+  "createdAt": "2025-11-03T08:47:42.354Z",
+  "updatedAt": "2025-11-03T08:47:42.354Z",
+  "publishedAt": "2025-11-03T08:47:42.354Z",
+  "locale": null
+}

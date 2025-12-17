@@ -1,1 +1,15 @@
-{"ext":".png","url":"/uploads/medium_twilio_logo_round_bec5fffc7c.png","hash":"medium_twilio_logo_round_bec5fffc7c","mime":"image/png","name":"medium_twilio-logo-round.png","path":null,"size":51.03,"width":750,"height":427,"sizeInBytes":51034,"type":"medium","id":8,"mainHash":"twilio_logo_round_bec5fffc7c"}
+{
+  "ext": ".png",
+  "url": "/uploads/medium_twilio_logo_round_bec5fffc7c.png",
+  "hash": "medium_twilio_logo_round_bec5fffc7c",
+  "mime": "image/png",
+  "name": "medium_twilio-logo-round.png",
+  "path": null,
+  "size": 51.03,
+  "width": 750,
+  "height": 427,
+  "sizeInBytes": 51034,
+  "type": "medium",
+  "id": 8,
+  "mainHash": "twilio_logo_round_bec5fffc7c"
+}

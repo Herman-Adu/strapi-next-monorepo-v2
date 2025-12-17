@@ -1,1 +1,23 @@
-{"id":12,"documentId":"f6jz4rc5eqngeh01vt8o6b3v","name":"emily-rodriguez","alternativeText":"Emily rodriguez avatar","caption":null,"width":280,"height":280,"formats":null,"hash":"svg_e25d68ef0a","ext":".svg","mime":"image/svg+xml","size":4.68,"url":"/uploads/svg_e25d68ef0a.svg","previewUrl":null,"provider":"local","provider_metadata":null,"folderPath":"/","createdAt":"2025-11-07T21:40:39.587Z","updatedAt":"2025-11-08T21:23:18.624Z","publishedAt":"2025-11-07T21:40:39.587Z","locale":null}
+{
+  "id": 12,
+  "documentId": "f6jz4rc5eqngeh01vt8o6b3v",
+  "name": "emily-rodriguez",
+  "alternativeText": "Emily rodriguez avatar",
+  "caption": null,
+  "width": 280,
+  "height": 280,
+  "formats": null,
+  "hash": "svg_e25d68ef0a",
+  "ext": ".svg",
+  "mime": "image/svg+xml",
+  "size": 4.68,
+  "url": "/uploads/svg_e25d68ef0a.svg",
+  "previewUrl": null,
+  "provider": "local",
+  "provider_metadata": null,
+  "folderPath": "/",
+  "createdAt": "2025-11-07T21:40:39.587Z",
+  "updatedAt": "2025-11-08T21:23:18.624Z",
+  "publishedAt": "2025-11-07T21:40:39.587Z",
+  "locale": null
+}

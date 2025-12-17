@@ -1,1 +1,60 @@
-{"id":69,"documentId":"kbxnjo2u3zmtponz5kj13692","name":"docker-container-logo-png.png","alternativeText":null,"caption":null,"width":840,"height":517,"formats":{"small":{"ext":".png","url":"/uploads/small_docker_container_logo_png_66c76dbf3f.png","hash":"small_docker_container_logo_png_66c76dbf3f","mime":"image/png","name":"small_docker-container-logo-png.png","path":null,"size":22.44,"width":500,"height":308,"sizeInBytes":22436},"medium":{"ext":".png","url":"/uploads/medium_docker_container_logo_png_66c76dbf3f.png","hash":"medium_docker_container_logo_png_66c76dbf3f","mime":"image/png","name":"medium_docker-container-logo-png.png","path":null,"size":37.9,"width":750,"height":462,"sizeInBytes":37896},"thumbnail":{"ext":".png","url":"/uploads/thumbnail_docker_container_logo_png_66c76dbf3f.png","hash":"thumbnail_docker_container_logo_png_66c76dbf3f","mime":"image/png","name":"thumbnail_docker-container-logo-png.png","path":null,"size":8.52,"width":245,"height":151,"sizeInBytes":8519}},"hash":"docker_container_logo_png_66c76dbf3f","ext":".png","mime":"image/png","size":35.7,"url":"/uploads/docker_container_logo_png_66c76dbf3f.png","previewUrl":null,"provider":"local","provider_metadata":null,"folderPath":"/","createdAt":"2025-10-31T22:08:12.588Z","updatedAt":"2025-10-31T22:08:12.588Z","publishedAt":"2025-10-31T22:08:12.588Z","locale":null}
+{
+  "id": 69,
+  "documentId": "kbxnjo2u3zmtponz5kj13692",
+  "name": "docker-container-logo-png.png",
+  "alternativeText": null,
+  "caption": null,
+  "width": 840,
+  "height": 517,
+  "formats": {
+    "small": {
+      "ext": ".png",
+      "url": "/uploads/small_docker_container_logo_png_66c76dbf3f.png",
+      "hash": "small_docker_container_logo_png_66c76dbf3f",
+      "mime": "image/png",
+      "name": "small_docker-container-logo-png.png",
+      "path": null,
+      "size": 22.44,
+      "width": 500,
+      "height": 308,
+      "sizeInBytes": 22436
+    },
+    "medium": {
+      "ext": ".png",
+      "url": "/uploads/medium_docker_container_logo_png_66c76dbf3f.png",
+      "hash": "medium_docker_container_logo_png_66c76dbf3f",
+      "mime": "image/png",
+      "name": "medium_docker-container-logo-png.png",
+      "path": null,
+      "size": 37.9,
+      "width": 750,
+      "height": 462,
+      "sizeInBytes": 37896
+    },
+    "thumbnail": {
+      "ext": ".png",
+      "url": "/uploads/thumbnail_docker_container_logo_png_66c76dbf3f.png",
+      "hash": "thumbnail_docker_container_logo_png_66c76dbf3f",
+      "mime": "image/png",
+      "name": "thumbnail_docker-container-logo-png.png",
+      "path": null,
+      "size": 8.52,
+      "width": 245,
+      "height": 151,
+      "sizeInBytes": 8519
+    }
+  },
+  "hash": "docker_container_logo_png_66c76dbf3f",
+  "ext": ".png",
+  "mime": "image/png",
+  "size": 35.7,
+  "url": "/uploads/docker_container_logo_png_66c76dbf3f.png",
+  "previewUrl": null,
+  "provider": "local",
+  "provider_metadata": null,
+  "folderPath": "/",
+  "createdAt": "2025-10-31T22:08:12.588Z",
+  "updatedAt": "2025-10-31T22:08:12.588Z",
+  "publishedAt": "2025-10-31T22:08:12.588Z",
+  "locale": null
+}

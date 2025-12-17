@@ -1,1 +1,72 @@
-{"id":83,"documentId":"c2lgfjyjibt2xr42d16n2r07","name":"michael-chen.jpg","alternativeText":null,"caption":null,"width":1024,"height":1024,"formats":{"large":{"ext":".jpg","url":"/uploads/large_michael_chen_3115d24273.jpg","hash":"large_michael_chen_3115d24273","mime":"image/jpeg","name":"large_michael-chen.jpg","path":null,"size":108.9,"width":1000,"height":1000,"sizeInBytes":108901},"small":{"ext":".jpg","url":"/uploads/small_michael_chen_3115d24273.jpg","hash":"small_michael_chen_3115d24273","mime":"image/jpeg","name":"small_michael-chen.jpg","path":null,"size":39.84,"width":500,"height":500,"sizeInBytes":39841},"medium":{"ext":".jpg","url":"/uploads/medium_michael_chen_3115d24273.jpg","hash":"medium_michael_chen_3115d24273","mime":"image/jpeg","name":"medium_michael-chen.jpg","path":null,"size":70.51,"width":750,"height":750,"sizeInBytes":70511},"thumbnail":{"ext":".jpg","url":"/uploads/thumbnail_michael_chen_3115d24273.jpg","hash":"thumbnail_michael_chen_3115d24273","mime":"image/jpeg","name":"thumbnail_michael-chen.jpg","path":null,"size":7.19,"width":156,"height":156,"sizeInBytes":7189}},"hash":"michael_chen_3115d24273","ext":".jpg","mime":"image/jpeg","size":112.34,"url":"/uploads/michael_chen_3115d24273.jpg","previewUrl":null,"provider":"local","provider_metadata":null,"folderPath":"/1","createdAt":"2025-11-09T01:10:16.068Z","updatedAt":"2025-11-09T01:10:16.068Z","publishedAt":"2025-11-09T01:10:16.068Z","locale":null}
+{
+  "id": 83,
+  "documentId": "c2lgfjyjibt2xr42d16n2r07",
+  "name": "michael-chen.jpg",
+  "alternativeText": null,
+  "caption": null,
+  "width": 1024,
+  "height": 1024,
+  "formats": {
+    "large": {
+      "ext": ".jpg",
+      "url": "/uploads/large_michael_chen_3115d24273.jpg",
+      "hash": "large_michael_chen_3115d24273",
+      "mime": "image/jpeg",
+      "name": "large_michael-chen.jpg",
+      "path": null,
+      "size": 108.9,
+      "width": 1000,
+      "height": 1000,
+      "sizeInBytes": 108901
+    },
+    "small": {
+      "ext": ".jpg",
+      "url": "/uploads/small_michael_chen_3115d24273.jpg",
+      "hash": "small_michael_chen_3115d24273",
+      "mime": "image/jpeg",
+      "name": "small_michael-chen.jpg",
+      "path": null,
+      "size": 39.84,
+      "width": 500,
+      "height": 500,
+      "sizeInBytes": 39841
+    },
+    "medium": {
+      "ext": ".jpg",
+      "url": "/uploads/medium_michael_chen_3115d24273.jpg",
+      "hash": "medium_michael_chen_3115d24273",
+      "mime": "image/jpeg",
+      "name": "medium_michael-chen.jpg",
+      "path": null,
+      "size": 70.51,
+      "width": 750,
+      "height": 750,
+      "sizeInBytes": 70511
+    },
+    "thumbnail": {
+      "ext": ".jpg",
+      "url": "/uploads/thumbnail_michael_chen_3115d24273.jpg",
+      "hash": "thumbnail_michael_chen_3115d24273",
+      "mime": "image/jpeg",
+      "name": "thumbnail_michael-chen.jpg",
+      "path": null,
+      "size": 7.19,
+      "width": 156,
+      "height": 156,
+      "sizeInBytes": 7189
+    }
+  },
+  "hash": "michael_chen_3115d24273",
+  "ext": ".jpg",
+  "mime": "image/jpeg",
+  "size": 112.34,
+  "url": "/uploads/michael_chen_3115d24273.jpg",
+  "previewUrl": null,
+  "provider": "local",
+  "provider_metadata": null,
+  "folderPath": "/1",
+  "createdAt": "2025-11-09T01:10:16.068Z",
+  "updatedAt": "2025-11-09T01:10:16.068Z",
+  "publishedAt": "2025-11-09T01:10:16.068Z",
+  "locale": null
+}
