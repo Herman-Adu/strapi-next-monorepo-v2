@@ -64,63 +64,13 @@ export default async function StrapiPage(
   setRequestLocale(locale)
 
   const fullPath = ROOT_PAGE_PATH + (params.rest ?? []).join("/")
-
-  // E2E Debug Logging
-  if (process.env.E2E_TESTS_PLAYWRIGHT_API_KEY) {
-    // eslint-disable-next-line no-console
-    console.log(
-      `[StrapiPage] Fetching page: fullPath="${fullPath}", locale="${locale}"`
-    )
-  }
-
   const response = await fetchPage(fullPath, locale)
-
-  // E2E Debug Logging
-  if (process.env.E2E_TESTS_PLAYWRIGHT_API_KEY) {
-    // eslint-disable-next-line no-console
-    console.log(
-      `[StrapiPage DEBUG] Response received: ${response ? "✅ YES" : "❌ NO"}`
-    )
-    // eslint-disable-next-line no-console
-    console.log(
-      `[StrapiPage DEBUG] Response.data exists: ${response?.data ? "✅ YES" : "❌ NO"}`
-    )
-    if (response?.data) {
-      // eslint-disable-next-line no-console
-      console.log(
-        `[StrapiPage DEBUG] Data keys: ${Object.keys(response.data).join(", ")}`
-      )
-      // eslint-disable-next-line no-console
-      console.log(
-        `[StrapiPage DEBUG] Content exists: ${response.data.content ? "✅ YES" : "❌ NO"}`
-      )
-      // eslint-disable-next-line no-console
-      console.log(
-        `[StrapiPage DEBUG] Content length: ${response.data.content?.length || 0}`
-      )
-    }
-  }
 
   const data = response?.data
 
   // Return 404 if page doesn't exist or has no content
   if (!data || data.content == null) {
-    // E2E Debug Logging
-    if (process.env.E2E_TESTS_PLAYWRIGHT_API_KEY) {
-      // eslint-disable-next-line no-console
-      console.log(
-        `[StrapiPage] ❌ Returning 404: data=${!!data}, content=${!!data?.content}`
-      )
-    }
     notFound()
-  }
-
-  // E2E Debug Logging
-  if (process.env.E2E_TESTS_PLAYWRIGHT_API_KEY) {
-    // eslint-disable-next-line no-console
-    console.log(
-      `[StrapiPage] ✅ Rendering page with ${data.content.length} content sections`
-    )
   }
 
   const { content, ...restPageData } = data

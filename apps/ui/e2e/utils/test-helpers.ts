@@ -34,29 +34,11 @@ export async function navigateAndWaitForContent(
   const { timeout = 60000, contentTimeout = defaultContentTimeout } =
     options || {}
 
-  // eslint-disable-next-line no-console
-  console.log(
-    `[Test Helper] Navigating to: ${path}, waiting for: ${contentSelector}`
-  )
-
   // Navigate with domcontentloaded (NOT networkidle - causes timeouts with HMR/websockets)
   await page.goto(path, {
     waitUntil: "domcontentloaded",
     timeout,
   })
-
-  // eslint-disable-next-line no-console
-  console.log(`[Test Helper] Page loaded: ${path}`)
-
-  // Log page HTML to debug what's actually on the page
-  const bodyText = await page.locator("body").textContent()
-  // eslint-disable-next-line no-console
-  console.log(`[Test Helper DEBUG] Body text preview (first 200 chars): ${bodyText?.substring(0, 200)}`)
-
-  // Check if main element exists
-  const mainExists = (await page.locator("main").count()) > 0
-  // eslint-disable-next-line no-console
-  console.log(`[Test Helper DEBUG] Main element exists: ${mainExists}`)
 
   // Wait for specific content to be visible (more reliable than networkidle)
   const selector =
@@ -64,25 +46,10 @@ export async function navigateAndWaitForContent(
       ? `text=${contentSelector}`
       : `text=${contentSelector}`
 
-  // eslint-disable-next-line no-console
-  console.log(
-    `[Test Helper] Waiting for selector: ${selector} (timeout: ${contentTimeout}ms)`
-  )
-
-  try {
-    await page.waitForSelector(selector, {
-      timeout: contentTimeout,
-      state: "visible",
-    })
-    // eslint-disable-next-line no-console
-    console.log(`[Test Helper] ✅ Content found: ${selector}`)
-  } catch (error) {
-    // eslint-disable-next-line no-console
-    console.error(`[Test Helper] ❌ Content NOT found: ${selector}`)
-    // eslint-disable-next-line no-console
-    console.error(`[Test Helper DEBUG] Full body text: ${bodyText}`)
-    throw error
-  }
+  await page.waitForSelector(selector, {
+    timeout: contentTimeout,
+    state: "visible",
+  })
 }
 
 /**
