@@ -26,7 +26,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const results = await Promise.allSettled(promises)
 
   return results
-    .filter((result) => result.status === "fulfilled")
+    .filter(
+      (result): result is PromiseFulfilledResult<MetadataRoute.Sitemap> =>
+        result.status === "fulfilled"
+    )
     .reduce((acc, curr) => {
       acc.push(...curr.value)
       return acc
