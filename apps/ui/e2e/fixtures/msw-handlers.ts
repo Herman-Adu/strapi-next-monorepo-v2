@@ -37,7 +37,7 @@ export const handlers = [
       `[MSW Handler] Received request: ${request.method} ${request.url}`
     )
     const url = new URL(request.url)
-    
+
     // Check both fullPath (actual) and path (legacy) for compatibility
     const fullPath = url.searchParams.get("filters[fullPath][$eq]")
     const path = url.searchParams.get("filters[path][$eq]")
