@@ -43,11 +43,14 @@ export const handlers = [
     const path = url.searchParams.get("filters[path][$eq]")
     const searchPath = fullPath || path
 
+    // eslint-disable-next-line no-console
+    console.log(
+      `[MSW Handler DEBUG] fullPath param: ${fullPath}, path param: ${path}, searchPath: ${searchPath}`
+    )
+
     // Return mock E2E test page for test path
     if (searchPath?.includes("e2e-test-page")) {
-      // eslint-disable-next-line no-console
-      console.log(`[MSW Handler] Matched e2e-test-page request`)
-      return HttpResponse.json({
+      const responseData = {
         data: [mockE2EPage.data],
         meta: {
           pagination: {
@@ -57,12 +60,33 @@ export const handlers = [
             total: 1,
           },
         },
-      })
+      }
+
+      // eslint-disable-next-line no-console
+      console.log(`[MSW Handler] ✅ Matched e2e-test-page request`)
+      // eslint-disable-next-line no-console
+      console.log(
+        `[MSW Handler DEBUG] Returning mock data with ${responseData.data.length} page(s)`
+      )
+      // eslint-disable-next-line no-console
+      console.log(
+        `[MSW Handler DEBUG] Page object keys: ${Object.keys(responseData.data[0]).join(", ")}`
+      )
+      // eslint-disable-next-line no-console
+      console.log(
+        `[MSW Handler DEBUG] Content array length: ${responseData.data[0].content?.length || 0}`
+      )
+      // eslint-disable-next-line no-console
+      console.log(
+        `[MSW Handler DEBUG] Content components: ${responseData.data[0].content?.map((c: any) => c.__component).join(", ") || "none"}`
+      )
+
+      return HttpResponse.json(responseData)
     }
 
     // Return empty array for other paths (404 behavior)
     // eslint-disable-next-line no-console
-    console.log(`[MSW Handler] No match for path: ${searchPath}`)
+    console.log(`[MSW Handler] ❌ No match for path: ${searchPath}`)
     return HttpResponse.json({
       data: [],
       meta: {
