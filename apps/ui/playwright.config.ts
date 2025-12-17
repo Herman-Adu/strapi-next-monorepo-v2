@@ -4,9 +4,7 @@ import { defineConfig, devices } from "@playwright/test"
  */
 export default defineConfig({
   testDir: "./e2e",
-  /* Global setup/teardown for MSW (Mock Service Worker) */
-  globalSetup: "./e2e/global-setup.ts",
-  globalTeardown: "./e2e/global-teardown.ts",
+  /* MSW is started via webServer command script - no global setup needed */
   /* Run tests in files in parallel */
   fullyParallel: true,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
@@ -73,7 +71,8 @@ export default defineConfig({
 
   /* Run your local dev server before starting the tests */
   webServer: {
-    command: "yarn dev:e2e", // Use dev:e2e (no Strapi health check)
+    // Start MSW BEFORE Next.js to avoid race conditions
+    command: "node scripts/start-e2e-with-msw.js",
     url: process.env.CI ? "http://127.0.0.1:3000" : "http://localhost:3000",
     reuseExistingServer: !process.env.CI, // Fresh server in CI, reuse locally
     timeout: 180 * 1000,
