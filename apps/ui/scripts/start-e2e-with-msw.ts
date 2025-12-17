@@ -8,8 +8,8 @@
 
 import { spawn } from "child_process"
 import path from "path"
-import globalSetup from "../e2e/global-setup"
-import globalTeardown from "../e2e/global-teardown"
+import globalSetup from "../e2e/global-setup.js"
+import globalTeardown from "../e2e/global-teardown.js"
 
 async function start() {
   console.log("🚀 [E2E] Starting MSW before Next.js...\n")
