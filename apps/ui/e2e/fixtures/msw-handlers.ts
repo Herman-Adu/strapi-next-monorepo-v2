@@ -16,9 +16,22 @@ import { mockE2EPage, mockNavbar, mockFooter } from "./mock-data"
 const STRAPI_URL = process.env.STRAPI_URL || "http://127.0.0.1:1337"
 
 export const handlers = [
+  // Mock Strapi health check endpoint
+  // This is required for setup.ts to validate Strapi is running
+  http.get(`${STRAPI_URL}/_health`, () => {
+    return HttpResponse.json(
+      {
+        status: "ok",
+        timestamp: new Date().toISOString(),
+      },
+      { status: 200 }
+    )
+  }),
+
   // Mock pages API endpoint
   // Matches: GET /api/pages?filters[path][$eq]=/e2e-test-page&locale=en&populate=deep
   http.get(`${STRAPI_URL}/api/pages`, ({ request }) => {
+    // eslint-disable-next-line no-console
     console.log(
       `[MSW Handler] Received request: ${request.method} ${request.url}`
     )
@@ -67,18 +80,25 @@ export const handlers = [
   }),
 
   // Mock newsletter subscription endpoint (POST)
-  // This intercepts the Next.js API route proxy request
-  http.post("*/api/public-proxy/subscribers", async ({ request }) => {
-    const body = (await request.json()) as { email: string }
+  // Next.js proxy forwards POST /api/public-proxy/subscribers → STRAPI_URL/subscribers
+  // MSW intercepts at the Strapi URL level
+  // Path must match API_ENDPOINTS["api::subscriber.subscriber"] = "/subscribers"
+  http.post(`${STRAPI_URL}/subscribers`, async ({ request }) => {
+    const body = (await request.json()) as { data: { email: string } }
 
+    // eslint-disable-next-line no-console
+    console.log("[MSW Handler] Newsletter subscription:", body)
+
+    // Return format matching Strapi's expected response
     return HttpResponse.json(
       {
-        success: true,
-        message: "Successfully subscribed!",
         data: {
           id: 1,
-          email: body.email,
-          createdAt: new Date().toISOString(),
+          attributes: {
+            email: body.data.email,
+            createdAt: new Date().toISOString(),
+            updatedAt: new Date().toISOString(),
+          },
         },
       },
       { status: 200 }
@@ -86,22 +106,31 @@ export const handlers = [
   }),
 
   // Mock contact form submission endpoint (POST)
-  // This intercepts the Next.js API route proxy request
-  http.post("*/api/public-proxy/contact-submissions", async ({ request }) => {
+  // Next.js proxy forwards POST /api/public-proxy/contact-messages → STRAPI_URL/contact-messages
+  // MSW intercepts at the Strapi URL level
+  // Path must match API_ENDPOINTS["api::contact-message.contact-message"] = "/contact-messages"
+  http.post(`${STRAPI_URL}/contact-messages`, async ({ request }) => {
     const body = (await request.json()) as {
-      name: string
-      email: string
-      message: string
+      data: {
+        name: string
+        email: string
+        message: string
+      }
     }
 
+    // eslint-disable-next-line no-console
+    console.log("[MSW Handler] Contact form submission:", body)
+
+    // Return format matching Strapi's expected response
     return HttpResponse.json(
       {
-        success: true,
-        message: "Message sent successfully!",
         data: {
           id: 1,
-          ...body,
-          createdAt: new Date().toISOString(),
+          attributes: {
+            ...body.data,
+            createdAt: new Date().toISOString(),
+            updatedAt: new Date().toISOString(),
+          },
         },
       },
       { status: 200 }

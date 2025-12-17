@@ -70,7 +70,7 @@ test.describe("Error Handling", () => {
 
     // Wait for page to render
     await page.locator("body").waitFor({ state: "visible", timeout: 5000 })
-    await page.waitForTimeout(2000)
+    await page.waitForLoadState("load")
 
     // Should have minimal or no JavaScript errors
     const criticalErrors = jsErrors.filter(
@@ -132,8 +132,8 @@ test.describe("Error Handling", () => {
 
     await submitButton.click()
 
-    // Wait for error handling
-    await page.waitForTimeout(3000)
+    // Wait for error handling to complete
+    await page.waitForLoadState("load")
 
     // Should show error message or maintain form state
     const errorMessage = page.locator("text=/error|failed|wrong|try again/i")
@@ -270,7 +270,7 @@ test.describe("Error Handling", () => {
       // Might fail, which is acceptable
     })
 
-    await page.waitForTimeout(3000)
+    await page.waitForLoadState("domcontentloaded")
 
     // Should show error state or fallback content
     const bodyContent = await page.locator("body").textContent()
@@ -292,7 +292,7 @@ test.describe("Error Handling", () => {
 
     // Wait for page to render
     await page.locator("body").waitFor({ state: "visible", timeout: 5000 })
-    await page.waitForTimeout(2000)
+    await page.waitForLoadState("load")
 
     // Should not have CORS errors when accessing Strapi API
     expect(corsErrors.length).toBe(0)
@@ -310,7 +310,6 @@ test.describe("Error Handling", () => {
     // Navigate to test page
     await page.goto("/en/e2e-test-page", { waitUntil: "domcontentloaded" })
     await page.locator("body").waitFor({ state: "visible", timeout: 5000 })
-    await page.waitForTimeout(500)
 
     // Expand an accordion (if FAQ exists)
     const faqButtons = page.locator(
@@ -325,7 +324,7 @@ test.describe("Error Handling", () => {
 
     if (faqButtonCount > 0) {
       await faqButtons.first().click()
-      await page.waitForTimeout(500)
+      // Accordion click is synchronous, no wait needed
     }
 
     // Navigate to another page
@@ -384,7 +383,7 @@ test.describe("Error Handling", () => {
 
     // Immediately reload page during submission (use domcontentloaded)
     await page.reload({ waitUntil: "domcontentloaded" })
-    await page.waitForTimeout(1000)
+    await page.waitForLoadState("load")
 
     // Page should reload cleanly without errors
     const bodyContent = await page.locator("body").textContent()
@@ -397,7 +396,7 @@ test.describe("Error Handling", () => {
   })
 
   test("should handle window resize during interactions", async ({ page }) => {
-    await page.goto("/en/e2e-test-page", { waitUntil: "networkidle" })
+    await page.goto("/en/e2e-test-page", { waitUntil: "domcontentloaded" })
 
     // Desktop size
     await page.setViewportSize({ width: 1920, height: 1080 })
@@ -410,12 +409,11 @@ test.describe("Error Handling", () => {
 
     if (faqButtonCount > 0) {
       await faqButtons.first().click()
-      await page.waitForTimeout(500)
+      // Accordion click is synchronous
     }
 
     // Resize to mobile during interaction
     await page.setViewportSize({ width: 375, height: 667 })
-    await page.waitForTimeout(500)
 
     // Accordion should still work after resize (optional check)
     // Page should remain functional

@@ -80,7 +80,7 @@ test.describe("FAQ Accordion", () => {
     await expect(firstQuestion).toBeVisible({ timeout: 10000 })
 
     // Wait for page to be fully interactive
-    await page.waitForLoadState("networkidle", { timeout: 10000 })
+    await page.waitForLoadState("load", { timeout: 10000 })
 
     // Click to expand with force option (in case of overlay)
     await firstQuestion.click({ force: true })
@@ -137,17 +137,19 @@ test.describe("FAQ Accordion", () => {
       .getByRole("button", { name: /how long|typical project take/i })
       .first()
 
-    // Wait for page to be fully interactive
-    await page.waitForLoadState("networkidle", { timeout: 10000 })
+    // Wait for page to be fully loaded (accordion animations need full JS initialization)
+    await page.waitForLoadState("load", { timeout: 10000 })
 
     // Expand first accordion
-    await question1.click({ force: true })
+    await question1.scrollIntoViewIfNeeded()
+    await question1.click() // Let Playwright ensure actionability
     await expect(question1).toHaveAttribute("data-state", "open", {
       timeout: 5000,
     })
 
     // Expand second accordion
-    await question2.click({ force: true })
+    await question2.scrollIntoViewIfNeeded()
+    await question2.click() // Let Playwright ensure actionability
     await expect(question2).toHaveAttribute("data-state", "open", {
       timeout: 5000,
     })
@@ -170,14 +172,18 @@ test.describe("FAQ Accordion", () => {
       .getByRole("button", { name: /what technologies do you use/i })
       .first()
 
-    // Wait for page to be fully interactive
-    await page.waitForLoadState("networkidle", { timeout: 10000 })
+    // Wait for page to be fully loaded (accordion animations need full JS initialization)
+    await page.waitForLoadState("load", { timeout: 10000 })
 
-    // Focus the button
+    // Ensure element is in viewport and ready
+    await firstQuestion.scrollIntoViewIfNeeded()
     await firstQuestion.focus()
 
     // Press Enter to expand
     await page.keyboard.press("Enter")
+
+    // Wait for React state update after keyboard action (keyboard events are slower than clicks)
+    await page.waitForTimeout(200)
 
     // Verify accordion trigger has data-state="open"
     await expect(firstQuestion).toHaveAttribute("data-state", "open", {
@@ -201,7 +207,6 @@ test.describe("FAQ Accordion", () => {
 
     // Press Space to expand
     await page.keyboard.press("Space")
-    await page.waitForTimeout(500)
 
     // Answer should be visible
     const answer = page.getByText(/Next.js, React, TypeScript/i).first()
@@ -245,7 +250,6 @@ test.describe("FAQ Accordion", () => {
 
     // Click to expand
     await accordionButton.click()
-    await page.waitForTimeout(500)
 
     // Check if aria-expanded changed to true (if implemented)
     const ariaExpandedAfter =
@@ -318,10 +322,15 @@ test.describe("FAQ Accordion", () => {
       .getByRole("button", { name: /what technologies do you use/i })
       .first()
 
-    // Wait for page to be fully interactive
-    await page.waitForLoadState("networkidle", { timeout: 10000 })
+    // Wait for page to be fully interactive (load state for JS-heavy interactions)
+    await page.waitForLoadState("load", { timeout: 10000 })
 
-    await firstQuestion.click({ force: true })
+    // Scroll into view and click without force to ensure proper interaction
+    await firstQuestion.scrollIntoViewIfNeeded()
+    await firstQuestion.click()
+
+    // Wait for React state update
+    await page.waitForTimeout(200)
 
     // Verify accordion trigger has data-state="open"
     await expect(firstQuestion).toHaveAttribute("data-state", "open", {
@@ -346,8 +355,10 @@ test.describe("FAQ Accordion", () => {
 
     // Expand first accordion
     await expect(firstQuestion).toBeVisible({ timeout: 10000 })
-    await page.waitForLoadState("networkidle", { timeout: 10000 })
-    await firstQuestion.click({ force: true })
+    await page.waitForLoadState("load", { timeout: 10000 })
+    await firstQuestion.scrollIntoViewIfNeeded()
+    await firstQuestion.click()
+    await page.waitForTimeout(200) // Wait for React state update
     await expect(firstQuestion).toHaveAttribute("data-state", "open", {
       timeout: 5000,
     })
@@ -360,14 +371,12 @@ test.describe("FAQ Accordion", () => {
 
     // Scroll down
     await page.evaluate(() => window.scrollBy(0, 500))
-    await page.waitForTimeout(300)
 
     // Accordion should still be expanded (check button's data-state)
     await expect(firstQuestion).toHaveAttribute("data-state", "open")
 
     // Scroll back up
     await page.evaluate(() => window.scrollBy(0, -500))
-    await page.waitForTimeout(500)
 
     // Should still be expanded
     await expect(answerText).toBeVisible()
@@ -376,17 +385,24 @@ test.describe("FAQ Accordion", () => {
 
   test("should handle rapid clicks gracefully", async ({ page }) => {
     const firstQuestion = page
-      .getByText(/what technologies do you use/i)
+      .getByRole("button", { name: /what technologies do you use/i })
       .first()
 
-    // Click multiple times rapidly
-    await firstQuestion.click()
-    await firstQuestion.click()
-    await firstQuestion.click()
-    await firstQuestion.click()
+    // Wait for page to be fully loaded (accordion animations need full JS)
+    await page.waitForLoadState("load", { timeout: 10000 })
 
-    // Wait for animations to settle
-    await page.waitForTimeout(1000)
+    // Ensure element is ready and visible
+    await firstQuestion.scrollIntoViewIfNeeded()
+
+    // Click multiple times rapidly (with tiny delays to allow React state updates)
+    await firstQuestion.click()
+    await page.waitForTimeout(50) // Allow React state to settle
+    await firstQuestion.click()
+    await page.waitForTimeout(50)
+    await firstQuestion.click()
+    await page.waitForTimeout(50)
+    await firstQuestion.click()
+    await page.waitForTimeout(200) // Extra wait for final animation
 
     // Accordion should be in a consistent state (either open or closed, not broken)
     const answer = page.getByText(/Next.js, React, TypeScript/i).first()
@@ -402,7 +418,6 @@ test.describe("FAQ Accordion", () => {
 
     // Click once more to ensure it still works
     await firstQuestion.click()
-    await page.waitForTimeout(500)
 
     const finalState = await answer
       .isVisible({ timeout: 1000 })

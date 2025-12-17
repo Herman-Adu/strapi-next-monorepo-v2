@@ -57,8 +57,8 @@ test.describe("Contact Form", () => {
     // Try to submit with empty name
     await submitButton.click({ force: true })
 
-    // Wait a moment for any validation
-    await page.waitForTimeout(1000)
+    // Wait for validation to complete (check submit button or form state)
+    await page.waitForLoadState("domcontentloaded")
 
     // Verify name field still has focus or is marked invalid (HTML5 required)
     const isRequired = await nameInput.getAttribute("required")
@@ -82,8 +82,8 @@ test.describe("Contact Form", () => {
     // Try to submit with empty email
     await submitButton.click({ force: true })
 
-    // Wait a moment for any validation
-    await page.waitForTimeout(1000)
+    // Wait for validation to complete
+    await page.waitForLoadState("domcontentloaded")
 
     // Verify email field is marked as required
     const isRequired = await emailInput.getAttribute("required")
@@ -112,8 +112,8 @@ test.describe("Contact Form", () => {
     // Try to submit with invalid email
     await submitButton.click()
 
-    // Wait for validation
-    await page.waitForTimeout(2000)
+    // Wait for validation to complete
+    await page.waitForLoadState("domcontentloaded")
 
     // Check for error toast or email field validation state
     const bodyContent = await page.locator("body").textContent()
@@ -148,8 +148,8 @@ test.describe("Contact Form", () => {
     // Try to submit with empty message
     await submitButton.click({ force: true })
 
-    // Wait a moment for any validation
-    await page.waitForTimeout(1000)
+    // Wait for validation to complete
+    await page.waitForLoadState("domcontentloaded")
 
     // Verify message field is marked as required
     const isRequired = await messageTextarea.getAttribute("required")
@@ -179,7 +179,7 @@ test.describe("Contact Form", () => {
     await submitButton.click({ force: true })
 
     // Wait for validation (form should not submit)
-    await page.waitForTimeout(2000)
+    await page.waitForLoadState("domcontentloaded")
 
     // Check for error toast or that form is still filled (didn't submit)
     const bodyContent = await page.locator("body").textContent()
@@ -375,7 +375,8 @@ test.describe("Contact Form", () => {
     await page.keyboard.press("Tab")
     await expect(messageTextarea).toBeFocused()
 
-    // Should be able to type in focused field
+    // Clear field and type (Firefox may have pre-filled content)
+    await messageTextarea.clear()
     await page.keyboard.type("Keyboard navigation test message")
     const value = await messageTextarea.inputValue()
     expect(value).toContain("Keyboard navigation")

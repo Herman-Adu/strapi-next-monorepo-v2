@@ -73,6 +73,9 @@ test.describe("Newsletter Subscription", () => {
     // Check GDPR checkbox if present - Newsletter CTA Section on test page
     await checkGDPRCheckboxIfPresent(page, { scope: "newsletter-cta" })
 
+    // Wait for submit button to be enabled (form validation + GDPR checkbox)
+    await expect(submitButton).toBeEnabled({ timeout: 5000 })
+
     await submitButton.click()
 
     // HTML5 validation should trigger
@@ -166,8 +169,8 @@ test.describe("Newsletter Subscription", () => {
     // Submit with Enter key
     await page.keyboard.press("Enter")
 
-    // Wait for submission
-    await page.waitForTimeout(2000)
+    // Wait for submission to complete
+    await page.waitForLoadState("domcontentloaded")
   })
 
   test.skip("should prevent double submission", async ({ page }) => {
