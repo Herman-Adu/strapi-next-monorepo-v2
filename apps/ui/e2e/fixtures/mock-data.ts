@@ -27,6 +27,11 @@ export const mockE2EPage = {
         buttonText: "Subscribe",
         successMessage: "Thank you for subscribing!",
         errorMessage: "Something went wrong. Please try again.",
+        gdprLink: {
+          label: "Privacy Policy",
+          href: "/privacy",
+          newTab: false,
+        },
       },
       {
         __component: "sections.faq",
@@ -82,8 +87,18 @@ export const mockE2EPage = {
         id: 3,
         heading: "Get in Touch",
         description: "We'd love to hear from you. Send us a message!",
-        email: "contact@example.com",
-        phone: "+1 (555) 123-4567",
+        contactDetails: {
+          email: "contact@example.com",
+          phone: "+1 (555) 123-4567",
+        },
+        contactForm: {
+          gdprLink: {
+            label: "Privacy Policy",
+            href: "/privacy",
+            newTab: false,
+          },
+          gdprLabel: "I agree to the",
+        },
       },
     ],
   },
