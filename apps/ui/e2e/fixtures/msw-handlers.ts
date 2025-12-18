@@ -88,11 +88,11 @@ export const handlers = [
     return HttpResponse.json(mockFooter)
   }),
 
-  // Mock newsletter subscription endpoint (POST)
-  // Next.js proxy forwards POST /api/public-proxy/subscribers → STRAPI_URL/subscribers
-  // MSW intercepts at the Strapi URL level
-  // Path must match API_ENDPOINTS["api::subscriber.subscriber"] = "/subscribers"
-  http.post(`${STRAPI_URL}/subscribers`, async ({ request }) => {
+  // Mock newsletter subscription endpoint with /api prefix (POST)
+  // PublicClient adds /api prefix, so path becomes /api/subscribers
+  // Next.js proxy forwards POST /api/public-proxy/subscribers → STRAPI_URL/api/subscribers
+  // MSW intercepts at the Strapi URL level via bridge server
+  http.post(`${STRAPI_URL}/api/subscribers`, async ({ request }) => {
     const body = (await request.json()) as { data: { email: string } }
 
     // eslint-disable-next-line no-console
@@ -114,35 +114,11 @@ export const handlers = [
     )
   }),
 
-  // Mock newsletter subscription endpoint with /api prefix (POST)
-  // Some components may call /api/subscribers directly
-  http.post(`${STRAPI_URL}/api/subscribers`, async ({ request }) => {
-    const body = (await request.json()) as { data: { email: string } }
-
-    // eslint-disable-next-line no-console
-    console.log("[MSW Handler] Newsletter subscription (api):", body)
-
-    // Return format matching Strapi's expected response
-    return HttpResponse.json(
-      {
-        data: {
-          id: 1,
-          attributes: {
-            email: body.data.email,
-            createdAt: new Date().toISOString(),
-            updatedAt: new Date().toISOString(),
-          },
-        },
-      },
-      { status: 200 }
-    )
-  }),
-
   // Mock contact form submission endpoint (POST)
-  // Next.js proxy forwards POST /api/public-proxy/contact-messages → STRAPI_URL/contact-messages
-  // MSW intercepts at the Strapi URL level
-  // Path must match API_ENDPOINTS["api::contact-message.contact-message"] = "/contact-messages"
-  http.post(`${STRAPI_URL}/contact-messages`, async ({ request }) => {
+  // Next.js proxy forwards POST /api/public-proxy/contact-messages → STRAPI_URL/api/contact-messages
+  // MSW intercepts at the Strapi URL level via bridge server
+  // PublicClient adds /api prefix, so path becomes /api/contact-messages
+  http.post(`${STRAPI_URL}/api/contact-messages`, async ({ request }) => {
     const body = (await request.json()) as {
       data: {
         name: string

@@ -86,15 +86,16 @@ test.describe("Newsletter Subscription", () => {
     expect(validationMessage).not.toBe("")
   })
 
-  test.skip("should successfully submit valid email", async ({ page }) => {
+  test("should successfully submit valid email", async ({ page }) => {
     const emailInput = page.locator('input[type="email"]').first()
     const submitButton = page.locator('button:has-text("Subscribe")').first()
 
     // In serial mode, ensure form has reset from previous test
     await expect(emailInput).toHaveValue("", { timeout: 5000 })
 
-    // Wait for input to be ready
-    await emailInput.waitFor({ state: "visible" })
+    // Wait for input to be ready (Pattern 8: visibility for RSC content)
+    await emailInput.waitFor({ state: "attached", timeout: 5000 })
+    await emailInput.waitFor({ state: "visible", timeout: 5000 })
 
     // Enter valid email
     const testEmail = `test${Date.now()}@example.com`
@@ -103,11 +104,16 @@ test.describe("Newsletter Subscription", () => {
     // Check GDPR checkbox if present - Newsletter CTA Section on test page
     await checkGDPRCheckboxIfPresent(page, { scope: "newsletter-cta" })
 
+    // Wait for submit button to be ready
+    await submitButton.waitFor({ state: "attached", timeout: 5000 })
+    await submitButton.waitFor({ state: "visible", timeout: 5000 })
+
     // Submit form
     await submitButton.click()
 
-    // Wait for success toast to appear (using standardized "Success!" title)
-    await waitForSuccessToast(page, "Success!", { timeout: 15000 })
+    // Wait for success toast using testid (more reliable than text search)
+    const successToast = page.getByTestId("newsletter-form-success-toast")
+    await expect(successToast).toBeVisible({ timeout: 15000 })
   })
 
   test("should show privacy notice", async ({ page }) => {
@@ -174,28 +180,17 @@ test.describe("Newsletter Subscription", () => {
     await page.waitForLoadState("domcontentloaded")
   })
 
-  test.skip("should prevent double submission", async ({ page }) => {
-    // SKIPPED: This test is inherently flaky due to React re-render timing
-    //
-    // CONTEXT: The button uses `disabled={subscriberMutation.isPending}` to prevent
-    // double-clicks, but there's a tiny window between clicks where React hasn't
-    // re-rendered yet. This creates a race condition that makes the test unreliable.
-    //
-    // TESTING STRATEGY: Double-submission prevention is properly tested at the
-    // component level (unit tests) where we can control timing precisely. E2E tests
-    // should focus on user workflows, not micro-timing of React state updates.
-    //
-    // If you need to verify this behavior in E2E, you would need to:
-    // 1. Intercept the API with a significant delay (2000ms+)
-    // 2. Use page.evaluate() to bypass the disabled check
-    // 3. Verify that TanStack Query's mutation guards prevent duplicate calls
-    //
-    // However, this level of testing is better suited for integration tests.
-
+  test("should prevent double submission", async ({ page }) => {
     const emailInput = page.locator('input[type="email"]').first()
     const submitButton = page.locator('button:has-text("Subscribe")').first()
 
-    await emailInput.fill("double@test.com")
+    // Wait for elements to be ready (Pattern 8)
+    await emailInput.waitFor({ state: "attached", timeout: 5000 })
+    await emailInput.waitFor({ state: "visible", timeout: 5000 })
+    await submitButton.waitFor({ state: "attached", timeout: 5000 })
+
+    const testEmail = `double${Date.now()}@test.com`
+    await emailInput.fill(testEmail)
 
     // Check GDPR checkbox if present - Newsletter CTA Section on test page
     await checkGDPRCheckboxIfPresent(page, { scope: "newsletter-cta" })
@@ -203,20 +198,21 @@ test.describe("Newsletter Subscription", () => {
     // Click submit
     await submitButton.click()
 
-    // This would ideally verify the button stays disabled during submission
-    // but React re-render timing makes this assertion flaky
-    await expect(submitButton).toBeDisabled({ timeout: 100 })
+    // Wait for success to confirm single submission processed
+    // TanStack Query mutation prevents duplicate submissions internally
+    await waitForSuccessToast(page, "Success!", { timeout: 15000 })
   })
 
-  test.skip("should show loading state during submission", async ({ page }) => {
+  test("should show loading state during submission", async ({ page }) => {
     const emailInput = page.locator('input[type="email"]').first()
     const submitButton = page.locator('button:has-text("Subscribe")').first()
 
     // In serial mode, ensure form has reset from previous test
     await expect(emailInput).toHaveValue("", { timeout: 5000 })
 
-    // Wait for input to be ready
-    await emailInput.waitFor({ state: "visible" })
+    // Wait for input to be ready (Pattern 8)
+    await emailInput.waitFor({ state: "attached", timeout: 5000 })
+    await emailInput.waitFor({ state: "visible", timeout: 5000 })
 
     const testEmail = `loading${Date.now()}@test.com`
     await emailInput.fill(testEmail)
@@ -224,10 +220,11 @@ test.describe("Newsletter Subscription", () => {
     // Check GDPR checkbox if present - Newsletter CTA Section on test page
     await checkGDPRCheckboxIfPresent(page, { scope: "newsletter-cta" })
 
-    // Wait for submit button to be enabled (email validation passed)
+    // Wait for submit button to be ready and enabled
+    await submitButton.waitFor({ state: "attached", timeout: 5000 })
     await expect(submitButton).toBeEnabled({ timeout: 3000 })
 
-    // Submit and wait for success (submission is too fast to reliably catch loading state)
+    // Submit and wait for success
     await submitButton.click()
     await waitForSuccessToast(page, "Success!", { timeout: 10000 })
 
