@@ -1,4 +1,5 @@
 import { test, expect } from "@playwright/test"
+import { navigateAndWaitForContent } from "./utils/test-helpers"
 
 test.describe("FAQ Accordion", () => {
   // Run tests serially to avoid race conditions with parallel execution
@@ -9,20 +10,16 @@ test.describe("FAQ Accordion", () => {
     test.setTimeout(60000)
 
     // Note: MSW (Mock Service Worker) handles API mocking globally
-
-    await page.goto("/en/e2e-test-page", {
-      waitUntil: "domcontentloaded",
-      timeout: 60000,
-    })
-
-    // Wait for FAQ section to be visible - more reliable than networkidle
-    await page.waitForSelector(
-      "text=/frequently asked|common.*questions|FAQ/i",
-      {
-        timeout: 15000,
-        state: "visible",
-      }
+    // Use helper to navigate and wait for content
+    await navigateAndWaitForContent(
+      page,
+      "/en/e2e-test-page",
+      /frequently asked|common.*questions|FAQ/i
     )
+
+    // Wait for full page hydration in CI (safe without HMR)
+    // CRITICAL: Ensures React event handlers are attached before tests run
+    await page.waitForLoadState("networkidle", { timeout: 15000 })
   })
 
   test("should display FAQ section", async ({ page }) => {

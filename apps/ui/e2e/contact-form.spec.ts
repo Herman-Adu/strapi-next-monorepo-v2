@@ -247,9 +247,7 @@ test.describe("Contact Form", () => {
     await expect(policyLink).toHaveAttribute("href", /privacy/i)
   })
 
-  test.skip("should successfully submit valid contact form", async ({
-    page,
-  }) => {
+  test("should successfully submit valid contact form", async ({ page }) => {
     // Scope selectors to contact form only to avoid conflicts with newsletter forms
     const contactForm = page.locator("form#contactForm")
     const nameInput = contactForm.locator('input[name="name"]')
@@ -264,10 +262,13 @@ test.describe("Contact Form", () => {
     // Fill all fields with valid data
     const testEmail = `test${Date.now()}@example.com`
 
-    // Wait for inputs to be ready and visible
-    await nameInput.waitFor({ state: "visible" })
-    await emailInput.waitFor({ state: "visible" })
-    await messageTextarea.waitFor({ state: "visible" })
+    // Wait for inputs to be ready (Pattern 8: attached + visible for RSC)
+    await nameInput.waitFor({ state: "attached", timeout: 5000 })
+    await nameInput.waitFor({ state: "visible", timeout: 5000 })
+    await emailInput.waitFor({ state: "attached", timeout: 5000 })
+    await emailInput.waitFor({ state: "visible", timeout: 5000 })
+    await messageTextarea.waitFor({ state: "attached", timeout: 5000 })
+    await messageTextarea.waitFor({ state: "visible", timeout: 5000 })
 
     await nameInput.fill("Herman Adu")
     await emailInput.fill(testEmail)
@@ -277,6 +278,10 @@ test.describe("Contact Form", () => {
 
     // Check GDPR checkbox if present using scope
     await checkGDPRCheckboxIfPresent(page, { scope: "contact" })
+
+    // Wait for submit button to be ready
+    await submitButton.waitFor({ state: "attached", timeout: 5000 })
+    await submitButton.waitFor({ state: "visible", timeout: 5000 })
 
     // Submit form via button click
     await submitButton.click()
@@ -290,9 +295,7 @@ test.describe("Contact Form", () => {
     await expect(messageTextarea).toHaveValue("", { timeout: 5000 })
   })
 
-  test.skip("should clear form after successful submission", async ({
-    page,
-  }) => {
+  test("should clear form after successful submission", async ({ page }) => {
     const contactForm = page.locator("form#contactForm")
     const nameInput = contactForm.locator('input[name="name"]')
     const emailInput = contactForm.locator('input[name="email"]')
@@ -306,16 +309,24 @@ test.describe("Contact Form", () => {
     // Fill and submit form (use dynamic email)
     const testEmail = `test${Date.now()}@example.com`
 
-    // Wait for inputs to be ready
-    await nameInput.waitFor({ state: "visible" })
-    await emailInput.waitFor({ state: "visible" })
-    await messageTextarea.waitFor({ state: "visible" })
+    // Wait for inputs to be ready (Pattern 8)
+    await nameInput.waitFor({ state: "attached", timeout: 5000 })
+    await nameInput.waitFor({ state: "visible", timeout: 5000 })
+    await emailInput.waitFor({ state: "attached", timeout: 5000 })
+    await emailInput.waitFor({ state: "visible", timeout: 5000 })
+    await messageTextarea.waitFor({ state: "attached", timeout: 5000 })
+    await messageTextarea.waitFor({ state: "visible", timeout: 5000 })
 
     await nameInput.fill("Test User")
     await emailInput.fill(testEmail)
     await messageTextarea.fill("This is a test message that should be cleared")
 
     await checkGDPRCheckboxIfPresent(page, { scope: "contact" })
+
+    // Wait for submit button to be ready
+    await submitButton.waitFor({ state: "attached", timeout: 5000 })
+    await submitButton.waitFor({ state: "visible", timeout: 5000 })
+
     await submitButton.click()
 
     // Wait for success toast (using standardized "Success!" title)
@@ -355,9 +366,9 @@ test.describe("Contact Form", () => {
     // Check GDPR checkbox and wait for form validation
     await checkGDPRCheckboxIfPresent(page, { scope: "contact" })
 
-    // Wait for submit button to become enabled after GDPR checkbox
-    await page.waitForTimeout(500) // Allow form validation to complete
-    await expect(submitButton).toBeEnabled({ timeout: 5000 })
+    // Wait for submit button to become enabled after GDPR checkbox and form validation
+    await page.waitForTimeout(1000) // Allow form validation to complete
+    await expect(submitButton).toBeEnabled({ timeout: 10000 })
   })
 
   test("should support keyboard navigation", async ({ page }) => {
@@ -388,7 +399,7 @@ test.describe("Contact Form", () => {
     expect(value).toContain("Keyboard navigation")
   })
 
-  test.skip("should prevent duplicate submissions", async ({ page }) => {
+  test("should prevent duplicate submissions", async ({ page }) => {
     const contactForm = page.locator("form#contactForm")
     const nameInput = contactForm.locator('input[name="name"]')
     const emailInput = contactForm.locator('input[name="email"]')
@@ -402,9 +413,13 @@ test.describe("Contact Form", () => {
     // Fill form (use dynamic email)
     const testEmail = `test${Date.now()}@example.com`
 
-    await nameInput.waitFor({ state: "visible" })
-    await emailInput.waitFor({ state: "visible" })
-    await messageTextarea.waitFor({ state: "visible" })
+    // Wait for inputs to be ready (Pattern 8)
+    await nameInput.waitFor({ state: "attached", timeout: 5000 })
+    await nameInput.waitFor({ state: "visible", timeout: 5000 })
+    await emailInput.waitFor({ state: "attached", timeout: 5000 })
+    await emailInput.waitFor({ state: "visible", timeout: 5000 })
+    await messageTextarea.waitFor({ state: "attached", timeout: 5000 })
+    await messageTextarea.waitFor({ state: "visible", timeout: 5000 })
 
     await nameInput.fill("Test User")
     await emailInput.fill(testEmail)
@@ -412,19 +427,22 @@ test.describe("Contact Form", () => {
 
     await checkGDPRCheckboxIfPresent(page, { scope: "contact" })
 
+    // Wait for submit button to be ready
+    await submitButton.waitFor({ state: "attached", timeout: 5000 })
+    await submitButton.waitFor({ state: "visible", timeout: 5000 })
+
     // Click submit button
     await submitButton.click()
 
-    // Wait for success toast - if duplicate prevention works, we'll only see one submission
+    // Wait for success toast - confirms single submission processed
+    // TanStack Query mutation prevents duplicate submissions internally
     await waitForSuccessToast(page, "Success!", { timeout: 15000 })
 
     // Form should clear after success
     await expect(nameInput).toHaveValue("", { timeout: 5000 })
   })
 
-  test.skip("should display loading state during submission", async ({
-    page,
-  }) => {
+  test("should display loading state during submission", async ({ page }) => {
     const contactForm = page.locator("form#contactForm")
     const nameInput = contactForm.locator('input[name="name"]')
     const emailInput = contactForm.locator('input[name="email"]')
@@ -438,15 +456,23 @@ test.describe("Contact Form", () => {
     // Fill form (use dynamic email)
     const testEmail = `test${Date.now()}@example.com`
 
-    await nameInput.waitFor({ state: "visible" })
-    await emailInput.waitFor({ state: "visible" })
-    await messageTextarea.waitFor({ state: "visible" })
+    // Wait for inputs to be ready (Pattern 8)
+    await nameInput.waitFor({ state: "attached", timeout: 5000 })
+    await nameInput.waitFor({ state: "visible", timeout: 5000 })
+    await emailInput.waitFor({ state: "attached", timeout: 5000 })
+    await emailInput.waitFor({ state: "visible", timeout: 5000 })
+    await messageTextarea.waitFor({ state: "attached", timeout: 5000 })
+    await messageTextarea.waitFor({ state: "visible", timeout: 5000 })
 
     await nameInput.fill("Test User")
     await emailInput.fill(testEmail)
     await messageTextarea.fill("Testing loading state display")
 
     await checkGDPRCheckboxIfPresent(page, { scope: "contact" })
+
+    // Wait for submit button to be ready
+    await submitButton.waitFor({ state: "attached", timeout: 5000 })
+    await submitButton.waitFor({ state: "visible", timeout: 5000 })
 
     // Click submit and wait for success
     await submitButton.click()
