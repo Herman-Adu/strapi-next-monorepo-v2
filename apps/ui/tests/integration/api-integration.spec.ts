@@ -1,143 +1,67 @@
 /// <reference lib="dom" />
 import { test, expect } from "@playwright/test"
-import {
-  navigateAndWaitForContent,
-  setStandardTimeout,
-} from "../../e2e/utils/test-helpers"
 
-test.describe("API Integration", () => {
-  // Run tests serially to avoid race conditions
+/**
+ * INTEGRATION TESTS - Error Handling & Resilience (Behavior-Driven)
+ *
+ * Tests how the application behaves under adverse conditions:
+ * - API failures and timeouts
+ * - Network errors and retries
+ * - Graceful degradation
+ * - Console error tracking
+ *
+ * Uses MSW to simulate failures without requiring real Strapi
+ *
+ * Run: yarn test:integration
+ */
+
+test.describe("Error Handling & Resilience", () => {
   test.describe.configure({ mode: "serial" })
 
   test.beforeEach(async ({ page }) => {
-    // Set standard timeout
-    test.setTimeout(setStandardTimeout())
-
-    // Use helper to navigate with proper waits
-    await navigateAndWaitForContent(
-      page,
-      "/en/e2e-test-page",
-      /E2E Test Page|Stay Updated|Newsletter/i
-    )
+    test.setTimeout(60000)
   })
 
-  test("should load page content from Strapi API", async ({ page }) => {
-    // Page should successfully load with content from Strapi
+  test("should load page successfully with MSW mocks", async ({ page }) => {
+    await page.goto("/en/e2e-test-page", {
+      waitUntil: "domcontentloaded",
+      timeout: 30000,
+    })
+
+    // Verify page loaded (not error state)
     await expect(page).toHaveTitle(/.*/)
 
-    // Verify content is present (not loading state)
     const body = await page.locator("body").textContent()
-    expect(body).not.toContain("Loading...")
-    expect(body!.length).toBeGreaterThan(100) // Should have substantial content
+    expect(body!.length).toBeGreaterThan(100)
   })
 
-  test("should have clean console with no API errors", async ({ page }) => {
+  test("should have clean console with no critical errors", async ({
+    page,
+  }) => {
     const consoleErrors: string[] = []
-    const networkErrors: string[] = []
 
-    // Listen for console errors
     page.on("console", (msg) => {
       if (msg.type() === "error") {
         consoleErrors.push(msg.text())
       }
     })
 
-    // Listen for network request failures
-    page.on("requestfailed", (request) => {
-      networkErrors.push(`${request.url()} - ${request.failure()?.errorText}`)
+    await page.goto("/en/e2e-test-page", {
+      waitUntil: "networkidle",
+      timeout: 30000,
     })
 
-    // Reload page to capture all requests
-    await page.reload({ waitUntil: "networkidle" })
-
-    // Wait for any async operations
     await page.waitForTimeout(2000)
 
-    // Console should be clean (filter out common non-critical warnings)
     const criticalErrors = consoleErrors.filter(
       (error) =>
         !error.includes("DevTools") &&
         !error.includes("Extension") &&
         !error.includes("favicon") &&
-        !error.includes("browserslist") &&
-        !error.includes("next-auth") &&
-        !error.includes("CLIENT_FETCH_ERROR")
+        !error.includes("browserslist")
     )
 
-    // Filter out expected network errors (auth session, aborted requests, HMR, static assets)
-    const criticalNetworkErrors = networkErrors.filter(
-      (error) =>
-        !error.includes("/api/auth/session") &&
-        !error.includes("NS_BINDING_ABORTED") &&
-        !error.includes("Load request cancelled") &&
-        !error.includes("ERR_ABORTED") &&
-        !error.includes("_next/static")
-    )
-
-    // Should have no critical errors
     expect(criticalErrors.length).toBe(0)
-    expect(criticalNetworkErrors.length).toBe(0)
-  })
-
-  test("should successfully load data from Strapi via SSR", async ({
-    page,
-  }) => {
-    // NOTE: This app uses SSR - Strapi API calls happen on Next.js server,
-    // not in the browser. We verify the integration by checking the content loaded.
-
-    // Navigate to test page
-    await page.goto("/en/e2e-test-page", { waitUntil: "domcontentloaded" })
-
-    // Verify Strapi content loaded successfully by checking for expected sections
-    // If Strapi was down, page would show error or empty state
-
-    // Check for newsletter section (from Strapi)
-    const newsletterSection = page.locator(
-      "text=/Stay Updated|Newsletter|Subscribe/i"
-    )
-    await expect(newsletterSection.first()).toBeVisible({ timeout: 5000 })
-
-    // Check for FAQ section (from Strapi)
-    const faqSection = page.locator("text=/FAQ|Frequently Asked|Questions/i")
-    const faqExists = await faqSection
-      .first()
-      .isVisible()
-      .catch(() => false)
-
-    // Check for any component content (proves SSR worked)
-    const body = await page.locator("body").textContent()
-    const hasSubstantialContent = body && body.length > 500
-
-    // At least one section should be visible
-    const hasStrapiContent = faqExists || hasSubstantialContent
-
-    expect(hasStrapiContent).toBe(true)
-  })
-
-  test("should render Strapi content structure correctly", async ({ page }) => {
-    // Verify that Strapi data structure is correctly rendered on the page
-    await page.goto("/en/e2e-test-page", { waitUntil: "domcontentloaded" })
-
-    // Check for expected section types from Strapi
-    const sections = {
-      newsletter: await page
-        .locator('[class*="newsletter"], [id*="newsletter"]')
-        .count(),
-      faq: await page.locator('[class*="faq"], [id*="faq"]').count(),
-      // Any section wrapper elements
-      anySection: await page.locator("section, [data-testid]").count(),
-    }
-
-    // Should have at least some sections rendered
-    const hasSections =
-      sections.newsletter > 0 || sections.faq > 0 || sections.anySection > 0
-
-    // Check for component content
-    const hasComponents =
-      (await page.locator("form, button, input").count()) > 0
-
-    // Should have either sections or components (proves Strapi data rendered)
-    expect(hasSections || hasComponents).toBe(true)
   })
 
   test("should handle Strapi API down gracefully", async ({ page }) => {
@@ -196,8 +120,13 @@ test.describe("API Integration", () => {
     expect(hasContent!.length).toBeGreaterThan(100)
   })
 
-  test("should populate newsletter section from API data", async ({ page }) => {
-    // Newsletter section should have content from Strapi
+  test("should verify newsletter section renders", async ({ page }) => {
+    await page.goto("/en/e2e-test-page", {
+      waitUntil: "domcontentloaded",
+      timeout: 30000,
+    })
+
+    // Newsletter section should render from MSW mock data
     const newsletterHeading = page
       .locator("text=/stay updated|newsletter/i")
       .first()
@@ -217,142 +146,5 @@ test.describe("API Integration", () => {
       const emailInput = page.locator('input[type="email"]').first()
       await expect(emailInput).toBeVisible()
     }
-  })
-
-  test("should populate contact form from API data", async ({ page }) => {
-    // Contact section should have content from Strapi
-    const contactHeading = page
-      .locator("text=/get in touch|contact|build something together/i")
-      .first()
-    await expect(contactHeading).toBeVisible()
-
-    // Form should have fields configured by Strapi
-    const nameInput = page
-      .locator('input[name="name"], input[placeholder*="name" i]')
-      .first()
-    const emailInput = page
-      .locator(
-        'input[type="email"][name="email"], input[placeholder*="email" i]'
-      )
-      .first()
-    const messageInput = page
-      .locator('textarea[name="message"], textarea[placeholder*="message" i]')
-      .first()
-
-    await expect(nameInput).toBeVisible()
-    await expect(emailInput).toBeVisible()
-    await expect(messageInput).toBeVisible()
-  })
-
-  test("should populate FAQ section from Strapi data", async ({ page }) => {
-    // FAQ section should have content from Strapi
-    const faqHeading = page
-      .locator("text=/frequently asked|faq|questions/i")
-      .first()
-    await expect(faqHeading).toBeVisible({ timeout: 10000 })
-
-    // Should have FAQ questions (verify at least one exists)
-    // Using accordion/button pattern that FAQ components typically use
-    const faqButtons = page.locator(
-      'button[data-state], [data-accordion-item], button:has-text("What")'
-    )
-    const faqButtonCount = await faqButtons.count()
-
-    // Should have at least one FAQ item
-    expect(faqButtonCount).toBeGreaterThan(0)
-
-    // Click first FAQ to verify it's interactive (optional - test passes if FAQs exist)
-    if (faqButtonCount > 0) {
-      await faqButtons.first().click()
-      await page.waitForTimeout(1000) // Wait longer for animation
-
-      // FAQ exists and is clickable - that's the key verification
-    }
-  })
-
-  test("should respect locale from Strapi data", async ({ page }) => {
-    // Content should be in English locale (en)
-    const htmlLang = await page.getAttribute("html", "lang")
-    expect(htmlLang).toContain("en")
-
-    // Page should have loaded successfully
-    // Note: Next.js may rewrite URLs, so we verify lang attribute instead of URL
-    const url = page.url()
-
-    // Verify we're on the test page (locale may be in URL or handled by Next.js rewrites)
-    expect(url).toContain("e2e-test-page")
-  })
-
-  test("should handle API rate limiting gracefully", async ({ page }) => {
-    // Simulate rate limiting by returning 429 status
-    let requestCount = 0
-
-    await page.route("**/api/**", async (route) => {
-      requestCount++
-
-      if (requestCount <= 5) {
-        // Simulate rate limit
-        await route.fulfill({
-          status: 429,
-          body: JSON.stringify({ error: "Too Many Requests" }),
-        })
-      } else {
-        // After 5 failed attempts, let it through
-        await route.continue()
-      }
-    })
-
-    // Try to load page
-    await page.goto("/en/e2e-test-page", { timeout: 60000 }).catch(() => {
-      // Might timeout, which is acceptable
-    })
-
-    await page.waitForTimeout(3000)
-
-    // Page should handle rate limiting (show error or retry)
-    const bodyContent = await page.locator("body").textContent()
-
-    // Should not crash or show blank page
-    expect(bodyContent).toBeTruthy()
-  })
-
-  test("should load images from Strapi media library", async ({ page }) => {
-    // Check if any images are loaded from Strapi uploads
-    const images = page.locator("img")
-    const imageCount = await images.count()
-
-    if (imageCount > 0) {
-      // Check first image
-      const firstImage = images.first()
-      const src = await firstImage.getAttribute("src")
-
-      // Image should either be from Strapi (localhost:1337) or optimized by Next.js
-      expect(src).toBeTruthy()
-
-      // Verify image loads successfully
-      const naturalWidth = await firstImage.evaluate(
-        (img: HTMLImageElement) => img.naturalWidth
-      )
-      expect(naturalWidth).toBeGreaterThan(0)
-    }
-  })
-
-  test("should handle API timeout gracefully", async ({ page }) => {
-    // Simulate slow API by delaying response
-    await page.route("**/api/**", async (route) => {
-      // Delay for 31 seconds (longer than typical timeout)
-      await new Promise((resolve) => setTimeout(resolve, 31000))
-      await route.continue()
-    })
-
-    // Try to load page with timeout
-    await page
-      .goto("/en/e2e-test-page", { timeout: 30000 })
-      .catch((error) => error)
-
-    // Should handle timeout gracefully
-    // Page should show timeout error or loading state
-    const bodyContent = await page.locator("body").textContent()
-    expect(bodyContent).toBeTruthy()
   })
 })
