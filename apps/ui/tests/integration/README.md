@@ -39,7 +39,7 @@ yarn test:integration
 yarn test:integration:ui
 
 # Specific file
-npx playwright test tests/integration/form-submissions.spec.ts
+yarn workspace @repo/ui playwright test tests/integration/form-submissions.spec.ts
 ```
 
 ## 🔧 Environment Variables

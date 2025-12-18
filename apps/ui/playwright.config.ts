@@ -3,7 +3,8 @@ import { defineConfig, devices } from "@playwright/test"
  * See https://playwright.dev/docs/test-configuration.
  */
 export default defineConfig({
-  testDir: "./e2e",
+  testDir: ".", // Search from root to find both e2e/ and tests/integration/
+  testMatch: ["**/e2e/**/*.spec.ts", "**/tests/integration/**/*.spec.ts"], // Explicit patterns
   /* MSW is started via webServer command script - no global setup needed */
   /* Run tests in files in parallel */
   fullyParallel: true,
