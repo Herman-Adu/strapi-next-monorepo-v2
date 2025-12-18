@@ -324,26 +324,23 @@ export async function elementExists(
 export async function waitForSuccessToast(
   page: Page,
   expectedText?: string,
-  options?: { timeout?: number }
+  options?: { timeout?: number; testId?: string }
 ): Promise<void> {
-  const { timeout = 5000 } = options || {}
+  const { timeout = 5000, testId } = options || {}
 
-  // STEP 1: Wait for ToastViewport to be ready (ensures toast system is initialized)
-  await page
-    .locator(
-      '[class*="ToastViewport"], [data-radix-toast-viewport], .fixed.z-100'
-    )
-    .first()
-    .waitFor({ state: "attached", timeout: 3000 })
-    .catch(() => {
-      // Toast viewport may already exist, continue
-    })
+  // If testId provided, use it to scope the search (avoids multiple matches)
+  if (testId) {
+    const toastLocator = page.getByTestId(testId)
+    await expect(toastLocator).toBeVisible({ timeout })
+    return
+  }
 
-  // STEP 2: Wait for toast content to appear
-  // Default to "Success!" title for consistency across all forms
+  // Use text-based detection (what users see) - no .first(), no role attributes
+  // This is the pattern that works 100% according to documentation
   const searchText = expectedText || "Success!"
   const toastLocator = page.locator(`text=/${searchText}/i`).first()
 
+  // Wait for toast to be visible (includes scroll-into-view behavior by default)
   await expect(toastLocator).toBeVisible({ timeout })
 }
 
