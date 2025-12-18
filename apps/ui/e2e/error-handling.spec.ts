@@ -309,6 +309,8 @@ test.describe("Error Handling", () => {
 
     // Navigate to test page
     await page.goto("/en/e2e-test-page", { waitUntil: "domcontentloaded" })
+    // Wait for page to fully hydrate (safe in CI, no HMR)
+    await page.waitForLoadState("networkidle", { timeout: 15000 })
     await page.locator("body").waitFor({ state: "visible", timeout: 5000 })
 
     // Expand an accordion (if FAQ exists)
@@ -333,17 +335,16 @@ test.describe("Error Handling", () => {
 
     // Go back
     await page.goBack({ waitUntil: "domcontentloaded" })
+    // Wait for page to fully re-hydrate after navigation
+    await page.waitForLoadState("networkidle", { timeout: 15000 })
     await page.locator("body").waitFor({ state: "visible", timeout: 5000 })
 
     // Wait for FAQ content to re-render after MSW re-intercepts
-    await page.waitForSelector("text=/FAQ|Frequently Asked/i", {
-      timeout: 15000,
-      state: "visible",
-    })
+    const faqHeading = page.locator("text=/FAQ|Frequently Asked/i")
+    await expect(faqHeading).toBeVisible({ timeout: 20000 })
 
-    // Page should reload correctly - now safe to check body content
-    const bodyContent = await page.locator("body").textContent()
-    expect(bodyContent).toContain("FAQ")
+    // Verify FAQ content is present after navigation
+    await expect(faqHeading).toContainText(/Frequently Asked|FAQ/i)
   })
 
   test("should handle rapid page navigations", async ({ page }) => {

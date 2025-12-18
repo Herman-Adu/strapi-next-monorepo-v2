@@ -13,6 +13,7 @@ test.describe("Homepage", () => {
 
   test("should have navigation", async ({ page }) => {
     test.setTimeout(90000)
+
     // Use helper to wait for navbar content from MSW
     await navigateAndWaitForContent(
       page,
@@ -20,9 +21,13 @@ test.describe("Homepage", () => {
       /Home|About|Contact/i // Wait for actual nav link text
     )
 
-    // Now nav should be fully rendered with links
-    const nav = page.locator("nav").first()
-    await expect(nav).toBeVisible({ timeout: 5000 })
+    // Wait for full page hydration (safe in CI environment)
+    await page.waitForLoadState("networkidle", { timeout: 15000 })
+
+    // Check for navigation links (works on both desktop nav and mobile menu)
+    // Desktop has nav.md:flex, mobile has MobileNavigationClient
+    const navLinks = page.locator("a", { hasText: /Home|About/i }).first()
+    await expect(navLinks).toBeVisible({ timeout: 10000 })
   })
 
   test("should be responsive", async ({ page }) => {

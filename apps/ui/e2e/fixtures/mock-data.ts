@@ -85,8 +85,15 @@ export const mockE2EPage = {
       {
         __component: "sections.contact-section",
         id: 3,
-        heading: "Get in Touch",
-        description: "We'd love to hear from you. Send us a message!",
+        header: {
+          heading: "Touch",
+          headingAccent: "Get in",
+          description: "We'd love to hear from you. Send us a message!",
+          headingSize: "large",
+          alignment: "center",
+          showDivider: true,
+          showHeader: true,
+        },
         contactDetails: {
           email: "contact@example.com",
           phone: "+1 (555) 123-4567",
@@ -98,6 +105,11 @@ export const mockE2EPage = {
             newTab: false,
           },
           gdprLabel: "I agree to the",
+        },
+        detailsPosition: "left",
+        background: {
+          backgroundStyle: "transparent",
+          showBackground: false,
         },
       },
     ],
