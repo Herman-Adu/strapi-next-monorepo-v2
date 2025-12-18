@@ -87,9 +87,9 @@ jobs:
       - name: Run E2E Tests
         run: |
           echo "🧪 Running E2E tests with MSW (Playwright will manage server)..."
-          echo "📋 Running 144 passing tests (21 tests skipped - form submissions need MSW POST fix)"
-          cd apps/ui
-          npx playwright test --project=chromium
+          echo "📋 Running chromium E2E tests (~55 tests expected)"
+          echo "ℹ️  Note: Local dev can run all browsers (165 tests). CI runs chromium only for speed."
+          yarn workspace @repo/ui playwright test --project=chromium
         env:
           CI: true
           STRAPI_URL: http://127.0.0.1:1337
