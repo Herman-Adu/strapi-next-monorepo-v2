@@ -28,7 +28,13 @@ export async function generateStaticParams() {
   const results = await Promise.allSettled(promises)
 
   const params = results
-    .filter((result) => result.status === "fulfilled")
+    .filter(
+      (
+        result
+      ): result is PromiseFulfilledResult<
+        Awaited<ReturnType<typeof fetchAllPages>>
+      > => result.status === "fulfilled"
+    )
     .flatMap((result) => result.value.data)
     .map((page) => ({
       locale: page.locale,

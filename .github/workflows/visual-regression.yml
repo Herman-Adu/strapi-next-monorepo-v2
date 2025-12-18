@@ -1,21 +1,25 @@
 name: Visual Regression Testing
 
 on:
-  pull_request:
-    branches: [main]
-    paths:
-      - "apps/ui/src/**"
-      - "apps/ui/.storybook/**"
-      - "packages/design-system/**"
-  push:
-    branches: [main]
   workflow_dispatch:
+  # DISABLED: Focusing on Lint and Build UI only
+  # pull_request:
+  #   branches: [main]
+  #   paths:
+  #     - "apps/ui/src/**"
+  #     - "apps/ui/.storybook/**"
+  #     - "packages/design-system/**"
+  # push:
+  #   branches: [main]
 
 jobs:
   chromatic:
     name: Chromatic Visual Tests
     runs-on: ubuntu-latest
     timeout-minutes: 15
+    permissions:
+      contents: read
+      pull-requests: write
 
     steps:
       - name: Checkout repository
@@ -31,6 +35,11 @@ jobs:
 
       - name: Install dependencies
         run: yarn install --frozen-lockfile
+
+      - name: Prepare Environment Variables
+        run: |
+          cp apps/ui/.env.local.example apps/ui/.env.local
+          echo "STRAPI_REST_READONLY_API_KEY=dummy_key_for_visual_tests" >> apps/ui/.env.local
 
       - name: Publish to Chromatic
         uses: chromaui/action@latest

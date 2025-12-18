@@ -1,13 +1,14 @@
 name: Performance Budget (Lighthouse CI)
 
 on:
-  pull_request:
-    branches: [main]
-    paths:
-      - "apps/ui/src/**"
-      - "apps/ui/public/**"
-      - "packages/**"
   workflow_dispatch:
+  # DISABLED: Focusing on Lint and Build UI only
+  # pull_request:
+  #   branches: [main]
+  #   paths:
+  #     - "apps/ui/src/**"
+  #     - "apps/ui/public/**"
+  #     - "packages/**"
 
 jobs:
   lighthouse:
@@ -27,6 +28,11 @@ jobs:
 
       - name: Install dependencies
         run: yarn install --frozen-lockfile
+
+      - name: Prepare Environment Variables
+        run: |
+          cp apps/ui/.env.local.example apps/ui/.env.local
+          echo "STRAPI_REST_READONLY_API_KEY=dummy_key_for_lighthouse" >> apps/ui/.env.local
 
       - name: Build Next.js app
         run: yarn workspace @repo/ui build

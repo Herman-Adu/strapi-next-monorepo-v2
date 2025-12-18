@@ -149,19 +149,20 @@ jobs:
           retention-days: 7
           if-no-files-found: ignore
 
-      - name: Comment PR with Test Results
-        uses: daun/playwright-report-comment@v3
-        if: always() && github.event_name == 'pull_request'
-        with:
-          report-file: apps/ui/playwright-report/index.html
-
       - name: Check E2E Test Results
         if: always()
         run: |
           if [ -f apps/ui/playwright-report/index.html ]; then
             echo "✅ E2E tests completed. View report in artifacts."
+            echo "📊 Report available at: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
           else
             echo "⚠️ No test report generated."
+          fi
+          
+          # Check for test-results directory to verify tests ran
+          if [ -d apps/ui/test-results ]; then
+            echo "📁 Test results directory exists"
+            ls -la apps/ui/test-results/ || true
           fi
 
       - name: Cleanup

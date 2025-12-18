@@ -36,8 +36,15 @@ export function createBridgeServer() {
         Object.entries(req.headers)
           .filter(([key]) => key !== "host")
           .forEach(([key, value]) => {
-            if (value) {
-              headers[key] = Array.isArray(value) ? value[0] : value
+            if (value && typeof value === "string") {
+              headers[key] = value
+            } else if (
+              value &&
+              Array.isArray(value) &&
+              value.length > 0 &&
+              value[0]
+            ) {
+              headers[key] = value[0]
             }
           })
 
