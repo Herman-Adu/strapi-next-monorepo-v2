@@ -73,7 +73,8 @@ test.describe("Newsletter Subscription", () => {
     // Check GDPR checkbox if present - Newsletter CTA Section on test page
     await checkGDPRCheckboxIfPresent(page, { scope: "newsletter-cta" })
 
-    // Wait for submit button to be enabled (form validation + GDPR checkbox)
+    // Wait for button to become enabled after GDPR checkbox
+    await page.waitForTimeout(500) // Allow form validation to complete
     await expect(submitButton).toBeEnabled({ timeout: 5000 })
 
     await submitButton.click()

@@ -21,6 +21,9 @@ test.describe("Contact Form", () => {
       "/en/e2e-test-page",
       /Contact|Get in Touch/i
     )
+
+    // Wait for full page hydration in CI (safe without HMR)
+    await page.waitForLoadState("networkidle", { timeout: 15000 })
   })
 
   test("should display contact form with all required fields", async ({
@@ -33,11 +36,12 @@ test.describe("Contact Form", () => {
     const messageTextarea = contactForm.locator('textarea[name="message"]')
     const submitButton = page.locator('button:has-text("Send Message")')
 
-    await expect(nameInput).toBeVisible()
+    // Increased timeouts for CI environment
+    await expect(nameInput).toBeVisible({ timeout: 10000 })
     await expect(nameInput).toHaveAttribute("type", "text")
-    await expect(emailInput).toBeVisible()
-    await expect(messageTextarea).toBeVisible()
-    await expect(submitButton).toBeVisible()
+    await expect(emailInput).toBeVisible({ timeout: 10000 })
+    await expect(messageTextarea).toBeVisible({ timeout: 10000 })
+    await expect(submitButton).toBeVisible({ timeout: 10000 })
   })
 
   test("should validate required name field", async ({ page }) => {
@@ -348,10 +352,12 @@ test.describe("Contact Form", () => {
     await emailInput.fill("mobile@test.com")
     await messageTextarea.fill("Testing mobile responsiveness")
 
+    // Check GDPR checkbox and wait for form validation
     await checkGDPRCheckboxIfPresent(page, { scope: "contact" })
 
-    // Submit button should be clickable
-    await expect(submitButton).toBeEnabled()
+    // Wait for submit button to become enabled after GDPR checkbox
+    await page.waitForTimeout(500) // Allow form validation to complete
+    await expect(submitButton).toBeEnabled({ timeout: 5000 })
   })
 
   test("should support keyboard navigation", async ({ page }) => {

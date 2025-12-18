@@ -89,3 +89,6 @@ apps/strapi/database/seeds/e2e-test-data-safe.js
 # Temporary CI analysis artifacts
 temp-*
 apps/ui/temp-*
+
+# GitHub Actions E2E test artifacts (downloaded from CI)
+.github-artifacts-e2e/

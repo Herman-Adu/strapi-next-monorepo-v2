@@ -22,3 +22,11 @@ ui-debug.log
 **/types/api/*d.ts
 **/types/generated/**
 **/.strapi/client/**
+
+# TEMPORARY: Windows/Linux Prettier compatibility issues
+# TODO: Reformat these files properly and remove from ignore
+# See: docs/17-learning-lessons/troubleshooting-lessons/prettier-import-sorting.md
+apps/ui/src/components/page-builder/components/sections/StrapiMarqueeSection.tsx
+apps/ui/src/lib/strapi-api/base.ts
+docs/02-architecture/theme-system.md
+packages/design-system/src/theme.css
