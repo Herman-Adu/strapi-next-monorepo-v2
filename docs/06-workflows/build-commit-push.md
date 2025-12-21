@@ -1,17 +1,28 @@
 # Build → Commit → Push Workflow
 
 **Created**: November 19, 2025  
-**Last Updated**: November 19, 2025  
+**Last Updated**: December 21, 2025  
 **Status**: ✅ Current - PARAMOUNT  
 **Audience**: All Developers
+
+> **⚠️ IMPORTANT**: This document is part of the [MANDATORY-WORKFLOW.md](./MANDATORY-WORKFLOW.md).  
+> See that document for the complete development workflow including branch creation, pull requests, and merge process.
 
 ---
 
 ## Purpose
 
-This document describes the **standardized development workflow** that MUST be followed for all code changes. This process ensures code quality, prevents build errors, and maintains project integrity.
+This document describes the **build, commit, and push** portion of the standardized development workflow that MUST be followed for all code changes. This process ensures code quality, prevents build errors, and maintains project integrity.
 
 **Herman's Words**: _"it's just yarn build from root to build both apps, one time fresh builds deleting .next and dist folders, this is paramount to the build process"_
+
+---
+
+## Quick Reference
+
+For the **complete workflow** (branch creation → PR → merge), see [MANDATORY-WORKFLOW.md](./MANDATORY-WORKFLOW.md).
+
+This document focuses on **Steps 2-11** of that workflow (Development & Local Verification + Commit & Push).
 
 ---
 
