@@ -159,57 +159,131 @@ git push origin feature/your-branch-name
 
 ---
 
-### **PHASE 4: Pull Request & Merge to Main**
+### **PHASE 4: Pull Request & Merge (Using GitHub CLI)**
 
 #### 12. Create Pull Request
 
-On GitHub:
+**Use GitHub CLI to create PR programmatically:**
 
-1. Navigate to repository
-2. Click "Pull requests" → "New pull request"
-3. Base: `main` ← Compare: `feature/your-branch-name`
-4. Add descriptive title and description
-5. Click "Create pull request"
+```bash
+gh pr create --title "feat: your descriptive title" \
+  --body "Description of changes" \
+  --base main
+```
 
-#### 13. Wait for CI/CD
+**PR Best Practices:**
+
+- Clear title with conventional commit prefix (`feat:`, `fix:`, `docs:`, etc.)
+- Detailed description explaining what changed and why
+- Link to related issues if applicable
+
+**Alternative:** Create PR manually on GitHub web interface if preferred.
+
+#### 13. Monitor CI/CD Checks
+
+**Use GitHub CLI to monitor workflow status:**
+
+```bash
+# Check current status of PR checks
+gh pr checks <PR_NUMBER>
+
+# View detailed status with JSON output
+gh pr view <PR_NUMBER> --json statusCheckRollup
+
+# Monitor checks in loop (PowerShell - wait for completion)
+$i=0; while($i -lt 10) {
+  Start-Sleep -Seconds 30
+  $result = gh pr checks <PR_NUMBER> 2>&1 | Out-String
+  Write-Host "`n=== Check $(($i+1)) ==="
+  Write-Host $result
+  if($result -match "All checks have passed") { break }
+  $i++
+}
+```
 
 **All GitHub Actions workflows must pass:**
 
-- ✅ Verify build
+- ✅ Verify build (Lint + Build all apps)
 - ✅ E2E Tests (Playwright - MSW Mocked API)
-- ✅ Visual Regression Testing (Chromatic)
+- ✅ Visual Regression Testing (Chromatic - for UI changes)
 
 **Watch for green checkmarks.** Do not merge until all pass.
 
-#### 14. Review & Merge
+#### 14. Merge Pull Request
 
-Once all checks pass:
-
-1. Review the changes one final time
-2. Click "Merge pull request"
-3. Choose merge strategy:
-   - **Squash and merge** (default) - Clean history
-   - **Create a merge commit** - Preserve all commits
-4. Confirm merge
-5. **Delete feature branch on GitHub** (GitHub prompts you)
-
-#### 15. Checkout Main Locally
+**Once all checks pass, merge using GitHub CLI:**
 
 ```bash
-git checkout main
+# Recommended: Squash merge (clean history) + auto-delete remote branch
+gh pr merge <PR_NUMBER> --squash --delete-branch
+
+# Alternative: Merge commit (preserves all commits)
+gh pr merge <PR_NUMBER> --merge --delete-branch
+
+# Alternative: Rebase merge (linear history)
+gh pr merge <PR_NUMBER> --rebase --delete-branch
 ```
 
-#### 16. Pull Latest
+**Recommended:** Use `--squash` for clean, atomic commits in main branch.
+
+**What this command does:**
+
+1. ✅ Merges PR to main
+2. ✅ Automatically deletes remote feature branch
+3. ✅ Updates local main branch
+4. ✅ Switches to main branch locally
+
+**Manual alternative:** Use GitHub web interface if preferred:
+
+1. Click "Merge pull request" → Choose "Squash and merge"
+2. Confirm merge
+3. Delete feature branch when prompted
+
+---
+
+### **PHASE 5: Post-Merge Cleanup**
+
+#### 15. Verify Local State
 
 ```bash
+# Confirm you're on main with merged changes
+git status
+git log --oneline -3
+```
+
+#### 16. Pull Latest (if needed)
+
+```bash
+# Only if gh pr merge didn't auto-update
 git pull origin main
 ```
 
 #### 17. Delete Local Feature Branch
 
 ```bash
+# Only if branch still exists locally
 git branch -d feature/your-branch-name
 ```
+
+#### 18. Clean Up Old Merged Branches (Maintenance)
+
+**Periodically check for stale branches:**
+
+```bash
+# List merged PRs
+gh pr list --state merged --json number,headRefName,mergedAt --limit 20
+
+# Check if branch is merged to main
+git log origin/main --oneline | Select-String "<commit-hash>"
+
+# Delete local merged branch
+git branch -d old-feature-branch
+
+# Delete remote merged branch (use carefully!)
+gh api -X DELETE /repos/Herman-Adu/strapi-next-monorepo-v2/git/refs/heads/old-branch-name
+```
+
+**⚠️ Important:** Always verify branch is merged before deleting!
 
 ---
 
