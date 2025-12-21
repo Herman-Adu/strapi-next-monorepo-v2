@@ -47,21 +47,31 @@ yarn-error.log*
 storybook-static
 
 # test compiled output (TypeScript)
-apps/ui/e2e/*.js
-apps/ui/e2e/*.js.map
-apps/ui/e2e/*.d.ts
-apps/ui/e2e/**/*.js
-apps/ui/e2e/**/*.js.map
-apps/ui/e2e/**/*.d.ts
+apps/ui/tests/e2e/*.js
+apps/ui/tests/e2e/*.js.map
+apps/ui/tests/e2e/*.d.ts
+apps/ui/tests/e2e/**/*.js
+apps/ui/tests/e2e/**/*.js.map
+apps/ui/tests/e2e/**/*.d.ts
 # Preserve config files
-!apps/ui/e2e/*.config.js
-!apps/ui/e2e/playwright.config.js
+!apps/ui/tests/e2e/*.config.js
 
 # test artifacts
 test-results/
 playwright-report/
 playwright/.cache/
 *.trace.zip
+/test-results/
+/ci-artifacts/
+/test-artifacts/
+/.github-artifacts-e2e/
+e2e_full_log.txt
+github-actions-log-latest.txt
+
+# API response snapshots and temporary files
+api-response.json
+commit-*.txt
+commit-message-*.txt
 
 # TypeScript build info
 *.tsbuildinfo
@@ -87,8 +97,6 @@ apps/strapi/database/seeds/e2e-test-data.js
 apps/strapi/database/seeds/e2e-test-data-safe.js
 
 # Temporary CI analysis artifacts
-temp-*
+temp-*/
+/temp-*/
 apps/ui/temp-*
-
-# GitHub Actions E2E test artifacts (downloaded from CI)
-.github-artifacts-e2e/
