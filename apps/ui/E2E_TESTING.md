@@ -1,8 +1,39 @@
 # E2E Testing Guide
 
+## Architecture: MSW Mocked API (No Strapi Required)
+
+**E2E tests use MSW (Mock Service Worker)** to intercept all API calls - no real Strapi backend needed!
+
+### Why MSW?
+
+- ✅ Tests run instantly (no server startup)
+- ✅ Consistent test data (no database state)
+- ✅ Works in CI without PostgreSQL
+- ✅ Behavior-driven (test UI, not API)
+
+### Test Philosophy
+
+**E2E tests verify:**
+
+- ✅ Component rendering
+- ✅ User interactions
+- ✅ Validation
+- ✅ Loading states
+
+**E2E tests DO NOT verify:**
+
+- ❌ Real form submissions
+- ❌ Database persistence
+
+**For those:** See `tests/integration/` (requires real Strapi)
+
+---
+
 ## Prerequisites
 
-Before running E2E tests, ensure both servers are running:
+**For E2E tests:** None! MSW handles mocking.
+
+**For integration tests:** Start both servers:
 
 ### 1. Start Strapi (Backend)
 
@@ -10,7 +41,7 @@ Before running E2E tests, ensure both servers are running:
 yarn workspace @repo/strapi dev
 ```
 
-Wait for the message: `Server started on http://localhost:1337`
+Wait for: `Server started on http://localhost:1337`
 
 ### 2. Start Next.js (Frontend)
 
@@ -18,50 +49,109 @@ Wait for the message: `Server started on http://localhost:1337`
 yarn workspace @repo/ui dev
 ```
 
-Wait for the message: `Ready on http://localhost:3000`
+Wait for: `Ready on http://localhost:3000`
+
+---
 
 ## Running E2E Tests
 
-Once both servers are running, execute the tests:
+### From Terminal
 
 ```bash
-# Run all E2E tests
+# Run all E2E tests (no Strapi needed!)
 yarn test:e2e
 
-# Run with UI mode (interactive)
-yarn workspace @repo/ui test:e2e:ui
-
-# Run specific test file
+# Specific test file
 yarn workspace @repo/ui playwright test e2e/homepage.spec.ts
 
-# Run in specific browser
+# Specific browser
 yarn workspace @repo/ui playwright test --project=chromium
+
+# With UI mode (interactive)
+yarn workspace @repo/ui test:e2e:ui
 ```
+
+### From VS Code Extension (Recommended)
+
+1. Install **Playwright Test for VSCode**
+2. Guide: `docs/13-testing/VSCODE_PLAYWRIGHT_SETUP.md`
+3. Open Test Explorer → Click ▶️ to run tests
+
+---
+
+## Running Integration Tests
+
+```bash
+# Start Strapi first!
+yarn workspace @repo/strapi dev
+
+# Then run integration tests
+yarn workspace @repo/ui test:integration
+```
+
+---
 
 ## Troubleshooting
 
 ### Tests timeout immediately
 
-- Verify Strapi is running on port 1337
-- Verify Next.js is running on port 3000
-- Check if the health endpoint responds: `curl http://localhost:1337/_health`
+**E2E tests:** Check MSW bridge server on port 1337
 
-### Tests fail with "page.goto: Test timeout"
+```bash
+# Windows: Check if port in use
+netstat -ano | findstr :1337
 
-- Increase timeout in playwright.config.ts
-- Check network connectivity
-- Verify no firewall is blocking connections
+# Kill process if needed
+taskkill /PID <PID> /F
+```
 
-### Strapi health check fails
+**Integration tests:**
 
-- Ensure database is running and accessible
-- Check Strapi logs for errors
+- Verify Strapi running on port 1337
+- Verify Next.js running on port 3000
+
+### MSW Bridge Server Issues
+
+- Port 1337 conflict → kill existing process
+- Check `apps/ui/e2e/global-setup.ts` logs
+- Verbose logging: `MSW_VERBOSE=true yarn test:e2e`
+
+### MSW Bridge Server Issues
+
+- Port 1337 conflict → kill existing process
+- Check `apps/ui/e2e/global-setup.ts` logs
+- Verbose logging: `MSW_VERBOSE=true yarn test:e2e`
+
+### Strapi health check fails (integration tests only)
+
+- Ensure database running
+- Check Strapi logs
 - Verify `.env` configuration
+
+---
 
 ## CI/CD Notes
 
-In CI environments, the Playwright `webServer` configuration will automatically:
+**GitHub Actions:**
 
-1. Wait for Strapi health check
-2. Start Next.js dev server
-3. Wait up to 180 seconds for servers to be ready
+- E2E tests run on every push (MSW mocked, no Strapi)
+- Integration tests run weekly or manually (requires full stack)
+- Workflow: `.github/workflows/e2e-tests.yml`
+
+**What CI does:**
+
+1. Installs dependencies
+2. Starts MSW bridge server (global-setup.ts)
+3. Runs Playwright tests (Chromium only)
+4. Uploads test results and traces
+
+**No Strapi or PostgreSQL needed in CI for E2E tests!**
+
+---
+
+## Resources
+
+- **MSW Setup Guide:** `docs/13-testing/MSW_IMPLEMENTATION.md`
+- **VS Code Extension:** `docs/13-testing/VSCODE_PLAYWRIGHT_SETUP.md`
+- **Test Patterns:** `docs/13-testing/E2E_TESTING_PATTERNS.md`
+- **Playwright Docs:** https://playwright.dev

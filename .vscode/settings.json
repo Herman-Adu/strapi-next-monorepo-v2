@@ -1,4 +1,11 @@
 {
+  // Playwright Extension Configuration (Monorepo)
+  "playwright.testConfig": "apps/ui/playwright.config.ts",
+  "playwright.workspaceFolder": "apps/ui",
+  "playwright.reuseBrowser": false,
+  "playwright.showTrace": false,
+  "playwright.runTestsOnSave": false,
+
   "eslint.workingDirectories": ["./apps/ui", "./apps/strapi"],
   "tailwindCSS.classAttributes": [
     "class",
