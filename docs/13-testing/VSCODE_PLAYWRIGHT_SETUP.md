@@ -77,14 +77,16 @@ code --install-extension ms-playwright.playwright
    - Should see "Playwright Tests" section
    - Tests organized by file:
      ```
-     ├── homepage.spec.ts (9 tests)
-     ├── contact-form.spec.ts (42 tests)
-     ├── newsletter.spec.ts (27 tests)
-     ├── faq.spec.ts (42 tests)
-     ├── error-handling.spec.ts (45 tests)
-     └── tests/integration/
-         ├── api-integration.spec.ts (27 tests)
-         └── ssr-rendering.spec.ts (27 tests)
+     └── tests/
+         ├── e2e/
+         │   ├── homepage.spec.ts (9 tests)
+         │   ├── contact-form.spec.ts (42 tests)
+         │   ├── newsletter.spec.ts (27 tests)
+         │   ├── faq.spec.ts (42 tests)
+         │   └── error-handling.spec.ts (45 tests)
+         └── integration/
+             ├── api-integration.spec.ts (27 tests)
+             └── ssr-rendering.spec.ts (27 tests)
      ```
 
 3. **If tests not showing:**

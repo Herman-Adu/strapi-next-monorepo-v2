@@ -57,25 +57,25 @@ This solves the SSR problem that Playwright's `page.route()` cannot handle.
 
 ### New Files
 
-1. **`apps/ui/e2e/fixtures/msw-handlers.ts`**
+1. **`apps/ui/tests/e2e/fixtures/msw-handlers.ts`**
 
    - MSW request handlers for all Strapi API endpoints
    - Handles: pages, navbar, footer, newsletter, contact submissions
    - Uses mock data from `mock-data.ts`
 
-2. **`apps/ui/e2e/fixtures/msw-server.ts`**
+2. **`apps/ui/tests/e2e/fixtures/msw-server.ts`**
 
    - MSW server instance configuration
    - Optional verbose logging for debugging
    - Exports server for global setup/teardown
 
-3. **`apps/ui/e2e/global-setup.ts`**
+3. **`apps/ui/tests/e2e/global-setup.ts`**
 
    - Playwright global setup hook
    - Starts MSW server before all tests
    - Logs startup confirmation
 
-4. **`apps/ui/e2e/global-teardown.ts`**
+4. **`apps/ui/tests/e2e/global-teardown.ts`**
    - Playwright global teardown hook
    - Stops MSW server after all tests complete
    - Clean shutdown
@@ -87,23 +87,23 @@ This solves the SSR problem that Playwright's `page.route()` cannot handle.
    - Added `globalSetup` and `globalTeardown` configuration
    - Points to new setup/teardown files
 
-2. **`apps/ui/e2e/contact-form.spec.ts`**
+2. **`apps/ui/tests/e2e/contact-form.spec.ts`**
 
    - Removed `setupApiMocks(page)` call
    - Removed import of old mock-api.ts
    - Added comment: "MSW handles API mocking globally"
 
-3. **`apps/ui/e2e/newsletter.spec.ts`**
+3. **`apps/ui/tests/e2e/newsletter.spec.ts`**
 
    - Removed `setupApiMocks(page)` call
    - Removed import of old mock-api.ts
 
-4. **`apps/ui/e2e/faq.spec.ts`**
+4. **`apps/ui/tests/e2e/faq.spec.ts`**
 
    - Removed `setupApiMocks(page)` call
    - Removed import of old mock-api.ts
 
-5. **`apps/ui/e2e/homepage.spec.ts`**
+5. **`apps/ui/tests/e2e/homepage.spec.ts`**
 
    - Removed all `setupApiMocks(page)` calls (3 instances)
    - Removed import of old mock-api.ts
@@ -118,7 +118,7 @@ This solves the SSR problem that Playwright's `page.route()` cannot handle.
 
 ### Deprecated Files
 
-- **`apps/ui/e2e/fixtures/mock-api.ts`** - No longer used (can be deleted)
+- **`apps/ui/tests/e2e/fixtures/mock-api.ts`** - No longer used (can be deleted)
   - Old Playwright `page.route()` approach
   - Didn't work for SSR
 

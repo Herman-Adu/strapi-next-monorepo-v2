@@ -62,7 +62,7 @@ Wait for: `Ready on http://localhost:3000`
 yarn test:e2e
 
 # Specific test file
-yarn workspace @repo/ui playwright test e2e/homepage.spec.ts
+yarn workspace @repo/ui playwright test tests/e2e/homepage.spec.ts
 
 # Specific browser
 yarn workspace @repo/ui playwright test --project=chromium
@@ -113,13 +113,13 @@ taskkill /PID <PID> /F
 ### MSW Bridge Server Issues
 
 - Port 1337 conflict → kill existing process
-- Check `apps/ui/e2e/global-setup.ts` logs
+- Check `apps/ui/tests/e2e/global-setup.ts` logs
 - Verbose logging: `MSW_VERBOSE=true yarn test:e2e`
 
 ### MSW Bridge Server Issues
 
 - Port 1337 conflict → kill existing process
-- Check `apps/ui/e2e/global-setup.ts` logs
+- Check `apps/ui/tests/e2e/global-setup.ts` logs
 - Verbose logging: `MSW_VERBOSE=true yarn test:e2e`
 
 ### Strapi health check fails (integration tests only)
