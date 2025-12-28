@@ -1,10 +1,23 @@
 name: Integration Tests
 
 on:
-  workflow_dispatch: # Manual trigger
-  # DISABLED: Focusing on Lint and Build UI only
-  # schedule:
-  #   - cron: "0 3 * * 1" # Monday 3 AM UTC (weekly)
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "apps/**"
+      - "packages/**"
+      - ".github/workflows/integration-tests.yml"
+      - "!**/*.md"
+      - "!**/docs/**"
+  pull_request:
+    branches: [main]
+    paths:
+      - "apps/**"
+      - "packages/**"
+      - ".github/workflows/integration-tests.yml"
+      - "!**/*.md"
+      - "!**/docs/**"
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.head_ref || github.run_id }}
@@ -15,29 +28,15 @@ permissions:
 
 jobs:
   integration-tests:
-    name: Integration Tests (Real API)
+    name: Integration Tests (Playwright - MSW Mocked API)
+    # NOTE: These tests use MSW (Mock Service Worker) to mock API responses
+    # MSW intercepts network requests at the Node.js level, enabling SSR mocking
+    # This allows testing error handling and resilience without a real Strapi backend
+    # Integration tests focus on: error handling, retries, graceful degradation, SSR rendering
     timeout-minutes: 15
     runs-on: ubuntu-latest
 
-    services:
-      postgres:
-        image: postgres:16-alpine
-        env:
-          POSTGRES_USER: strapi
-          POSTGRES_PASSWORD: ${{ secrets.E2E_DB_PASSWORD }}
-          POSTGRES_DB: strapi_dev
-        options: >-
-          --health-cmd pg_isready
-          --health-interval 10s
-          --health-timeout 5s
-          --health-retries 5
-        ports:
-          - 5432:5432
-
     steps:
-      # ========================================
-      # 1. SETUP
-      # ========================================
       - name: Check out code
         uses: actions/checkout@v4
         with:
@@ -49,102 +48,58 @@ jobs:
           node-version: 22
           cache: "yarn"
 
+      - name: Cache turbo build setup
+        uses: actions/cache@v4
+        with:
+          path: .turbo
+          key: ${{ runner.os }}-turbo-${{ hashFiles('**/package.json', '**/yarn.lock', 'turbo.json') }}
+          restore-keys: |
+            ${{ runner.os }}-turbo-
+
       - name: Install dependencies
         run: yarn --frozen-lockfile
 
-      - name: Install Playwright browsers
+      - name: Build workspace packages
+        run: |
+          echo "🔨 Building @repo/shared-data package..."
+          yarn workspace @repo/shared-data build
+          echo "✅ Workspace packages built"
+
+      - name: Install Playwright Browsers
         run: npx playwright install --with-deps chromium
 
-      # ========================================
-      # 2. BUILD STRAPI
-      # ========================================
-      - name: Build Strapi
-        working-directory: apps/strapi
-        run: yarn build
-        env:
-          DATABASE_URL: postgresql://strapi:${{ secrets.E2E_DB_PASSWORD }}@localhost:5432/strapi_dev
-          NODE_ENV: production
-
-      # ========================================
-      # 3. SEED DATABASE (Destructive - CI only)
-      # ========================================
-      - name: Seed E2E Test Data
-        working-directory: apps/strapi
-        run: yarn seed:e2e
-        env:
-          DATABASE_URL: postgresql://strapi:${{ secrets.E2E_DB_PASSWORD }}@localhost:5432/strapi_dev
-          E2E_API_TOKEN: ${{ secrets.E2E_API_TOKEN }}
-          CI: true
-
-      # ========================================
-      # 4. START STRAPI (Background)
-      # ========================================
-      - name: Start Strapi
-        working-directory: apps/strapi
+      - name: Prepare Environment Variables
         run: |
-          yarn start > strapi.log 2>&1 &
-          echo $! > strapi.pid
-        env:
-          DATABASE_URL: postgresql://strapi:${{ secrets.E2E_DB_PASSWORD }}@localhost:5432/strapi_dev
-          NODE_ENV: production
-          HOST: 127.0.0.1
-          PORT: 1337
+          # Build UI .env.local (no Strapi needed - MSW handles all API mocking)
+          cat > apps/ui/.env.local << 'EOF'
+          NEXTAUTH_URL=http://localhost:3000
+          NEXTAUTH_SECRET=password_secret
+          STRAPI_URL=http://127.0.0.1:1337
+          STRAPI_REST_READONLY_API_KEY=dummy_key_for_integration_tests
+          E2E_TESTS_PLAYWRIGHT_API_KEY=dummy_key_for_integration_tests
+          APP_PUBLIC_URL=http://127.0.0.1:3000
+          EOF
 
-      # ========================================
-      # 5. HEALTH CHECK
-      # ========================================
-      - name: Wait for Strapi Health Check
-        run: |
-          echo "Waiting for Strapi to be ready..."
-          timeout 120 bash -c 'until curl -f http://127.0.0.1:1337/_health; do 
-            echo "Waiting for Strapi..."
-            sleep 3
-          done'
-          echo "Strapi is ready!"
-
-      - name: Verify Strapi is serving content
-        run: |
-          curl -f http://127.0.0.1:1337/_health || (cat apps/strapi/strapi.log && exit 1)
-
-      # ========================================
-      # 6. BUILD & START NEXT.JS
-      # ========================================
-      - name: Build UI
-        working-directory: apps/ui
-        run: yarn build
-        env:
-          STRAPI_URL: http://127.0.0.1:1337
-          STRAPI_REST_READONLY_API_KEY: ${{ secrets.E2E_API_TOKEN }}
-          NODE_ENV: production
-
-      - name: Start Next.js
-        working-directory: apps/ui
-        run: |
-          yarn start > nextjs.log 2>&1 &
-          echo $! > nextjs.pid
-          sleep 10
-        env:
-          STRAPI_URL: http://127.0.0.1:1337
-          STRAPI_REST_READONLY_API_KEY: ${{ secrets.E2E_API_TOKEN }}
-          PORT: 3000
-
-      - name: Verify Next.js is serving
-        run: |
-          curl -f http://localhost:3000 || (cat apps/ui/nextjs.log && exit 1)
-
-      # ========================================
-      # 7. RUN INTEGRATION TESTS
-      # ========================================
       - name: Run Integration Tests
-        working-directory: apps/ui
-        run: npx playwright test tests/integration/ --reporter=html
+        run: |
+          echo "🧪 Running integration tests with MSW (Playwright will manage server)..."
+          echo "📋 Running chromium integration tests (error handling & resilience)"
+          echo "ℹ️  Note: MSW mocks all API calls - no real Strapi required"
+          yarn workspace @repo/ui playwright test tests/integration/ --project=chromium
         env:
+          CI: true
           STRAPI_URL: http://127.0.0.1:1337
-          E2E_TESTS_PLAYWRIGHT_API_KEY: ${{ secrets.E2E_API_TOKEN }}
+          APP_PUBLIC_URL: http://127.0.0.1:3000
 
-      # ========================================
-      # 8. UPLOAD ARTIFACTS
-      # ========================================
+      - name: Upload Server Logs
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: next-server-logs-integration
+          path: apps/ui/.next/server-logs/next-server.log
+          retention-days: 7
+          if-no-files-found: ignore
+
       - name: Upload Playwright Report
         uses: actions/upload-artifact@v4
         if: always()
@@ -152,6 +107,7 @@ jobs:
           name: integration-playwright-report
           path: apps/ui/playwright-report/
           retention-days: 30
+          if-no-files-found: warn
 
       - name: Upload Test Results
         uses: actions/upload-artifact@v4
@@ -159,29 +115,53 @@ jobs:
         with:
           name: integration-test-results
           path: apps/ui/test-results/
+          retention-days: 7
+          if-no-files-found: warn
+
+      - name: Upload Playwright Traces
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: integration-playwright-traces
+          path: apps/ui/test-results/**/trace.zip
           retention-days: 30
+          if-no-files-found: ignore
 
-      # ========================================
-      # 9. CLEANUP & DEBUG
-      # ========================================
-      - name: Display Strapi Logs
+      - name: Upload Screenshots
+        uses: actions/upload-artifact@v4
         if: failure()
-        run: |
-          echo "=== STRAPI LOGS ==="
-          cat apps/strapi/strapi.log || echo "No Strapi logs found"
+        with:
+          name: integration-screenshots
+          path: apps/ui/test-results/**/*.png
+          retention-days: 7
+          if-no-files-found: ignore
 
-      - name: Display Next.js Logs
+      - name: Upload Videos
+        uses: actions/upload-artifact@v4
         if: failure()
-        run: |
-          echo "=== NEXT.JS LOGS ==="
-          cat apps/ui/nextjs.log || echo "No Next.js logs found"
+        with:
+          name: integration-videos
+          path: apps/ui/test-results/**/*.webm
+          retention-days: 7
+          if-no-files-found: ignore
 
-      - name: Cleanup Servers
+      - name: Check Integration Test Results
         if: always()
         run: |
-          if [ -f apps/strapi/strapi.pid ]; then
-            kill $(cat apps/strapi/strapi.pid) 2>/dev/null || true
+          if [ -f apps/ui/playwright-report/index.html ]; then
+            echo "✅ Integration tests completed. View report in artifacts."
+            echo "📊 Report available at: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+          else
+            echo "⚠️ No test report generated."
           fi
-          if [ -f apps/ui/nextjs.pid ]; then
-            kill $(cat apps/ui/nextjs.pid) 2>/dev/null || true
+          
+          # Check for test-results directory to verify tests ran
+          if [ -d apps/ui/test-results ]; then
+            echo "📁 Test results directory exists"
+            ls -la apps/ui/test-results/ || true
           fi
+
+      - name: Cleanup
+        if: always()
+        run: |
+          echo "✅ Playwright handles server cleanup automatically"
