@@ -1,19 +1,174 @@
-# To get started with Dependabot version updates, you'll need to specify which
-# package ecosystems to update and where the package manifests are located.
-# Please see the documentation for all configuration options:
-# https://docs.github.com/code-security/dependabot/dependabot-version-updates/configuration-options-for-the-dependabot.yml-file
+# Dependabot configuration for automated dependency updates
+# Docs: https://docs.github.com/code-security/dependabot/dependabot-version-updates/configuration-options-for-the-dependabot.yml-file
 
 version: 2
 updates:
-  - package-ecosystem: "npm" # Use npm for yarn workspaces
-    directory: "/" # Location of package manifests
+  # Root workspace dependencies (shared configs, turbo, etc.)
+  - package-ecosystem: "npm"
+    directory: "/"
     schedule:
       interval: "weekly"
+      day: "monday"
+      time: "03:00"
+    open-pull-requests-limit: 10
+    reviewers:
+      - "Herman-Adu"
+    labels:
+      - "dependencies"
+      - "javascript"
+    commit-message:
+      prefix: "chore(deps)"
+      include: "scope"
+    # Group minor/patch updates to reduce PR noise
+    groups:
+      development-dependencies:
+        patterns:
+          - "@types/*"
+          - "typescript"
+          - "eslint*"
+          - "prettier*"
+          - "@commitlint/*"
+          - "husky"
+          - "lint-staged"
+        update-types:
+          - "minor"
+          - "patch"
+      build-tools:
+        patterns:
+          - "turbo"
+          - "vite"
+          - "tsx"
+        update-types:
+          - "minor"
+          - "patch"
+    # Ignore major versions that need manual review
+    ignore:
+      # Keep Node.js major versions stable
+      - dependency-name: "node"
+        update-types: ["version-update:semver-major"]
+
+  # UI app dependencies (Next.js, React, UI libs)
   - package-ecosystem: "npm"
     directory: "/apps/ui"
     schedule:
       interval: "weekly"
+      day: "monday"
+      time: "03:00"
+    open-pull-requests-limit: 10
+    reviewers:
+      - "Herman-Adu"
+    labels:
+      - "dependencies"
+      - "javascript"
+      - "ui"
+    commit-message:
+      prefix: "chore(deps)"
+      prefix-development: "chore(deps-dev)"
+      include: "scope"
+    # Group related dependencies
+    groups:
+      next-ecosystem:
+        patterns:
+          - "next"
+          - "react"
+          - "react-dom"
+        update-types:
+          - "minor"
+          - "patch"
+      ui-dependencies:
+        patterns:
+          - "@radix-ui/*"
+          - "tailwindcss"
+          - "clsx"
+          - "class-variance-authority"
+        update-types:
+          - "minor"
+          - "patch"
+      testing-dependencies:
+        patterns:
+          - "@playwright/*"
+          - "playwright"
+          - "@testing-library/*"
+          - "vitest"
+          - "msw"
+        update-types:
+          - "minor"
+          - "patch"
+    # Ignore packages with known breaking changes
+    ignore:
+      # React 19 needs careful migration
+      - dependency-name: "react"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "react-dom"
+        update-types: ["version-update:semver-major"]
+      # Next.js 16 needs migration
+      - dependency-name: "next"
+        update-types: ["version-update:semver-major"]
+
+  # Strapi app dependencies
   - package-ecosystem: "npm"
     directory: "/apps/strapi"
     schedule:
       interval: "weekly"
+      day: "monday"
+      time: "03:00"
+    open-pull-requests-limit: 10
+    reviewers:
+      - "Herman-Adu"
+    labels:
+      - "dependencies"
+      - "javascript"
+      - "strapi"
+    commit-message:
+      prefix: "chore(deps)"
+      prefix-development: "chore(deps-dev)"
+      include: "scope"
+    # Group Strapi ecosystem
+    groups:
+      strapi-core:
+        patterns:
+          - "@strapi/*"
+        update-types:
+          - "minor"
+          - "patch"
+      strapi-plugins:
+        patterns:
+          - "@strapi/plugin-*"
+        update-types:
+          - "minor"
+          - "patch"
+    # Ignore Strapi major versions (requires migration)
+    ignore:
+      - dependency-name: "@strapi/*"
+        update-types: ["version-update:semver-major"]
+      # React 19 compatibility
+      - dependency-name: "react"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "react-dom"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "react-router-dom"
+        update-types: ["version-update:semver-major"]
+
+  # GitHub Actions
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "03:00"
+    open-pull-requests-limit: 5
+    reviewers:
+      - "Herman-Adu"
+    labels:
+      - "dependencies"
+      - "github-actions"
+    commit-message:
+      prefix: "chore(ci)"
+      include: "scope"
+    groups:
+      github-actions:
+        patterns:
+          - "*"
+        update-types:
+          - "minor"
+          - "patch"
