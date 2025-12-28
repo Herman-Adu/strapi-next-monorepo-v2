@@ -92,7 +92,7 @@ jobs:
           APP_PUBLIC_URL: http://127.0.0.1:3000
 
       - name: Upload Server Logs
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         if: always()
         with:
           name: next-server-logs-integration
@@ -101,7 +101,7 @@ jobs:
           if-no-files-found: ignore
 
       - name: Upload Playwright Report
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         if: always()
         with:
           name: integration-playwright-report
@@ -110,7 +110,7 @@ jobs:
           if-no-files-found: warn
 
       - name: Upload Test Results
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         if: always()
         with:
           name: integration-test-results
@@ -119,7 +119,7 @@ jobs:
           if-no-files-found: warn
 
       - name: Upload Playwright Traces
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         if: always()
         with:
           name: integration-playwright-traces
@@ -128,7 +128,7 @@ jobs:
           if-no-files-found: ignore
 
       - name: Upload Screenshots
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         if: failure()
         with:
           name: integration-screenshots
@@ -137,7 +137,7 @@ jobs:
           if-no-files-found: ignore
 
       - name: Upload Videos
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         if: failure()
         with:
           name: integration-videos
