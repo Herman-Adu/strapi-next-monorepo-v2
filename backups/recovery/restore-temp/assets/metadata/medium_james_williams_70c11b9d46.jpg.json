@@ -1,15 +1,1 @@
-{
-  "ext": ".jpg",
-  "url": "/uploads/medium_james_williams_70c11b9d46.jpg",
-  "hash": "medium_james_williams_70c11b9d46",
-  "mime": "image/jpeg",
-  "name": "medium_james-williams.jpg",
-  "path": null,
-  "size": 44.92,
-  "width": 750,
-  "height": 750,
-  "sizeInBytes": 44922,
-  "type": "medium",
-  "id": 82,
-  "mainHash": "james_williams_70c11b9d46"
-}
+{"ext":".jpg","url":"/uploads/medium_james_williams_70c11b9d46.jpg","hash":"medium_james_williams_70c11b9d46","mime":"image/jpeg","name":"medium_james-williams.jpg","path":null,"size":44.92,"width":750,"height":750,"sizeInBytes":44922,"type":"medium","id":82,"mainHash":"james_williams_70c11b9d46"}

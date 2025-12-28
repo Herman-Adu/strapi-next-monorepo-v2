@@ -1,15 +1,1 @@
-{
-  "ext": ".png",
-  "url": "/uploads/small_google_analytics_2_a77db64c1e.png",
-  "hash": "small_google_analytics_2_a77db64c1e",
-  "mime": "image/png",
-  "name": "small_google-analytics-2.png",
-  "path": null,
-  "size": 20.4,
-  "width": 500,
-  "height": 281,
-  "sizeInBytes": 20397,
-  "type": "small",
-  "id": 68,
-  "mainHash": "google_analytics_2_a77db64c1e"
-}
+{"ext":".png","url":"/uploads/small_google_analytics_2_a77db64c1e.png","hash":"small_google_analytics_2_a77db64c1e","mime":"image/png","name":"small_google-analytics-2.png","path":null,"size":20.4,"width":500,"height":281,"sizeInBytes":20397,"type":"small","id":72,"mainHash":"google_analytics_2_a77db64c1e"}

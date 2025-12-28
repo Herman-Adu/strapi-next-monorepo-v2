@@ -1,15 +1,1 @@
-{
-  "ext": ".png",
-  "url": "/uploads/thumbnail_hero_image_v2_4d7ba07b22.png",
-  "hash": "thumbnail_hero_image_v2_4d7ba07b22",
-  "mime": "image/png",
-  "name": "thumbnail_hero-image-v2.png",
-  "path": null,
-  "size": 5.53,
-  "width": 234,
-  "height": 156,
-  "sizeInBytes": 5530,
-  "type": "thumbnail",
-  "id": 19,
-  "mainHash": "hero_image_v2_4d7ba07b22"
-}
+{"ext":".png","url":"/uploads/thumbnail_hero_image_v2_4d7ba07b22.png","hash":"thumbnail_hero_image_v2_4d7ba07b22","mime":"image/png","name":"thumbnail_hero-image-v2.png","path":null,"size":5.53,"width":234,"height":156,"sizeInBytes":5530,"type":"thumbnail","id":28,"mainHash":"hero_image_v2_4d7ba07b22"}

@@ -1,15 +1,1 @@
-{
-  "ext": ".jpg",
-  "url": "/uploads/large_david_park_eb59eee93e.jpg",
-  "hash": "large_david_park_eb59eee93e",
-  "mime": "image/jpeg",
-  "name": "large_david-park.jpg",
-  "path": null,
-  "size": 69.26,
-  "width": 1000,
-  "height": 1000,
-  "sizeInBytes": 69262,
-  "type": "large",
-  "id": 80,
-  "mainHash": "david_park_eb59eee93e"
-}
+{"ext":".jpg","url":"/uploads/large_david_park_eb59eee93e.jpg","hash":"large_david_park_eb59eee93e","mime":"image/jpeg","name":"large_david-park.jpg","path":null,"size":69.26,"width":1000,"height":1000,"sizeInBytes":69262,"type":"large","id":80,"mainHash":"david_park_eb59eee93e"}

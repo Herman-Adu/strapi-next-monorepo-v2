@@ -1,15 +1,1 @@
-{
-  "ext": ".png",
-  "url": "/uploads/medium_contentful_logo_transparent_png_7967edca2b.png",
-  "hash": "medium_contentful_logo_transparent_png_7967edca2b",
-  "mime": "image/png",
-  "name": "medium_contentful-logo-transparent-png.png",
-  "path": null,
-  "size": 19.65,
-  "width": 750,
-  "height": 201,
-  "sizeInBytes": 19651,
-  "type": "medium",
-  "id": 67,
-  "mainHash": "contentful_logo_transparent_png_7967edca2b"
-}
+{"ext":".png","url":"/uploads/medium_contentful_logo_transparent_png_7967edca2b.png","hash":"medium_contentful_logo_transparent_png_7967edca2b","mime":"image/png","name":"medium_contentful-logo-transparent-png.png","path":null,"size":19.65,"width":750,"height":201,"sizeInBytes":19651,"type":"medium","id":71,"mainHash":"contentful_logo_transparent_png_7967edca2b"}

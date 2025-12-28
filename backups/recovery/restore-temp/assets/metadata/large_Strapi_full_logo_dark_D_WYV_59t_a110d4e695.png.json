@@ -1,15 +1,1 @@
-{
-  "ext": ".png",
-  "url": "/uploads/large_Strapi_full_logo_dark_D_WYV_59t_a110d4e695.png",
-  "hash": "large_Strapi_full_logo_dark_D_WYV_59t_a110d4e695",
-  "mime": "image/png",
-  "name": "large_Strapi.full.logo.dark.D_WYV59t.png",
-  "path": null,
-  "size": 30.84,
-  "width": 1000,
-  "height": 242,
-  "sizeInBytes": 30844,
-  "type": "large",
-  "id": 39,
-  "mainHash": "Strapi_full_logo_dark_D_WYV_59t_a110d4e695"
-}
+{"ext":".png","url":"/uploads/large_Strapi_full_logo_dark_D_WYV_59t_a110d4e695.png","hash":"large_Strapi_full_logo_dark_D_WYV_59t_a110d4e695","mime":"image/png","name":"large_Strapi.full.logo.dark.D_WYV59t.png","path":null,"size":30.84,"width":1000,"height":242,"sizeInBytes":30844,"type":"large","id":46,"mainHash":"Strapi_full_logo_dark_D_WYV_59t_a110d4e695"}

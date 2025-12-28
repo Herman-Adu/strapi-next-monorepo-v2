@@ -100,3 +100,9 @@ apps/strapi/database/seeds/e2e-test-data-safe.js
 temp-*/
 /temp-*/
 apps/ui/temp-*
+
+# Database backups and exports (should never be committed)
+backups/
+*.sql
+*.tar.gz
+*.log

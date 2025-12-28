@@ -1,15 +1,1 @@
-{
-  "ext": ".jpg",
-  "url": "/uploads/medium_jessica_martinez_7315250b82.jpg",
-  "hash": "medium_jessica_martinez_7315250b82",
-  "mime": "image/jpeg",
-  "name": "medium_jessica-martinez.jpg",
-  "path": null,
-  "size": 849.19,
-  "width": 750,
-  "height": 750,
-  "sizeInBytes": 849191,
-  "type": "medium",
-  "id": 91,
-  "mainHash": "jessica_martinez_7315250b82"
-}
+{"ext":".jpg","url":"/uploads/medium_jessica_martinez_7315250b82.jpg","hash":"medium_jessica_martinez_7315250b82","mime":"image/jpeg","name":"medium_jessica-martinez.jpg","path":null,"size":849.19,"width":750,"height":750,"sizeInBytes":849191,"type":"medium","id":91,"mainHash":"jessica_martinez_7315250b82"}

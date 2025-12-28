@@ -1,15 +1,1 @@
-{
-  "ext": ".png",
-  "url": "/uploads/medium_github_icon_stylized_4616ad66d2.png",
-  "hash": "medium_github_icon_stylized_4616ad66d2",
-  "mime": "image/png",
-  "name": "medium_github-icon-stylized.png",
-  "path": null,
-  "size": 111.94,
-  "width": 750,
-  "height": 740,
-  "sizeInBytes": 111940,
-  "type": "medium",
-  "id": 73,
-  "mainHash": "github_icon_stylized_4616ad66d2"
-}
+{"ext":".png","url":"/uploads/medium_github_icon_stylized_4616ad66d2.png","hash":"medium_github_icon_stylized_4616ad66d2","mime":"image/png","name":"medium_github-icon-stylized.png","path":null,"size":111.94,"width":750,"height":740,"sizeInBytes":111940,"type":"medium","id":77,"mainHash":"github_icon_stylized_4616ad66d2"}

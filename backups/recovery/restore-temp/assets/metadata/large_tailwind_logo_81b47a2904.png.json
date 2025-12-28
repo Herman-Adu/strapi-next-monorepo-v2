@@ -1,15 +1,1 @@
-{
-  "ext": ".png",
-  "url": "/uploads/large_tailwind_logo_81b47a2904.png",
-  "hash": "large_tailwind_logo_81b47a2904",
-  "mime": "image/png",
-  "name": "large_tailwind-logo.png",
-  "path": null,
-  "size": 5.74,
-  "width": 1000,
-  "height": 1000,
-  "sizeInBytes": 5740,
-  "type": "large",
-  "id": 72,
-  "mainHash": "tailwind_logo_81b47a2904"
-}
+{"ext":".png","url":"/uploads/large_tailwind_logo_81b47a2904.png","hash":"large_tailwind_logo_81b47a2904","mime":"image/png","name":"large_tailwind-logo.png","path":null,"size":5.74,"width":1000,"height":1000,"sizeInBytes":5740,"type":"large","id":76,"mainHash":"tailwind_logo_81b47a2904"}

@@ -1,15 +1,1 @@
-{
-  "ext": ".png",
-  "url": "/uploads/thumbnail_Stripe_Logo_blue_1_f273ba84cb.png",
-  "hash": "thumbnail_Stripe_Logo_blue_1_f273ba84cb",
-  "mime": "image/png",
-  "name": "thumbnail_Stripe_Logo_blue_1.png",
-  "path": null,
-  "size": 6.73,
-  "width": 245,
-  "height": 116,
-  "sizeInBytes": 6730,
-  "type": "thumbnail",
-  "id": 13,
-  "mainHash": "Stripe_Logo_blue_1_f273ba84cb"
-}
+{"ext":".png","url":"/uploads/thumbnail_Stripe_Logo_blue_1_f273ba84cb.png","hash":"thumbnail_Stripe_Logo_blue_1_f273ba84cb","mime":"image/png","name":"thumbnail_Stripe_Logo_blue_1.png","path":null,"size":6.73,"width":245,"height":116,"sizeInBytes":6730,"type":"thumbnail","id":22,"mainHash":"Stripe_Logo_blue_1_f273ba84cb"}

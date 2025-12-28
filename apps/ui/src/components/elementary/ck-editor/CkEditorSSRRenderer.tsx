@@ -43,7 +43,8 @@ const CkEditorSSRRenderer = async ({
       }
     }
 
-    return doc.innerHTML
+    // Return the processed HTML - node-html-parser returns the inner content directly
+    return doc.toString()
   }
 
   return htmlContent ? (
@@ -52,6 +53,7 @@ const CkEditorSSRRenderer = async ({
         variant === "page" ? "ck-editor-rich-text-page" : "",
         className
       )}
+      suppressHydrationWarning
       // Content is coming from Strapi, i.e. from employees, not users
       dangerouslySetInnerHTML={{
         __html: htmlContent ? processHtmlContent(htmlContent, locale) : "",

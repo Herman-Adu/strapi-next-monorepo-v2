@@ -1,15 +1,1 @@
-{
-  "ext": ".png",
-  "url": "/uploads/medium_tailwind_logo_81b47a2904.png",
-  "hash": "medium_tailwind_logo_81b47a2904",
-  "mime": "image/png",
-  "name": "medium_tailwind-logo.png",
-  "path": null,
-  "size": 4,
-  "width": 750,
-  "height": 750,
-  "sizeInBytes": 4004,
-  "type": "medium",
-  "id": 72,
-  "mainHash": "tailwind_logo_81b47a2904"
-}
+{"ext":".png","url":"/uploads/medium_tailwind_logo_81b47a2904.png","hash":"medium_tailwind_logo_81b47a2904","mime":"image/png","name":"medium_tailwind-logo.png","path":null,"size":4,"width":750,"height":750,"sizeInBytes":4004,"type":"medium","id":76,"mainHash":"tailwind_logo_81b47a2904"}

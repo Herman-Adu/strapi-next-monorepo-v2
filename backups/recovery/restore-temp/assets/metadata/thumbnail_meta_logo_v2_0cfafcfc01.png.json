@@ -1,15 +1,1 @@
-{
-  "ext": ".png",
-  "url": "/uploads/thumbnail_meta_logo_v2_0cfafcfc01.png",
-  "hash": "thumbnail_meta_logo_v2_0cfafcfc01",
-  "mime": "image/png",
-  "name": "thumbnail_meta-logo-v2.png",
-  "path": null,
-  "size": 14.99,
-  "width": 235,
-  "height": 156,
-  "sizeInBytes": 14986,
-  "type": "thumbnail",
-  "id": 74,
-  "mainHash": "meta_logo_v2_0cfafcfc01"
-}
+{"ext":".png","url":"/uploads/thumbnail_meta_logo_v2_0cfafcfc01.png","hash":"thumbnail_meta_logo_v2_0cfafcfc01","mime":"image/png","name":"thumbnail_meta-logo-v2.png","path":null,"size":14.99,"width":235,"height":156,"sizeInBytes":14986,"type":"thumbnail","id":78,"mainHash":"meta_logo_v2_0cfafcfc01"}

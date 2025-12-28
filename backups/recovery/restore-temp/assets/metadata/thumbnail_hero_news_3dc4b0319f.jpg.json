@@ -1,15 +1,1 @@
-{
-  "ext": ".jpg",
-  "url": "/uploads/thumbnail_hero_news_3dc4b0319f.jpg",
-  "hash": "thumbnail_hero_news_3dc4b0319f",
-  "mime": "image/jpeg",
-  "name": "thumbnail_hero-news.jpg",
-  "path": null,
-  "size": 8.19,
-  "width": 234,
-  "height": 156,
-  "sizeInBytes": 8188,
-  "type": "thumbnail",
-  "id": 12,
-  "mainHash": "hero_news_3dc4b0319f"
-}
+{"ext":".jpg","url":"/uploads/thumbnail_hero_news_3dc4b0319f.jpg","hash":"thumbnail_hero_news_3dc4b0319f","mime":"image/jpeg","name":"thumbnail_hero-news.jpg","path":null,"size":8.19,"width":234,"height":156,"sizeInBytes":8188,"type":"thumbnail","id":21,"mainHash":"hero_news_3dc4b0319f"}

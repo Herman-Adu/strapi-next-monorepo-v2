@@ -1,15 +1,1 @@
-{
-  "ext": ".jpg",
-  "url": "/uploads/small_michael_chen_3115d24273.jpg",
-  "hash": "small_michael_chen_3115d24273",
-  "mime": "image/jpeg",
-  "name": "small_michael-chen.jpg",
-  "path": null,
-  "size": 39.84,
-  "width": 500,
-  "height": 500,
-  "sizeInBytes": 39841,
-  "type": "small",
-  "id": 83,
-  "mainHash": "michael_chen_3115d24273"
-}
+{"ext":".jpg","url":"/uploads/small_michael_chen_3115d24273.jpg","hash":"small_michael_chen_3115d24273","mime":"image/jpeg","name":"small_michael-chen.jpg","path":null,"size":39.84,"width":500,"height":500,"sizeInBytes":39841,"type":"small","id":83,"mainHash":"michael_chen_3115d24273"}
