@@ -1,15 +1,1 @@
-{
-  "ext": ".png",
-  "url": "/uploads/large_transparent_amazon_logo_3ccdc98912.png",
-  "hash": "large_transparent_amazon_logo_3ccdc98912",
-  "mime": "image/png",
-  "name": "large_transparent-amazon-logo.png",
-  "path": null,
-  "size": 55.61,
-  "width": 1000,
-  "height": 849,
-  "sizeInBytes": 55610,
-  "type": "large",
-  "id": 75,
-  "mainHash": "transparent_amazon_logo_3ccdc98912"
-}
+{"ext":".png","url":"/uploads/large_transparent_amazon_logo_3ccdc98912.png","hash":"large_transparent_amazon_logo_3ccdc98912","mime":"image/png","name":"large_transparent-amazon-logo.png","path":null,"size":55.61,"width":1000,"height":849,"sizeInBytes":55610,"type":"large","id":79,"mainHash":"transparent_amazon_logo_3ccdc98912"}

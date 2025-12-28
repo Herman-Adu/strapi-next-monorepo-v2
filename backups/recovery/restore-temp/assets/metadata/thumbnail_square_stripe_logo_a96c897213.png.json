@@ -1,15 +1,1 @@
-{
-  "ext": ".png",
-  "url": "/uploads/thumbnail_square_stripe_logo_a96c897213.png",
-  "hash": "thumbnail_square_stripe_logo_a96c897213",
-  "mime": "image/png",
-  "name": "thumbnail_square-stripe-logo.png",
-  "path": null,
-  "size": 3.39,
-  "width": 156,
-  "height": 156,
-  "sizeInBytes": 3391,
-  "type": "thumbnail",
-  "id": 4,
-  "mainHash": "square_stripe_logo_a96c897213"
-}
+{"ext":".png","url":"/uploads/thumbnail_square_stripe_logo_a96c897213.png","hash":"thumbnail_square_stripe_logo_a96c897213","mime":"image/png","name":"thumbnail_square-stripe-logo.png","path":null,"size":3.39,"width":156,"height":156,"sizeInBytes":3391,"type":"thumbnail","id":9,"mainHash":"square_stripe_logo_a96c897213"}

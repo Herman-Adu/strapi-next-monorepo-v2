@@ -1,15 +1,1 @@
-{
-  "ext": ".png",
-  "url": "/uploads/medium_meta_logo_v2_0cfafcfc01.png",
-  "hash": "medium_meta_logo_v2_0cfafcfc01",
-  "mime": "image/png",
-  "name": "medium_meta-logo-v2.png",
-  "path": null,
-  "size": 70.29,
-  "width": 750,
-  "height": 498,
-  "sizeInBytes": 70285,
-  "type": "medium",
-  "id": 74,
-  "mainHash": "meta_logo_v2_0cfafcfc01"
-}
+{"ext":".png","url":"/uploads/medium_meta_logo_v2_0cfafcfc01.png","hash":"medium_meta_logo_v2_0cfafcfc01","mime":"image/png","name":"medium_meta-logo-v2.png","path":null,"size":70.29,"width":750,"height":498,"sizeInBytes":70285,"type":"medium","id":78,"mainHash":"meta_logo_v2_0cfafcfc01"}

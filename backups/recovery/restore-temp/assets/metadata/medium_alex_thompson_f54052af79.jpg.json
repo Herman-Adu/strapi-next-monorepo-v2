@@ -1,15 +1,1 @@
-{
-  "ext": ".jpg",
-  "url": "/uploads/medium_alex_thompson_f54052af79.jpg",
-  "hash": "medium_alex_thompson_f54052af79",
-  "mime": "image/jpeg",
-  "name": "medium_alex-thompson.jpg",
-  "path": null,
-  "size": 45.77,
-  "width": 750,
-  "height": 750,
-  "sizeInBytes": 45768,
-  "type": "medium",
-  "id": 85,
-  "mainHash": "alex_thompson_f54052af79"
-}
+{"ext":".jpg","url":"/uploads/medium_alex_thompson_f54052af79.jpg","hash":"medium_alex_thompson_f54052af79","mime":"image/jpeg","name":"medium_alex-thompson.jpg","path":null,"size":45.77,"width":750,"height":750,"sizeInBytes":45768,"type":"medium","id":85,"mainHash":"alex_thompson_f54052af79"}

@@ -1,15 +1,1 @@
-{
-  "ext": ".jpg",
-  "url": "/uploads/medium_rachel_kim_f55421ae35.jpg",
-  "hash": "medium_rachel_kim_f55421ae35",
-  "mime": "image/jpeg",
-  "name": "medium_rachel-kim.jpg",
-  "path": null,
-  "size": 35.21,
-  "width": 750,
-  "height": 750,
-  "sizeInBytes": 35206,
-  "type": "medium",
-  "id": 89,
-  "mainHash": "rachel_kim_f55421ae35"
-}
+{"ext":".jpg","url":"/uploads/medium_rachel_kim_f55421ae35.jpg","hash":"medium_rachel_kim_f55421ae35","mime":"image/jpeg","name":"medium_rachel-kim.jpg","path":null,"size":35.21,"width":750,"height":750,"sizeInBytes":35206,"type":"medium","id":89,"mainHash":"rachel_kim_f55421ae35"}

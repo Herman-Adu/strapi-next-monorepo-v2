@@ -4,7 +4,7 @@
 
 - [x] PostgreSQL installed and running
 - [x] Database `strapi_dev` created in pgAdmin
-- [x] User `strapi_user` with password `Icec00lzaduDev02`
+- [x] User `strapi_user` with password `..............`
 - [x] SQLite database exists at `.tmp/data.db`
 - [x] `.env` configured for PostgreSQL
 

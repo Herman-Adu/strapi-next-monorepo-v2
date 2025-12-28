@@ -1,15 +1,1 @@
-{
-  "ext": ".jpg",
-  "url": "/uploads/large_marcus_lee_bd4d22928f.jpg",
-  "hash": "large_marcus_lee_bd4d22928f",
-  "mime": "image/jpeg",
-  "name": "large_marcus-lee.jpg",
-  "path": null,
-  "size": 57.23,
-  "width": 1000,
-  "height": 1000,
-  "sizeInBytes": 57227,
-  "type": "large",
-  "id": 81,
-  "mainHash": "marcus_lee_bd4d22928f"
-}
+{"ext":".jpg","url":"/uploads/large_marcus_lee_bd4d22928f.jpg","hash":"large_marcus_lee_bd4d22928f","mime":"image/jpeg","name":"large_marcus-lee.jpg","path":null,"size":57.23,"width":1000,"height":1000,"sizeInBytes":57227,"type":"large","id":81,"mainHash":"marcus_lee_bd4d22928f"}

@@ -127,26 +127,13 @@
       }
     },
     "layouts": {
-      "list": ["id", "items", "background", "badge"],
+      "list": [
+        "id",
+        "items",
+        "background",
+        "badge"
+      ],
       "edit": [
-        [
-          {
-            "name": "background",
-            "size": 12
-          }
-        ],
-        [
-          {
-            "name": "badge",
-            "size": 12
-          }
-        ],
-        [
-          {
-            "name": "header",
-            "size": 12
-          }
-        ],
         [
           {
             "name": "items",
@@ -167,6 +154,24 @@
           {
             "name": "gridColumns",
             "size": 6
+          }
+        ],
+        [
+          {
+            "name": "background",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "badge",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "header",
+            "size": 12
           }
         ]
       ]

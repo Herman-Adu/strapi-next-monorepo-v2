@@ -1,15 +1,1 @@
-{
-  "ext": ".png",
-  "url": "/uploads/small_adudev_light_Logo_0c9865164d.png",
-  "hash": "small_adudev_light_Logo_0c9865164d",
-  "mime": "image/png",
-  "name": "small_adudev-light-Logo.png",
-  "path": null,
-  "size": 63.02,
-  "width": 500,
-  "height": 496,
-  "sizeInBytes": 63021,
-  "type": "small",
-  "id": 49,
-  "mainHash": "adudev_light_Logo_0c9865164d"
-}
+{"ext":".png","url":"/uploads/small_adudev_light_Logo_0c9865164d.png","hash":"small_adudev_light_Logo_0c9865164d","mime":"image/png","name":"small_adudev-light-Logo.png","path":null,"size":63.02,"width":500,"height":496,"sizeInBytes":63021,"type":"small","id":56,"mainHash":"adudev_light_Logo_0c9865164d"}

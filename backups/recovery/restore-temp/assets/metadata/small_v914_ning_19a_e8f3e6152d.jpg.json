@@ -1,15 +1,1 @@
-{
-  "ext": ".jpg",
-  "url": "/uploads/small_v914_ning_19a_e8f3e6152d.jpg",
-  "hash": "small_v914_ning_19a_e8f3e6152d",
-  "mime": "image/jpeg",
-  "name": "small_v914-ning-19a.jpg",
-  "path": null,
-  "size": 10.2,
-  "width": 500,
-  "height": 500,
-  "sizeInBytes": 10195,
-  "type": "small",
-  "id": 44,
-  "mainHash": "v914_ning_19a_e8f3e6152d"
-}
+{"ext":".jpg","url":"/uploads/small_v914_ning_19a_e8f3e6152d.jpg","hash":"small_v914_ning_19a_e8f3e6152d","mime":"image/jpeg","name":"small_v914-ning-19a.jpg","path":null,"size":10.2,"width":500,"height":500,"sizeInBytes":10195,"type":"small","id":51,"mainHash":"v914_ning_19a_e8f3e6152d"}

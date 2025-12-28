@@ -1,15 +1,1 @@
-{
-  "ext": ".png",
-  "url": "/uploads/thumbnail_emily_rodriguez_203ccf1498.png",
-  "hash": "thumbnail_emily_rodriguez_203ccf1498",
-  "mime": "image/png",
-  "name": "thumbnail_emily-rodriguez.png",
-  "path": null,
-  "size": 66.15,
-  "width": 245,
-  "height": 134,
-  "sizeInBytes": 66145,
-  "type": "thumbnail",
-  "id": 84,
-  "mainHash": "emily_rodriguez_203ccf1498"
-}
+{"ext":".png","url":"/uploads/thumbnail_emily_rodriguez_203ccf1498.png","hash":"thumbnail_emily_rodriguez_203ccf1498","mime":"image/png","name":"thumbnail_emily-rodriguez.png","path":null,"size":66.15,"width":245,"height":134,"sizeInBytes":66145,"type":"thumbnail","id":84,"mainHash":"emily_rodriguez_203ccf1498"}

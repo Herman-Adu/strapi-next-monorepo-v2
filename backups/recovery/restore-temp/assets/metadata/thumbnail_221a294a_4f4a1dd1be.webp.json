@@ -1,15 +1,1 @@
-{
-  "ext": ".webp",
-  "url": "/uploads/thumbnail_221a294a_4f4a1dd1be.webp",
-  "hash": "thumbnail_221a294a_4f4a1dd1be",
-  "mime": "image/webp",
-  "name": "thumbnail_221a294a.webp",
-  "path": null,
-  "size": 5.65,
-  "width": 245,
-  "height": 138,
-  "sizeInBytes": 5648,
-  "type": "thumbnail",
-  "id": 30,
-  "mainHash": "221a294a_4f4a1dd1be"
-}
+{"ext":".webp","url":"/uploads/thumbnail_221a294a_4f4a1dd1be.webp","hash":"thumbnail_221a294a_4f4a1dd1be","mime":"image/webp","name":"thumbnail_221a294a.webp","path":null,"size":5.65,"width":245,"height":138,"sizeInBytes":5648,"type":"thumbnail","id":37,"mainHash":"221a294a_4f4a1dd1be"}
