@@ -68,12 +68,17 @@ jobs:
       - name: Install Playwright browsers
         run: npx playwright install --with-deps chromium
 
+      - name: Prepare Environment Variables
+        run: |
+          cp apps/strapi/.env.example apps/strapi/.env
+          cp apps/ui/.env.local.example apps/ui/.env.local
+          echo "STRAPI_REST_READONLY_API_KEY=test-token-for-integration" >> apps/ui/.env.local
+
       # ========================================
       # 2. BUILD STRAPI
       # ========================================
       - name: Build Strapi
-        working-directory: apps/strapi
-        run: yarn build
+        run: yarn build:strapi
         env:
           DATABASE_URL: postgresql://strapi:${{ secrets.E2E_DB_PASSWORD }}@localhost:5432/strapi_dev
           NODE_ENV: production
