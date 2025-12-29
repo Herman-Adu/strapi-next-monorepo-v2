@@ -29,7 +29,7 @@ jobs:
           running-workflow-name: 'dependabot'
           allowed-conclusions: success
           # Wait for these workflows to complete
-          check-regexp: (Build & Lint|E2E Tests|Integration Tests|Visual Regression Tests)
+          check-regexp: (Lint|Build all apps|E2E Tests \(Playwright - MSW Mocked API\)|Integration Tests \(Playwright - MSW Mocked API\)|Chromatic Visual Tests)
       
       - name: Auto-merge patch & minor updates
         # Auto-merge if:
