@@ -7918,10 +7918,10 @@
     lodash "4.17.21"
     react-remove-scroll "2.5.10"
 
-"@strapi/design-system@^2.0.0-rc.10":
-  version "2.0.0-rc.23"
-  resolved "https://registry.yarnpkg.com/@strapi/design-system/-/design-system-2.0.0-rc.23.tgz#72dab0a3a9966b6ffd7ba53d7eed8190489e896b"
-  integrity sha512-PXWVlNqA4GDPxx8B2r7LFuQtWgGgjnPXnCOZhynpqqEVVcFkrYmRCPALFhHPD4J3hpEadlUinvlcisMymVviUw==
+"@strapi/design-system@2.0.1", "@strapi/design-system@^2.0.0-rc.10":
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/@strapi/design-system/-/design-system-2.0.1.tgz#0b66cf32a34bc9440a51d2fbbf2188bc357d8454"
+  integrity sha512-Yuk64klpzwg8bqQS/n+IblMNzhlwOu+7w8CBIkghJjNZ9OiOQcFGi153xRncfubFQhxCOPwZuhMhYs/CZwV1NQ==
   dependencies:
     "@codemirror/lang-json" "6.0.1"
     "@floating-ui/react-dom" "2.1.0"
@@ -7944,7 +7944,7 @@
     "@radix-ui/react-tabs" "1.0.4"
     "@radix-ui/react-tooltip" "1.0.7"
     "@radix-ui/react-use-callback-ref" "1.0.1"
-    "@strapi/ui-primitives" "2.0.0-rc.23"
+    "@strapi/ui-primitives" "2.0.1"
     "@uiw/react-codemirror" "4.22.2"
     lodash "4.17.21"
     react-remove-scroll "2.5.10"
@@ -8006,10 +8006,10 @@
   resolved "https://registry.yarnpkg.com/@strapi/icons/-/icons-2.0.0-rc.30.tgz#0162156f2cb963930e1c70055210e8545f91d5f9"
   integrity sha512-XOqbr573AP8eOwyMPTn7tDtFV1HFlqDlwr8qNgPzo29V2+449NE8Bk0aG8PZ+kGmbnxzyQC8OQDtWlvRBEL5uA==
 
-"@strapi/icons@^2.0.0-rc.10":
-  version "2.0.0-rc.23"
-  resolved "https://registry.yarnpkg.com/@strapi/icons/-/icons-2.0.0-rc.23.tgz#854bd41727c58bb6a6e9a8099164a7bf52bd32d7"
-  integrity sha512-sJ7iQ8kZ28z3mTkDm/gnsWIQljK3w0UaOk2irO77iSmbh+uR3W9gDF5CP/4Z+KDUqnjDke2kaOIPRI67etvi9A==
+"@strapi/icons@2.0.1", "@strapi/icons@^2.0.0-rc.10":
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/@strapi/icons/-/icons-2.0.1.tgz#73af76cd21e0a0d8f784420d354eddaf2a768a59"
+  integrity sha512-lB97LoIbl8vP5vFT6bnqz0ZzZ4TTHciv2nznVln5sX6cOeh6tVdmLQF9J139QN9l2Umbnp3digeZGnXqS8tgNQ==
 
 "@strapi/logger@5.29.0":
   version "5.29.0"
@@ -8049,14 +8049,14 @@
     react-colorful "5.6.1"
     react-intl "6.6.2"
 
-"@strapi/plugin-sentry@^5.29.0":
-  version "5.29.0"
-  resolved "https://registry.yarnpkg.com/@strapi/plugin-sentry/-/plugin-sentry-5.29.0.tgz#fc0930236b9e9652feb222c8ac0a83a1ac624abc"
-  integrity sha512-r3EWLTgFUIwRO8SlD3npebOJNAY+J4XIaAvQszom1Plgphk2LKFGKSDD3uQfP++ay4LV3s3PA+tsx0SOLTw+yw==
+"@strapi/plugin-sentry@^5.33.0":
+  version "5.33.0"
+  resolved "https://registry.yarnpkg.com/@strapi/plugin-sentry/-/plugin-sentry-5.33.0.tgz#81c70ce6d31599c1213c86cf33bd95f9f2947ea8"
+  integrity sha512-JsDdU78Xa6VccRRnJImMeusD9p3C1qNGlc9sRqzudC8dfOSaeODs0gafTwVCgXE0ESwKqZ8ZjL3CSP8wSE9jPw==
   dependencies:
     "@sentry/node" "7.112.2"
-    "@strapi/design-system" "2.0.0-rc.30"
-    "@strapi/icons" "2.0.0-rc.30"
+    "@strapi/design-system" "2.0.1"
+    "@strapi/icons" "2.0.1"
 
 "@strapi/plugin-seo@2.0.8":
   version "2.0.8"
@@ -8284,32 +8284,6 @@
     aria-hidden "1.2.4"
     react-remove-scroll "2.5.10"
 
-"@strapi/ui-primitives@2.0.0-rc.23":
-  version "2.0.0-rc.23"
-  resolved "https://registry.yarnpkg.com/@strapi/ui-primitives/-/ui-primitives-2.0.0-rc.23.tgz#76b964909a0cbdcd5b3c6be1fb52a8e634b5130e"
-  integrity sha512-YMH9z0k/aX8HYrq+sDCc5v2cPPqRBwgzQ/NxkzV1pvqvonKFgH3V3sQTXM3tStVkz4z4RuxB/lXoEZXGe/aVdg==
-  dependencies:
-    "@radix-ui/number" "1.0.1"
-    "@radix-ui/primitive" "1.0.1"
-    "@radix-ui/react-collection" "1.0.3"
-    "@radix-ui/react-compose-refs" "1.0.1"
-    "@radix-ui/react-context" "1.0.1"
-    "@radix-ui/react-direction" "1.0.1"
-    "@radix-ui/react-dismissable-layer" "1.0.5"
-    "@radix-ui/react-focus-guards" "1.0.1"
-    "@radix-ui/react-focus-scope" "1.0.4"
-    "@radix-ui/react-id" "1.0.1"
-    "@radix-ui/react-popper" "1.1.3"
-    "@radix-ui/react-portal" "1.0.4"
-    "@radix-ui/react-primitive" "1.0.3"
-    "@radix-ui/react-slot" "1.0.2"
-    "@radix-ui/react-use-controllable-state" "1.0.1"
-    "@radix-ui/react-use-layout-effect" "1.0.1"
-    "@radix-ui/react-use-previous" "1.0.1"
-    "@radix-ui/react-visually-hidden" "1.0.3"
-    aria-hidden "1.2.4"
-    react-remove-scroll "2.5.10"
-
 "@strapi/ui-primitives@2.0.0-rc.30":
   version "2.0.0-rc.30"
   resolved "https://registry.yarnpkg.com/@strapi/ui-primitives/-/ui-primitives-2.0.0-rc.30.tgz#192f12fc0b804c601205095486666b42bc028a89"
@@ -8333,6 +8307,33 @@
     "@radix-ui/react-use-layout-effect" "1.0.1"
     "@radix-ui/react-use-previous" "1.0.1"
     "@radix-ui/react-visually-hidden" "1.0.3"
+    aria-hidden "1.2.4"
+    react-remove-scroll "2.5.10"
+
+"@strapi/ui-primitives@2.0.1":
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/@strapi/ui-primitives/-/ui-primitives-2.0.1.tgz#48304158d7b6d6751453100025dff080f1cee382"
+  integrity sha512-WfdTaDOJ7hFGp7+fcaTdqBF+evOGiqND3I/ajZHzjGDBiasQlCVsbJwZ6VztxRKhgC+XaiOB1m2CxIzn6ilm6w==
+  dependencies:
+    "@radix-ui/number" "1.0.1"
+    "@radix-ui/primitive" "1.0.1"
+    "@radix-ui/react-collection" "1.0.3"
+    "@radix-ui/react-compose-refs" "1.0.1"
+    "@radix-ui/react-context" "1.0.1"
+    "@radix-ui/react-direction" "1.0.1"
+    "@radix-ui/react-dismissable-layer" "1.0.5"
+    "@radix-ui/react-focus-guards" "1.0.1"
+    "@radix-ui/react-focus-scope" "1.0.4"
+    "@radix-ui/react-id" "1.0.1"
+    "@radix-ui/react-popper" "1.1.3"
+    "@radix-ui/react-portal" "1.0.4"
+    "@radix-ui/react-primitive" "1.0.3"
+    "@radix-ui/react-slot" "1.0.2"
+    "@radix-ui/react-use-controllable-state" "1.0.1"
+    "@radix-ui/react-use-layout-effect" "1.0.1"
+    "@radix-ui/react-use-previous" "1.0.1"
+    "@radix-ui/react-visually-hidden" "1.0.3"
+    "@tanstack/react-virtual" "^3.10.8"
     aria-hidden "1.2.4"
     react-remove-scroll "2.5.10"
 
@@ -8648,10 +8649,22 @@
   dependencies:
     "@tanstack/table-core" "8.21.3"
 
+"@tanstack/react-virtual@^3.10.8":
+  version "3.13.13"
+  resolved "https://registry.yarnpkg.com/@tanstack/react-virtual/-/react-virtual-3.13.13.tgz#1e32e1e64fb4f60d8e9dbdbde6b17e79d82696f8"
+  integrity sha512-4o6oPMDvQv+9gMi8rE6gWmsOjtUZUYIJHv7EB+GblyYdi8U6OqLl8rhHWIUZSL1dUU2dPwTdTgybCKf9EjIrQg==
+  dependencies:
+    "@tanstack/virtual-core" "3.13.13"
+
 "@tanstack/table-core@8.21.3":
   version "8.21.3"
   resolved "https://registry.yarnpkg.com/@tanstack/table-core/-/table-core-8.21.3.tgz#2977727d8fc8dfa079112d9f4d4c019110f1732c"
   integrity sha512-ldZXEhOBb8Is7xLs01fR3YEc3DERiz5silj8tnGkFZytt1abEvl/GhUmCE0PMLaMPTa3Jk4HbKmRlHmu+gCftg==
+
+"@tanstack/virtual-core@3.13.13":
+  version "3.13.13"
+  resolved "https://registry.yarnpkg.com/@tanstack/virtual-core/-/virtual-core-3.13.13.tgz#1e55efe82730e60f4d68b1e2bc956bd3d94f307b"
+  integrity sha512-uQFoSdKKf5S8k51W5t7b2qpfkyIbdHMzAn+AMQvHPxKUPeo1SsGaA4JRISQT87jm28b7z8OEqPcg1IOZagQHcA==
 
 "@testing-library/dom@10.1.0":
   version "10.1.0"
