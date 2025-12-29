@@ -8074,10 +8074,10 @@
     "@strapi/design-system" "2.0.1"
     "@strapi/icons" "2.0.1"
 
-"@strapi/plugin-seo@2.0.8":
-  version "2.0.8"
-  resolved "https://registry.yarnpkg.com/@strapi/plugin-seo/-/plugin-seo-2.0.8.tgz#9785f3a2734aadc6761de0224f0d6bd27d559883"
-  integrity sha512-k0/O6cx/O9wlYOcp0ZIM6ISiamYbalrm157GGpkQpVFOdle62rH7ftA+60ZKqOi55xnnSpyYTIBe7y5gGcOkwQ==
+"@strapi/plugin-seo@2.0.9":
+  version "2.0.9"
+  resolved "https://registry.yarnpkg.com/@strapi/plugin-seo/-/plugin-seo-2.0.9.tgz#f8e3b1a1d3dac9664162ce304ea241496b8a7e04"
+  integrity sha512-VVgwfLitQykn3ijbHku7hDJkK/ebRZGCaS9mHbPBT6nbZNkC7s2eVWJNbTUc3ZpBkiqrlWDgRy5fPc76Rusx8w==
   dependencies:
     "@strapi/design-system" "^2.0.0-rc.10"
     "@strapi/icons" "^2.0.0-rc.10"
@@ -8117,12 +8117,12 @@
     yup "0.32.9"
     zod "3.25.67"
 
-"@strapi/provider-email-mailgun@^5.29.0":
-  version "5.29.0"
-  resolved "https://registry.yarnpkg.com/@strapi/provider-email-mailgun/-/provider-email-mailgun-5.29.0.tgz#e26b2f0ebeed70e31015a480e37f8d2c84ccfd12"
-  integrity sha512-u08z9+CHLG4caJW7brVQ37vssEABbwLUc2naCBbV0hciCK/RnXr5apviW3JQOQTMZH+5cA9ocbrg9uiUpHSm+Q==
+"@strapi/provider-email-mailgun@^5.33.0":
+  version "5.33.0"
+  resolved "https://registry.yarnpkg.com/@strapi/provider-email-mailgun/-/provider-email-mailgun-5.33.0.tgz#5b0d0a51ddc21bb0a7803a3021426532417a3d98"
+  integrity sha512-N/UFDYR7JwYbHB8aNBxRtoaJWjPw2X4JHBdoXdBRo6WZUhswBrdb/n6EGFvoZSZ9h0dslqyIzQ9RNbDzd8ovVA==
   dependencies:
-    "@strapi/utils" "5.29.0"
+    "@strapi/utils" "5.33.0"
     form-data "4.0.4"
     mailgun.js "10.2.1"
 
@@ -8389,6 +8389,22 @@
   version "5.29.0"
   resolved "https://registry.yarnpkg.com/@strapi/utils/-/utils-5.29.0.tgz#b502585c16fe642d703c50ab86140d25df545e21"
   integrity sha512-758rf1RyZSeTECk/uMnRw64QvqioEvwJtYZSPiwYbo+g68ZZHOnPQ2n95bu0XFQo9P8Kd8vQrAu7jtFnwrirGQ==
+  dependencies:
+    "@sindresorhus/slugify" "1.1.0"
+    date-fns "2.30.0"
+    execa "5.1.1"
+    http-errors "2.0.0"
+    lodash "4.17.21"
+    node-machine-id "1.1.12"
+    p-map "4.0.0"
+    preferred-pm "3.1.2"
+    yup "0.32.9"
+    zod "3.25.67"
+
+"@strapi/utils@5.33.0":
+  version "5.33.0"
+  resolved "https://registry.yarnpkg.com/@strapi/utils/-/utils-5.33.0.tgz#578b8b7ccf4a24ed76b0747a7b714e01ae1119ad"
+  integrity sha512-11FvtuqiqcFeJSiPUjAYoOZkZ8iomPJgvH7MLuJEqGK8h7HJQptsMYre0hsqcJ1RzRZaKa7kV7YsO/5BegveYg==
   dependencies:
     "@sindresorhus/slugify" "1.1.0"
     date-fns "2.30.0"
