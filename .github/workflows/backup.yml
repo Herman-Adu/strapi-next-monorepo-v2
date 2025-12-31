@@ -6,13 +6,18 @@ on:
   # schedule:
   #   - cron: "0 2 * * *"
 
-  # Allow manual trigger (for production use only)
+  # Allow manual trigger with test mode option
   workflow_dispatch:
     inputs:
+      test_mode:
+        description: "Test mode (uses CI database with test data)"
+        required: false
+        default: true
+        type: boolean
       upload_to_s3:
         description: "Upload backup to S3"
         required: false
-        default: true
+        default: false
         type: boolean
 
 jobs:
@@ -23,9 +28,75 @@ jobs:
     permissions:
       contents: write
 
+    # Only run PostgreSQL service in test mode
+    services:
+      postgres:
+        image: postgres:15
+        env:
+          POSTGRES_USER: strapi
+          POSTGRES_PASSWORD: strapi
+          POSTGRES_DB: strapi_test
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U strapi"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        if: ${{ github.event.inputs.test_mode == 'true' }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: "yarn"
+
+      - name: Install dependencies
+        if: ${{ github.event.inputs.test_mode == 'true' }}
+        run: yarn install --frozen-lockfile
+
+      - name: Seed test database
+        if: ${{ github.event.inputs.test_mode == 'true' }}
+        run: |
+          echo "🌱 Seeding test database with sample data..."
+          
+          # Create test tables and data
+          PGPASSWORD=strapi psql -h localhost -U strapi -d strapi_test <<EOF
+          -- Create sample tables
+          CREATE TABLE IF NOT EXISTS pages (
+            id SERIAL PRIMARY KEY,
+            title VARCHAR(255),
+            slug VARCHAR(255),
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+          );
+          
+          CREATE TABLE IF NOT EXISTS components (
+            id SERIAL PRIMARY KEY,
+            name VARCHAR(255),
+            type VARCHAR(100),
+            data JSONB
+          );
+          
+          -- Insert test data
+          INSERT INTO pages (title, slug) VALUES 
+            ('Home Page', 'home'),
+            ('About Page', 'about'),
+            ('Contact Page', 'contact');
+          
+          INSERT INTO components (name, type, data) VALUES
+            ('Header', 'navigation', '{"links": []}'),
+            ('Footer', 'footer', '{"copyright": "2025"}');
+          
+          -- Verify data
+          SELECT COUNT(*) as page_count FROM pages;
+          SELECT COUNT(*) as component_count FROM components;
+          EOF
+          
+          echo "✅ Test database seeded"
 
       - name: Setup PostgreSQL client tools
         run: |
@@ -35,13 +106,57 @@ jobs:
       - name: Run database backup
         run: |
           chmod +x ./scripts/backup-database.sh
-          UPLOAD_TO_S3=${{ github.event.inputs.upload_to_s3 || 'true' }} ./scripts/backup-database.sh
+          
+          # Set DATABASE_URL based on mode
+          if [ "${{ github.event.inputs.test_mode }}" == "true" ]; then
+            export DATABASE_URL="postgresql://strapi:strapi@localhost:5432/strapi_test"
+            echo "🧪 Running in TEST MODE with CI database"
+          else
+            export DATABASE_URL="${{ secrets.STRAPI_DATABASE_URL }}"
+            echo "🔴 Running in PRODUCTION MODE"
+          fi
+          
+          UPLOAD_TO_S3=${{ github.event.inputs.upload_to_s3 || 'false' }} ./scripts/backup-database.sh
         env:
-          DATABASE_URL: ${{ secrets.STRAPI_DATABASE_URL }}
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_S3_BACKUP_BUCKET: ${{ secrets.AWS_S3_BACKUP_BUCKET }}
           AWS_DEFAULT_REGION: ${{ secrets.AWS_REGION || 'us-east-1' }}
+
+      - name: Validate backup file
+        if: always()
+        run: |
+          echo "🔍 Validating backup file..."
+          
+          BACKUP_FILE=$(ls -t backups/*.sql 2>/dev/null | head -1)
+          
+          if [ -f "$BACKUP_FILE" ]; then
+            FILE_SIZE=$(du -h "$BACKUP_FILE" | cut -f1)
+            LINE_COUNT=$(wc -l < "$BACKUP_FILE")
+            
+            echo "✅ Backup file created: $BACKUP_FILE"
+            echo "📊 File size: $FILE_SIZE"
+            echo "📊 Line count: $LINE_COUNT"
+            
+            # Basic validation - check for PostgreSQL dump headers
+            if grep -q "PostgreSQL database dump" "$BACKUP_FILE"; then
+              echo "✅ Valid PostgreSQL dump format"
+            else
+              echo "❌ Invalid backup format - missing PostgreSQL headers"
+              exit 1
+            fi
+            
+            # Check file is not empty
+            if [ "$LINE_COUNT" -lt 10 ]; then
+              echo "❌ Backup file too small - may be corrupted"
+              exit 1
+            fi
+            
+            echo "✅ Backup validation passed"
+          else
+            echo "❌ No backup file found"
+            exit 1
+          fi
 
       - name: Upload backup artifact
         uses: actions/upload-artifact@v4
@@ -51,14 +166,32 @@ jobs:
           path: backups/*.sql
           retention-days: 7
 
+      - name: Test mode summary
+        if: ${{ github.event.inputs.test_mode == 'true' && success() }}
+        run: |
+          echo "## ✅ Backup Test Successful" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Test Mode:** Enabled" >> $GITHUB_STEP_SUMMARY
+          echo "**Database:** CI PostgreSQL (isolated)" >> $GITHUB_STEP_SUMMARY
+          echo "**Backup File:** $(ls -t backups/*.sql | head -1 | xargs basename)" >> $GITHUB_STEP_SUMMARY
+          echo "**File Size:** $(du -h backups/*.sql | tail -1 | cut -f1)" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### Next Steps:" >> $GITHUB_STEP_SUMMARY
+          echo "1. Download backup artifact from workflow run" >> $GITHUB_STEP_SUMMARY
+          echo "2. Inspect SQL file contents" >> $GITHUB_STEP_SUMMARY
+          echo "3. When ready for production, disable test mode and configure secrets" >> $GITHUB_STEP_SUMMARY
+
       - name: Notify on failure
         if: failure()
         uses: actions/github-script@v7
         with:
           script: |
+            const testMode = '${{ github.event.inputs.test_mode }}' === 'true';
+            const mode = testMode ? 'Test Mode' : 'Production Mode';
+            
             github.rest.repos.createCommitComment({
               owner: context.repo.owner,
               repo: context.repo.repo,
               commit_sha: context.sha,
-              body: '❌ **Database Backup Failed**\n\nCheck the workflow logs for details.'
+              body: `❌ **Database Backup Failed (${mode})**\n\nCheck the workflow logs for details.`
             });
