@@ -18,6 +18,8 @@ on:
       - ".github/workflows/integration-tests.yml"
       - "!**/*.md"
       - "!**/docs/**"
+      - "!**/package.json"
+      - "!**/yarn.lock"
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.head_ref || github.run_id }}

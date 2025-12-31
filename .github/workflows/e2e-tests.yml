@@ -19,6 +19,8 @@ on:
       - ".github/workflows/e2e-tests.yml"
       - "!**/*.md"
       - "!**/docs/**"
+      - "!**/package.json"
+      - "!**/yarn.lock"
   # Run weekly instead of daily (save resources)
   schedule:
     - cron: "0 2 * * 0" # Sunday at 2 AM UTC
