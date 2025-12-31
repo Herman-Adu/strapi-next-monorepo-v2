@@ -16,10 +16,11 @@ on:
       - "apps/**"
       - "packages/**"
       - ".github/workflows/integration-tests.yml"
+      - ".github/workflows/ci.yml"  # CI changes may affect test environment
       - "!**/*.md"
       - "!**/docs/**"
-      - "!**/package.json"
-      - "!**/yarn.lock"
+      - "!**/package.json"  # Skip Dependabot deps (resource optimization)
+      - "!**/yarn.lock"     # Skip Dependabot lockfile
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.head_ref || github.run_id }}
