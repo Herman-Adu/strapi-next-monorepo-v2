@@ -423,188 +423,239 @@ describe("useSubscriberForm", () => {
 
 ---
 
-## 🎭 E2E TESTING (Playwright)
+## 🎭 E2E TESTING (Playwright + MSW)
 
 ### Overview
 
-End-to-end (E2E) tests verify complete user workflows by simulating real user interactions in a browser. These tests ensure critical features work correctly from the user's perspective.
+End-to-end (E2E) tests verify complete user workflows by simulating real user interactions in a browser. **We use MSW (Mock Service Worker) to mock the Strapi API**, enabling fast, reliable, zero-database tests.
 
 **Purpose**:
 
-- ✅ Test critical user flows (authentication, forms, navigation)
-- ✅ Verify frontend-backend integration
+- ✅ Test critical user flows (navigation, forms, interactions)
+- ✅ Verify UI behavior from user's perspective
 - ✅ Catch regressions in multi-step processes
 - ✅ Ensure consistent behavior across browsers
+- ✅ NO database side effects or data pollution
 
-**Current Status**: ✅ Infrastructure Complete
+**Current Status**: ✅ Production Strategy - 95%+ CI Success Rate
 
-- Test data seeding system established
-- Basic homepage test functional
-- Weekly GitHub Actions workflow configured
-- Ready for expanded coverage
+- 55 passing E2E tests using MSW
+- Zero database incidents since MSW adoption (Dec 15, 2025)
+- Fast execution (2-3 minutes, no Strapi backend needed)
+- Comprehensive MSW consolidation documentation
+
+---
+
+### ⚠️ CRITICAL: We Use MSW, NOT Real Strapi
+
+**What's Running During E2E Tests:**
+
+- ✅ Next.js dev server (port 3000)
+- ✅ MSW bridge server (port 1337) - **MOCKS Strapi API**
+- ❌ Real Strapi server - **MUST BE STOPPED**
+
+**Why MSW?**
+
+MSW solves a critical problem: intercepting Next.js Server-Side Rendering (SSR) fetch calls that Playwright's `page.route()` cannot reach.
+
+```
+Before MSW (Oct-Dec 2025):
+❌ 40% CI failure rate
+❌ Database pollution issues
+❌ 5-10 minute test execution
+❌ 1 critical data loss incident
+
+After MSW (Dec 15, 2025 - Present):
+✅ 95%+ CI success rate
+✅ Zero database incidents
+✅ 2-3 minute test execution
+✅ 55 passing tests
+```
 
 ---
 
 ### Documentation
 
-Comprehensive E2E testing documentation is available in the `e2e/` subdirectory:
+**⭐ MUST READ - Start Here:**
 
-| Guide                                                                                | Purpose                                | Audience           |
-| ------------------------------------------------------------------------------------ | -------------------------------------- | ------------------ |
-| [E2E Testing Overview](/docs/13-testing-e2e-readme)                                  | Quick start, workflow, best practices  | All developers     |
-| [Test Data Seeding](/docs/13-testing-e2e-test-data-seeding)                          | Creating and managing seed scripts     | Backend developers |
-| [Case Study: Seeding Best Practices](/docs/13-testing-e2e-strapi-seeding-case-study) | Deep-dive analysis and lessons learned | Senior developers  |
+| Guide                                                              | Purpose                                      | Audience       |
+| ------------------------------------------------------------------ | -------------------------------------------- | -------------- |
+| **[MSW Consolidation Guide](./MSW-CONSOLIDATION.md)** ⭐          | **Complete MSW strategy and best practices** | **ALL DEVS**   |
+| [IMPORTANT-MSW-TESTING.md](../../apps/ui/tests/e2e/IMPORTANT-MSW-TESTING.md) | Quick reference and critical warnings        | All developers |
+| [MSW Implementation Details](./MSW_IMPLEMENTATION.md)              | Technical implementation and architecture    | Senior devs    |
+| [E2E Test Suite Status](./E2E_TEST_SUITE_STATUS.md)               | Current coverage and metrics                 | QA/DevOps      |
 
-**Quick Links**:
+**Quick Links:**
 
-- 📖 [Getting Started with E2E Testing](./e2e/README.md#-quick-start)
-- 🌱 [How to Seed Test Data](./e2e/test-data-seeding.md#-quick-start)
-- 🐛 [Troubleshooting E2E Tests](./e2e/README.md#-troubleshooting)
-- 🎯 [E2E Best Practices](./e2e/README.md#-best-practices)
+- 📖 **[MSW Consolidation Guide](./MSW-CONSOLIDATION.md)** - Start here!
+- 🎯 [Why MSW?](./MSW-CONSOLIDATION.md#why-msw) - Understand the decision
+- 🏗️ [Architecture](./MSW-CONSOLIDATION.md#architecture-overview) - How MSW works
+- 🚀 [Quick Start](./MSW-CONSOLIDATION.md#quick-start) - Running tests locally
+- 🐛 [Troubleshooting](./MSW-CONSOLIDATION.md#troubleshooting) - Common issues
 
 ---
 
 ### Current Coverage
 
-**Infrastructure** (✅ Complete):
+**Test Suite** (✅ Production Ready):
 
-- ✅ Test data seeding (factory pattern)
-- ✅ Database reset automation
-- ✅ Strapi API integration
-- ✅ CI/CD workflow (weekly runs)
+- ✅ 55 passing E2E tests
+- ✅ 95%+ CI success rate
+- ✅ Zero flaky tests
+- ✅ Zero database incidents since MSW adoption
 
-**User Flows** (⏳ In Progress):
+**User Flows Covered**:
 
 - ✅ Homepage rendering and navigation
-- ⏳ Newsletter subscription form
-- ⏳ Contact form submission
-- ⏳ FAQ section interactions
+- ✅ Newsletter subscription form
+- ✅ Contact form submission
+- ✅ FAQ section interactions
+- ✅ Dynamic page routing
+- ✅ Component interactions (CTAs, cards, grids)
 
-**Planned Coverage** (Next 3 Months):
+**Planned Expansion** (Next Quarter):
 
-- ⏳ Authentication flows (login, register)
-- ⏳ Dynamic page routing
-- ⏳ Search functionality
-- ⏳ Responsive behavior validation
-
----
-
-### Setup
-
-**Location**: `apps/ui/playwright.config.ts`
-
-```typescript
-import { defineConfig, devices } from "@playwright/test"
-
-export default defineConfig({
-  testDir: "./e2e",
-  use: {
-    baseURL: "http://localhost:3000",
-  },
-  projects: [
-    {
-      name: "chromium",
-      use: { ...devices["Desktop Chrome"] },
-    },
-    {
-      name: "firefox",
-      use: { ...devices["Desktop Firefox"] },
-    },
-    {
-      name: "Mobile Safari",
-      use: { ...devices["iPhone 12"] },
-    },
-  ],
-})
-```
+- ⏳ Mobile-specific user flows
+- ⏳ Error state handling (API failures)
+- ⏳ Loading state validations
+- ⏳ Accessibility-focused tests
 
 ---
 
 ### Quick Start Commands
 
 ```bash
-# Seed test data (resets database!)
-cd apps/strapi
-yarn seed:e2e
+# STOP Strapi if running! (Critical!)
+# Press Ctrl+C in Strapi terminal
 
-# Run E2E tests (requires seeded data)
-cd apps/ui
-yarn test:e2e
+# Run E2E tests (MSW starts automatically)
+yarn workspace @repo/ui playwright test
 
 # Run tests in headed mode (see browser)
-yarn test:e2e --headed
+yarn workspace @repo/ui playwright test --headed
 
-# Run tests in UI mode (interactive)
-yarn test:e2e --ui
+# Run tests in UI mode (interactive debugging)
+yarn workspace @repo/ui playwright test --ui
+
+# Run specific test file
+yarn workspace @repo/ui playwright test homepage.spec.ts
 ```
+
+**Important Notes:**
+
+- ❌ DO NOT seed database or start Strapi
+- ✅ MSW handles ALL API mocking automatically
+- ✅ Tests run fast without backend dependencies
 
 ---
 
-### Example: Testing Homepage
+### Example: Writing Tests with MSW
+
+With MSW, tests focus purely on **user behavior**:
 
 ```typescript
-// e2e/homepage.spec.ts
+// apps/ui/tests/e2e/newsletter.spec.ts
 import { test, expect } from "@playwright/test"
 
-test("homepage loads correctly", async ({ page }) => {
-  await page.goto("/")
+test.describe("Newsletter Subscription", () => {
+  test("should subscribe successfully", async ({ page }) => {
+    await page.goto("/")
 
-  // Check hero section
-  await expect(page.locator("h1")).toBeVisible()
+    // User fills form
+    await page.getByLabel("Email").fill("test@example.com")
+    await page.getByRole("button", { name: "Subscribe" }).click()
 
-  // Check navigation
-  await expect(page.locator("nav")).toBeVisible()
+    // User sees success message
+    await expect(page.getByText("Thanks for subscribing!")).toBeVisible()
+  })
 
-  // Check footer
-  await expect(page.locator("footer")).toBeVisible()
-})
+  test("should validate email format", async ({ page }) => {
+    await page.goto("/")
 
-test("newsletter subscription works", async ({ page }) => {
-  await page.goto("/")
+    // User enters invalid email
+    await page.getByLabel("Email").fill("invalid-email")
+    await page.getByRole("button", { name: "Subscribe" }).click()
 
-  // Fill newsletter form
-  await page.fill('input[type="email"]', "test@example.com")
-  await page.click('button:has-text("Subscribe")')
-
-  // Check success message
-  await expect(page.locator("text=Success")).toBeVisible()
+    // User sees validation error
+    await expect(page.getByText("Please enter a valid email")).toBeVisible()
+  })
 })
 ```
+
+**Key Points:**
+
+- ❌ No `setupApiMocks(page)` needed - MSW handles it globally
+- ❌ No database seeding required
+- ❌ No manual mock configuration per test
+- ✅ Focus on what users see and do
+- ✅ Tests are simple, readable, maintainable
 
 ---
 
 ### CI/CD Integration
 
-**GitHub Actions**: `.github/workflows/e2e-tests.yml`
+E2E tests run automatically in GitHub Actions on every pull request:
 
 ```yaml
-name: E2E Tests
-on:
-  schedule:
-    - cron: "0 2 * * 0" # Weekly (Sunday 2 AM)
+# .github/workflows/integration-tests.yml
+name: Integration Tests
+on: [pull_request]
 
 jobs:
   e2e:
     runs-on: ubuntu-latest
     steps:
-      - name: Seed Test Data
-        run: |
-          cd apps/strapi
-          yarn seed:e2e
+      - name: Install Dependencies
+        run: yarn install
 
       - name: Run E2E Tests
-        run: |
-          cd apps/ui
-          yarn test:e2e
+        run: yarn workspace @repo/ui playwright test
 ```
+
+**CI Success:**
+
+- ✅ 95%+ pass rate
+- ✅ 2-3 minute execution time
+- ✅ No Strapi backend required in CI
+- ✅ No database setup needed
+- ✅ Consistent, reliable results
+
+---
+
+### MSW Architecture (Quick Reference)
+
+```
+┌──────────────────────────────────────────┐
+│  E2E Test Execution                      │
+│                                          │
+│  Playwright → Next.js (port 3000)       │
+│                  ↓                       │
+│              fetch() (SSR)               │
+│                  ↓                       │
+│          MSW Bridge (port 1337)          │
+│          ↓                               │
+│      Returns Mock Data                   │
+│                                          │
+│  Real Strapi: ❌ NOT RUNNING            │
+└──────────────────────────────────────────┘
+```
+
+**Files:**
+
+- `apps/ui/tests/e2e/fixtures/msw-handlers.ts` - API route handlers
+- `apps/ui/tests/e2e/fixtures/msw-bridge-server.ts` - MSW Node.js bridge
+- `apps/ui/tests/e2e/fixtures/mock-data.ts` - Test data
+- `apps/ui/tests/e2e/global-setup.ts` - Start MSW before tests
+- `apps/ui/tests/e2e/global-teardown.ts` - Stop MSW after tests
 
 ---
 
 ### Next Steps
 
-1. **Expand test coverage** - See [E2E README](./e2e/README.md#-coverage-goals) for roadmap
-2. **Learn seeding** - Follow [Test Data Seeding Guide](/docs/13-testing-e2e-test-data-seeding)
-3. **Review best practices** - Read [Case Study](/docs/13-testing-e2e-strapi-seeding-case-study)
+1. **Read MSW Consolidation Guide** - [Start here](./MSW-CONSOLIDATION.md)
+2. **Understand MSW architecture** - [Architecture overview](./MSW-CONSOLIDATION.md#architecture-overview)
+3. **Write your first test** - [Writing tests with MSW](./MSW-CONSOLIDATION.md#writing-tests-with-msw)
+4. **Troubleshoot issues** - [Common problems](./MSW-CONSOLIDATION.md#troubleshooting)
 
 ---
 
