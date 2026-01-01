@@ -256,14 +256,22 @@
 3. `yarn format` - Format all files
 4. `git commit --no-verify` - Safe because format already done
 5. `git push origin sprint-5/task-2-documentation-updates`
-6. Create PR when Task 2 complete
+6. **When Task 2 complete**: Create PR to merge into `main`
+7. **After PR merge**: CI/CD workflows trigger on `main` branch
+   - Lint checks
+   - Build verification
+   - E2E tests
+   - Visual regression tests
+
+**Important**: CI/CD workflows only run on `main` branch pushes, not on feature branches. This means we won't see CI results until PR is merged.
 
 ### Must Maintain
 
-- ✅ CI passing status throughout Sprint 5
-- ✅ All commits must pass lint/format checks
+- ✅ CI passing status throughout Sprint 5 (verified after PR merge)
+- ✅ All commits must pass lint/format checks (pre-validated with `yarn format`)
 - ✅ Document all breaking changes
 - ✅ Update cross-references when moving/archiving docs
+- ✅ Create PR when subtask complete for review and merge
 
 ---
 
