@@ -17,10 +17,11 @@ on:
       - "apps/**"
       - "packages/**"
       - ".github/workflows/e2e-tests.yml"
+      - ".github/workflows/ci.yml"  # CI changes may affect test environment
       - "!**/*.md"
       - "!**/docs/**"
-      - "!**/package.json"
-      - "!**/yarn.lock"
+      - "!**/package.json"  # Skip Dependabot deps (resource optimization)
+      - "!**/yarn.lock"     # Skip Dependabot lockfile
   # Run weekly instead of daily (save resources)
   schedule:
     - cron: "0 2 * * 0" # Sunday at 2 AM UTC
