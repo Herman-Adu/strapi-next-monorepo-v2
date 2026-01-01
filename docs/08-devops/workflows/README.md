@@ -1,7 +1,7 @@
 # 🔄 GitHub Actions Workflows Reference
 
 **Created**: November 30, 2025  
-**Last Updated**: November 30, 2025  
+**Last Updated**: January 1, 2026  
 **Status**: ✅ Active  
 **Audience**: DevOps engineers, developers
 
@@ -9,37 +9,47 @@
 
 ## 🎯 PURPOSE
 
-This index provides an overview of all **6 GitHub Actions workflows** that power our CI/CD pipeline, ensuring code quality, automated testing, performance monitoring, and infrastructure maintenance.
+This index provides an overview of all **9 GitHub Actions workflows** that power our CI/CD pipeline, ensuring code quality, automated testing, performance monitoring, and infrastructure maintenance.
 
 **Related Documentation**:
 
-- [Phase 3 Documentation Roadmap](/docs/12-planning-phase-3-documentation-roadmap)
-- [CI/CD Overview](/docs/08-devops-ci-cd)
-- [E2E Testing Guide](/docs/13-testing-e2e-readme)
+- [CI/CD Overview](../ci-cd.md)
+- [E2E Testing Guide](../../13-testing/README.md)
+- [MSW Testing Consolidation](../../13-testing/MSW-CONSOLIDATION.md)
 
 ---
 
 ## 📊 WORKFLOWS OVERVIEW
 
-### Workflow Summary Table
+### Core Testing & Build Workflows (7)
 
-| Workflow                   | File                                      | Triggers             | Duration   | Frequency      | Status    |
-| -------------------------- | ----------------------------------------- | -------------------- | ---------- | -------------- | --------- |
-| **CI (Lint + Build)**      | `.github/workflows/ci.yml`                | Push to main, PRs    | ~10-20 min | Every commit   | ✅ Active |
-| **E2E Tests**              | `.github/workflows/e2e-tests.yml`         | Weekly, code changes | ~15 min    | Weekly + PRs   | ✅ Active |
-| **Lighthouse Performance** | `.github/workflows/lighthouse.yml`        | PRs (UI changes)     | ~20 min    | On UI PRs      | ✅ Active |
-| **Visual Regression**      | `.github/workflows/visual-regression.yml` | Push, PRs            | ~15 min    | Every commit   | ✅ Active |
-| **Cache Cleanup**          | `.github/workflows/cache-cleanup.yml`     | Daily                | <1 min     | Daily 2 AM UTC | ✅ Active |
-| **Database Backup**        | `.github/workflows/backup.yml`            | Daily                | ~5 min     | Daily 2 AM UTC | ✅ Active |
+| Workflow                   | File                                      | Doc                                                                    | Triggers             | Duration | Frequency      | Status    |
+| -------------------------- | ----------------------------------------- | ---------------------------------------------------------------------- | -------------------- | -------- | -------------- | --------- |
+| **CI (Lint + Build)**      | `.github/workflows/ci.yml`                | [01-ci-workflow.md](./01-ci-workflow.md)                               | Push to main, PRs    | ~4-5 min | Every commit   | ✅ Active |
+| **E2E Tests**              | `.github/workflows/e2e-tests.yml`         | [02-e2e-workflow.md](./02-e2e-workflow.md)                             | Weekly, code changes | ~15 min  | Weekly + PRs   | ✅ Active |
+| **Lighthouse Performance** | `.github/workflows/lighthouse.yml`        | [03-lighthouse-workflow.md](./03-lighthouse-workflow.md)               | PRs (UI changes)     | ~20 min  | On UI PRs      | ✅ Active |
+| **Visual Regression**      | `.github/workflows/visual-regression.yml` | [04-visual-regression-workflow.md](./04-visual-regression-workflow.md) | Push, PRs            | ~2-3 min | Every commit   | ✅ Active |
+| **Cache Cleanup**          | `.github/workflows/cleanup-caches.yml`    | [05-cache-cleanup-workflow.md](./05-cache-cleanup-workflow.md)         | Daily                | <1 min   | Daily 2 AM UTC | ✅ Active |
+| **Database Backup**        | `.github/workflows/backup.yml`            | [06-database-backup-workflow.md](./06-database-backup-workflow.md)     | Daily                | ~5 min   | Daily 2 AM UTC | ✅ Active |
+| **Integration Tests**      | `.github/workflows/integration-tests.yml` | [07-integration-tests-workflow.md](./07-integration-tests-workflow.md) | PRs, manual          | ~3-4 min | On PRs         | ✅ Active |
+
+### Utility & Automation Workflows (2)
+
+| Workflow                  | File                                          | Doc           | Triggers          | Frequency      | Status    |
+| ------------------------- | --------------------------------------------- | ------------- | ----------------- | -------------- | --------- |
+| **Dependabot Auto-Merge** | `.github/workflows/dependabot-auto-merge.yml` | _(automated)_ | Dependabot PRs    | As needed      | ✅ Active |
+| **Doc Link Validation**   | `.github/workflows/validate-doc-links.yml`    | _(automated)_ | PRs (doc changes) | On doc changes | ✅ Active |
+
+**Note**: Utility workflows are automated and don't require dedicated documentation pages.
 
 ---
 
 ## 🔍 WORKFLOW DETAILS
 
-### 1. CI Workflow (Lint + Build) 🏗️
+### 1. CI Workflow (Lint + Build) 🏭️
 
 **Purpose**: Code quality and build verification  
-**Documentation**: [01-ci-workflow.md](/docs/08-devops-workflows-01-ci-workflow) ⏳ Coming Soon
+**Documentation**: [01-ci-workflow.md](./01-ci-workflow.md)
 
 **What It Does**:
 
@@ -84,7 +94,7 @@ on:
 ### 2. E2E Testing Workflow 🎭
 
 **Purpose**: End-to-end testing with Playwright  
-**Documentation**: [02-e2e-workflow.md](/docs/08-devops-workflows-02-e2e-workflow) ⏳ Coming Soon
+**Documentation**: [02-e2e-workflow.md](./02-e2e-workflow.md)
 
 **What It Does**:
 
@@ -138,10 +148,65 @@ on:
 
 ---
 
-### 3. Lighthouse Performance Workflow 💡
+### 3. Integration Tests Workflow 🔗
+
+**Purpose**: Real Strapi API integration testing  
+**Documentation**: [07-integration-tests-workflow.md](./07-integration-tests-workflow.md)
+
+**What It Does**:
+
+- ✅ Tests real Strapi API endpoints (no MSW mocking)
+- ✅ Validates API contracts and data structures
+- ✅ Runs 9 integration tests against live Strapi backend
+- ✅ Verifies SSR rendering with real API data
+
+**Key Features**:
+
+- Real PostgreSQL database with seeded data
+- Starts actual Strapi backend in test mode
+- Tests API integration, not UI behavior
+- Complementary to E2E tests (which use MSW)
+
+**Triggers**:
+
+```yaml
+on:
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+```
+
+**Performance**:
+
+- Strapi startup: ~1 minute
+- Test execution: ~2-3 minutes
+- Total: ~3-4 minutes
+
+**Test Coverage**:
+
+- API response validation
+- SSR page rendering with real data
+- Content type integration
+- Authentication flows (if applicable)
+
+**When It Fails**:
+
+- API contract changes
+- Database connection issues
+- Strapi startup failures
+- Real data mismatches
+
+**Difference from E2E Tests**:
+
+- **E2E Tests**: Use MSW to mock API, test user behavior in isolation
+- **Integration Tests**: Use real Strapi API, test actual API integration
+
+---
+
+### 4. Lighthouse Performance Workflow 💡
 
 **Purpose**: Performance budget enforcement  
-**Documentation**: [03-lighthouse-workflow.md](/docs/08-devops-workflows-03-lighthouse-workflow) ⏳ Coming Soon
+**Documentation**: [03-lighthouse-workflow.md](./03-lighthouse-workflow.md)
 
 **What It Does**:
 
@@ -189,10 +254,10 @@ on:
 
 ---
 
-### 4. Visual Regression Workflow 👁️
+### 5. Visual Regression Workflow 👁️
 
 **Purpose**: Chromatic visual testing  
-**Documentation**: [04-visual-regression-workflow.md](/docs/08-devops-workflows-04-visual-regression-workflow) ⏳ Coming Soon
+**Documentation**: [04-visual-regression-workflow.md](./04-visual-regression-workflow.md)
 
 **What It Does**:
 
@@ -239,7 +304,7 @@ on:
 ### 5. Cache Cleanup Workflow 🧹
 
 **Purpose**: Prevent GitHub cache limit issues  
-**Documentation**: [05-cache-cleanup-workflow.md](/docs/08-devops-workflows-05-cache-cleanup-workflow) ⏳ Coming Soon
+**Documentation**: [05-cache-cleanup-workflow.md](./05-cache-cleanup-workflow.md)
 
 **What It Does**:
 
@@ -275,10 +340,10 @@ on:
 
 ---
 
-### 6. Database Backup Workflow 💾
+### 7. Database Backup Workflow 💾
 
-**Purpose**: Daily PostgreSQL backups  
-**Documentation**: [06-database-backup-workflow.md](/docs/08-devops-workflows-06-database-backup-workflow) ⏳ Coming Soon
+**Purpose**: Automated PostgreSQL backups  
+**Documentation**: [06-database-backup-workflow.md](./06-database-backup-workflow.md)
 
 **What It Does**:
 
@@ -326,13 +391,13 @@ on:
 
 ### When Each Workflow Runs
 
-| Event                 | CI  | E2E | Lighthouse | Visual | Cache | Backup |
-| --------------------- | --- | --- | ---------- | ------ | ----- | ------ |
-| **Push to main**      | ✅  | ✅  | ❌         | ✅     | ❌    | ❌     |
-| **Pull Request**      | ✅  | ✅  | ✅\*       | ✅\*   | ❌    | ❌     |
-| **Daily (2 AM UTC)**  | ❌  | ❌  | ❌         | ❌     | ✅    | ✅     |
-| **Weekly (Sun 2 AM)** | ❌  | ✅  | ❌         | ❌     | ❌    | ❌     |
-| **Manual**            | ✅  | ✅  | ✅         | ✅     | ✅    | ✅     |
+| Event                 | CI  | E2E | Integration | Lighthouse | Visual | Cache | Backup |
+| --------------------- | --- | --- | ----------- | ---------- | ------ | ----- | ------ |
+| **Push to main**      | ✅  | ✅  | ❌          | ❌         | ✅     | ❌    | ❌     |
+| **Pull Request**      | ✅  | ✅  | ✅          | ✅\*       | ✅\*   | ❌    | ❌     |
+| **Daily (2 AM UTC)**  | ❌  | ❌  | ❌          | ❌         | ❌     | ✅    | ✅     |
+| **Weekly (Sun 2 AM)** | ❌  | ✅  | ❌          | ❌         | ❌     | ❌    | ❌     |
+| **Manual**            | ✅  | ✅  | ✅          | ✅         | ✅     | ✅    | ✅     |
 
 \* Only on UI/Storybook changes
 
@@ -632,6 +697,48 @@ Cleanup Strategy:         Delete >3 days OR oldest if >9 GB
 - [Storybook Integration](/docs/13-testing-readme)
 
 ### External Resources
+
+---
+
+## 🤖 UTILITY WORKFLOWS
+
+These automated workflows run in the background and don't require dedicated documentation.
+
+### Dependabot Auto-Merge
+
+**File**: `.github/workflows/dependabot-auto-merge.yml`
+
+**Purpose**: Automatically approves and merges Dependabot PRs that pass all checks
+
+**Triggers**: When Dependabot opens a PR
+
+**Behavior**:
+
+- Auto-approves minor and patch version updates
+- Waits for all required checks to pass
+- Auto-merges if approved and checks pass
+- Skips major version updates (requires manual review)
+
+---
+
+### Doc Link Validation
+
+**File**: `.github/workflows/validate-doc-links.yml`
+
+**Purpose**: Validates internal markdown links in documentation
+
+**Triggers**: Pull requests that modify `.md` files in `docs/`
+
+**Behavior**:
+
+- Scans all documentation files
+- Checks for broken internal links
+- Reports issues as workflow failures
+- Helps maintain documentation quality
+
+---
+
+## 📚 EXTERNAL RESOURCES
 
 - [GitHub Actions Documentation](https://docs.github.com/en/actions)
 - [Playwright CI Guide](https://playwright.dev/docs/ci)
