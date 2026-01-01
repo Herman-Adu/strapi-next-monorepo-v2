@@ -61,6 +61,7 @@ taskkill /PID <PID> /F
 📖 **[MSW Testing Consolidation Guide](../../docs/13-testing/MSW-CONSOLIDATION.md)**
 
 This includes:
+
 - Why MSW? (Problem solved)
 - Architecture deep dive
 - Writing tests with MSW
@@ -78,6 +79,7 @@ For tests requiring **real Strapi backend**, see:
 📖 **[Integration Testing Guide](../../docs/13-testing/README.md#integration-tests)**
 
 Integration tests are different from E2E:
+
 - E2E: MSW mocked (no Strapi)
 - Integration: Real Strapi + database
 

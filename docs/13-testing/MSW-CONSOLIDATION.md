@@ -600,12 +600,12 @@ E2E tests run automatically on every push to main:
 
 ### Running Tests Locally vs CI
 
-| Environment | Strapi Needed? | MSW Needed? | Database Needed? |
-|-------------|----------------|-------------|------------------|
-| **E2E (Local)** | ❌ No | ✅ Yes (auto) | ❌ No |
-| **E2E (CI)** | ❌ No | ✅ Yes (auto) | ❌ No |
-| **Integration (Local)** | ✅ Yes | ❌ No | ✅ Yes |
-| **Integration (CI)** | ✅ Yes | ❌ No | ✅ Yes (ephemeral) |
+| Environment             | Strapi Needed? | MSW Needed?   | Database Needed?   |
+| ----------------------- | -------------- | ------------- | ------------------ |
+| **E2E (Local)**         | ❌ No          | ✅ Yes (auto) | ❌ No              |
+| **E2E (CI)**            | ❌ No          | ✅ Yes (auto) | ❌ No              |
+| **Integration (Local)** | ✅ Yes         | ❌ No         | ✅ Yes             |
+| **Integration (CI)**    | ✅ Yes         | ❌ No         | ✅ Yes (ephemeral) |
 
 ### Test Execution in CI
 
