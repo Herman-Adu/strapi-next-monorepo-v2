@@ -3,7 +3,7 @@
 **Duration**: 3-4 hours  
 **Goal**: Organize docs folder with correct, current information  
 **Started**: January 1, 2026  
-**Status**: IN PROGRESS - Task 2 (75% complete)
+**Status**: IN PROGRESS - Task 5 (80% complete)
 
 ---
 
@@ -168,18 +168,21 @@
 
 ---
 
-### 🔄 Task 4: Remove/Archive Obsolete Content (IN PROGRESS)
+### ✅ Task 4: Remove/Archive Obsolete Content (COMPLETE)
 
-**Status**: 10% COMPLETE  
+**Status**: 100% COMPLETE  
 **Priority**: HIGH
 
 **Completed**:
 
-- ✅ **4.1: Recovery docs archived** (PR #68 merged)
-  - Moved 3 recovery docs to `docs/99-archive/recovery/`
-  - incidents/2025-12-22-agent-security-violations.md
-  - postgresql-migration-dec-22-2025.md
-  - ui-authentication-fix-dec-24-2025.md
+- ✅ **4.1: Recovery infrastructure docs** (PR #68)
+- ✅ **4.2: Testing & content-manager docs** (PR #69)
+- ✅ **4.3: Recovery session docs** (PR #70)
+
+**Total Archived**: 19 files
+
+- postgresql-migration-dec-22-2025.md
+- ui-authentication-fix-dec-24-2025.md
 
 **Remaining Subtasks**:
 
@@ -351,5 +354,5 @@
 
 ---
 
-_Last Updated: January 1, 2026 - Task 3 complete (PRs #66, #67 merged), ready for Task 4_
+_Last Updated: January 1, 2026 - Task 4 complete (PRs #68, #69, #70 merged), ready for Task 5_
 _Last Updated: January 1, 2026 - Task 2.2 complete, ready for Task 2.3_
