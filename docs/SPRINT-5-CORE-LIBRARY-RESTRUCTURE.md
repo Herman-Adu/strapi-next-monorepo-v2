@@ -168,21 +168,28 @@
 
 ---
 
-### ⏳ Task 4: Remove/Archive Obsolete Content (NOT STARTED)
+### 🔄 Task 4: Remove/Archive Obsolete Content (IN PROGRESS)
 
-**Status**: NOT STARTED  
-**Priority**: MEDIUM
+**Status**: 10% COMPLETE  
+**Priority**: HIGH
 
-**Subtasks**:
+**Completed**:
 
-1. Archive ~70 obsolete files (identified in Sprint 4)
-2. Remove SQLite-specific content
-3. Archive old session recovery docs
-4. Clean up redundant architecture docs
+- ✅ **4.1: Recovery docs archived** (PR #68 merged)
+  - Moved 3 recovery docs to `docs/99-archive/recovery/`
+  - incidents/2025-12-22-agent-security-violations.md
+  - postgresql-migration-dec-22-2025.md
+  - ui-authentication-fix-dec-24-2025.md
 
-**Files to Archive**: ~70 files identified in Sprint 4 Gap Analysis
+**Remaining Subtasks**:
 
-**Estimated Work**: 30-45 minutes
+1. ⏳ Archive remaining recovery docs (~12 files)
+2. ⏳ Archive old planning docs (~15 files in archives/)
+3. ⏳ Archive obsolete testing docs (~12 files)
+4. ⏳ Archive content manager migration docs (~5 files)
+
+**Files Archived**: 3 of ~70  
+**Estimated Work Remaining**: 30-40 minutes
 
 ---
 
@@ -229,16 +236,16 @@
 - [x] **Task 3**: Merge scattered docs into appropriate sections (100% complete)
   - [x] 3.1: Workflow documentation consolidation
   - [x] 3.2: Scattered docs consolidation (4 actions)
-- [ ] **Task 4**: Remove/archive obsolete content (70 files)
+- [ ] **Task 4**: Remove/archive obsolete content (10% - 3 of 70 files)
 - [ ] **Task 5**: Add missing critical sections (CI/CD, Database, Testing)
 
 ---
 
 ### Current Position
 
-- **Task**: 3.2 - Scattered Docs Consolidation ✅ COMPLETE (PR #67 merged)
-- **Next**: Task 4 - Archive obsolete content
-- **Overall Progress**: 70% of Sprint 5 complete
+- **Task**: 4.1 - Recovery docs archived ✅ (PR #68 merged)
+- **Next**: Task 4.2 - Archive remaining recovery and planning docs
+- **Overall Progress**: 72% of Sprint 5 complete
 
 ### Immediate Next Steps
 
@@ -268,10 +275,11 @@
 - **Task 2.4** (Workflows verification): 20 minutes ✅
 - **Task 3.1** (Workflow consolidation): 15 minutes ✅
 - **Task 3.2** (Scattered docs consolidation): 35 minutes ✅
+- **Task 4.1** (Archive recovery docs): 10 minutes ✅
 
 ### Time Remaining
 
-- **Task 4** (Archive): 30-45 minutes
+- **Task 4.2-4.4** (Archive remaining): 30-40 minutes
 - **Task 5** (New sections): 1-1.5 hours
 
 **Total Sprint 5 Time**: 3-4 hours (original estimate)  
