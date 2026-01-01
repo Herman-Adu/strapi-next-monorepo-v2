@@ -133,19 +133,30 @@
 
 ---
 
-### ⏳ Task 3: Merge Scattered Docs (NOT STARTED)
+### 🔄 Task 3: Merge Scattered Docs (IN PROGRESS)
 
-**Status**: NOT STARTED  
+**Status**: 50% COMPLETE - Workflow consolidation merged  
 **Priority**: MEDIUM
 
-**Subtasks**:
+**Completed**:
 
-1. Identify duplicate/scattered content
-2. Create canonical locations for topics
-3. Merge content systematically
-4. Update cross-references
+- ✅ Workflow documentation consolidated (PR #66 merged)
+  - Updated workflow count 6 → 9 in master index
+  - Added Integration Tests, Dependabot, Doc Validation workflows
+  - Reorganized into Core (7) and Utility (2) categories
+  - Fixed paths, added comprehensive tables
 
-**Estimated Work**: 30-45 minutes
+**Remaining Subtasks**:
+
+1. ⏳ Identify other scattered docs (apps/, packages/, root)
+2. ⏳ Merge remaining scattered content systematically
+3. ⏳ Update cross-references throughout docs
+
+**Estimated Remaining Work**: 20-30 minutes
+
+**Commits**:
+
+- `961c5c5` - Workflow documentation consolidation (squash merged)
 
 ---
 
@@ -202,34 +213,36 @@
 ## SPRINT 5 COMPLETION CHECKLIST
 
 - [x] **Task 1**: Fix npx/npm/yarn commands (89% complete)
-- [ ] **Task 2**: Update documentation with current reality (50% complete)
+- [x] **Task 2**: Update documentation with current reality (100% complete)
   - [x] 2.1: Yarn workspace commands
   - [x] 2.2: MSW testing approach consolidation
-  - [ ] 2.3: Hybrid database strategy docs (NEXT)
-  - [ ] 2.4: Current workflows verification
-- [ ] **Task 3**: Merge scattered docs into appropriate sections
+  - [x] 2.3: Hybrid database strategy docs
+  - [x] 2.4: Current workflows verification
+- [ ] **Task 3**: Merge scattered docs into appropriate sections (50% complete)
+  - [x] 3.1: Workflow documentation consolidation
+  - [ ] 3.2: Identify/merge remaining scattered docs
 - [ ] **Task 4**: Remove/archive obsolete content (70 files)
 - [ ] **Task 5**: Add missing critical sections (CI/CD, Database, Testing)
 
 ---
 
-## CURRENT STATUS & NEXT STEPS
-
 ### Current Position
 
-- **Task**: 2.2 - MSW Testing Consolidation ✅ COMPLETE
-- **Next**: 2.3 - Hybrid Database Strategy Documentation
-- **Overall Progress**: 50% of Task 2 complete
+- **Task**: 3.1 - Workflow Documentation Consolidation ✅ COMPLETE (PR #66 merged)
+- **Next**: 3.2 - Identify/merge remaining scattered docs
+- **Overall Progress**: 60% of Sprint 5 complete
 
 ### Immediate Next Steps
 
-1. ⏳ **Task 2.3**: Document hybrid database strategy (PostgreSQL primary)
-   - Review current database documentation
-   - Update PostgreSQL as primary approach
-   - Archive SQLite references
-   - Document seeding patterns
-2. ⏳ **Task 2.4**: Verify current workflows match reality
-3. ⏳ **Task 3**: Merge scattered documentation
+1. ⏳ **Task 3.2**: Complete remaining scattered doc consolidation
+   - Identify scattered docs in apps/, packages/, root
+   - Merge systematically into docs/ structure
+   - Update cross-references
+   - **Time**: 20-30 minutes
+2. ⏳ **Task 4**: Archive obsolete content (~70 files)
+   - **Time**: 30-45 minutes
+3. ⏳ **Task 5**: Create missing critical sections
+   - **Time**: 1-1.5 hours
 4. ⏳ **Task 4**: Archive obsolete content
 5. ⏳ **Task 5**: Create missing critical sections
 
@@ -242,17 +255,18 @@
 - **Task 1** (Commands): 45 minutes ✅
 - **Task 2.1** (Yarn commands): Included in Task 1 ✅
 - **Task 2.2** (MSW consolidation): 45 minutes ✅
+- **Task 2.3** (Database strategy): 25 minutes ✅
+- **Task 2.4** (Workflows verification): 20 minutes ✅
+- **Task 3.1** (Workflow consolidation): 15 minutes ✅
 
 ### Time Remaining
 
-- **Task 2.3** (Database strategy): 20-30 minutes
-- **Task 2.4** (Workflows): 15-20 minutes
-- **Task 3** (Merge docs): 30-45 minutes
+- **Task 3.2** (Remaining scattered docs): 20-30 minutes
 - **Task 4** (Archive): 30-45 minutes
 - **Task 5** (New sections): 1-1.5 hours
 
 **Total Sprint 5 Time**: 3-4 hours (original estimate)  
-**Time Spent So Far**: ~1.5 hours  
+**Time Spent So Far**: ~2.5 hours  
 **Time Remaining**: ~2-2.5 hours
 
 ---
@@ -320,4 +334,5 @@
 
 ---
 
+_Last Updated: January 1, 2026 - Task 3.1 complete (PR #66 merged), ready for Task 3.2_
 _Last Updated: January 1, 2026 - Task 2.2 complete, ready for Task 2.3_
