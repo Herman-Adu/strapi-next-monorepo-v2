@@ -4,13 +4,22 @@
 
 ## 🚨 Critical Resources
 
+### [Database Strategy](./DATABASE-STRATEGY.md)
+
+**Database Configuration**: PostgreSQL primary database setup, backup/restore, and migration guide.
+
+- PostgreSQL setup for development and production
+- Dual-layer backup strategy (Strapi export + PostgreSQL dump)
+- Migration from SQLite (historical reference)
+- Troubleshooting and best practices
+
 ### [Backup & Safety](./backup-and-safety/)
 
 **START HERE** for all backup, restore, and data safety procedures.
 
 - **[Quick Start Guide](/docs/03-strapi-backup-and-safety-readme)** - Common backup/restore commands
 - **[Safety Guidelines](/docs/03-strapi-backup-and-safety-safety-guidelines)** - Mandatory checklist before any database operation
-- **[Backup Procedures](/docs/03-strapi-backup-and-safety-backup-procedures)** - Comprehensive backup methods
+- **[Backup Procedures](/docs/03-strapi-backup-and-safety-backup-procedures)** - PostgreSQL backup methods
 - **[Investigation Reports](/docs/03-strapi-backup-and-safety-investigation-report)** - Technical analysis and lessons learned
 
 **Key Scripts:**
@@ -27,7 +36,7 @@
 Strapi v5 patterns, workflows, and architectural decisions:
 
 - Lifecycles (when to use/avoid)
-- Database operations
+- Database operations (PostgreSQL-focused)
 - Content types & components
 - Build process optimization
 - Package management

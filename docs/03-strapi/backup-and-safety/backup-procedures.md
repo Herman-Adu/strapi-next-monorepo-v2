@@ -1,5 +1,7 @@
 # Strapi Database Backup & Restore Guide
 
+> **Database**: This guide uses **PostgreSQL** as the primary database. See [Database Strategy](../DATABASE-STRATEGY.md) for full PostgreSQL setup and migration guide.
+
 ## 🎯 Purpose
 
 Protect against critical failures and enable quick recovery with complete database snapshots including media files.
@@ -18,11 +20,11 @@ Protect against critical failures and enable quick recovery with complete databa
 
 **Why?**
 
-- SQLite database locks prevent concurrent access
 - Running server can cause schema sync issues
 - Export/import commands may conflict with active connections
 - Changes to components may not sync properly
 - Risk of data corruption or incomplete backups
+- PostgreSQL connections should be closed cleanly
 
 **Workflow:**
 
@@ -34,11 +36,11 @@ Protect against critical failures and enable quick recovery with complete databa
 
 **Common Issues When Server is Running:**
 
-- ❌ Backup fails with database lock error
 - ❌ Import hangs or fails silently
 - ❌ Component changes don't appear in admin
 - ❌ TypeScript types not regenerated
 - ❌ Config Sync shows perpetual differences
+- ❌ Database connection pool issues
 
 ---
 
@@ -91,29 +93,23 @@ yarn workspace @repo/strapi strapi import -- --file ../backups/strapi-export-202
 
 ---
 
-### Method 2: Database + Media Folder (Production-Ready)
+### Method 2: PostgreSQL Dump + Media Folder (Production-Ready)
+
+> **Recommended**: Use PostgreSQL for both development and production. See [Database Strategy](../DATABASE-STRATEGY.md).
 
 #### Backup Database:
 
-**SQLite** (Development):
+**PostgreSQL** (Development & Production):
 
 ```powershell
-# Copy database file
-Copy-Item "apps/strapi/.tmp/data.db" -Destination "backups/database-$(Get-Date -Format 'yyyy-MM-dd').db"
-```
+# Dump database (custom format - recommended)
+pg_dump -h localhost -U strapi_user -d strapi_dev -F c -f backups/strapi-db-$(Get-Date -Format 'yyyy-MM-dd').dump
 
-**PostgreSQL** (Production):
+# OR plain SQL format
+pg_dump -h localhost -U strapi_user -d strapi_dev > backups/strapi-db-$(Get-Date -Format 'yyyy-MM-dd').sql
 
-```powershell
-# Dump database
-pg_dump -h localhost -U strapi_user -d strapi_db -F c -f backups/strapi-db-$(Get-Date -Format 'yyyy-MM-dd').dump
-```
-
-**MySQL** (Production):
-
-```powershell
-# Dump database
-mysqldump -u strapi_user -p strapi_db > backups/strapi-db-$(Get-Date -Format 'yyyy-MM-dd').sql
+# With compression
+pg_dump -h localhost -U strapi_user -d strapi_dev | gzip > backups/strapi-db-$(Get-Date -Format 'yyyy-MM-dd').sql.gz
 ```
 
 #### Backup Media Files:
@@ -130,30 +126,30 @@ robocopy "apps/strapi/public/uploads" "backups/uploads-$(Get-Date -Format 'yyyy-
 
 **SQLite**:
 
-```powershell
+````powershell
 # Stop Strapi first!
-# Restore database
-Copy-Item "backups/database-2025-11-12.db" -Destination "apps/strapi/.tmp/data.db" -Force
-
-# Restore media
-Expand-Archive -Path "backups/media-2025-11-12.zip" -DestinationPath "apps/strapi/public/uploads" -Force
-```
+#### Restore Database + Media:
 
 **PostgreSQL**:
 
 ```powershell
-# Drop and recreate database
-psql -U postgres -c "DROP DATABASE strapi_db;"
-psql -U postgres -c "CREATE DATABASE strapi_db OWNER strapi_user;"
+# Stop Strapi first!
 
-# Restore dump
-pg_restore -h localhost -U strapi_user -d strapi_db backups/strapi-db-2025-11-12.dump
+# Drop and recreate database
+psql -U postgres -c "DROP DATABASE strapi_dev;"
+psql -U postgres -c "CREATE DATABASE strapi_dev OWNER strapi_user;"
+
+# Restore from custom format
+pg_restore -h localhost -U strapi_user -d strapi_dev backups/strapi-db-2025-11-12.dump
+
+# OR restore from SQL format
+psql -U strapi_user -d strapi_dev < backups/strapi-db-2025-11-12.sql
+
+# OR restore from compressed SQL
+gunzip -c backups/strapi-db-2025-11-12.sql.gz | psql -U strapi_user -d strapi_dev
 
 # Restore media
 Expand-Archive -Path "backups/media-2025-11-12.zip" -DestinationPath "apps/strapi/public/uploads" -Force
-```
-
----
 
 ## 🌱 Seed Data Scripts
 
@@ -166,7 +162,7 @@ Expand-Archive -Path "backups/media-2025-11-12.zip" -DestinationPath "apps/strap
 ```powershell
 # Create seed data (newsletter component complete state)
 yarn workspace @repo/strapi strapi export -- --file database/seeds/01-newsletter-complete.tar.gz --no-encrypt
-```
+````
 
 #### 2. Create Seed Script:
 
