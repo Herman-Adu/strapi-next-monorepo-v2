@@ -88,7 +88,7 @@ jobs:
           echo "🧪 Running integration tests with MSW (Playwright will manage server)..."
           echo "📋 Running chromium integration tests (error handling & resilience)"
           echo "ℹ️  Note: MSW mocks all API calls - no real Strapi required"
-          yarn workspace @repo/ui playwright test tests/integration/ --project=chromium
+          yarn workspace @repo/ui playwright test tests/integration/ --project=chromium --trace on
         env:
           CI: true
           STRAPI_URL: http://127.0.0.1:1337
@@ -119,7 +119,7 @@ jobs:
           name: integration-test-results
           path: apps/ui/test-results/
           retention-days: 7
-          if-no-files-found: warn
+          if-no-files-found: ignore
 
       - name: Upload Playwright Traces
         uses: actions/upload-artifact@v4
