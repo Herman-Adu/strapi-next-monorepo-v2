@@ -478,12 +478,12 @@ After MSW (Dec 15, 2025 - Present):
 
 **⭐ MUST READ - Start Here:**
 
-| Guide                                                              | Purpose                                      | Audience       |
-| ------------------------------------------------------------------ | -------------------------------------------- | -------------- |
-| **[MSW Consolidation Guide](./MSW-CONSOLIDATION.md)** ⭐          | **Complete MSW strategy and best practices** | **ALL DEVS**   |
+| Guide                                                                        | Purpose                                      | Audience       |
+| ---------------------------------------------------------------------------- | -------------------------------------------- | -------------- |
+| **[MSW Consolidation Guide](./MSW-CONSOLIDATION.md)** ⭐                     | **Complete MSW strategy and best practices** | **ALL DEVS**   |
 | [IMPORTANT-MSW-TESTING.md](../../apps/ui/tests/e2e/IMPORTANT-MSW-TESTING.md) | Quick reference and critical warnings        | All developers |
-| [MSW Implementation Details](./MSW_IMPLEMENTATION.md)              | Technical implementation and architecture    | Senior devs    |
-| [E2E Test Suite Status](./E2E_TEST_SUITE_STATUS.md)               | Current coverage and metrics                 | QA/DevOps      |
+| [MSW Implementation Details](./MSW_IMPLEMENTATION.md)                        | Technical implementation and architecture    | Senior devs    |
+| [E2E Test Suite Status](./E2E_TEST_SUITE_STATUS.md)                          | Current coverage and metrics                 | QA/DevOps      |
 
 **Quick Links:**
 

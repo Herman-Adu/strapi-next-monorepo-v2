@@ -170,6 +170,7 @@ taskkill /PID <PID> /F
 ```
 
 **Key Files:**
+
 - `tests/e2e/fixtures/msw-handlers.ts` - API route handlers
 - `tests/e2e/fixtures/msw-bridge-server.ts` - MSW Node.js bridge
 - `tests/e2e/fixtures/mock-data.ts` - Test data
@@ -179,28 +180,30 @@ taskkill /PID <PID> /F
 ### Writing Tests with MSW
 
 **✅ Good: Focus on user behavior**
+
 ```typescript
 test("newsletter subscription works", async ({ page }) => {
-  await page.goto("/");
-  
+  await page.goto("/")
+
   // User fills form
-  await page.getByLabel("Email").fill("test@example.com");
-  await page.getByRole("button", { name: "Subscribe" }).click();
-  
+  await page.getByLabel("Email").fill("test@example.com")
+  await page.getByRole("button", { name: "Subscribe" }).click()
+
   // User sees success
-  await expect(page.getByText("Thanks for subscribing!")).toBeVisible();
-});
+  await expect(page.getByText("Thanks for subscribing!")).toBeVisible()
+})
 ```
 
 **❌ Bad: Testing implementation details**
+
 ```typescript
 test("newsletter API is called", async ({ page }) => {
-  await page.goto("/");
-  
+  await page.goto("/")
+
   // Don't do this - test user outcomes, not API calls
-  const response = await page.waitForResponse('**/api/subscribers');
-  expect(response.status()).toBe(200);
-});
+  const response = await page.waitForResponse("**/api/subscribers")
+  expect(response.status()).toBe(200)
+})
 ```
 
 ### Override MSW Responses for Specific Tests
@@ -208,19 +211,19 @@ test("newsletter API is called", async ({ page }) => {
 ```typescript
 test("should handle newsletter API error", async ({ page }) => {
   // Override default handler for this specific test
-  await page.route('**/api/subscribers', (route) => {
+  await page.route("**/api/subscribers", (route) => {
     route.fulfill({
       status: 500,
-      body: JSON.stringify({ error: 'Server error' })
-    });
-  });
+      body: JSON.stringify({ error: "Server error" }),
+    })
+  })
 
-  await page.goto("/");
-  await page.getByLabel("Email").fill("test@example.com");
-  await page.getByRole("button", { name: "Subscribe" }).click();
+  await page.goto("/")
+  await page.getByLabel("Email").fill("test@example.com")
+  await page.getByRole("button", { name: "Subscribe" }).click()
 
-  await expect(page.getByText("Something went wrong")).toBeVisible();
-});
+  await expect(page.getByText("Something went wrong")).toBeVisible()
+})
 ```
 
 ---
