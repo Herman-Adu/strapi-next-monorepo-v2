@@ -649,7 +649,7 @@ yarn workspace @repo/ui playwright test
 yarn workspace @repo/strapi strapi export
 
 # ❌ WRONG
-cd apps/ui && npx playwright test
+npx playwright test
 npm run test
 ```
 

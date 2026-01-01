@@ -65,8 +65,7 @@ Installs Node.js 20 (project requirement).
 ```yaml
 - name: Start Strapi
   run: |
-    cd apps/strapi
-    yarn develop &
+    yarn workspace @repo/strapi develop &
     npx wait-on http://localhost:1337/admin --timeout 60000
   env:
     DATABASE_URL: postgresql://postgres:postgres@localhost:5432/strapi_test
@@ -85,8 +84,7 @@ Installs Node.js 20 (project requirement).
 ```yaml
 - name: Seed database
   run: |
-    cd apps/strapi
-    yarn seed:safe
+    yarn workspace @repo/strapi seed:safe
   env:
     DATABASE_URL: postgresql://postgres:postgres@localhost:5432/strapi_test
 ```
@@ -372,7 +370,7 @@ yarn workspace @repo/strapi develop
 ```bash
 yarn test:integration  # Wrong - not in package.json scripts
 yarn playwright test    # Wrong - missing workspace prefix
-cd apps/ui && yarn test # Wrong - bypasses workspace orchestration
+yarn test # Wrong - bypasses workspace orchestration
 ```
 
 ---

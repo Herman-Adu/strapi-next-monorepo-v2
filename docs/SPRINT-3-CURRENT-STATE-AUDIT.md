@@ -31,7 +31,7 @@ yarn workspace @repo/strapi build
 yarn workspace @repo/ui playwright test
 
 # ❌ WRONG
-cd apps/ui && npm run dev
+npm run dev
 npx playwright test
 ```
 
@@ -592,8 +592,7 @@ cp apps/strapi/.env.example apps/strapi/.env
 # Edit .env with production values
 
 # 7. Start with PM2
-cd apps/strapi
-pm2 start yarn --name "strapi" -- start
+pm2 start yarn --name "strapi" --cwd apps/strapi -- start
 pm2 startup
 pm2 save
 
@@ -731,8 +730,7 @@ npm install -g vercel
 vercel login
 
 # 3. Link project
-cd apps/ui
-vercel link
+vercel link --cwd apps/ui
 
 # 4. Set environment variables (via CLI or dashboard)
 vercel env add NEXT_PUBLIC_STRAPI_URL production

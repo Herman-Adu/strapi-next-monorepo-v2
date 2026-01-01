@@ -77,8 +77,7 @@ yarn build
 ```powershell
 # Stop current server (Ctrl+C in terminal)
 # Then restart:
-cd apps/strapi
-yarn dev
+yarn workspace @repo/strapi dev
 ```
 
 **Wait for**: Server started message
@@ -130,18 +129,15 @@ yarn dev
 
 ```powershell
 # 1. Start Strapi (if stopped)
-cd apps/strapi
-yarn dev
+yarn workspace @repo/strapi dev
 
 # 2. Open browser → Settings → Config Sync → IMPORT (NOT Export!)
 
 # 3. Rebuild admin (from root)
-cd ../..
 yarn build
 
 # 4. Restart Strapi
-cd apps/strapi
-yarn dev
+yarn workspace @repo/strapi dev
 
 # 5. Hard refresh browser (Ctrl+Shift+R)
 

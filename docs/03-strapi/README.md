@@ -81,10 +81,10 @@ Advanced data loading and middleware:
 
 ```bash
 # Start Strapi (from monorepo root)
-npm run dev:strapi
+yarn workspace @repo/strapi dev
 
 # Generate TypeScript types
-npm run generate:types
+yarn generate:types
 
 # Create backup before changes
 .\scripts\backup-strapi-safe.ps1

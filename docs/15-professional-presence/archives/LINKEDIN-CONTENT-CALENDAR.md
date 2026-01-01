@@ -518,10 +518,10 @@ Here's how:
 Terminal 1: `docker-compose up postgres`
 Wait 20 seconds...
 
-Terminal 2: `cd apps/strapi && yarn dev`
+Terminal 2: `yarn workspace @repo/strapi dev`
 Wait 30 seconds...
 
-Terminal 3: `cd apps/ui && yarn dev`  
+Terminal 3: `yarn workspace @repo/ui dev`  
 Wait 40 seconds...
 
 Total: 90-120 seconds + mental overhead

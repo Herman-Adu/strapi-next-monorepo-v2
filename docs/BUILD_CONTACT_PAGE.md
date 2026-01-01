@@ -406,13 +406,11 @@ gtag("event", "contact_form_error", {
 ## Quick Start Command
 
 ```bash
-# Start Strapi admin
-cd apps/strapi
-yarn dev
+# Terminal 1: Start Strapi admin
+yarn workspace @repo/strapi dev
 
-# In another terminal, start Next.js
-cd apps/ui
-yarn dev
+# Terminal 2: Start Next.js
+yarn workspace @repo/ui dev
 
 # Open Strapi admin
 open http://localhost:1337/admin

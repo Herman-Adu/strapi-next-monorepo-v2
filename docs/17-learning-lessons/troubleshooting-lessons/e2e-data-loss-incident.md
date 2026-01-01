@@ -180,15 +180,13 @@ export async function seedE2EDataSafe({ strapi }) {
 **For Local Development** (SAFE):
 
 ```bash
-cd apps/strapi
-yarn seed:e2e:safe  # Non-destructive
+yarn workspace @repo/strapi seed:e2e:safe  # Non-destructive
 ```
 
 **For CI** (Destructive - OK for clean environments):
 
 ```bash
-cd apps/strapi
-yarn seed:e2e  # Drops schema - CI only!
+yarn workspace @repo/strapi seed:e2e  # Drops schema - CI only!
 ```
 
 ---

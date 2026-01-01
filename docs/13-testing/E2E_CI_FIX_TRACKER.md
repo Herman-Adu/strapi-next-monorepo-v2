@@ -122,8 +122,7 @@ Module not found: Can't resolve '@repo/shared-data'
 
 - name: Start Next.js Server
   run: |
-    cd apps/ui
-    npx next start &
+    npx next start --cwd apps/ui &
     NEXTJS_PID=$!
     echo "NEXTJS_PID=$NEXTJS_PID" >> $GITHUB_ENV
     npx wait-on http://127.0.0.1:3000 --timeout 120000
@@ -134,8 +133,7 @@ Module not found: Can't resolve '@repo/shared-data'
 ```yaml
 - name: Start Next.js Dev Server
   run: |
-    cd apps/ui
-    npx next dev &  # ❌ FAILED - server starts but doesn't respond
+    npx next dev --cwd apps/ui &  # ❌ FAILED - server starts but doesn't respond
     NEXTJS_PID=$!
     echo "NEXTJS_PID=$NEXTJS_PID" >> $GITHUB_ENV
     npx wait-on http://127.0.0.1:3000 --timeout 120000  # Times out
