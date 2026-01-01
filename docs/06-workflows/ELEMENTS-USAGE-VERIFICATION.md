@@ -48,8 +48,8 @@ ORDER BY usage_count DESC;
 1. **Start Strapi development server:**
 
    ```powershell
-   cd apps/strapi
-   yarn dev
+   # From monorepo root
+   yarn workspace @repo/strapi develop
    ```
 
 2. **Open admin panel:**

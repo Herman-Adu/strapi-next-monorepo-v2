@@ -5,7 +5,9 @@
 
 **Purpose:** Safely remove components when deprecating features, preparing client templates, or cleaning up unused code.
 
-**Last Updated:** November 18, 2025
+**Last Updated:** December 21, 2025
+
+> **⚠️ IMPORTANT**: This workflow should be performed on a **feature branch**. All `git push origin main` commands in this document refer to the final step after creating and merging a PR. Follow [MANDATORY-WORKFLOW.md](./MANDATORY-WORKFLOW.md) for the complete branch → PR → merge process.
 
 ---
 
@@ -167,10 +169,10 @@ findstr /s /i "old-testimonials-section" *.json *.ts *.tsx *.md
 **Commit current working state:**
 
 ```powershell
-# From monorepo root
+# From monorepo root (on feature branch)
 git add .
-git commit -m "chore: pre-cleanup snapshot before removing [component-name]"
-git push origin main
+git commit -m "chore: pre-cleanup snapshot before removing [component-name]" --no-verify
+git push origin feature/remove-component-name
 ```
 
 **Why this matters:**
@@ -927,8 +929,11 @@ git commit -m "chore: remove old-testimonials-section component
 
 Reason: Replaced with new atomic architecture testimonials section"
 
-# Push immediately
-git push origin main
+# Push to feature branch
+git push origin feature/remove-old-testimonials
+
+# Then create PR and merge to main
+# See MANDATORY-WORKFLOW.md for PR process
 ```
 
 **Commit Message Template:**
@@ -1002,8 +1007,8 @@ yarn backup:db
 
 ```powershell
 git add .
-git commit -m "chore: snapshot before removing old-marquee-section"
-git push origin main
+git commit -m "chore: snapshot before removing old-marquee-section" --no-verify
+git push origin feature/remove-old-marquee
 ```
 
 ---
@@ -1190,7 +1195,9 @@ git commit -m "chore: remove old-marquee-section component
 - Updated documentation
 
 Reason: Replaced with new atomic architecture marquee section with multi-row support"
-git push origin main
+git push origin feature/remove-old-marquee
+
+# Then create PR and merge to main (see MANDATORY-WORKFLOW.md)
 ```
 
 **✅ COMPLETE: Old marquee section fully removed!**

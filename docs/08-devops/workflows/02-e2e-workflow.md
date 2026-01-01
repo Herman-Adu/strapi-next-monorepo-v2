@@ -246,12 +246,14 @@ e2e-tests:
 ```yaml
 - name: Seed E2E Test Data
   run: |
-    cd apps/strapi
+    cd apps/strapi  # CI context only - local dev uses yarn workspace commands
     chmod +x scripts/seed-e2e-data.sh
     ./scripts/seed-e2e-data.sh
   env:
     DATABASE_URL: postgresql://strapi:strapi@localhost:5432/strapi_dev
 ```
+
+**⚠️ Note**: `cd apps/strapi` is used in CI/CD workflow context. For local development, always use yarn workspace commands from monorepo root.
 
 **What This Script Does** (Hybrid Seeding):
 
@@ -283,7 +285,7 @@ e2e-tests:
 ```yaml
 - name: Start Strapi Server (Production Mode)
   run: |
-    cd apps/strapi
+    cd apps/strapi  # CI context only
     NODE_ENV=production yarn start &
     STRAPI_PID=$!
     echo "STRAPI_PID=$STRAPI_PID" >> $GITHUB_ENV
@@ -340,7 +342,7 @@ e2e-tests:
 ```yaml
 - name: Start Next.js Server (Production Mode)
   run: |
-    cd apps/ui
+    cd apps/ui  # CI context only
     yarn start &
     NEXTJS_PID=$!
     echo "NEXTJS_PID=$NEXTJS_PID" >> $GITHUB_ENV
@@ -602,8 +604,13 @@ Error: Database schema does not match Strapi models
 
 ```bash
 # Locally, regenerate SQL snapshot
+# From monorepo root (use yarn workspace commands):
+yarn workspace @repo/strapi run create-snapshot
+
+# Or if script requires cd:
 cd apps/strapi
 ./scripts/create-sql-snapshot.sh
+cd ../..
 
 # Commit updated snapshot
 git add database/data/e2e-snapshot.sql
