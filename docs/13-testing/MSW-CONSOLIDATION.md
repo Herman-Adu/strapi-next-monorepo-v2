@@ -581,6 +581,48 @@ test("newsletter", async ({ page }) => {
 
 ---
 
+## CI/CD Integration
+
+### GitHub Actions Workflow
+
+E2E tests run automatically on every push to main:
+
+**Workflow File**: `.github/workflows/e2e-tests.yml`
+
+**What CI Does**:
+
+1. Installs dependencies (`yarn install`)
+2. Starts MSW bridge server (via `global-setup.ts`)
+3. Runs Playwright tests (Chromium only for speed)
+4. Uploads test results and traces as artifacts
+
+**No Strapi or PostgreSQL needed in CI for E2E tests!**
+
+### Running Tests Locally vs CI
+
+| Environment             | Strapi Needed? | MSW Needed?   | Database Needed?   |
+| ----------------------- | -------------- | ------------- | ------------------ |
+| **E2E (Local)**         | ❌ No          | ✅ Yes (auto) | ❌ No              |
+| **E2E (CI)**            | ❌ No          | ✅ Yes (auto) | ❌ No              |
+| **Integration (Local)** | ✅ Yes         | ❌ No         | ✅ Yes             |
+| **Integration (CI)**    | ✅ Yes         | ❌ No         | ✅ Yes (ephemeral) |
+
+### Test Execution in CI
+
+```bash
+# E2E tests (fast, MSW mocked)
+runs-on: push to main
+duration: ~3-4 minutes
+success-rate: 95%+
+
+# Integration tests (slower, real Strapi)
+runs-on: weekly schedule or manual trigger
+duration: ~3-4 minutes
+success-rate: 95%+
+```
+
+---
+
 ## Success Metrics
 
 ### Before MSW (Oct-Nov 2025)
