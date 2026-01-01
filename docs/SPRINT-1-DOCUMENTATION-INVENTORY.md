@@ -12,15 +12,15 @@
 
 ### Category Breakdown
 
-| Category | Count | Purpose |
-|----------|-------|---------|
-| 📚 **docs/ Library** | 182 | Core documentation library (01-17 structure) |
-| 📝 **content/ Folder** | 45 | Articles, tutorials, social media content |
-| 🔧 **apps/strapi/** | 3 | Strapi app-specific docs (README, migration) |
-| 🎨 **apps/ui/** | 7 | UI app-specific docs (testing, styling) |
-| 📦 **packages/** | 1 | Design system README |
-| ⚙️ **scripts/** | 1 | Scripts utility README |
-| 📄 **Root Level** | 4 | Monorepo-level docs (README, references) |
+| Category               | Count | Purpose                                      |
+| ---------------------- | ----- | -------------------------------------------- |
+| 📚 **docs/ Library**   | 182   | Core documentation library (01-17 structure) |
+| 📝 **content/ Folder** | 45    | Articles, tutorials, social media content    |
+| 🔧 **apps/strapi/**    | 3     | Strapi app-specific docs (README, migration) |
+| 🎨 **apps/ui/**        | 7     | UI app-specific docs (testing, styling)      |
+| 📦 **packages/**       | 1     | Design system README                         |
+| ⚙️ **scripts/**        | 1     | Scripts utility README                       |
+| 📄 **Root Level**      | 4     | Monorepo-level docs (README, references)     |
 
 ---
 
@@ -28,45 +28,49 @@
 
 ### Folder Structure (01-17)
 
-| Section | Files | Status | Notes |
-|---------|-------|--------|-------|
-| `01-getting-started/` | 4 | ⚠️ REVIEW | Needs update: yarn commands, MSW testing |
-| `02-architecture/` | 17 | ⚠️ PARTIAL | Atomic design well-documented, needs workflow updates |
-| `03-strapi/` | 14 | ⚠️ REVIEW | Needs: backup automation, hybrid database approach |
-| `04-components/` | 13 | ✅ CURRENT | Component patterns documented |
-| `05-styling/` | 3 | ✅ CURRENT | Tailwind v4, gradients documented |
-| `06-workflows/` | 14 | ⚠️ CRITICAL | Missing: MSW patterns, new CI workflows |
-| `07-content-manager/` | 13 | ⚠️ REVIEW | Test data needs consolidation |
-| `08-devops/` | 14 | ⚠️ OUTDATED | Workflow docs incomplete (missing integration-tests.yml) |
-| `09-troubleshooting/` | 4 | ⚠️ EXPAND | Needs: database recovery, MSW debugging |
-| `10-reference/` | 3 | ⚠️ UPDATE | Populate patterns current, project status outdated |
-| `11-recovery/` | 15 | 🗑️ ARCHIVE | Historical recovery docs - move to archive |
-| `12-planning/` | 15 | 🗑️ ARCHIVE | Old planning docs - extract lessons, archive rest |
-| `13-testing/` | 20 | ⚠️ CRITICAL | MSW docs exist but scattered, needs consolidation |
-| `14-deep-dives/` | 10 | ✅ GOOD | Docker, Strapi 5 deep dives comprehensive |
-| `15-professional-presence/` | 12 | 🗑️ OUTDATED | Premature content calendar - needs complete rebuild |
-| `16-platform-vision/` | 3 | ✅ CURRENT | Future considerations up to date |
-| `17-learning-lessons/` | 8 | ⚠️ EXPAND | Needs: 3 database losses, MSW evolution, workflow maturity |
+| Section                     | Files | Status      | Notes                                                      |
+| --------------------------- | ----- | ----------- | ---------------------------------------------------------- |
+| `01-getting-started/`       | 4     | ⚠️ REVIEW   | Needs update: yarn commands, MSW testing                   |
+| `02-architecture/`          | 17    | ⚠️ PARTIAL  | Atomic design well-documented, needs workflow updates      |
+| `03-strapi/`                | 14    | ⚠️ REVIEW   | Needs: backup automation, hybrid database approach         |
+| `04-components/`            | 13    | ✅ CURRENT  | Component patterns documented                              |
+| `05-styling/`               | 3     | ✅ CURRENT  | Tailwind v4, gradients documented                          |
+| `06-workflows/`             | 14    | ⚠️ CRITICAL | Missing: MSW patterns, new CI workflows                    |
+| `07-content-manager/`       | 13    | ⚠️ REVIEW   | Test data needs consolidation                              |
+| `08-devops/`                | 14    | ⚠️ OUTDATED | Workflow docs incomplete (missing integration-tests.yml)   |
+| `09-troubleshooting/`       | 4     | ⚠️ EXPAND   | Needs: database recovery, MSW debugging                    |
+| `10-reference/`             | 3     | ⚠️ UPDATE   | Populate patterns current, project status outdated         |
+| `11-recovery/`              | 15    | 🗑️ ARCHIVE  | Historical recovery docs - move to archive                 |
+| `12-planning/`              | 15    | 🗑️ ARCHIVE  | Old planning docs - extract lessons, archive rest          |
+| `13-testing/`               | 20    | ⚠️ CRITICAL | MSW docs exist but scattered, needs consolidation          |
+| `14-deep-dives/`            | 10    | ✅ GOOD     | Docker, Strapi 5 deep dives comprehensive                  |
+| `15-professional-presence/` | 12    | 🗑️ OUTDATED | Premature content calendar - needs complete rebuild        |
+| `16-platform-vision/`       | 3     | ✅ CURRENT  | Future considerations up to date                           |
+| `17-learning-lessons/`      | 8     | ⚠️ EXPAND   | Needs: 3 database losses, MSW evolution, workflow maturity |
 
 ### 🚨 CRITICAL FINDINGS
 
 #### 1. **Workflow Documentation GAP**
+
 - **Missing**: Complete CI/CD workflow documentation
 - **Impact**: You reference workflows I don't have context for
 - **Action**: Document all 7 workflows (backup.yml, ci.yml, cleanup-caches.yml, dependabot-auto-merge.yml, e2e-tests.yml, integration-tests.yml, visual-regression.yml)
 
 #### 2. **Testing Paradigm Shift NOT DOCUMENTED**
+
 - **Old**: Implementation testing
 - **New**: User behavior testing with MSW
 - **Impact**: All testing docs reference old patterns
 - **Action**: Complete rewrite of testing strategy docs
 
 #### 3. **Database Strategy Evolution MISSING**
+
 - **Journey**: SQLite → PostgreSQL (3 failures) → Hybrid approach
 - **Missing**: Recovery procedures, backup automation, lessons learned
 - **Action**: Document hybrid database strategy and disaster recovery
 
 #### 4. **npx/npm Commands Throughout**
+
 - **Problem**: Docs still reference npx/npm instead of yarn workspace
 - **Impact**: Incorrect commands lead to confusion
 - **Action**: Global find/replace + verification
@@ -80,7 +84,7 @@
 ```
 content/
 ├── articles/ (20 files) - 5 series planned
-│   ├── series-1-cicd/ (4 articles) 
+│   ├── series-1-cicd/ (4 articles)
 │   ├── series-2-e2e-testing/ (4 articles)
 │   ├── series-3-database/ (3 articles)
 │   ├── series-4-frontend/ (4 articles)
@@ -97,12 +101,12 @@ content/
 
 ### Assessment
 
-| Type | Status | Notes |
-|------|--------|-------|
-| **Articles** | ⚠️ OUTDATED | Written before architectural maturity |
-| **Tutorials** | ⚠️ PREMATURE | Based on old patterns (npx, implementation testing) |
-| **Social Media** | 🗑️ OBSOLETE | Single file, outdated content |
-| **Planning** | ⚠️ ARCHIVE | Phase 3 planning - extract lessons, archive |
+| Type             | Status       | Notes                                               |
+| ---------------- | ------------ | --------------------------------------------------- |
+| **Articles**     | ⚠️ OUTDATED  | Written before architectural maturity               |
+| **Tutorials**    | ⚠️ PREMATURE | Based on old patterns (npx, implementation testing) |
+| **Social Media** | 🗑️ OBSOLETE  | Single file, outdated content                       |
+| **Planning**     | ⚠️ ARCHIVE   | Phase 3 planning - extract lessons, archive         |
 
 **RECOMMENDATION**: Archive entire content/ folder. Rebuild from scratch after docs/ library is accurate.
 
@@ -110,39 +114,39 @@ content/
 
 ## 🔧 APPS/STRAPI/ DOCS (3 files)
 
-| File | Purpose | Status | Action |
-|------|---------|--------|--------|
-| `README.md` | Main Strapi app documentation | ⚠️ UPDATE | Add hybrid database, backup automation |
-| `README-MIGRATION.md` | PostgreSQL migration guide | ⚠️ ARCHIVE | Completed migration, keep for reference |
-| `MIGRATION-STEPS.md` | Step-by-step migration | ⚠️ ARCHIVE | Completed migration, keep for reference |
+| File                  | Purpose                       | Status     | Action                                  |
+| --------------------- | ----------------------------- | ---------- | --------------------------------------- |
+| `README.md`           | Main Strapi app documentation | ⚠️ UPDATE  | Add hybrid database, backup automation  |
+| `README-MIGRATION.md` | PostgreSQL migration guide    | ⚠️ ARCHIVE | Completed migration, keep for reference |
+| `MIGRATION-STEPS.md`  | Step-by-step migration        | ⚠️ ARCHIVE | Completed migration, keep for reference |
 
 ---
 
 ## 🎨 APPS/UI/ DOCS (7 files)
 
-| File | Purpose | Status | Action |
-|------|---------|--------|--------|
-| `README.md` | Main UI app documentation | ⚠️ UPDATE | Add MSW testing, current workflows |
-| `DOCS_HUB_FEATURE.md` | Docs hub feature planning | ✅ REFERENCE | Keep as implemented feature doc |
-| `E2E_TESTING.md` | E2E testing guide | ⚠️ CRITICAL | Update with MSW patterns, user behavior focus |
-| `src/components/molecules/BlogCard/README.md` | BlogCard component | ✅ CURRENT | Component-specific, keep |
-| `src/styles/README.md` | Styling overview | ✅ CURRENT | Keep |
-| `src/styles/TAILWIND_STYLING_GUIDE.md` | Tailwind guide | ✅ CURRENT | Keep |
-| `src/styles/TYPOGRAPHY_PLUGIN_IMPLEMENTATION.md` | Typography plugin | ✅ CURRENT | Keep |
-| `tests/e2e/IMPORTANT-MSW-TESTING.md` | MSW testing patterns | ✅ CRITICAL | **REFERENCE THIS MORE** |
-| `tests/e2e/README.md` | E2E test overview | ⚠️ UPDATE | Merge with main E2E docs |
-| `tests/integration/README.md` | Integration test overview | ⚠️ UPDATE | Add trace artifact info |
+| File                                             | Purpose                   | Status       | Action                                        |
+| ------------------------------------------------ | ------------------------- | ------------ | --------------------------------------------- |
+| `README.md`                                      | Main UI app documentation | ⚠️ UPDATE    | Add MSW testing, current workflows            |
+| `DOCS_HUB_FEATURE.md`                            | Docs hub feature planning | ✅ REFERENCE | Keep as implemented feature doc               |
+| `E2E_TESTING.md`                                 | E2E testing guide         | ⚠️ CRITICAL  | Update with MSW patterns, user behavior focus |
+| `src/components/molecules/BlogCard/README.md`    | BlogCard component        | ✅ CURRENT   | Component-specific, keep                      |
+| `src/styles/README.md`                           | Styling overview          | ✅ CURRENT   | Keep                                          |
+| `src/styles/TAILWIND_STYLING_GUIDE.md`           | Tailwind guide            | ✅ CURRENT   | Keep                                          |
+| `src/styles/TYPOGRAPHY_PLUGIN_IMPLEMENTATION.md` | Typography plugin         | ✅ CURRENT   | Keep                                          |
+| `tests/e2e/IMPORTANT-MSW-TESTING.md`             | MSW testing patterns      | ✅ CRITICAL  | **REFERENCE THIS MORE**                       |
+| `tests/e2e/README.md`                            | E2E test overview         | ⚠️ UPDATE    | Merge with main E2E docs                      |
+| `tests/integration/README.md`                    | Integration test overview | ⚠️ UPDATE    | Add trace artifact info                       |
 
 ---
 
 ## 📄 ROOT LEVEL DOCS (4 files)
 
-| File | Purpose | Status | Action |
-|------|---------|--------|--------|
-| `README.md` | Monorepo main README | ⚠️ CRITICAL | Complete overhaul needed |
-| `MONOREPO_COMMAND_REFERENCE.md` | Yarn workspace commands | ✅ EXCELLENT | **USE AS GOLD STANDARD** |
-| `PRE_COMMIT_VALIDATION_WORKFLOW.md` | Pre-commit checklist | ✅ CURRENT | Enforce in all TODOs |
-| `CI_FAILURE_ANALYSIS.md` | CI troubleshooting | ⚠️ UPDATE | Add recent fixes (artifact warnings, etc.) |
+| File                                | Purpose                 | Status       | Action                                     |
+| ----------------------------------- | ----------------------- | ------------ | ------------------------------------------ |
+| `README.md`                         | Monorepo main README    | ⚠️ CRITICAL  | Complete overhaul needed                   |
+| `MONOREPO_COMMAND_REFERENCE.md`     | Yarn workspace commands | ✅ EXCELLENT | **USE AS GOLD STANDARD**                   |
+| `PRE_COMMIT_VALIDATION_WORKFLOW.md` | Pre-commit checklist    | ✅ CURRENT   | Enforce in all TODOs                       |
+| `CI_FAILURE_ANALYSIS.md`            | CI troubleshooting      | ⚠️ UPDATE    | Add recent fixes (artifact warnings, etc.) |
 
 ---
 
@@ -151,6 +155,7 @@ content/
 ### IMMEDIATE (Sprint 1 Completion)
 
 1. **Document the 7 GitHub Workflows**
+
    - backup.yml
    - ci.yml
    - cleanup-caches.yml
@@ -160,6 +165,7 @@ content/
    - visual-regression.yml
 
 2. **Find ALL npx/npm references**
+
    - Global search across all 252 files
    - Document every instance
    - Plan replacement strategy
