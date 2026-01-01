@@ -313,8 +313,8 @@ strapi-export.tar.gz/
 ### Restore Command
 
 ```bash
-# From apps/strapi directory
-yarn strapi import -f path/to/backup.tar.gz --force
+# From monorepo root (workspace command)
+yarn workspace @repo/strapi strapi import -f path/to/backup.tar.gz --force
 
 # The --force flag:
 # - Overwrites existing content

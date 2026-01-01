@@ -191,14 +191,14 @@ yarn start
 ### Database Migration
 
 ```bash
-# Check migration status
-npm run migration:status
+# Check migration status (if applicable)
+yarn workspace @repo/strapi migration:status
 
 # Apply pending migrations
-npm run migration:up
+yarn workspace @repo/strapi migration:up
 
 # Rollback if needed
-npm run migration:down
+yarn workspace @repo/strapi migration:down
 ```
 
 ---

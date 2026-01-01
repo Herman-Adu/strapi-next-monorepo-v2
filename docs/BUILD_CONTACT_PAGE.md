@@ -360,7 +360,7 @@ gtag("event", "contact_form_error", {
 
 **SEO Issues**:
 
-- Regenerate types: `yarn strapi ts:generate-types`
+- Regenerate types: `yarn workspace @repo/strapi strapi ts:generate-types`
 - Check SEO component in page schema
 - Verify meta tags in page source
 

@@ -657,7 +657,7 @@ module.exports = {
 # Daily PostgreSQL backup (2:00 AM)
 0 2 * * * /usr/bin/pg_dump -U strapi_user strapi_db | gzip > /backups/postgres/strapi_$(date +\%Y\%m\%d).sql.gz
 
-# Daily Strapi export (2:05 AM)
+# Daily Strapi export (2:05 AM) - cron requires full path
 5 2 * * * cd /var/www/strapi-next-monorepo-v2/apps/strapi && yarn strapi export --file /backups/strapi/export_$(date +\%Y\%m\%d).tar.gz
 
 # Cleanup old backups (keep 7 days)

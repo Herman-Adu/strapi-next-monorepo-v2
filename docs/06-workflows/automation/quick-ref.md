@@ -228,7 +228,7 @@ yarn test:e2e
 yarn test:e2e:ui
 
 # Run specific browser
-npx playwright test --project=chromium
+yarn workspace @repo/ui playwright test --project=chromium
 ```
 
 ### Visual Regression (Chromatic)

@@ -564,8 +564,7 @@ git push origin feature/add-testimonial-content-type
 git pull origin main
 
 # Config sync auto-imports on next Strapi start
-cd apps/strapi
-yarn develop
+yarn workspace @repo/strapi develop
 
 # Output:
 # ✔ Config Sync: Imported content-types.api::testimonial.testimonial
