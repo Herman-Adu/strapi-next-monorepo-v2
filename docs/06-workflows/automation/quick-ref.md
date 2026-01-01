@@ -388,16 +388,16 @@ gh workflow run backup.yml
 
 ```powershell
 # Install browsers
-npx playwright install
+yarn workspace @repo/ui playwright install
 
 # Run in headed mode (see browser)
-npx playwright test --headed
+yarn workspace @repo/ui playwright test --headed
 
 # Debug mode
-npx playwright test --debug
+yarn workspace @repo/ui playwright test --debug
 
 # Update snapshots
-npx playwright test --update-snapshots
+yarn workspace @repo/ui playwright test --update-snapshots
 ```
 
 ### Vitest Test Failing

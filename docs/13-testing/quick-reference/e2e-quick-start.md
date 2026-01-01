@@ -198,7 +198,7 @@ use: {
 yarn test:e2e --trace on
 
 # Open trace
-npx playwright show-trace trace.zip
+yarn workspace @repo/ui playwright show-trace trace.zip
 ```
 
 ### Debug Mode
@@ -483,16 +483,16 @@ retries: 2
 
 ```bash
 # Install browsers
-npx playwright install
+yarn workspace @repo/ui playwright install
 
 # Generate tests (codegen)
-npx playwright codegen http://localhost:3000
+yarn workspace @repo/ui playwright codegen http://localhost:3000
 
 # Show report
-npx playwright show-report
+yarn workspace @repo/ui playwright show-report
 
 # View trace
-npx playwright show-trace trace.zip
+yarn workspace @repo/ui playwright show-trace trace.zip
 ```
 
 ---

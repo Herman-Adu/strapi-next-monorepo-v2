@@ -170,14 +170,14 @@ const response = await strapiApi.get("/api/navbar", {
 
 ```bash
 # Check for TypeScript errors
-npm run type-check
+yarn type-check
 
 # Verify all dependencies
-npm run audit
+yarn audit
 
 # Test production build locally
-npm run build
-npm run start
+yarn build
+yarn start
 ```
 
 ### Environment Variables

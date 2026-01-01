@@ -130,9 +130,9 @@ Use the same tool versions across all platforms:
 ```bash
 # Run in Docker container matching CI environment
 docker run -it --rm -v ${PWD}:/app -w /app node:20-alpine sh
-npm ci
-npm run lint
-npm run build
+yarn install --frozen-lockfile
+yarn lint
+yarn build
 ```
 
 ### 3. CI Configuration

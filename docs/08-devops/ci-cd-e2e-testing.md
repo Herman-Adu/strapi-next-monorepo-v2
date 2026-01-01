@@ -235,7 +235,7 @@ View full report in artifacts →
 
 # Open report
 cd playwright-report
-npx playwright show-report
+yarn workspace @repo/ui playwright show-report
 ```
 
 ---

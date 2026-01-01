@@ -289,16 +289,14 @@ Expand-Archive -Path "backups/daily/2025-11-12/media.zip" -DestinationPath "apps
 ### Scenario 3: Schema Drift (Component changes not syncing)
 
 ```powershell
-cd apps/strapi
-
-# 1. Clear cache
-Remove-Item -Recurse -Force .cache
+# 1. Clear cache (from root directory)
+Remove-Item -Recurse -Force apps/strapi/.cache
 
 # 2. Rebuild
-npm run build
+yarn workspace @repo/strapi build
 
 # 3. Restart in development to regenerate types
-npm run dev
+yarn workspace @repo/strapi dev
 ```
 
 ### Scenario 4: Complete System Rebuild
@@ -309,18 +307,17 @@ git clone <repo-url>
 cd strapi-next-monorepo-v2
 
 # 2. Install dependencies
-npm install
+yarn install
 
 # 3. Restore latest milestone backup
-cd apps/strapi
-npm run strapi import -- --file ../../backups/milestones/newsletter-complete/strapi-export.tar.gz
+yarn workspace @repo/strapi strapi import -- --file ../../backups/milestones/newsletter-complete/strapi-export.tar.gz
 
 # 4. Copy environment variables
-Copy-Item "../../backups/milestones/newsletter-complete/.env.example" -Destination ".env"
+Copy-Item "../../backups/milestones/newsletter-complete/.env.example" -Destination "apps/strapi/.env"
 
 # 5. Build and start
-npm run build
-npm run dev
+yarn workspace @repo/strapi build
+yarn workspace @repo/strapi dev
 ```
 
 ---

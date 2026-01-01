@@ -939,7 +939,7 @@ Start-Process "test-results/<test-name>/test-failed-1.png"
 
 ```powershell
 # Open trace in Playwright Inspector
-npx playwright show-trace test-results/<test-name>/trace.zip
+yarn workspace @repo/ui playwright show-trace test-results/<test-name>/trace.zip
 ```
 
 **Trace Shows:**

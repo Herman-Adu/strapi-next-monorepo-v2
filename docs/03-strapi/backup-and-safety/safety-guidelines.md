@@ -235,14 +235,13 @@ pg_dump -Fc -h localhost -U strapi_user -d strapi_db -f db-backup.dump
    .\scripts\verify-backup.ps1 -BackupFile "path/to/backup.tar.gz"
 
    # 3. Import backup
-   cd apps/strapi
-   npm run strapi import -- --file ../../path/to/backup.tar.gz --force
+   yarn workspace @repo/strapi strapi import -- --file ../../path/to/backup.tar.gz --force
 
    # 4. Rebuild
-   npm run build
+   yarn workspace @repo/strapi build
 
    # 5. Restart
-   npm run develop
+   yarn workspace @repo/strapi develop
    ```
 
 4. **Verify Restoration**

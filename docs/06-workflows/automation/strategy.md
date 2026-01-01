@@ -312,7 +312,7 @@ jobs:
       - run: yarn build
 
       - name: Install Playwright
-        run: npx playwright install --with-deps
+        run: yarn workspace @repo/ui playwright install --with-deps
 
       - name: Run E2E tests
         run: yarn test:e2e

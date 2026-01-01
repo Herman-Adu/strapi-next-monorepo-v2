@@ -162,7 +162,7 @@ e2e-tests:
 
 ```yaml
 - name: Install Playwright Browsers
-  run: npx playwright install --with-deps chromium
+  run: yarn workspace @repo/ui playwright install --with-deps chromium
 ```
 
 **What's Installed**:

@@ -360,7 +360,7 @@ After running tests:
 yarn test:e2e --reporter=html
 
 # Open report (auto-opens browser)
-npx playwright show-report
+yarn workspace @repo/ui playwright show-report
 ```
 
 ### CI Reports

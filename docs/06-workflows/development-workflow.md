@@ -18,9 +18,8 @@
 **Always start with Strapi backend before frontend integration**
 
 ```bash
-# 1. Start Strapi development server
-cd apps/strapi
-npm run develop
+# 1. Start Strapi development server (from root)
+yarn workspace @repo/strapi develop
 
 # 2. Verify in Strapi Admin (http://localhost:1337/admin)
 # - Check content types exist
@@ -44,9 +43,8 @@ curl "http://localhost:1337/api/footer?populate=deep"
 **Only after backend is confirmed working**
 
 ```bash
-# 3. Start Next.js development server
-cd apps/ui
-npm run dev
+# 3. Start Next.js development server (from root)
+yarn workspace @repo/ui dev
 
 # 4. Test integration at http://localhost:3000
 ```

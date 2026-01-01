@@ -43,66 +43,66 @@ yarn dev
 ### Run All Tests
 
 ```powershell
-# Run all E2E tests
-yarn test:e2e
+# Run all E2E tests (from root)
+yarn workspace @repo/ui test:e2e
 
-# Or use Playwright directly
-npx playwright test
+# Or with Playwright directly
+yarn workspace @repo/ui playwright test
 ```
 
 ### Run Specific Test Files
 
 ```powershell
 # Newsletter tests only
-npx playwright test newsletter.spec.ts
+yarn workspace @repo/ui playwright test newsletter.spec.ts
 
 # Contact form tests only
-npx playwright test contact-form.spec.ts
+yarn workspace @repo/ui playwright test contact-form.spec.ts
 
 # FAQ tests only
-npx playwright test faq.spec.ts
+yarn workspace @repo/ui playwright test faq.spec.ts
 
 # API integration tests only
-npx playwright test api-integration.spec.ts
+yarn workspace @repo/ui playwright test api-integration.spec.ts
 
 # Error handling tests only
-npx playwright test error-handling.spec.ts
+yarn workspace @repo/ui playwright test error-handling.spec.ts
 ```
 
 ### Run in Headed Mode (See Browser)
 
 ```powershell
 # Run tests with browser visible
-npx playwright test --headed
+yarn workspace @repo/ui playwright test --headed
 
 # Run specific test with browser visible
-npx playwright test newsletter.spec.ts --headed
+yarn workspace @repo/ui playwright test newsletter.spec.ts --headed
 ```
 
 ### Run in Debug Mode
 
 ```powershell
 # Debug a specific test
-npx playwright test newsletter.spec.ts --debug
+yarn workspace @repo/ui playwright test newsletter.spec.ts --debug
 
 # Or use Playwright Inspector
-npx playwright test --ui
+yarn workspace @repo/ui playwright test --ui
 ```
 
 ### Run on Specific Browsers
 
 ```powershell
 # Chromium only
-npx playwright test --project=chromium
+yarn workspace @repo/ui playwright test --project=chromium
 
 # Firefox only
-npx playwright test --project=firefox
+yarn workspace @repo/ui playwright test --project=firefox
 
 # WebKit only
-npx playwright test --project=webkit
+yarn workspace @repo/ui playwright test --project=webkit
 
 # All browsers
-npx playwright test
+yarn workspace @repo/ui playwright test
 ```
 
 ---
@@ -247,7 +247,7 @@ To run these tests successfully, you need the E2E test page populated with:
 
 ```powershell
 # After running tests, open HTML report
-npx playwright show-report
+yarn workspace @repo/ui playwright show-report
 ```
 
 ### Screenshots and Videos
@@ -294,10 +294,10 @@ Tests are configured to run on CI with:
 
 ```powershell
 # 1. Run test in headed mode to see what's happening
-npx playwright test newsletter.spec.ts --headed
+yarn workspace @repo/ui playwright test newsletter.spec.ts --headed
 
 # 2. Use Playwright Inspector to debug selectors
-npx playwright test newsletter.spec.ts --debug
+yarn workspace @repo/ui playwright test newsletter.spec.ts --debug
 
 # 3. Verify test data was populated correctly in Strapi
 # Follow: docs/07-content-manager/POPULATE_TEST_DATA_GUIDE.md

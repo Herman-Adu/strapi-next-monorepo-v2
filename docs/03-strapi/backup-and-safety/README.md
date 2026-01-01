@@ -30,14 +30,13 @@
 # Stop Strapi server (Ctrl+C)
 
 # Import backup
-cd apps/strapi
-npm run strapi import -- --file ../../backups/path/to/backup.tar.gz --force
+yarn workspace @repo/strapi strapi import -- --file ../../backups/path/to/backup.tar.gz --force
 
 # Rebuild
-npm run build
+yarn workspace @repo/strapi build
 
 # Restart
-npm run develop
+yarn workspace @repo/strapi develop
 ```
 
 ---

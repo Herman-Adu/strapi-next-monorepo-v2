@@ -1077,12 +1077,12 @@ yarn build
 # DON'T cd into apps/ui - always use workspace from root
 cd apps/ui; yarn test:e2e
 
-# DON'T use npm or npx
-npm test
-npx playwright test
+# DON'T use yarn without workspace prefix
+yarn test:e2e  # Missing workspace prefix
+yarn playwright test  # Missing workspace prefix
 
 # DON'T run without workspace name
-yarn test:e2e
+test:e2e  # Not a command
 ```
 
 ---

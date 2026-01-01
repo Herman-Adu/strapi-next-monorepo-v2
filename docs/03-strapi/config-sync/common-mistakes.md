@@ -38,7 +38,7 @@ Database Change  → EXPORT (database → filesystem)
 1. Edit JSON file manually
 2. Go to Admin UI → Settings → Config Sync
 3. Click **"Import"** (NOT Export!)
-4. Rebuild admin: `npm run build` in apps/strapi
+4. Rebuild admin: `yarn workspace @repo/strapi build`
 5. Restart Strapi
 6. Verify changes in browser
 
@@ -59,9 +59,8 @@ Content Manager field layouts are **cached in the admin build**. Importing confi
 **Always rebuild after config import:**
 
 ```powershell
-cd apps/strapi
-npm run build
-npm run dev  # Or restart if already running
+yarn workspace @repo/strapi build
+yarn workspace @repo/strapi dev  # Or restart if already running
 ```
 
 **Production:**
@@ -166,7 +165,7 @@ Editing the wrong one has no effect!
 ### After Manual JSON Edits
 
 - [ ] IMPORT config (database ← filesystem)
-- [ ] Rebuild admin UI (`npm run build`)
+- [ ] Rebuild admin UI (`yarn workspace @repo/strapi build`)
 - [ ] Restart Strapi
 - [ ] Test in browser
 - [ ] Commit changes to git
