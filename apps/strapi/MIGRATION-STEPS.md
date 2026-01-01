@@ -1,5 +1,9 @@
 # SQLite to PostgreSQL Migration - Manual Steps
 
+> **⚠️ ARCHIVED**: This document is for historical reference only. The project completed migration to PostgreSQL in November 2025. All new development should use PostgreSQL from the start. See [Database Strategy](../../docs/03-strapi/DATABASE-STRATEGY.md) for current setup.
+
+---
+
 ## Prerequisites ✅
 
 - [x] PostgreSQL installed and running
