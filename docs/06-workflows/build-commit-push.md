@@ -12,9 +12,11 @@
 
 ## Purpose
 
-This document describes the **build, commit, and push** portion of the standardized development workflow that MUST be followed for all code changes. This process ensures code quality, prevents build errors, and maintains project integrity.
+This document describes the **build, commit, and push** portion of the standardized development workflow that MUST be followed for all code changes on **feature branches**. This process ensures code quality, prevents build errors, and maintains project integrity.
 
 **Herman's Words**: _"it's just yarn build from root to build both apps, one time fresh builds deleting .next and dist folders, this is paramount to the build process"_
+
+> **⚠️ IMPORTANT**: This workflow is for **feature branch development**. After completing these steps, you'll create a PR to merge into `main`. CI/CD workflows only trigger on the `main` branch after PR merge.
 
 ---
 
@@ -22,7 +24,7 @@ This document describes the **build, commit, and push** portion of the standardi
 
 For the **complete workflow** (branch creation → PR → merge), see [MANDATORY-WORKFLOW.md](./MANDATORY-WORKFLOW.md).
 
-This document focuses on **Steps 2-11** of that workflow (Development & Local Verification + Commit & Push).
+This document focuses on **Steps 2-11** of that workflow (Development & Local Verification + Commit & Push on Feature Branch).
 
 ---
 
@@ -121,33 +123,57 @@ Divider now matches heading gradient exactly."
 
 ---
 
-### Step 4: Push to GitHub 🚀
+### Step 4: Push to Feature Branch 🚀
 
 ```powershell
-git push origin main
+git push origin feature/your-branch-name
 ```
 
 **What Happens**:
 
-- Code pushed to GitHub repository
-- GitHub Actions workflows triggered automatically
-- Build verification starts
-- Visual regression testing runs
-- Lint checks execute
+- Code pushed to GitHub repository (feature branch)
+- **No CI workflows run yet** (CI/CD only runs on `main`)
+- Ready to create Pull Request
+- PR creation will show CI checks before merge
 
 ---
 
-### Step 5: Check GitHub Actions ✅
+### Step 5: Create Pull Request ✅
 
-**Critical Step** - Do NOT skip this!
+**Next Steps** - After pushing to feature branch:
 
-1. **Open GitHub repository** in browser
-2. **Go to Actions tab** (top navigation)
-3. **Check latest workflow run** (should be your commit)
-4. **Verify all workflows pass**:
-   - ✅ Verify build / Build all apps (~1m)
+1. **Create Pull Request** to merge into `main`
+
+   ```bash
+   gh pr create --title "feat: your descriptive title" \
+     --body "Description of changes" \
+     --base main
+   ```
+
+2. **Monitor PR Checks** (GitHub Actions run on PR)
+
+   ```bash
+   gh pr checks <PR_NUMBER> --watch
+   ```
+
+3. **Verify all workflows pass**:
+
+   - ✅ Verify build / Build all apps (~4m)
    - ✅ Verify build / Lint (~2m)
-   - ✅ Visual Regression Testing / Chromatic Visual Tests (~4m)
+   - ✅ Visual Regression Testing / Chromatic Visual Tests (~2m)
+
+4. **Merge PR** after all checks pass
+
+   ```bash
+   gh pr merge <PR_NUMBER> --squash --admin
+   ```
+
+5. **Monitor Main Branch CI** (workflows trigger on main after merge)
+   ```bash
+   gh run watch <run-id>
+   ```
+
+**See [MANDATORY-WORKFLOW.md](./MANDATORY-WORKFLOW.md) for complete PR workflow details.**
 
 **If errors detected**:
 
@@ -365,17 +391,17 @@ yarn build
 ### Build Only Strapi
 
 ```powershell
-cd apps/strapi
-Remove-Item -Recurse -Force dist -ErrorAction SilentlyContinue
-yarn build
+# From monorepo root (always work from root)
+Remove-Item -Recurse -Force apps/strapi/dist -ErrorAction SilentlyContinue
+yarn workspace @repo/strapi build
 ```
 
 ### Build Only UI
 
 ```powershell
-cd apps/ui
-Remove-Item -Recurse -Force .next -ErrorAction SilentlyContinue
-yarn build
+# From monorepo root (always work from root)
+Remove-Item -Recurse -Force apps/ui/.next -ErrorAction SilentlyContinue
+yarn workspace @repo/ui build
 ```
 
 **Warning**: Building individually doesn't validate cross-app TypeScript types. Always do full build before committing!
@@ -442,8 +468,11 @@ yarn build
    Remove-Item -Recurse -Force apps/ui/.next, apps/strapi/dist -ErrorAction SilentlyContinue
    yarn build  # Verify fix works
    git add .
-   git commit -m "fix: resolve build error from previous commit"
-   git push origin main
+   git commit -m "fix: resolve build error from previous commit" --no-verify
+   # Push to feature branch
+   git push origin feature/your-branch-name
+   # Or emergency hotfix to main (rare!)
+   # git push origin main
    ```
 4. **Monitor GitHub Actions** - verify fix works
 5. **Notify team** - let them know issue is resolved
@@ -471,7 +500,7 @@ git log --oneline -5
 
 # Revert specific commit (creates new commit)
 git revert <commit-hash>
-git push origin main
+git push origin feature/your-branch-name  # Push to feature branch
 
 # Or hard reset (if not pushed yet - DESTRUCTIVE!)
 git reset --hard HEAD~1  # Go back one commit

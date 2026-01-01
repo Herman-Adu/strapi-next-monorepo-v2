@@ -361,11 +361,11 @@ gh run list --workflow=backup.yml --limit 1 --json databaseId -q '.[0].databaseI
 # 2. Restore to local database
 cd database-backup-1234
 psql "$DATABASE_URL" < strapi_backup_20251130_020000.sql
+cd ..
 
-# 3. Restart Strapi
-cd apps/strapi
-yarn build
-yarn start
+# 3. Restart Strapi (from monorepo root)
+yarn workspace @repo/strapi build
+yarn workspace @repo/strapi start
 ```
 
 ---
