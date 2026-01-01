@@ -2,15 +2,16 @@ name: Documentation Links Validation
 
 on:
   workflow_dispatch:
-  # DISABLED: Focusing on Lint and Build UI only
-  # pull_request:
-  #   paths:
-  #     - "docs/**"
-  # push:
-  #   branches:
-  #     - main
-  #   paths:
-  #     - "docs/**"
+  pull_request:
+    paths:
+      - "docs/**"
+      - "apps/ui/src/lib/docs/**"
+  push:
+    branches:
+      - main
+    paths:
+      - "docs/**"
+      - "apps/ui/src/lib/docs/**"
 
 jobs:
   validate-links:
