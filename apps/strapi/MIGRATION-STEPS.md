@@ -52,7 +52,7 @@ mv .env .env.postgres
 mv .env.sqlite .env
 
 # Export
-npm run strapi export -- --file exports/migration.tar.gz.enc
+yarn workspace @repo/strapi strapi export -- --file exports/migration.tar.gz.enc
 
 # Restore PostgreSQL .env
 mv .env .env.sqlite
@@ -62,13 +62,13 @@ mv .env.postgres .env
 #### Step 3: Import to PostgreSQL
 
 ```bash
-npm run strapi import -- --file exports/migration.tar.gz.enc --force
+yarn workspace @repo/strapi strapi import -- --file exports/migration.tar.gz.enc --force
 ```
 
 #### Step 4: Verify
 
 ```bash
-npm run develop
+yarn workspace @repo/strapi develop
 ```
 
 Visit http://localhost:1337/admin and check:
@@ -131,5 +131,5 @@ DATABASE_FILENAME=.tmp/data.db
 cp .tmp/backups/data-backup.db .tmp/data.db
 
 # Start Strapi
-npm run develop
+yarn workspace @repo/strapi develop
 ```

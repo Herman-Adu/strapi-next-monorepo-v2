@@ -83,18 +83,18 @@ These operations are **DESTRUCTIVE** and require extra care:
 DROP DATABASE strapi_db;
 
 # ❌ NEVER run without backup
-npm run strapi seed:reset
+yarn workspace @repo/strapi strapi seed:reset
 ```
 
 ### Force Imports (Overwrites Existing Data)
 
 ```powershell
 # ⚠️ --force flag OVERWRITES all existing content
-npm run strapi import -- --file backup.tar.gz --force
+yarn workspace @repo/strapi strapi import -- --file backup.tar.gz --force
 
 # ✅ ALWAYS create backup first
 .\scripts\backup-strapi-safe.ps1 -MilestoneName "pre-import-safety"
-npm run strapi import -- --file backup.tar.gz --force
+yarn workspace @repo/strapi strapi import -- --file backup.tar.gz --force
 ```
 
 ### Schema Changes
@@ -328,8 +328,7 @@ Get-ChildItem backups/milestones -Recurse -Filter "*.tar.gz" | Sort-Object LastW
 .\scripts\verify-backup.ps1 -BackupFile "path/to/backup.tar.gz"
 
 # Restore (destructive!)
-cd apps/strapi
-npm run strapi import -- --file ../../path/to/backup.tar.gz --force
+yarn workspace @repo/strapi strapi import -- --file ../../path/to/backup.tar.gz --force
 ```
 
 ---

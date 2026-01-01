@@ -155,8 +155,7 @@ Get-ChildItem backups/milestones -Recurse -Filter "*.tar.gz" |
 .\scripts\verify-backup.ps1 -BackupFile "path/to/backup.tar.gz"
 
 # Restore (DESTRUCTIVE!)
-cd apps/strapi
-npm run strapi import -- --file ../../path/to/backup.tar.gz --force
+yarn workspace @repo/strapi strapi import -- --file ../../path/to/backup.tar.gz --force
 ```
 
 ---

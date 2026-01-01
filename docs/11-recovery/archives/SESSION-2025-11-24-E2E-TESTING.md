@@ -388,16 +388,16 @@ yarn test:e2e
 yarn test:e2e
 
 # Run specific test file
-npx playwright test newsletter.spec.ts
+yarn workspace @repo/ui playwright test newsletter.spec.ts
 
 # Run in headed mode (see browser)
-npx playwright test --headed
+yarn workspace @repo/ui playwright test --headed
 
 # Debug mode
-npx playwright test --debug
+yarn workspace @repo/ui playwright test --debug
 
 # View last test report
-npx playwright show-report
+yarn workspace @repo/ui playwright show-report
 ```
 
 ---

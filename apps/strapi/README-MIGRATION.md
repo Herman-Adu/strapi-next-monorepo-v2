@@ -17,14 +17,14 @@ This method transfers content types, entries, media files, and configurations.
 1. **On Production/Source Environment:**
 
    ```bash
-   npm run strapi export -- --file strapi-export.tar.gz --no-encrypt
+   yarn workspace @repo/strapi strapi export -- --file strapi-export.tar.gz --no-encrypt
    ```
 
 2. **Download the export file to local**
 
 3. **On Local Environment:**
    ```bash
-   npm run strapi import -- --file strapi-export.tar.gz --force
+   yarn workspace @repo/strapi strapi import -- --file strapi-export.tar.gz --force
    ```
 
 Or use the provided scripts:

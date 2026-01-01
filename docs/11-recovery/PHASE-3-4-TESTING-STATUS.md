@@ -103,7 +103,7 @@ $env:HEADED=1; yarn workspace @repo/ui test:e2e newsletter.spec.ts
 
 # Or run with trace for detailed debugging
 yarn workspace @repo/ui test:e2e newsletter.spec.ts --trace on
-npx playwright show-trace test-results/.../trace.zip
+yarn workspace @repo/ui playwright show-trace test-results/.../trace.zip
 ```
 
 ---
@@ -377,7 +377,7 @@ $env:HEADED=1; yarn workspace @repo/ui test:e2e newsletter.spec.ts --project=chr
 yarn workspace @repo/ui test:e2e newsletter.spec.ts --trace on
 
 # View trace (opens Playwright Inspector)
-npx playwright show-trace test-results/.../trace.zip
+yarn workspace @repo/ui playwright show-trace test-results/.../trace.zip
 ```
 
 **Trace Shows:**

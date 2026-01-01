@@ -349,10 +349,10 @@ apps/
 
 ```bash
 # Terminal 1: Strapi Backend
-cd apps/strapi && npm run develop
+yarn workspace @repo/strapi develop
 
 # Terminal 2: Next.js Frontend
-cd apps/ui && npm run dev
+yarn workspace @repo/ui dev
 
 # Terminal 3: Development tasks
 # For testing, building, or debugging
@@ -389,7 +389,7 @@ yarn build:strapi              # Build Strapi only
 yarn build:ui                  # Build Next.js only
 
 # Database operations
-cd apps/strapi && yarn strapi generate:api
+yarn workspace @repo/strapi strapi generate:api
 
 # Code quality
 yarn lint                      # Check code quality

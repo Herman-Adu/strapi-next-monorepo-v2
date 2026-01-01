@@ -418,8 +418,7 @@ const populateSections = {
 After modifying Strapi schema:
 
 ```powershell
-cd apps/strapi
-npm run strapi -- config:sync:export
+yarn workspace @repo/strapi strapi config:sync:export
 ```
 
 This exports Content Manager metadata for new fields.
@@ -655,8 +654,8 @@ function getHeadingSizeClass(
 
 - **Metadata Export Location**: `apps/strapi/config/sync/core-store.plugin_content_manager_configuration_*`
 - **Sync Commands**:
-  - Export: `npm run strapi -- config:sync:export`
-  - Import: `npm run strapi -- config:sync:import`
+  - Export: `yarn workspace @repo/strapi strapi config:sync:export`
+  - Import: `yarn workspace @repo/strapi strapi config:sync:import`
 
 ---
 

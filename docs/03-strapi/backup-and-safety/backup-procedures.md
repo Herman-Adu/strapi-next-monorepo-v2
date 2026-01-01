@@ -72,26 +72,21 @@ Protect against critical failures and enable quick recovery with complete databa
 
 ```powershell
 # Navigate to Strapi directory
-cd apps/strapi
-
 # Export all data (includes media files)
-npm run strapi export -- --file ../backups/strapi-export-$(Get-Date -Format 'yyyy-MM-dd-HHmm').tar.gz --no-encrypt
+yarn workspace @repo/strapi strapi export -- --file ../backups/strapi-export-$(Get-Date -Format 'yyyy-MM-dd-HHmm').tar.gz --no-encrypt
 
 # OR with encryption (recommended for production)
-npm run strapi export -- --file ../backups/strapi-export-$(Get-Date -Format 'yyyy-MM-dd-HHmm').tar.gz
+yarn workspace @repo/strapi strapi export -- --file ../backups/strapi-export-$(Get-Date -Format 'yyyy-MM-dd-HHmm').tar.gz
 ```
 
 #### Restore from Backup:
 
 ```powershell
-# Navigate to Strapi directory
-cd apps/strapi
-
 # Import data (will prompt for conflicts)
-npm run strapi import -- --file ../backups/strapi-export-2025-11-12-1430.tar.gz
+yarn workspace @repo/strapi strapi import -- --file ../backups/strapi-export-2025-11-12-1430.tar.gz
 
 # OR force overwrite (destructive!)
-npm run strapi import -- --file ../backups/strapi-export-2025-11-12-1430.tar.gz --force
+yarn workspace @repo/strapi strapi import -- --file ../backups/strapi-export-2025-11-12-1430.tar.gz --force
 ```
 
 ---
@@ -169,10 +164,8 @@ Expand-Archive -Path "backups/media-2025-11-12.zip" -DestinationPath "apps/strap
 #### 1. Export Current State as Seed:
 
 ```powershell
-cd apps/strapi
-
 # Create seed data (newsletter component complete state)
-npm run strapi export -- --file database/seeds/01-newsletter-complete.tar.gz --no-encrypt
+yarn workspace @repo/strapi strapi export -- --file database/seeds/01-newsletter-complete.tar.gz --no-encrypt
 ```
 
 #### 2. Create Seed Script:
@@ -204,7 +197,7 @@ module.exports = {
 
 ```powershell
 # Custom seed command (add to package.json)
-npm run strapi seed
+yarn workspace @repo/strapi strapi seed
 ```
 
 ---
@@ -249,8 +242,7 @@ $backupDir = "backups/daily/$(Get-Date -Format 'yyyy-MM-dd')"
 New-Item -ItemType Directory -Force -Path $backupDir
 
 # Export Strapi data
-cd apps/strapi
-npm run strapi export -- --file "../../$backupDir/strapi-export.tar.gz" --no-encrypt
+yarn workspace @repo/strapi strapi export -- --file "../../$backupDir/strapi-export.tar.gz" --no-encrypt
 
 # Copy database
 Copy-Item ".tmp/data.db" -Destination "../../$backupDir/database.db"
@@ -273,10 +265,10 @@ Schedule with Windows Task Scheduler or run manually.
 # 1. Stop Strapi
 # 2. Restore latest backup
 cd apps/strapi
-npm run strapi import -- --file ../../backups/daily/2025-11-12/strapi-export.tar.gz --force
+yarn workspace @repo/strapi strapi import -- --file ../../backups/daily/2025-11-12/strapi-export.tar.gz --force
 
 # 3. Restart Strapi
-npm run dev
+yarn workspace @repo/strapi dev
 ```
 
 ### Scenario 2: Lost Media Files
@@ -326,7 +318,7 @@ yarn workspace @repo/strapi dev
 
 Before major commits:
 
-- [ ] Export current Strapi state: `npm run strapi export`
+- [ ] Export current Strapi state: `yarn workspace @repo/strapi strapi export`
 - [ ] Copy `.env` to backup folder (encrypted or excluded from git)
 - [ ] Backup media folder (if new uploads added)
 - [ ] Document what's in this backup (README.md in backup folder)
@@ -355,7 +347,7 @@ Examples:
 1. **Encrypt exports**:
 
    ```powershell
-   npm run strapi export -- --file backup.tar.gz --key="YourSecretKey123"
+   yarn workspace @repo/strapi strapi export -- --file backup.tar.gz --key="YourSecretKey123"
    ```
 
 2. **Store in secure location**:
