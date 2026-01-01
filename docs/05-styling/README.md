@@ -6,14 +6,14 @@ Comprehensive guides for Tailwind CSS, typography, theming, and design patterns.
 
 ### Core Guides
 
-- **[styling-guide.md](./styling-guide.md)** - Responsive patterns & container queries
+- **[styling-guide.md](/docs/05-styling-styling-guide)** - Responsive patterns & container queries
 
   - Core styling principles
   - Container query patterns
   - Responsive breakpoints
   - Best practices
 
-- **[tailwind-guide.md](./tailwind-guide.md)** - Complete Tailwind CSS reference
+- **[tailwind-guide.md](/docs/05-styling-tailwind-guide)** - Complete Tailwind CSS reference
 
   - Tailwind v4 configuration
   - Component patterns
@@ -21,7 +21,7 @@ Comprehensive guides for Tailwind CSS, typography, theming, and design patterns.
   - Custom configurations
   - **Last Updated:** Current (moved from apps/ui/src/styles/)
 
-- **[typography-plugin.md](./typography-plugin.md)** - Typography plugin implementation
+- **[typography-plugin.md](/docs/05-styling-typography-plugin)** - Typography plugin implementation
   - Tailwind Typography plugin setup
   - Custom typography configurations
   - Font family definitions
@@ -30,13 +30,13 @@ Comprehensive guides for Tailwind CSS, typography, theming, and design patterns.
 
 ### Theming & Colors
 
-- **[theme-colors.md](./theme-colors.md)** - Color system and theming
+- **[theme-colors.md](/docs/05-styling-theme-colors)** - Color system and theming
 
   - Theme color definitions
   - Dark/light mode patterns
   - CSS variable usage
 
-- **[tailwind-v4-gradients.md](./tailwind-v4-gradients.md)** - Gradient system
+- **[tailwind-v4-gradients.md](/docs/05-styling-tailwind-v4-gradients)** - Gradient system
   - Tailwind v4 gradient patterns
   - Custom gradient utilities
   - Background effects
@@ -98,6 +98,6 @@ These guides complement the component code in `apps/ui/src/`:
 
 ## See Also
 
-- [Component Architecture](../02-architecture/component-architecture.md)
-- [Component Development Guide](../04-components/development-guide.md)
-- [Shared Component Guide](../04-components/shared-component-guide.md)
+- [Component Architecture](/docs/02-architecture-component-architecture)
+- [Component Development Guide](/docs/04-components-development-guide)
+- [Shared Component Guide](/docs/04-components-shared-component-guide)

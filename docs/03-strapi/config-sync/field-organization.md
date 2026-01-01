@@ -859,7 +859,7 @@ The same refactoring session also enhanced MetricsSection:
 - Added optional `label` field to StatCard molecule (displays between number and description)
 - Added `gridColumns` enumeration to MetricsSection (options: 2, 3, 4, 6 columns)
 
-See: [MetricsSection Component Guide](../../04-components/specific/metrics-section.md)
+See: [MetricsSection Component Guide](/docs/04-components-specific-metrics-section)
 
 ---
 

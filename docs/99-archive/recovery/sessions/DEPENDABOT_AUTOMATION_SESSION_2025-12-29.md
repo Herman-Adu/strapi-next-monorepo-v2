@@ -435,8 +435,8 @@ gh pr merge <pr-number> --squash --delete-branch
 - [Dependabot Config Reference](../.github/dependabot.yml)
 - [Auto-Merge Workflow](../.github/workflows/dependabot-auto-merge.yml)
 - [Management Script](../scripts/manage-dependabot-prs.ps1)
-- [CI/CD Workflows](../docs/08-devops/workflows/README.md)
-- [Testing Documentation](../docs/13-testing/README.md)
+- [CI/CD Workflows](/docs/readme)
+- [Testing Documentation](/docs/readme)
 
 ---
 

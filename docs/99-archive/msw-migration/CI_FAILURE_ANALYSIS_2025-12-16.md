@@ -6,8 +6,8 @@
 >
 > **Superseded by:**
 >
-> - [Testing Strategy Evolution](../../13-testing/TESTING-STRATEGY-EVOLUTION.md) - Complete MSW journey
-> - [CI/CD Deep Dive](../../08-devops/CI-CD-DEEP-DIVE.md) - Current CI/CD practices
+> - [Testing Strategy Evolution](/docs/13-testing-testing-strategy-evolution) - Complete MSW journey
+> - [CI/CD Deep Dive](/docs/08-devops-ci-cd-deep-dive) - Current CI/CD practices
 >
 > **Purpose:** This document analyzed CI failures during initial MSW adoption. The breakthrough and final implementation are documented in the comprehensive guides above.
 

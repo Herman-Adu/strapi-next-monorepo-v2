@@ -313,10 +313,10 @@ sudo systemctl start postgresql
 
 ## See Also
 
-- [Installation Guide](../01-getting-started/installation.md) - PostgreSQL setup instructions
-- [Strapi Configuration](../03-strapi/configuration.md) - Database connection settings
-- [Development Environment](../01-getting-started/development-environment.md) - Environment variables setup
-- [Backup & Safety](../03-strapi/backup-and-safety/README.md) - Database backup procedures
+- [Installation Guide](/docs/01-getting-started-installation) - PostgreSQL setup instructions
+- [Strapi Configuration](/docs/03-strapi-configuration) - Database connection settings
+- [Development Environment](/docs/01-getting-started-development-environment) - Environment variables setup
+- [Backup & Safety](/docs/readme) - Database backup procedures
 
 ---
 
@@ -337,4 +337,4 @@ If authentication still failing after trying solutions above:
 ---
 
 **Last Updated**: December 11, 2025  
-**Related Incident**: [POSTGRES_AUTH_FIX.md](../../POSTGRES_AUTH_FIX.md) (root - to be archived)
+**Related Incident**: [POSTGRES_AUTH_FIX.md](/docs/postgres_auth_fix) (root - to be archived)

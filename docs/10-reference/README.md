@@ -4,7 +4,7 @@ Quick reference guides and command listings for daily development.
 
 ## Contents
 
-- **[MONOREPO_COMMAND_REFERENCE.md](./MONOREPO_COMMAND_REFERENCE.md)** - Complete yarn command reference
+- **[MONOREPO_COMMAND_REFERENCE.md](/docs/10-reference-monorepo_command_reference)** - Complete yarn command reference
 
   - E2E testing commands (Playwright)
   - Build commands (UI, Strapi, both)
@@ -16,19 +16,19 @@ Quick reference guides and command listings for daily development.
   - **Usage:** 20+ times/day reference
   - **Last Updated:** December 18, 2025
 
-- **[populate-patterns.md](./populate-patterns.md)** - Strapi populate query patterns
+- **[populate-patterns.md](/docs/10-reference-populate-patterns)** - Strapi populate query patterns
 
   - Deep population examples
   - Nested relation handling
   - Performance optimization tips
 
-- **[project-status.md](./project-status.md)** - Current project state
+- **[project-status.md](/docs/10-reference-project-status)** - Current project state
 
   - Component inventory
   - Feature completion status
   - Known issues tracking
 
-- **[quick-reference.md](./quick-reference.md)** - Quick lookups
+- **[quick-reference.md](/docs/10-reference-quick-reference)** - Quick lookups
   - Common patterns
   - Frequently used snippets
   - Environment variable references
@@ -59,4 +59,4 @@ yarn backup:strapi     # Create backup
 yarn seed:safe         # Safe E2E test data
 ```
 
-See [MONOREPO_COMMAND_REFERENCE.md](./MONOREPO_COMMAND_REFERENCE.md) for complete list.
+See [MONOREPO_COMMAND_REFERENCE.md](/docs/10-reference-monorepo_command_reference) for complete list.

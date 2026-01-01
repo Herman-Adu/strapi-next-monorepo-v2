@@ -368,7 +368,7 @@ Every todo list created in this repository follows this workflow:
 
 ## Related Documentation
 
-- [Build, Commit, Push Workflow](./build-commit-push.md)
-- [Development Workflow](./development-workflow.md)
-- [Best Practice Checklist](./best-practice-checklist.md)
-- [Pre-Commit Validation](../../PRE_COMMIT_VALIDATION_WORKFLOW.md)
+- [Build, Commit, Push Workflow](/docs/06-workflows-build-commit-push)
+- [Development Workflow](/docs/06-workflows-development-workflow)
+- [Best Practice Checklist](/docs/06-workflows-best-practice-checklist)
+- [Pre-Commit Validation](/docs/06-workflows-pre_commit_validation_workflow)

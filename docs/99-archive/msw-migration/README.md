@@ -6,7 +6,7 @@ Historical documentation from the Mock Service Worker (MSW) implementation journ
 
 ### CI Failure Analysis
 
-- **[CI_FAILURE_ANALYSIS_2025-12-16.md](./CI_FAILURE_ANALYSIS_2025-12-16.md)** - Initial CI failure investigation
+- **[CI_FAILURE_ANALYSIS_2025-12-16.md](/docs/99-archive-msw-migration-ci_failure_analysis_2025-12-16)** - Initial CI failure investigation
   - Date: December 16, 2025
   - Context: First MSW implementation attempt
   - Status: CI failed after 9 minutes (local tests passed)
@@ -38,20 +38,20 @@ Historical documentation from the Mock Service Worker (MSW) implementation journ
 
 The complete MSW implementation story is now documented in:
 
-1. **[Testing Strategy Evolution](../../13-testing/TESTING-STRATEGY-EVOLUTION.md)**
+1. **[Testing Strategy Evolution](/docs/13-testing-testing-strategy-evolution)**
 
    - Complete transformation narrative
    - MSW architecture deep dive
    - Implementation guide
    - Lessons learned
 
-2. **[CI/CD Deep Dive](../../08-devops/CI-CD-DEEP-DIVE.md)**
+2. **[CI/CD Deep Dive](/docs/08-devops-ci-cd-deep-dive)**
 
    - Current CI/CD practices
    - Pipeline optimization
    - MSW in CI context
 
-3. **[MSW Implementation](../../13-testing/MSW_IMPLEMENTATION.md)**
+3. **[MSW Implementation](/docs/13-testing-msw_implementation)**
    - Technical implementation details
    - Handler patterns
    - Mock data management

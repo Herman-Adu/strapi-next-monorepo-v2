@@ -240,11 +240,11 @@ Historical planning documents moved to `docs/12-planning/archives/`:
 
 ## Related Documentation
 
-- [Content Library](../../content/README.md) - Published content overview
-- [Content Progress](../../content/planning/PROGRESS.md) - Phase 3 completion status
-- [Professional Presence Strategy](../15-professional-presence/CTO-POSITIONING-STRATEGY.md) - Positioning framework
-- [Component Order Proposal](./component-order-proposal.md) - Component ordering ideas
-- [Refactoring Checklist](./refactoring-checklist.md) - Living refactoring guide
+- [Content Library](/docs/readme) - Published content overview
+- [Content Progress](/docs/content-planning-progress) - Phase 3 completion status
+- [Professional Presence Strategy](/docs/15-professional-presence-cto-positioning-strategy) - Positioning framework
+- [Component Order Proposal](/docs/12-planning-component-order-proposal) - Component ordering ideas
+- [Refactoring Checklist](/docs/12-planning-refactoring-checklist) - Living refactoring guide
 
 ---
 

@@ -492,10 +492,10 @@ docs/
 
 ## Related Documentation
 
-- [Current Documentation Structure](../00-START-HERE.md) - Entry point for all docs
-- [Documentation Linking Guide](../00-DOCUMENTATION-LINKING-GUIDE.md) - Cross-reference standards
-- [Project Structure](../../01-getting-started/project-structure.md) - Monorepo organization
-- [Component Refactoring Journey](../14-deep-dives/05-TRANSFORMATION-JOURNEY.md) - Parallel refactoring effort
+- [Current Documentation Structure](/docs/00-start-here) - Entry point for all docs
+- [Documentation Linking Guide](/docs/00-documentation-linking-guide) - Cross-reference standards
+- [Project Structure](/docs/01-getting-started-project-structure) - Monorepo organization
+- [Component Refactoring Journey](/docs/14-deep-dives-05-transformation-journey) - Parallel refactoring effort
 
 ---
 
@@ -535,5 +535,5 @@ This refactoring established patterns that will serve the project for years:
 ---
 
 **Last Updated**: December 11, 2025  
-**Original Plan**: [DOCUMENTATION_REFACTOR_PLAN.md](../../DOCUMENTATION_REFACTOR_PLAN.md) (root - to be archived)  
+**Original Plan**: [DOCUMENTATION_REFACTOR_PLAN.md](/docs/documentation_refactor_plan) (root - to be archived)  
 **Status**: ✅ SUCCESSFULLY IMPLEMENTED (exceeded original goals)

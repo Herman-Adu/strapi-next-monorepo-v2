@@ -102,7 +102,7 @@ jobs:
 
 **Success Criteria**: Both Lint AND Build must pass
 
-**See**: [01-ci-workflow.md](./workflows/01-ci-workflow.md)
+**See**: [01-ci-workflow.md](/docs/08-devops-workflows-01-ci-workflow)
 
 ---
 
@@ -149,7 +149,7 @@ test("public-proxy forwards requests correctly", async ({ request }) => {
 })
 ```
 
-**See**: [07-integration-tests-workflow.md](./workflows/07-integration-tests-workflow.md)
+**See**: [07-integration-tests-workflow.md](/docs/08-devops-workflows-07-integration-tests-workflow)
 
 ---
 
@@ -211,7 +211,7 @@ Playwright Asserts User Experience
 - ✅ 98%+ CI success rate
 - ✅ 15-minute total duration
 
-**See**: [02-e2e-workflow.md](./workflows/02-e2e-workflow.md), [MSW-CONSOLIDATION.md](../13-testing/MSW-CONSOLIDATION.md)
+**See**: [02-e2e-workflow.md](/docs/08-devops-workflows-02-e2e-workflow), [MSW-CONSOLIDATION.md](/docs/13-testing-msw-consolidation)
 
 ---
 
@@ -263,7 +263,7 @@ Playwright Asserts User Experience
 4. Accept (intentional) or Reject (bug)
 5. Baseline updated automatically
 
-**See**: [04-visual-regression-workflow.md](./workflows/04-visual-regression-workflow.md)
+**See**: [04-visual-regression-workflow.md](/docs/08-devops-workflows-04-visual-regression-workflow)
 
 ---
 
@@ -296,7 +296,7 @@ Playwright Asserts User Experience
 - FCP > 1.8s
 - LCP > 2.5s
 
-**See**: [03-lighthouse-workflow.md](./workflows/03-lighthouse-workflow.md)
+**See**: [03-lighthouse-workflow.md](/docs/08-devops-workflows-03-lighthouse-workflow)
 
 ---
 
@@ -334,7 +334,7 @@ gzip backup-$(date +%Y%m%d).sql
 2. Extract: `gunzip backup-YYYYMMDD.sql.gz`
 3. Restore: `psql -U postgres < backup-YYYYMMDD.sql`
 
-**See**: [06-database-backup-workflow.md](./workflows/06-database-backup-workflow.md)
+**See**: [06-database-backup-workflow.md](/docs/08-devops-workflows-06-database-backup-workflow)
 
 ---
 
@@ -364,7 +364,7 @@ cache:
   restore-keys: ${{ runner.os }}-
 ```
 
-**See**: [05-cache-cleanup-workflow.md](./workflows/05-cache-cleanup-workflow.md)
+**See**: [05-cache-cleanup-workflow.md](/docs/08-devops-workflows-05-cache-cleanup-workflow)
 
 ---
 
@@ -569,11 +569,11 @@ gh workflow run cleanup-caches.yml
 
 ### Core References
 
-- [Workflows Index](./workflows/README.md) - All 9 workflows
-- [CI Workflow Details](./workflows/01-ci-workflow.md)
-- [E2E Workflow Details](./workflows/02-e2e-workflow.md)
-- [MSW Testing Guide](../13-testing/MSW-CONSOLIDATION.md)
-- [Testing Strategy](../13-testing/README.md)
+- [Workflows Index](/docs/readme) - All 9 workflows
+- [CI Workflow Details](/docs/08-devops-workflows-01-ci-workflow)
+- [E2E Workflow Details](/docs/08-devops-workflows-02-e2e-workflow)
+- [MSW Testing Guide](/docs/13-testing-msw-consolidation)
+- [Testing Strategy](/docs/readme)
 
 ### External Resources
 

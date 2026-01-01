@@ -494,18 +494,18 @@ description: "Successfully delivered to clients across 50+ countries"
 
 ## Related Components
 
-- [SectionBackground](../patterns/section-background.md) - Background styling
-- [SectionBadge](../patterns/section-badge.md) - Badge component
-- [SectionHeader](../patterns/section-header.md) - Header component
-- [StatCard](../molecules/stat-card.md) - Individual metric card
+- [SectionBackground](/docs/patterns-section-background) - Background styling
+- [SectionBadge](/docs/patterns-section-badge) - Badge component
+- [SectionHeader](/docs/patterns-section-header) - Header component
+- [StatCard](/docs/molecules-stat-card) - Individual metric card
 
 ---
 
 ## Related Documentation
 
-- [Component Development Workflow](../workflow.md) - Creating new sections
-- [Atomic Architecture](../../02-architecture/atomic-design/02-ATOMIC-DESIGN-PRIMER.md) - Design system principles
-- [Field Organization](../../03-strapi/config-sync/field-organization.md) - Strapi field layout
+- [Component Development Workflow](/docs/04-components-workflow) - Creating new sections
+- [Atomic Architecture](/docs/02-architecture-atomic-design-02-atomic-design-primer) - Design system principles
+- [Field Organization](/docs/03-strapi-config-sync-field-organization) - Strapi field layout
 
 ---
 
@@ -544,4 +544,4 @@ When implementing or modifying MetricsSection:
 
 **Created**: December 11, 2025 (based on November 28 refactoring)  
 **Status**: Active - Component in production use  
-**Original File**: [COMPONENT_REFACTORING_SUMMARY.md](../../../COMPONENT_REFACTORING_SUMMARY.md) (root - to be archived)
+**Original File**: [COMPONENT_REFACTORING_SUMMARY.md](/docs/component_refactoring_summary) (root - to be archived)

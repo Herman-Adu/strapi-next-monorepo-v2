@@ -835,7 +835,7 @@ Document specifically for this project:
 
 - [E2E Testing Guide](README.md)
 - [Troubleshooting E2E Tests](TROUBLESHOOTING.md)
-- [MSW Implementation](../MSW_IMPLEMENTATION.md)
+- [MSW Implementation](/docs/13-testing-msw_implementation)
 - [Test Data Seeding](test-data-seeding.md)
 
 ---

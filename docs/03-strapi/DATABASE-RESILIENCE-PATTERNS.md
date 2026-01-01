@@ -116,7 +116,7 @@ DATABASE_NAME=strapi_development
 
 **Lesson Learned**: Always use password authentication (`scram-sha-256`), never `peer` or `trust`
 
-**See**: [POSTGRES_AUTH_FIX.md](../POSTGRES_AUTH_FIX.md)
+**See**: [POSTGRES_AUTH_FIX.md](/docs/postgres_auth_fix)
 
 ---
 
@@ -560,10 +560,10 @@ echo "✅ Database health OK"
 
 ### Internal Guides
 
-- [Database Strategy](./DATABASE-STRATEGY.md) - PostgreSQL vs SQLite decision
-- [Backup Procedures](./backup-and-safety/backup-procedures.md)
-- [Safety Guidelines](./backup-and-safety/safety-guidelines.md)
-- [PostgreSQL Auth Fix](../POSTGRES_AUTH_FIX.md) - Authentication crisis resolution
+- [Database Strategy](/docs/03-strapi-database-strategy) - PostgreSQL vs SQLite decision
+- [Backup Procedures](/docs/03-strapi-backup-and-safety-backup-procedures)
+- [Safety Guidelines](/docs/03-strapi-backup-and-safety-safety-guidelines)
+- [PostgreSQL Auth Fix](/docs/postgres_auth_fix) - Authentication crisis resolution
 
 ### External Resources
 
