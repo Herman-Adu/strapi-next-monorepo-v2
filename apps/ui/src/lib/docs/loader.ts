@@ -796,7 +796,7 @@ export const DOC_METADATA_MAP: Record<string, Omit<DocMetadata, "slug">> = {
     audience: "all",
   },
 
-  "07-content-manager/TEST-DATA-UPDATE.md": {
+  "07-content-manager/archives/TEST-DATA-UPDATE.md": {
     title: "Test Data Update Summary",
     description:
       "Overview of test data reorganization with quick links and usage guide",
@@ -928,7 +928,7 @@ export const DOC_METADATA_MAP: Record<string, Omit<DocMetadata, "slug">> = {
   },
 
   // 11 - Recovery (Update existing entries)
-  "11-recovery/SESSION-2025-11-22-REVIEW.md": {
+  "99-archive/recovery/sessions/SESSION-2025-11-22-REVIEW.md": {
     title: "Session Review: Nov 22, 2025",
     description:
       "Complete review of documentation reorganization, test data architecture, and lessons learned",
@@ -939,7 +939,7 @@ export const DOC_METADATA_MAP: Record<string, Omit<DocMetadata, "slug">> = {
     badge: "Session Review",
     audience: "all",
   },
-  "11-recovery/RECOVERY-INSTRUCTIONS-2025-11-23.md": {
+  "99-archive/recovery/sessions/RECOVERY-INSTRUCTIONS-2025-11-23.md": {
     title: "Recovery Instructions: Nov 23, 2025",
     description:
       "Start here tomorrow - context restoration, testing workflow, and next steps",
@@ -1134,7 +1134,7 @@ export const DOC_METADATA_MAP: Record<string, Omit<DocMetadata, "slug">> = {
     status: "published",
     audience: "all",
   },
-  "15-professional-presence/LINKEDIN-CONTENT-CALENDAR.md": {
+  "15-professional-presence/archives/LINKEDIN-CONTENT-CALENDAR.md": {
     title: "LinkedIn Content Calendar",
     description: "Strategic content planning for thought leadership",
     category: "professional-presence",
@@ -1144,19 +1144,20 @@ export const DOC_METADATA_MAP: Record<string, Omit<DocMetadata, "slug">> = {
     audience: "all",
   },
 
-  // 15-professional-presence/content-calendar
-  "15-professional-presence/content-calendar/MASTER-CONTENT-INDEX.md": {
-    title: "Master Content Index",
-    description: "Complete content calendar overview",
-    category: "professional-presence",
-    subcategory: "content-calendar",
-    order: 1,
-    readTime: "10 min",
-    status: "published",
-    badge: "Start Here",
-    audience: "all",
-  },
-  "15-professional-presence/content-calendar/SCHEDULING-WORKFLOW.md": {
+  // 15-professional-presence/archives/content-calendar
+  "15-professional-presence/archives/content-calendar/MASTER-CONTENT-INDEX.md":
+    {
+      title: "Master Content Index",
+      description: "Complete content calendar overview",
+      category: "professional-presence",
+      subcategory: "content-calendar",
+      order: 1,
+      readTime: "10 min",
+      status: "published",
+      badge: "Start Here",
+      audience: "all",
+    },
+  "15-professional-presence/archives/content-calendar/SCHEDULING-WORKFLOW.md": {
     title: "Content Scheduling Workflow",
     description: "Efficient content planning and scheduling",
     category: "professional-presence",
@@ -1166,37 +1167,40 @@ export const DOC_METADATA_MAP: Record<string, Omit<DocMetadata, "slug">> = {
     status: "published",
     audience: "all",
   },
-  "15-professional-presence/content-calendar/TWITTER-THREADS-PART-1.md": {
-    title: "Twitter Threads Part 1",
-    description: "Technical Twitter thread content",
-    category: "professional-presence",
-    subcategory: "content-calendar",
-    order: 3,
-    readTime: "12 min",
-    status: "published",
-    audience: "all",
-  },
-  "15-professional-presence/content-calendar/TWITTER-THREADS-PART-2.md": {
-    title: "Twitter Threads Part 2",
-    description: "More technical Twitter content",
-    category: "professional-presence",
-    subcategory: "content-calendar",
-    order: 4,
-    readTime: "12 min",
-    status: "published",
-    audience: "all",
-  },
-  "15-professional-presence/content-calendar/TWITTER-THREADS-PART-3.md": {
-    title: "Twitter Threads Part 3",
-    description: "Advanced Twitter thread strategies",
-    category: "professional-presence",
-    subcategory: "content-calendar",
-    order: 5,
-    readTime: "12 min",
-    status: "published",
-    audience: "all",
-  },
-  "15-professional-presence/content-calendar/WEEK-3-LINKEDIN.md": {
+  "15-professional-presence/archives/content-calendar/TWITTER-THREADS-PART-1.md":
+    {
+      title: "Twitter Threads Part 1",
+      description: "Technical Twitter thread content",
+      category: "professional-presence",
+      subcategory: "content-calendar",
+      order: 3,
+      readTime: "12 min",
+      status: "published",
+      audience: "all",
+    },
+  "15-professional-presence/archives/content-calendar/TWITTER-THREADS-PART-2.md":
+    {
+      title: "Twitter Threads Part 2",
+      description: "More technical Twitter content",
+      category: "professional-presence",
+      subcategory: "content-calendar",
+      order: 4,
+      readTime: "12 min",
+      status: "published",
+      audience: "all",
+    },
+  "15-professional-presence/archives/content-calendar/TWITTER-THREADS-PART-3.md":
+    {
+      title: "Twitter Threads Part 3",
+      description: "Advanced Twitter thread strategies",
+      category: "professional-presence",
+      subcategory: "content-calendar",
+      order: 5,
+      readTime: "12 min",
+      status: "published",
+      audience: "all",
+    },
+  "15-professional-presence/archives/content-calendar/WEEK-3-LINKEDIN.md": {
     title: "Week 3 LinkedIn Content",
     description: "LinkedIn posts for week 3",
     category: "professional-presence",
@@ -1206,7 +1210,7 @@ export const DOC_METADATA_MAP: Record<string, Omit<DocMetadata, "slug">> = {
     status: "published",
     audience: "all",
   },
-  "15-professional-presence/content-calendar/WEEK-4-LINKEDIN.md": {
+  "15-professional-presence/archives/content-calendar/WEEK-4-LINKEDIN.md": {
     title: "Week 4 LinkedIn Content",
     description: "LinkedIn posts for week 4",
     category: "professional-presence",
@@ -1216,7 +1220,7 @@ export const DOC_METADATA_MAP: Record<string, Omit<DocMetadata, "slug">> = {
     status: "published",
     audience: "all",
   },
-  "15-professional-presence/content-calendar/FINAL-DAYS-21-30.md": {
+  "15-professional-presence/archives/content-calendar/FINAL-DAYS-21-30.md": {
     title: "Final Days 21-30",
     description: "Final push content strategy",
     category: "professional-presence",
@@ -1226,7 +1230,7 @@ export const DOC_METADATA_MAP: Record<string, Omit<DocMetadata, "slug">> = {
     status: "published",
     audience: "all",
   },
-  "15-professional-presence/content-calendar/DAYS-28-30-FINALE.md": {
+  "15-professional-presence/archives/content-calendar/DAYS-28-30-FINALE.md": {
     title: "Days 28-30 Finale",
     description: "Campaign finale content",
     category: "professional-presence",
