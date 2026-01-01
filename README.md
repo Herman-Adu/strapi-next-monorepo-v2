@@ -197,11 +197,22 @@ yarn dev:ui
 yarn dev:strapi
 ```
 
-## � Documentation
+## 📚 Documentation
+
+**Essential References** (Use these daily):
+
+- **[Command Reference](docs/10-reference/MONOREPO_COMMAND_REFERENCE.md)** - All yarn commands (E2E, build, test, format)
+- **[Pre-Commit Workflow](docs/06-workflows/PRE_COMMIT_VALIDATION_WORKFLOW.md)** - Required validation before every commit
+- **[Master Documentation Index](docs/README.md)** - Complete documentation library
+
+**Component Development**:
 
 - **[Component Development Guide](COMPONENT_DEVELOPMENT_GUIDE.md)** - Complete step-by-step guide for adding new sections, elements, and forms to the CMS
 - **[Project Status & Roadmap](PROJECT_STATUS.md)** - Component inventory and development roadmap
 - **[Test Data Guide](TEST_DATA_NEW_COMPONENTS.md)** - Sample data for testing new components
+
+**Getting Started**:
+
 - **[Quick Start Guide](QUICK_START.md)** - Get up and running quickly
 - **[Development Guide](DEVELOPMENT_GUIDE.md)** - Detailed development workflow
 

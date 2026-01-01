@@ -1,5 +1,18 @@
 # CI Failure Analysis - MSW Implementation
 
+> **📦 ARCHIVED:** December 16, 2025
+>
+> **Status:** Historical reference - MSW implementation succeeded
+>
+> **Superseded by:**
+>
+> - [Testing Strategy Evolution](/docs/13-testing-testing-strategy-evolution) - Complete MSW journey
+> - [CI/CD Deep Dive](/docs/08-devops-ci-cd-deep-dive) - Current CI/CD practices
+>
+> **Purpose:** This document analyzed CI failures during initial MSW adoption. The breakthrough and final implementation are documented in the comprehensive guides above.
+
+---
+
 **Date:** December 16, 2025
 **Commit:** 1a02504 - "feat(e2e): implement MSW for SSR-compatible API mocking"
 

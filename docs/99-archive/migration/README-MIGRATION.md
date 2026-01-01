@@ -1,6 +1,6 @@
 # Database Migration Guide
 
-> **⚠️ ARCHIVED**: This document is for historical reference only. The project uses PostgreSQL for all environments (completed November 2025). See [Database Strategy](../docs/03-strapi/DATABASE-STRATEGY.md) for current PostgreSQL setup and backup procedures.
+> **⚠️ ARCHIVED**: This document is for historical reference only. The project uses PostgreSQL for all environments (completed November 2025). See [Database Strategy](/docs/03-strapi-database-strategy) for current PostgreSQL setup and backup procedures.
 
 ---
 

@@ -4,7 +4,7 @@
 
 ## 🚨 Critical Resources
 
-### [Database Strategy](./DATABASE-STRATEGY.md)
+### [Database Strategy](/docs/03-strapi-database-strategy)
 
 **Database Configuration**: PostgreSQL primary database setup, backup/restore, and migration guide.
 

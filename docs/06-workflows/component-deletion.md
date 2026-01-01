@@ -7,7 +7,7 @@
 
 **Last Updated:** December 21, 2025
 
-> **⚠️ IMPORTANT**: This workflow should be performed on a **feature branch**. All `git push origin main` commands in this document refer to the final step after creating and merging a PR. Follow [MANDATORY-WORKFLOW.md](./MANDATORY-WORKFLOW.md) for the complete branch → PR → merge process.
+> **⚠️ IMPORTANT**: This workflow should be performed on a **feature branch**. All `git push origin main` commands in this document refer to the final step after creating and merging a PR. Follow [MANDATORY-WORKFLOW.md](/docs/06-workflows-mandatory-workflow) for the complete branch → PR → merge process.
 
 ---
 

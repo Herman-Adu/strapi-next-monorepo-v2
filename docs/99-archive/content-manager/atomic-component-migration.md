@@ -448,10 +448,10 @@ For each updated section:
 
 ## Related Documentation
 
-- [Component Development Workflow](../../04-components/workflow.md) - For developers creating new components
-- [Atomic Architecture Guide](../../02-architecture/atomic-design/02-ATOMIC-DESIGN-PRIMER.md) - Understanding atomic design
-- [Section Background Component](../../04-components/patterns/section-background.md) - Background options
-- [Section Header Component](../../04-components/patterns/section-header.md) - Header configuration
+- [Component Development Workflow](/docs/04-components-workflow) - For developers creating new components
+- [Atomic Architecture Guide](/docs/02-architecture-atomic-design-02-atomic-design-primer) - Understanding atomic design
+- [Section Background Component](/docs/04-components-patterns-section-background) - Background options
+- [Section Header Component](/docs/04-components-patterns-section-header) - Header configuration
 
 ---
 
@@ -477,4 +477,4 @@ For each updated section:
 ---
 
 **Last Updated**: December 11, 2025  
-**Original File**: [POST_RECOVERY_CONTENT_FIXES.md](../../POST_RECOVERY_CONTENT_FIXES.md) (root - to be archived)
+**Original File**: [POST_RECOVERY_CONTENT_FIXES.md](/docs/post_recovery_content_fixes) (root - to be archived)

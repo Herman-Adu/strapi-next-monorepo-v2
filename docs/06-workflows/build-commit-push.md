@@ -5,7 +5,7 @@
 **Status**: ✅ Current - PARAMOUNT  
 **Audience**: All Developers
 
-> **⚠️ IMPORTANT**: This document is part of the [MANDATORY-WORKFLOW.md](./MANDATORY-WORKFLOW.md).  
+> **⚠️ IMPORTANT**: This document is part of the [MANDATORY-WORKFLOW.md](/docs/06-workflows-mandatory-workflow).  
 > See that document for the complete development workflow including branch creation, pull requests, and merge process.
 
 ---
@@ -22,7 +22,7 @@ This document describes the **build, commit, and push** portion of the standardi
 
 ## Quick Reference
 
-For the **complete workflow** (branch creation → PR → merge), see [MANDATORY-WORKFLOW.md](./MANDATORY-WORKFLOW.md).
+For the **complete workflow** (branch creation → PR → merge), see [MANDATORY-WORKFLOW.md](/docs/06-workflows-mandatory-workflow).
 
 This document focuses on **Steps 2-11** of that workflow (Development & Local Verification + Commit & Push on Feature Branch).
 
@@ -173,7 +173,7 @@ git push origin feature/your-branch-name
    gh run watch <run-id>
    ```
 
-**See [MANDATORY-WORKFLOW.md](./MANDATORY-WORKFLOW.md) for complete PR workflow details.**
+**See [MANDATORY-WORKFLOW.md](/docs/06-workflows-mandatory-workflow) for complete PR workflow details.**
 
 **If errors detected**:
 

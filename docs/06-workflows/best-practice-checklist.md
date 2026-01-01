@@ -347,7 +347,7 @@ This checklist exists because we learned the hard way:
 
 For a comprehensive example of applying this checklist to refactor from "quick fixes" to best practices, see:
 
-**[E2E Seeding Case Study](./docs/13-testing/e2e/strapi-seeding-case-study.md)**
+**[E2E Seeding Case Study](/docs/13-testing-e2e-strapi-seeding-case-study)**
 
 **What You'll Learn:**
 
@@ -403,7 +403,7 @@ You'll understand why this checklist exists and how to apply it systematically.
 **Status:** Living Document - Update when patterns emerge  
 **Related Docs:**
 
-- [E2E Seeding Case Study](./docs/13-testing/e2e/strapi-seeding-case-study.md) - Real-world example
-- [E2E Testing Guide](./docs/13-testing/e2e/README.md) - Testing best practices
-- [Test Data Seeding](./docs/13-testing/e2e/test-data-seeding.md) - Practical implementation
+- [E2E Seeding Case Study](/docs/13-testing-e2e-strapi-seeding-case-study) - Real-world example
+- [E2E Testing Guide](/docs/readme) - Testing best practices
+- [Test Data Seeding](/docs/13-testing-e2e-test-data-seeding) - Practical implementation
 - `DEVELOPMENT_GUIDE.md` - General development workflow

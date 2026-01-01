@@ -552,26 +552,26 @@ test("newsletter", async ({ page }) => {
 
 ### Core Documentation
 
-1. **Gold Standard**: [`apps/ui/tests/e2e/IMPORTANT-MSW-TESTING.md`](../../apps/ui/tests/e2e/IMPORTANT-MSW-TESTING.md)
+1. **Gold Standard**: [`apps/ui/tests/e2e/IMPORTANT-MSW-TESTING.md`](/docs/apps-ui-tests-e2e-important-msw-testing)
 
    - Quick reference for developers
    - Critical "what NOT to do" warnings
 
-2. **Implementation Details**: [`docs/13-testing/MSW_IMPLEMENTATION.md`](./MSW_IMPLEMENTATION.md)
+2. **Implementation Details**: [`docs/13-testing/MSW_IMPLEMENTATION.md`](/docs/13-testing-msw_implementation)
 
    - Technical implementation notes
    - Historical context (Dec 16, 2025 decision)
 
-3. **E2E Testing Breakthrough**: [`docs/13-testing/E2E_TESTING_BREAKTHROUGH.md`](./E2E_TESTING_BREAKTHROUGH.md)
+3. **E2E Testing Breakthrough**: [`docs/13-testing/E2E_TESTING_BREAKTHROUGH.md`](/docs/13-testing-e2e_testing_breakthrough)
    - Complete story of MSW adoption
    - Before/after comparisons
    - Lessons learned
 
 ### Related Documentation
 
-- [`docs/08-devops/workflows/02-e2e-workflow.md`](../08-devops/workflows/02-e2e-workflow.md) - E2E CI workflow
-- [`docs/11-recovery/PRODUCTION_READY_E2E_SOLUTION.md`](../11-recovery/PRODUCTION_READY_E2E_SOLUTION.md) - Production-ready patterns
-- [`apps/ui/tests/e2e/README.md`](../../apps/ui/tests/e2e/README.md) - E2E test suite overview
+- [`docs/08-devops/workflows/02-e2e-workflow.md`](/docs/08-devops-workflows-02-e2e-workflow) - E2E CI workflow
+- [`docs/11-recovery/PRODUCTION_READY_E2E_SOLUTION.md`](/docs/99-archive-recovery-sessions-production_ready_e2e_solution) - Production-ready patterns
+- [`apps/ui/tests/e2e/README.md`](/docs/readme) - E2E test suite overview
 
 ### External Resources
 

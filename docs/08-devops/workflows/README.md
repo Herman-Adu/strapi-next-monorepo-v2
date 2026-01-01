@@ -13,9 +13,9 @@ This index provides an overview of all **9 GitHub Actions workflows** that power
 
 **Related Documentation**:
 
-- [CI/CD Overview](../ci-cd.md)
-- [E2E Testing Guide](../../13-testing/README.md)
-- [MSW Testing Consolidation](../../13-testing/MSW-CONSOLIDATION.md)
+- [CI/CD Overview](/docs/08-devops-ci-cd)
+- [E2E Testing Guide](/docs/readme)
+- [MSW Testing Consolidation](/docs/13-testing-msw-consolidation)
 
 ---
 
@@ -23,15 +23,15 @@ This index provides an overview of all **9 GitHub Actions workflows** that power
 
 ### Core Testing & Build Workflows (7)
 
-| Workflow                   | File                                      | Doc                                                                    | Triggers             | Duration | Frequency      | Status    |
-| -------------------------- | ----------------------------------------- | ---------------------------------------------------------------------- | -------------------- | -------- | -------------- | --------- |
-| **CI (Lint + Build)**      | `.github/workflows/ci.yml`                | [01-ci-workflow.md](./01-ci-workflow.md)                               | Push to main, PRs    | ~4-5 min | Every commit   | ✅ Active |
-| **E2E Tests**              | `.github/workflows/e2e-tests.yml`         | [02-e2e-workflow.md](./02-e2e-workflow.md)                             | Weekly, code changes | ~15 min  | Weekly + PRs   | ✅ Active |
-| **Lighthouse Performance** | `.github/workflows/lighthouse.yml`        | [03-lighthouse-workflow.md](./03-lighthouse-workflow.md)               | PRs (UI changes)     | ~20 min  | On UI PRs      | ✅ Active |
-| **Visual Regression**      | `.github/workflows/visual-regression.yml` | [04-visual-regression-workflow.md](./04-visual-regression-workflow.md) | Push, PRs            | ~2-3 min | Every commit   | ✅ Active |
-| **Cache Cleanup**          | `.github/workflows/cleanup-caches.yml`    | [05-cache-cleanup-workflow.md](./05-cache-cleanup-workflow.md)         | Daily                | <1 min   | Daily 2 AM UTC | ✅ Active |
-| **Database Backup**        | `.github/workflows/backup.yml`            | [06-database-backup-workflow.md](./06-database-backup-workflow.md)     | Daily                | ~5 min   | Daily 2 AM UTC | ✅ Active |
-| **Integration Tests**      | `.github/workflows/integration-tests.yml` | [07-integration-tests-workflow.md](./07-integration-tests-workflow.md) | PRs, manual          | ~3-4 min | On PRs         | ✅ Active |
+| Workflow                   | File                                      | Doc                                                                                         | Triggers             | Duration | Frequency      | Status    |
+| -------------------------- | ----------------------------------------- | ------------------------------------------------------------------------------------------- | -------------------- | -------- | -------------- | --------- |
+| **CI (Lint + Build)**      | `.github/workflows/ci.yml`                | [01-ci-workflow.md](/docs/08-devops-workflows-01-ci-workflow)                               | Push to main, PRs    | ~4-5 min | Every commit   | ✅ Active |
+| **E2E Tests**              | `.github/workflows/e2e-tests.yml`         | [02-e2e-workflow.md](/docs/08-devops-workflows-02-e2e-workflow)                             | Weekly, code changes | ~15 min  | Weekly + PRs   | ✅ Active |
+| **Lighthouse Performance** | `.github/workflows/lighthouse.yml`        | [03-lighthouse-workflow.md](/docs/08-devops-workflows-03-lighthouse-workflow)               | PRs (UI changes)     | ~20 min  | On UI PRs      | ✅ Active |
+| **Visual Regression**      | `.github/workflows/visual-regression.yml` | [04-visual-regression-workflow.md](/docs/08-devops-workflows-04-visual-regression-workflow) | Push, PRs            | ~2-3 min | Every commit   | ✅ Active |
+| **Cache Cleanup**          | `.github/workflows/cleanup-caches.yml`    | [05-cache-cleanup-workflow.md](/docs/08-devops-workflows-05-cache-cleanup-workflow)         | Daily                | <1 min   | Daily 2 AM UTC | ✅ Active |
+| **Database Backup**        | `.github/workflows/backup.yml`            | [06-database-backup-workflow.md](/docs/08-devops-workflows-06-database-backup-workflow)     | Daily                | ~5 min   | Daily 2 AM UTC | ✅ Active |
+| **Integration Tests**      | `.github/workflows/integration-tests.yml` | [07-integration-tests-workflow.md](/docs/08-devops-workflows-07-integration-tests-workflow) | PRs, manual          | ~3-4 min | On PRs         | ✅ Active |
 
 ### Utility & Automation Workflows (2)
 
@@ -49,7 +49,7 @@ This index provides an overview of all **9 GitHub Actions workflows** that power
 ### 1. CI Workflow (Lint + Build) 🏭️
 
 **Purpose**: Code quality and build verification  
-**Documentation**: [01-ci-workflow.md](./01-ci-workflow.md)
+**Documentation**: [01-ci-workflow.md](/docs/08-devops-workflows-01-ci-workflow)
 
 **What It Does**:
 
@@ -94,7 +94,7 @@ on:
 ### 2. E2E Testing Workflow 🎭
 
 **Purpose**: End-to-end testing with Playwright  
-**Documentation**: [02-e2e-workflow.md](./02-e2e-workflow.md)
+**Documentation**: [02-e2e-workflow.md](/docs/08-devops-workflows-02-e2e-workflow)
 
 **What It Does**:
 
@@ -151,7 +151,7 @@ on:
 ### 3. Integration Tests Workflow 🔗
 
 **Purpose**: Real Strapi API integration testing  
-**Documentation**: [07-integration-tests-workflow.md](./07-integration-tests-workflow.md)
+**Documentation**: [07-integration-tests-workflow.md](/docs/08-devops-workflows-07-integration-tests-workflow)
 
 **What It Does**:
 
@@ -206,7 +206,7 @@ on:
 ### 4. Lighthouse Performance Workflow 💡
 
 **Purpose**: Performance budget enforcement  
-**Documentation**: [03-lighthouse-workflow.md](./03-lighthouse-workflow.md)
+**Documentation**: [03-lighthouse-workflow.md](/docs/08-devops-workflows-03-lighthouse-workflow)
 
 **What It Does**:
 
@@ -257,7 +257,7 @@ on:
 ### 5. Visual Regression Workflow 👁️
 
 **Purpose**: Chromatic visual testing  
-**Documentation**: [04-visual-regression-workflow.md](./04-visual-regression-workflow.md)
+**Documentation**: [04-visual-regression-workflow.md](/docs/08-devops-workflows-04-visual-regression-workflow)
 
 **What It Does**:
 
@@ -304,7 +304,7 @@ on:
 ### 5. Cache Cleanup Workflow 🧹
 
 **Purpose**: Prevent GitHub cache limit issues  
-**Documentation**: [05-cache-cleanup-workflow.md](./05-cache-cleanup-workflow.md)
+**Documentation**: [05-cache-cleanup-workflow.md](/docs/08-devops-workflows-05-cache-cleanup-workflow)
 
 **What It Does**:
 
@@ -343,7 +343,7 @@ on:
 ### 7. Database Backup Workflow 💾
 
 **Purpose**: Automated PostgreSQL backups  
-**Documentation**: [06-database-backup-workflow.md](./06-database-backup-workflow.md)
+**Documentation**: [06-database-backup-workflow.md](/docs/08-devops-workflows-06-database-backup-workflow)
 
 **What It Does**:
 

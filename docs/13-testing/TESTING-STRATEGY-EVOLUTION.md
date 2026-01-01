@@ -655,15 +655,15 @@ expect(submitCalled).toBe(true) // Implementation detail
 
 ### Core References
 
-- [MSW Consolidation Guide](./MSW-CONSOLIDATION.md) - Complete MSW setup
-- [E2E Testing Patterns](./E2E_TESTING_PATTERNS.md) - Best practices
-- [Testing README](./README.md) - Overview of all testing
-- [E2E Test Suite Status](./E2E_TEST_SUITE_STATUS.md) - Current metrics
+- [MSW Consolidation Guide](/docs/13-testing-msw-consolidation) - Complete MSW setup
+- [E2E Testing Patterns](/docs/13-testing-e2e_testing_patterns) - Best practices
+- [Testing README](/docs/readme) - Overview of all testing
+- [E2E Test Suite Status](/docs/13-testing-e2e_test_suite_status) - Current metrics
 
 ### Workflow Documentation
 
-- [E2E Workflow](../08-devops/workflows/02-e2e-workflow.md) - CI setup
-- [Integration Tests Workflow](../08-devops/workflows/07-integration-tests-workflow.md)
+- [E2E Workflow](/docs/08-devops-workflows-02-e2e-workflow) - CI setup
+- [Integration Tests Workflow](/docs/08-devops-workflows-07-integration-tests-workflow)
 
 ---
 

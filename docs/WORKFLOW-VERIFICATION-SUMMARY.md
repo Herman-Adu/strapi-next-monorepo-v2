@@ -201,11 +201,11 @@ These files were not deeply reviewed as they are less critical or meta-documents
 
 ## Related Documentation
 
-- [Sprint 5 Tracker](../SPRINT-5-CORE-LIBRARY-RESTRUCTURE.md)
-- [MANDATORY-WORKFLOW.md](../docs/06-workflows/MANDATORY-WORKFLOW.md)
-- [Build Commit Push Workflow](../docs/06-workflows/build-commit-push.md)
-- [Database Strategy](../docs/03-strapi/DATABASE-STRATEGY.md)
-- [MSW Consolidation](../docs/13-testing/MSW-CONSOLIDATION.md)
+- [Sprint 5 Tracker](/docs/sprint-5-core-library-restructure)
+- [MANDATORY-WORKFLOW.md](/docs/06-workflows-mandatory-workflow)
+- [Build Commit Push Workflow](/docs/06-workflows-build-commit-push)
+- [Database Strategy](/docs/03-strapi-database-strategy)
+- [MSW Consolidation](/docs/13-testing-msw-consolidation)
 
 ---
 

@@ -1,6 +1,6 @@
 # Strapi Database Backup & Restore Guide
 
-> **Database**: This guide uses **PostgreSQL** as the primary database. See [Database Strategy](../DATABASE-STRATEGY.md) for full PostgreSQL setup and migration guide.
+> **Database**: This guide uses **PostgreSQL** as the primary database. See [Database Strategy](/docs/03-strapi-database-strategy) for full PostgreSQL setup and migration guide.
 
 ## 🎯 Purpose
 
@@ -95,7 +95,7 @@ yarn workspace @repo/strapi strapi import -- --file ../backups/strapi-export-202
 
 ### Method 2: PostgreSQL Dump + Media Folder (Production-Ready)
 
-> **Recommended**: Use PostgreSQL for both development and production. See [Database Strategy](../DATABASE-STRATEGY.md).
+> **Recommended**: Use PostgreSQL for both development and production. See [Database Strategy](/docs/03-strapi-database-strategy).
 
 #### Backup Database:
 

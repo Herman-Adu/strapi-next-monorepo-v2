@@ -20,14 +20,18 @@
 - **Gradient System**: Heading gradients, backgrounds
 - **Custom Utilities**: Scrollbars, containers, marquees
 
-### `TAILWIND_STYLING_GUIDE.md`
+### Styling Documentation
 
-**Comprehensive styling documentation** - How to style content in this project
+**⚠️ Moved to:** [`docs/05-styling/`](../../../../docs/05-styling/)
 
-**Contents:**
+**Comprehensive styling guides:**
 
-- Installation & configuration
-- Typography plugin usage
+- **[tailwind-guide.md](../../../../docs/05-styling/tailwind-guide.md)** - Complete Tailwind CSS reference
+- **[typography-plugin.md](../../../../docs/05-styling/typography-plugin.md)** - Typography plugin implementation
+- **[styling-guide.md](../../../../docs/05-styling/styling-guide.md)** - Responsive patterns & container queries
+
+**Why moved:** Documentation belongs in central docs library for better discoverability
+
 - What works vs. what doesn't in Tailwind v4
 - Use cases with examples
 - Custom theme integration

@@ -54,7 +54,7 @@ MSW (Mock Service Worker) intercepts API requests at the **network layer** and r
 ❌ Real Strapi server - MUST BE STOPPED
 ```
 
-**Documentation**: See **[MSW Consolidation Guide](./MSW-CONSOLIDATION.md)** for complete details.
+**Documentation**: See **[MSW Consolidation Guide](/docs/13-testing-msw-consolidation)** for complete details.
 
 ---
 

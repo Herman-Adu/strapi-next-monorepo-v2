@@ -478,16 +478,16 @@ After MSW (Dec 15, 2025 - Present):
 
 **⭐ MUST READ - Start Here:**
 
-| Guide                                                                        | Purpose                                      | Audience       |
-| ---------------------------------------------------------------------------- | -------------------------------------------- | -------------- |
-| **[MSW Consolidation Guide](./MSW-CONSOLIDATION.md)** ⭐                     | **Complete MSW strategy and best practices** | **ALL DEVS**   |
-| [IMPORTANT-MSW-TESTING.md](../../apps/ui/tests/e2e/IMPORTANT-MSW-TESTING.md) | Quick reference and critical warnings        | All developers |
-| [MSW Implementation Details](./MSW_IMPLEMENTATION.md)                        | Technical implementation and architecture    | Senior devs    |
-| [E2E Test Suite Status](./E2E_TEST_SUITE_STATUS.md)                          | Current coverage and metrics                 | QA/DevOps      |
+| Guide                                                                     | Purpose                                      | Audience       |
+| ------------------------------------------------------------------------- | -------------------------------------------- | -------------- |
+| **[MSW Consolidation Guide](/docs/13-testing-msw-consolidation)** ⭐      | **Complete MSW strategy and best practices** | **ALL DEVS**   |
+| [IMPORTANT-MSW-TESTING.md](/docs/apps-ui-tests-e2e-important-msw-testing) | Quick reference and critical warnings        | All developers |
+| [MSW Implementation Details](/docs/13-testing-msw_implementation)         | Technical implementation and architecture    | Senior devs    |
+| [E2E Test Suite Status](/docs/13-testing-e2e_test_suite_status)           | Current coverage and metrics                 | QA/DevOps      |
 
 **Quick Links:**
 
-- 📖 **[MSW Consolidation Guide](./MSW-CONSOLIDATION.md)** - Start here!
+- 📖 **[MSW Consolidation Guide](/docs/13-testing-msw-consolidation)** - Start here!
 - 🎯 [Why MSW?](./MSW-CONSOLIDATION.md#why-msw) - Understand the decision
 - 🏗️ [Architecture](./MSW-CONSOLIDATION.md#architecture-overview) - How MSW works
 - 🚀 [Quick Start](./MSW-CONSOLIDATION.md#quick-start) - Running tests locally
@@ -652,7 +652,7 @@ jobs:
 
 ### Next Steps
 
-1. **Read MSW Consolidation Guide** - [Start here](./MSW-CONSOLIDATION.md)
+1. **Read MSW Consolidation Guide** - [Start here](/docs/13-testing-msw-consolidation)
 2. **Understand MSW architecture** - [Architecture overview](./MSW-CONSOLIDATION.md#architecture-overview)
 3. **Write your first test** - [Writing tests with MSW](./MSW-CONSOLIDATION.md#writing-tests-with-msw)
 4. **Troubleshoot issues** - [Common problems](./MSW-CONSOLIDATION.md#troubleshooting)

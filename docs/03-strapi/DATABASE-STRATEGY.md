@@ -246,8 +246,8 @@ yarn workspace @repo/strapi strapi import -- --file backups/sqlite-export.tar.gz
 
 See archived migration documents:
 
-- [`apps/strapi/MIGRATION-STEPS.md`](../../apps/strapi/MIGRATION-STEPS.md) - Detailed migration steps
-- [`apps/strapi/README-MIGRATION.md`](../../apps/strapi/README-MIGRATION.md) - Migration guide
+- [`apps/strapi/MIGRATION-STEPS.md`](/docs/99-archive-migration-migration-steps) - Detailed migration steps
+- [`apps/strapi/README-MIGRATION.md`](/docs/99-archive-migration-readme-migration) - Migration guide
 
 ---
 
@@ -375,7 +375,7 @@ yarn workspace @repo/strapi test
 
 **Problem**: `FATAL: password authentication failed for user "strapi_user"`
 
-**Solution**: See [PostgreSQL Authentication Guide](../09-troubleshooting/postgresql-authentication.md)
+**Solution**: See [PostgreSQL Authentication Guide](/docs/09-troubleshooting-postgresql-authentication)
 
 **Quick Fix:**
 
@@ -441,19 +441,19 @@ yarn workspace @repo/strapi strapi import -- --file backups/sqlite-export.tar.gz
 
 ### Database Configuration
 
-- [Strapi Configuration](./README.md) - Main Strapi documentation
-- [PostgreSQL Authentication](../09-troubleshooting/postgresql-authentication.md) - Auth troubleshooting
-- [Backup & Safety](./backup-and-safety/README.md) - Backup procedures
+- [Strapi Configuration](/docs/readme) - Main Strapi documentation
+- [PostgreSQL Authentication](/docs/09-troubleshooting-postgresql-authentication) - Auth troubleshooting
+- [Backup & Safety](/docs/readme) - Backup procedures
 
 ### Migration Guides
 
-- [Migration Steps](../../apps/strapi/MIGRATION-STEPS.md) - Detailed SQLite to PostgreSQL migration
-- [Migration README](../../apps/strapi/README-MIGRATION.md) - Migration overview
+- [Migration Steps](/docs/99-archive-migration-migration-steps) - Detailed SQLite to PostgreSQL migration
+- [Migration README](/docs/99-archive-migration-readme-migration) - Migration overview
 
 ### Development Workflows
 
-- [Development Environment](../01-getting-started/development-environment.md) - Setup guide
-- [Backend Health Check](../09-troubleshooting/backend-health-check.md) - Strapi health checks
+- [Development Environment](/docs/01-getting-started-development-environment) - Setup guide
+- [Backend Health Check](/docs/09-troubleshooting-backend-health-check) - Strapi health checks
 
 ---
 

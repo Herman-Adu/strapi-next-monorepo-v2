@@ -448,11 +448,11 @@ If backup didn't exist or was too old:
 
 ## Related Documentation
 
-- [PostgreSQL Authentication](../09-troubleshooting/postgresql-authentication.md) - Database connection troubleshooting
-- [Backup & Safety](../03-strapi/backup-and-safety/README.md) - Backup procedures
-- [E2E Testing Guide](../13-testing/e2e/README.md) - Testing best practices
-- [Seed Scripts Documentation](../03-strapi/seed-scripts.md) - When to use which script
-- [Development Environment](../01-getting-started/development-environment.md) - Safe local setup
+- [PostgreSQL Authentication](/docs/09-troubleshooting-postgresql-authentication) - Database connection troubleshooting
+- [Backup & Safety](/docs/readme) - Backup procedures
+- [E2E Testing Guide](/docs/readme) - Testing best practices
+- [Seed Scripts Documentation](/docs/03-strapi-seed-scripts) - When to use which script
+- [Development Environment](/docs/01-getting-started-development-environment) - Safe local setup
 
 ---
 
@@ -491,4 +491,4 @@ This incident, while scary, resulted in:
 **Documentation**: Complete
 
 **Last Updated**: December 11, 2025  
-**Original Report**: [E2E_DATA_LOSS_INCIDENT_REPORT.md](../../E2E_DATA_LOSS_INCIDENT_REPORT.md) (root - to be archived)
+**Original Report**: [E2E_DATA_LOSS_INCIDENT_REPORT.md](/docs/e2e_data_loss_incident_report) (root - to be archived)
