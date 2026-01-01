@@ -510,6 +510,7 @@ When you make a request, I will:
 
 **Most Common Request → Workflow:**
 
+- Pre-commit validation → `PRE_COMMIT_VALIDATION_WORKFLOW.md` (20+ times/day)
 - Reorder fields → `COMPONENT_FIELD_ORDER_WORKFLOW.md`
 - New component → `COMPONENT_DEVELOPMENT_GUIDE.md`
 - **Delete component → `COMPONENT_DELETION_WORKFLOW.md`** ⭐ NEW
